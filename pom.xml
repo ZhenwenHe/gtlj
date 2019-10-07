@@ -18,6 +18,7 @@
         <module>ml</module>
         <module>series</module>
         <module>protobuf</module>
+        <module>offices</module>
     </modules>
 
     <licenses>

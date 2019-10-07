@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dtree" />
+        <module name="offices" />
+        <module name="protobuf" />
+        <module name="series" />
+        <module name="mps" />
+        <module name="net" />
+        <module name="modeling" />
+        <module name="ml" />
+        <module name="indices" />
+        <module name="common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="common" target="1.8" />
+      <module name="dtree" target="1.8" />
+      <module name="gtl" target="1.8" />
+      <module name="indices" target="1.8" />
+      <module name="ml" target="1.8" />
+      <module name="modeling" target="1.8" />
+      <module name="mps" target="1.8" />
+      <module name="net" target="1.8" />
+      <module name="offices" target="1.8" />
+      <module name="protobuf" target="1.8" />
+      <module name="series" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
