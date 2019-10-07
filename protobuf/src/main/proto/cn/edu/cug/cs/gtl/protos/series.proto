@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package cn.edu.cug.cs.gtl.protos;
+
+option cc_enable_arenas = true;
+
+option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
+
+option java_package="cn.edu.cug.cs.gtl.protos";
+option java_multiple_files = true;
+option java_outer_classname = "Series";
+
+
+message Seriesf{
+    repeated float data=1;
+}
+
+message Seriesi{
+    repeated int32 data=1;
+}
+
+message Seriesd{
+    repeated double data=1;
+}
+
+message TimeSeriesd{
+    repeated double time=1;
+    repeated double data=2;
+}
+
+message TimeSeriesi{
+    repeated int32 time=1;
+    repeated int32 data=2;
+}
+
+message TimeSeriesf{
+    repeated float time=1;
+    repeated float data=2;
+}
+
+message MultiSeriesd{
+    repeated double  time=1;
+    repeated Seriesd series=2;
+}
+
+message MultiSeriesf{
+    repeated float  time=1;
+    repeated Seriesf series=2;
+}
+
+message MultiSeriesi{
+    repeated int32  time=1;
+    repeated Seriesi series=2;
+}

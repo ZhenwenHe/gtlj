@@ -17,6 +17,7 @@
         <module>dtree</module>
         <module>ml</module>
         <module>series</module>
+        <module>protobuf</module>
     </modules>
 
     <licenses>

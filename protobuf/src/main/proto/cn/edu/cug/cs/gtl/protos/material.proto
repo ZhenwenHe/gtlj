@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package cn.edu.cug.cs.gtl.protos;
+
+import "cn/edu/cug/cs/gtl/protos/identifier.proto";
+import "cn/edu/cug/cs/gtl/protos/color.proto";
+import "cn/edu/cug/cs/gtl/protos/vector.proto";
+
+option cc_enable_arenas = true;
+
+option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
+
+option java_package="cn.edu.cug.cs.gtl.protos";
+option java_multiple_files = true;
+option java_outer_classname = "Materials";
+
+
+message Material{
+    string metadata=1;//json
+    Identifier identifier=2;
+    string name=3;
+    int32 type=4;
+    string type_name=5;
+    Color4f color=6;
+    Vec4f ambient=7;
+    Vec4f emissive=8;
+    Vec4f specular=9;
+    Vec4f shininess=10;
+    Vec4f opacity=11;
+    bool transparent=12;
+    bool wireframe=13;
+    Identifier texture_identifier=14;
+}
