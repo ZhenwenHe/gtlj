@@ -1,0 +1,28 @@
+svn co https://112.74.79.128/svn/gtl/trunk/gtl
+ 
+https://112.74.79.128/svn/gtl/trunk/data  [测试数据，请签到当前用户的gtl目录下，例如在windows下面，当前登录用户名为zwhe，则其需要checkout到C:\Users\zwhe\gtl\data目录下；如果是在linux下或MacX OS，需要签到~/gtl/data目录下，请将自己的测试数据一并上传，否则别人在打包测试的时候会由于数据位置不对或缺失导致失败]
+https://112.74.79.128/svn/gtl/trunk/plugins  [插件工程]
+https://112.74.79.128/svn/gtl/trunk/geohadoop  [原来的data工程]
+https://112.74.79.128/svn/gtl/trunk/gtl [common工程，上面的每个工程都依赖于common工程，需要运行mvn install命令，然后其他工程依赖本工程，在pom.xml中已经设置好了依赖关系]
+
+svn add [file] 
+or 
+svn add -a
+
+svn commit -m [LogMessage]
+
+svn update -r [version] [path]
+
+svn status [path]
+
+svn delete [file]
+
+svn log [path]
+
+svn info [path]
+
+svn revert [path]
+
+svn switch [svn_url]
+
+svn resolved [path]
