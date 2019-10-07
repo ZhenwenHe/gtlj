@@ -13,29 +13,35 @@ option java_outer_classname = "Series";
 
 message Seriesf{
     repeated float data=1;
+    string label=2;
 }
 
 message Seriesi{
     repeated int32 data=1;
+    string label=2;
 }
 
 message Seriesd{
     repeated double data=1;
+    string label=2;
 }
 
 message TimeSeriesd{
     repeated double time=1;
     repeated double data=2;
+    string label=3;
 }
 
 message TimeSeriesi{
     repeated int32 time=1;
     repeated int32 data=2;
+    string label=3;
 }
 
 message TimeSeriesf{
     repeated float time=1;
     repeated float data=2;
+    string label=3;
 }
 
 message MultiSeriesd{
