@@ -1,8 +1,8 @@
 package cn.edu.cug.cs.gtl.series.common.paa;
 
 import cn.edu.cug.cs.gtl.array.Array;
+import cn.edu.cug.cs.gtl.common.Pair;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
-import cn.edu.cug.cs.gtl.series.common.sax.SAXException;
 
 import java.util.Arrays;
 
@@ -117,7 +117,7 @@ public class Utils {
         int n = a.dims(0);
         int m = a.dims(1);
         double [] dat = new double[m*paaSise];
-        Array r = Array.of(paaSise,m,dat);
+
         try {
             int s=0;
             for(int i=0;i<m;++i){
@@ -125,11 +125,57 @@ public class Utils {
                 System.arraycopy(t,0,dat,s,t.length);
                 s+=t.length;
             }
-            return r;
+            return Array.of(paaSise,m,dat);
         }
         catch (Exception e){
             e.printStackTrace();
             return null;
         }
     }
+
+    /**
+     * calculate break points for paa
+     * @param seriesLength
+     * @param paaSize
+     * @return
+     */
+    public static double[] breakPoints(int seriesLength, int paaSize){
+        double pointsPerSegment = (double) seriesLength / (double) paaSize;
+        double[] breaks = new double[paaSize + 1];
+        for (int i = 0; i < paaSize + 1; i++) {
+            breaks[i] = i * pointsPerSegment;
+        }
+        return breaks;
+    }
+
+    /**
+     *
+     * @param ts  time series data
+     * @param paaSize the size of the desired time series (paa series)
+     * @param paaIndex the index of paa Segment, [0,paaSize)
+     * @return
+     */
+    public static double [] subseries(double[] ts, int paaSize, int paaIndex){
+        double [] breaks=breakPoints(ts.length,paaSize);
+        double segStart = breaks[paaIndex];
+        double segEnd = breaks[paaIndex+ 1];
+
+        double fractionStart = Math.ceil(segStart) - segStart;
+        double fractionEnd = segEnd - Math.floor(segEnd);
+
+        int fullStart = Double.valueOf(Math.floor(segStart)).intValue();
+        int fullEnd = Double.valueOf(Math.ceil(segEnd)).intValue();
+
+        double[] segment = Arrays.copyOfRange(ts, fullStart, fullEnd);
+
+        if (fractionStart > 0) {
+            segment[0] = segment[0] * fractionStart;
+        }
+
+        if (fractionEnd > 0) {
+            segment[segment.length - 1] = segment[segment.length - 1] * fractionEnd;
+        }
+        return segment;
+    }
+
 }

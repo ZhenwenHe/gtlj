@@ -283,6 +283,7 @@ public class TimeSeries extends Series  {
      * 获取序列的值
      * @return
      */
+    @Override
     public double[] getValues(){
         return getDataY();
     }
@@ -390,4 +391,38 @@ public class TimeSeries extends Series  {
     public long count(){
         return 1;
     }
+
+    /**
+     * calculate sub-series
+     * @param paaSize
+     * @param paaIndex
+     * @return
+     */
+    @Override
+    public Series subseries(int paaSize, int paaIndex){
+        double [] tsx = cn.edu.cug.cs.gtl.series.common.paa.Utils.subseries(this.data,paaSize,paaIndex);
+        double [] tsy = cn.edu.cug.cs.gtl.series.common.paa.Utils.subseries(this.dataY,paaSize,paaIndex);
+        TimeSeries ts = TimeSeries.of(tsx,tsy);
+        ts.setLabel(this.label);
+        return ts;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public double max(){
+        return Series.max(this.dataY);
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public double min(){
+        return Series.min(this.dataY);
+    }
+
 }

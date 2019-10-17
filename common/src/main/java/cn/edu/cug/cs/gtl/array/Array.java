@@ -34,15 +34,15 @@ public interface Array extends Visitor {
     /**
      * Create a 2D ArrayImpl on the device using a host/device pointer
      * int h_buffer[] = {0, 1, 2, 3,    // host ArrayImpl with 16 elements
-     * 4, 5, 6, 7,    // written in "row-major" format
-     * 8, 9, 0, 1
-     * 2, 3, 4, 5};
+     *                   4, 5, 6, 7,    // written in "row-major" format
+     *                   8, 9, 0, 1,
+     *                   2, 3, 4, 5};
      * dim4 dims(4, 4);
      * ArrayImpl A(dims, h_buffer);
      * A  =  0  4  8  2
-     * 1  5  9  3
-     * 2  6  0  4
-     * 3  7  1  5     //Note the "column-major" ordering used in ArrayImplFire
+     *       1  5  9  3
+     *       2  6  0  4
+     *       3  7  1  5     //Note the "column-major" ordering used in ArrayImplFire
      *
      * @param dim0 number of rows
      * @param dim1 number of columns
@@ -84,16 +84,16 @@ public interface Array extends Visitor {
     /**
      * Create a 4D ArrayImpl on the device using a host/device pointer
      * int h_buffer[] = {0, 1, 2, 3,
-     * 4, 5, 6, 7,
-     * 8, 9, 0, 1,
-     * 2, 3, 4, 5};   // host ArrayImpl with 16 elements
+     *                   4, 5, 6, 7,
+     *                   8, 9, 0, 1,
+     *                   2, 3, 4, 5};   // host ArrayImpl with 16 elements
      * <p>
      * ArrayImpl A(2, 2, 2, 2, h_buffer);   // copy host data to 4D device ArrayImpl
      * //A= 0   2     8  0
-     * 1   3     9  1
-     * <p>
-     * 4   6     2  4
-     * 5   7     3  5
+     *      1   3     9  1
+     *      <p>
+     *      4   6     2  4
+     *      5   7     3  5
      * dim0  dim1 dim2 dim3
      * idx0  idx1  idx2  idx3
      * idx3*dim0*dim1*dim2+ idx2*dim0*dim1+ idx1*dim0 + idx0;
@@ -200,15 +200,15 @@ public interface Array extends Visitor {
     /**
      * Create a 2D ArrayImpl on the device using a host/device pointer
      * int h_buffer[] = {0, 1, 2, 3,    // host ArrayImpl with 16 elements
-     * 4, 5, 6, 7,    // written in "row-major" format
-     * 8, 9, 0, 1
-     * 2, 3, 4, 5};
+     *                   4, 5, 6, 7,    // written in "row-major" format
+     *                   8, 9, 0, 1,
+     *                   2, 3, 4, 5};
      * dim4 dims(4, 4);
      * ArrayImpl A(dims, h_buffer);
      * A  =  0  4  8  2
-     * 1  5  9  3
-     * 2  6  0  4
-     * 3  7  1  5     //Note the "column-major" ordering used in ArrayImplFire
+     *       1  5  9  3
+     *       2  6  0  4
+     *       3  7  1  5     //Note the "column-major" ordering used in ArrayImplFire
      *
      * @param dim0 number of rows
      * @param dim1 number of columns

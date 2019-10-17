@@ -184,7 +184,6 @@ public class Series implements Storable {
         for (double tp : series) {
             res += tp;
             count += 1;
-
         }
         if (count > 0) {
             return res / ((Integer) count).doubleValue();
@@ -505,5 +504,32 @@ public class Series implements Storable {
      */
     public long length(){return data==null?0:data.length;}
 
+
+    /**
+     * calculate sub-series
+     * @param paaSize
+     * @param paaIndex
+     * @return
+     */
+    public Series subseries(int paaSize, int paaIndex){
+        double [] ts = cn.edu.cug.cs.gtl.series.common.paa.Utils.subseries(this.data,paaSize,paaIndex);
+        return Series.of(ts);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double max(){
+        return Series.max(this.data);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public double min(){
+        return Series.min(this.data);
+    }
 
 }

@@ -1,11 +1,10 @@
 package cn.edu.cug.cs.gtl.series.distances;
 
 
+import cn.edu.cug.cs.gtl.array.Array;
 import cn.edu.cug.cs.gtl.series.common.Series;
-import cn.edu.cug.cs.gtl.series.dimensionality.DimensionalityUtils;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
-import cn.edu.cug.cs.gtl.series.common.sax.NormalAlphabet;
 
 import static java.lang.Math.sqrt;
 
@@ -32,9 +31,9 @@ public class DistanceUtils {
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     * euclidean distance
+     * @param a time series
+     * @param b time series
      * @return
      */
     public static double euclidean(Series a, Series b){
@@ -52,9 +51,9 @@ public class DistanceUtils {
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     * euclidean distance
+     * @param a time series
+     * @param b time series
      * @return
      */
     public static double euclidean(TimeSeries a, TimeSeries b){
@@ -75,111 +74,65 @@ public class DistanceUtils {
     /**
      * @calculate the sax distance between two time series  a and b
      * @param a
-     * @param a
+     * @param b
      * @param w the total number of divisions.
      * @param alphabet is the size of alphabet
      * @return distance between a and b.
      */
     public static double sax (Series a, Series b, int w, int  alphabet) {
-        return 0.0;
+        return cn.edu.cug.cs.gtl.series.common.sax.Utils.distance(a,b,w,alphabet);
     }
 
     /**
      * @calculate the sax distance between two time series  a and b
      * @param a
-     * @param a
+     * @param b
      * @param w the total number of divisions.
      * @param alphabet is the size of alphabet
      * @return distance between a and b.
      */
     public static double sax (TimeSeries a, TimeSeries b, int w, int  alphabet) {
-//        int[] ar = DimensionalityUtils.sax(a, w, alphabet);
-//        int[] br = DimensionalityUtils.sax(b, w, alphabet);
-//        int n = (int)a.length();
-//        assert (b.length() == n);
-//        double s = 0.0;
-//        try {
-//            NormalAlphabet tab = new NormalAlphabet();
-//            double[][] disTab = tab.getDistanceMatrix(alphabet);
-//            for (int i = 0; i < w; ++i) {
-//                double d = disTab[ar[i]][br[i]];
-//                d = d * d;
-//                s += d;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return sqrt(n / (int) w) * sqrt(s);
-        return 0.0;
+        return cn.edu.cug.cs.gtl.series.common.sax.Utils.distance(a,b,w,alphabet);
     }
 
     /**
-     *
+     * the sax distance between two multi time series  a and b
      * @param train
      * @param test
      * @param w
      * @param alphabet is the size of alphabet
      * @return
      */
-    public static double[][] sax(MultiSeries train, MultiSeries test, int w, int  alphabet) {
-        int n = (int) train.length();
-        int m = (int) test.count();
-        int k = (int) test.count();
-        double[][] result = new double[m - 1][k - 1];
-        if (n < m) {
-            for (int i = 0; i < m - 1; ++i) {
-                for (int j = 0; j < k - 1; ++j) {
-                    result[i][j] = Double.MAX_VALUE;
-                }
-            }
-            return result;
-        }
-        for (int i = 1; i < k; ++i) {
-            for (int j = 1; j < m; ++j) {
-                result[i - 1][j - 1] = sax(train.getSeries(j), test.getSeries(i), (int) w,alphabet);
-            }
-        }
-        return result;
+    public static Array sax(MultiSeries train, MultiSeries test, int w, int  alphabet) {
+        return cn.edu.cug.cs.gtl.series.common.sax.Utils.distances(train,test,w,alphabet);
     }
 
+
     /**
-     *
+     * pax distance
      * @param a
      * @param b
      * @param w
      * @return
      */
     public static double pax(TimeSeries a, TimeSeries b, int w){
-        return 0.0;
+        return cn.edu.cug.cs.gtl.series.common.pax.Utils.distance(a,b,w);
     }
 
     /**
-     *
+     * pax distances
      * @param train
      * @param test
      * @param w
      * @return
      */
-    public static double[][] pax(MultiSeries train, MultiSeries test, int w) {
-        int n = (int) train.length();
-        int m = (int) test.count();
-        int k = (int) test.count();
-        double[][] result = new double[m - 1][k - 1];
-        if (n < m) {
-            for (int i = 0; i < m - 1; ++i) {
-                for (int j = 0; j < k - 1; ++j) {
-                    result[i][j] = Double.MAX_VALUE;
-                }
-            }
-            return result;
-        }
-        for (int i = 1; i < k; ++i) {
-            for (int j = 1; j < m; ++j) {
-                result[i - 1][j - 1] = pax(train.getSeries(j), test.getSeries(i), (int) w);
-            }
-        }
-        return result;
+    public static Array pax(MultiSeries train, MultiSeries test, int w) {
+        return cn.edu.cug.cs.gtl.series.common.pax.Utils.distances(train,test,w);
     }
+
+
+
+
 
     /**
      * @brief calculate the hax distance between two time series a and b
@@ -189,37 +142,18 @@ public class DistanceUtils {
      * @return distance of hax .
      */
     public static double hax(TimeSeries a, TimeSeries b, int w) {
-        assert (a.length() == b.length());
-
-        return 0.0;
+        return cn.edu.cug.cs.gtl.series.common.hax.Utils.distance(a,b,w);
     }
 
     /**
-     *
+     *calculate the hax distance between two multi time series a and b
      * @param train
      * @param test
      * @param w
      * @return
      */
-    public static double[][] hax(MultiSeries train, MultiSeries test, int w) {
-        int n = (int) train.length();
-        int m = (int) test.count();
-        int k = (int) test.count();
-        double[][] result = new double[m - 1][k - 1];
-        if (n < m) {
-            for (int i = 0; i < m - 1; ++i) {
-                for (int j = 0; j < k - 1; ++j) {
-                    result[i][j] = Double.MAX_VALUE;
-                }
-            }
-            return result;
-        }
-        for (int i = 1; i < k; ++i) {
-            for (int j = 1; j < m; ++j) {
-                result[i - 1][j - 1] = hax(train.getSeries(j), test.getSeries(i), (int) w);
-            }
-        }
-        return result;
+    public static Array hax(MultiSeries train, MultiSeries test, int w) {
+        return cn.edu.cug.cs.gtl.series.common.hax.Utils.distances(train,test,w);
     }
 
 

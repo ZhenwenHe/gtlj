@@ -340,6 +340,24 @@ public class MultiSeries  extends Series {
 
     /**
      *
+     * @param ls
+     */
+    public void setLabels(List<String> ls){
+        this.labels=ls;
+    }
+
+    /**
+     *
+     * @param ls
+     */
+    public void setLabels(String [] ls){
+        this.labels = new ArrayList<>();
+        for(String s: ls)
+            this.labels.add(s);
+    }
+
+    /**
+     *
      * @return
      */
     @Override
@@ -455,5 +473,69 @@ public class MultiSeries  extends Series {
             ss.add(s);
         }
         return new TestSet<>(ss,ls);
+    }
+
+    /**
+     * calculate sub-series
+     * @param paaSize
+     * @param paaIndex
+     * @return
+     */
+    @Override
+    public Series subseries(int paaSize, int paaIndex){
+        double [] tsx = cn.edu.cug.cs.gtl.series.common.paa.Utils.subseries(this.data,paaSize,paaIndex);
+        List<double[]> ls = new ArrayList<>();
+        for(double[] da: this.dataY){
+            double [] tsy = cn.edu.cug.cs.gtl.series.common.paa.Utils.subseries(da,paaSize,paaIndex);
+        }
+        MultiSeries ms = MultiSeries.of(tsx,ls,false);
+        if(this.labels!=null){
+            ms.setLabels(this.labels.subList(0,this.labels.size()));
+        }
+        return ms;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public double max(){
+        double r = - Double.MAX_VALUE;
+        for(double[] a: this.dataY){
+            r = Math.max(r,Series.max(a));
+        }
+        return r;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public double min(){
+        double r = Double.MAX_VALUE;
+        for(double[] a: this.dataY){
+            r = Math.min(r,Series.min(a));
+        }
+        return r;
+    }
+
+    /**
+     * 获取所有序列的值
+     * @return
+     */
+    @Override
+    public double[] getValues(){
+        int s = 0;
+        for(double [] d: this.dataY)
+            s+=d.length;
+        double [] r= new double[s];
+        int i=0;
+        for(double [] d: this.dataY) {
+            System.arraycopy(d,0,r,i,d.length);
+            i +=d.length;
+        }
+        return r;
     }
 }

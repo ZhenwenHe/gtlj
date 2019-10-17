@@ -1,5 +1,7 @@
 package cn.edu.cug.cs.gtl.series.common.sax;
 
+import cn.edu.cug.cs.gtl.array.Array;
+import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.Series;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
 import org.apache.commons.math3.distribution.NormalDistribution;
@@ -547,16 +549,12 @@ public class Utils {
      * algorithm simplicity and low computational complexity while providing satisfactory sensitivity and selectivity in
      * range query processing.
 
-     * @param a Array with the input time series.
-     * it should be a n x 2 array;
-     * n is the length of the time series
-     * col(0) is the x-axis values
-     * col(1) is the y-axis values
+     * @param ts
      * @param w the total number of divisions.
      * @param alphabet is the size of alphabet
      * @return result An array of string index [a,z].
      */
-    public static int[] seriesToIndex(double[] ts , long w, int  alphabet ){
+    public static int[] seriesToIndex(double[] ts , int w, int  alphabet ){
         //paa 降维
         double[] reducedDataY = new double[(int) w];
         try {
@@ -593,4 +591,58 @@ public class Utils {
     }
 
 
+    /**
+     * 计算两个时序数据对象之间的SAX距离
+     * @param s1 时序数据对象
+     * @param s2 时序数据对象
+     * @param w  paa的段数
+     * @param alphabet
+     * @return 返回两个时序数据对象之间的SAX MINDIST
+     */
+    public static double distance (Series s1, Series s2, int w, int alphabet){
+        NormalAlphabet normalAlphabet = new NormalAlphabet();
+        long n = Math.min(s1.length(),s2.length());
+        try {
+            char[] a  = seriesToString(s1.getValues(),w,normalAlphabet.getCuts(alphabet),Double.MIN_NORMAL);
+            char[] b = seriesToString(s2.getValues(),w,normalAlphabet.getCuts(alphabet),Double.MIN_NORMAL);
+            return saxMinDist(a,b,normalAlphabet.getDistanceMatrix(alphabet),(int)n,w);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return Double.MAX_VALUE;
+        }
+    }
+
+    /**
+     * 计算两个数据集合中每条时序数据对象之间的距离
+     * @param s1 m条时序数据的集合
+     * @param s2 n条时序数据的集合
+     * @param w  paa的段数
+     * @param alphabet
+     * @return 返回n行m列的2D数组 a
+     *         也即，s1中的第0条与s2中的n条时序数据的距离存储在第0列；
+     *         s1中的第i条与s2中的第j条时序数据之间的距离为 a.get(j,i);
+     *         获取s1中第i条与s2中所有时序数据对象的距离为一个n元列向量，也即 a.col(i)
+     */
+    public static Array distances(MultiSeries s1, MultiSeries s2, int w, int alphabet){
+        try{
+            int m = (int)s1.count();
+            int n =(int)s2.count();
+            double [] dist = new double[m*n];
+            int k=0;
+            for(int i=0;i<m;++i){
+                Series s11 = s1.getSeries(i);
+                for(int j=0;j<n;++j){
+                    Series s22 = s2.getSeries(j);
+                    dist[k]=distance(s11,s22,w,alphabet);
+                    ++k;
+                }
+            }
+            return Array.of(n,m,dist);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
