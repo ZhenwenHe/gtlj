@@ -4,6 +4,7 @@ import cn.edu.cug.cs.gtl.config.Config;
 import cn.edu.cug.cs.gtl.io.File;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
+import cn.edu.cug.cs.gtl.series.common.pax.TIOPlane;
 import cn.edu.cug.cs.gtl.series.distances.HaxDistanceMetrics;
 import org.junit.Test;
 
@@ -16,7 +17,8 @@ class NNClassifierTest {
         try{
             MultiSeries train = MultiSeries.readTSV(trainFilePath);
             MultiSeries test= MultiSeries.readTSV(testFilePath);
-            HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10);
+            TIOPlane tioPlane = TIOPlane.of(Math.min(train.min(),test.min()),Math.max(train.max(),test.max()));
+            HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
             NNClassifier nn = new NNClassifier(train.toTrainSet(),test.toTestSet(),disFunc);
             nn.predict(nn.testSet.getSamples());
         } catch (Exception e){

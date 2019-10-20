@@ -8,6 +8,7 @@ import cn.edu.cug.cs.gtl.ml.dataset.TrainSet;
 import cn.edu.cug.cs.gtl.util.StringUtils;
 
 import java.io.*;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -537,5 +538,35 @@ public class MultiSeries  extends Series {
             i +=d.length;
         }
         return r;
+    }
+
+    /**
+     * to time series list
+     * @return
+     */
+    public List<TimeSeries> toList(){
+        int c= this.dataY.size();
+        List<TimeSeries> list = new ArrayList<>(c);
+        int i=0;
+        for(double[] d : this.dataY){
+            list.set(i,TimeSeries.of(this.data,d,true));
+            ++i;
+        }
+        return list;
+    }
+
+    /**
+     * to time series array
+     * @return
+     */
+    public TimeSeries[] toArray(){
+        int c= this.dataY.size();
+        TimeSeries [] tss = new TimeSeries[c];
+        int i=0;
+        for(double[] d : this.dataY){
+            tss[i]=TimeSeries.of(this.data,d,true);
+            ++i;
+        }
+        return tss;
     }
 }

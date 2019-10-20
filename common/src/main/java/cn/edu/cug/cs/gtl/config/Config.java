@@ -1,7 +1,6 @@
 package cn.edu.cug.cs.gtl.config;
 
 import cn.edu.cug.cs.gtl.io.File;
-import cn.edu.cug.cs.gtl.io.File;
 import org.apache.hadoop.conf.Configuration;
 
 import java.util.UUID;
@@ -19,7 +18,7 @@ public final class Config {
      */
     private static int dimension=3;
 
-    private static String DEFAULT_DATA_DIR=System.getProperty("user.home")+ File.separator+"gtl"+File.separator+"data";
+    private static String DEFAULT_DATA_DIR=System.getProperty("user.home")+ File.separator+"git"+File.separator+"data";
     private static String DEFAULT_HDFS_DIR="hdfs://namenode1:9000"+File.separator+"gtl"+File.separator+"data";
 
     public static String getTestInputDirectory(){
@@ -29,7 +28,7 @@ public final class Config {
         return ".."+File.separator+".."+File.separator+"data"+File.separator+"output";
     }
     public static String getDataDirectory(){
-        return DEFAULT_DATA_DIR+File.separator+"dat";
+        return DEFAULT_DATA_DIR+File.separator;
     }
 
     public static String getTemporaryDirectory(){

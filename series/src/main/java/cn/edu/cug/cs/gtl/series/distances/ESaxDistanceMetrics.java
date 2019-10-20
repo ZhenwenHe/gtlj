@@ -14,7 +14,8 @@ public class ESaxDistanceMetrics<T> implements DistanceMetrics<T> {
     @Override
     public double distance(T a, T b) {
         if(a instanceof TimeSeries && b instanceof TimeSeries){
-            return DistanceUtils.esax((TimeSeries) a,(TimeSeries)b,this.wordSize,this.alphabet);
+            //return DistanceUtils.esax((TimeSeries) a,(TimeSeries)b,this.wordSize);
+            return 0;
         }
         else{
             System.out.println("Error");

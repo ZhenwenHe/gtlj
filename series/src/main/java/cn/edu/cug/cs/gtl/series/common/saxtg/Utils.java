@@ -3,21 +3,21 @@ package cn.edu.cug.cs.gtl.series.common.saxtg;
 import cn.edu.cug.cs.gtl.array.Array;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.Series;
+import cn.edu.cug.cs.gtl.series.common.TimeSeries;
 
 public class Utils {
     /**
-     *
+     * saxtg representation
      * @param ts
      * @param w
-     * @param n
      * @return
      */
-    public static double[] saxtg(double[] ts, int w, int n){
+    public static double[] saxtg(double[] ts, int w){
         double[] t1 = ts;
         double[] t2 = new double[w];
         double max = -Double.MAX_VALUE;
         double min = Double.MAX_VALUE;
-        int elem_row = n / w;
+        int elem_row = ts.length / w;
         int i = 0;
         while (i < w) {
             for (int j = i * elem_row; j < (i + 1)*elem_row; j++) {
@@ -35,15 +35,41 @@ public class Utils {
     }
 
     /**
-     * 计算两个时序数据对象之间的SAX距离
+     * sax_TG_distance
+     * @param a
+     * @param b
+     * @param w
+     * @return
+     */
+    private static double distance( Series a, Series b, int w){
+        int n = (int)a.length();
+        assert (n == b.length());
+        double[] t1 = saxtg(a.getValues(), w);
+        double[] t2 = saxtg(b.getValues(), w);
+        double s = 0.0;
+        for (int i = 0; i < w; ++i) {
+        double d = t2[i] - t1[i];
+        d = d * d;
+        s += d;
+        }
+        return s;
+    }
+
+
+    /**
+     * 计算两个时序数据对象之间的SAXTG距离
      * @param s1 时序数据对象
      * @param s2 时序数据对象
      * @param w  paa的段数
      * @param alphabet
-     * @return 返回两个时序数据对象之间的SAX MINDIST
+     * @return 返回两个时序数据对象之间的SAXTG距离
      */
     public static double distance (Series s1, Series s2, int w, int alphabet){
-        return 0;
+        assert (s1.length() == s2.length());
+        double t1 = cn.edu.cug.cs.gtl.series.common.sax.Utils.distance(s1, s2, w, alphabet);
+        double t2 = distance(s1, s2, w);
+        double res = t1 * t1 + t2;
+        return Math.sqrt(res);
     }
 
     /**

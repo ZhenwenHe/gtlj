@@ -5,6 +5,7 @@ import cn.edu.cug.cs.gtl.array.Array;
 import cn.edu.cug.cs.gtl.series.common.Series;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
+import cn.edu.cug.cs.gtl.series.common.pax.TIOPlane;
 
 import static java.lang.Math.sqrt;
 
@@ -120,6 +121,18 @@ public class DistanceUtils {
     }
 
     /**
+     * pax distance
+     * @param a
+     * @param b
+     * @param w
+     * @param tioPlane
+     * @return
+     */
+    public static double pax(TimeSeries a, TimeSeries b, int w,TIOPlane tioPlane){
+        return cn.edu.cug.cs.gtl.series.common.pax.Utils.distance(a,b,w,tioPlane);
+    }
+
+    /**
      * pax distances
      * @param train
      * @param test
@@ -130,10 +143,6 @@ public class DistanceUtils {
         return cn.edu.cug.cs.gtl.series.common.pax.Utils.distances(train,test,w);
     }
 
-
-
-
-
     /**
      * @brief calculate the hax distance between two time series a and b
      * @param a Array with the input time series.
@@ -143,6 +152,18 @@ public class DistanceUtils {
      */
     public static double hax(TimeSeries a, TimeSeries b, int w) {
         return cn.edu.cug.cs.gtl.series.common.hax.Utils.distance(a,b,w);
+    }
+
+    /**
+     * @brief calculate the hax distance between two time series a and b
+     * @param a Array with the input time series.
+     * @param b Array with the input time series.
+     * @param w the total number of divisions.
+     * @param tioPlane the global TIOPlane
+     * @return distance of hax .
+     */
+    public static double hax(TimeSeries a, TimeSeries b, int w, TIOPlane tioPlane) {
+        return cn.edu.cug.cs.gtl.series.common.hax.Utils.distance(a,b,w,tioPlane);
     }
 
     /**
@@ -158,59 +179,31 @@ public class DistanceUtils {
 
 
     /**
-     *
+     * esax distance
      * @param a
      * @param b
      * @param w
      * @param alphabet
      * @return
      */
-    public static double esax (TimeSeries a, TimeSeries b, long w, int alphabet){
-        assert (a.length() ==b.length());
-//        int [] ar = DimensionalityUtils.esax(a,w,alphabet);
-//        int [] br = DimensionalityUtils.esax(b,w,alphabet);
-//        int n = (int) a.length();
-//        double s = 0.0;
-//        try {
-//            NormalAlphabet tab = new NormalAlphabet();
-//            double[][] disTab = tab.getDistanceMatrix(alphabet);
-//            for (int i = 0; i < w*3; ++i) {
-//                double d = disTab[ar[i]][br[i]];
-//                d = d * d;
-//                s += d;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        double res = sqrt(n / ((int) w*3)) * sqrt(s);
-//        return res;
-        return 0.0;
+    public static double esax (TimeSeries a, TimeSeries b, int w, int alphabet){
+        return cn.edu.cug.cs.gtl.series.common.esax.Utils.distance(a,b,w,alphabet);
     }
 
     /**
-     *
-     * @param a
-     * @param b
+     *calculate the esax distance between two multi time series a and b
+     * @param train
+     * @param test
      * @param w
      * @return
      */
-    public static double saxtd(TimeSeries a, TimeSeries b, int w){
-//        int n = (int)a.length();
-//        assert (n == b.length());
-//        double[] t1 = DimensionalityUtils.sax_TD(a, w, n);
-//        double[] t2 = DimensionalityUtils.sax_TD(b, w, n);
-//        double s = 0.0;
-//        for (int i = 0; i <= w; ++i) {
-//            double d = t2[i] - t1[i];
-//            d = d * d;
-//            s += d;
-//        }
-//        return s;
-        return 0.0;
+    public static Array esax(MultiSeries train, MultiSeries test, int w,int alphabet) {
+        return cn.edu.cug.cs.gtl.series.common.esax.Utils.distances(train,test,w,alphabet);
     }
 
+
     /**
-     *
+     * calculate the saxtd distance between two  time series a and b
      * @param a
      * @param b
      * @param w
@@ -218,38 +211,24 @@ public class DistanceUtils {
      * @return
      */
     public static double saxtd(TimeSeries a, TimeSeries b, int w, int alphabet){
-//        assert (a.length() == b.length());
-//        double t1 = sax(a, b, w, alphabet);
-//        double t2 = sax_TD_distance(a, b, w);
-//        double res = t1 * t1 + t2;
-//        return sqrt(res);
-        return 0.0;
+        return cn.edu.cug.cs.gtl.series.common.saxtd.Utils.distance(a,b,w,alphabet);
     }
 
+
     /**
-     *
-     * @param a
-     * @param b
+     *calculate the saxtd distance between two multi time series a and b
+     * @param train
+     * @param test
      * @param w
      * @return
      */
-    public static double saxtg(TimeSeries a, TimeSeries b, int w){
-//    int n = (int)a.length();
-//    assert (n == b.length());
-//    double[] t1 = DimensionalityUtils.sax_TG(a, w, n);
-//    double[] t2 = DimensionalityUtils.sax_TG(b, w, n);
-//    double s = 0.0;
-//    for (int i = 0; i < w; ++i) {
-//    double d = t2[i] - t1[i];
-//    d = d * d;
-//    s += d;
-//    }
-//    return s;
-        return 0.0;
+    public static Array saxtd(MultiSeries train, MultiSeries test, int w,int alphabet) {
+        return cn.edu.cug.cs.gtl.series.common.saxtd.Utils.distances(train,test,w,alphabet);
     }
 
+
     /**
-     *
+     * calculate the saxtg distance between two  time series a and b
      * @param a
      * @param b
      * @param w
@@ -257,12 +236,19 @@ public class DistanceUtils {
      * @return
      */
     public static double saxtg(TimeSeries a, TimeSeries b, int w, int alphabet){
-//    assert (a.length() == b.length());
-//    double t1 = sax(a, b, w, alphabet);
-//    double t2 = sax_TG_distance(a, b, w);
-//    double res = t1 * t1 + t2;
-//    return sqrt(res);
-        return 0.0;
+        return cn.edu.cug.cs.gtl.series.common.saxtg.Utils.distance(a,b,w,alphabet);
+    }
+
+
+    /**
+     *calculate the saxtg distance between two multi time series a and b
+     * @param train
+     * @param test
+     * @param w
+     * @return
+     */
+    public static Array saxtg(MultiSeries train, MultiSeries test, int w,int alphabet) {
+        return cn.edu.cug.cs.gtl.series.common.saxtg.Utils.distances(train,test,w,alphabet);
     }
 
     /**

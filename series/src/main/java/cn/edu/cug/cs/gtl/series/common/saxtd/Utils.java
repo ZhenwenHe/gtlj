@@ -9,18 +9,17 @@ public class Utils {
      *
      * @param ts
      * @param w
-     * @param n
      * @return
      */
-    public static double[] saxtd(double [] ts, int w, int n){
+    public static double[] saxtd(double [] ts, int w){
         try{
             double[] mid = cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(ts, w);
             double[] d = new double[w+1];
-            double paaSize = (double)n / (double)w;
+            double perSegment = (double)ts.length/ (double)w;
             double i = 0.0;
             for (int count = 0; count < w ; count++) {
                 d[count] = ts[(int)i] - mid[count];
-                i = count * paaSize;
+                i = count * perSegment;
             }
             d[w] = ts[(int)i] - mid[w-1];
             return d;
@@ -29,16 +28,39 @@ public class Utils {
         }
     }
 
+
     /**
-     * 计算两个时序数据对象之间的SAX距离
+     * saxtd distance
+     * @param a
+     * @param b
+     * @param w
+     * @return
+     */
+    private static double distance(double[] a, double[] b, int w){
+        double[] t1 = saxtd(a, w);
+        double[] t2 = saxtd(b, w);
+        double s = 0.0;
+        for (int i = 0; i <= w; ++i) {
+            double d = t2[i] - t1[i];
+            d = d * d;
+            s += d;
+        }
+        return s;
+    }
+
+    /**
+     * 计算两个时序数据对象之间的SAXTD距离
      * @param s1 时序数据对象
      * @param s2 时序数据对象
      * @param w  paa的段数
      * @param alphabet
-     * @return 返回两个时序数据对象之间的SAX MINDIST
+     * @return 返回两个时序数据对象之间的SAXTD距离
      */
     public static double distance (Series s1, Series s2, int w, int alphabet){
-        return 0;
+        double t1 = cn.edu.cug.cs.gtl.series.common.sax.Utils.distance(s1, s2, w, alphabet);
+        double t2 = distance(s1.getValues(), s2.getValues(), w);
+        double res = t1 * t1 + t2;
+        return Math.sqrt(res);
     }
 
     /**

@@ -16,6 +16,8 @@ public interface Classifier<S,L> {
     double score(DataSet<S,L> testSet, Iterable<L> predictedLabels);
     DataSet<S,L> getTrainSet();
     DataSet<S,L> getTestSet();
+    void setTrainSet(DataSet<S,L> dataSet);
+    void setTestSet(DataSet<S,L> dataSet);
     default double score(){
         assert getTestSet()!=null;
         assert getTrainSet()!=null;

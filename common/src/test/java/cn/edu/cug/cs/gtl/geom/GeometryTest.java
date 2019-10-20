@@ -17,7 +17,7 @@ public class GeometryTest {
         Point p = (Point) Geometry.create(Point.class,3);
         System.out.println(p.getDimension());
         System.out.println(Geometry.getTypeName(Geometry.POINT));
-        assertTrue(Geometry.getTypeName(Geometry.POINT).compareTo("Point")==0);
+        assertTrue(Geometry.getSimpleTypeName(Geometry.POINT).compareTo("Point")==0);
     }
 
     @Test

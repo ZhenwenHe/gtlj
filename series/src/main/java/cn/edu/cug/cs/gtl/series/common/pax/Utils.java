@@ -118,11 +118,21 @@ public class Utils {
     }
 
     /**
+     * 计算两个时序数据对象之间的距离
+     * @param tss1
+     * @param tss2
+     * @param w
+     * @param tioPlane
+     * @return
+     */
+    public static double distance(Series tss1, Series tss2, int w,TIOPlane tioPlane){
+        return distance(pax(tss1,w),pax(tss2,w),tioPlane);
+    }
+    /**
      * 计算两个数据集合中每条时序数据对象之间的距离
      * @param s1 m条时序数据的集合
      * @param s2 n条时序数据的集合
      * @param w  paa的段数
-     * @param alphabet
      * @return 返回n行m列的2D数组 a
      *         也即，s1中的第0条与s2中的n条时序数据的距离存储在第0列；
      *         s1中的第i条与s2中的第j条时序数据之间的距离为 a.get(j,i);

@@ -5,7 +5,6 @@ import cn.edu.cug.cs.gtl.array.Array;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.Series;
 import cn.edu.cug.cs.gtl.series.common.pax.TIOPlane;
-import cn.edu.cug.cs.gtl.series.common.sax.NormalAlphabet;
 
 public class Utils {
   /**
@@ -18,28 +17,81 @@ public class Utils {
    * @param w the total number of divisions, or the paaSize.
    * @return result An array of hexadecimal digits [0x0,0xf].
    */
-  public static byte[] hax(TIOPlane tioPlane, Series ts, int w) {
+  public static byte[] hax(Series ts, int w,TIOPlane tioPlane) {
     return tioPlane.map(ts,w);
   }
 
-  public static double distance (byte h1, byte h2){
-    return 0;
+    /**
+     * 将单条时序数据转换成HAX ， 采用默认构建的TIOPlane；
+     * 如果要两条时序数据之间生成的HAX具有可比性，需要采用相同的TIOPlane；
+     * @param ts
+     * @param w
+     * @return
+     */
+  public static byte[] hax( Series ts, int w) {
+      TIOPlane tioPlane=TIOPlane.of(ts.min(),ts.max());
+      return tioPlane.map(ts,w);
   }
 
+    /**
+     * the distance between two hax digits
+     * @param h1 hax digit
+     * @param h2 hax digit
+     * @return the distance between two hax digits
+     */
+  public static double distance (byte h1, byte h2){
+      //1 如果在同一个象限内
+      if(h1%4==h2%4){
+
+      }
+      else{//2 如果不在同一个象限
+
+      }
+      return 0;
+  }
+
+    /**
+     * the distance between two hax strings
+     * @param ts1 hax string
+     * @param ts2 hax string
+     * @return the distance between two hax strings
+     */
   public static double distance (byte[] ts1, byte[] ts2){
-    return 0;
+    int n = Math.min(ts1.length,ts2.length);
+    int s =0;
+    for(int i=0;i<n;++n)
+        s+= distance(ts1[i],ts2[i]);
+    return s;
   }
 
   /**
-   * 计算两个时序数据对象之间的SAX距离
+   * 计算两个时序数据对象之间的HAX距离
    * @param s1 时序数据对象
    * @param s2 时序数据对象
    * @param w  paa的段数
    * @return 返回两个时序数据对象之间的HAX距离
    */
-  public static double distance (Series s1, Series s2, int w){
-    return 0;
+  public static double distance (Series s1, Series s2, int w,TIOPlane tioPlane){
+      if(tioPlane==null)
+          tioPlane=TIOPlane.of(Math.min(s1.min(),s2.min()),Math.max(s1.max(),s2.max()));
+      byte[] a = hax(s1,w,tioPlane);
+      byte[] b = hax(s2,w,tioPlane);
+      return distance(a,b);
   }
+
+    /**
+     * 计算两个时序数据对象之间的HAX距离,采用默认的TIOPlane
+     * @param s1 时序数据对象
+     * @param s2 时序数据对象
+     * @param w  paa的段数
+     * @return 返回两个时序数据对象之间的HAX距离
+     */
+    public static double distance (Series s1, Series s2, int w){
+        TIOPlane tioPlane=TIOPlane.of(Math.min(s1.min(),s2.min()),Math.max(s1.max(),s2.max()));
+        byte[] a = hax(s1,w,tioPlane);
+        byte[] b = hax(s2,w,tioPlane);
+        return distance(a,b);
+    }
 
   /**
    * 计算两个数据集合中每条时序数据对象之间的距离
@@ -54,13 +106,14 @@ public class Utils {
   public static Array distances(MultiSeries s1, MultiSeries s2, int w){
       int m = (int)s1.count();
       int n =(int)s2.count();
+      TIOPlane tioPlane=TIOPlane.of(Math.min(s1.min(),s2.min()),Math.max(s1.max(),s2.max()));
       double [] dist = new double[m*n];
       int k=0;
       for(int i=0;i<m;++i){
         Series s11 = s1.getSeries(i);
         for(int j=0;j<n;++j){
           Series s22 = s2.getSeries(j);
-          dist[k]=distance(s11,s22,w);
+          dist[k]=distance(s11,s22,w,tioPlane);
           ++k;
         }
       }

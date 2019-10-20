@@ -59,4 +59,13 @@ public abstract class DefaultClassifier<S,L> implements Classifier<S,L> {
     public DataSet<S, L> getTestSet() {
         return this.testSet;
     }
+
+    @Override
+    public void setTrainSet(DataSet<S,L> dataSet){
+        this.trainSet=dataSet;
+    }
+    @Override
+    public void setTestSet(DataSet<S,L> dataSet){
+        this.testSet=dataSet;
+    }
 }

@@ -59,6 +59,7 @@
             <artifactId>tika-parsers</artifactId>
             <version>1.22</version>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>

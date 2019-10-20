@@ -4,6 +4,7 @@ import cn.edu.cug.cs.gtl.array.Array;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
 import cn.edu.cug.cs.gtl.series.common.Series;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
+import cn.edu.cug.cs.gtl.series.common.sax.NormalAlphabet;
 
 import static org.apache.commons.math3.stat.StatUtils.mean;
 
@@ -52,7 +53,7 @@ public class Utils {
      * @param w the total number of divisions.
      * @return
      */
-    static double [] esax(double[] ts, long w) {
+    private static double [] esax(double[] ts, long w) {
 
         int n = ts.length;
         double [] column = ts;
@@ -171,7 +172,23 @@ public class Utils {
      * @return 返回两个时序数据对象之间的SAX MINDIST
      */
     public static double distance (Series s1, Series s2, int w, int alphabet){
-        return 0;
+        int [] ar = esax(s1.getValues(),w,alphabet);
+        int [] br = esax(s1.getValues(),w,alphabet);
+        int n = (int)Math.min(s1.length(),s2.length());
+        double s = 0.0;
+        try {
+            NormalAlphabet tab = new NormalAlphabet();
+            double[][] disTab = tab.getDistanceMatrix(alphabet);
+            for (int i = 0; i < w*3; ++i) {
+                double d = disTab[ar[i]][br[i]];
+                d = d * d;
+                s += d;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        double res = Math.sqrt(n / ((int) w*3)) * Math.sqrt(s);
+        return res;
     }
 
     /**

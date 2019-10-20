@@ -2,6 +2,7 @@ package cn.edu.cug.cs.gtl.series.common.paa;
 
 import cn.edu.cug.cs.gtl.array.Array;
 import cn.edu.cug.cs.gtl.common.Pair;
+import cn.edu.cug.cs.gtl.series.common.Series;
 import cn.edu.cug.cs.gtl.series.common.TimeSeries;
 
 import java.util.Arrays;
@@ -66,6 +67,22 @@ public class Utils {
 
             }
             return paa;
+        }
+    }
+
+    /**
+     * 对Series用paa算法
+     * @param a
+     * @param paaSize
+     * @return
+     */
+    public static Series paa(Series a, int paaSize) {
+        try {
+            double[] d =   paa(a.getValues(),(int)paaSize);
+            return Series.of(d);
+        }
+        catch (Exception e){
+            return null;
         }
     }
 

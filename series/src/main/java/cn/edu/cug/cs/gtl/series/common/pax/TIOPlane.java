@@ -144,12 +144,71 @@ public class TIOPlane implements Storable {
 
 
     /**
-     *
+     * 将TIOPoint映射到4X4的网格中
      * @param tioPoint
      * @return
      */
     public byte map(TIOPoint tioPoint){
-        return 0;
+        TIOPoint p = normalize(tioPoint);
+        //判断所属象限
+        double v = p.getValue()-0.5;
+        double a = p.getAngle()-0.5;
+        if(v>=0 && a>=0){//第一象限
+            if(v<= 0.25 && a<=0.25){
+                return 0;
+            }
+            else if(v<= 0.25 && a>0.25){
+                return 1;
+            }
+            else if(v> 0.25 && a<=0.25){
+                return 2;
+            }
+            else{
+                return 3;
+            }
+        }
+        else if(v>=0 && a<0){ //第二象限
+            if(v<= 0.25 && a >= -0.25){
+                return 4;
+            }
+            else if(v<= 0.25 && a < -0.25){
+                return 5;
+            }
+            else if(v> 0.25 && a >= -0.25){
+                return 6;
+            }
+            else{
+                return 7;
+            }
+        }
+        else if(v<0 && a>=0){//第三象限
+            if(v >= -0.25 && a >= -0.25){
+                return 12;
+            }
+            else if(v >= -0.25 && a < -0.25){
+                return 13;
+            }
+            else if(v< -0.25 && a >= -0.25){
+                return 14;
+            }
+            else{
+                return 15;
+            }
+        }
+        else{//第四象限
+            if(v >= -0.25 && a <= 0.25){
+                return 8;
+            }
+            else if(v >= -0.25 && a > 0.25){
+                return 9;
+            }
+            else if(v< -0.25 && a < -0.25){
+                return 10;
+            }
+            else{
+                return 11;
+            }
+        }
     }
 
 

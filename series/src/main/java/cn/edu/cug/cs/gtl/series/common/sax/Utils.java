@@ -14,6 +14,23 @@ import static org.apache.commons.math3.stat.StatUtils.mean;
 
 public class Utils {
 
+    /**
+     * Convert the series into SAX string representation.
+     * @param ts the series.
+     * @param paaSize  the PAA size.
+     * @param alphabet
+     * @return
+     */
+    public static char[] sax(Series ts, int paaSize, int alphabet){
+        try{
+            NormalAlphabet normalAlphabet=new NormalAlphabet();
+            return seriesToString(ts.getValues(),paaSize,normalAlphabet.getCuts(alphabet),Double.MIN_NORMAL);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /**
      * Convert the series into SAX string representation.

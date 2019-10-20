@@ -2,8 +2,7 @@ package cn.edu.cug.cs.gtl.ml.classification;
 
 import cn.edu.cug.cs.gtl.ml.dataset.DataSet;
 import cn.edu.cug.cs.gtl.ml.distances.DistanceMetrics;
-import cn.edu.cug.cs.gtl.ml.dataset.DataSet;
-import cn.edu.cug.cs.gtl.ml.distances.DistanceMetrics;
+
 
 import java.util.ArrayList;
 import java.util.List;
