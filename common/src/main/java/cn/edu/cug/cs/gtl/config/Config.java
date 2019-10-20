@@ -22,10 +22,10 @@ public final class Config {
     private static String DEFAULT_HDFS_DIR="hdfs://namenode1:9000"+File.separator+"gtl"+File.separator+"data";
 
     public static String getTestInputDirectory(){
-        return ".."+File.separator+".."+File.separator+"data";
+        return ".."+File.separator+".."+File.separator+".."+File.separator+"data";
     }
     public static String getTestOutputDirectory(){
-        return ".."+File.separator+".."+File.separator+"data"+File.separator+"output";
+        return getTestInputDirectory()+File.separator+"output";
     }
     public static String getDataDirectory(){
         return DEFAULT_DATA_DIR+File.separator;
