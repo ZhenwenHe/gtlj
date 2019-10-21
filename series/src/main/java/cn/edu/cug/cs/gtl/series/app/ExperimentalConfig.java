@@ -20,6 +20,55 @@ public class ExperimentalConfig{
     private Pair<Integer,Integer> alphabetRange;
     private String resultFileName;
 
+
+    /**
+     * Each element in the list is a pair.
+     * The first item of a pair is a train file name,
+     * and the second item of a pair is a test file name.
+     * @return
+     */
+    public List<Pair<String, String>> getDataFiles() {
+        return dataFiles;
+    }
+
+    public ExperimentalConfig(String experimentalDataDir){
+
+        this.dataDirectory=experimentalDataDir;
+        resultFileName = "example";
+        dataFiles = new ArrayList<>();
+        File ff = new File(this.dataDirectory);
+        File[] files = ff.listFiles();
+        for (File f : files) {
+            if (f.isDirectory() && (!f.getName().equals("."))) {
+                String trainFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"_TRAIN.tsv";
+                String testFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"_TEST.tsv";
+                dataFiles.add(new Pair<>(trainFile,testFile));
+            }
+        }
+
+        this.paaSizeRange=new Pair<>(8,24);
+        this.alphabetRange=new Pair<>(3,16);
+    }
+
+
+    public ExperimentalConfig(){
+        this.dataDirectory= Config.getDataDirectory()+ File.separator+"UCRArchive_2018";
+        resultFileName = "example";
+        dataFiles = new ArrayList<>();
+        File ff = new File(this.dataDirectory);
+        File[] files = ff.listFiles();
+        for (File f : files) {
+            if (f.isDirectory() && (!f.getName().equals("."))) {
+                String trainFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"_TRAIN.tsv";
+                String testFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"_TEST.tsv";
+                dataFiles.add(new Pair<>(trainFile,testFile));
+            }
+        }
+
+        this.paaSizeRange=new Pair<>(8,24);
+        this.alphabetRange=new Pair<>(3,16);
+    }
+
     public String getResultFile() {
         return dataDirectory+File.separator+"output"+File.separator+resultFileName;
     }
@@ -46,54 +95,6 @@ public class ExperimentalConfig{
 
     public String getDataDirectory() {
         return dataDirectory;
-    }
-
-
-    /**
-     * Each element in the list is a pair.
-     * The first item of a pair is a train file name,
-     * and the second item of a pair is a test file name.
-     * @return
-     */
-    public List<Pair<String, String>> getDataFiles() {
-        return dataFiles;
-    }
-
-    public ExperimentalConfig(String experimentalDataDir){
-
-        this.dataDirectory=experimentalDataDir;
-        resultFileName = "example";
-        dataFiles = new ArrayList<>();
-        File ff = new File(this.dataDirectory);
-        File[] files = ff.listFiles();
-        for (File f : files) {
-            if (f.isDirectory() && (!f.getName().equals("."))) {
-                String trainFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"_TRAIN.tsv";
-                String testFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"TEST.tsv";
-                dataFiles.add(new Pair<>(trainFile,testFile));
-            }
-        }
-
-        this.paaSizeRange=new Pair<>(8,24);
-        this.alphabetRange=new Pair<>(3,16);
-    }
-
-    public ExperimentalConfig(){
-        this.dataDirectory= Config.getDataDirectory()+ File.separator+"UCRArchive_2018";
-        resultFileName = "example";
-        dataFiles = new ArrayList<>();
-        File ff = new File(this.dataDirectory);
-        File[] files = ff.listFiles();
-        for (File f : files) {
-            if (f.isDirectory() && (!f.getName().equals("."))) {
-                String trainFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"_TRAIN.tsv";
-                String testFile = this.dataDirectory+File.separator+f.getName()+File.separator+f.getName()+"TEST.tsv";
-                dataFiles.add(new Pair<>(trainFile,testFile));
-            }
-        }
-
-        this.paaSizeRange=new Pair<>(8,24);
-        this.alphabetRange=new Pair<>(3,16);
     }
 
     public void writeResults(List<Pair<String,double[]> > results) {

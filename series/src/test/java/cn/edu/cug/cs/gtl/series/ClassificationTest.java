@@ -1,6 +1,7 @@
 package cn.edu.cug.cs.gtl.series;
 
 import cn.edu.cug.cs.gtl.config.Config;
+import cn.edu.cug.cs.gtl.io.File;
 import cn.edu.cug.cs.gtl.ml.distances.DistanceMetrics;
 import cn.edu.cug.cs.gtl.series.classification.Classification;
 import cn.edu.cug.cs.gtl.series.common.MultiSeries;
@@ -17,7 +18,6 @@ import jxl.Workbook;
 import jxl.write.*;
 
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,4 +27,19 @@ import java.io.PrintStream;
 
 public class  ClassificationTest {
 
+    @Test
+    public void predict() {
+        String trainFilePath = Config.getTestInputDirectory()+ cn.edu.cug.cs.gtl.io.File.separator+"UCRArchive_2018"+ cn.edu.cug.cs.gtl.io.File.separator+"Beef"+ cn.edu.cug.cs.gtl.io.File.separator+"Beef_TRAIN.tsv";
+        String testFilePath = Config.getTestInputDirectory()+ cn.edu.cug.cs.gtl.io.File.separator+"UCRArchive_2018"+ cn.edu.cug.cs.gtl.io.File.separator+"Beef"+ File.separator+"Beef_TEST.tsv";
+        try{
+            MultiSeries train = MultiSeries.readTSV(trainFilePath);
+            MultiSeries test= MultiSeries.readTSV(testFilePath);
+            TIOPlane tioPlane = TIOPlane.of(Math.min(train.min(),test.min()),Math.max(train.max(),test.max()));
+            HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
+            NNClassifier nn = new NNClassifier(train.toTrainSet(),test.toTestSet(),disFunc);
+            nn.predict(nn.getTestSet().getSamples());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
