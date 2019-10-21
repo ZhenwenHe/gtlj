@@ -18,6 +18,7 @@ import java.util.List;
 
 
 public class HaxNNClassification {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(HaxNNClassification.class);
 
     public static void main(String[] args){
@@ -63,6 +64,8 @@ public class HaxNNClassification {
         LOGGER.info("begin output {}", results);
         config.writeResults(results);
         LOGGER.info("end output {}", results);
+
+        LOGGER.debug("end Hax NN");
     }
 
 

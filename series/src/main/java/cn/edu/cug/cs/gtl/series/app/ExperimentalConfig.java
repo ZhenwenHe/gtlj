@@ -46,7 +46,7 @@ public class ExperimentalConfig{
             }
         }
 
-        this.paaSizeRange=new Pair<>(8,24);
+        this.paaSizeRange=new Pair<>(5,20);
         this.alphabetRange=new Pair<>(3,16);
     }
 
