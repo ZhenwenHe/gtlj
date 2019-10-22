@@ -43,9 +43,9 @@ public class ExperimentalConfigTest {
         config=new ExperimentalConfig(Config.getDataDirectory()+ File.separatorChar+"log"+File.separatorChar+"series.db");
         Assert.assertEquals(96,config.getDataFiles().size());
         Assert.assertEquals(5,config.getPaaSizeRange().first().intValue());
-        Assert.assertEquals(20,config.getPaaSizeRange().second().intValue());
+        Assert.assertEquals(21,config.getPaaSizeRange().second().intValue());
         Assert.assertEquals(3,config.getAlphabetRange().first().intValue());
-        Assert.assertEquals(16,config.getAlphabetRange().second().intValue());
+        Assert.assertEquals(17,config.getAlphabetRange().second().intValue());
     }
 
     @Test
