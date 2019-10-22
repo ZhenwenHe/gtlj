@@ -41,7 +41,7 @@ public class Utils {
             xs = ts.getDataX();
             ys = ts.getDataY();
         }
-        if(s instanceof MultiSeries){
+        else if(s instanceof MultiSeries){
             MultiSeries ms = (MultiSeries)s;
             TimeSeries ts = ms.getSeries(0);
             xs = ts.getDataX();

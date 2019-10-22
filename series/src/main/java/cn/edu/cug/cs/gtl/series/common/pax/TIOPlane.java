@@ -143,10 +143,11 @@ public class TIOPlane implements Storable {
     }
 
 
+
     /**
      * 将TIOPoint映射到4X4的网格中
      * @param tioPoint
-     * @return
+     * @return hexadecimal index [0-15]
      */
     public byte map(TIOPoint tioPoint){
         TIOPoint p = normalize(tioPoint);

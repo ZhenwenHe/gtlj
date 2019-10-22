@@ -40,14 +40,29 @@ public class Utils {
      * @return the distance between two hax digits
      */
   public static double distance (byte h1, byte h2){
-      //1 如果在同一个象限内
-      if(h1%4==h2%4){
+      if(h1==h2) return 0;
 
-      }
-      else{//2 如果不在同一个象限
+      //计算所属象限
+      int h11= (h1/4);
+      int h22= (h2/4);
 
+      //1 如果在同一个象限内,最大距离为sqrt(2)
+      if(h11 ==h22){
+          //象限内的编号
+          int a=h1%4;
+          int b=h2%4;
+          //计算象限内的二维网格坐标[0,0],[0,1],[1,1],[1,0]
+          int x1 = a/2;
+          int y1 = a%2;
+          int x2 = b/2;
+          int y2 = b%2;
+          return Math.sqrt((y1-y1)*(y2-y1)+(x2-x1)*(x2-x1));
       }
-      return 0;
+      else{//2 如果不在同一个象限,采用网格距离+最大象限内距离sqrt(2)
+          int [] h1xy=toGridXY(h1);
+          int [] h2xy=toGridXY(h2);
+          return Math.sqrt(2)+ Math.sqrt((h1xy[0]-h2xy[0])*(h1xy[0]-h2xy[0])+(h1xy[1]-h2xy[1])*(h1xy[1]-h2xy[1]));
+      }
   }
 
     /**
@@ -59,7 +74,7 @@ public class Utils {
   public static double distance (byte[] ts1, byte[] ts2){
     int n = Math.min(ts1.length,ts2.length);
     int s =0;
-    for(int i=0;i<n;++n)
+    for(int i=0;i<n;++i)
         s+= distance(ts1[i],ts2[i]);
     return s;
   }
@@ -118,6 +133,99 @@ public class Utils {
         }
       }
       return Array.of(n,m,dist);
+  }
+
+    /**
+     * 将hexadecimalIndex[0,15], 映射到4X4的网格坐标
+     * @param hexadecimalIndex
+     * @return
+     */
+  private static int [] toGridXY(byte hexadecimalIndex){
+        int [] xy = new int[2];
+        switch (hexadecimalIndex){
+            case 15:{
+                xy[0]=0;
+                xy[1]=0;
+                return xy;
+            }
+            case 14:{
+                xy[0]=1;
+                xy[1]=0;
+                return xy;
+            }
+            case 13:{
+                xy[0]=0;
+                xy[1]=1;
+                return xy;
+            }
+            case 12:{
+                xy[0]=1;
+                xy[1]=1;
+                return xy;
+            }
+            case 11:{
+                xy[0]=3;
+                xy[1]=0;
+                return xy;
+            }
+            case 10:{
+                xy[0]=2;
+                xy[1]=0;
+                return xy;
+            }
+            case 9:{
+                xy[0]=3;
+                xy[1]=1;
+                return xy;
+            }
+            case 8:{
+                xy[0]=2;
+                xy[1]=1;
+                return xy;
+            }
+            case 7:{
+                xy[0]=0;
+                xy[1]=3;
+                return xy;
+            }
+            case 6:{
+                xy[0]=1;
+                xy[1]=3;
+                return xy;
+            }
+            case 5:{
+                xy[0]=0;
+                xy[1]=2;
+                return xy;
+            }
+            case 4:{
+                xy[0]=1;
+                xy[1]=2;
+                return xy;
+            }
+            case 3:{
+                xy[0]=3;
+                xy[1]=3;
+                return xy;
+            }
+            case 2:{
+                xy[0]=2;
+                xy[1]=3;
+                return xy;
+            }
+            case 1:{
+                xy[0]=3;
+                xy[1]=2;
+                return xy;
+            }
+            case 0:{
+                xy[0]=2;
+                xy[1]=2;
+                return xy;
+            }
+
+        }
+        return null;
   }
 
 }

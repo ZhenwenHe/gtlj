@@ -37,7 +37,7 @@ public class  ClassificationTest {
             TIOPlane tioPlane = TIOPlane.of(Math.min(train.min(),test.min()),Math.max(train.max(),test.max()));
             HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
             NNClassifier nn = new NNClassifier(train.toTrainSet(),test.toTestSet(),disFunc);
-            nn.predict(nn.getTestSet().getSamples());
+            System.out.println(nn.score());
         } catch (Exception e){
             e.printStackTrace();
         }

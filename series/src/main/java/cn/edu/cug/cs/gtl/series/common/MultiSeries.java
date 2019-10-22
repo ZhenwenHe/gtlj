@@ -310,7 +310,9 @@ public class MultiSeries  extends Series {
      * @return
      */
     public TimeSeries getSeries(int i){
-        return TimeSeries.of(data,dataY.get(i));
+        TimeSeries ts =  TimeSeries.of(data,dataY.get(i));
+        ts.setLabel(this.labels.get(i));
+        return ts;
     }
 
     /**
@@ -450,8 +452,8 @@ public class MultiSeries  extends Series {
      */
     public TrainSet<TimeSeries,String> toTrainSet(){
         long c = this.count();
-        ArrayList<TimeSeries> ss=new ArrayList<>((int)c);
-        ArrayList<String> ls=new ArrayList<>((int)c);
+        ArrayList<TimeSeries> ss=new ArrayList<>();
+        ArrayList<String> ls=new ArrayList<>();
         for(int i=0;i<c;++i){
             TimeSeries s = getSeries(i);
             ls.add(s.getLabel());

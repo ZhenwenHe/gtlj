@@ -42,7 +42,7 @@ public final class Config {
 
     }
     public static String getDataDirectory(){
-        return DEFAULT_DATA_DIR+File.separator;
+        return DEFAULT_DATA_DIR;
     }
 
     public static String getTemporaryDirectory(){

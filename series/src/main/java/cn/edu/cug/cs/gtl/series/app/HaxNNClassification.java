@@ -1,5 +1,6 @@
 package cn.edu.cug.cs.gtl.series.app;
 import cn.edu.cug.cs.gtl.common.Pair;
+import cn.edu.cug.cs.gtl.config.Config;
 import cn.edu.cug.cs.gtl.io.File;
 import cn.edu.cug.cs.gtl.ml.classification.NNClassifier;
 import cn.edu.cug.cs.gtl.ml.dataset.TestSet;
@@ -23,7 +24,8 @@ public class HaxNNClassification {
 
     public static void main(String[] args){
         LOGGER.debug("begin Hax NN");
-        ExperimentalConfig config = new ExperimentalConfig();
+        ExperimentalConfig config = new ExperimentalConfig(Config.getDataDirectory()+ File.separatorChar+"log"+File.separatorChar+"series.db");
+
         int m=config.getDataFiles().size();
         int n=config.getPaaSizeRange().second()-config.getPaaSizeRange().first();
         List<Pair<String,double[]> > results = new ArrayList<>();
