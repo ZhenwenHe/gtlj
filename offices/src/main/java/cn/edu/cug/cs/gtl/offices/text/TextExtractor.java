@@ -69,8 +69,11 @@ public class TextExtractor {
                 for(String s : lines){
                     if(s.isEmpty()) continue;
                     if(s.charAt(0)==' ' || s.charAt(0)=='\t'){
-                        if(sb!=null)
-                            paragraphs.add(sb.toString());
+                        if(sb!=null) {
+                            String str = sb.toString().trim();
+                            if(!str.isEmpty())
+                                paragraphs.add(str);
+                        }
 
                         sb = new StringBuilder();
                         sb.append(s);
