@@ -19,6 +19,8 @@
         <module>series</module>
         <module>protobuf</module>
         <module>offices</module>
+        <module>beam</module>
+        <module>mybatis</module>
     </modules>
 
     <licenses>
@@ -32,15 +34,34 @@
         <java.version>1.8</java.version>
         <junit.version>4.12</junit.version>
 
+        <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+        <annotations.version>16.0.1</annotations.version>
+
+        <commons-math3.version>3.6.1</commons-math3.version>
+
+        <geotools.version>19.0</geotools.version>
+
+        <slf4j.version>1.7.25</slf4j.version>
+        <log4j.version>2.12.1</log4j.version>
+
         <scala.version>2.11.12</scala.version>
         <scala.compat.version>2.11</scala.compat.version>
-        <geotools.version>19.0</geotools.version>
-        <slf4j.version>1.7.25</slf4j.version>
         <spark.version>2.2.1</spark.version>
+
         <hadoop.version>2.7.3</hadoop.version>
+
         <beam.version>2.6.0</beam.version>
+
         <kryo.version>5.0.0-RC1</kryo.version>
+
         <sqlite.version>3.28.0</sqlite.version>
+
+        <mybatis.version>3.5.3</mybatis.version>
+        <mybatis-generator-maven-plugin.version>1.3.7</mybatis-generator-maven-plugin.version>
+
+        <grpc.version>1.24.0</grpc.version>
+        <protobuf.version>3.10.0</protobuf.version>
+        <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
 
         <maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
         <maven-exec-plugin.version>1.6.0</maven-exec-plugin.version>
@@ -48,6 +69,8 @@
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
         <scala-maven-plugin.version>3.2.1</scala-maven-plugin.version>
         <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
+        <maven-site-plugin.version>3.8.2</maven-site-plugin.version>
+        <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -67,7 +90,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>16.0.1</version>
+            <version>${annotations.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-common -->
@@ -112,7 +135,7 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.12.1</version>
+            <version>${log4j.version}</version>
         </dependency>
 
 

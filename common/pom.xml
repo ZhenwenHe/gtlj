@@ -21,20 +21,21 @@
     </repositories>
 
 
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>3.6.1</version>
+            <version>${commons-math3.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>16.0.1</version>
+            <version>${annotations.version}</version>
         </dependency>
 
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.vividsolutions/jts-core &ndash;&gt;-->
