@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private Seriesf() {
     data_ = emptyFloatList();
+    label_ = "";
   }
 
   @java.lang.Override
@@ -69,6 +70,12 @@ private static final long serialVersionUID = 0L;
               data_.addFloat(input.readFloat());
             }
             input.popLimit(limit);
+            break;
+          }
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            label_ = s;
             break;
           }
           default: {
@@ -133,6 +140,42 @@ private static final long serialVersionUID = 0L;
   }
   private int dataMemoizedSerializedSize = -1;
 
+  public static final int LABEL_FIELD_NUMBER = 2;
+  private volatile java.lang.Object label_;
+  /**
+   * <code>string label = 2;</code>
+   * @return The label.
+   */
+  public java.lang.String getLabel() {
+    java.lang.Object ref = label_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      label_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string label = 2;</code>
+   * @return The bytes for label.
+   */
+  public com.google.protobuf.ByteString
+      getLabelBytes() {
+    java.lang.Object ref = label_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      label_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -155,6 +198,9 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < data_.size(); i++) {
       output.writeFloatNoTag(data_.getFloat(i));
     }
+    if (!getLabelBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, label_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -175,6 +221,9 @@ private static final long serialVersionUID = 0L;
       }
       dataMemoizedSerializedSize = dataSize;
     }
+    if (!getLabelBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, label_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -192,6 +241,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getDataList()
         .equals(other.getDataList())) return false;
+    if (!getLabel()
+        .equals(other.getLabel())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -207,6 +258,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getDataList().hashCode();
     }
+    hash = (37 * hash) + LABEL_FIELD_NUMBER;
+    hash = (53 * hash) + getLabel().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -342,6 +395,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       data_ = emptyFloatList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      label_ = "";
+
       return this;
     }
 
@@ -374,6 +429,7 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.data_ = data_;
+      result.label_ = label_;
       onBuilt();
       return result;
     }
@@ -430,6 +486,10 @@ private static final long serialVersionUID = 0L;
           ensureDataIsMutable();
           data_.addAll(other.data_);
         }
+        onChanged();
+      }
+      if (!other.getLabel().isEmpty()) {
+        label_ = other.label_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -537,6 +597,82 @@ private static final long serialVersionUID = 0L;
     public Builder clearData() {
       data_ = emptyFloatList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object label_ = "";
+    /**
+     * <code>string label = 2;</code>
+     * @return The label.
+     */
+    public java.lang.String getLabel() {
+      java.lang.Object ref = label_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        label_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string label = 2;</code>
+     * @return The bytes for label.
+     */
+    public com.google.protobuf.ByteString
+        getLabelBytes() {
+      java.lang.Object ref = label_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        label_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string label = 2;</code>
+     * @param value The label to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLabel(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      label_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string label = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLabel() {
+      
+      label_ = getDefaultInstance().getLabel();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string label = 2;</code>
+     * @param value The bytes for label to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLabelBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      label_ = value;
       onChanged();
       return this;
     }

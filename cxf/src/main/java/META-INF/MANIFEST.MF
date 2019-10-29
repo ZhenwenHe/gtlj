@@ -1,0 +1,78 @@
+Manifest-Version: 1.0
+Main-Class: cn.edu.cug.cs.gtl.cxf.sql.SqlServer
+Class-Path: jaxb-runtime-2.3.2.jar commons-digester-1.8.jar flexmark-ext
+ -attributes-0.42.8.jar jakarta.xml.bind-api-2.3.2.jar plexus-utils-3.0.
+ 24.jar log4j-1.2.17.jar stax-ex-1.7.8.jar jetty-continuation-9.4.19.v20
+ 190610.jar google-collections-1.0.jar maven-shared-utils-3.1.0.jar txw2
+ -2.3.2.jar doxia-module-xhtml-1.9.jar commons-logging-1.2.jar cxf-rt-tr
+ ansports-http-jetty-3.3.3.jar plexus-component-annotations-1.5.5.jar wo
+ odstox-core-5.0.3.jar snappy-0.4.jar javax.servlet-api-3.1.0.jar jsr-27
+ 5-1.0-beta-2.jar wagon-provider-api-3.3.1.jar maven-settings-3.0.jar do
+ xia-decoration-model-1.9.1.jar htrace-core-3.1.0-incubating.jar flexmar
+ k-ext-footnotes-0.42.8.jar log4j-api-2.12.1.jar commons-beanutils-1.7.0
+ .jar doxia-module-markdown-1.9.jar xmlenc-0.52.jar ejml-core-0.32.jar c
+ ommons-cli-1.2.jar FastInfoset-1.2.16.jar doxia-module-fml-1.9.jar comm
+ ons-daemon-1.0.13.jar flexmark-ext-youtube-embedded-0.42.8.jar jakarta.
+ ws.rs-api-2.1.6.jar jacorb-omgapi-3.7.jar flexmark-ext-gitlab-0.42.8.ja
+ r aether-util-0.9.0.M2.jar flexmark-util-0.42.8.jar flexmark-ext-xwiki-
+ macros-0.42.8.jar xercesImpl-2.9.1.jar gt-opengis-19.0.jar flexmark-ext
+ -emoji-0.42.8.jar dom4j-1.1.jar jetty-util-9.4.19.v20190610.jar jboss-r
+ mi-api_1.0_spec-1.0.6.Final.jar commons-math3-3.6.1.jar flexmark-ext-de
+ finition-0.42.8.jar commons-validator-1.3.1.jar httpcore-4.4.12.jar mav
+ en-archiver-3.1.1.jar aether-spi-1.7.jar flexmark-0.42.8.jar activation
+ -1.1.jar servlet-api-2.5.jar doxia-sink-api-1.9.jar jsr305-3.0.0.jar do
+ xia-core-1.9.jar maven-site-plugin-3.8.2.jar GeographicLib-Java-1.44.ja
+ r flexmark-ext-abbreviation-0.42.8.jar flexmark-ext-wikilink-0.42.8.jar
+  maven-reporting-exec-1.4.jar flexmark-ext-gfm-issues-0.42.8.jar flexma
+ rk-ext-autolink-0.42.8.jar struts-taglib-1.3.8.jar aether-util-1.7.jar 
+ flexmark-ext-media-tags-0.42.8.jar doxia-site-renderer-1.9.1.jar flexma
+ rk-ext-anchorlink-0.42.8.jar jcl-over-slf4j-1.7.25.jar mybatis-3.5.3.ja
+ r doxia-integration-tools-1.9.1.jar flexmark-ext-gfm-tables-0.42.8.jar 
+ jetty-server-9.4.19.v20190610.jar plexus-archiver-3.4.jar stax2-api-3.1
+ .4.jar flexmark-html-parser-0.42.8.jar flexmark-ext-admonition-0.42.8.j
+ ar commons-codec-1.11.jar maven-model-builder-3.0.jar sisu-inject-plexu
+ s-1.4.2.jar plexus-container-default-1.7.1.jar maven-repository-metadat
+ a-3.0.jar flexmark-ext-toc-0.42.8.jar jetty-security-9.4.19.v20190610.j
+ ar maven-settings-builder-3.0.jar flexmark-ext-jekyll-front-matter-0.42
+ .8.jar plexus-interpolation-1.14.jar jai_core-1.1.3.jar annotations-16.
+ 0.1.jar leveldbjni-all-1.8.jar autolink-0.6.0.jar oro-2.0.8.jar sslext-
+ 1.2-0.jar cxf-core-3.3.3.jar hadoop-hdfs-2.7.3.jar mimepull-1.9.7.jar d
+ oxia-module-twiki-1.9.jar jetty-webapp-9.2.28.v20190418.jar flexmark-ex
+ t-escaped-character-0.42.8.jar plexus-cipher-1.4.jar commons-collection
+ s-3.2.2.jar doxia-module-apt-1.9.jar jetty-util-6.1.26.jar flexmark-ext
+ -typographic-0.42.8.jar velocity-tools-2.0.jar flexmark-ext-enumerated-
+ reference-0.42.8.jar commons-compress-1.4.1.jar saaj-impl-1.4.0-b03.jar
+  slf4j-log4j12-1.7.25.jar struts-tiles-1.3.8.jar javax.activation-1.2.0
+ .jar xbean-reflect-3.7.jar plexus-i18n-1.0-beta-10.jar xmlschema-core-2
+ .2.4.jar sqlite-jdbc-3.28.0.jar flexmark-profile-pegdown-0.42.8.jar ist
+ ack-commons-runtime-3.0.8.jar aether-api-1.7.jar jsoup-1.10.2.jar jaxws
+ -api-2.3.0.jar flexmark-youtrack-converter-0.42.8.jar slf4j-api-1.7.25.
+ jar commons-lang-2.6.jar jackson-mapper-asl-1.9.13.jar sisu-guice-2.1.7
+ -noaop.jar flexmark-ext-gfm-tasklist-0.42.8.jar plexus-sec-dispatcher-1
+ .3.jar doxia-skin-model-1.9.1.jar flexmark-ext-aside-0.42.8.jar flexmar
+ k-ext-macros-0.42.8.jar log4j-core-2.12.1.jar flexmark-ext-ins-0.42.8.j
+ ar maven-plugin-api-3.0.jar maven-reporting-api-3.0.jar jetty-http-9.4.
+ 19.v20190610.jar doxia-module-xhtml5-1.9.jar flexmark-ext-gfm-strikethr
+ ough-0.42.8.jar plexus-classworlds-2.5.2.jar jetty-xml-9.2.28.v20190418
+ .jar jetty-6.1.26.jar netty-3.6.2.Final.jar jetty-servlet-9.2.28.v20190
+ 418.jar plexus-velocity-1.2.jar jackson-core-asl-1.9.13.jar javax.annot
+ ation-api-1.3.2.jar commons-lang3-3.4.jar maven-model-3.0.jar javax.xml
+ .soap-api-1.4.0.jar slf4j-jdk14-1.7.25.jar maven-core-3.0.jar commons-i
+ o-2.4.jar geronimo-jta_1.1_spec-1.1.1.jar jersey-core-1.9.jar flexmark-
+ ext-tables-0.42.8.jar protobuf-java-3.10.0.jar doxia-module-docbook-sim
+ ple-1.9.jar commons-chain-1.1.jar gt-metadata-19.0.jar flexmark-jira-co
+ nverter-0.42.8.jar flexmark-ext-superscript-0.42.8.jar cxf-rt-frontend-
+ jaxrs-3.3.3.jar xml-apis-1.3.04.jar cxf-rt-features-logging-3.3.3.jar c
+ xf-rt-security-3.3.3.jar jetty-io-9.4.19.v20190610.jar jakarta.activati
+ on-api-1.2.1.jar doxia-logging-api-1.9.jar maven-artifact-3.0.jar jgrid
+ shift-1.0.jar guava-11.0.2.jar flexmark-formatter-0.42.8.jar flexmark-e
+ xt-yaml-front-matter-0.42.8.jar velocity-1.7.jar aether-impl-1.7.jar ma
+ ven-aether-provider-3.0.jar jersey-server-1.9.jar geronimo-ws-metadata_
+ 2.0_spec-1.1.3.jar asm-3.1.jar sisu-inject-bean-1.4.2.jar netty-all-4.0
+ .23.Final.jar xz-1.0.jar doxia-module-xdoc-1.9.jar cxf-rt-transports-ht
+ tp-3.3.3.jar ejml-ddense-0.32.jar flexmark-ext-jekyll-tag-0.42.8.jar st
+ ruts-core-1.3.8.jar httpclient-4.5.10.jar gt-referencing-19.0.jar doxia
+ -module-confluence-1.9.jar flexmark-ext-gfm-users-0.42.8.jar flexmark-a
+ ll-0.42.8.jar commons-pool-1.5.4.jar antlr-2.7.2.jar plexus-io-2.7.1.ja
+ r
+

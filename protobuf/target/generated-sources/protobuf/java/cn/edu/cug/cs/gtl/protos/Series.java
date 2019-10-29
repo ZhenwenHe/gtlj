@@ -69,20 +69,22 @@ public final class Series {
   static {
     java.lang.String[] descriptorData = {
       "\n%cn/edu/cug/cs/gtl/protos/series.proto\022" +
-      "\030cn.edu.cug.cs.gtl.protos\"\027\n\007Seriesf\022\014\n\004" +
-      "data\030\001 \003(\002\"\027\n\007Seriesi\022\014\n\004data\030\001 \003(\005\"\027\n\007S" +
-      "eriesd\022\014\n\004data\030\001 \003(\001\")\n\013TimeSeriesd\022\014\n\004t" +
-      "ime\030\001 \003(\001\022\014\n\004data\030\002 \003(\001\")\n\013TimeSeriesi\022\014" +
-      "\n\004time\030\001 \003(\005\022\014\n\004data\030\002 \003(\005\")\n\013TimeSeries" +
-      "f\022\014\n\004time\030\001 \003(\002\022\014\n\004data\030\002 \003(\002\"O\n\014MultiSe" +
-      "riesd\022\014\n\004time\030\001 \003(\001\0221\n\006series\030\002 \003(\0132!.cn" +
-      ".edu.cug.cs.gtl.protos.Seriesd\"O\n\014MultiS" +
-      "eriesf\022\014\n\004time\030\001 \003(\002\0221\n\006series\030\002 \003(\0132!.c" +
-      "n.edu.cug.cs.gtl.protos.Seriesf\"O\n\014Multi" +
-      "Seriesi\022\014\n\004time\030\001 \003(\005\0221\n\006series\030\002 \003(\0132!." +
-      "cn.edu.cug.cs.gtl.protos.SeriesiBB\n\030cn.e" +
-      "du.cug.cs.gtl.protosB\006SeriesP\001\370\001\001\252\002\030cn.e" +
-      "du.cug.cs.gtl.protosb\006proto3"
+      "\030cn.edu.cug.cs.gtl.protos\"&\n\007Seriesf\022\014\n\004" +
+      "data\030\001 \003(\002\022\r\n\005label\030\002 \001(\t\"&\n\007Seriesi\022\014\n\004" +
+      "data\030\001 \003(\005\022\r\n\005label\030\002 \001(\t\"&\n\007Seriesd\022\014\n\004" +
+      "data\030\001 \003(\001\022\r\n\005label\030\002 \001(\t\"8\n\013TimeSeriesd" +
+      "\022\014\n\004time\030\001 \003(\001\022\014\n\004data\030\002 \003(\001\022\r\n\005label\030\003 " +
+      "\001(\t\"8\n\013TimeSeriesi\022\014\n\004time\030\001 \003(\005\022\014\n\004data" +
+      "\030\002 \003(\005\022\r\n\005label\030\003 \001(\t\"8\n\013TimeSeriesf\022\014\n\004" +
+      "time\030\001 \003(\002\022\014\n\004data\030\002 \003(\002\022\r\n\005label\030\003 \001(\t\"" +
+      "O\n\014MultiSeriesd\022\014\n\004time\030\001 \003(\001\0221\n\006series\030" +
+      "\002 \003(\0132!.cn.edu.cug.cs.gtl.protos.Seriesd" +
+      "\"O\n\014MultiSeriesf\022\014\n\004time\030\001 \003(\002\0221\n\006series" +
+      "\030\002 \003(\0132!.cn.edu.cug.cs.gtl.protos.Series" +
+      "f\"O\n\014MultiSeriesi\022\014\n\004time\030\001 \003(\005\0221\n\006serie" +
+      "s\030\002 \003(\0132!.cn.edu.cug.cs.gtl.protos.Serie" +
+      "siBB\n\030cn.edu.cug.cs.gtl.protosB\006SeriesP\001" +
+      "\370\001\001\252\002\030cn.edu.cug.cs.gtl.protosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -93,37 +95,37 @@ public final class Series {
     internal_static_cn_edu_cug_cs_gtl_protos_Seriesf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Seriesf_descriptor,
-        new java.lang.String[] { "Data", });
+        new java.lang.String[] { "Data", "Label", });
     internal_static_cn_edu_cug_cs_gtl_protos_Seriesi_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_cn_edu_cug_cs_gtl_protos_Seriesi_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Seriesi_descriptor,
-        new java.lang.String[] { "Data", });
+        new java.lang.String[] { "Data", "Label", });
     internal_static_cn_edu_cug_cs_gtl_protos_Seriesd_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_cn_edu_cug_cs_gtl_protos_Seriesd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Seriesd_descriptor,
-        new java.lang.String[] { "Data", });
+        new java.lang.String[] { "Data", "Label", });
     internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesd_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesd_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesd_descriptor,
-        new java.lang.String[] { "Time", "Data", });
+        new java.lang.String[] { "Time", "Data", "Label", });
     internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesi_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesi_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesi_descriptor,
-        new java.lang.String[] { "Time", "Data", });
+        new java.lang.String[] { "Time", "Data", "Label", });
     internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesf_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesf_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_TimeSeriesf_descriptor,
-        new java.lang.String[] { "Time", "Data", });
+        new java.lang.String[] { "Time", "Data", "Label", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiSeriesd_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiSeriesd_fieldAccessorTable = new

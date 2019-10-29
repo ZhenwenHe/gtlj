@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/beam/beam.iml" filepath="$PROJECT_DIR$/beam/beam.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cxf/cxf.iml" filepath="$PROJECT_DIR$/cxf/cxf.iml" />
       <module fileurl="file://$PROJECT_DIR$/dtree/dtree.iml" filepath="$PROJECT_DIR$/dtree/dtree.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gtl.iml" filepath="$PROJECT_DIR$/gtl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/grpc/grpc.iml" filepath="$PROJECT_DIR$/grpc/grpc.iml" />
       <module fileurl="file://$PROJECT_DIR$/indices/indices.iml" filepath="$PROJECT_DIR$/indices/indices.iml" />
       <module fileurl="file://$PROJECT_DIR$/ml/ml.iml" filepath="$PROJECT_DIR$/ml/ml.iml" />
       <module fileurl="file://$PROJECT_DIR$/modeling/modeling.iml" filepath="$PROJECT_DIR$/modeling/modeling.iml" />
       <module fileurl="file://$PROJECT_DIR$/mps/mps.iml" filepath="$PROJECT_DIR$/mps/mps.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis/mybatis.iml" filepath="$PROJECT_DIR$/mybatis/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/net/net.iml" filepath="$PROJECT_DIR$/net/net.iml" />
       <module fileurl="file://$PROJECT_DIR$/offices/offices.iml" filepath="$PROJECT_DIR$/offices/offices.iml" />
       <module fileurl="file://$PROJECT_DIR$/protobuf/protobuf.iml" filepath="$PROJECT_DIR$/protobuf/protobuf.iml" />

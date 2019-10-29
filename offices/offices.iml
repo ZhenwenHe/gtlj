@@ -95,9 +95,7 @@
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.openjson:openjson:1.0.11" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.5" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.26" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.26" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.26" level="project" />
     <orderEntry type="library" name="Maven: edu.ucar:netcdf4:4.5.5" level="project" />
     <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.jdom:jdom2:2.0.6" level="project" />
@@ -187,7 +185,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-digester:commons-digester:1.8" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-beanutils:commons-beanutils:1.7.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-beanutils:commons-beanutils-core:1.8.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-log4j12:1.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.avro:avro:1.7.4" level="project" />
@@ -210,5 +207,11 @@
     <orderEntry type="library" name="Maven: io.netty:netty:3.6.2.Final" level="project" />
     <orderEntry type="library" name="Maven: io.netty:netty-all:4.0.23.Final" level="project" />
     <orderEntry type="library" name="Maven: org.fusesource.leveldbjni:leveldbjni-all:1.8" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.12.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.12.1" level="project" />
+    <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.28.0" level="project" />
   </component>
 </module>

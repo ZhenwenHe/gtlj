@@ -23,4 +23,16 @@ public interface SeriesfOrBuilder extends
    * @return The data at the given index.
    */
   float getData(int index);
+
+  /**
+   * <code>string label = 2;</code>
+   * @return The label.
+   */
+  java.lang.String getLabel();
+  /**
+   * <code>string label = 2;</code>
+   * @return The bytes for label.
+   */
+  com.google.protobuf.ByteString
+      getLabelBytes();
 }

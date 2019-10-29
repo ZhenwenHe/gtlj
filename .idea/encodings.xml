@@ -2,12 +2,16 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/beam" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cxf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/dtree" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/grpc" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/indices" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modeling" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mps" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mybatis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/net" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/offices" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/protobuf" charset="UTF-8" />
