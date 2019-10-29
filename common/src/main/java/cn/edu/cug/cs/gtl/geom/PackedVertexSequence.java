@@ -23,7 +23,7 @@ import java.util.Arrays;
  * The cache is cleared each time the coordinate sequence contents are
  * modified through a setter method.
  */
-class PackedVertexSequence implements VertexSequence ,Dimensional{
+class PackedVertexSequence implements VertexSequence, Dimensional {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -115,19 +115,19 @@ class PackedVertexSequence implements VertexSequence ,Dimensional{
 
     @Override
     public void makeDimension(int dimension) {
-        if(dimension != getDimension()){
-            if(this.coords != null){
+        if (dimension != getDimension()) {
+            if (this.coords != null) {
                 int s = size();
-                PackedVertexSequence pvs = new PackedVertexSequence(s,dimension);
-                int dim = this.dimension>dimension? dimension:this.dimension;
-                for(int i=0;i<s;++i){
+                PackedVertexSequence pvs = new PackedVertexSequence(s, dimension);
+                int dim = this.dimension > dimension ? dimension : this.dimension;
+                for (int i = 0; i < s; ++i) {
                     Vector v = Vector.create(dimension);
-                    for(int j=0;j<dim;++j){
-                        pvs.setOrdinate(i,j,this.getOrdinate(i,j));
+                    for (int j = 0; j < dim; ++j) {
+                        pvs.setOrdinate(i, j, this.getOrdinate(i, j));
                     }
                 }
                 this.coords = pvs.coords;
-                pvs.coords=null;
+                pvs.coords = null;
             }
             this.dimension = dimension;
         }

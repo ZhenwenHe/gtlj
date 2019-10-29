@@ -52,83 +52,77 @@ import cn.edu.cug.cs.gtl.jts.util.Assert;
  *
  * @version 1.7
  */
-public class SweeplineNestedRingTester
-{
+public class SweeplineNestedRingTester {
 
-  private GeometryGraph graph;  // used to find non-node vertices
-  private List rings = new ArrayList();
-  //private Envelope totalEnv = new Envelope();
-  private SweepLineIndex sweepLine;
-  private Coordinate nestedPt = null;
+    private GeometryGraph graph;  // used to find non-node vertices
+    private List rings = new ArrayList();
+    //private Envelope totalEnv = new Envelope();
+    private SweepLineIndex sweepLine;
+    private Coordinate nestedPt = null;
 
-  public SweeplineNestedRingTester(GeometryGraph graph)
-  {
-    this.graph = graph;
-  }
-
-  public Coordinate getNestedPoint() { return nestedPt; }
-
-  public void add(LinearRing ring)
-  {
-    rings.add(ring);
-  }
-
-  public boolean isNonNested()
-  {
-    buildIndex();
-
-    OverlapAction action = new OverlapAction();
-
-    sweepLine.computeOverlaps(action);
-    return action.isNonNested;
-  }
-
-  private void buildIndex()
-  {
-    sweepLine = new SweepLineIndex();
-
-    for (int i = 0; i < rings.size(); i++) {
-      LinearRing ring = (LinearRing) rings.get(i);
-      Envelope env = ring.getEnvelopeInternal();
-      SweepLineInterval sweepInt = new SweepLineInterval(env.getMinX(), env.getMaxX(), ring);
-      sweepLine.add(sweepInt);
+    public SweeplineNestedRingTester(GeometryGraph graph) {
+        this.graph = graph;
     }
-  }
 
-  private boolean isInside(LinearRing innerRing, LinearRing searchRing)
-  {
-    Coordinate[] innerRingPts = innerRing.getCoordinates();
-    Coordinate[] searchRingPts = searchRing.getCoordinates();
-
-    if (! innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
-      return false;
-
-    Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
-    Assert.isTrue(innerRingPt != null, "Unable to find a ring point not a node of the search ring");
-
-    boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
-    if (isInside) {
-      nestedPt = innerRingPt;
-      return true;
+    public Coordinate getNestedPoint() {
+        return nestedPt;
     }
-    return false;
-  }
+
+    public void add(LinearRing ring) {
+        rings.add(ring);
+    }
+
+    public boolean isNonNested() {
+        buildIndex();
+
+        OverlapAction action = new OverlapAction();
+
+        sweepLine.computeOverlaps(action);
+        return action.isNonNested;
+    }
+
+    private void buildIndex() {
+        sweepLine = new SweepLineIndex();
+
+        for (int i = 0; i < rings.size(); i++) {
+            LinearRing ring = (LinearRing) rings.get(i);
+            Envelope env = ring.getEnvelopeInternal();
+            SweepLineInterval sweepInt = new SweepLineInterval(env.getMinX(), env.getMaxX(), ring);
+            sweepLine.add(sweepInt);
+        }
+    }
+
+    private boolean isInside(LinearRing innerRing, LinearRing searchRing) {
+        Coordinate[] innerRingPts = innerRing.getCoordinates();
+        Coordinate[] searchRingPts = searchRing.getCoordinates();
+
+        if (!innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
+            return false;
+
+        Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
+        Assert.isTrue(innerRingPt != null, "Unable to find a ring point not a node of the search ring");
+
+        boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
+        if (isInside) {
+            nestedPt = innerRingPt;
+            return true;
+        }
+        return false;
+    }
 
 
-  class OverlapAction
-    implements SweepLineOverlapAction
-  {
-    boolean isNonNested = true;
+    class OverlapAction
+            implements SweepLineOverlapAction {
+        boolean isNonNested = true;
 
-  public void overlap(SweepLineInterval s0, SweepLineInterval s1)
-  {
-    LinearRing innerRing = (LinearRing) s0.getItem();
-    LinearRing searchRing = (LinearRing) s1.getItem();
-    if (innerRing == searchRing) return;
+        public void overlap(SweepLineInterval s0, SweepLineInterval s1) {
+            LinearRing innerRing = (LinearRing) s0.getItem();
+            LinearRing searchRing = (LinearRing) s1.getItem();
+            if (innerRing == searchRing) return;
 
-    if (isInside(innerRing, searchRing))
-      isNonNested = false;
-  }
+            if (isInside(innerRing, searchRing))
+                isNonNested = false;
+        }
 
-  }
+    }
 }

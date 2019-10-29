@@ -22,22 +22,22 @@ public interface ComplexInterval extends Interval {
     byte[] getData();
 
     static ComplexInterval create(IntervalType type, double low, double high, String label, long pid, long order) {
-        return new ComplexIntervalImpl(type,low,high,label,pid,order);
+        return new ComplexIntervalImpl(type, low, high, label, pid, order);
     }
 
     static ComplexInterval create(IntervalType type, double low, double high, String label, Identifier pid, Identifier order) {
-        return new ComplexIntervalImpl(type,low,high,label,pid,order);
+        return new ComplexIntervalImpl(type, low, high, label, pid, order);
     }
 
     static ComplexInterval create(double low, double high, String label, long pid, long order) {
-        return new ComplexIntervalImpl(low,high,label,pid,order);
+        return new ComplexIntervalImpl(low, high, label, pid, order);
     }
 
     static ComplexInterval create(Interval i, String label, long pid, long order) {
-        return new ComplexIntervalImpl(i,label,pid,order);
+        return new ComplexIntervalImpl(i, label, pid, order);
     }
 
-    static ComplexInterval create(){
+    static ComplexInterval create() {
         return new ComplexIntervalImpl();
     }
 }

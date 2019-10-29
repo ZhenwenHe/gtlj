@@ -10,6 +10,6 @@ import cn.edu.cug.cs.gtl.io.Serializable;
 import java.io.IOException;
 import java.util.List;
 
-public  interface FeatureWriter extends DataWriter<Feature> {
+public interface FeatureWriter extends DataWriter<Feature> {
 
 }

@@ -39,6 +39,7 @@ import cn.edu.cug.cs.gtl.jts.geom.Geometry;
 import cn.edu.cug.cs.gtl.jts.geom.GeometryCollection;
 import cn.edu.cug.cs.gtl.jts.geom.GeometryFilter;
 import cn.edu.cug.cs.gtl.jts.geom.Point;
+
 /**
  * Extracts all the 0-dimensional ({@link Point}) components from a {@link Geometry}.
  *
@@ -46,53 +47,49 @@ import cn.edu.cug.cs.gtl.jts.geom.Point;
  * @see GeometryExtracter
  */
 public class PointExtracter
-  implements GeometryFilter
-{
-  /**
-   * Extracts the {@link Point} elements from a single {@link Geometry}
-   * and adds them to the provided {@link List}.
-   * 
-   * @param geom the geometry from which to extract
-   * @param list the list to add the extracted elements to
-   */
-  public static List getPoints(Geometry geom, List list)
-  {
-  	if (geom instanceof Point) {
-  		list.add(geom);
-  	}
-  	else if (geom instanceof GeometryCollection) {
-  		geom.apply(new PointExtracter(list));
-  	}
-  	// skip non-Polygonal elemental geometries
-  	
-    return list;
-  }
+        implements GeometryFilter {
+    /**
+     * Extracts the {@link Point} elements from a single {@link Geometry}
+     * and adds them to the provided {@link List}.
+     *
+     * @param geom the geometry from which to extract
+     * @param list the list to add the extracted elements to
+     */
+    public static List getPoints(Geometry geom, List list) {
+        if (geom instanceof Point) {
+            list.add(geom);
+        } else if (geom instanceof GeometryCollection) {
+            geom.apply(new PointExtracter(list));
+        }
+        // skip non-Polygonal elemental geometries
 
-  /**
-   * Extracts the {@link Point} elements from a single {@link Geometry}
-   * and returns them in a {@link List}.
-   * 
-   * @param geom the geometry from which to extract
-   */
-  public static List getPoints(Geometry geom) {
-    if (geom instanceof Point) {
-      return Collections.singletonList(geom);
+        return list;
     }
-    return getPoints(geom, new ArrayList());
-  }
 
-  private List pts;
-  /**
-   * Constructs a PointExtracterFilter with a list in which to store Points found.
-   */
-  public PointExtracter(List pts)
-  {
-    this.pts = pts;
-  }
+    /**
+     * Extracts the {@link Point} elements from a single {@link Geometry}
+     * and returns them in a {@link List}.
+     *
+     * @param geom the geometry from which to extract
+     */
+    public static List getPoints(Geometry geom) {
+        if (geom instanceof Point) {
+            return Collections.singletonList(geom);
+        }
+        return getPoints(geom, new ArrayList());
+    }
 
-  public void filter(Geometry geom)
-  {
-    if (geom instanceof Point) pts.add(geom);
-  }
+    private List pts;
+
+    /**
+     * Constructs a PointExtracterFilter with a list in which to store Points found.
+     */
+    public PointExtracter(List pts) {
+        this.pts = pts;
+    }
+
+    public void filter(Geometry geom) {
+        if (geom instanceof Point) pts.add(geom);
+    }
 
 }

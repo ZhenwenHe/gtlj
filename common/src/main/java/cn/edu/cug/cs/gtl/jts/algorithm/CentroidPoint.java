@@ -46,50 +46,46 @@ import cn.edu.cug.cs.gtl.jts.geom.Point;
  * @version 1.7
  * @deprecated use Centroid instead
  */
-public class CentroidPoint
-{
-  private int ptCount = 0;
-  private Coordinate centSum = new Coordinate();
+public class CentroidPoint {
+    private int ptCount = 0;
+    private Coordinate centSum = new Coordinate();
 
-  public CentroidPoint()
-  {
-  }
-
-  /**
-   * Adds the point(s) defined by a Geometry to the centroid total.
-   * If the geometry is not of dimension 0 it does not contribute to the centroid.
-   * @param geom the geometry to add
-   */
-  public void add(Geometry geom)
-  {
-    if (geom instanceof Point) {
-      add(geom.getCoordinate());
+    public CentroidPoint() {
     }
-    else if (geom instanceof GeometryCollection) {
-      GeometryCollection gc = (GeometryCollection) geom;
-      for (int i = 0; i < gc.getNumGeometries(); i++) {
-        add(gc.getGeometryN(i));
-      }
+
+    /**
+     * Adds the point(s) defined by a Geometry to the centroid total.
+     * If the geometry is not of dimension 0 it does not contribute to the centroid.
+     *
+     * @param geom the geometry to add
+     */
+    public void add(Geometry geom) {
+        if (geom instanceof Point) {
+            add(geom.getCoordinate());
+        } else if (geom instanceof GeometryCollection) {
+            GeometryCollection gc = (GeometryCollection) geom;
+            for (int i = 0; i < gc.getNumGeometries(); i++) {
+                add(gc.getGeometryN(i));
+            }
+        }
     }
-  }
 
-  /**
-   * Adds the length defined by an array of coordinates.
-   * @param pts an array of {@link Coordinate}s
-   */
-  public void add(Coordinate pt)
-  {
-    ptCount += 1;
-    centSum.x += pt.x;
-    centSum.y += pt.y;
-  }
+    /**
+     * Adds the length defined by an array of coordinates.
+     *
+     * @param pts an array of {@link Coordinate}s
+     */
+    public void add(Coordinate pt) {
+        ptCount += 1;
+        centSum.x += pt.x;
+        centSum.y += pt.y;
+    }
 
-  public Coordinate getCentroid()
-  {
-    Coordinate cent = new Coordinate();
-    cent.x = centSum.x / ptCount;
-    cent.y = centSum.y / ptCount;
-    return cent;
-  }
+    public Coordinate getCentroid() {
+        Coordinate cent = new Coordinate();
+        cent.x = centSum.x / ptCount;
+        cent.y = centSum.y / ptCount;
+        return cent;
+    }
 
 }

@@ -15,7 +15,8 @@ import java.util.List;
  */
 public interface FileSystem extends Storable {
 
-    public static final int DEFAULT_BUFFER_SIZE=1024*128;
+    public static final int DEFAULT_BUFFER_SIZE = 1024 * 128;
+
     /**
      * 通过指定路径生成对应的URI
      *
@@ -141,14 +142,14 @@ public interface FileSystem extends Storable {
     /**
      * 返回指定路径对应的DataOutput。
      *
-     * @param path   指定路径
+     * @param path       指定路径
      * @param bufferSize 缓存大小
-     * @param append 是否追加
+     * @param append     是否追加
      * @return 指定路径对应的DataOutput
      * @throws IOException
      */
-    default DataOutputStream getBufferedOutput(String path,int bufferSize, boolean append) throws IOException{
-        return new DataOutputStream(new BufferedOutputStream(getOutput(path,append),bufferSize));
+    default DataOutputStream getBufferedOutput(String path, int bufferSize, boolean append) throws IOException {
+        return new DataOutputStream(new BufferedOutputStream(getOutput(path, append), bufferSize));
     }
 
     /**
@@ -163,13 +164,13 @@ public interface FileSystem extends Storable {
     /**
      * 返回指定路径对应的DataInput。
      *
-     * @param path 指定路径
+     * @param path         指定路径
      * @param bufferedSize 缓存大小
      * @return 指定路径对应的DataInput
      * @throws IOException
      */
-    default DataInputStream getBufferedInput(String path,int bufferedSize) throws IOException{
-        return new DataInputStream(new BufferedInputStream(getInput(path),bufferedSize));
+    default DataInputStream getBufferedInput(String path, int bufferedSize) throws IOException {
+        return new DataInputStream(new BufferedInputStream(getInput(path), bufferedSize));
     }
 
     /**
@@ -201,6 +202,7 @@ public interface FileSystem extends Storable {
 
     /**
      * 强制将指定目录下的所有用户写操作持久化到存储系统中。
+     *
      * @param path 指定的目录
      * @throws IOException
      */

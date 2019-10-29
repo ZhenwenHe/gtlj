@@ -38,100 +38,97 @@ package cn.edu.cug.cs.gtl.jts.geomgraph;
 
 import java.io.PrintStream;
 import java.util.*;
+
 import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.Location;
 import cn.edu.cug.cs.gtl.jts.geomgraph.Node;
 
 /**
  * A scene of nodes, indexed by the coordinate of the node
+ *
  * @version 1.7
  */
-public class NodeMap
+public class NodeMap {
+    //Map nodeMap = new HashMap();
+    Map nodeMap = new TreeMap();
+    NodeFactory nodeFact;
 
-{
-  //Map nodeMap = new HashMap();
-  Map nodeMap = new TreeMap();
-  NodeFactory nodeFact;
+    public NodeMap(NodeFactory nodeFact) {
+        this.nodeFact = nodeFact;
+    }
 
-  public NodeMap(NodeFactory nodeFact) {
-    this.nodeFact = nodeFact;
-  }
-
-  /**
-   * Factory function - subclasses can override to create their own types of nodes
-   */
+    /**
+     * Factory function - subclasses can override to create their own types of nodes
+     */
    /*
   protected Node createNode(Coordinate coord)
   {
     return new Node(coord);
   }
   */
-  /**
-   * This method expects that a node has a coordinate value.
-   */
-  public Node addNode(Coordinate coord)
-  {
-    Node node = (Node) nodeMap.get(coord);
-    if (node == null) {
-      node = nodeFact.createNode(coord);
-      nodeMap.put(coord, node);
+
+    /**
+     * This method expects that a node has a coordinate value.
+     */
+    public Node addNode(Coordinate coord) {
+        Node node = (Node) nodeMap.get(coord);
+        if (node == null) {
+            node = nodeFact.createNode(coord);
+            nodeMap.put(coord, node);
+        }
+        return node;
     }
-    return node;
-  }
 
-  public Node addNode(Node n)
-  {
-    Node node = (Node) nodeMap.get(n.getCoordinate());
-    if (node == null) {
-      nodeMap.put(n.getCoordinate(), n);
-      return n;
+    public Node addNode(Node n) {
+        Node node = (Node) nodeMap.get(n.getCoordinate());
+        if (node == null) {
+            nodeMap.put(n.getCoordinate(), n);
+            return n;
+        }
+        node.mergeLabel(n);
+        return node;
     }
-    node.mergeLabel(n);
-    return node;
-  }
 
-  /**
-   * Adds a node for the start point of this EdgeEnd
-   * (if one does not already exist in this scene).
-   * Adds the EdgeEnd to the (possibly new) node.
-   */
-  public void add(EdgeEnd e)
-  {
-    Coordinate p = e.getCoordinate();
-    Node n = addNode(p);
-    n.add(e);
-  }
-  /**
-   * @return the node if found; null otherwise
-   */
-  public Node find(Coordinate coord)  {    return (Node) nodeMap.get(coord);  }
-
-  public Iterator iterator()
-  {
-    return nodeMap.values().iterator();
-  }
-  public Collection values()
-  {
-    return nodeMap.values();
-  }
-
-  public Collection getBoundaryNodes(int geomIndex)
-  {
-    Collection bdyNodes = new ArrayList();
-    for (Iterator i = iterator(); i.hasNext(); ) {
-      Node node = (Node) i.next();
-      if (node.getLabel().getLocation(geomIndex) == Location.BOUNDARY)
-        bdyNodes.add(node);
+    /**
+     * Adds a node for the start point of this EdgeEnd
+     * (if one does not already exist in this scene).
+     * Adds the EdgeEnd to the (possibly new) node.
+     */
+    public void add(EdgeEnd e) {
+        Coordinate p = e.getCoordinate();
+        Node n = addNode(p);
+        n.add(e);
     }
-    return bdyNodes;
-  }
 
-  public void print(PrintStream out)
-  {
-    for (Iterator it = iterator(); it.hasNext(); )
-    {
-      Node n = (Node) it.next();
-      n.print(out);
+    /**
+     * @return the node if found; null otherwise
+     */
+    public Node find(Coordinate coord) {
+        return (Node) nodeMap.get(coord);
     }
-  }
+
+    public Iterator iterator() {
+        return nodeMap.values().iterator();
+    }
+
+    public Collection values() {
+        return nodeMap.values();
+    }
+
+    public Collection getBoundaryNodes(int geomIndex) {
+        Collection bdyNodes = new ArrayList();
+        for (Iterator i = iterator(); i.hasNext(); ) {
+            Node node = (Node) i.next();
+            if (node.getLabel().getLocation(geomIndex) == Location.BOUNDARY)
+                bdyNodes.add(node);
+        }
+        return bdyNodes;
+    }
+
+    public void print(PrintStream out) {
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            Node n = (Node) it.next();
+            n.print(out);
+        }
+    }
 }

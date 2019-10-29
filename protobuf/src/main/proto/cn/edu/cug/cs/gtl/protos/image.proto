@@ -4,34 +4,34 @@ package cn.edu.cug.cs.gtl.protos;
 
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Images";
 
-message Raster{
+message Raster {
     /** The X coordinate of the upper-left pixel of this Raster. */
-    int32 min_x=1;
+    int32 min_x = 1;
 
     /** The Y coordinate of the upper-left pixel of this Raster. */
-    int32 min_y=2;
+    int32 min_y = 2;
 
     /** The width of this Raster. */
-    int32 width=3;
+    int32 width = 3;
 
     /** The height of this Raster. */
-    int32 height=4;
+    int32 height = 4;
 
     /** The number of bands in the Raster. */
-    int32 number_of_bands=5;
+    int32 number_of_bands = 5;
 
     /** The number of DataBuffer data elements per pixel. */
-    int32 number_of_data_elements=6;
+    int32 number_of_data_elements = 6;
 
     /** The DataBuffer that stores the image data. */
-    bytes data_buffer=7;
+    bytes data_buffer = 7;
 }
 
-message Image{
-    int32 image_type=1;
-    Raster raster=2;
+message Image {
+    int32 image_type = 1;
+    Raster raster = 2;
 }

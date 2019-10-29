@@ -136,38 +136,38 @@ public class EnvelopeTest {
 
     @Test
     public void split() throws Exception {
-        Envelope e =  Envelope.create(0,0,10,10);
-        double ordinate =5;
-        Envelope e2d1 = Envelope.create(0,0,5,10);
-        Envelope e2d2 = Envelope.create(5,0,10,10);
-        Envelope [] e2ds = e.split(ordinate,0);
-        assertEquals(e2d1,e2ds[0]);
-        assertEquals(e2d2,e2ds[1]);
+        Envelope e = Envelope.create(0, 0, 10, 10);
+        double ordinate = 5;
+        Envelope e2d1 = Envelope.create(0, 0, 5, 10);
+        Envelope e2d2 = Envelope.create(5, 0, 10, 10);
+        Envelope[] e2ds = e.split(ordinate, 0);
+        assertEquals(e2d1, e2ds[0]);
+        assertEquals(e2d2, e2ds[1]);
 
-        e2d1 = Envelope.create(0,0,10,5);
-        e2d2 = Envelope.create(0,5,10,10);
-        e2ds = e.split(ordinate,1);
-        assertEquals(e2d1,e2ds[0]);
-        assertEquals(e2d2,e2ds[1]);
+        e2d1 = Envelope.create(0, 0, 10, 5);
+        e2d2 = Envelope.create(0, 5, 10, 10);
+        e2ds = e.split(ordinate, 1);
+        assertEquals(e2d1, e2ds[0]);
+        assertEquals(e2d2, e2ds[1]);
 
-        e =  Envelope.create(0,0,0,10,10,10);
-        Envelope e3d1 = Envelope.create(0,0,0,5,10,10);
-        Envelope e3d2 = Envelope.create(5,0,0,10,10,10);
-        Envelope [] e3ds = e.split(ordinate,0);
-        assertEquals(e3d1,e3ds[0]);
-        assertEquals(e3d2,e3ds[1]);
+        e = Envelope.create(0, 0, 0, 10, 10, 10);
+        Envelope e3d1 = Envelope.create(0, 0, 0, 5, 10, 10);
+        Envelope e3d2 = Envelope.create(5, 0, 0, 10, 10, 10);
+        Envelope[] e3ds = e.split(ordinate, 0);
+        assertEquals(e3d1, e3ds[0]);
+        assertEquals(e3d2, e3ds[1]);
 
-        e3d1 = Envelope.create(0,0,0,10,5,10);
-        e3d2 = Envelope.create(0,5,0,10,10,10);
-        e3ds = e.split(ordinate,1);
-        assertEquals(e3d1,e3ds[0]);
-        assertEquals(e3d2,e3ds[1]);
+        e3d1 = Envelope.create(0, 0, 0, 10, 5, 10);
+        e3d2 = Envelope.create(0, 5, 0, 10, 10, 10);
+        e3ds = e.split(ordinate, 1);
+        assertEquals(e3d1, e3ds[0]);
+        assertEquals(e3d2, e3ds[1]);
 
-        e3d1 = Envelope.create(0,0,0,10,10,5);
-        e3d2 = Envelope.create(0,0,5,10,10,10);
-        e3ds = e.split(ordinate,2);
-        assertEquals(e3d1,e3ds[0]);
-        assertEquals(e3d2,e3ds[1]);
+        e3d1 = Envelope.create(0, 0, 0, 10, 10, 5);
+        e3d2 = Envelope.create(0, 0, 5, 10, 10, 10);
+        e3ds = e.split(ordinate, 2);
+        assertEquals(e3d1, e3ds[0]);
+        assertEquals(e3d2, e3ds[1]);
     }
 
     @Test
@@ -195,10 +195,10 @@ public class EnvelopeTest {
     }
 
     @Test
-    public void randomEnvelope(){
-        Envelope e2d = new Envelope(0,100,0,100);
-        Envelope e2d1 =Envelope.randomEnvelope(e2d,0.02);
-        Envelope e2d2 =Envelope.randomEnvelope(e2d,0.03);
+    public void randomEnvelope() {
+        Envelope e2d = new Envelope(0, 100, 0, 100);
+        Envelope e2d1 = Envelope.randomEnvelope(e2d, 0.02);
+        Envelope e2d2 = Envelope.randomEnvelope(e2d, 0.03);
 
     }
 }

@@ -322,7 +322,7 @@ public class RTreeInternalNodeImpl extends RTreeNodeImpl {
     }
 
 
-    class OverlapEntry implements Comparator<OverlapEntry> , Serializable{
+    class OverlapEntry implements Comparator<OverlapEntry>, Serializable {
         private static final long serialVersionUID = 1L;
 
         public int m_index;

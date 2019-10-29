@@ -34,7 +34,6 @@
 package cn.edu.cug.cs.gtl.jts.index.bintree;
 
 
-
 import cn.edu.cug.cs.gtl.jts.index.quadtree.DoubleBits;
 import cn.edu.cug.cs.gtl.jts.index.quadtree.DoubleBits;
 
@@ -47,51 +46,55 @@ import cn.edu.cug.cs.gtl.jts.index.quadtree.DoubleBits;
  */
 public class Key {
 
-  public static int computeLevel(Interval interval)
-  {
-    double dx = interval.getWidth();
-    //int level = BinaryPower.exponent(dx) + 1;
-    int level = DoubleBits.exponent(dx) + 1;
-    return level;
-  }
-
-
-  // the fields which make up the key
-  private double pt = 0.0;
-  private int level = 0;
-  // auxiliary data which is derived from the key for use in computation
-  private Interval interval;
-
-  public Key(Interval interval)
-  {
-    computeKey(interval);
-  }
-
-  public double getPoint() { return pt; }
-  public int getLevel() { return level; }
-  public Interval getInterval() { return interval; }
-
-  /**
-   * return a square envelope containing the argument envelope,
-   * whose extent is a power of two and which is based at a power of 2
-   */
-  public void computeKey(Interval itemInterval)
-  {
-    level = computeLevel(itemInterval);
-    interval = new Interval();
-    computeInterval(level, itemInterval);
-    // MD - would be nice to have a non-iterative form of this algorithm
-    while (! interval.contains(itemInterval)) {
-      level += 1;
-      computeInterval(level, itemInterval);
+    public static int computeLevel(Interval interval) {
+        double dx = interval.getWidth();
+        //int level = BinaryPower.exponent(dx) + 1;
+        int level = DoubleBits.exponent(dx) + 1;
+        return level;
     }
-  }
 
-  private void computeInterval(int level, Interval itemInterval)
-  {
-    double size = DoubleBits.powerOf2(level);
-    //double size = pow2.power(level);
-    pt = Math.floor(itemInterval.getMin() / size) * size;
-    interval.init(pt, pt + size);
-  }
+
+    // the fields which make up the key
+    private double pt = 0.0;
+    private int level = 0;
+    // auxiliary data which is derived from the key for use in computation
+    private Interval interval;
+
+    public Key(Interval interval) {
+        computeKey(interval);
+    }
+
+    public double getPoint() {
+        return pt;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public Interval getInterval() {
+        return interval;
+    }
+
+    /**
+     * return a square envelope containing the argument envelope,
+     * whose extent is a power of two and which is based at a power of 2
+     */
+    public void computeKey(Interval itemInterval) {
+        level = computeLevel(itemInterval);
+        interval = new Interval();
+        computeInterval(level, itemInterval);
+        // MD - would be nice to have a non-iterative form of this algorithm
+        while (!interval.contains(itemInterval)) {
+            level += 1;
+            computeInterval(level, itemInterval);
+        }
+    }
+
+    private void computeInterval(int level, Interval itemInterval) {
+        double size = DoubleBits.powerOf2(level);
+        //double size = pow2.power(level);
+        pt = Math.floor(itemInterval.getMin() / size) * size;
+        interval.init(pt, pt + size);
+    }
 }

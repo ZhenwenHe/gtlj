@@ -48,53 +48,51 @@ import cn.edu.cug.cs.gtl.jts.util.Assert;
  *
  * @version 1.7
  */
-public class SimpleNestedRingTester
-{
+public class SimpleNestedRingTester {
 
-  private GeometryGraph graph;  // used to find non-node vertices
-  private List rings = new ArrayList();
-  private Coordinate nestedPt;
+    private GeometryGraph graph;  // used to find non-node vertices
+    private List rings = new ArrayList();
+    private Coordinate nestedPt;
 
-  public SimpleNestedRingTester(GeometryGraph graph)
-  {
-    this.graph = graph;
-  }
-
-  public void add(LinearRing ring)
-  {
-    rings.add(ring);
-  }
-
-  public Coordinate getNestedPoint() { return nestedPt; }
-
-  public boolean isNonNested()
-  {
-    for (int i = 0; i < rings.size(); i++) {
-      LinearRing innerRing = (LinearRing) rings.get(i);
-      Coordinate[] innerRingPts = innerRing.getCoordinates();
-
-      for (int j = 0; j < rings.size(); j++) {
-        LinearRing searchRing = (LinearRing) rings.get(j);
-        Coordinate[] searchRingPts = searchRing.getCoordinates();
-
-        if (innerRing == searchRing)
-          continue;
-
-        if (! innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
-          continue;
-
-        Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
-        Assert.isTrue(innerRingPt != null, "Unable to find a ring point not a node of the search ring");
-        //Coordinate innerRingPt = innerRingPts[0];
-
-        boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
-        if (isInside) {
-          nestedPt = innerRingPt;
-          return false;
-        }
-      }
+    public SimpleNestedRingTester(GeometryGraph graph) {
+        this.graph = graph;
     }
-    return true;
-  }
+
+    public void add(LinearRing ring) {
+        rings.add(ring);
+    }
+
+    public Coordinate getNestedPoint() {
+        return nestedPt;
+    }
+
+    public boolean isNonNested() {
+        for (int i = 0; i < rings.size(); i++) {
+            LinearRing innerRing = (LinearRing) rings.get(i);
+            Coordinate[] innerRingPts = innerRing.getCoordinates();
+
+            for (int j = 0; j < rings.size(); j++) {
+                LinearRing searchRing = (LinearRing) rings.get(j);
+                Coordinate[] searchRingPts = searchRing.getCoordinates();
+
+                if (innerRing == searchRing)
+                    continue;
+
+                if (!innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
+                    continue;
+
+                Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
+                Assert.isTrue(innerRingPt != null, "Unable to find a ring point not a node of the search ring");
+                //Coordinate innerRingPt = innerRingPts[0];
+
+                boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
+                if (isInside) {
+                    nestedPt = innerRingPt;
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 }

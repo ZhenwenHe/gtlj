@@ -6,6 +6,7 @@ package cn.edu.cug.cs.gtl.geom;
  */
 public class IsoscelesTriangle extends TriangleImpl {
     private static final long serialVersionUID = 1L;
+
     public IsoscelesTriangle() {
     }
 

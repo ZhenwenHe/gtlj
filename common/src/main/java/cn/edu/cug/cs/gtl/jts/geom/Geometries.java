@@ -29,7 +29,7 @@ import cn.edu.cug.cs.gtl.jts.geom.Polygon;
  *     ....
  * }
  * </code></pre>
- *
+ * <p>
  * Instead you can do this...
  * <pre><code>
  * Geometries geomType = Geometries.get(myObject);
@@ -62,35 +62,49 @@ import cn.edu.cug.cs.gtl.jts.geom.Polygon;
  *
  * @author Justin Deoliveira, The Open Planning Project
  * @author Michael Bedward
- * @since 2.6
- *
- *
- * @source $URL$
  * @version $Id$
+ * @source $URL$
+ * @since 2.6
  */
 public enum Geometries {
-    /** Representing {@link Point} */
+    /**
+     * Representing {@link Point}
+     */
     POINT(Point.class, 2001),
 
-    /** Representing {@lin LinearRing}, {@link SingleCurvedGeometry} and {@link CompoundCurvedGeometry} */
+    /**
+     * Representing {@lin LinearRing}, {@link SingleCurvedGeometry} and {@link CompoundCurvedGeometry}
+     */
     LINESTRING(LineString.class, 2002),
 
-    /** Represent {@link Polygon} */
+    /**
+     * Represent {@link Polygon}
+     */
     POLYGON(Polygon.class, 2003),
 
-    /** Represent {@link MultiPoint} */
+    /**
+     * Represent {@link MultiPoint}
+     */
     MULTIPOINT(MultiPoint.class, 2004),
 
-    /** Represent {@link MultiLineString} */
+    /**
+     * Represent {@link MultiLineString}
+     */
     MULTILINESTRING(MultiLineString.class, 2005),
 
-    /** Represent {@link MultiPolygon} */
+    /**
+     * Represent {@link MultiPolygon}
+     */
     MULTIPOLYGON(MultiPolygon.class, 2006),
 
-    /** Represent {@link Geometry} */
+    /**
+     * Represent {@link Geometry}
+     */
     GEOMETRY(Geometry.class, 2007),
 
-    /** Represent {@link GeometryCollection} */
+    /**
+     * Represent {@link GeometryCollection}
+     */
     GEOMETRYCOLLECTION(GeometryCollection.class, 2008);
 
     private final Class<? extends Geometry> binding;
@@ -157,9 +171,8 @@ public enum Geometries {
      * Get the {@code Geometries} for the given object.
      *
      * @param geom a JTS Geometry object
-     *
      * @return the {@code Geometries} for the argument's class, or {@code null}
-     *         if the argument is {@code null}
+     * if the argument is {@code null}
      */
     public static Geometries get(Geometry geom) {
         if (geom != null) {
@@ -173,7 +186,6 @@ public enum Geometries {
      * Get the {@code Geometries} for the given {@code Geometry} class.
      *
      * @param geomClass the class
-     *
      * @return the constant for this class
      */
     public static Geometries getForBinding(Class<? extends Geometry> geomClass) {
@@ -218,7 +230,6 @@ public enum Geometries {
      * Get the {@code Geometries} for the specified name.
      *
      * @param name The name of the geometry, eg: "POINT"
-     *
      * @return The constant for the name.
      */
     public static Geometries getForName(String name) {
@@ -234,7 +245,6 @@ public enum Geometries {
      * Get the {@code Geometries} with the given integer SQL type code.
      *
      * @param sqlType the code to look up.
-     *
      * @return the matching type or {@code null} if no match was found
      */
     public static Geometries getForSQLType(int sqlType) {

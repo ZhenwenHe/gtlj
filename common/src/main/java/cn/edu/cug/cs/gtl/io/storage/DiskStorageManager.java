@@ -39,9 +39,8 @@ class DiskStorageManager implements StorageManager {
     Map<Identifier, Entry> pageIndex;
 
     /**
-     *
-     * @param baseName 文件名
-     * @param pageSize 指定页面存储大小
+     * @param baseName  文件名
+     * @param pageSize  指定页面存储大小
      * @param overWrite 是否覆盖原文件
      * @throws IOException
      */
@@ -111,7 +110,8 @@ class DiskStorageManager implements StorageManager {
 
     /**
      * 读取指定页面数据
-     * @param  page 页面唯一ID
+     *
+     * @param page 页面唯一ID
      * @return data 将文件中的数据读取到字节数组<parm>data</parm>中
      * @throws IOException 文件IO异常
      */
@@ -150,6 +150,7 @@ class DiskStorageManager implements StorageManager {
 
     /**
      * 以字节数组将数据写入指定页面
+     *
      * @param page 页面ID，如果为-1，则选择一个新的页面写入，并修改传入page并返回
      *             如果为有效页面ID，则写入该页面。
      * @param data 需要写入的字节数组
@@ -231,6 +232,7 @@ class DiskStorageManager implements StorageManager {
 
     /**
      * 删除指定页面
+     *
      * @param page 要删除的页面ID
      * @throws IOException
      */
@@ -247,6 +249,7 @@ class DiskStorageManager implements StorageManager {
 
     /**
      * 强制写入存储介质
+     *
      * @throws IOException
      */
     @Override
@@ -289,6 +292,7 @@ class DiskStorageManager implements StorageManager {
 
     /**
      * 关闭打开的文件
+     *
      * @throws IOException
      */
     @Override

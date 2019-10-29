@@ -17,8 +17,8 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 
-public  class BoundablePair   implements Comparable, Serializable {
-    private static final long serialVersionUID =1L;
+public class BoundablePair implements Comparable, Serializable {
+    private static final long serialVersionUID = 1L;
 
     private Boundable boundable1;
     private Boundable boundable2;
@@ -26,8 +26,7 @@ public  class BoundablePair   implements Comparable, Serializable {
     private ItemDistance itemDistance;
     //private double maxDistance = -1.0;
 
-    public BoundablePair(Boundable boundable1, Boundable boundable2, ItemDistance itemDistance)
-    {
+    public BoundablePair(Boundable boundable1, Boundable boundable2, ItemDistance itemDistance) {
         this.boundable1 = boundable1;
         this.boundable2 = boundable2;
         this.itemDistance = itemDistance;
@@ -41,8 +40,7 @@ public  class BoundablePair   implements Comparable, Serializable {
      * @param i the index of the member to return (0 or 1)
      * @return the chosen member
      */
-    public Boundable getBoundable(int i)
-    {
+    public Boundable getBoundable(int i) {
         if (i == 0) return boundable1;
         return boundable2;
     }
@@ -56,8 +54,7 @@ public  class BoundablePair   implements Comparable, Serializable {
      *
      * @return
      */
-    private double distance()
-    {
+    private double distance() {
         // if items, compute exact distance
         if (isLeaves()) {
             return itemDistance.distance((ItemBoundable) boundable1,
@@ -108,13 +105,14 @@ public  class BoundablePair   implements Comparable, Serializable {
      *
      * @return the exact or lower bound distance for this pair
      */
-    public double getDistance() { return distance; }
+    public double getDistance() {
+        return distance;
+    }
 
     /**
      * Compares two pairs based on their minimum distances
      */
-    public int compareTo(Object o)
-    {
+    public int compareTo(Object o) {
         BoundablePair nd = (BoundablePair) o;
         if (distance < nd.distance) return -1;
         if (distance > nd.distance) return 1;
@@ -126,18 +124,15 @@ public  class BoundablePair   implements Comparable, Serializable {
      *
      * @return true if both pair elements are leaf nodes
      */
-    public boolean isLeaves()
-    {
-        return ! (isComposite(boundable1) || isComposite(boundable2));
+    public boolean isLeaves() {
+        return !(isComposite(boundable1) || isComposite(boundable2));
     }
 
-    public static boolean isComposite(Object item)
-    {
+    public static boolean isComposite(Object item) {
         return (item instanceof AbstractNode);
     }
 
-    private static double area(Boundable b)
-    {
+    private static double area(Boundable b) {
         return ((Envelope) b.getBounds()).getArea();
     }
 
@@ -146,10 +141,8 @@ public  class BoundablePair   implements Comparable, Serializable {
      * (i.e. has at least one composite boundable)
      * computes a list of new pairs
      * from the expansion of the larger boundable.
-     *
      */
-    public void expandToQueue(PriorityQueue priQ, double minDistance)
-    {
+    public void expandToQueue(PriorityQueue priQ, double minDistance) {
         boolean isComp1 = isComposite(boundable1);
         boolean isComp2 = isComposite(boundable2);
 
@@ -162,17 +155,14 @@ public  class BoundablePair   implements Comparable, Serializable {
             if (area(boundable1) > area(boundable2)) {
                 expand(boundable1, boundable2, priQ, minDistance);
                 return;
-            }
-            else {
+            } else {
                 expand(boundable2, boundable1, priQ, minDistance);
                 return;
             }
-        }
-        else if (isComp1) {
+        } else if (isComp1) {
             expand(boundable1, boundable2, priQ, minDistance);
             return;
-        }
-        else if (isComp2) {
+        } else if (isComp2) {
             expand(boundable2, boundable1, priQ, minDistance);
             return;
         }
@@ -181,8 +171,7 @@ public  class BoundablePair   implements Comparable, Serializable {
     }
 
     private void expand(Boundable bndComposite, Boundable bndOther,
-                        PriorityQueue priQ, double minDistance)
-    {
+                        PriorityQueue priQ, double minDistance) {
         List children = ((AbstractNode) bndComposite).getChildBoundables();
         for (Iterator i = children.iterator(); i.hasNext(); ) {
             Boundable child = (Boundable) i.next();

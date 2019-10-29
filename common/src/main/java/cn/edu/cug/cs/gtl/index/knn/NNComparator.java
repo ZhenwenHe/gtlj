@@ -4,7 +4,7 @@ import cn.edu.cug.cs.gtl.index.shape.Shape;
 import cn.edu.cug.cs.gtl.index.Entry;
 import cn.edu.cug.cs.gtl.index.shape.Shape;
 
-public class NNComparator implements NearestNeighborComparator ,java.io.Serializable{
+public class NNComparator implements NearestNeighborComparator, java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
     @Override

@@ -2,9 +2,9 @@ package cn.edu.cug.cs.gtl.geom;
 
 
 /**
- *  参照Geo3dML
+ * 参照Geo3dML
  */
-public class TetrahedralMesh extends PolyhedralMesh{
+public class TetrahedralMesh extends PolyhedralMesh {
     public TetrahedralMesh() {
     }
 

@@ -15,10 +15,10 @@ public abstract class QuadTreeNodeImpl extends NodeImpl {
     public QuadTreeNodeImpl(Identifier identifier, int level, int capacity, QuadTreeImpl tree, Shape shape) {
         super(identifier, level, capacity);
         this.tree = tree;
-        this.shape=shape;
+        this.shape = shape;
     }
 
-    public QuadTreeNodeImpl( ) {
+    public QuadTreeNodeImpl() {
         this.tree = null;
     }
 
@@ -31,7 +31,7 @@ public abstract class QuadTreeNodeImpl extends NodeImpl {
     }
 
     @Override
-    public abstract Object clone() ;
+    public abstract Object clone();
 
     @Override
     public Shape recalculateShape() {

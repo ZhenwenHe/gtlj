@@ -44,13 +44,14 @@ import cn.edu.cug.cs.gtl.jts.planargraph.Edge;
  * @version 1.7
  */
 class PolygonizeEdge
-    extends Edge
-{
-  private LineString line;
+        extends Edge {
+    private LineString line;
 
-  public PolygonizeEdge(LineString line)
-  {
-    this.line = line;
-  }
-  public LineString getLine() { return line; }
+    public PolygonizeEdge(LineString line) {
+        this.line = line;
+    }
+
+    public LineString getLine() {
+        return line;
+    }
 }

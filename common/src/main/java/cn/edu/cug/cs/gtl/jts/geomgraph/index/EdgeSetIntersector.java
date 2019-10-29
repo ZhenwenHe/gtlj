@@ -38,6 +38,7 @@ package cn.edu.cug.cs.gtl.jts.geomgraph.index;
 /**
  * @version 1.7
  */
+
 import java.util.*;
 
 /**
@@ -53,26 +54,24 @@ import java.util.*;
  *
  * @version 1.7
  */
-public abstract class EdgeSetIntersector 
-{
-  public EdgeSetIntersector() {
-  }
+public abstract class EdgeSetIntersector {
+    public EdgeSetIntersector() {
+    }
 
-  /**
-   * Computes all self-intersections between edges in a set of edges,
-   * allowing client to choose whether self-intersections are computed.
-   *
-   * @param edges a list of edges to test for intersections
-   * @param si the SegmentIntersector to use
-   * @param testAllSegments true if self-intersections are to be tested as well
-   */
-  abstract public void computeIntersections(List edges, SegmentIntersector si, boolean testAllSegments);
+    /**
+     * Computes all self-intersections between edges in a set of edges,
+     * allowing client to choose whether self-intersections are computed.
+     *
+     * @param edges           a list of edges to test for intersections
+     * @param si              the SegmentIntersector to use
+     * @param testAllSegments true if self-intersections are to be tested as well
+     */
+    abstract public void computeIntersections(List edges, SegmentIntersector si, boolean testAllSegments);
 
-  /**
-   * Computes all mutual intersections between two sets of edges.
-   */
-  abstract public void computeIntersections(List edges0, List edges1, SegmentIntersector si);
-
+    /**
+     * Computes all mutual intersections between two sets of edges.
+     */
+    abstract public void computeIntersections(List edges0, List edges1, SegmentIntersector si);
 
 
 }

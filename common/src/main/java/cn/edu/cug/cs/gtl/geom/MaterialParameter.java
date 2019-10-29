@@ -10,81 +10,106 @@ import java.io.IOException;
 
 public class MaterialParameter implements Serializable {
     // flag :
-    public static final int  TEXTURE_FLAG_TEXTURE        =1;//纹理有效
-    public static final int  TEXTURE_FLAG_MATERIAL       =2;//材质有效
-    public static final int  TEXTURE_FLAG_COLOR          =4;//颜色有效
+    public static final int TEXTURE_FLAG_TEXTURE = 1;//纹理有效
+    public static final int TEXTURE_FLAG_MATERIAL = 2;//材质有效
+    public static final int TEXTURE_FLAG_COLOR = 4;//颜色有效
 
     // transparent:
-    public static final int  TEXTURE_TRANSPARENT_DISABLE =0 ;//不透明
-    public static final int  TEXTURE_TRANSPARENT_ENABLE  =1; //透明，将和背景做混合（如玻璃）, 参数 alpha
-    public static final int  TEXTURE_TRANSPARENT_SPECIAL =2; //过滤指定部分（如画树滤掉纹理中非树的部分）
+    public static final int TEXTURE_TRANSPARENT_DISABLE = 0;//不透明
+    public static final int TEXTURE_TRANSPARENT_ENABLE = 1; //透明，将和背景做混合（如玻璃）, 参数 alpha
+    public static final int TEXTURE_TRANSPARENT_SPECIAL = 2; //过滤指定部分（如画树滤掉纹理中非树的部分）
 
     //cullface :
-    public static final int  TEXTURE_CULLFACE_BACK		=0;//缺省，背面剔除
-    public static final int  TEXTURE_CULLFACE_DISABLE	=1;//不剔除(双面可视)
-    public static final int  TEXTURE_CULLFACE_FRONT		=2;//正面剔除
+    public static final int TEXTURE_CULLFACE_BACK = 0;//缺省，背面剔除
+    public static final int TEXTURE_CULLFACE_DISABLE = 1;//不剔除(双面可视)
+    public static final int TEXTURE_CULLFACE_FRONT = 2;//正面剔除
 
     //depth:(深度检测)
-    public static final int  TEXTURE_DEPTH_ENABLE		=0;//缺省，使用缺省深度检测方式
-    public static final int  TEXTURE_DEPTH_DISABLE		=1;//不启用深度检测
-    public static final int  TEXTURE_DEPTH_ALWAYS		=2;//深度比较总是通过
-    public static final int  TEXTURE_DEPTH_WRITEDISABLE	=4;//深度缓冲只读
+    public static final int TEXTURE_DEPTH_ENABLE = 0;//缺省，使用缺省深度检测方式
+    public static final int TEXTURE_DEPTH_DISABLE = 1;//不启用深度检测
+    public static final int TEXTURE_DEPTH_ALWAYS = 2;//深度比较总是通过
+    public static final int TEXTURE_DEPTH_WRITEDISABLE = 4;//深度缓冲只读
 
 
-    /** 标志位(纹理、材质、颜色) */
-    int 	flag;
-    /** 透明的方式
+    /**
+     * 标志位(纹理、材质、颜色)
+     */
+    int flag;
+    /**
+     * 透明的方式
      * -TEXTURE_TRANSPARENT_DISABLE
      * -TEXTURE_TRANSPARENT_ENABLE
      * -TEXTURE_TRANSPARENT_SPECIAL
      */
-    int		transparent;
-    /** 面剔除方式
+    int transparent;
+    /**
+     * 面剔除方式
      * -TEXTURE_CULLFACE_BACK
      * -TEXTURE_CULLFACE_DISABLE
      * -TEXTURE_CULLFACE_FRONT
      */
-    int		cullface;
+    int cullface;
 
-    /** 深度检测
+    /**
+     * 深度检测
      * TEXTURE_DEPTH_ENABLE		=0;//缺省，使用缺省深度检测方式
      * TEXTURE_DEPTH_DISABLE		=1;//不启用深度检测
      * TEXTURE_DEPTH_ALWAYS		=2;//深度比较总是通过
-     *TEXTURE_DEPTH_WRITEDISABLE	=4;//深度缓冲只读
+     * TEXTURE_DEPTH_WRITEDISABLE	=4;//深度缓冲只读
      */
-    int		depth;
+    int depth;
 
-    /** 保留*/
-    int[]		reserve;
+    /**
+     * 保留
+     */
+    int[] reserve;
 
-    /** 透明度  [ 0.0 (不透明)  ~  1.0 (完全透明) ] */
-    float		alpha;
+    /**
+     * 透明度  [ 0.0 (不透明)  ~  1.0 (完全透明) ]
+     */
+    float alpha;
 
-    /** 环境光 */
-    long	ambient;
+    /**
+     * 环境光
+     */
+    long ambient;
 
-    /** 漫反射 */
-    long	diffuse;
+    /**
+     * 漫反射
+     */
+    long diffuse;
 
-    /** 镜面反射 */
-    long	specular;
+    /**
+     * 镜面反射
+     */
+    long specular;
 
-    /** 颜色 */
-    long	color;
+    /**
+     * 颜色
+     */
+    long color;
 
-    /** 纹理平移参数 */
-    float		uOffset, vOffset;
+    /**
+     * 纹理平移参数
+     */
+    float uOffset, vOffset;
 
-    /** 纹理旋转参数（单位为度，旋转轴为 (0, 0, 1)） */
-    float		rotAngle;
+    /**
+     * 纹理旋转参数（单位为度，旋转轴为 (0, 0, 1)）
+     */
+    float rotAngle;
 
-    /** 高光*/
-    float		shininess;
-    /** 光照模型 */
-    float		illumination;
+    /**
+     * 高光
+     */
+    float shininess;
+    /**
+     * 光照模型
+     */
+    float illumination;
 
     public MaterialParameter() {
-        this.reserve=new int[4];
+        this.reserve = new int[4];
     }
 
     public MaterialParameter(int flag, int transparent, int cullface,
@@ -105,7 +130,7 @@ public class MaterialParameter implements Serializable {
         this.rotAngle = rotAngle;
         this.shininess = shininess;
         this.illumination = illumination;
-        this.reserve=new int[4];
+        this.reserve = new int[4];
     }
 
     public int getFlag() {
@@ -180,13 +205,13 @@ public class MaterialParameter implements Serializable {
         this.color = color;
     }
 
-    public Tuple2<Float,Float> getOffset() {
-        return new Tuple2<Float,Float>(uOffset,vOffset);
+    public Tuple2<Float, Float> getOffset() {
+        return new Tuple2<Float, Float>(uOffset, vOffset);
     }
 
     public void setOffset(float u, float v) {
         this.uOffset = u;
-        this.vOffset=v;
+        this.vOffset = v;
     }
 
 
@@ -198,11 +223,11 @@ public class MaterialParameter implements Serializable {
         return vOffset;
     }
 
-    public void setUOffset(float u ) {
+    public void setUOffset(float u) {
         this.uOffset = u;
     }
 
-    public void setVOffset(float v ) {
+    public void setVOffset(float v) {
         this.vOffset = v;
     }
 
@@ -231,18 +256,16 @@ public class MaterialParameter implements Serializable {
     }
 
     @Override
-    public MaterialParameter clone()
-    {
-        MaterialParameter p = new MaterialParameter(this.flag,this.transparent,this.cullface,
-                this.depth,this.alpha,this.ambient,this.diffuse,
-                this.specular,this.color,this.uOffset,this.vOffset,
-                this.rotAngle,this.shininess,this.illumination);
+    public MaterialParameter clone() {
+        MaterialParameter p = new MaterialParameter(this.flag, this.transparent, this.cullface,
+                this.depth, this.alpha, this.ambient, this.diffuse,
+                this.specular, this.color, this.uOffset, this.vOffset,
+                this.rotAngle, this.shininess, this.illumination);
         return p;
     }
 
     @Override
-    public boolean load(DataInput in) throws IOException
-    {
+    public boolean load(DataInput in) throws IOException {
         /** 标志位(纹理、材质、颜色) */
         flag = in.readInt();
         /** 透明的方式
@@ -268,11 +291,9 @@ public class MaterialParameter implements Serializable {
 
         /** 保留*/
         int s = in.readInt();
-        if(s > 0)
-        {
+        if (s > 0) {
             this.reserve = new int[s];
-            for(int i = 0; i < s; ++i)
-            {
+            for (int i = 0; i < s; ++i) {
                 this.reserve[i] = in.readInt();
             }
         }
@@ -308,8 +329,7 @@ public class MaterialParameter implements Serializable {
     }
 
     @Override
-    public boolean store(DataOutput out) throws IOException
-    {
+    public boolean store(DataOutput out) throws IOException {
         /** 标志位(纹理、材质、颜色) */
         out.writeInt(flag);
 
@@ -337,13 +357,11 @@ public class MaterialParameter implements Serializable {
 
         /** 保留*/
         int s = 0;
-        if(reserve !=null)
-            s=reserve.length;
+        if (reserve != null)
+            s = reserve.length;
         out.writeInt(s);
-        if(s>0)
-        {
-            for (int v: reserve)
-            {
+        if (s > 0) {
+            for (int v : reserve) {
                 out.writeInt(v);
             }
         }
@@ -383,12 +401,11 @@ public class MaterialParameter implements Serializable {
     }
 
     @Override
-    public long getByteArraySize()
-    {
-        long len =  4*4 //整数
-                + 4+ reserve.length*4 //保留数组
-                + 6*4 //浮点数
-                + 4*8; //长整型数
+    public long getByteArraySize() {
+        long len = 4 * 4 //整数
+                + 4 + reserve.length * 4 //保留数组
+                + 6 * 4 //浮点数
+                + 4 * 8; //长整型数
         return len;
     }
 

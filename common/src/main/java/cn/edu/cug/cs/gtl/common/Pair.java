@@ -8,21 +8,26 @@ import java.io.*;
 
 /**
  * Generic pair.
+ *
  * @param <K> Key type.
  * @param <V> Value type.
- *
  */
 public class Pair<K, V> implements Serializable {
     private static final long serialVersionUID = 1L;
-    /** Key. */
-    private  K key;
-    /** Value. */
-    private  V value;
+    /**
+     * Key.
+     */
+    private K key;
+    /**
+     * Value.
+     */
+    private V value;
 
-    public Pair( ) {
+    public Pair() {
         key = null;
         value = null;
     }
+
     /**
      * Create an entry representing a mapping from the specified key to the
      * specified value.
@@ -71,7 +76,11 @@ public class Pair<K, V> implements Serializable {
     public K getFirst() {
         return key;
     }
-    public K first(){return this.key;}
+
+    public K first() {
+        return this.key;
+    }
+
     /**
      * Get the second element of the pair.
      *
@@ -81,7 +90,11 @@ public class Pair<K, V> implements Serializable {
     public V getSecond() {
         return value;
     }
-    public V second() {return this.value;}
+
+    public V second() {
+        return this.value;
+    }
+
     /**
      * Compare the specified object with this entry for equality.
      *
@@ -132,24 +145,24 @@ public class Pair<K, V> implements Serializable {
         return new Pair<K, V>(k, v);
     }
 
-    public void setKey(K k){
-        this.key=k;
+    public void setKey(K k) {
+        this.key = k;
     }
 
-    public void setValue(V v){
-        this.value=v;
+    public void setValue(V v) {
+        this.value = v;
     }
 
     @Override
     public Object clone() {
-        return (Object) create(this.getKey(),this.getValue());
+        return (Object) create(this.getKey(), this.getValue());
     }
 
     @Override
     public void copyFrom(Object i) {
-        if(i instanceof Pair){
-            this.key=((Pair<K,V>)i).key;
-            this.value=((Pair<K,V>)i).value;
+        if (i instanceof Pair) {
+            this.key = ((Pair<K, V>) i).key;
+            this.value = ((Pair<K, V>) i).value;
         }
     }
 
@@ -157,15 +170,14 @@ public class Pair<K, V> implements Serializable {
     public boolean load(DataInput in) throws IOException {
 
         try {
-            int len =in.readInt();
-            byte [] bs = new byte[len];
-            in.readFully(bs,0,len);
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-            this.key= (K) ois.readObject();
-            this.value= (V) ois.readObject();
+            this.key = (K) ois.readObject();
+            this.value = (V) ois.readObject();
             ois.close();
-        }
-        catch (IOException | ClassNotFoundException e){
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return true;
@@ -178,12 +190,11 @@ public class Pair<K, V> implements Serializable {
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(this.key);
             oos.writeObject(this.value);
-            byte [] bs = baos.toByteArray();
+            byte[] bs = baos.toByteArray();
             out.writeInt(bs.length);
-            out.write(bs,0,bs.length);
+            out.write(bs, 0, bs.length);
             oos.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return true;
@@ -196,9 +207,8 @@ public class Pair<K, V> implements Serializable {
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(this.key);
             oos.writeObject(this.value);
-            return  baos.size();
-        }
-        catch (IOException e){
+            return baos.size();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return 0L;

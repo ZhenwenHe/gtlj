@@ -17,23 +17,23 @@ public class MultiLineString extends GeometryCollection implements Lineal {
 
     public MultiLineString(LineString[] geometries) {
         super(geometries);
-        this.geometryType=MULTILINESTRING;
+        this.geometryType = MULTILINESTRING;
     }
 
 
     public MultiLineString() {
         super();
-        this.geometryType=MULTILINESTRING;
+        this.geometryType = MULTILINESTRING;
     }
 
-    public MultiLineString( int dim) {
+    public MultiLineString(int dim) {
         super(dim);
-        this.geometryType=MULTILINESTRING;
+        this.geometryType = MULTILINESTRING;
     }
 
     @Override
     public MultiLineString clone() {
-        MultiLineString p = new MultiLineString( );
+        MultiLineString p = new MultiLineString();
         p.copyFrom(this);
         return p;
     }

@@ -11,18 +11,17 @@ import java.util.List;
 public interface KDTree<T extends Vector> {
 
 
-
     boolean insert(T value);
 
     boolean contains(T value);
 
     boolean remove(T value);
 
-    static KDTree create( Envelope envelope , List<Vector> points){
-        return new KDTreeImpl(envelope,points);
+    static KDTree create(Envelope envelope, List<Vector> points) {
+        return new KDTreeImpl(envelope, points);
     }
 
-    default List<Envelope> getPartitionEnvelopes(){
+    default List<Envelope> getPartitionEnvelopes() {
         return getLeafNodeEnvelopes();
     }
 

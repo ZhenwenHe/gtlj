@@ -54,118 +54,134 @@ import java.util.Iterator;
  *
  * @version 1.7
  */
-public abstract class GraphComponent
-{
-  /**
-   * Sets the Visited state for all {@link GraphComponent}s in an {@link Iterator}
-   *
-   * @param i the Iterator to scan
-   * @param visited the state to set the visited flag to
-   */
-  public static void setVisited(Iterator i, boolean visited)
-  {
-    while (i.hasNext()) {
-      GraphComponent comp = (GraphComponent) i.next();
-      comp.setVisited(visited);
+public abstract class GraphComponent {
+    /**
+     * Sets the Visited state for all {@link GraphComponent}s in an {@link Iterator}
+     *
+     * @param i       the Iterator to scan
+     * @param visited the state to set the visited flag to
+     */
+    public static void setVisited(Iterator i, boolean visited) {
+        while (i.hasNext()) {
+            GraphComponent comp = (GraphComponent) i.next();
+            comp.setVisited(visited);
+        }
     }
-  }
 
-  /**
-   * Sets the Marked state for all {@link GraphComponent}s in an {@link Iterator}
-   *
-   * @param i the Iterator to scan
-   * @param marked the state to set the Marked flag to
-   */
-  public static void setMarked(Iterator i, boolean marked)
-  {
-    while (i.hasNext()) {
-      GraphComponent comp = (GraphComponent) i.next();
-      comp.setMarked(marked);
+    /**
+     * Sets the Marked state for all {@link GraphComponent}s in an {@link Iterator}
+     *
+     * @param i      the Iterator to scan
+     * @param marked the state to set the Marked flag to
+     */
+    public static void setMarked(Iterator i, boolean marked) {
+        while (i.hasNext()) {
+            GraphComponent comp = (GraphComponent) i.next();
+            comp.setMarked(marked);
+        }
     }
-  }
 
-  /**
-   * Finds the first {@link GraphComponent} in a {@link Iterator} set
-   * which has the specified visited state.
-   *
-   * @param i an Iterator of GraphComponents
-   * @param visitedState the visited state to test
-   * @return the first component found, or <code>null</code> if none found
-   */
-  public static GraphComponent getComponentWithVisitedState(Iterator i, boolean visitedState)
-  {
-    while (i.hasNext()) {
-      GraphComponent comp = (GraphComponent) i.next();
-      if (comp.isVisited() == visitedState)
-        return comp;
+    /**
+     * Finds the first {@link GraphComponent} in a {@link Iterator} set
+     * which has the specified visited state.
+     *
+     * @param i            an Iterator of GraphComponents
+     * @param visitedState the visited state to test
+     * @return the first component found, or <code>null</code> if none found
+     */
+    public static GraphComponent getComponentWithVisitedState(Iterator i, boolean visitedState) {
+        while (i.hasNext()) {
+            GraphComponent comp = (GraphComponent) i.next();
+            if (comp.isVisited() == visitedState)
+                return comp;
+        }
+        return null;
     }
-    return null;
-  }
 
-  protected boolean isMarked = false;
-  protected boolean isVisited = false;
-  private Object data;
+    protected boolean isMarked = false;
+    protected boolean isVisited = false;
+    private Object data;
 
-  public GraphComponent() {
-  }
+    public GraphComponent() {
+    }
 
-  /**
-   * Tests if a component has been visited during the course of a graph algorithm
-   * @return <code>true</code> if the component has been visited
-   */
-  public boolean isVisited() { return isVisited; }
+    /**
+     * Tests if a component has been visited during the course of a graph algorithm
+     *
+     * @return <code>true</code> if the component has been visited
+     */
+    public boolean isVisited() {
+        return isVisited;
+    }
 
-  /**
-   * Sets the visited flag for this component.
-   * @param isVisited the desired value of the visited flag
-   */
-  public void setVisited(boolean isVisited) { this.isVisited = isVisited; }
+    /**
+     * Sets the visited flag for this component.
+     *
+     * @param isVisited the desired value of the visited flag
+     */
+    public void setVisited(boolean isVisited) {
+        this.isVisited = isVisited;
+    }
 
-  /**
-   * Tests if a component has been marked at some point during the processing
-   * involving this graph.
-   * @return <code>true</code> if the component has been marked
-   */
-  public boolean isMarked() { return isMarked; }
+    /**
+     * Tests if a component has been marked at some point during the processing
+     * involving this graph.
+     *
+     * @return <code>true</code> if the component has been marked
+     */
+    public boolean isMarked() {
+        return isMarked;
+    }
 
-  /**
-   * Sets the marked flag for this component.
-   * @param isMarked the desired value of the marked flag
-   */
-  public void setMarked(boolean isMarked) { this.isMarked = isMarked; }
+    /**
+     * Sets the marked flag for this component.
+     *
+     * @param isMarked the desired value of the marked flag
+     */
+    public void setMarked(boolean isMarked) {
+        this.isMarked = isMarked;
+    }
 
-  /**
-   * Sets the user-defined data for this component.
-   *
-   * @param data an Object containing user-defined data
-   */
-  public void setContext(Object data) { this.data = data; }
+    /**
+     * Sets the user-defined data for this component.
+     *
+     * @param data an Object containing user-defined data
+     */
+    public void setContext(Object data) {
+        this.data = data;
+    }
 
-  /**
-   * Gets the user-defined data for this component.
-   *
-   * @return the user-defined data
-   */
-  public Object getContext() { return data; }
+    /**
+     * Gets the user-defined data for this component.
+     *
+     * @return the user-defined data
+     */
+    public Object getContext() {
+        return data;
+    }
 
-  /**
-   * Sets the user-defined data for this component.
-   *
-   * @param data an Object containing user-defined data
-   */
-  public void setData(Object data) { this.data = data; }
+    /**
+     * Sets the user-defined data for this component.
+     *
+     * @param data an Object containing user-defined data
+     */
+    public void setData(Object data) {
+        this.data = data;
+    }
 
-  /**
-   * Gets the user-defined data for this component.
-   *
-   * @return the user-defined data
-   */
-  public Object getData() { return data; }
+    /**
+     * Gets the user-defined data for this component.
+     *
+     * @return the user-defined data
+     */
+    public Object getData() {
+        return data;
+    }
 
-  /**
-   * Tests whether this component has been removed from its containing graph
-   *
-   * @return <code>true</code> if this component is removed
-   */
-  public abstract boolean isRemoved();
+    /**
+     * Tests whether this component has been removed from its containing graph
+     *
+     * @return <code>true</code> if this component is removed
+     */
+    public abstract boolean isRemoved();
 }

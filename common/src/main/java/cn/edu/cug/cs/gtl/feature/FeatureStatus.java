@@ -29,11 +29,11 @@ public class FeatureStatus extends Status {
 
     private int status;
 
-    public FeatureStatus(int s){
+    public FeatureStatus(int s) {
         this.status = s;
     }
 
-    public FeatureStatus( ){
+    public FeatureStatus() {
         this(0);
     }
 
@@ -44,7 +44,7 @@ public class FeatureStatus extends Status {
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.status=in.readInt();
+        this.status = in.readInt();
         return true;
     }
 

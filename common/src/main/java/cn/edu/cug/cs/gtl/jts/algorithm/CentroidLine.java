@@ -45,65 +45,59 @@ import cn.edu.cug.cs.gtl.jts.geom.*;
  * @version 1.7
  * @deprecated use Centroid instead
  */
-public class CentroidLine
-{
-  private Coordinate centSum = new Coordinate();
-  private double totalLength = 0.0;
+public class CentroidLine {
+    private Coordinate centSum = new Coordinate();
+    private double totalLength = 0.0;
 
-  public CentroidLine()
-  {
-  }
-
-  /**
-   * Adds the linear components of by a Geometry to the centroid total.
-   * If the geometry has no linear components it does not contribute to the centroid,
-   * 
-   * @param geom the geometry to add
-   */
-  public void add(Geometry geom)
-  {
-    if (geom instanceof LineString) {
-      add(geom.getCoordinates());
+    public CentroidLine() {
     }
-    else if (geom instanceof Polygon) {
-    	Polygon poly = (Polygon) geom;
-    	// add linear components of a polygon
-      add(poly.getExteriorRing().getCoordinates());
-      for (int i = 0; i < poly.getNumInteriorRing(); i++) {
-        add(poly.getInteriorRingN(i).getCoordinates());
-      }
-		}
-    else if (geom instanceof GeometryCollection) {
-      GeometryCollection gc = (GeometryCollection) geom;
-      for (int i = 0; i < gc.getNumGeometries(); i++) {
-        add(gc.getGeometryN(i));
-      }
+
+    /**
+     * Adds the linear components of by a Geometry to the centroid total.
+     * If the geometry has no linear components it does not contribute to the centroid,
+     *
+     * @param geom the geometry to add
+     */
+    public void add(Geometry geom) {
+        if (geom instanceof LineString) {
+            add(geom.getCoordinates());
+        } else if (geom instanceof Polygon) {
+            Polygon poly = (Polygon) geom;
+            // add linear components of a polygon
+            add(poly.getExteriorRing().getCoordinates());
+            for (int i = 0; i < poly.getNumInteriorRing(); i++) {
+                add(poly.getInteriorRingN(i).getCoordinates());
+            }
+        } else if (geom instanceof GeometryCollection) {
+            GeometryCollection gc = (GeometryCollection) geom;
+            for (int i = 0; i < gc.getNumGeometries(); i++) {
+                add(gc.getGeometryN(i));
+            }
+        }
     }
-  }
 
-  public Coordinate getCentroid()
-  {
-    Coordinate cent = new Coordinate();
-    cent.x = centSum.x / totalLength;
-    cent.y = centSum.y / totalLength;
-    return cent;
-  }
-
-  /**
-   * Adds the length defined by an array of coordinates.
-   * @param pts an array of {@link Coordinate}s
-   */
-  public void add(Coordinate[] pts)
-  {
-    for (int i = 0; i < pts.length - 1; i++) {
-      double segmentLen = pts[i].distance(pts[i + 1]);
-      totalLength += segmentLen;
-
-      double midx = (pts[i].x + pts[i + 1].x) / 2;
-      centSum.x += segmentLen * midx;
-      double midy = (pts[i].y + pts[i + 1].y) / 2;
-      centSum.y += segmentLen * midy;
+    public Coordinate getCentroid() {
+        Coordinate cent = new Coordinate();
+        cent.x = centSum.x / totalLength;
+        cent.y = centSum.y / totalLength;
+        return cent;
     }
-  }
+
+    /**
+     * Adds the length defined by an array of coordinates.
+     *
+     * @param pts an array of {@link Coordinate}s
+     */
+    public void add(Coordinate[] pts) {
+        for (int i = 0; i < pts.length - 1; i++) {
+            double segmentLen = pts[i].distance(pts[i + 1]);
+            totalLength += segmentLen;
+
+            double midx = (pts[i].x + pts[i + 1].x) / 2;
+            centSum.x += segmentLen * midx;
+            double midy = (pts[i].y + pts[i + 1].y) / 2;
+            centSum.y += segmentLen * midy;
+        }
+    }
 
 }

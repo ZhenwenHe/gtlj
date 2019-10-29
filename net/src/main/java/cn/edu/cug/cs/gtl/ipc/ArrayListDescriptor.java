@@ -16,9 +16,9 @@ public class ArrayListDescriptor<T extends Storable>
     /**
      * Constructs an empty list with the specified initial capacity.
      *
-     * @param  initialCapacity  the initial capacity of the list
+     * @param initialCapacity the initial capacity of the list
      * @throws IllegalArgumentException if the specified initial capacity
-     *         is negative
+     *                                  is negative
      */
     public ArrayListDescriptor(int initialCapacity) {
         super(initialCapacity);
@@ -51,25 +51,24 @@ public class ArrayListDescriptor<T extends Storable>
      */
     public Object clone() {
         try {
-            ArrayListDescriptor<T> v = new ArrayListDescriptor<T>(size()) ;
-            for(T t: (List<T>)this)
+            ArrayListDescriptor<T> v = new ArrayListDescriptor<T>(size());
+            for (T t : (List<T>) this)
                 v.add((T) t.clone());
             return v;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     @Override
     public void copyFrom(Object i) {
-        List<T> v = (List<T>)(i) ;
+        List<T> v = (List<T>) (i);
         this.clear();
         try {
-            for(T t: v)
+            for (T t : v)
                 this.add((T) t.clone());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -77,19 +76,18 @@ public class ArrayListDescriptor<T extends Storable>
     @Override
     public boolean load(DataInput in) throws IOException {
         try {
-            int s=in.readInt();
+            int s = in.readInt();
             clear();
-            int len =in.readInt();
-            byte [] bs = new byte[len];
-            in.readFully(bs,0,len);
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-            for(int i=0;i<s;++i){
-                T a =  (T)ois.readObject();
+            for (int i = 0; i < s; ++i) {
+                T a = (T) ois.readObject();
                 add(a);
             }
             ois.close();
-        }
-        catch (IOException | NullPointerException|ClassNotFoundException e){
+        } catch (IOException | NullPointerException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return true;
@@ -98,19 +96,18 @@ public class ArrayListDescriptor<T extends Storable>
     @Override
     public boolean store(DataOutput out) throws IOException {
         try {
-            int s=this.size();
+            int s = this.size();
             out.writeInt(s);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
-            for(int i=0;i<s;++i){
-                oos.writeObject( get(i));
+            for (int i = 0; i < s; ++i) {
+                oos.writeObject(get(i));
             }
-            byte [] bs = baos.toByteArray();
+            byte[] bs = baos.toByteArray();
             out.writeInt(bs.length);
-            out.write(bs,0,bs.length);
+            out.write(bs, 0, bs.length);
             oos.close();
-        }
-        catch (IOException | NullPointerException e){
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -119,22 +116,21 @@ public class ArrayListDescriptor<T extends Storable>
     @Override
     public long getByteArraySize() {
         try {
-            int s=this.size();
+            int s = this.size();
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
-            for(int i=0;i<s;++i){
-                oos.writeObject( get(i));
+            for (int i = 0; i < s; ++i) {
+                oos.writeObject(get(i));
             }
-            return baos.size()+4;
-        }
-        catch (IOException | NullPointerException e){
+            return baos.size() + 4;
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return 0;
     }
 
-    public static ArrayListDescriptor  read(DataInput in) throws IOException {
-        ArrayListDescriptor  t= new ArrayListDescriptor ();
+    public static ArrayListDescriptor read(DataInput in) throws IOException {
+        ArrayListDescriptor t = new ArrayListDescriptor();
         t.readFields(in);
         return t;
     }

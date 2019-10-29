@@ -5,5 +5,6 @@ package cn.edu.cug.cs.gtl.geom;
  */
 public interface Polyhedral {
     TextureParameter getTextureParameter();
+
     void setTextureParameter(TextureParameter textureParameter);
 }

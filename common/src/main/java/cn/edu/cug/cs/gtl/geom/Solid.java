@@ -16,9 +16,9 @@ import java.util.List;
  * 一个Shell必须是封闭的，由多个多边形构成，
  * 一个Hole多边形封闭区域
  */
-public class Solid extends Geometry implements Polyhedral{
+public class Solid extends Geometry implements Polyhedral {
     private static final long serialVersionUID = 1L;
-    Shell  shell;
+    Shell shell;
     List<Hole> holes;
     Hole hole;
 
@@ -75,7 +75,7 @@ public class Solid extends Geometry implements Polyhedral{
 
         @Override
         public Solid clone() {
-            return (Solid)super.clone();
+            return (Solid) super.clone();
         }
 
         @Override
@@ -103,7 +103,7 @@ public class Solid extends Geometry implements Polyhedral{
             if (this.polygonals.size() != 0) len = this.polygonals.size();
             out.writeInt(len);
             if (len > 0) {
-                for (Polygonal polygonal: this.polygonals) {
+                for (Polygonal polygonal : this.polygonals) {
                     ObjectUtils.store(polygonal, out);
                 }
             }
@@ -117,7 +117,7 @@ public class Solid extends Geometry implements Polyhedral{
         }
     }
 
-    public static class Hole extends Geometry implements Serializable{
+    public static class Hole extends Geometry implements Serializable {
 
         private static final long serialVersionUID = 1L;
 
@@ -155,7 +155,7 @@ public class Solid extends Geometry implements Polyhedral{
             if (this.polygonals.size() != 0) lenth = this.polygonals.size();
             out.writeInt(lenth);
             if (lenth > 0) {
-                for (Polygonal polygonal: this.polygonals) {
+                for (Polygonal polygonal : this.polygonals) {
                     ObjectUtils.store(polygonal, out);
                 }
             }

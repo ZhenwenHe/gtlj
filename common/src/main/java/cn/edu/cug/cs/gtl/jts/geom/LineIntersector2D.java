@@ -75,6 +75,7 @@ public abstract class LineIntersector2D {
      * using Vertex2D#makePrecise
      */
     protected cn.edu.cug.cs.gtl.math.PrecisionModel precisionModel = null;
+
     public LineIntersector2D() {
         intPt[0] = Geom2DSuits.createVertex2D();//new Vertex2D();
         intPt[1] = Geom2DSuits.createVertex2D();//new Vertex2D();

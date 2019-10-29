@@ -48,82 +48,74 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 /**
  * A {@link Shape} which represents a polygon which may contain holes.
  * Provided because the standard AWT Polygon class does not support holes.
- * 
- * @author Martin Davis
  *
+ * @author Martin Davis
  */
-public class PolygonShape implements Shape 
-{
-  // use a GeneralPath with a winding rule, since it supports floating point coordinates
+public class PolygonShape implements Shape {
+    // use a GeneralPath with a winding rule, since it supports floating point coordinates
     private GeneralPath polygonPath;
     private GeneralPath ringPath;
-    
+
     /**
      * Creates a new polygon {@link Shape}.
-     * 
-     * @param shellVertices the vertices of the shell 
+     *
+     * @param shellVertices          the vertices of the shell
      * @param holeVerticesCollection a collection of Coordinate[] for each hole
      */
     public PolygonShape(Coordinate[] shellVertices,
-                        Collection holeVerticesCollection)
-    {
+                        Collection holeVerticesCollection) {
         polygonPath = toPath(shellVertices);
 
-        for (Iterator i = holeVerticesCollection.iterator(); i.hasNext();) {
+        for (Iterator i = holeVerticesCollection.iterator(); i.hasNext(); ) {
             Coordinate[] holeVertices = (Coordinate[]) i.next();
             polygonPath.append(toPath(holeVertices), false);
         }
     }
 
-    public PolygonShape() 
-    {
+    public PolygonShape() {
     }
 
-    void addToRing(Point2D p)
-    {
-    	if (ringPath == null) {
-    		ringPath = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
-    		ringPath.moveTo((float) p.getX(), (float) p.getY());
-    	}
-    	else {
-    		ringPath.lineTo((float) p.getX(), (float) p.getY());
-    	}
+    void addToRing(Point2D p) {
+        if (ringPath == null) {
+            ringPath = new GeneralPath(GeneralPath.WIND_EVEN_ODD);
+            ringPath.moveTo((float) p.getX(), (float) p.getY());
+        } else {
+            ringPath.lineTo((float) p.getX(), (float) p.getY());
+        }
     }
-    
-    void endRing()
-    {
-      ringPath.closePath();
-    	if (polygonPath == null) {
-    		polygonPath = ringPath;
-    	}
-    	else {
-    		polygonPath.append(ringPath, false);
-    	}
-    	ringPath = null;
+
+    void endRing() {
+        ringPath.closePath();
+        if (polygonPath == null) {
+            polygonPath = ringPath;
+        } else {
+            polygonPath.append(ringPath, false);
+        }
+        ringPath = null;
     }
-    
+
     /**
-     * Creates a GeneralPath representing a polygon ring 
+     * Creates a GeneralPath representing a polygon ring
      * having the given coordinate sequence.
      * Uses the GeneralPath.WIND_EVEN_ODD winding rule.
-     * 
+     *
      * @param coordinates a coordinate sequence
      * @return the path for the coordinate sequence
      */
     private GeneralPath toPath(Coordinate[] coordinates) {
-      GeneralPath path = new GeneralPath(GeneralPath.WIND_EVEN_ODD, coordinates.length);
+        GeneralPath path = new GeneralPath(GeneralPath.WIND_EVEN_ODD, coordinates.length);
 
-      if (coordinates.length > 0) {
-        path.moveTo((float) coordinates[0].x, (float) coordinates[0].y);
-        for (int i = 0; i < coordinates.length; i++) {
-          path.lineTo((float) coordinates[i].x, (float) coordinates[i].y);
+        if (coordinates.length > 0) {
+            path.moveTo((float) coordinates[0].x, (float) coordinates[0].y);
+            for (int i = 0; i < coordinates.length; i++) {
+                path.lineTo((float) coordinates[i].x, (float) coordinates[i].y);
+            }
         }
-      }
-      return path;
-  }
+        return path;
+    }
 
     public Rectangle getBounds() {
-      return polygonPath.getBounds();
+        return polygonPath.getBounds();
     }
 
     public Rectangle2D getBounds2D() {
@@ -131,27 +123,27 @@ public class PolygonShape implements Shape
     }
 
     public boolean contains(double x, double y) {
-      return polygonPath.contains(x, y);
+        return polygonPath.contains(x, y);
     }
 
     public boolean contains(Point2D p) {
-      return polygonPath.contains(p);
+        return polygonPath.contains(p);
     }
 
     public boolean intersects(double x, double y, double w, double h) {
-      return polygonPath.intersects(x, y, w, h);
+        return polygonPath.intersects(x, y, w, h);
     }
 
     public boolean intersects(Rectangle2D r) {
-      return polygonPath.intersects(r);
+        return polygonPath.intersects(r);
     }
 
     public boolean contains(double x, double y, double w, double h) {
-      return polygonPath.contains(x, y, w, h);
+        return polygonPath.contains(x, y, w, h);
     }
 
     public boolean contains(Rectangle2D r) {
-      return polygonPath.contains(r);
+        return polygonPath.contains(r);
     }
 
     public PathIterator getPathIterator(AffineTransform at) {
@@ -159,6 +151,6 @@ public class PolygonShape implements Shape
     }
 
     public PathIterator getPathIterator(AffineTransform at, double flatness) {
-    	return getPathIterator(at, flatness);
+        return getPathIterator(at, flatness);
     }
 }

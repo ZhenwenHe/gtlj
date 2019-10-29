@@ -124,7 +124,7 @@ public interface VertexSequence extends Serializable {
      * @param env the envelope2D to expand
      * @return a ref to the expanded envelope2D
      */
-    Envelope  expandEnvelope(Envelope env);
+    Envelope expandEnvelope(Envelope env);
 
     /**
      * Returns a deep copy of this collection.
@@ -134,28 +134,28 @@ public interface VertexSequence extends Serializable {
      */
     Object clone();
 
-    default Envelope getEnvelope(){
+    default Envelope getEnvelope() {
         int s = size();
-        if(s==1){
+        if (s == 1) {
             Envelope e = Envelope.create(getCoordinate(0), MathSuits.EPSILON);
         }
         double low[] = new double[getDimension()];
         double high[] = new double[getDimension()];
-        int dim =getDimension();
-        for(int i=0;i<dim;++i){
-            low[i]=Double.MAX_VALUE;
-            high[i]=-Double.MAX_VALUE;
+        int dim = getDimension();
+        for (int i = 0; i < dim; ++i) {
+            low[i] = Double.MAX_VALUE;
+            high[i] = -Double.MAX_VALUE;
         }
         double d = 0.0;
-        for(int i=0;i<s;++i) {
+        for (int i = 0; i < s; ++i) {
             for (int j = 0; j < dim; ++j) {
-                d = getOrdinate(i,j);
+                d = getOrdinate(i, j);
                 if (Double.compare(low[i], d) >= 0)
                     low[i] = d;
                 if (Double.compare(high[i], d) <= 0)
                     high[i] = d;
             }
         }
-        return Envelope.create(low,high);
+        return Envelope.create(low, high);
     }
 }

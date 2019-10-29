@@ -29,7 +29,7 @@ public class TBTree<T extends Interval> extends BaseTriangleTree<T> {
      * @param leafNodeCapacity
      */
     public TBTree(TriangleShape baseTriangle, int leafNodeCapacity) {
-        super(baseTriangle,leafNodeCapacity);
+        super(baseTriangle, leafNodeCapacity);
         this.rootNode = new TreeNode();
         this.rootNode.intervals = new ArrayList<>();
         rootNode.triangle = this.baseTriangle;
@@ -60,7 +60,6 @@ public class TBTree<T extends Interval> extends BaseTriangleTree<T> {
         }
         return true;
     }
-
 
 
     /**
@@ -366,37 +365,39 @@ public class TBTree<T extends Interval> extends BaseTriangleTree<T> {
      * @return 返回查询结果的个数
      */
     public List<T> regionQuery(RegionShape rs) {
-        List<T> f= new ArrayList<>();
-        regionQuery(rootNode,rs.getMBR(),f);
+        List<T> f = new ArrayList<>();
+        regionQuery(rootNode, rs.getMBR(), f);
         return f;
     }
 
     /**
-     *递归执行区域查询
+     * 递归执行区域查询
+     *
      * @param treeNode
      * @param rs
      * @param f
      * @return
      */
     private int regionQuery(TreeNode treeNode, Envelope rs, List<T> f) {
-        if(!Geom2DSuits.intersects(rs,treeNode.triangle))
+        if (!Geom2DSuits.intersects(rs, treeNode.triangle))
             return 0;
-        else{
-            if(treeNode.isLeafNode()){
-                for(T i : treeNode.intervals)
+        else {
+            if (treeNode.isLeafNode()) {
+                for (T i : treeNode.intervals)
                     f.add(i);
 
                 return 1;
             }
-            if(treeNode.left!=null && Geom2DSuits.intersects(rs,treeNode.left.triangle)){
-                regionQuery(treeNode.left,rs,f);
+            if (treeNode.left != null && Geom2DSuits.intersects(rs, treeNode.left.triangle)) {
+                regionQuery(treeNode.left, rs, f);
             }
-            if(treeNode.right!=null&& Geom2DSuits.intersects(rs,treeNode.right.triangle)){
-                regionQuery(treeNode.right,rs,f);
+            if (treeNode.right != null && Geom2DSuits.intersects(rs, treeNode.right.triangle)) {
+                regionQuery(treeNode.right, rs, f);
             }
             return 1;
         }
     }
+
     /**
      * 树节点类，如果intervals==null，则为内部节点，
      * 否则为外部节点或叶子节点；

@@ -76,9 +76,9 @@ public class MapStoreUtil extends ParameterizedTypeUtil {
     public static <T> T getInstance(Class<T> mapType) throws IllegalAccessException, InstantiationException, StoreException {
         if (Map.class.isAssignableFrom(mapType) && isImplementedClass(mapType)) {
             return mapType.newInstance();
-        }else if (mapType==Map.class){
+        } else if (mapType == Map.class) {
             return (T) new HashMap<>();
-        }else{
+        } else {
             throw new StoreException(StoreException.MapInstance);
         }
 
@@ -100,23 +100,23 @@ public class MapStoreUtil extends ParameterizedTypeUtil {
         long keySize = 0;
         long valueSize = 0;
         if (CommonStoreUtil.isConstantSizeType((Class<?>) keyType)) {
-            keySize = CommonStoreUtil.getConstantTypeSize((Class<?>) keyType)*map.size();
-        }else if (CommonStoreUtil.isPrimitiveType((Class<?>) keyType)) {
-            keySize = CommonStoreUtil.getPrimitiveTypeSize((Class<?>) keyType)*map.size();
-        }else{
+            keySize = CommonStoreUtil.getConstantTypeSize((Class<?>) keyType) * map.size();
+        } else if (CommonStoreUtil.isPrimitiveType((Class<?>) keyType)) {
+            keySize = CommonStoreUtil.getPrimitiveTypeSize((Class<?>) keyType) * map.size();
+        } else {
             for (Object key : map.keySet()) {
-               keySize+=CommonStoreUtil.getByteArraySize(key);
+                keySize += CommonStoreUtil.getByteArraySize(key);
             }
         }
         if (CommonStoreUtil.isConstantSizeType((Class<?>) valueType)) {
-            valueSize = CommonStoreUtil.getConstantTypeSize((Class<?>) valueType)*map.size();
-        }else if (CommonStoreUtil.isPrimitiveType((Class<?>) keyType)) {
-            valueSize = CommonStoreUtil.getPrimitiveTypeSize((Class<?>) valueType)*map.size();
-        }else{
+            valueSize = CommonStoreUtil.getConstantTypeSize((Class<?>) valueType) * map.size();
+        } else if (CommonStoreUtil.isPrimitiveType((Class<?>) keyType)) {
+            valueSize = CommonStoreUtil.getPrimitiveTypeSize((Class<?>) valueType) * map.size();
+        } else {
             for (Object value : map.values()) {
-                valueSize+=CommonStoreUtil.getByteArraySize(value);
+                valueSize += CommonStoreUtil.getByteArraySize(value);
             }
         }
-        return CommonStoreUtil.INT_SIZE+keySize+valueSize;
+        return CommonStoreUtil.INT_SIZE + keySize + valueSize;
     }
 }

@@ -4,76 +4,76 @@ package cn.edu.cug.cs.gtl.protos;
 
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Documents";
 
-message Version{
-    string major_version=1;
-    string minor_version=2;
-    string patch=3;
+message Version {
+    string major_version = 1;
+    string minor_version = 2;
+    string patch = 3;
 }
 
-message URI{
-    string value=1;
+message URI {
+    string value = 1;
 }
 
 message Raw {
-    bytes value=1;
+    bytes value = 1;
 }
 
-message Paragraph{
-    string value=1;
+message Paragraph {
+    string value = 1;
 }
 
-message Paragraphs{
-    repeated Paragraph paragraph=1;
+message Paragraphs {
+    repeated Paragraph paragraph = 1;
 }
 
-message Keyword{
-    string value=1;
+message Keyword {
+    string value = 1;
 }
 
-message Keywords{
-    repeated Keyword keyword=1;
+message Keywords {
+    repeated Keyword keyword = 1;
 }
 
-message Author{
-    string first_name=1;
-    string last_name=2;
-    string middle_name=3;
-    string email=4;
+message Author {
+    string first_name = 1;
+    string last_name = 2;
+    string middle_name = 3;
+    string email = 4;
 }
 
-message Authors{
-    repeated Author author=1;
+message Authors {
+    repeated Author author = 1;
 }
 
-message Affiliation{
-    string value=1;
+message Affiliation {
+    string value = 1;
 }
 
-message Affiliations{
-    repeated Affiliation affiliation=1;
+message Affiliations {
+    repeated Affiliation affiliation = 1;
 }
 
-message Abstract{
-    string value=1;
+message Abstract {
+    string value = 1;
 }
 
-message Content{
-    Paragraphs paragraphs=1;
+message Content {
+    Paragraphs paragraphs = 1;
 }
 
-message Document{
-    string title=1;
-    Keywords keywords=2;
-    Version version=3;
-    string type=4;
-    URI uri=5;
-    Authors authors=6;
-    Affiliations affiliations=7;
-    Abstract abstract=8;
-    Content content=9;
-    Raw raw=10;
+message Document {
+    string title = 1;
+    Keywords keywords = 2;
+    Version version = 3;
+    string type = 4;
+    URI uri = 5;
+    Authors authors = 6;
+    Affiliations affiliations = 7;
+    Abstract abstract = 8;
+    Content content = 9;
+    Raw raw = 10;
 }

@@ -10,6 +10,7 @@ import java.nio.file.Path;
 public interface FeatureStore extends DataStore<FeatureType, Feature> {
     /**
      * 打开要素库,如果该要素库不存在，则新建一个要素库并打开
+     *
      * @param path
      * @return
      * @throws IOException
@@ -23,17 +24,20 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
     /////////////////////////////////////////////////////////////////////////////
     //FeatureType operations begin
     /////////////////////////////////////////////////////////////////////////////
+
     /**
      * 构建一个FeatureTypeBuilder，并返回
      * 通过FeatureTypeBuilder构建的FeatureType 必须添加到本Store中
+     *
      * @return
      */
-    default FeatureTypeBuilder getFeatureTypeBuilder(){
+    default FeatureTypeBuilder getFeatureTypeBuilder() {
         return new FeatureTypeBuilder();
     }
 
     /**
      * 获取FeatureType的查找器，可以通过名称查找该要素类型对象
+     *
      * @return
      */
     FeatureTypeFinder getFeatureTypeFinder();
@@ -43,7 +47,8 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
      * 这是FeatureType添加到FeatureStore中的唯一方法
      * 目的是保证FeatureType与FeatureSet的一一对应关系
      * 然后在本FeatureStore中创建一个FeatureSet
-      * @param featureType
+     *
+     * @param featureType
      * @return
      * @throws IOException
      */
@@ -51,6 +56,7 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
 
     /**
      * 获取对应的FeatureSet
+     *
      * @param featureTypeName
      * @return
      * @throws IOException
@@ -59,6 +65,7 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
 
     /**
      * 移除FeatureSet及其对应的FeatureType
+     *
      * @param featureTypeName
      * @throws IOException
      */
@@ -67,25 +74,29 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
     /////////////////////////////////////////////////////////////////////////////
     //Feature operations begin
     /////////////////////////////////////////////////////////////////////////////
+
     /**
      * 添加要素，首先查找所属FeatureSet,
      * 然后打开该FeatureSet，添加进去
+     *
      * @param feature
      * @return
      * @throws IOException
      */
-    Feature   appendFeature(Feature feature) throws IOException;
+    Feature appendFeature(Feature feature) throws IOException;
 
     /**
      * 移除要素
+     *
      * @param feature
      * @return
      * @throws IOException
      */
-    Feature   removeFeature(Feature feature) throws IOException;
+    Feature removeFeature(Feature feature) throws IOException;
 
     /**
      * 获取FeatureWriter对象
+     *
      * @param featureTypeName
      * @return
      * @throws IOException
@@ -98,6 +109,7 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
 
     /**
      * 获取FeatureReader对象
+     *
      * @param featureTypeName
      * @return
      * @throws IOException
@@ -109,14 +121,15 @@ public interface FeatureStore extends DataStore<FeatureType, Feature> {
     /**
      * 根据要素类型名称，构建FeatureBuilder
      * 传入FeatureBuilder的要素类型必须是本Store中已经存在的要素类型
+     *
      * @param featureTypeName 本Store中已经存在的要素类型名称
      * @return
      */
-    default FeatureBuilder getFeatureBuilder(String featureTypeName){
+    default FeatureBuilder getFeatureBuilder(String featureTypeName) {
         FeatureTypeFinder featureTypeFinder = getFeatureTypeFinder();
-        if(featureTypeFinder==null) return null;
+        if (featureTypeFinder == null) return null;
         FeatureType ft = featureTypeFinder.find(featureTypeName);
-        if(ft==null) return null;
+        if (ft == null) return null;
         return new FeatureBuilder(ft);
     }
 

@@ -24,12 +24,12 @@
 package cn.edu.cug.cs.gtl.index.btree;
 
 /**
- *  Combines two PageStorage objects, using the first until the "high
- *  water mark" is exceeded, then moving to the other.  Generally the
- *  first PageStorage is "small but fast" and the second is "large but
- *  slow".
- *
- *  Might not be thread-safe.
+ * Combines two PageStorage objects, using the first until the "high
+ * water mark" is exceeded, then moving to the other.  Generally the
+ * first PageStorage is "small but fast" and the second is "large but
+ * slow".
+ * <p>
+ * Might not be thread-safe.
  */
 public class OverflowPageStorage extends PageStorage {
 
@@ -38,21 +38,26 @@ public class OverflowPageStorage extends PageStorage {
     private final int highWaterMark;
     private boolean overflowed = false;
 
-    /** Note that highWaterMark is in BYTES, not pages */
+    /**
+     * Note that highWaterMark is in BYTES, not pages
+     */
     public OverflowPageStorage(PageStorage ps1, PageStorage ps2, long highWaterMark) {
         super(Math.max(ps1.getPageSize(), ps1.getPageSize()));
         this.ps1 = ps1;
         this.ps2 = ps2;
-        this.highWaterMark = (int)(highWaterMark / getPageSize());
-    } 
+        this.highWaterMark = (int) (highWaterMark / getPageSize());
+    }
 
-    public int getNumPages() { return overflowed ? ps2.getNumPages() : ps1.getNumPages(); }
+    public int getNumPages() {
+        return overflowed ? ps2.getNumPages() : ps1.getNumPages();
+    }
+
     public synchronized int createPage() {
         if (overflowed) return ps2.createPage();
         if (ps1.getNumPages() < highWaterMark) return ps1.createPage();
         byte[] buf = new byte[getPageSize()];
-        for(int i=0; i<ps1.getNumPages(); i++) {
-            while(ps2.getNumPages() < i+1) ps2.createPage();
+        for (int i = 0; i < ps1.getNumPages(); i++) {
+            while (ps2.getNumPages() < i + 1) ps2.createPage();
             ps1.readPage(i, buf, 0);
             ps2.writePage(i, buf, 0);
         }
@@ -60,16 +65,29 @@ public class OverflowPageStorage extends PageStorage {
         ps1.close();
         return ps2.createPage();
     }
-    public void fsync(int pageid) { if (overflowed) ps2.fsync(pageid); else ps1.fsync(pageid); }
-    public void fsync() { if (overflowed) ps2.fsync(); else ps1.fsync(); }
-    public void writePage(int pageid, byte[] buf, int ofs) {
-        if (overflowed) ps2.writePage(pageid, buf, ofs);
-        else            ps1.writePage(pageid, buf, ofs);
-    }
-    public void readPage(int pageid, byte[] buf, int ofs) {
-        if (overflowed) ps2.readPage(pageid, buf, ofs);
-        else            ps1.readPage(pageid, buf, ofs);
+
+    public void fsync(int pageid) {
+        if (overflowed) ps2.fsync(pageid);
+        else ps1.fsync(pageid);
     }
 
-    public synchronized void close() { if (overflowed) ps2.close(); else ps1.close(); }
+    public void fsync() {
+        if (overflowed) ps2.fsync();
+        else ps1.fsync();
+    }
+
+    public void writePage(int pageid, byte[] buf, int ofs) {
+        if (overflowed) ps2.writePage(pageid, buf, ofs);
+        else ps1.writePage(pageid, buf, ofs);
+    }
+
+    public void readPage(int pageid, byte[] buf, int ofs) {
+        if (overflowed) ps2.readPage(pageid, buf, ofs);
+        else ps1.readPage(pageid, buf, ofs);
+    }
+
+    public synchronized void close() {
+        if (overflowed) ps2.close();
+        else ps1.close();
+    }
 }

@@ -11,9 +11,9 @@ import java.io.IOException;
 public class StorableString implements StorableComparable<StorableString> {
     private static final long serialVersionUID = 4419823521768644244L;
 
-    private String  value=null;
+    private String value = null;
 
-    public StorableString( ) {
+    public StorableString() {
     }
 
     public StorableString(String value) {
@@ -35,13 +35,13 @@ public class StorableString implements StorableComparable<StorableString> {
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.value= StringUtils.load(in);
+        this.value = StringUtils.load(in);
         return true;
     }
 
     @Override
     public boolean store(DataOutput out) throws IOException {
-        StringUtils.store(this.value,out);
+        StringUtils.store(this.value, out);
         return true;
     }
 

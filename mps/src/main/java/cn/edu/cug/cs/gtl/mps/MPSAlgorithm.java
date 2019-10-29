@@ -1,4 +1,5 @@
 package cn.edu.cug.cs.gtl.mps;
+
 import com.google.common.collect.Maps;
 import com.google.common.primitives.UnsignedInteger;
 import com.google.common.primitives.UnsignedInts;
@@ -16,7 +17,7 @@ import static org.apache.htrace.fasterxml.jackson.databind.deser.std.UntypedObje
 
 /**
  * @brief Abstract Multiple Points Statistic algorithm
- *
+ * <p>
  * This class contains some shared procedures and functions for different implementation of MPS algorithms.
  * This class cannot be used directly, view DirectSimulation for an example of how to implement an algorithm from this base.
  */
@@ -192,18 +193,18 @@ public abstract class MPSAlgorithm {
     protected AtomicBoolean _jobDone = new AtomicBoolean();
 
     /**
-     * @brief simulation algorithm main function
      * @param sgIdxX index X of a node inside the simulation grind
      * @param sgIdxY index Y of a node inside the simulation grind
      * @param sgIdxZ index Z of a node inside the simulation grind
-     * @param level level of the current grid
+     * @param level  level of the current grid
      * @return found node's value
+     * @brief simulation algorithm main function
      */
-    protected abstract float _simulate(final int sgIdxX, final int sgIdxY, final int sgIdxZ, final int level) ;
+    protected abstract float _simulate(final int sgIdxX, final int sgIdxY, final int sgIdxZ, final int level);
 
     /**
-     * @brief Abstract function allow acces to the beginning of each simulation of each multiple grid
      * @param level the current grid level
+     * @brief Abstract function allow acces to the beginning of each simulation of each multiple grid
      */
     protected abstract void _InitStartSimulationEachMultipleGrid(final int level);
 
@@ -213,227 +214,359 @@ public abstract class MPSAlgorithm {
 //    public abstract void startSimulation() ;
 
     /**
-     * @brief get the simulation grid
      * @return the simulation grid
+     * @brief get the simulation grid
      */
-    public Array3Df sg()  {return _sg;}
+    public Array3Df sg() {
+        return _sg;
+    }
+
     /**
-     * @brief set the simulation grid
      * @param sg new simulation grid
+     * @brief set the simulation grid
      */
-    public void setSg(Array3Df sg) {_sg = sg;}
+    public void setSg(Array3Df sg) {
+        _sg = sg;
+    }
+
     /**
-     * @brief get the iterations simulation grid
      * @return iterations simulation grid
+     * @brief get the iterations simulation grid
      */
-    public Array3Df sgIterations()  {return _sgIterations;}
+    public Array3Df sgIterations() {
+        return _sgIterations;
+    }
+
     /**
-     * @brief set the iterations simulation grid
      * @param sgIterations new iterations simulation grid
+     * @brief set the iterations simulation grid
      */
-    public void setsgIterations(Array3Df sgIterations) {_sgIterations = sgIterations;}
+    public void setsgIterations(Array3Df sgIterations) {
+        _sgIterations = sgIterations;
+    }
+
     /**
-     * @brief get the simulation path
      * @return the simulation path
+     * @brief get the simulation path
      */
-    public ArrayList<Integer> simulationPath()  {return _simulationPath;}
+    public ArrayList<Integer> simulationPath() {
+        return _simulationPath;
+    }
+
     /**
-     * @brief set the simulation path
      * @param simulationPath new simulation path
+     * @brief set the simulation path
      */
-    public void setSimulationPath(ArrayList<Integer> simulationPath) {_simulationPath = simulationPath;}
+    public void setSimulationPath(ArrayList<Integer> simulationPath) {
+        _simulationPath = simulationPath;
+    }
+
     /**
-     * @brief get the simulation grid dimension X
      * @return simulation grid dimension X
+     * @brief get the simulation grid dimension X
      */
-    public int sgDimX()  {return _sgDimX;}
+    public int sgDimX() {
+        return _sgDimX;
+    }
+
     /**
-     * @brief set new dimension X to the simulation grid. The sg need to be reinitialized after calling this function
      * @param sgDimX new dimension X of the sg
+     * @brief set new dimension X to the simulation grid. The sg need to be reinitialized after calling this function
      */
-    public void setSgDimX(int sgDimX) {_sgDimX = sgDimX;}
+    public void setSgDimX(int sgDimX) {
+        _sgDimX = sgDimX;
+    }
+
     /**
-     * @brief get the simulation grid dimension Y
      * @return simulation grid dimension Y
+     * @brief get the simulation grid dimension Y
      */
-    public int sgDimY()  {return _sgDimY;}
+    public int sgDimY() {
+        return _sgDimY;
+    }
+
     /**
-     * @brief set new dimension Y to the simulation grid. The sg need to be reinitialized after calling this function
      * @param sgDimY new dimension Y of the sg
+     * @brief set new dimension Y to the simulation grid. The sg need to be reinitialized after calling this function
      */
-    public void setSgDimY(int sgDimY) {_sgDimY = sgDimY;}
+    public void setSgDimY(int sgDimY) {
+        _sgDimY = sgDimY;
+    }
+
     /**
-     * @brief get the simulation grid dimension Z
      * @return simulation grid dimension Z
+     * @brief get the simulation grid dimension Z
      */
-    public int sgDimZ()  {return _sgDimZ;}
+    public int sgDimZ() {
+        return _sgDimZ;
+    }
+
     /**
-     * @brief set new dimension Z to the simulation grid. The sg need to be reinitialized after calling this function
      * @param sgDimZ new dimension Z of the sg
+     * @brief set new dimension Z to the simulation grid. The sg need to be reinitialized after calling this function
      */
-    public void setSgDimZ(int sgDimZ) {_sgDimZ = sgDimZ;}
+    public void setSgDimZ(int sgDimZ) {
+        _sgDimZ = sgDimZ;
+    }
+
     /**
-     * @brief Getter shuffleSgPath
      * @return shuffleSgPath
+     * @brief Getter shuffleSgPath
      */
-    public int shuffleSgPath()  {return _shuffleSgPath;}
+    public int shuffleSgPath() {
+        return _shuffleSgPath;
+    }
+
     /**
-     * @brief Setter ShuffleSgPath
      * @param shuffleSgPath new value
+     * @brief Setter ShuffleSgPath
      */
-    public void setShuffleSgPath(int shuffleSgPath) {_shuffleSgPath = shuffleSgPath;}
+    public void setShuffleSgPath(int shuffleSgPath) {
+        _shuffleSgPath = shuffleSgPath;
+    }
+
     /**
-     * @brief get the realization numbers
      * @return realization number
+     * @brief get the realization numbers
      */
-    public int realizationNumbers()  {return _realizationNumbers;}
+    public int realizationNumbers() {
+        return _realizationNumbers;
+    }
+
     /**
-     * @brief set the realization numbers
      * @param realizationNumbers new realization numbers
+     * @brief set the realization numbers
      */
-    public void setRealizationNumbers(int realizationNumbers) {_realizationNumbers = realizationNumbers;}
+    public void setRealizationNumbers(int realizationNumbers) {
+        _realizationNumbers = realizationNumbers;
+    }
+
     /**
-     * @brief get is debug mode
      * @return debug mode
+     * @brief get is debug mode
      */
-    public int debugMode()  {return _debugMode;}
+    public int debugMode() {
+        return _debugMode;
+    }
+
     /**
-     * @brief set debug mode
      * @param debugMode new debug mode
+     * @brief set debug mode
      */
-    public void setDebugMode(int debugMode) {_debugMode = debugMode;}
+    public void setDebugMode(int debugMode) {
+        _debugMode = debugMode;
+    }
+
     /**
-     * @brief get is preview showed
      * @return is preview showed
+     * @brief get is preview showed
      */
-    public boolean showPreview()  {return _showPreview;}
+    public boolean showPreview() {
+        return _showPreview;
+    }
+
     /**
-     * @brief set ShowPreview
      * @param showPreview new showpreview
+     * @brief set ShowPreview
      */
-    public void setShowPreview(boolean showPreview) {_showPreview = showPreview;}
+    public void setShowPreview(boolean showPreview) {
+        _showPreview = showPreview;
+    }
+
     /**
-     * @brief Getter maxIterations
      * @return maxIterations
+     * @brief Getter maxIterations
      */
-    public int maxIterations()  {return _maxIterations;}
+    public int maxIterations() {
+        return _maxIterations;
+    }
+
     /**
-     * @brief Setter MaxIterations
      * @param maxIterations new value
+     * @brief Setter MaxIterations
      */
-    public void setMaxIterations(int maxIterations) {_maxIterations = maxIterations;}
+    public void setMaxIterations(int maxIterations) {
+        _maxIterations = maxIterations;
+    }
+
     /**
-     * @brief Getter numberOfThreads
      * @return numberOfThreads
+     * @brief Getter numberOfThreads
      */
-    public int numberOfThreads()  {return _numberOfThreads;}
+    public int numberOfThreads() {
+        return _numberOfThreads;
+    }
+
     /**
-     * @brief Setter NumberOfThreads
      * @param numberOfThreads new value
+     * @brief Setter NumberOfThreads
      */
-    public void setNumberOfThreads(int numberOfThreads) {_numberOfThreads = numberOfThreads;}
+    public void setNumberOfThreads(int numberOfThreads) {
+        _numberOfThreads = numberOfThreads;
+    }
+
     /**
-     * @brief Getter tiFilename
      * @return tiFilename
+     * @brief Getter tiFilename
      */
-    public String tiFilename()  {return _tiFilename;}
+    public String tiFilename() {
+        return _tiFilename;
+    }
+
     /**
-     * @brief Setter TiFilename
      * @param tiFilename new value
+     * @brief Setter TiFilename
      */
-    public void setTiFilename(String tiFilename) {_tiFilename = tiFilename;}
+    public void setTiFilename(String tiFilename) {
+        _tiFilename = tiFilename;
+    }
+
     /**
-     * @brief Getter outputDirectory
      * @return outputDirectory
+     * @brief Getter outputDirectory
      */
-    public String outputDirectory()  {return _outputDirectory;}
+    public String outputDirectory() {
+        return _outputDirectory;
+    }
+
     /**
-     * @brief Setter OutputDirectory
      * @param outputDirectory new value
+     * @brief Setter OutputDirectory
      */
-    public void setOutputDirectory(final String outputDirectory) {_outputDirectory = outputDirectory;}
+    public void setOutputDirectory(final String outputDirectory) {
+        _outputDirectory = outputDirectory;
+    }
+
     /**
-     * @brief Getter hardDataFileNames
      * @return hardDataFileNames
+     * @brief Getter hardDataFileNames
      */
-    public String hardDataFileNames()  {return _hardDataFileNames;}
+    public String hardDataFileNames() {
+        return _hardDataFileNames;
+    }
+
     /**
-     * @brief Setter HardDataFileNames
      * @param hardDataFileNames new value
+     * @brief Setter HardDataFileNames
      */
-    public void setHardDataFileNames(final String hardDataFileNames) {_hardDataFileNames = hardDataFileNames;}
+    public void setHardDataFileNames(final String hardDataFileNames) {
+        _hardDataFileNames = hardDataFileNames;
+    }
+
     /**
-     * @brief Getter TI
      * @return TI
+     * @brief Getter TI
      */
-    public Array3Df TI()  {return _TI;}
+    public Array3Df TI() {
+        return _TI;
+    }
+
     /**
-     * @brief Setter TI
      * @param TI new value
+     * @brief Setter TI
      */
-    public void setTI(Array3Df TI) {_TI = TI;}
+    public void setTI(Array3Df TI) {
+        _TI = TI;
+    }
+
     /**
-     * @brief Getter tiDimX
      * @return tiDimX
+     * @brief Getter tiDimX
      */
-    public int tiDimX()  {return _tiDimX;}
+    public int tiDimX() {
+        return _tiDimX;
+    }
+
     /**
-     * @brief Setter TiDimX
      * @param tiDimX new value
+     * @brief Setter TiDimX
      */
-    public void setTiDimX(int tiDimX) {_tiDimX = tiDimX;}
+    public void setTiDimX(int tiDimX) {
+        _tiDimX = tiDimX;
+    }
+
     /**
-     * @brief Getter tiDimY
      * @return tiDimY
+     * @brief Getter tiDimY
      */
-    public int tiDimY()  {return _tiDimY;}
+    public int tiDimY() {
+        return _tiDimY;
+    }
+
     /**
-     * @brief Setter TiDimY
      * @param tiDimY new value
+     * @brief Setter TiDimY
      */
-    public void setTiDimY(int tiDimY) {_tiDimY = tiDimY;}
+    public void setTiDimY(int tiDimY) {
+        _tiDimY = tiDimY;
+    }
+
     /**
-     * @brief Getter tiDimZ
      * @return tiDimZ
+     * @brief Getter tiDimZ
      */
-    public int tiDimZ()  {return _tiDimZ;}
+    public int tiDimZ() {
+        return _tiDimZ;
+    }
+
     /**
-     * @brief Setter TiDimZ
      * @param tiDimZ new value
+     * @brief Setter TiDimZ
      */
-    public void setTiDimZ(int tiDimZ) {_tiDimZ = tiDimZ;}
+    public void setTiDimZ(int tiDimZ) {
+        _tiDimZ = tiDimZ;
+    }
+
     /**
-     * @brief get the maximum neighbours number used for neighbour search
      * @return maximum neighbour number
+     * @brief get the maximum neighbours number used for neighbour search
      */
-    public int maxNeighbours()  {return _maxNeighbours;}
+    public int maxNeighbours() {
+        return _maxNeighbours;
+    }
+
     /**
-     * @brief set maximum neighbours number
      * @param maxNeighbours new maximum neighbour number
+     * @brief set maximum neighbours number
      */
-    public void setMaxNeighbours(int maxNeighbours) {_maxNeighbours = maxNeighbours;}
+    public void setMaxNeighbours(int maxNeighbours) {
+        _maxNeighbours = maxNeighbours;
+    }
+
     /**
-     * @brief Getter shuffleTiPath
      * @return shuffleTiPath
+     * @brief Getter shuffleTiPath
      */
-    public boolean shuffleTiPath()  {return _shuffleTiPath;}
+    public boolean shuffleTiPath() {
+        return _shuffleTiPath;
+    }
+
     /**
-     * @brief Setter ShuffleTiPath
      * @param shuffleTiPath new value
+     * @brief Setter ShuffleTiPath
      */
-    public void setShuffleTiPath(boolean shuffleTiPath) {_shuffleTiPath = shuffleTiPath;}
+    public void setShuffleTiPath(boolean shuffleTiPath) {
+        _shuffleTiPath = shuffleTiPath;
+    }
+
     /**
-     * @brief Getter tiPath
      * @return tiPath
+     * @brief Getter tiPath
      */
-    public ArrayList<Integer> tiPath()  {return _tiPath;}
+    public ArrayList<Integer> tiPath() {
+        return _tiPath;
+    }
+
     /**
-     * @brief Setter TiPath
      * @param tiPath new value
+     * @brief Setter TiPath
      */
-    public void setTiPath(ArrayList<Integer> tiPath) {_tiPath = tiPath;}
+    public void setTiPath(ArrayList<Integer> tiPath) {
+        _tiPath = tiPath;
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
+
     /**
      * @brief Constructors
      */
@@ -442,78 +575,78 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Initialize the Hard Data Grid with a value, default is NaN
-     * @param hdg the simulation GRID
+     * @param hdg    the simulation GRID
      * @param sgDimX dimension X of the grid
      * @param sgDimY dimension Y of the gri
      * @param sgDimZ dimension Z of the grid
-     * @param value value of each grid node default is NAN
+     * @param value  value of each grid node default is NAN
+     * @brief Initialize the Hard Data Grid with a value, default is NaN
      */
     void _initializeHDG(Array3Df hdg, final int sgDimX, final int sgDimY, final int sgDimZ, final float value) {
-        hdg.resize(sgDimX, sgDimY, sgDimZ,value);
+        hdg.resize(sgDimX, sgDimY, sgDimZ, value);
     }
 
     void _initializeHDG(Array3Df hdg, final int sgDimX, final int sgDimY, final int sgDimZ) {
-        hdg.resize(sgDimX, sgDimY, sgDimZ,Float.NaN);
+        hdg.resize(sgDimX, sgDimY, sgDimZ, Float.NaN);
     }
 
     /**
-     * @brief Initialize the Simulation Grid with a value, default is NaN
-     * @param sg the simulation GRID
+     * @param sg     the simulation GRID
      * @param sgDimX dimension X of the grid
      * @param sgDimY dimension Y of the gri
      * @param sgDimZ dimension Z of the grid
-     * @param value value of each grid node default is NAN
+     * @param value  value of each grid node default is NAN
+     * @brief Initialize the Simulation Grid with a value, default is NaN
      */
-    void _initializeSG(Array3Df sg, final int sgDimX, final  int sgDimY, final int sgDimZ, final float value) {
-        sg.resize(sgDimX,sgDimY,sgDimZ,value);
+    void _initializeSG(Array3Df sg, final int sgDimX, final int sgDimY, final int sgDimZ, final float value) {
+        sg.resize(sgDimX, sgDimY, sgDimZ, value);
     }
 
-    void _initializeSG(Array3Df sg, final int sgDimX, final  int sgDimY, final int sgDimZ) {
-        sg.resize(sgDimX,sgDimY,sgDimZ,Float.NaN);
+    void _initializeSG(Array3Df sg, final int sgDimX, final int sgDimY, final int sgDimZ) {
+        sg.resize(sgDimX, sgDimY, sgDimZ, Float.NaN);
     }
 
     /**
+     * @param sg       the simulation GRID
+     * @param sgDimX   dimension X of the grid
+     * @param sgDimY   dimension Y of the gri
+     * @param sgDimZ   dimension Z of the grid
+     * @param grid     the grid to copy data in
+     * @param nanValue value in copy grid considered to be a NAN value default is -1
      * @brief Initialize the Simulation Grid from a 3D grid with values
      * The Copy and simulation grid must have the same dimension in X, Y and Z
-     * @param sg the simulation GRID
-     * @param sgDimX dimension X of the grid
-     * @param sgDimY dimension Y of the gri
-     * @param sgDimZ dimension Z of the grid
-     * @param grid the grid to copy data in
-     * @param nanValue value in copy grid considered to be a NAN value default is -1
      */
     void _initializeSG(Array3Df sg, final int sgDimX, final int sgDimY, final int sgDimZ, Array3Df grid, final float nanValue) {
-        for (int z = 0; z < sgDimZ; z ++) {
+        for (int z = 0; z < sgDimZ; z++) {
             for (int y = 0; y < sgDimY; y++) {
                 for (int x = 0; x < sgDimX; x++) {
-                    if(!Utility.isNAN(grid.getElement(x, y, z))) sg.setElement(x, y, z, grid.getElement(x, y, z));
+                    if (!Utility.isNAN(grid.getElement(x, y, z))) sg.setElement(x, y, z, grid.getElement(x, y, z));
                     else sg.setElement(x, y, z, Float.NaN);
-                    System.out.println("init:: " + x + y + z + " VAL " +  _sg.getElement(x, y, z) + " " + grid.getElement(x, y, z));
+                    System.out.println("init:: " + x + y + z + " VAL " + _sg.getElement(x, y, z) + " " + grid.getElement(x, y, z));
                 }
             }
         }
     }
 
     void _initializeSG(Array3Df sg, final int sgDimX, final int sgDimY, final int sgDimZ, Array3Df grid) {
-        _initializeSG( sg,  sgDimX, sgDimY,  sgDimZ,  grid, -1.0f);
+        _initializeSG(sg, sgDimX, sgDimY, sgDimZ, grid, -1.0f);
     }
 
     /**
-     * @brief Initilize a sequential simulation path
      * @param sgDimX dimension X of the path
      * @param sgDimY dimension Y of the path
      * @param sgDimZ dimension Z of the path
-     * @param path output simulation path
+     * @param path   output simulation path
+     * @brief Initilize a sequential simulation path
      */
     void _initilizePath(final int sgDimX, final int sgDimY, final int sgDimZ, ArrayList<Integer> path) {
         //Putting sequential indices
         int cnt = 0;
-        for (int z=0; z<sgDimZ; z++) {
-            for (int y=0; y<sgDimY; y++) {
-                for (int x=0; x<sgDimX; x++) {
+        for (int z = 0; z < sgDimZ; z++) {
+            for (int y = 0; y < sgDimY; y++) {
+                for (int x = 0; x < sgDimX; x++) {
                     //path[cnt] = cnt++;
-                    path.add(cnt,cnt);
+                    path.add(cnt, cnt);
                     cnt++;
 //                    path.set(cnt,cnt++);
                 }
@@ -522,8 +655,8 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Generate a realization from a PDF defined as a map
      * @param Pdf the pdf as a std::map, realization from the pdf
+     * @brief Generate a realization from a PDF defined as a map
      */
     //这里的Map下面好像没有修改，修改为final
     float _sampleFromPdf(final Map<Float, Float> Pdf) {
@@ -533,7 +666,7 @@ public abstract class MPSAlgorithm {
         randomValue = r.nextFloat();
 
         float cumsum_pdf = 0; // integral conditional probability density (conditionalPdfFromTi)
-        for(Map.Entry<Float,Float> e: Pdf.entrySet()){
+        for (Map.Entry<Float, Float> e : Pdf.entrySet()) {
             cumsum_pdf += e.getValue();
             if (cumsum_pdf >= randomValue) {
                 simulatedValue = e.getKey();
@@ -544,22 +677,22 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Check if the current node is closed to a node in a given grid
-     * The Given grid could be softdata or harddata grid
-     * @param x coordinate X of the current node
-     * @param y coordinate Y of the current node
-     * @param z coordinate Z of the current node
-     * @param level current grid level
-     * @param grid given grid
-     * @param searchRadius search radius for closed point search
+     * @param x                  coordinate X of the current node
+     * @param y                  coordinate Y of the current node
+     * @param z                  coordinate Z of the current node
+     * @param level              current grid level
+     * @param grid               given grid
+     * @param searchRadius       search radius for closed point search
      * @param closestCoordinates closest coordinates found
      * @return True if found a closed node
+     * @brief Check if the current node is closed to a node in a given grid
+     * The Given grid could be softdata or harddata grid
      */
     boolean _IsClosedToNodeInGrid(final int x, final int y, final int z, final int level, final Array3Df grid, final float searchRadius, Vec3i closestCoordinates) {
         //Using circular search
         //TODO: Need to check this again, it runs slow with HD
-        ArrayList<Vec3i> L=new ArrayList<>();
-        ArrayList<Float> V=new ArrayList<>();
+        ArrayList<Vec3i> L = new ArrayList<>();
+        ArrayList<Float> V = new ArrayList<>();
         _circularSearch(x, y, z, grid, 1, searchRadius, L, V);
         //_circularSearch(x, y, z, grid, 1, std::pow(2, level), L, V);
         boolean foundClosest = L.size() > 0;
@@ -572,16 +705,16 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Compute cpdf from softdata as map
-     * @param x coordinate X of the current node
-     * @param y coordinate Y of the current node
-     * @param z coordinate Z of the current node
-     * @param level current grid level
-     * @param softPdf softPdf list
+     * @param x             coordinate X of the current node
+     * @param y             coordinate Y of the current node
+     * @param z             coordinate Z of the current node
+     * @param level         current grid level
+     * @param softPdf       softPdf list
      * @param closestCoords closest point used with relocation, if not then the current x, y, z is used
      * @return computed value from softdata
+     * @brief Compute cpdf from softdata as map
      */
-    boolean _getCpdfFromSoftData(final int x, final int y, final int z, final int level, Map<Float, Float> softPdf,  Vec3i closestCoords) {
+    boolean _getCpdfFromSoftData(final int x, final int y, final int z, final int level, Map<Float, Float> softPdf, Vec3i closestCoords) {
         //Empty grids check
         if (_softDataGrids.isEmpty()) return false;
         //Out of bound check
@@ -595,11 +728,12 @@ public abstract class MPSAlgorithm {
         closestCoords.setZ(z);
         if (level == 0) { //For coarse level, then check for the same node localtion in softdata grid
             //No value check
-            if (Utility.isNAN(_softDataGrids.get(0).getElement(x,y,z))) return false;
+            if (Utility.isNAN(_softDataGrids.get(0).getElement(x, y, z))) return false;
         } else {
             //Check if node is closed to a search radius if using multiple level, doing the relocation here
-            if (Utility.isNAN(_softDataGrids.get(0).getElement(closestCoords.getX(),closestCoords.getY(),closestCoords.getZ()))) {
-                if (!_IsClosedToNodeInGrid(x, y, z, level, _softDataGrids.get(0), (float) Math.ceil(Math.pow(2, level) / 2), closestCoords)) return false;
+            if (Utility.isNAN(_softDataGrids.get(0).getElement(closestCoords.getX(), closestCoords.getY(), closestCoords.getZ()))) {
+                if (!_IsClosedToNodeInGrid(x, y, z, level, _softDataGrids.get(0), (float) Math.ceil(Math.pow(2, level) / 2), closestCoords))
+                    return false;
             }
             //if (!_IsClosedToNodeInGrid(x, y, z, _softDataGrids[0], _hdSearchRadius, closestCoords)) return false;
             //Check if the closest node found already in the current relocated node, if so then stop
@@ -611,8 +745,8 @@ public abstract class MPSAlgorithm {
         float sumProbability = 0;
         int lastIndex = _softDataCategories.size() - 1;
         float f = 0.0f;
-        for ( int i = 0; i < lastIndex; i ++) {
-            f = _softDataGrids.get(i).getElement(closestCoords.getX(),closestCoords.getY(),closestCoords.getZ());
+        for (int i = 0; i < lastIndex; i++) {
+            f = _softDataGrids.get(i).getElement(closestCoords.getX(), closestCoords.getY(), closestCoords.getZ());
             sumProbability += f;
             softPdf.put(_softDataCategories.get(i), f);
         }
@@ -624,7 +758,7 @@ public abstract class MPSAlgorithm {
     /**
      * @brief Show the SG in the terminal
      */
-    final void _showSG(){
+    final void _showSG() {
 //        for (int z=0; z<_sgDimZ; z++) {
 //            System.out.println("Z: " + (z + 1) + "/" + _sgDimZ);
 //            for (int y=0; y<_sgDimY; y++) {
@@ -646,46 +780,46 @@ public abstract class MPSAlgorithm {
         String fileExtension = Utility.getExtension(_tiFilename);
         if (fileExtension.equals("csv") || fileExtension.equals("txt"))
             readSucessfull = IO.readTIFromGS3DCSVFile(_tiFilename, _TI);
-	    else if (fileExtension.equals( "dat") || fileExtension.equals("gslib") || fileExtension.equals("sgems") || fileExtension.equals("SGEMS"))
-	        readSucessfull = IO.readTIFromGSLIBFile(_tiFilename, _TI);
-	    else if (fileExtension.equals("grd3"))
-	        readSucessfull = IO.readTIFromGS3DGRD3File(_tiFilename, _TI);
-        if(!readSucessfull) {
-            System.out.println("Error reading TI "+ _tiFilename);
+        else if (fileExtension.equals("dat") || fileExtension.equals("gslib") || fileExtension.equals("sgems") || fileExtension.equals("SGEMS"))
+            readSucessfull = IO.readTIFromGSLIBFile(_tiFilename, _TI);
+        else if (fileExtension.equals("grd3"))
+            readSucessfull = IO.readTIFromGS3DGRD3File(_tiFilename, _TI);
+        if (!readSucessfull) {
+            System.out.println("Error reading TI " + _tiFilename);
             return;
         }
 
         //Reading Hard conditional data
         readSucessfull = false;
         fileExtension = Utility.getExtension(_hardDataFileNames);
-        if (fileExtension.equals( "csv") || fileExtension.equals("txt"))
-            readSucessfull =IO.readTIFromGS3DCSVFile(_hardDataFileNames, _hdg);
-	    else if (fileExtension.equals( "gslib") || fileExtension.equals( "sgems" )|| fileExtension.equals("SGEMS"))
-	        readSucessfull = IO.readTIFromGSLIBFile(_hardDataFileNames, _hdg);
-	    else if (fileExtension.equals("dat"))
-	        readSucessfull = IO.readHardDataFromEASFile(_hardDataFileNames, -999, _sgDimX, _sgDimY, _sgDimZ, _sgWorldMinX, _sgWorldMinY, _sgWorldMinZ, _sgCellSizeX, _sgCellSizeY, _sgCellSizeZ, _hdg);
-	    else if (fileExtension.equals("grd3"))
-	        readSucessfull = IO.readTIFromGS3DGRD3File(_hardDataFileNames, _hdg);
-        if((!readSucessfull)&(_debugMode>-1)) {
-            System.out.println("Error reading harddata " + _hardDataFileNames );
+        if (fileExtension.equals("csv") || fileExtension.equals("txt"))
+            readSucessfull = IO.readTIFromGS3DCSVFile(_hardDataFileNames, _hdg);
+        else if (fileExtension.equals("gslib") || fileExtension.equals("sgems") || fileExtension.equals("SGEMS"))
+            readSucessfull = IO.readTIFromGSLIBFile(_hardDataFileNames, _hdg);
+        else if (fileExtension.equals("dat"))
+            readSucessfull = IO.readHardDataFromEASFile(_hardDataFileNames, -999, _sgDimX, _sgDimY, _sgDimZ, _sgWorldMinX, _sgWorldMinY, _sgWorldMinZ, _sgCellSizeX, _sgCellSizeY, _sgCellSizeZ, _hdg);
+        else if (fileExtension.equals("grd3"))
+            readSucessfull = IO.readTIFromGS3DGRD3File(_hardDataFileNames, _hdg);
+        if ((!readSucessfull) & (_debugMode > -1)) {
+            System.out.println("Error reading harddata " + _hardDataFileNames);
         }
 
         //Reading Soft conditional data
-        for (int i=0; i<_softDataFileNames.size(); i++) {
+        for (int i = 0; i < _softDataFileNames.size(); i++) {
             readSucessfull = false;
             fileExtension = Utility.getExtension(_softDataFileNames.get(i));
             if (fileExtension.equals("csv") || fileExtension.equals("txt"))
                 readSucessfull = IO.readTIFromGS3DCSVFile(_softDataFileNames.get(i), _softDataGrids.get(i));
-		    else if (fileExtension.equals("gslib") || fileExtension.equals("sgems") || fileExtension.equals("SGEMS"))
-		        readSucessfull = IO.readTIFromGSLIBFile(_softDataFileNames.get(i), _softDataGrids.get(i));
-		    else if (fileExtension.equals("dat"))
-		        readSucessfull = IO.readSoftDataFromEASFile(_softDataFileNames.get(i), _softDataCategories, _sgDimX, _sgDimY, _sgDimZ, _sgWorldMinX, _sgWorldMinY, _sgWorldMinZ, _sgCellSizeX, _sgCellSizeY, _sgCellSizeZ, _softDataGrids); //EAS read only 1 file
-		    else if (fileExtension.equals("grd3"))
-		        readSucessfull = IO.readTIFromGS3DGRD3File(_softDataFileNames.get(i), _softDataGrids.get(i));
-            if(!readSucessfull) {
+            else if (fileExtension.equals("gslib") || fileExtension.equals("sgems") || fileExtension.equals("SGEMS"))
+                readSucessfull = IO.readTIFromGSLIBFile(_softDataFileNames.get(i), _softDataGrids.get(i));
+            else if (fileExtension.equals("dat"))
+                readSucessfull = IO.readSoftDataFromEASFile(_softDataFileNames.get(i), _softDataCategories, _sgDimX, _sgDimY, _sgDimZ, _sgWorldMinX, _sgWorldMinY, _sgWorldMinZ, _sgCellSizeX, _sgCellSizeY, _sgCellSizeZ, _softDataGrids); //EAS read only 1 file
+            else if (fileExtension.equals("grd3"))
+                readSucessfull = IO.readTIFromGS3DGRD3File(_softDataFileNames.get(i), _softDataGrids.get(i));
+            if (!readSucessfull) {
                 _softDataGrids.clear();
-                if (_debugMode>-1) {
-                    System.out.println("Error reading softdata "+ _softDataFileNames.get(i));
+                if (_debugMode > -1) {
+                    System.out.println("Error reading softdata " + _softDataFileNames.get(i));
                 }
             }
 
@@ -693,20 +827,20 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Fill a simulation grid node from hard data and a search radius
-     * @param x coordinate X of the current node
-     * @param y coordinate Y of the current node
-     * @param z coordinate Z of the current node
-     * @param level current grid level
-     * @param addedNodes list of added nodes
+     * @param x            coordinate X of the current node
+     * @param y            coordinate Y of the current node
+     * @param z            coordinate Z of the current node
+     * @param level        current grid level
+     * @param addedNodes   list of added nodes
      * @param putbackNodes list of node to put back later
+     * @brief Fill a simulation grid node from hard data and a search radius
      */
     void _fillSGfromHD(final int x, final int y, final int z, final int level, ArrayList<Vec3i> addedNodes, ArrayList<Vec3i> putbackNodes) {
         //Searching closest value in hard data and put that into the simulation grid
         //Only search for the node not NaN and within the radius
         //Do this only if have a hard data defined or
         //If current node already has value
-        if(!_hdg.isEmpty() && Utility.isNAN(_sg.getElement(x,y,z))) {
+        if (!_hdg.isEmpty() && Utility.isNAN(_sg.getElement(x, y, z))) {
             Vec3i closestCoords = new Vec3i();
             //if (_IsClosedToNodeInGrid(x, y, z, level, _hdg, _hdSearchRadius, closestCoords)) {
             if (_IsClosedToNodeInGrid(x, y, z, level, _hdg, (float) Math.ceil(Math.pow(2, level) / 2), closestCoords)) { //Limit within the direct neighbor
@@ -714,33 +848,33 @@ public abstract class MPSAlgorithm {
                 //addedNodes.push_back(closestCoords);
                 putbackNodes.add(closestCoords);
                 //Adding the current location to a list to desallocate after
-                addedNodes.add( new Vec3i(x, y, z));
+                addedNodes.add(new Vec3i(x, y, z));
                 //Temporally put the closest node found to the sg cell
                 //_sg[z][y][x] = _hdg[closestCoords.getZ()][closestCoords.getY()][closestCoords.getX()];
-                _sg.setElement(x,y,z,_hdg.getElement(closestCoords.getX(),closestCoords.getY(),closestCoords.getZ()));
+                _sg.setElement(x, y, z, _hdg.getElement(closestCoords.getX(), closestCoords.getY(), closestCoords.getZ()));
                 //Temporally put NaN value to the hdg value relocated so the same point will not be relocated more than 2 times
                 //_hdg[closestCoords.getZ()][closestCoords.getY()][closestCoords.getX()] = std::numeric_limits<float>::quiet_NaN();
-                _hdg.setElement(closestCoords.getX(),closestCoords.getY(),closestCoords.getZ(),Float.NaN);
+                _hdg.setElement(closestCoords.getX(), closestCoords.getY(), closestCoords.getZ(), Float.NaN);
             }
         }
     }
 
     /**
-     * @brief Clear the SG nodes from the list of added nodes found by _fillSGfromHD
-     * @param addedNodes list of added nodes
+     * @param addedNodes   list of added nodes
      * @param putbackNodes list of node to put back later
+     * @brief Clear the SG nodes from the list of added nodes found by _fillSGfromHD
      */
     void _clearSGFromHD(ArrayList<Vec3i> addedNodes, ArrayList<Vec3i> putbackNodes) {
         //Cleaning the allocated data from the SG
         Vec3i vec3iPushackNode, vec3iAddedNodes;
-        for (int i=0; i < addedNodes.size(); i++) {
+        for (int i = 0; i < addedNodes.size(); i++) {
             //_hdg[putbackNodes[i].getZ()][putbackNodes[i].getY()][putbackNodes[i].getX()] = _sg[addedNodes[i].getZ()][addedNodes[i].getY()][addedNodes[i].getX()];
             vec3iAddedNodes = addedNodes.get(i);
             vec3iPushackNode = putbackNodes.get(i);
-            _hdg.setElement(vec3iPushackNode,_sg.getElement(vec3iAddedNodes));
+            _hdg.setElement(vec3iPushackNode, _sg.getElement(vec3iAddedNodes));
             if ((vec3iAddedNodes.getZ() != vec3iPushackNode.getZ()) || (vec3iAddedNodes.getY() != vec3iPushackNode.getY()) || (vec3iAddedNodes.getX() != vec3iPushackNode.getX())) {
                 //_sg[addedNodes[i].getZ()][addedNodes[i].getY()][addedNodes[i].getX()] = std::numeric_limits<float>::quiet_NaN();
-                _sg.setElement(vec3iAddedNodes,Float.NaN);
+                _sg.setElement(vec3iAddedNodes, Float.NaN);
             }
         }
         addedNodes.clear();
@@ -748,35 +882,35 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Read a line of configuration file and put the result inside a vector data
      * @param file filestream
      * @param data output data
      * @return true if the line contains data
+     * @brief Read a line of configuration file and put the result inside a vector data
      */
-    boolean _readLineConfiguration(BufferedReader file, ArrayList<String> data)  throws IOException {
+    boolean _readLineConfiguration(BufferedReader file, ArrayList<String> data) throws IOException {
         data.clear();
         String str = file.readLine().trim();
 //        str.replaceAll(" ","");
-        String [] ss = StringUtils.split(str, "#");
-        for(int i=0;i<ss.length;++i){
-            if(!ss[i].isEmpty())
-                ss[i] = ss[i].replaceAll(" ","");
-                data.add(ss[i]);
+        String[] ss = StringUtils.split(str, "#");
+        for (int i = 0; i < ss.length; ++i) {
+            if (!ss[i].isEmpty())
+                ss[i] = ss[i].replaceAll(" ", "");
+            data.add(ss[i]);
         }
         return (data.size() > 1);
     }
 
     /**
-     * @brief Shuffle the simulation grid path based preferential to soft data
      * @param level current multi grid level
+     * @brief Shuffle the simulation grid path based preferential to soft data
      */
     boolean _shuffleSgPathPreferentialToSoftData(final int level) {
         // PATH PREFERENTIAL BY ENTROPY OF SOFT DATA
         // facEntropy=0 --> prefer soft data, but disregard entroopy
         // facEntropy>0 --> higher number means more deterministic path based increasingly on Entropy
         float facEntropy = _shuffleEntropyFactor;
-        int offset = (int)(Math.pow(2, level));
-        float randomValue;				// ePath: forst col is random number, second col is an integer (index of node in SG grid)
+        int offset = (int) (Math.pow(2, level));
+        float randomValue;                // ePath: forst col is random number, second col is an integer (index of node in SG grid)
 
         //MultiMap<float, int> ePath;
         MultiMap ePath = new MultiValueMap();
@@ -788,15 +922,15 @@ public abstract class MPSAlgorithm {
         Vec3i closestCoords = new Vec3i();
         Random random = new Random();                                                                   ///////////
         //Looping through each index of each multiple grid
-        for (int z=0; z<_sgDimZ; z+= offset) {
-            for (int y=0; y<_sgDimY; y+= offset) {
-                for (int x=0; x<_sgDimX; x+= offset) {
+        for (int z = 0; z < _sgDimZ; z += offset) {
+            for (int y = 0; y < _sgDimY; y += offset) {
+                for (int x = 0; x < _sgDimX; x += offset) {
                     randomValue = random.nextFloat();// ((float) rand() / (RAND_MAX));
                     // Any Soft data??
                     if (_getCpdfFromSoftData(x, y, z, level, softPdf, closestCoords)) {
                         //Check if the closest node found already in the current relocated node
-                        for(Vec3i vec3i : allocatedNodesFromSoftData){
-                            if(vec3i.equals(closestCoords)) {
+                        for (Vec3i vec3i : allocatedNodesFromSoftData) {
+                            if (vec3i.equals(closestCoords)) {
                                 isAlreadyAllocated = true;
                                 break;
                             }
@@ -808,66 +942,66 @@ public abstract class MPSAlgorithm {
                             float I; // Informatin content
                             float p; // probability
                             float q; // a priori 1D marginal
-                            E=0;
-                            for(Map.Entry<Float,Float> it: softPdf.entrySet()){
+                            E = 0;
+                            for (Map.Entry<Float, Float> it : softPdf.entrySet()) {
                                 //// COMPUTE ENTROPY FOR SOFT PDF
-                                if (_shuffleSgPath==2) {
+                                if (_shuffleSgPath == 2) {
                                     p = it.getValue();
-                                    if (p==0) {
-                                        Ei=0;
+                                    if (p == 0) {
+                                        Ei = 0;
                                     } else {
                                         //Ei=p*(-1*log2(p));
-                                        Ei=(float)(p*(-1*Math.log(p) / Math.log(2.))); //msvc2012 doesnt have log2 yet
+                                        Ei = (float) (p * (-1 * Math.log(p) / Math.log(2.))); //msvc2012 doesnt have log2 yet
                                     }
-                                    E=E+Ei;
-                                } else if (_shuffleSgPath==3) {
+                                    E = E + Ei;
+                                } else if (_shuffleSgPath == 3) {
                                     // THIS IS REALLY ONLY FOR TESTING WITH THE STREBELLE TI!!!
                                     // soft probability
                                     p = it.getValue();
                                     // 1D marginal
-                                    if ( (it.getKey()) < .5) {
-                                        q=0.72f;
+                                    if ((it.getKey()) < .5) {
+                                        q = 0.72f;
                                     } else {
-                                        q=0.28f;
+                                        q = 0.28f;
                                     }
 
                                     //Ei=p*(-1*log2(p/q));
-                                    Ei=(float)(p*(-1*Math.log(p/q) / Math.log(2.)));
-                                    E=E+Ei;
+                                    Ei = (float) (p * (-1 * Math.log(p / q) / Math.log(2.)));
+                                    E = E + Ei;
                                     //
                                 }
                                 //Put the relocated softdata into the softdata grid to continue the simulation
                                 if (isRelocated) {
-                                    for ( int i=0; i<_softDataCategories.size(); i++) {
+                                    for (int i = 0; i < _softDataCategories.size(); i++) {
                                         if (it.getKey() == _softDataCategories.get(i)) {
-                                            _softDataGrids.get(i).setElement(x,y,z,it.getValue());
+                                            _softDataGrids.get(i).setElement(x, y, z, it.getValue());
                                             break;
                                         }
                                     }
                                 }
                             }
-                            I=1-E; // Information content
+                            I = 1 - E; // Information content
 
                             // Order Soft preference based on Entropy, and use a factor to control
                             // the importance of Entropy
-                            randomValue = randomValue - 1 - facEntropy*I;
+                            randomValue = randomValue - 1 - facEntropy * I;
 
-                            if (_debugMode>1) {
+                            if (_debugMode > 1) {
                                 System.out.print("SOFT DATA -- ");
-                                System.out.print("cnt=" + node1DIdx  + " x=" + x + " y=" + y + " z=" + z);
+                                System.out.print("cnt=" + node1DIdx + " x=" + x + " y=" + y + " z=" + z);
                                 System.out.print(" -- E=" + E);
-                                System.out.print( ", I=" + I);
-                                System.out.println( ", randomV=" + randomValue);
+                                System.out.print(", I=" + I);
+                                System.out.println(", randomV=" + randomValue);
                             }
                         }
                     }
                     node1DIdx = Utility.threeDto1D(closestCoords.getX(), closestCoords.getY(), closestCoords.getZ(), _sgDimX, _sgDimY);
                     //ePath.insert ( std::pair<float,int>(randomValue, node1DIdx) );
-                    ePath.put(Float.valueOf(randomValue),Integer.valueOf(node1DIdx));
+                    ePath.put(Float.valueOf(randomValue), Integer.valueOf(node1DIdx));
                     //ePath[randomValue] = cnt;
                     //If closestCoords are different than current coordinate that mean there is a relocation so save the node to reinitialize
                     if (isRelocated) {
-                        Vec3i nodeToBeReinitialized = new Vec3i(x,y,z);
+                        Vec3i nodeToBeReinitialized = new Vec3i(x, y, z);
                         allocatedNodesFromSoftData.add(nodeToBeReinitialized);
                     }
                 }
@@ -876,34 +1010,34 @@ public abstract class MPSAlgorithm {
 
         //Reset relocated node of soft data to NaN
         if (isRelocated) {
-            for ( Vec3i ptToBeRelocated : allocatedNodesFromSoftData) {
-                for ( int i=0; i<_softDataCategories.size(); i++) {
-                    _softDataGrids.get(i).setElement(ptToBeRelocated,Float.NaN);
+            for (Vec3i ptToBeRelocated : allocatedNodesFromSoftData) {
+                for (int i = 0; i < _softDataCategories.size(); i++) {
+                    _softDataGrids.get(i).setElement(ptToBeRelocated, Float.NaN);
                 }
             }
         }
         allocatedNodesFromSoftData.clear();
 
-        if (_debugMode>-1) {
-            System.out.println("Shuffling path, using preferential path with facEntropy="+facEntropy);
+        if (_debugMode > -1) {
+            System.out.println("Shuffling path, using preferential path with facEntropy=" + facEntropy);
         }
 
         // Update simulation path
-        int i=0;
-        for(Object e: ePath.entrySet()){
-            List  list= (List) ((Map.Entry)e).getValue();
-            for(Object o: list){
-                _simulationPath.set(i,(Integer) o);
+        int i = 0;
+        for (Object e : ePath.entrySet()) {
+            List list = (List) ((Map.Entry) e).getValue();
+            for (Object o : list) {
+                _simulationPath.set(i, (Integer) o);
                 i++;
             }
         }
 
-        if (_debugMode>1) {
+        if (_debugMode > 1) {
             System.out.println("PATH = ");
             Vec3i tmp = new Vec3i();
-            for (Integer it:_simulationPath) {
-                Utility.oneDTo3D(it.intValue(), _sgDimX, _sgDimY,tmp);
-                System.out.print(tmp.getX() +"," + tmp.getY()+ "," + tmp.getZ()+ "  ");
+            for (Integer it : _simulationPath) {
+                Utility.oneDTo3D(it.intValue(), _sgDimX, _sgDimY, tmp);
+                System.out.print(tmp.getX() + "," + tmp.getY() + "," + tmp.getZ() + "  ");
             }
             System.out.println("\n PATH END");
         }
@@ -916,7 +1050,7 @@ public abstract class MPSAlgorithm {
      */
     void startSimulation() {
         // Write license information to screen
-        if (_debugMode>-2) {
+        if (_debugMode > -2) {
             System.out.println("__________________________________________________________________________________");
             System.out.println("MPSlib: a C++ library for multiple point simulation");
             System.out.println("(c) 2015-2016 I-GIS (www.i-gis.dk) and");
@@ -930,14 +1064,14 @@ public abstract class MPSAlgorithm {
         Random random = new Random();
         //Intitialize random seed or not
         if (_seed != 0)
-            random.setSeed((long)_seed);    //same seed
+            random.setSeed((long) _seed);    //same seed
         else
             random.setSeed(new Date().getTime()); //random seed
 
         //Get the output filename
         int found = 0;
         found = _tiFilename.lastIndexOf("/\\");
-        String outputFilename = _outputDirectory + "/" + _tiFilename.substring(found+1);
+        String outputFilename = _outputDirectory + "/" + _tiFilename.substring(found + 1);
         System.out.println("outputpath:" + outputFilename);
 
         //Doing the simulation
@@ -952,14 +1086,14 @@ public abstract class MPSAlgorithm {
         int nodeCnt = 0, totalNodes = 0;
         int offset;   //g1DIdx用不到不要了
 
-        for (int n=0; n<_realizationNumbers; n++) {
+        for (int n = 0; n < _realizationNumbers; n++) {
             beginRealization = System.currentTimeMillis();
             //Initialize the iteration count grid
             _initializeSG(_sgIterations, _sgDimX, _sgDimY, _sgDimZ, 0);
             //Initialize Simulation Grid from hard data or with NaN value
             _initializeSG(_sg, _sgDimX, _sgDimY, _sgDimZ);
             //Initialize temporary grids if debugMode is high
-            if (_debugMode>1) {
+            if (_debugMode > 1) {
                 // Initialize some extra grids for extra information
                 _initializeSG(_tg1, _sgDimX, _sgDimY, _sgDimZ);
                 _initializeSG(_tg2, _sgDimX, _sgDimY, _sgDimZ);
@@ -976,11 +1110,11 @@ public abstract class MPSAlgorithm {
 		}*/
 
             //Multi level grids
-            for (int level = _totalGridsLevel; level>=0; level--) {
+            for (int level = _totalGridsLevel; level >= 0; level--) {
                 _InitStartSimulationEachMultipleGrid(level);
 
                 //For each space level from coarse to fine
-                offset = (int)Math.pow(2, level);
+                offset = (int) Math.pow(2, level);
 
                 //Define a simulation path for each level
                 if (_debugMode > -1) {
@@ -990,26 +1124,26 @@ public abstract class MPSAlgorithm {
 //                System.out.println(allocatedNodesFromHardData.size());
                 nodeCnt = 0;
                 totalNodes = (_sgDimX / offset) * (_sgDimY / offset) * (_sgDimZ / offset);
-                for (int z=0; z<_sgDimZ; z+=offset) {
-                    for (int y=0; y<_sgDimY; y+=offset) {
-                        for (int x=0; x<_sgDimX; x+=offset) {
+                for (int z = 0; z < _sgDimZ; z += offset) {
+                    for (int y = 0; y < _sgDimY; y += offset) {
+                        for (int x = 0; x < _sgDimX; x += offset) {
                             Vec1i vec1i = new Vec1i();
                             Utility.threeDto1D(x, y, z, _sgDimX, _sgDimY, vec1i);
                             _simulationPath.add(vec1i.getX());
                             //The relocation process happens if the current simulation grid value is still NaN
                             //Moving hard data to grid node only on coarsed level
-                            if(level != 0) _fillSGfromHD(x, y, z, level, allocatedNodesFromHardData, nodeToPutBack);
-                            else if(level == 0 && !_hdg.isEmpty() && Utility.isNAN(_sg.getElement(x,y,z))){
+                            if (level != 0) _fillSGfromHD(x, y, z, level, allocatedNodesFromHardData, nodeToPutBack);
+                            else if (level == 0 && !_hdg.isEmpty() && Utility.isNAN(_sg.getElement(x, y, z))) {
                                 //Level = 0
                                 //Fille the simulation node with the value from hard data grid
-                                _sg.setElement(x,y,z,_hdg.getElement(x,y,z));
+                                _sg.setElement(x, y, z, _hdg.getElement(x, y, z));
                             }
                             //Progression
                             if (_debugMode > -1 && !_hdg.isEmpty()) {
-                                nodeCnt ++;
+                                nodeCnt++;
                                 //Doing the progression
                                 //Print progression on screen
-                                int progress = (int)((nodeCnt / (float)totalNodes) * 100);
+                                int progress = (int) ((nodeCnt / (float) totalNodes) * 100);
                                 if ((progress % 10) == 0 && progress != lastProgress) { //Report every 10%
                                     lastProgress = progress;
                                     System.out.println("Relocating hard data to the simulation grid at level: " + level + " Progression (%): " + progress);
@@ -1031,15 +1165,15 @@ public abstract class MPSAlgorithm {
                 }
 
                 //Back to random path if no soft data
-                if (_softDataGrids.isEmpty() && _shuffleSgPath==2) {
+                if (_softDataGrids.isEmpty() && _shuffleSgPath == 2) {
                     System.out.println("WARNING: no soft data found, switch to random path");
                     _shuffleSgPath = 1;
                 }
                 //Shuffling
-                if (_shuffleSgPath==1) {
+                if (_shuffleSgPath == 1) {
                     // random shuffling
                     Collections.shuffle(_simulationPath);
-                } else if (_shuffleSgPath>1) {
+                } else if (_shuffleSgPath > 1) {
                     // shuffling preferential to soft data
                     _shuffleSgPathPreferentialToSoftData(level);
                 }
@@ -1051,49 +1185,49 @@ public abstract class MPSAlgorithm {
                 totalNodes = _simulationPath.size();
 
                 if (_debugMode > -1) {
-                    System.out.println("Simulating " );
+                    System.out.println("Simulating ");
                 }
 
                 ////Cleaning the allocated data from the SG
                 //_clearSGFromHD(allocatedNodesFromHardData);
 
-                for (int ii=0; ii<_simulationPath.size(); ii++) {
+                for (int ii = 0; ii < _simulationPath.size(); ii++) {
                     //Get node coordinates
                     Vec3i vec3i = new Vec3i();
                     Utility.oneDTo3D(_simulationPath.get(ii), _sgDimX, _sgDimY, vec3i);
                     int SG_idxX = vec3i.getX(), SG_idxY = vec3i.getY(), SG_idxZ = vec3i.getZ();
                     //Performing simulation for non NaN value ...
-                    if (Utility.isNAN(_sg.getElement(SG_idxX,SG_idxY,SG_idxZ)))
-                        _sg.setElement(SG_idxX,SG_idxY,SG_idxZ,_simulate(SG_idxX, SG_idxY, SG_idxZ, level));
+                    if (Utility.isNAN(_sg.getElement(SG_idxX, SG_idxY, SG_idxZ)))
+                        _sg.setElement(SG_idxX, SG_idxY, SG_idxZ, _simulate(SG_idxX, SG_idxY, SG_idxZ, level));
 
                     if (_debugMode > -1) {
                         //Doing the progression
                         //Print progression on screen
-                        int progress = (int)((progressionCnt / (float)totalNodes) * 100);
-                        progressionCnt ++;
+                        int progress = (int) ((progressionCnt / (float) totalNodes) * 100);
+                        progressionCnt++;
                         if ((progress % 5) == 0 && progress != lastProgress) { //Report every 5%
                             lastProgress = progress;
                             endNode = System.currentTimeMillis();
-                            elapsedNodeSecs = (double)((endNode - beginRealization)/1000);
-                            nodeEstimatedSeconds = (int)((elapsedNodeSecs/(float)(progressionCnt)) * (float)(totalNodes - progressionCnt));
+                            elapsedNodeSecs = (double) ((endNode - beginRealization) / 1000);
+                            nodeEstimatedSeconds = (int) ((elapsedNodeSecs / (float) (progressionCnt)) * (float) (totalNodes - progressionCnt));
 
                             HrMnSec hrMnSec = Utility.secondsToHrMnSec(nodeEstimatedSeconds);
                             if (progress > 0) //Ignore first time that cant provide any time estimation
-                                System.out.println("Level: " + level + " Progression (%): " + progress + " finish in: " + hrMnSec.hour + " h " + hrMnSec.minute +  " mn " + hrMnSec.second + " sec");
+                                System.out.println("Level: " + level + " Progression (%): " + progress + " finish in: " + hrMnSec.hour + " h " + hrMnSec.minute + " mn " + hrMnSec.second + " sec");
                         }
                     }
                 }
                 if (_debugMode > 2) {
                     IO.writeToGSLIBFile(outputFilename + "after_simulation" + n + "_level_" + level + ".gslib", _sg, _sgDimX, _sgDimY, _sgDimZ);
-                    System.out.println( "After simulation");
+                    System.out.println("After simulation");
                     _showSG();
                 }
 
                 //Cleaning the allocated data from the SG
-                if(level != 0) _clearSGFromHD(allocatedNodesFromHardData, nodeToPutBack);
+                if (level != 0) _clearSGFromHD(allocatedNodesFromHardData, nodeToPutBack);
                 if (_debugMode > 2) {
                     IO.writeToGSLIBFile(outputFilename + "after_cleaning_relocation" + n + "_level_" + level + ".gslib", _sg, _sgDimX, _sgDimY, _sgDimZ);
-                    System.out.println("After cleaning relocation" );
+                    System.out.println("After cleaning relocation");
                     _showSG();
                 }
 
@@ -1113,7 +1247,7 @@ public abstract class MPSAlgorithm {
 
             if (_debugMode > -1) {
                 endRealization = System.currentTimeMillis();
-                elapsedRealizationSecs = (double)((endRealization - beginRealization) / 1000);
+                elapsedRealizationSecs = (double) ((endRealization - beginRealization) / 1000);
                 totalSecs += elapsedRealizationSecs;
                 System.out.println("Elapsed time (sec): " + elapsedRealizationSecs + "\t" + " total: " + totalSecs);
             }
@@ -1131,7 +1265,7 @@ public abstract class MPSAlgorithm {
             }
 
 
-            if (_debugMode>1) {
+            if (_debugMode > 1) {
                 //Write temporary grids to  file
                 IO.writeToGSLIBFile(outputFilename + "_temp1_" + n + ".gslib", _tg1, _sgDimX, _sgDimY, _sgDimZ);
                 IO.writeToGSLIBFile(outputFilename + "_temp2_" + n + ".gslib", _tg2, _sgDimX, _sgDimY, _sgDimZ);
@@ -1147,37 +1281,37 @@ public abstract class MPSAlgorithm {
         }
 
         if (_debugMode > -1) {
-            HrMnSec hrMnSec = Utility.secondsToHrMnSec((int)(totalSecs/_realizationNumbers));
+            HrMnSec hrMnSec = Utility.secondsToHrMnSec((int) (totalSecs / _realizationNumbers));
             System.out.println("Total simulation time " + totalSecs + "s");
-            System.out.println( "Average time for " + _realizationNumbers + " simulations (hours:minutes:seconds) : " + hrMnSec.hour + ":" + hrMnSec.minute + ":" + hrMnSec.second);
+            System.out.println("Average time for " + _realizationNumbers + " simulations (hours:minutes:seconds) : " + hrMnSec.hour + ":" + hrMnSec.minute + ":" + hrMnSec.second);
         }
 
-        if(_debugMode > -1 ) {
+        if (_debugMode > -1) {
             System.out.println("Number of threads: " + _numberOfThreads);
             System.out.println("Conditional points: " + _maxNeighbours);
-            System.out.println( "Max iterations: " + _maxIterations);
+            System.out.println("Max iterations: " + _maxIterations);
             System.out.println("SG: " + _sgDimX + " " + _sgDimY + " " + _sgDimZ);
-            System.out.println("TI: " + _tiFilename + " " + _tiDimX + " " + _tiDimY + " " + _tiDimZ + " " + _TI.getElement(0,0,0));
+            System.out.println("TI: " + _tiFilename + " " + _tiDimX + " " + _tiDimY + " " + _tiDimZ + " " + _TI.getElement(0, 0, 0));
         }
     }
 
     /**
-     * @brief Filling L and V vectors with data
-     * @param grid the grid to search data
-     * @param idxX search index X
-     * @param idxY search index Y
-     * @param idxZ search index Z
-     * @param foundCnt how many node found
+     * @param grid               the grid to search data
+     * @param idxX               search index X
+     * @param idxY               search index Y
+     * @param idxZ               search index Z
+     * @param foundCnt           how many node found
      * @param maxNeighboursLimit maximum number of neigbor nodes count
-     * @param sgIdxX index X of the node in the 3D grid
-     * @param sgIdxY index Y of the node in the 3D grid
-     * @param sgIdxZ index Z of the node in the 3D grid
-     * @param L output vector distances between a found nodes and the currrent node
-     * @param V output vector values of the found nodes
+     * @param sgIdxX             index X of the node in the 3D grid
+     * @param sgIdxY             index Y of the node in the 3D grid
+     * @param sgIdxZ             index Z of the node in the 3D grid
+     * @param L                  output vector distances between a found nodes and the currrent node
+     * @param V                  output vector values of the found nodes
      * @return true if foundCnt is greater than max neighbors allowed
+     * @brief Filling L and V vectors with data
      */
     boolean _addingData(final Array3Df grid, final int idxX, final int idxY, final int idxZ, Vec1i foundCnt, final int maxNeighboursLimit, final int sgIdxX, final int sgIdxY, final int sgIdxZ, ArrayList<Vec3i> L, ArrayList<Float> V) {
-        if (!Utility.isNAN(grid.getElement(idxX,idxY,idxZ))){
+        if (!Utility.isNAN(grid.getElement(idxX, idxY, idxZ))) {
             foundCnt._x++;
             if (foundCnt.getX() > maxNeighboursLimit) return true;
             Vec3i aCoords = new Vec3i();
@@ -1191,64 +1325,67 @@ public abstract class MPSAlgorithm {
                     break;
                 }
             }
-            if(!isPresent) {
+            if (!isPresent) {
                 L.add(aCoords);
-                V.add(grid.getElement(idxX,idxY,idxZ));
+                V.add(grid.getElement(idxX, idxY, idxZ));
             }
         }
         return false;
     }
 
     /**
-     * @brief Search data in a direction
-     * @param grid the grid to search data
-     * @param direction search direction (0: direction X, 1: direction Y, 2: direction Z)
-     * @param idxX search index X
-     * @param idxY search index Y
-     * @param idxZ search index Z
-     * @param foundCnt counter of found nodes
+     * @param grid               the grid to search data
+     * @param direction          search direction (0: direction X, 1: direction Y, 2: direction Z)
+     * @param idxX               search index X
+     * @param idxY               search index Y
+     * @param idxZ               search index Z
+     * @param foundCnt           counter of found nodes
      * @param maxNeighboursLimit maximum number of neigbor nodes count
-     * @param xOffset offset in X dimension of searching node
-     * @param yOffset offset in Y dimension of searching node
-     * @param zOffset offset in Z dimension of searching node
-     * @param sgIdxX index X of the node in the 3D grid
-     * @param sgIdxY index Y of the node in the 3D grid
-     * @param sgIdxZ index Z of the node in the 3D grid
-     * @param L output vector distances between a found nodes and the currrent node
-     * @param V output vector values of the found nodes
+     * @param xOffset            offset in X dimension of searching node
+     * @param yOffset            offset in Y dimension of searching node
+     * @param zOffset            offset in Z dimension of searching node
+     * @param sgIdxX             index X of the node in the 3D grid
+     * @param sgIdxY             index Y of the node in the 3D grid
+     * @param sgIdxZ             index Z of the node in the 3D grid
+     * @param L                  output vector distances between a found nodes and the currrent node
+     * @param V                  output vector values of the found nodes
      * @return true if foundCnt is greater than max neighbors allowed
+     * @brief Search data in a direction
      */
     void _searchDataInDirection(final Array3Df grid, final int direction, Vec1i idxX, Vec1i idxY, Vec1i idxZ, Vec1i foundCnt, final int maxNeighboursLimit, final int xOffset, final int yOffset, final int zOffset, final int sgIdxX, final int sgIdxY, final int sgIdxZ, ArrayList<Vec3i> L, ArrayList<Float> V) {
-        if(direction == 0) { //Direction X
-            for(int k=-yOffset; k<=yOffset; k++) {
+        if (direction == 0) { //Direction X
+            for (int k = -yOffset; k <= yOffset; k++) {
                 idxY.setX(sgIdxY + k);
-                for(int j=-zOffset; j<=zOffset; j++) {
+                for (int j = -zOffset; j <= zOffset; j++) {
                     idxZ.setX(sgIdxZ + j);
                     //Adding value inside viewport only
-                    if((idxX._x >= 0 && idxX._x < _sgDimX) && (idxY._x >= 0 && idxY._x < _sgDimY) && (idxZ._x >= 0 && idxZ._x < _sgDimZ)) {
-                        if (_addingData(grid, idxX.getX(), idxY.getX(), idxZ.getX(), foundCnt, maxNeighboursLimit, sgIdxX, sgIdxY, sgIdxZ, L, V)) break;
+                    if ((idxX._x >= 0 && idxX._x < _sgDimX) && (idxY._x >= 0 && idxY._x < _sgDimY) && (idxZ._x >= 0 && idxZ._x < _sgDimZ)) {
+                        if (_addingData(grid, idxX.getX(), idxY.getX(), idxZ.getX(), foundCnt, maxNeighboursLimit, sgIdxX, sgIdxY, sgIdxZ, L, V))
+                            break;
                     }
                 }
             }
-        } else if(direction == 1) { //Direction Y
-            for(int k=-xOffset+1; k<xOffset; k++) {
+        } else if (direction == 1) { //Direction Y
+            for (int k = -xOffset + 1; k < xOffset; k++) {
                 idxX.setX(sgIdxX + k);
-                for(int j=-zOffset+1; j<zOffset; j++) {
+                for (int j = -zOffset + 1; j < zOffset; j++) {
                     idxZ.setX(sgIdxZ + j);
                     //Adding value inside viewport only
-                    if((idxX._x >= 0 && idxX._x < _sgDimX) && (idxY._x >= 0 && idxY._x < _sgDimY) && (idxZ._x >= 0 && idxZ._x < _sgDimZ)) {
-                        if (_addingData(grid, idxX.getX(), idxY.getX(), idxZ.getX(), foundCnt, maxNeighboursLimit, sgIdxX, sgIdxY, sgIdxZ, L, V)) break;
+                    if ((idxX._x >= 0 && idxX._x < _sgDimX) && (idxY._x >= 0 && idxY._x < _sgDimY) && (idxZ._x >= 0 && idxZ._x < _sgDimZ)) {
+                        if (_addingData(grid, idxX.getX(), idxY.getX(), idxZ.getX(), foundCnt, maxNeighboursLimit, sgIdxX, sgIdxY, sgIdxZ, L, V))
+                            break;
                     }
                 }
             }
-        } else if(direction == 2) { //Direction Z
-            for(int k=-xOffset+1; k<xOffset; k++) {
+        } else if (direction == 2) { //Direction Z
+            for (int k = -xOffset + 1; k < xOffset; k++) {
                 idxX.setX(sgIdxX + k);
-                for(int j=-yOffset+1; j<yOffset; j++) {
+                for (int j = -yOffset + 1; j < yOffset; j++) {
                     idxY.setX(sgIdxY + j);
                     //Adding value inside viewport only
-                    if((idxX._x >= 0 && idxX._x < _sgDimX) && (idxY._x >= 0 && idxY._x < _sgDimY) && (idxZ._x >= 0 && idxZ._x < _sgDimZ)) {
-                        if (_addingData(grid, idxX.getX(), idxY.getX(), idxZ.getX(), foundCnt, maxNeighboursLimit, sgIdxX, sgIdxY, sgIdxZ, L, V)) break;
+                    if ((idxX._x >= 0 && idxX._x < _sgDimX) && (idxY._x >= 0 && idxY._x < _sgDimY) && (idxZ._x >= 0 && idxZ._x < _sgDimZ)) {
+                        if (_addingData(grid, idxX.getX(), idxY.getX(), idxZ.getX(), foundCnt, maxNeighboursLimit, sgIdxX, sgIdxY, sgIdxZ, L, V))
+                            break;
                     }
                 }
             }
@@ -1256,15 +1393,15 @@ public abstract class MPSAlgorithm {
     }
 
     /**
-     * @brief Searching a neighbor node using circular search and return back a vector L (distance between a found node and current node) and a vector V (value of the found node)
-     * @param sgIdxX index X in the simulation grid
-     * @param sgIdxY index Y in the simulation grid
-     * @param sgIdxZ index Z in the simulation grid
-     * @param grid the grid to search data
+     * @param sgIdxX             index X in the simulation grid
+     * @param sgIdxY             index Y in the simulation grid
+     * @param sgIdxZ             index Z in the simulation grid
+     * @param grid               the grid to search data
      * @param maxNeighboursLimit maximum number of neigbor nodes count
-     * @param maxRadiusLimit maximum search radius allowed (-1 if not used any search radius limit)
-     * @param L output vector distances between a found nodes and the currrent node
-     * @param V output vector values of the found nodes
+     * @param maxRadiusLimit     maximum search radius allowed (-1 if not used any search radius limit)
+     * @param L                  output vector distances between a found nodes and the currrent node
+     * @param V                  output vector values of the found nodes
+     * @brief Searching a neighbor node using circular search and return back a vector L (distance between a found node and current node) and a vector V (value of the found node)
      */
     void _circularSearch(final int sgIdxX, final int sgIdxY, final int sgIdxZ, final Array3Df grid, final int maxNeighboursLimit, final float maxRadiusLimit, ArrayList<Vec3i> L, ArrayList<Float> V) {
         Vec1i foundCnt = new Vec1i(0);
@@ -1278,20 +1415,20 @@ public abstract class MPSAlgorithm {
         int maxYOffset = _sgDimY - 1;
         int maxZOffset = _sgDimZ - 1;
 
-        int maxDim = Math.max(Math.max(maxXOffset,maxYOffset),maxZOffset);
+        int maxDim = Math.max(Math.max(maxXOffset, maxYOffset), maxZOffset);
 
         //Check center point
-        if (!Utility.isNAN(grid.getElement(sgIdxX,sgIdxY,sgIdxZ))) {
-            foundCnt._x ++;
+        if (!Utility.isNAN(grid.getElement(sgIdxX, sgIdxY, sgIdxZ))) {
+            foundCnt._x++;
             Vec3i aCoords = new Vec3i(0, 0, 0);
             L.add(aCoords);
-            V.add(grid.getElement(sgIdxX,sgIdxY,sgIdxZ));
+            V.add(grid.getElement(sgIdxX, sgIdxY, sgIdxZ));
         }
 
         //random direction
         int randomDirection;
 
-        for(int i=1; i<maxDim; i++) {
+        for (int i = 1; i < maxDim; i++) {
             //maximum neighbor count check
             if (foundCnt._x > maxNeighboursLimit) break;
 
@@ -1308,7 +1445,7 @@ public abstract class MPSAlgorithm {
                 System.out.println("Random search directtion = " + randomDirection);
             }
             switch (randomDirection) {
-                case 0 : //X Y Z
+                case 0: //X Y Z
                     //direction +X
                     idxX._x = sgIdxX + xOffset;
 
@@ -1333,7 +1470,7 @@ public abstract class MPSAlgorithm {
                     //direction -Z
                     idxZ._x = sgIdxZ - zOffset;
                     _searchDataInDirection(grid, 2, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
-                case 1 : //X Z Y
+                case 1: //X Z Y
                     //direction +X
                     idxX._x = sgIdxX + xOffset;
                     _searchDataInDirection(grid, 0, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
@@ -1357,7 +1494,7 @@ public abstract class MPSAlgorithm {
                     //direction -Y
                     idxY._x = sgIdxY - yOffset;
                     _searchDataInDirection(grid, 1, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
-                case 2 : //Y X Z
+                case 2: //Y X Z
                     //direction +Y
                     idxY._x = sgIdxY + yOffset;
                     _searchDataInDirection(grid, 1, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
@@ -1381,7 +1518,7 @@ public abstract class MPSAlgorithm {
                     //direction -Z
                     idxZ._x = sgIdxZ - zOffset;
                     _searchDataInDirection(grid, 2, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
-                case 3 : //Y Z X
+                case 3: //Y Z X
                     //direction +Y
                     idxY._x = sgIdxY + yOffset;
                     _searchDataInDirection(grid, 1, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
@@ -1405,7 +1542,7 @@ public abstract class MPSAlgorithm {
                     //direction -X
                     idxX._x = sgIdxX - xOffset;
                     _searchDataInDirection(grid, 0, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
-                case 4 : //Z X Y
+                case 4: //Z X Y
                     //direction +Z
                     idxZ._x = sgIdxZ + zOffset;
                     _searchDataInDirection(grid, 2, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
@@ -1429,7 +1566,7 @@ public abstract class MPSAlgorithm {
                     //direction -Y
                     idxY._x = sgIdxY - yOffset;
                     _searchDataInDirection(grid, 1, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);
-                default : //Z Y X
+                default: //Z Y X
                     //direction +Z
                     idxZ._x = sgIdxZ + zOffset;
                     _searchDataInDirection(grid, 2, idxX, idxY, idxZ, foundCnt, maxNeighboursLimit, xOffset, yOffset, zOffset, sgIdxX, sgIdxY, sgIdxZ, L, V);

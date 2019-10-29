@@ -6,7 +6,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-class  Vec3i1f extends Vec3i implements Storable {
+class Vec3i1f extends Vec3i implements Storable {
     /**
      * @brief value
      */
@@ -14,7 +14,7 @@ class  Vec3i1f extends Vec3i implements Storable {
 
     /**
      * @brief Constructors
-     *
+     * <p>
      * Default value is (0, 0, 0, NaN)
      */
     public Vec3i1f() {
@@ -23,11 +23,11 @@ class  Vec3i1f extends Vec3i implements Storable {
     }
 
     /**
-     * @brief Constructors from x, y, z and value
      * @param x x value
-     *	@param y y value
+     * @param y y value
      * @param z z value
      * @param v v value default is NaN
+     * @brief Constructors from x, y, z and value
      */
     public Vec3i1f(int x, int y, int z, float v) {
         super(x, y, z);
@@ -35,37 +35,41 @@ class  Vec3i1f extends Vec3i implements Storable {
     }
 
     /**
-     * @brief Constructors from x, y, z and value
      * @param x x value
-     *	@param y y value
+     * @param y y value
      * @param z z value
      * @param v v value default is NaN
+     * @brief Constructors from x, y, z and value
      */
     public Vec3i1f(int x, int y, int z) {
-        this(x, y, z,Float.NaN);
+        this(x, y, z, Float.NaN);
     }
 
 
     /**
-     * @brief Constructors from a coords3D and a value
      * @param coord3D a coord3D
-     * @param v v value default is NaN
+     * @param v       v value default is NaN
+     * @brief Constructors from a coords3D and a value
      */
-    public Vec3i1f(final Vec3i coord3D, final float v){
-        this(coord3D._x,coord3D._y,coord3D._z,v);
+    public Vec3i1f(final Vec3i coord3D, final float v) {
+        this(coord3D._x, coord3D._y, coord3D._z, v);
     }
 
     /**
-     * @brief Getter v Value
      * @return x value
+     * @brief Getter v Value
      */
-    public float getValue()  {return _v;}
+    public float getValue() {
+        return _v;
+    }
 
     /**
-     * @brief Setter v Value
      * @param v v value
+     * @brief Setter v Value
      */
-    public void setValue(final float  v) {_v = v;}
+    public void setValue(final float v) {
+        _v = v;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -87,13 +91,13 @@ class  Vec3i1f extends Vec3i implements Storable {
 
     @Override
     public Object clone() {
-        return new Vec3i1f(this._x,this._y,this._z,this._v);
+        return new Vec3i1f(this._x, this._y, this._z, this._v);
     }
 
     @Override
     public boolean load(DataInput dataInput) throws IOException {
         super.load(dataInput);
-        this._v=dataInput.readFloat();
+        this._v = dataInput.readFloat();
         return true;
     }
 

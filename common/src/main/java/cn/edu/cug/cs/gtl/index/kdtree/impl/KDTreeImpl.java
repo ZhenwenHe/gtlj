@@ -1,7 +1,6 @@
 package cn.edu.cug.cs.gtl.index.kdtree.impl;
 
 
-
 import cn.edu.cug.cs.gtl.geom.Envelope;
 import cn.edu.cug.cs.gtl.geom.OrdinateComparator;
 import cn.edu.cug.cs.gtl.geom.Vector;
@@ -19,6 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
 /**
  * A k-d tree (short for k-dimensional tree) is a space-partitioning data
  * structure for organizing points in a k-dimensional space. k-d trees are a
@@ -26,52 +26,50 @@ import java.util.TreeSet;
  * multidimensional search key (e.g. range searches and nearest neighbor
  * searches). k-d trees are a special case of binary space partitioning trees.
  */
-public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Serializable {
-    private static final long serialVersionUID=1L;
+public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>, Serializable {
+    private static final long serialVersionUID = 1L;
 
     private int k = 2;
     private KDNode root = null;
-    private Envelope  totalExtent;
+    private Envelope totalExtent;
 
     /**
      * Default constructor.
      */
     private KDTreeImpl() {
-        k=2;
-        root=null;
-        totalExtent=null;
+        k = 2;
+        root = null;
+        totalExtent = null;
     }
 
     /**
      * Constructor for creating a more balanced tree. It uses the
      * "median of points" algorithm.
      *
-     * @param list
-     *            of Vector.
+     * @param list of Vector.
      */
     private KDTreeImpl(List<Vector> list) {
         super();
-        if(list==null || list.isEmpty())
-            root=null;
+        if (list == null || list.isEmpty())
+            root = null;
         else {
             this.k = list.get(0).getDimension();
             root = createNode(list, k, 0);
         }
-        totalExtent=null;
+        totalExtent = null;
     }
 
     /**
      * Constructor for creating a more balanced tree. It uses the
      * "median of points" algorithm.
      *
-     * @param list
-     *            of Vector.
+     * @param list of Vector.
      */
-    public KDTreeImpl(Envelope envelope , List<Vector> list) {
+    public KDTreeImpl(Envelope envelope, List<Vector> list) {
         super();
-        this.totalExtent=(Envelope)envelope.clone();
-        if(list==null || list.isEmpty())
-            root=null;
+        this.totalExtent = (Envelope) envelope.clone();
+        if (list == null || list.isEmpty())
+            root = null;
         else {
             this.k = list.get(0).getDimension();
             root = createNode(list, k, 0);
@@ -82,20 +80,18 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
      * Constructor for creating a more balanced tree. It uses the
      * "median of points" algorithm.
      *
-     * @param list
-     *            of Vector.
-     * @param k
-     *            of the tree.
+     * @param list of Vector.
+     * @param k    of the tree.
      */
     public KDTreeImpl(List<Vector> list, int k) {
         super();
 
-        if(list==null || list.isEmpty())
-            root=null;
+        if (list == null || list.isEmpty())
+            root = null;
         else {
             this.k = list.get(0).getDimension();
             //assert k<=this.k;
-            this.k=Math.min(k,this.k);
+            this.k = Math.min(k, this.k);
             root = createNode(list, this.k, 0);
         }
     }
@@ -103,12 +99,9 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
     /**
      * Creates node from list of Vector.
      *
-     * @param list
-     *            of Vector.
-     * @param k
-     *            of the tree.
-     * @param depth
-     *            depth of the node.
+     * @param list  of Vector.
+     * @param k     of the tree.
+     * @param depth depth of the node.
      * @return node created.
      */
     private static KDNode createNode(List<Vector> list, int k, int depth) {
@@ -123,7 +116,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
 //            Collections.sort(list, OrdinateComparator.Y_COMPARATOR);
 //        else
 //            Collections.sort(list, OrdinateComparator.Z_COMPARATOR);
-        Collections.sort(list,new OrdinateComparator<Vector>(axis));
+        Collections.sort(list, new OrdinateComparator<Vector>(axis));
 
         KDNode node = null;
         List<Vector> less = new ArrayList<Vector>(list.size());
@@ -144,12 +137,12 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
                 }
             }
 
-            if ((medianIndex-1 >= 0) && less.size() > 0) {
+            if ((medianIndex - 1 >= 0) && less.size() > 0) {
                 node.lesser = createNode(less, k, depth + 1);
                 node.lesser.parent = node;
             }
 
-            if ((medianIndex <= list.size()-1) && more.size() > 0) {
+            if ((medianIndex <= list.size() - 1) && more.size() > 0) {
                 node.greater = createNode(more, k, depth + 1);
                 node.greater.parent = node;
             }
@@ -161,8 +154,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
     /**
      * Adds value to the tree. Tree can contain multiple equal values.
      *
-     * @param value
-     *            T to add to the tree.
+     * @param value T to add to the tree.
      * @return True if successfully added to tree.
      */
     public boolean add(T value) {
@@ -202,39 +194,41 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
 
 
     @Override
-    public List<Envelope> getLeafNodeEnvelopes(){
-        if(this.totalExtent==null)
+    public List<Envelope> getLeafNodeEnvelopes() {
+        if (this.totalExtent == null)
             return null;
         else
-            return  (List<Envelope>)partitionEnvelope(this.totalExtent);
+            return (List<Envelope>) partitionEnvelope(this.totalExtent);
     }
 
     public Collection<Envelope> partitionEnvelope(Envelope envelope) {
         ArrayList<Envelope> envelopes = new ArrayList<>();
-        partitionEnvelope(root,envelope,envelopes);
+        partitionEnvelope(root, envelope, envelopes);
         return envelopes;
     }
 
-    private void partitionEnvelope(KDNode node, Envelope e, Collection<Envelope> envelopes){
+    private void partitionEnvelope(KDNode node, Envelope e, Collection<Envelope> envelopes) {
         if (node != null) {
-            Envelope[] results= e.split(node.id,node.depth%k);
-            if(node.lesser==null && node.greater==null){
+            Envelope[] results = e.split(node.id, node.depth % k);
+            if (node.lesser == null && node.greater == null) {
                 envelopes.add(results[0]);
                 envelopes.add(results[1]);
-            }
-            else{
-                partitionEnvelope(node.greater, results[1],envelopes);
-                partitionEnvelope(node.lesser, results[0],envelopes);
+            } else {
+                partitionEnvelope(node.greater, results[1], envelopes);
+                partitionEnvelope(node.lesser, results[0], envelopes);
             }
         }
     }
+
     @Override
-    public boolean insert(T v) {return add((T)v);}
+    public boolean insert(T v) {
+        return add((T) v);
+    }
+
     /**
      * Does the tree contain the value.
      *
-     * @param value
-     *            T to locate in the tree.
+     * @param value T to locate in the tree.
      * @return True if tree contains value.
      */
     @Override
@@ -242,17 +236,15 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
         if (value == null || root == null)
             return false;
 
-        KDNode node = getNode(this,(T) value);
+        KDNode node = getNode(this, (T) value);
         return (node != null);
     }
 
     /**
      * Locates T in the tree.
      *
-     * @param tree
-     *            to search.
-     * @param value
-     *            to search for.
+     * @param tree  to search.
+     * @param value to search for.
      * @return KDNode or NULL if not found
      */
     private static final <T extends Vector> KDNode getNode(KDTreeImpl<T> tree, T value) {
@@ -282,8 +274,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
     /**
      * Removes first occurrence of value in the tree.
      *
-     * @param value
-     *            T to remove from the tree.
+     * @param value T to remove from the tree.
      * @return True if value was removed from the tree.
      */
     @Override
@@ -291,7 +282,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
         if (value == null || root == null)
             return false;
 
-        KDNode node = getNode(this,(T) value);
+        KDNode node = getNode(this, (T) value);
         if (node == null)
             return false;
 
@@ -333,8 +324,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
     /**
      * Gets the (sub) tree rooted at root.
      *
-     * @param root
-     *            of tree to get nodes for.
+     * @param root of tree to get nodes for.
      * @return points in (sub) tree, not including root.
      */
     private static final List<Vector> getTree(KDNode root) {
@@ -357,11 +347,9 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
     /**
      * Searches the K nearest neighbor.
      *
-     * @param K
-     *            Number of neighbors to retrieve. Can return more than K, if
-     *            last nodes are equal distances.
-     * @param value
-     *            to find neighbors of.
+     * @param K     Number of neighbors to retrieve. Can return more than K, if
+     *              last nodes are equal distances.
+     * @param value to find neighbors of.
      * @return Collection of T neighbors.
      */
     @SuppressWarnings("unchecked")
@@ -488,11 +476,8 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
     /**
      * Adds, in a specified queue, a given node and its related nodes (lesser, greater).
      *
-     * @param node
-     *              Node to check. May be null.
-     *
-     * @param results
-     *              Queue containing all found entries. Must not be null.
+     * @param node    Node to check. May be null.
+     * @param results Queue containing all found entries. Must not be null.
      */
     @SuppressWarnings("unchecked")
     private static <T extends Vector> void search(final KDNode node, final Deque<T> results) {
@@ -538,7 +523,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
      * Searches all entries from the first to the last entry.
      *
      * @return Iterator
-     *                  allowing to iterate through a collection containing all found entries.
+     * allowing to iterate through a collection containing all found entries.
      */
     public Iterator<T> iterator() {
         final Deque<T> results = new ArrayDeque<T>();
@@ -550,7 +535,7 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
      * Searches all entries from the last to the first entry.
      *
      * @return Iterator
-     *                  allowing to iterate through a collection containing all found entries.
+     * allowing to iterate through a collection containing all found entries.
      */
     public Iterator<T> reverse_iterator() {
         final Deque<T> results = new ArrayDeque<T>();
@@ -558,7 +543,6 @@ public class KDTreeImpl<T extends Vector> implements KDTree<T>, Iterable<T>,Seri
         return results.descendingIterator();
     }
 
-    
 
     protected static class TreePrinter {
 

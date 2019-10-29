@@ -20,22 +20,22 @@ public class MultiPolygon extends GeometryCollection implements Polygonal {
 
     public MultiPolygon(Polygon[] geometries) {
         super(geometries);
-        this.geometryType=MULTIPOLYGON;
+        this.geometryType = MULTIPOLYGON;
     }
 
     public MultiPolygon() {
         super();
-        this.geometryType=MULTIPOLYGON;
+        this.geometryType = MULTIPOLYGON;
     }
 
     public MultiPolygon(int dim) {
         super(dim);
-        this.geometryType=MULTIPOLYGON;
+        this.geometryType = MULTIPOLYGON;
     }
 
     @Override
     public MultiPolygon clone() {
-        MultiPolygon p = new MultiPolygon( );
+        MultiPolygon p = new MultiPolygon();
         p.copyFrom(this);
         return p;
     }

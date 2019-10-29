@@ -13,15 +13,14 @@ public class HaxDistanceMetrics<T> implements DistanceMetrics<T> {
 
     public HaxDistanceMetrics(int wordSize, TIOPlane tioPlane) {
         this.wordSize = wordSize;
-        this.tioPlane= tioPlane;
+        this.tioPlane = tioPlane;
     }
 
     @Override
     public double distance(T a, T b) {
-        if(a instanceof TimeSeries && b instanceof TimeSeries){
-            return DistanceUtils.hax((TimeSeries) a,(TimeSeries)b,this.wordSize,tioPlane);
-        }
-        else{
+        if (a instanceof TimeSeries && b instanceof TimeSeries) {
+            return DistanceUtils.hax((TimeSeries) a, (TimeSeries) b, this.wordSize, tioPlane);
+        } else {
             System.out.println("Error");
             return Double.MAX_VALUE;
         }

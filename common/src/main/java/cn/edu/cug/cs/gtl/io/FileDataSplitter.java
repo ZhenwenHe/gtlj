@@ -28,7 +28,7 @@ public enum FileDataSplitter implements Serializable {
         FileDataSplitter[] var1 = values();
         int var2 = var1.length;
 
-        for(int var3 = 0; var3 < var2; ++var3) {
+        for (int var3 = 0; var3 < var2; ++var3) {
             FileDataSplitter me = var1[var3];
             if (me.getDelimiter().equalsIgnoreCase(str) || me.name().equalsIgnoreCase(str)) {
                 return me;

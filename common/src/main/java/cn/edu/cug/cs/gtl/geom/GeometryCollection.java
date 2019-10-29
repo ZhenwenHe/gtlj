@@ -72,15 +72,17 @@ public class GeometryCollection extends Geometry implements Collection<Geometry>
         }
         return true;
     }
-    public void makeDimension(int dim){
+
+    public void makeDimension(int dim) {
         super.makeDimension(dim);
-        for(Geometry g: geometries)
+        for (Geometry g : geometries)
             g.makeDimension(dim);
     }
 
-    public Geometry getGeometry(int n){
+    public Geometry getGeometry(int n) {
         return this.geometries.get(n);
     }
+
     @Override
     public int size() {
         return this.geometries.size();
@@ -146,14 +148,13 @@ public class GeometryCollection extends Geometry implements Collection<Geometry>
     public boolean load(DataInput in) throws IOException {
         super.load(in);
         int c = in.readInt();
-        if(c>0){
+        if (c > 0) {
             this.geometries.clear();
             this.geometries.ensureCapacity(c);
-            for(int i=0;i<c;++i){
+            for (int i = 0; i < c; ++i) {
                 this.geometries.add((Geometry) ObjectUtils.load(in));
             }
-        }
-        else {
+        } else {
             this.geometries.clear();
         }
 
@@ -165,7 +166,7 @@ public class GeometryCollection extends Geometry implements Collection<Geometry>
         super.store(out);
         out.writeInt(this.geometries.size());
         for (Geometry g : this.geometries) {
-            ObjectUtils.store(g,out);
+            ObjectUtils.store(g, out);
         }
         return true;
     }
@@ -184,7 +185,7 @@ public class GeometryCollection extends Geometry implements Collection<Geometry>
     public GeometryCollection clone() {
         GeometryCollection gc = new GeometryCollection();
         gc.geometries.ensureCapacity(this.size());
-        for(Geometry g: geometries){
+        for (Geometry g : geometries) {
             gc.add((Geometry) g.clone());
         }
         return gc;

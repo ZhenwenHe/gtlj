@@ -34,15 +34,15 @@ import cn.edu.cug.cs.gtl.common.tuple.Tuple0;
 @Public
 public class Tuple0Builder {
 
-	private List<Tuple0> tuples = new ArrayList<Tuple0>();
+    private List<Tuple0> tuples = new ArrayList<Tuple0>();
 
-	public Tuple0Builder add() {
-		tuples.add(Tuple0.INSTANCE);
-		return this;
-	}
+    public Tuple0Builder add() {
+        tuples.add(Tuple0.INSTANCE);
+        return this;
+    }
 
-	public Tuple0[] build() {
-		return tuples.toArray(new Tuple0[tuples.size()]);
-	}
+    public Tuple0[] build() {
+        return tuples.toArray(new Tuple0[tuples.size()]);
+    }
 
 }

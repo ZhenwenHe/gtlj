@@ -19,17 +19,17 @@ public class TimeRegionShape extends RegionShape implements TimeShape {
         interval = i;
     }
 
-    public TimeRegionShape(double[] low, double[] high,Interval i) {
+    public TimeRegionShape(double[] low, double[] high, Interval i) {
         super(low, high);
         interval = i;
     }
 
-    public TimeRegionShape(Envelope e,Interval   i) {
+    public TimeRegionShape(Envelope e, Interval i) {
         super(e);
         interval = i;
     }
 
-    public TimeRegionShape(Vector leftBottom, Vector rightTop,Interval   i) {
+    public TimeRegionShape(Vector leftBottom, Vector rightTop, Interval i) {
         super(leftBottom, rightTop);
         interval = i;
     }

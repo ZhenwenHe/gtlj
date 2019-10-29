@@ -45,10 +45,8 @@ import cn.edu.cug.cs.gtl.jts.geomgraph.NodeMap;
  * @version 1.7
  */
 public class RelateNodeFactory
-  extends NodeFactory
-{
-  public Node createNode(Coordinate coord)
-  {
-    return new RelateNode(coord, new EdgeEndBundleStar());
-  }
+        extends NodeFactory {
+    public Node createNode(Coordinate coord) {
+        return new RelateNode(coord, new EdgeEndBundleStar());
+    }
 }

@@ -61,48 +61,44 @@ import cn.edu.cug.cs.gtl.jts.geomgraph.Node;
  * @see MinimalEdgeRing
  */
 public class MaximalEdgeRing
-  extends EdgeRing
-{
+        extends EdgeRing {
 
-  public MaximalEdgeRing(DirectedEdge start, GeometryFactory geometryFactory) {
-    super(start, geometryFactory);
-  }
+    public MaximalEdgeRing(DirectedEdge start, GeometryFactory geometryFactory) {
+        super(start, geometryFactory);
+    }
 
-  public DirectedEdge getNext(DirectedEdge de)
-  {
-    return de.getNext();
-  }
-  public void setEdgeRing(DirectedEdge de, EdgeRing er)
-  {
-    de.setEdgeRing(er);
-  }
+    public DirectedEdge getNext(DirectedEdge de) {
+        return de.getNext();
+    }
 
-  /**
-   * For all nodes in this EdgeRing,
-   * link the DirectedEdges at the node to form minimalEdgeRings
-   */
-  public void linkDirectedEdgesForMinimalEdgeRings()
-  {
-    DirectedEdge de = startDe;
-    do {
-      Node node = de.getNode();
-      ((DirectedEdgeStar) node.getEdges()).linkMinimalDirectedEdges(this);
-      de = de.getNext();
-    } while (de != startDe);
-  }
+    public void setEdgeRing(DirectedEdge de, EdgeRing er) {
+        de.setEdgeRing(er);
+    }
 
-  public List buildMinimalRings()
-  {
-    List minEdgeRings = new ArrayList();
-    DirectedEdge de = startDe;
-    do {
-      if (de.getMinEdgeRing() == null) {
-        EdgeRing minEr = new MinimalEdgeRing(de, geometryFactory);
-        minEdgeRings.add(minEr);
-      }
-      de = de.getNext();
-    } while (de != startDe);
-    return minEdgeRings;
-  }
+    /**
+     * For all nodes in this EdgeRing,
+     * link the DirectedEdges at the node to form minimalEdgeRings
+     */
+    public void linkDirectedEdgesForMinimalEdgeRings() {
+        DirectedEdge de = startDe;
+        do {
+            Node node = de.getNode();
+            ((DirectedEdgeStar) node.getEdges()).linkMinimalDirectedEdges(this);
+            de = de.getNext();
+        } while (de != startDe);
+    }
+
+    public List buildMinimalRings() {
+        List minEdgeRings = new ArrayList();
+        DirectedEdge de = startDe;
+        do {
+            if (de.getMinEdgeRing() == null) {
+                EdgeRing minEr = new MinimalEdgeRing(de, geometryFactory);
+                minEdgeRings.add(minEr);
+            }
+            de = de.getNext();
+        } while (de != startDe);
+        return minEdgeRings;
+    }
 
 }

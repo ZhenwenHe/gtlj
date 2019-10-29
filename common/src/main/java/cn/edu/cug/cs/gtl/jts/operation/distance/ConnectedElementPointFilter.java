@@ -46,34 +46,30 @@ import cn.edu.cug.cs.gtl.jts.geom.*;
  * @version 1.7
  */
 public class ConnectedElementPointFilter
-  implements GeometryFilter
-{
+        implements GeometryFilter {
 
-  /**
-   * Returns a list containing a Coordinate from each Polygon, LineString, and Point
-   * found inside the specified geometry. Thus, if the specified geometry is
-   * not a GeometryCollection, an empty list will be returned.
-   */
-  public static List getCoordinates(Geometry geom)
-  {
-    List pts = new ArrayList();
-    geom.apply(new ConnectedElementPointFilter(pts));
-    return pts;
-  }
+    /**
+     * Returns a list containing a Coordinate from each Polygon, LineString, and Point
+     * found inside the specified geometry. Thus, if the specified geometry is
+     * not a GeometryCollection, an empty list will be returned.
+     */
+    public static List getCoordinates(Geometry geom) {
+        List pts = new ArrayList();
+        geom.apply(new ConnectedElementPointFilter(pts));
+        return pts;
+    }
 
-  private List pts;
+    private List pts;
 
-  ConnectedElementPointFilter(List pts)
-  {
-    this.pts = pts;
-  }
+    ConnectedElementPointFilter(List pts) {
+        this.pts = pts;
+    }
 
-  public void filter(Geometry geom)
-  {
-    if (geom instanceof Point
-      || geom instanceof LineString
-      || geom instanceof Polygon)
-      pts.add(geom.getCoordinate());
-  }
+    public void filter(Geometry geom) {
+        if (geom instanceof Point
+                || geom instanceof LineString
+                || geom instanceof Polygon)
+            pts.add(geom.getCoordinate());
+    }
 
 }

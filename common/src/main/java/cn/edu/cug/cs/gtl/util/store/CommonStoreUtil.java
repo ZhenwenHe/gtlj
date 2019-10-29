@@ -22,9 +22,8 @@ public class CommonStoreUtil {
     public static final int BOOL_SIZE = 2;
 
 
-
     public static boolean isPrimitiveType(Class<?> type) {
-        if(type==null){
+        if (type == null) {
             return false;
         }
         if (type.isPrimitive()) {
@@ -36,7 +35,7 @@ public class CommonStoreUtil {
     }
 
     public static boolean isConstantSizeType(Class<?> type) {
-        if(type==null){
+        if (type == null) {
             return false;
         }
         if (constantSizeMap.containsKey(type)) {
@@ -57,22 +56,22 @@ public class CommonStoreUtil {
                 return true;
             } else {
                 //如果type没有通过ConstantSize标签声明过,暂时在constantSizeMap中将type标记为null
-                constantSizeMap.put(type,null);
+                constantSizeMap.put(type, null);
                 long constantSize = 0;
                 //遍历type中的所有成员属性field
-                for(Field field:type.getDeclaredFields()){
-                    if(isConstantSizeType(field.getType())){
+                for (Field field : type.getDeclaredFields()) {
+                    if (isConstantSizeType(field.getType())) {
                         //如果field是固定大小的类型
-                        constantSize+=getConstantTypeSize(field.getType());
-                    }else if(isPrimitiveType(field.getType())){
+                        constantSize += getConstantTypeSize(field.getType());
+                    } else if (isPrimitiveType(field.getType())) {
                         //如果field是原始基本数据类型
-                        constantSize+=getPrimitiveTypeSize(field.getType());
-                    }else{
+                        constantSize += getPrimitiveTypeSize(field.getType());
+                    } else {
                         //如果field不是固定大小的类型也不是是原始基本数据类型
                         return false;
                     }
                 }
-                constantSizeMap.put(type,constantSize);
+                constantSizeMap.put(type, constantSize);
                 return true;
             }
         }
@@ -129,10 +128,10 @@ public class CommonStoreUtil {
      * @param type 指定对象的类型
      */
     public static void store(DataOutput out, Object obj, Type type) throws IOException {
-        if(obj!=null){
-           type=obj.getClass();
+        if (obj != null) {
+            type = obj.getClass();
         }
-        if(isPrimitiveType((Class<?>) type)){
+        if (isPrimitiveType((Class<?>) type)) {
 
         }
     }

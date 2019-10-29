@@ -20,19 +20,20 @@ class IdentifierImpl implements Identifier {
     private long mostSigBits;
 
     public IdentifierImpl() {
-        this(0,0);
+        this(0, 0);
     }
 
     public IdentifierImpl(long data) {
-        this(0,data);
+        this(0, data);
     }
 
     public IdentifierImpl(long mostSigBits, long leastSigBits) {
         this.leastSigBits = leastSigBits;
-        this.mostSigBits=mostSigBits;
+        this.mostSigBits = mostSigBits;
     }
+
     public IdentifierImpl(UUID uuid) {
-        this(uuid.getMostSignificantBits(),uuid.getLeastSignificantBits());
+        this(uuid.getMostSignificantBits(), uuid.getLeastSignificantBits());
     }
 
     @Override
@@ -52,14 +53,13 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public Object clone() {
-        return new IdentifierImpl(this.mostSigBits,this.leastSigBits);
+        return new IdentifierImpl(this.mostSigBits, this.leastSigBits);
     }
-
 
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.mostSigBits=in.readLong();
+        this.mostSigBits = in.readLong();
         this.leastSigBits = in.readLong();
         return true;
     }
@@ -78,7 +78,7 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public String toString() {
-        return new UUID(this.mostSigBits,this.leastSigBits).toString();
+        return new UUID(this.mostSigBits, this.leastSigBits).toString();
     }
 
     @Override
@@ -102,15 +102,15 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public void reset(long highValue, long lowValue) {
-        this.mostSigBits=highValue;
-        this.leastSigBits=lowValue;
+        this.mostSigBits = highValue;
+        this.leastSigBits = lowValue;
     }
 
     @Override
     public void copyFrom(Object i) {
         if (i instanceof Identifier) {
             this.leastSigBits = ((Identifier) i).lowValue();
-            this.mostSigBits=((Identifier) i).highValue();
+            this.mostSigBits = ((Identifier) i).highValue();
         }
     }
 

@@ -8,7 +8,7 @@ import cn.edu.cug.cs.gtl.index.shape.*;
 /**
  * Created by ZhenwenHe on 2017/4/3.
  */
-class QueryShapeGenerator <T extends Interval> implements java.io.Serializable{
+class QueryShapeGenerator<T extends Interval> implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
     //refer to the tree's base triangle

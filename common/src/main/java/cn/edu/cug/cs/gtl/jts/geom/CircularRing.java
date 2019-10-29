@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014 - 2015, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -17,10 +17,10 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    Lesser General Public License for more details.
  */
 
- import java.util.Arrays;
+import java.util.Arrays;
 
- import cn.edu.cug.cs.gtl.jts.geom.impl.CoordinateArraySequence;
- import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
+import cn.edu.cug.cs.gtl.jts.geom.impl.CoordinateArraySequence;
+import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.CoordinateFilter;
 import cn.edu.cug.cs.gtl.jts.geom.CoordinateSequence;
 import cn.edu.cug.cs.gtl.jts.geom.CoordinateSequenceComparator;
@@ -51,8 +51,8 @@ public class CircularRing extends LinearRing implements SingleCurvedGeometry<Lin
      * This sequence is used as a fake to trick the constructor
      */
     static final CoordinateSequence FAKE_RING_2D = new CoordinateArraySequence(
-            new Coordinate[] { new Coordinate(0, 0), new Coordinate(0, 1), new Coordinate(1, 1),
-                    new Coordinate(0, 0) });
+            new Coordinate[]{new Coordinate(0, 0), new Coordinate(0, 1), new Coordinate(1, 1),
+                    new Coordinate(0, 0)});
 
     CircularString delegate;
 
@@ -459,7 +459,6 @@ public class CircularRing extends LinearRing implements SingleCurvedGeometry<Lin
     public IntersectionMatrix relate(Geometry g) {
         return linearize().relate(g);
     }
-
 
 
     public Geometry buffer(double distance) {

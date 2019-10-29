@@ -10,11 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
-    protected ArrayList<S> samples=null;
-    protected ArrayList<L> labels=null;
+public class DefaultDataSet<S, L> implements DataSet<S, L>, Storable {
+    protected ArrayList<S> samples = null;
+    protected ArrayList<L> labels = null;
 
-    protected DefaultDataSet(){
+    protected DefaultDataSet() {
 
     }
 
@@ -25,13 +25,12 @@ public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
 
     @Override
     public Object clone() {
-        DefaultDataSet<S,L> ts = new DefaultDataSet<S,L>();
+        DefaultDataSet<S, L> ts = new DefaultDataSet<S, L>();
         try {
-            byte [] bytes = this.storeToByteArray();
+            byte[] bytes = this.storeToByteArray();
             ts.loadFromByteArray(bytes);
             return ts;
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
@@ -40,15 +39,15 @@ public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
     @Override
     public boolean load(DataInput dataInput) throws IOException {
         int s = dataInput.readInt();
-        if(s>0){
-            this.samples=new ArrayList<>(s);
-            for(int i=0;i<s;++i)
+        if (s > 0) {
+            this.samples = new ArrayList<>(s);
+            for (int i = 0; i < s; ++i)
                 this.samples.add((S) ObjectUtils.load(dataInput));
         }
         s = dataInput.readInt();
-        if(s>0){
-            this.labels=new ArrayList<>(s);
-            for(int i=0;i<s;++i)
+        if (s > 0) {
+            this.labels = new ArrayList<>(s);
+            for (int i = 0; i < s; ++i)
                 this.labels.add((L) ObjectUtils.load(dataInput));
         }
         return true;
@@ -56,19 +55,19 @@ public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
 
     @Override
     public boolean store(DataOutput dataOutput) throws IOException {
-        int s = this.samples==null?0:this.samples.size();
+        int s = this.samples == null ? 0 : this.samples.size();
         dataOutput.writeInt(s);
-        if(s>0){
-            for(S si : this.samples)
-                ObjectUtils.store(si,dataOutput);
+        if (s > 0) {
+            for (S si : this.samples)
+                ObjectUtils.store(si, dataOutput);
         }
 
-        s = this.labels==null?0:this.labels.size();
+        s = this.labels == null ? 0 : this.labels.size();
         dataOutput.writeInt(s);
-        if(s>0){
+        if (s > 0) {
             dataOutput.writeInt(s);
-            for(L li : this.labels)
-                ObjectUtils.store(li,dataOutput);
+            for (L li : this.labels)
+                ObjectUtils.store(li, dataOutput);
         }
         return true;
     }
@@ -85,14 +84,14 @@ public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
 
     @Override
     public L getLabel(int i) {
-        if(this.labels!=null)
+        if (this.labels != null)
             return this.labels.get(i);
         return null;
     }
 
     @Override
     public Pair<L, S> get(int i) {
-        return new Pair<L, S>(getLabel(i),getSample(i));
+        return new Pair<L, S>(getLabel(i), getSample(i));
     }
 
     @Override
@@ -102,7 +101,7 @@ public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
 
     @Override
     public Iterable<L> getLabels() {
-        if(this.labels!=null)
+        if (this.labels != null)
             return this.labels;
         return null;
     }
@@ -110,36 +109,32 @@ public class DefaultDataSet<S,L> implements DataSet<S,L>, Storable {
     @Override
     public void reset(Iterable<S> samples, Iterable<L> labels) {
 
-        if( samples instanceof ArrayList){
-            this.samples = (ArrayList<S>)samples;
-        }
-        else {
-            if( samples instanceof Collection){
+        if (samples instanceof ArrayList) {
+            this.samples = (ArrayList<S>) samples;
+        } else {
+            if (samples instanceof Collection) {
                 Collection<S> c = (Collection<S>) samples;
-                int s=c.size();
+                int s = c.size();
                 this.samples = new ArrayList<>(s);
-                System.arraycopy(c,0,this.samples,0,s);
-            }
-            else{
+                System.arraycopy(c, 0, this.samples, 0, s);
+            } else {
                 this.samples = new ArrayList<>();
-                for(S s:samples)
+                for (S s : samples)
                     this.samples.add(s);
             }
         }
 
-        if( labels instanceof ArrayList){
-            this.labels = (ArrayList<L>)labels;
-        }
-        else {
-            if( labels instanceof Collection){
+        if (labels instanceof ArrayList) {
+            this.labels = (ArrayList<L>) labels;
+        } else {
+            if (labels instanceof Collection) {
                 Collection<L> c = (Collection<L>) samples;
-                int s=c.size();
+                int s = c.size();
                 this.labels = new ArrayList<>(s);
-                System.arraycopy(c,0,this.labels,0,s);
-            }
-            else{
+                System.arraycopy(c, 0, this.labels, 0, s);
+            } else {
                 this.labels = new ArrayList<>();
-                for(L s:labels)
+                for (L s : labels)
                     this.labels.add(s);
             }
         }

@@ -39,6 +39,7 @@ import cn.edu.cug.cs.gtl.jts.geom.Geometry;
 import cn.edu.cug.cs.gtl.jts.geom.GeometryCollection;
 import cn.edu.cug.cs.gtl.jts.geom.GeometryFilter;
 import cn.edu.cug.cs.gtl.jts.geom.Polygon;
+
 /**
  * Extracts all the {@link Polygon} elements from a {@link Geometry}.
  *
@@ -46,51 +47,46 @@ import cn.edu.cug.cs.gtl.jts.geom.Polygon;
  * @see GeometryExtracter
  */
 public class PolygonExtracter
-  implements GeometryFilter
-{
-  /**
-   * Extracts the {@link Polygon} elements from a single {@link Geometry}
-   * and adds them to the provided {@link List}.
-   * 
-   * @param geom the geometry from which to extract
-   * @param list the list to add the extracted elements to
-   */
-  public static List getPolygons(Geometry geom, List list)
-  {
-  	if (geom instanceof Polygon) {
-  		list.add(geom);
-  	}
-  	else if (geom instanceof GeometryCollection) {
-  		geom.apply(new PolygonExtracter(list));
-  	}
-  	// skip non-Polygonal elemental geometries
-  	
-    return list;
-  }
+        implements GeometryFilter {
+    /**
+     * Extracts the {@link Polygon} elements from a single {@link Geometry}
+     * and adds them to the provided {@link List}.
+     *
+     * @param geom the geometry from which to extract
+     * @param list the list to add the extracted elements to
+     */
+    public static List getPolygons(Geometry geom, List list) {
+        if (geom instanceof Polygon) {
+            list.add(geom);
+        } else if (geom instanceof GeometryCollection) {
+            geom.apply(new PolygonExtracter(list));
+        }
+        // skip non-Polygonal elemental geometries
 
-  /**
-   * Extracts the {@link Polygon} elements from a single {@link Geometry}
-   * and returns them in a {@link List}.
-   * 
-   * @param geom the geometry from which to extract
-   */
-  public static List getPolygons(Geometry geom)
-  {
-    return getPolygons(geom, new ArrayList());
-  }
+        return list;
+    }
 
-  private List comps;
-  /**
-   * Constructs a PolygonExtracterFilter with a list in which to store Polygons found.
-   */
-  public PolygonExtracter(List comps)
-  {
-    this.comps = comps;
-  }
+    /**
+     * Extracts the {@link Polygon} elements from a single {@link Geometry}
+     * and returns them in a {@link List}.
+     *
+     * @param geom the geometry from which to extract
+     */
+    public static List getPolygons(Geometry geom) {
+        return getPolygons(geom, new ArrayList());
+    }
 
-  public void filter(Geometry geom)
-  {
-    if (geom instanceof Polygon) comps.add(geom);
-  }
+    private List comps;
+
+    /**
+     * Constructs a PolygonExtracterFilter with a list in which to store Polygons found.
+     */
+    public PolygonExtracter(List comps) {
+        this.comps = comps;
+    }
+
+    public void filter(Geometry geom) {
+        if (geom instanceof Polygon) comps.add(geom);
+    }
 
 }

@@ -41,41 +41,37 @@ import cn.edu.cug.cs.gtl.jts.geom.*;
  * A ConnectedElementPointFilter extracts a single point
  * from each connected element in a Geometry
  * (e.g. a polygon, linestring or point)
- * and returns them in a list. The elements of the list are 
+ * and returns them in a list. The elements of the list are
  * {@link GeometryLocation}s.
  *
  * @version 1.7
  */
 public class ConnectedElementLocationFilter
-  implements GeometryFilter
-{
+        implements GeometryFilter {
 
-  /**
-   * Returns a list containing a point from each Polygon, LineString, and Point
-   * found inside the specified geometry. Thus, if the specified geometry is
-   * not a GeometryCollection, an empty list will be returned. The elements of the list 
-   * are {@link GeometryLocation}s.
-   */  
-  public static List getLocations(Geometry geom)
-  {
-    List locations = new ArrayList();
-    geom.apply(new ConnectedElementLocationFilter(locations));
-    return locations;
-  }
+    /**
+     * Returns a list containing a point from each Polygon, LineString, and Point
+     * found inside the specified geometry. Thus, if the specified geometry is
+     * not a GeometryCollection, an empty list will be returned. The elements of the list
+     * are {@link GeometryLocation}s.
+     */
+    public static List getLocations(Geometry geom) {
+        List locations = new ArrayList();
+        geom.apply(new ConnectedElementLocationFilter(locations));
+        return locations;
+    }
 
-  private List locations;
+    private List locations;
 
-  ConnectedElementLocationFilter(List locations)
-  {
-    this.locations = locations;
-  }
+    ConnectedElementLocationFilter(List locations) {
+        this.locations = locations;
+    }
 
-  public void filter(Geometry geom)
-  {
-    if (geom instanceof Point
-      || geom instanceof LineString
-      || geom instanceof Polygon)
-      locations.add(new GeometryLocation(geom, 0, geom.getCoordinate()));
-  }
+    public void filter(Geometry geom) {
+        if (geom instanceof Point
+                || geom instanceof LineString
+                || geom instanceof Polygon)
+            locations.add(new GeometryLocation(geom, 0, geom.getCoordinate()));
+    }
 
 }

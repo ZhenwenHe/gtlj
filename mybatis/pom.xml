@@ -46,27 +46,7 @@
             <artifactId>maven-site-plugin</artifactId>
             <version>${maven-site-plugin.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-netty-shaded</artifactId>
-            <version>${grpc.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-stub</artifactId>
-            <version>${grpc.version}</version>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
-
     <!--mybatis_generator代码生成器专用-->
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>

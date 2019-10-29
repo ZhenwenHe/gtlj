@@ -104,6 +104,7 @@ public class PrecisionModel implements Serializable, Comparable<PrecisionModel> 
         // default is floating precision
         modelType = FLOATING;
     }
+
     /**
      * Creates a <code>PrecisionModel</code> that specifies
      * an explicit precision model type.
@@ -294,9 +295,9 @@ public class PrecisionModel implements Serializable, Comparable<PrecisionModel> 
     public void makePrecise(Vector coord) {
         // optimization for full precision
         if (modelType == FLOATING) return;
-        if(coord==null) return;
-        for(int i=0;i<coord.getDimension();++i)
-            coord.setOrdinate(i,makePrecise(coord.getOrdinate(i)));
+        if (coord == null) return;
+        for (int i = 0; i < coord.getDimension(); ++i)
+            coord.setOrdinate(i, makePrecise(coord.getOrdinate(i)));
     }
 
     public String toString() {

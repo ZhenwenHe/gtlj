@@ -12,7 +12,7 @@
     <artifactId>indices</artifactId>
 
     <properties>
-        <project.decription>implement the indices proposed by Zhenwen He </project.decription>
+        <project.decription>implement the indices proposed by Zhenwen He</project.decription>
     </properties>
 
     <dependencies>
@@ -56,9 +56,9 @@
 
         <!-- https://mvnrepository.com/artifact/com.vividsolutions/jts-core -->
         <!--<dependency>-->
-            <!--<groupId>com.vividsolutions</groupId>-->
-            <!--<artifactId>jts-core</artifactId>-->
-            <!--<version>1.14.0</version>-->
+        <!--<groupId>com.vividsolutions</groupId>-->
+        <!--<artifactId>jts-core</artifactId>-->
+        <!--<version>1.14.0</version>-->
         <!--</dependency>-->
 
         <dependency>

@@ -38,14 +38,15 @@ import java.util.LinkedList;
 
 /**
  * A framework to visit sets of edge-connected {@link QuadEdgeTriangle}s in breadth-first order
- * 
+ *
  * @author Martin Davis
  * @version 1.0
  */
 public class EdgeConnectedTriangleTraversal {
     private LinkedList triQueue = new LinkedList();
 
-    public EdgeConnectedTriangleTraversal() {}
+    public EdgeConnectedTriangleTraversal() {
+    }
 
     public void init(QuadEdgeTriangle tri) {
         triQueue.addLast(tri);
@@ -53,7 +54,7 @@ public class EdgeConnectedTriangleTraversal {
 
     /**
      * Called to initialize the traversal queue with a given set of {@link QuadEdgeTriangle}s
-     * 
+     *
      * @param tris a collection of QuadEdgeTriangle
      */
     public void init(Collection tris) {
@@ -63,7 +64,7 @@ public class EdgeConnectedTriangleTraversal {
     /**
      * Subclasses can call this method to add a triangle to the end of the queue. This is useful for
      * initializing the queue to a chosen set of triangles.
-     * 
+     *
      * @param tri a triangle
      */
     /*

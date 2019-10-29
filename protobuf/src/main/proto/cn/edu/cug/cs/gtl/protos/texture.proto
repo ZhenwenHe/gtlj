@@ -8,16 +8,16 @@ option cc_enable_arenas = true;
 
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
 
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Textures";
 
 
-message Texture{
-    Identifier identifier=1;
-    string name=2;
-    int32 type=3;
-    int32 wrap_mode=4;
-    string image_name=5;
-    bytes image_data=6;
+message Texture {
+    Identifier identifier = 1;
+    string name = 2;
+    int32 type = 3;
+    int32 wrap_mode = 4;
+    string image_name = 5;
+    bytes image_data = 6;
 }

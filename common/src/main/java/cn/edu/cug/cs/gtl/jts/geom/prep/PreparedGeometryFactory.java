@@ -44,45 +44,40 @@ import cn.edu.cug.cs.gtl.jts.geom.Puntal;
  * <p>
  * In the future, the factory may accept hints that indicate
  * special optimizations which can be performed.
- * 
- * 
- * @author Martin Davis
  *
+ * @author Martin Davis
  */
-public class PreparedGeometryFactory 
-{
-  /**
-   * Creates a new {@link PreparedGeometry} appropriate for the argument {@link Geometry}.
-   * 
-   * @param geom the geometry to prepare
-   * @return the prepared geometry
-   */
-	public static PreparedGeometry prepare(Geometry geom)
-	{
-		return (new PreparedGeometryFactory()).create(geom); 
-	}
-
-  public PreparedGeometryFactory() {
-  }
-
-  /**
-   * Creates a new {@link PreparedGeometry} appropriate for the argument {@link Geometry}.
-   * 
-   * @param geom the geometry to prepare
-   * @return the prepared geometry
-   */
-  public PreparedGeometry create(Geometry geom)
-  {
-    if (geom instanceof Polygonal)
-      return new PreparedPolygon((Polygonal) geom);
-    if (geom instanceof Lineal)
-      return new PreparedLineString((Lineal) geom);
-    if (geom instanceof Puntal)
-      return new PreparedPoint((Puntal) geom);
-    
+public class PreparedGeometryFactory {
     /**
-     * Default representation.
+     * Creates a new {@link PreparedGeometry} appropriate for the argument {@link Geometry}.
+     *
+     * @param geom the geometry to prepare
+     * @return the prepared geometry
      */
-    return new BasicPreparedGeometry(geom);
-  }
+    public static PreparedGeometry prepare(Geometry geom) {
+        return (new PreparedGeometryFactory()).create(geom);
+    }
+
+    public PreparedGeometryFactory() {
+    }
+
+    /**
+     * Creates a new {@link PreparedGeometry} appropriate for the argument {@link Geometry}.
+     *
+     * @param geom the geometry to prepare
+     * @return the prepared geometry
+     */
+    public PreparedGeometry create(Geometry geom) {
+        if (geom instanceof Polygonal)
+            return new PreparedPolygon((Polygonal) geom);
+        if (geom instanceof Lineal)
+            return new PreparedLineString((Lineal) geom);
+        if (geom instanceof Puntal)
+            return new PreparedPoint((Puntal) geom);
+
+        /**
+         * Default representation.
+         */
+        return new BasicPreparedGeometry(geom);
+    }
 }

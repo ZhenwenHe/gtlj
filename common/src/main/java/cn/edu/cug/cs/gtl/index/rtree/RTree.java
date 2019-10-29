@@ -46,42 +46,42 @@ public interface RTree extends Indexable {
                boolean ensureTightMBRs);
 
 
-    static RTree create(StorageManager storageManager, PropertySet propSet){
+    static RTree create(StorageManager storageManager, PropertySet propSet) {
         RTree r = new RTreeImpl();
-        r.reset( storageManager, propSet);
+        r.reset(storageManager, propSet);
         return r;
     }
 
     static RTree create(StorageManager storageManager,
-                               Identifier indexIdentifier,
-                               int dimension,
-                               int indexCapacity, int leafCapacity,
-                               double fillFactor,
-                               RTreeVariant treeVariant,
-                               int nearMinimumOverlapFactor,
-                               double splitDistributionFactor,
-                               double reinsertFactor,
-                               boolean ensureTightMBRs){
+                        Identifier indexIdentifier,
+                        int dimension,
+                        int indexCapacity, int leafCapacity,
+                        double fillFactor,
+                        RTreeVariant treeVariant,
+                        int nearMinimumOverlapFactor,
+                        double splitDistributionFactor,
+                        double reinsertFactor,
+                        boolean ensureTightMBRs) {
         RTree r = new RTreeImpl();
-        r.reset( storageManager,
-                 indexIdentifier,
-         dimension,
-         indexCapacity,  leafCapacity,
-         fillFactor,
-         treeVariant,
-         nearMinimumOverlapFactor,
-         splitDistributionFactor,
-         reinsertFactor,
-         ensureTightMBRs);
+        r.reset(storageManager,
+                indexIdentifier,
+                dimension,
+                indexCapacity, leafCapacity,
+                fillFactor,
+                treeVariant,
+                nearMinimumOverlapFactor,
+                splitDistributionFactor,
+                reinsertFactor,
+                ensureTightMBRs);
         return r;
     }
 
-    static RTree create(int dimension, int indexCapacity, int leafCapacity ){
+    static RTree create(int dimension, int indexCapacity, int leafCapacity) {
         RTree r = new RTreeImpl();
-        r.reset( StorageManager.createMemoryStorageManager(),
+        r.reset(StorageManager.createMemoryStorageManager(),
                 null,
                 dimension,
-                indexCapacity,  leafCapacity,
+                indexCapacity, leafCapacity,
                 0,
                 RTreeVariant.RV_RSTAR,
                 0,

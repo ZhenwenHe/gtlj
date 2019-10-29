@@ -28,86 +28,100 @@ import java.io.*;
 import cn.edu.cug.cs.gtl.index.btree.unboxed.UnboxedInt;
 
 /**
- *  Page format:
- *
- *    int: isRightMost (1 or 0)
- *    int: number of buckets
- *    int: pageid of first bucket
- *    S:   summary of first bucket
- *    repeat
- *       int: number of values in (N-1)^th bucket
- *       key: least key in N^th bucket
- *       int: pageid of N^th bucket
- *       S:   summary of N^th bucket
- *
- *   The arrangement above was chosen to deliberately avoid tracking
- *   the number of values in the last bucket.  This ensures that we
- *   can append new values to the last bucket of the rightmost leaf
- *   without touching any interior nodes (unless we're forced to
- *   split, of course, but if the pages are large enough that doesn't
- *   happen very often).  This maintains the O(1)-unless-we-split
- *   fastpath for appends while still keeping enough interior data to
- *   perform ordinal queries.
- *
- *   Note that we still need to keep the summary for the last bucket,
- *   because we don't know as much about its semantics.  This is just
- *   one of the reasons why "number of values below here" is computed
- *   separately rather than being part of the summary.
- */     
+ * Page format:
+ * <p>
+ * int: isRightMost (1 or 0)
+ * int: number of buckets
+ * int: pageid of first bucket
+ * S:   summary of first bucket
+ * repeat
+ * int: number of values in (N-1)^th bucket
+ * key: least key in N^th bucket
+ * int: pageid of N^th bucket
+ * S:   summary of N^th bucket
+ * <p>
+ * The arrangement above was chosen to deliberately avoid tracking
+ * the number of values in the last bucket.  This ensures that we
+ * can append new values to the last bucket of the rightmost leaf
+ * without touching any interior nodes (unless we're forced to
+ * split, of course, but if the pages are large enough that doesn't
+ * happen very often).  This maintains the O(1)-unless-we-split
+ * fastpath for appends while still keeping enough interior data to
+ * perform ordinal queries.
+ * <p>
+ * Note that we still need to keep the summary for the last bucket,
+ * because we don't know as much about its semantics.  This is just
+ * one of the reasons why "number of values below here" is computed
+ * separately rather than being part of the summary.
+ */
 class InteriorNodeCursor
-    <K extends Serializable & Comparable,
-     V extends Serializable,
-     S extends Serializable>
-    extends NodeCursor<K,V,S> {
+        <K extends Serializable & Comparable,
+                V extends Serializable,
+                S extends Serializable>
+        extends NodeCursor<K, V, S> {
 
-    private        final int          INTERIOR_HEADER_SIZE;
-    private        final int          INTERIOR_ENTRY_SIZE;
-    private        final int          INTERIOR_MAX_BUCKETS;
-    private        final int          SIZEOF_SUMMARY;
-    private              int          numbuckets;  // just a cache
+    private final int INTERIOR_HEADER_SIZE;
+    private final int INTERIOR_ENTRY_SIZE;
+    private final int INTERIOR_MAX_BUCKETS;
+    private final int SIZEOF_SUMMARY;
+    private int numbuckets;  // just a cache
 
-    public InteriorNodeCursor(BTree<K,V,S> bt) {
+    public InteriorNodeCursor(BTree<K, V, S> bt) {
         super(bt);
-        this.SIZEOF_SUMMARY       = bt.ao==null ? 0 : bt.ao.getSize();
-        this.INTERIOR_HEADER_SIZE = 2*SIZEOF_INT;
-        this.INTERIOR_ENTRY_SIZE  = bt.uk.getSize() + SIZEOF_SUMMARY + SIZEOF_INT + SIZEOF_INT;
-        this.INTERIOR_MAX_BUCKETS = ((ps.getPageSize()-INTERIOR_HEADER_SIZE-SIZEOF_INT-this.SIZEOF_SUMMARY) / INTERIOR_ENTRY_SIZE);
+        this.SIZEOF_SUMMARY = bt.ao == null ? 0 : bt.ao.getSize();
+        this.INTERIOR_HEADER_SIZE = 2 * SIZEOF_INT;
+        this.INTERIOR_ENTRY_SIZE = bt.uk.getSize() + SIZEOF_SUMMARY + SIZEOF_INT + SIZEOF_INT;
+        this.INTERIOR_MAX_BUCKETS = ((ps.getPageSize() - INTERIOR_HEADER_SIZE - SIZEOF_INT - this.SIZEOF_SUMMARY) / INTERIOR_ENTRY_SIZE);
     }
 
     /**
-     *  Creates a new bucket for a child at index "idx" by shifting
-     *  over the child previously in that bucket (if any) and all
-     *  after it.  Returns the offset in the buffer at which to write
-     *  the least key beneath the new child.  Note that the value in
-     *  the bucket and the summary for that bucket are not
-     *  initialized.
+     * Creates a new bucket for a child at index "idx" by shifting
+     * over the child previously in that bucket (if any) and all
+     * after it.  Returns the offset in the buffer at which to write
+     * the least key beneath the new child.  Note that the value in
+     * the bucket and the summary for that bucket are not
+     * initialized.
      */
     public int insertNewBucketAt(int idx) {
         assert !isFull();
-        assert idx!=0;
+        assert idx != 0;
         if (idx < getNumBuckets())
-            System.arraycopy(getBuf(), INTERIOR_HEADER_SIZE + (idx-1)*INTERIOR_ENTRY_SIZE,
-                             getBuf(), INTERIOR_HEADER_SIZE + idx*INTERIOR_ENTRY_SIZE,
-                             endOfBuf() - (INTERIOR_HEADER_SIZE + (idx-1)*INTERIOR_ENTRY_SIZE));
-        setNumBuckets(getNumBuckets()+1);
-        return INTERIOR_HEADER_SIZE + idx*INTERIOR_ENTRY_SIZE - bt.uk.getSize();
+            System.arraycopy(getBuf(), INTERIOR_HEADER_SIZE + (idx - 1) * INTERIOR_ENTRY_SIZE,
+                    getBuf(), INTERIOR_HEADER_SIZE + idx * INTERIOR_ENTRY_SIZE,
+                    endOfBuf() - (INTERIOR_HEADER_SIZE + (idx - 1) * INTERIOR_ENTRY_SIZE));
+        setNumBuckets(getNumBuckets() + 1);
+        return INTERIOR_HEADER_SIZE + idx * INTERIOR_ENTRY_SIZE - bt.uk.getSize();
     }
 
-    public static boolean isInteriorNode(byte[] buf) { return UnboxedInt.instance.deserializeInt(buf, 1*SIZEOF_INT)!=0; }
-    public int getMaxBuckets() { return INTERIOR_MAX_BUCKETS; }
+    public static boolean isInteriorNode(byte[] buf) {
+        return UnboxedInt.instance.deserializeInt(buf, 1 * SIZEOF_INT) != 0;
+    }
+
+    public int getMaxBuckets() {
+        return INTERIOR_MAX_BUCKETS;
+    }
+
     public void initBuf(CachingPageStorage.CachedPage cp, boolean isRightMost) {
         super.setBuf(cp);
         setRightMost(isRightMost);
     }
-    public int  getNumBuckets() { return numbuckets; }
-    protected void setNumBuckets(int num) { bt.ui.serializeInt(numbuckets = num, getBuf(), 1*SIZEOF_INT); }
+
+    public int getNumBuckets() {
+        return numbuckets;
+    }
+
+    protected void setNumBuckets(int num) {
+        bt.ui.serializeInt(numbuckets = num, getBuf(), 1 * SIZEOF_INT);
+    }
 
     public void setBuf(CachingPageStorage.CachedPage cp) {
         super.setBuf(cp);
-        numbuckets = bt.ui.deserializeInt(getBuf(), 1*SIZEOF_INT);
+        numbuckets = bt.ui.deserializeInt(getBuf(), 1 * SIZEOF_INT);
     }
 
-    /** Initialize a new root node. */
+    /**
+     * Initialize a new root node.
+     */
     public void initRoot() {
         bt.rootpage = ps.createPage();
         super.setBuf(ps.getPage(bt.rootpage, false));
@@ -115,62 +129,72 @@ class InteriorNodeCursor
         setRightMost(true);
     }
 
-    public boolean isLeafNode() { return false; }
+    public boolean isLeafNode() {
+        return false;
+    }
 
-    protected int endOfBuf() { return INTERIOR_HEADER_SIZE + getNumBuckets()*INTERIOR_ENTRY_SIZE - SIZEOF_SUMMARY - SIZEOF_INT; }
+    protected int endOfBuf() {
+        return INTERIOR_HEADER_SIZE + getNumBuckets() * INTERIOR_ENTRY_SIZE - SIZEOF_SUMMARY - SIZEOF_INT;
+    }
 
-    public int  getBucketPageId(int idx) { return bt.ui.deserializeInt(getBuf(), INTERIOR_HEADER_SIZE+INTERIOR_ENTRY_SIZE*idx); }
-    public void setBucketPageId(int idx, int pageid) { bt.ui.serializeInt(pageid, getBuf(), INTERIOR_HEADER_SIZE+INTERIOR_ENTRY_SIZE*idx); }
-    public int  compare(byte[] key, int key_ofs, int keynum) {
-        if (keynum<=0) return 1;
-        if (keynum>=getNumBuckets()) return -1;
-        return bt.uk.compare(key, key_ofs, getBuf(), INTERIOR_HEADER_SIZE + keynum*INTERIOR_ENTRY_SIZE - bt.uk.getSize());
+    public int getBucketPageId(int idx) {
+        return bt.ui.deserializeInt(getBuf(), INTERIOR_HEADER_SIZE + INTERIOR_ENTRY_SIZE * idx);
+    }
+
+    public void setBucketPageId(int idx, int pageid) {
+        bt.ui.serializeInt(pageid, getBuf(), INTERIOR_HEADER_SIZE + INTERIOR_ENTRY_SIZE * idx);
+    }
+
+    public int compare(byte[] key, int key_ofs, int keynum) {
+        if (keynum <= 0) return 1;
+        if (keynum >= getNumBuckets()) return -1;
+        return bt.uk.compare(key, key_ofs, getBuf(), INTERIOR_HEADER_SIZE + keynum * INTERIOR_ENTRY_SIZE - bt.uk.getSize());
     }
 
     protected void scoot(byte[] oldBuf, int endOfBuf, int splitPoint) {
-        int len = INTERIOR_HEADER_SIZE + INTERIOR_ENTRY_SIZE*(splitPoint);
+        int len = INTERIOR_HEADER_SIZE + INTERIOR_ENTRY_SIZE * (splitPoint);
         System.arraycopy(oldBuf, len,
-                         getBuf(), INTERIOR_HEADER_SIZE,
-                         endOfBuf - len);
+                getBuf(), INTERIOR_HEADER_SIZE,
+                endOfBuf - len);
     }
 
     public void getKey(int keynum, byte[] key, int key_ofs) {
-        System.arraycopy(getBuf(), INTERIOR_HEADER_SIZE + keynum*INTERIOR_ENTRY_SIZE - bt.uk.getSize(),
-                         key, key_ofs, bt.uk.getSize());
+        System.arraycopy(getBuf(), INTERIOR_HEADER_SIZE + keynum * INTERIOR_ENTRY_SIZE - bt.uk.getSize(),
+                key, key_ofs, bt.uk.getSize());
     }
 
     public void setNumValsBelowBucket(int idx, int num) {
-        if (idx==getNumBuckets()-1)
+        if (idx == getNumBuckets() - 1)
             throw new RuntimeException("InteriorNodeCursors don't store numValuesBelowBucket() for their last bucket");
-        assert idx>=0 && idx<getNumBuckets()-1;
-        bt.ui.serializeInt(num, getBuf(), INTERIOR_HEADER_SIZE+SIZEOF_INT+SIZEOF_SUMMARY+INTERIOR_ENTRY_SIZE*idx);
+        assert idx >= 0 && idx < getNumBuckets() - 1;
+        bt.ui.serializeInt(num, getBuf(), INTERIOR_HEADER_SIZE + SIZEOF_INT + SIZEOF_SUMMARY + INTERIOR_ENTRY_SIZE * idx);
     }
 
     public int getNumValsBelowBucket(int bucket) {
-        if (bucket>=getNumBuckets()) return 0;
+        if (bucket >= getNumBuckets()) return 0;
 
         // FIXME: should be an assertion
-        if (bucket==getNumBuckets()-1)
+        if (bucket == getNumBuckets() - 1)
             throw new RuntimeException("InteriorNodeCursors don't store numValuesBelowBucket() for their last bucket");
 
-        return bt.ui.deserializeInt(getBuf(), INTERIOR_HEADER_SIZE+SIZEOF_INT+SIZEOF_SUMMARY+INTERIOR_ENTRY_SIZE*bucket);
+        return bt.ui.deserializeInt(getBuf(), INTERIOR_HEADER_SIZE + SIZEOF_INT + SIZEOF_SUMMARY + INTERIOR_ENTRY_SIZE * bucket);
     }
 
     public void multiplySummaryCommutative(int idx, byte[] buf, int ofs) {
-        if (idx==getNumBuckets()-1 && isRightMost())
+        if (idx == getNumBuckets() - 1 && isRightMost())
             throw new RuntimeException("RightMost InteriorNodeCursors don't store a summary value for their last bucket");
-        assert idx>=0 && idx<getNumBuckets();
+        assert idx >= 0 && idx < getNumBuckets();
         bt.ao.multiply(buf, ofs,
-                           getBuf(), INTERIOR_HEADER_SIZE+SIZEOF_INT+INTERIOR_ENTRY_SIZE*idx,
-                           getBuf(), INTERIOR_HEADER_SIZE+SIZEOF_INT+INTERIOR_ENTRY_SIZE*idx);
+                getBuf(), INTERIOR_HEADER_SIZE + SIZEOF_INT + INTERIOR_ENTRY_SIZE * idx,
+                getBuf(), INTERIOR_HEADER_SIZE + SIZEOF_INT + INTERIOR_ENTRY_SIZE * idx);
     }
 
     public void getSummary(int idx, byte[] buf, int ofs) {
-        if (idx==getNumBuckets()-1 && isRightMost())
+        if (idx == getNumBuckets() - 1 && isRightMost())
             throw new RuntimeException("RightMost InteriorNodeCursors don't store a summary value for their last bucket");
-        assert idx>=0 && idx<getNumBuckets();
-        System.arraycopy(getBuf(), INTERIOR_HEADER_SIZE+SIZEOF_INT+INTERIOR_ENTRY_SIZE*idx,
-                         buf, ofs,
-                         bt.ao.getSize());
+        assert idx >= 0 && idx < getNumBuckets();
+        System.arraycopy(getBuf(), INTERIOR_HEADER_SIZE + SIZEOF_INT + INTERIOR_ENTRY_SIZE * idx,
+                buf, ofs,
+                bt.ao.getSize());
     }
 }

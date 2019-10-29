@@ -155,7 +155,7 @@ public class Font implements Serializable {
     }
 
     @Override
-    public Object clone(){
+    public Object clone() {
         Font font = new Font();
         font.setHeight(height);
         font.setWidth(width);
@@ -198,7 +198,7 @@ public class Font implements Serializable {
     @Override
     public boolean store(DataOutput out) throws IOException {
         out.writeInt(height);
-        out.writeInt(width );
+        out.writeInt(width);
         out.writeInt(escapement);
         out.writeInt(orientation);
         out.writeInt(weight);
@@ -210,7 +210,7 @@ public class Font implements Serializable {
         out.writeInt(clipPrecision);
         out.writeInt(quality);
         out.writeInt(pitchAndFamily);
-        StringUtils.store(faceName,out);
+        StringUtils.store(faceName, out);
         out.writeFloat(depth);
         return true;
     }

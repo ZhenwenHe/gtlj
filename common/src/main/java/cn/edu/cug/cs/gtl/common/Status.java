@@ -5,62 +5,69 @@ import cn.edu.cug.cs.gtl.io.Serializable;
 
 import java.io.*;
 
-public class Status  implements Serializable {
+public class Status implements Serializable {
     int status;
 
     public Status() {
-        this.status=0;
+        this.status = 0;
     }
 
-    protected Status(int s){
-        this.status=s;
+    protected Status(int s) {
+        this.status = s;
     }
 
     /**
      * 是否可见
+     *
      * @return
      */
-    public boolean isVisible(){
+    public boolean isVisible() {
         return true;
     }
 
     /**
      * 设置是否可见
+     *
      * @param flag
      */
-    public void setVisible(boolean flag){
+    public void setVisible(boolean flag) {
 
     }
 
     /**
      * 是否删除
+     *
      * @return
      */
-    public boolean isDeleted(){
+    public boolean isDeleted() {
         return false;
     }
 
     /**
      * 设置删除标志
+     *
      * @param flag
      */
-    public void setDeleted(boolean flag){
+    public void setDeleted(boolean flag) {
         setSelected(false);
         setVisible(false);
     }
+
     /**
      * 是否选择
+     *
      * @return
      */
-    public boolean isSelected(){
+    public boolean isSelected() {
         return false;
     }
 
     /**
      * 设置选中标志
+     *
      * @param flag
      */
-    public void setSelected(boolean flag){
+    public void setSelected(boolean flag) {
 
     }
 
@@ -71,7 +78,7 @@ public class Status  implements Serializable {
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.status=in.readInt();
+        this.status = in.readInt();
         return true;
     }
 
@@ -82,7 +89,7 @@ public class Status  implements Serializable {
     }
 
     @Override
-    public long getByteArraySize(){
+    public long getByteArraySize() {
         return 4;
     }
 }

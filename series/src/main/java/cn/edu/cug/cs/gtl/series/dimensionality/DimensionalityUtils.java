@@ -9,24 +9,22 @@ import cn.edu.cug.cs.gtl.series.common.pax.TIOPoints;
 public class DimensionalityUtils {
 
 
-
     /**
-     *
-     * @param a  the input time series.
-     *           it should be a n x 2 array;
-     *           n is the length of the time series
-     *           a.getDataX() is the x-axis values
-     *           a.getDataY() is the y-axis values
-     * @param w  The desired length of approximated time series
-     * @return  the output time series.
-     *          An array of points with the reduced dimensionality
+     * @param a the input time series.
      *          it should be a n x 2 array;
-     *          w is the length of the time series
-     *          col(0) is the x-axis values
-     *          col(1) is the y-axis values
+     *          n is the length of the time series
+     *          a.getDataX() is the x-axis values
+     *          a.getDataY() is the y-axis values
+     * @param w The desired length of approximated time series
+     * @return the output time series.
+     * An array of points with the reduced dimensionality
+     * it should be a n x 2 array;
+     * w is the length of the time series
+     * col(0) is the x-axis values
+     * col(1) is the y-axis values
      */
-    public static TimeSeries paa(TimeSeries a, long w){
-        return cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(a,w);
+    public static TimeSeries paa(TimeSeries a, long w) {
+        return cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(a, w);
     }
 
     /**
@@ -36,67 +34,71 @@ public class DimensionalityUtils {
      * 2) if there are some (more or equal one) values happened to be in the piece
      * algorithm will handle it as usual - getting the mean.
      *
-     * @param ts The time series to approximate.
+     * @param ts      The time series to approximate.
      * @param paaSize The desired length of approximated time series.
      * @return PAA-approximated time series.
      * @throws Exception if error occurs.
-     *
      */
     public static double[] paa(double[] ts, int paaSize) throws Exception {
-        return cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(ts,paaSize);
+        return cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(ts, paaSize);
     }
 
     /**
-     *Approximate the timeseries using PAA.
+     * Approximate the timeseries using PAA.
+     *
      * @param s
      * @param paaSize
      * @return
      */
-    public static Series paa(Series s, int paaSize){
-        return cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(s,paaSize);
+    public static Series paa(Series s, int paaSize) {
+        return cn.edu.cug.cs.gtl.series.common.paa.Utils.paa(s, paaSize);
     }
 
     /**
      * Approximate the time series using SAX.
+     *
      * @param s
      * @param paaSize
      * @param alphabet
      * @return
      */
-    public static char[] sax(Series s, int paaSize, int alphabet){
-        return cn.edu.cug.cs.gtl.series.common.sax.Utils.sax(s,paaSize,alphabet);
+    public static char[] sax(Series s, int paaSize, int alphabet) {
+        return cn.edu.cug.cs.gtl.series.common.sax.Utils.sax(s, paaSize, alphabet);
     }
 
     /**
-     *Approximate the time series using SAX.
+     * Approximate the time series using SAX.
+     *
      * @param s
      * @param paaSize
      * @param alphabet
      * @return
      */
-    public static char[] sax(TimeSeries s, int paaSize, int alphabet){
-        return cn.edu.cug.cs.gtl.series.common.sax.Utils.sax(s,paaSize,alphabet);
+    public static char[] sax(TimeSeries s, int paaSize, int alphabet) {
+        return cn.edu.cug.cs.gtl.series.common.sax.Utils.sax(s, paaSize, alphabet);
     }
 
 
     /**
-     *Approximate the time series using PAX.
+     * Approximate the time series using PAX.
+     *
      * @param s
      * @param paaSize
      * @return
      */
-    public static TIOPoints pax(TimeSeries s, int paaSize){
-        return cn.edu.cug.cs.gtl.series.common.pax.Utils.pax(s,paaSize);
+    public static TIOPoints pax(TimeSeries s, int paaSize) {
+        return cn.edu.cug.cs.gtl.series.common.pax.Utils.pax(s, paaSize);
     }
 
     /**
-     *Approximate the time series using HAX.
+     * Approximate the time series using HAX.
+     *
      * @param s
      * @param paaSize
      * @return
      */
-    public static byte[] hax(TimeSeries s, int paaSize){
-        return cn.edu.cug.cs.gtl.series.common.hax.Utils.hax(s,paaSize);
+    public static byte[] hax(TimeSeries s, int paaSize) {
+        return cn.edu.cug.cs.gtl.series.common.hax.Utils.hax(s, paaSize);
     }
 
 

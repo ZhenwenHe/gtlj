@@ -25,7 +25,7 @@ public class Scalar implements Serializable {
         return new Scalar(s.scalar * this.scalar);
     }
 
-    public Vector multiply(Vector s)  {
+    public Vector multiply(Vector s) {
         Vector v = (Vector) s.clone();
         for (int i = 0; i < s.getDimension(); ++i)
             v.setOrdinate(i, s.getOrdinate(i) * this.scalar);

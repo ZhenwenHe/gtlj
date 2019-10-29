@@ -32,7 +32,8 @@ class MemoryStorageManager implements StorageManager {
 
     /**
      * 读取指定页面的数据
-     * @param  page 页面唯一ID
+     *
+     * @param page 页面唯一ID
      * @return byte数组
      */
     @Override
@@ -45,8 +46,7 @@ class MemoryStorageManager implements StorageManager {
             r = new byte[e.length]; // 创建一个等大的字节数组
             System.arraycopy(e.data, 0, r, 0, e.length); // 将获取的数据存在一个新的字节数组中
             return r;
-        }
-        catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
             return null;
         }
@@ -54,6 +54,7 @@ class MemoryStorageManager implements StorageManager {
 
     /**
      * 将字节数组写入对应的页中
+     *
      * @param page 页面ID，如果为-1，则选择一个新的页面写入，并修改传入page并返回
      *             如果为有效页面ID，则写入该页面;如果是无效的page，则会抛出IOException
      * @param data 需要写入的字节数组
@@ -89,6 +90,7 @@ class MemoryStorageManager implements StorageManager {
 
     /**
      * 删除指定页面的数据
+     *
      * @param page 页面唯一ID
      */
     @Override
@@ -119,7 +121,7 @@ class MemoryStorageManager implements StorageManager {
     /**
      * 以entry集合的形式存储数据以及数据长度
      */
-    class Entry implements java.io.Serializable{
+    class Entry implements java.io.Serializable {
 
         private static final long serialVersionUID = 2805920284167090345L;
 
@@ -132,7 +134,6 @@ class MemoryStorageManager implements StorageManager {
             System.arraycopy(d, 0, this.data, 0, this.length);
         }
     }
-
 
 
 }

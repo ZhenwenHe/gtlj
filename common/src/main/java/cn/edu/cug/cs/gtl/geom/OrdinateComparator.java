@@ -7,7 +7,7 @@ import java.util.Comparator;
 /**
  * 坐标分量比较器
  */
-public class OrdinateComparator<V extends Vector> implements Comparator<V>,Serializable {
+public class OrdinateComparator<V extends Vector> implements Comparator<V>, Serializable {
     private static final long serialVersionUID = 1L;
 
 
@@ -21,7 +21,7 @@ public class OrdinateComparator<V extends Vector> implements Comparator<V>,Seria
         this.dimensionOrder = dimensionOrder;
     }
 
-    public OrdinateComparator( ) {
+    public OrdinateComparator() {
         this.dimensionOrder = 0;
     }
 

@@ -1,7 +1,6 @@
 package cn.edu.cug.cs.gtl.common;
 
 
-
 import cn.edu.cug.cs.gtl.io.Serializable;
 import cn.edu.cug.cs.gtl.util.ObjectUtils;
 import cn.edu.cug.cs.gtl.util.StringUtils;
@@ -54,6 +53,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 构造函数，有个重载函数，根据传入的任意变量值，来初始化type 和value；
+     *
      * @param v 可以是任意类型变量；
      */
     public Variant(boolean v) {
@@ -135,6 +135,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 传入为用户自定义类型变量的构造函数
+     *
      * @param v
      */
     public Variant(Object v) {
@@ -143,7 +144,8 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 构造函数，同时传入type和value；
-     * @param type 数据类型
+     *
+     * @param type  数据类型
      * @param value 数据值
      */
     public Variant(int type, Object value) {
@@ -152,6 +154,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 从输入流读取数据，有多个类似函数，可以满足任意类型数据；
+     *
      * @param dataInput 为输入流
      * @return 为读取的字节数组
      */
@@ -172,8 +175,9 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 写入输出流；有多个类似函数，能满足多种类型数据的写入
+     *
      * @param dataOutput 为输出流
-     * @param data 为要写入输出流的字节数组
+     * @param data       为要写入输出流的字节数组
      */
     public static void writeBytes(DataOutput dataOutput, byte[] data) {
         try {
@@ -246,8 +250,8 @@ public class Variant implements Serializable, Comparable<Variant> {
         return StringUtils.load(dataInput);
     }
 
-    public static void writeString(DataOutput dataOutput, String s) throws IOException{
-        StringUtils.store(s,dataOutput);
+    public static void writeString(DataOutput dataOutput, String s) throws IOException {
+        StringUtils.store(s, dataOutput);
     }
 
     public static short[] readShorts(DataInput dataInput) {
@@ -415,16 +419,15 @@ public class Variant implements Serializable, Comparable<Variant> {
     public static Object readObject(DataInput dataInput) {
         try {
             return ObjectUtils.load(dataInput);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public static void writeObject(DataOutput dataOutput,Object data) {
+    public static void writeObject(DataOutput dataOutput, Object data) {
         try {
-            ObjectUtils.store(data,dataOutput);
+            ObjectUtils.store(data, dataOutput);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -432,6 +435,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 将任意类型数据写成字节数组，有多个类似函数，满足各种不同数据类型；
+     *
      * @param v 输入的数据；
      * @return 返回一个字节数组；
      */
@@ -441,6 +445,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 将字节数组中的数据还原，有多个类似函数，能满足各种不同数据类型
+     *
      * @param bytes
      * @return 原数据
      */
@@ -474,6 +479,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 判断是否为数值类型数据；
+     *
      * @return
      */
     public boolean isNumber() {
@@ -482,6 +488,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 判断是否为数组类型数据；
+     *
      * @return
      */
     public boolean isArray() {
@@ -490,6 +497,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 判空函数；
+     *
      * @return
      */
     public boolean isEmpty() {
@@ -498,6 +506,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 重写的判断是否相等的函数；先判断类型是否相同，若不同返回false，若相同进一步判断value是否相等；
+     *
      * @param o 另一个Variant对象；
      * @return
      */
@@ -567,6 +576,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 返回当前对象的哈希编码；
+     *
      * @return
      */
     @Override
@@ -578,6 +588,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 返回当前对象的克隆；
+     *
      * @return
      */
     @Override
@@ -587,6 +598,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 将对象转换为string；
+     *
      * @return
      */
     @Override
@@ -599,6 +611,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 获得本对象的数据类型 type；
+     *
      * @return type；
      */
     public int getType() {
@@ -608,6 +621,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 返回本对象的值value，有多个类似函数，能满足不同数据类型；
+     *
      * @return value；
      */
     public Object getValue() {
@@ -662,7 +676,7 @@ public class Variant implements Serializable, Comparable<Variant> {
             case FLOATS:
             case DOUBLES:
             case STRINGS:
-            case OBJECT:{
+            case OBJECT: {
                 assert false;
             }
         }
@@ -718,7 +732,7 @@ public class Variant implements Serializable, Comparable<Variant> {
             case FLOATS:
             case DOUBLES:
             case STRINGS:
-            case OBJECT:{
+            case OBJECT: {
                 assert false;
                 return false;
             }
@@ -773,7 +787,7 @@ public class Variant implements Serializable, Comparable<Variant> {
             case FLOATS:
             case DOUBLES:
             case STRINGS:
-            case OBJECT:{
+            case OBJECT: {
                 assert false;
                 return Double.MAX_VALUE;
             }
@@ -827,7 +841,7 @@ public class Variant implements Serializable, Comparable<Variant> {
             case FLOATS:
             case DOUBLES:
             case STRINGS:
-            case OBJECT:{
+            case OBJECT: {
                 assert false;
                 return b;
             }
@@ -920,7 +934,7 @@ public class Variant implements Serializable, Comparable<Variant> {
                     sb.append(b);
                 return sb.toString();
             }
-            case OBJECT:{
+            case OBJECT: {
                 return this.value.toString();
             }
         }
@@ -945,6 +959,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 重设对象值函数，有多个重载，可以传入多种不同类型变量；
+     *
      * @param v
      */
     public void reset(boolean v) {
@@ -1039,7 +1054,8 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 重设对象值函数，通过给定的type判断value类型；
-     * @param type 数据类型
+     *
+     * @param type  数据类型
      * @param value 数据值
      */
     public void reset(int type, Object value) {
@@ -1122,14 +1138,15 @@ public class Variant implements Serializable, Comparable<Variant> {
                 break;
             }
             default: {
-                this.value=value;
-                this.type=type;
+                this.value = value;
+                this.type = type;
             }
         }
     }
 
     /**
      * 重设对象值函数，只给出数据值，自己判断数据类型，并给type赋值；
+     *
      * @param value
      */
     public void reset(Object value) {
@@ -1172,7 +1189,7 @@ public class Variant implements Serializable, Comparable<Variant> {
         } else if (value instanceof Variant) {
             reset((Variant) value);
         } else {
-            reset(OBJECT,value);
+            reset(OBJECT, value);
         }
     }
 
@@ -1180,6 +1197,7 @@ public class Variant implements Serializable, Comparable<Variant> {
      * 两个对象作比较，分两种情况，
      * 两个对象都是数值型对象，转换为double进行比较；
      * 否则均转换为string进行比较，调用String的比较函数；
+     *
      * @param o
      * @return
      */
@@ -1199,6 +1217,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 复制函数（深复制），从给定对象复制出一个新对象；
+     *
      * @param i 其它任何实现了Serializable接口的对象
      */
     @Override
@@ -1210,6 +1229,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 通过输入流，读入对象的值，type和value；
+     *
      * @param dis 表示可以读取的存储对象，可能是内存、文件、管道等；
      * @return true or false；
      * @throws IOException
@@ -1304,6 +1324,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 将对象写入到输出流，储存起来
+     *
      * @param dos 表示可以写入的存储对象，可能是内存、文件、管道等
      * @return
      * @throws IOException
@@ -1387,8 +1408,8 @@ public class Variant implements Serializable, Comparable<Variant> {
                 writeStrings(dos, (String[]) value);
                 break;
             }
-            default:{
-                ObjectUtils.store(this.value,dos);
+            default: {
+                ObjectUtils.store(this.value, dos);
                 break;
             }
         }
@@ -1397,6 +1418,7 @@ public class Variant implements Serializable, Comparable<Variant> {
 
     /**
      * 获取写成的字节数组长度
+     *
      * @return 字节数组长度
      */
     @Override
@@ -1486,12 +1508,13 @@ public class Variant implements Serializable, Comparable<Variant> {
                 c += 4;
                 String[] ss = (String[]) this.value;
                 for (int i = 0; i < ss.length; ++i) {
-                    c += StringUtils.getByteArraySize((String) ss[i]);  ;
+                    c += StringUtils.getByteArraySize((String) ss[i]);
+                    ;
                 }
                 break;
             }
-            default:{
-                return 4+ObjectUtils.getByteArraySize(this.value);
+            default: {
+                return 4 + ObjectUtils.getByteArraySize(this.value);
             }
         }
         return c;

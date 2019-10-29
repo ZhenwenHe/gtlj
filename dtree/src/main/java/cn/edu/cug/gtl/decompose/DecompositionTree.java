@@ -114,7 +114,7 @@ class DecompositionTree {
     //该算法可以处理两种类型的输入数据，包含矩形和点。
     //想法：太慢了，反向查找
     long calculateIdentiferByEnvelopeOrVertex(final GeoObject r, int depth) {
-        if(!total.encloses(r)){
+        if (!total.encloses(r)) {
             return -1;  //或者返回0
         }
         Envelope to = total;
@@ -189,7 +189,7 @@ class DecompositionTree {
         do {
             prefix = getPrefix(code, i);
             if (hasPrefix(prefix)) {
-                i ++ ;
+                i++;
             } else
                 break;
         } while (i <= dep);
@@ -292,7 +292,7 @@ class DecompositionTree {
 //        return true;
     }
 
-//    算法6
+    //    算法6
     //输入：叶子节点_node
     //_mbr为_node在树的最深处所表示的最小矩形
     //_code为叶子节点的唯一编码
@@ -305,7 +305,7 @@ class DecompositionTree {
 //        _statistics.splitTimes++;
         long code = li.getIdentifer();
         ArrayList<Vertex> vertices = li.getEntryArray();
-        if(pi != null) vertices.add(pi);
+        if (pi != null) vertices.add(pi);
         Envelope to = calculateEnvelopeByIndentifer(code);
         Envelope[] splitEnvelope = decompose(to);
         LeafNode[] leafNodes = new LeafNode[powDimensions];
@@ -322,19 +322,19 @@ class DecompositionTree {
         }
 
         boolean index = true;   //用来判断后面是否要进行递归，如果递归我们不计算深度，在后面递归中进行计算
-        for(LeafNode s : leafNodes){
-            if(s != null){
-                if(s.entrySize() > limitSize ){
+        for (LeafNode s : leafNodes) {
+            if (s != null) {
+                if (s.entrySize() > limitSize) {
                     splitNode(s, null);
                     index = false;
-                }else {
-                    directory.put(s.getIdentifer(),s);
+                } else {
+                    directory.put(s.getIdentifer(), s);
                 }
             }
         }
 //        _statistics.objectNumber++;
-        if(index){
-            depth = Math.max(calculateDepthByIdentifer(code << numDims) , depth);
+        if (index) {
+            depth = Math.max(calculateDepthByIdentifer(code << numDims), depth);
         }
     }
 
@@ -357,26 +357,25 @@ class DecompositionTree {
 //    将_result按轨迹(TRJID)和时间进行分类
 
 
-//    算法8:删除操作
-    boolean remove(Vertex p){
+    //    算法8:删除操作
+    boolean remove(Vertex p) {
         long code = calculateIdentiferByEnvelopeOrVertex(p, depth);
         while (code != 0) {
-            if(directory.containsKey(code)){
-                LeafNode leafNode =  directory.get(code);
-                for (Vertex a :leafNode.getEntryArray()) {
+            if (directory.containsKey(code)) {
+                LeafNode leafNode = directory.get(code);
+                for (Vertex a : leafNode.getEntryArray()) {
                     if (a.equals(p)) {
                         leafNode.getEntryArray().remove(a);
-                        if (leafNode.getEntryArray().size() == 0)   directory.remove(leafNode.getIdentifer(), leafNode);
+                        if (leafNode.getEntryArray().size() == 0) directory.remove(leafNode.getIdentifer(), leafNode);
                         return true;
                     }
                 }
-            }
-            else code = code >> numDims;
+            } else code = code >> numDims;
         }
         return false;
     }
 
-    boolean extend(){
+    boolean extend() {
 //        	void insertExternalObject(entry_ptr p)
         return false;
     }

@@ -14,15 +14,15 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
- */ 
+ */
 
 import cn.edu.cug.cs.gtl.jts.geom.Geometry;
 
 /**
  * This interface is really just a trick for schema building, there
  * are no concrete implementors for it
- * @author Andrea Aime - GeoSolutions
  *
+ * @author Andrea Aime - GeoSolutions
  */
 public interface MultiCurvedGeometry<T extends Geometry> extends CurvedGeometry<T> {
 

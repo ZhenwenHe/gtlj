@@ -26,8 +26,8 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 import java.io.*;
 
 /**
- *  An AssociativeOperation whose multiply() operator is also commutative
+ * An AssociativeOperation whose multiply() operator is also commutative
  */
 public interface AssociativeCommutativeOperation<S extends Serializable>
-    extends AssociativeOperation<S> {
+        extends AssociativeOperation<S> {
 }

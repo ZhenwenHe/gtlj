@@ -18,7 +18,7 @@ public class StringUtils {
 
     public final static String NEWLINE = System.getProperty("line.separator");
     private static NumberFormat SIMPLE_ORDINATE_FORMAT = new DecimalFormat("0.#");
-    public static final char[] HEX_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    public static final char[] HEX_CHARS = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
     /**
      * Mimics the the Java SE {@link String#split(String)} method.
@@ -87,96 +87,94 @@ public class StringUtils {
         return new String(ch);
     }
 
-    public static String loadString(DataInput in) throws IOException{
+    public static String loadString(DataInput in) throws IOException {
         try {
             int bytesLength = in.readInt();
-            if(bytesLength==-1) return null;
-            if(bytesLength==0) return new String("");
-            byte [] bs = new byte[bytesLength];
-            in.readFully(bs,0,bytesLength);
-            return new String(bs,0,bytesLength);
-        }
-        catch (Exception e){
+            if (bytesLength == -1) return null;
+            if (bytesLength == 0) return new String("");
+            byte[] bs = new byte[bytesLength];
+            in.readFully(bs, 0, bytesLength);
+            return new String(bs, 0, bytesLength);
+        } catch (Exception e) {
             e.printStackTrace();
             return new String("");
         }
     }
 
-    public static int storeString(String s, DataOutput out) throws IOException{
-        if(s==null){
+    public static int storeString(String s, DataOutput out) throws IOException {
+        if (s == null) {
             out.writeInt(-1);
             return -1;
         }
-        if(s.equals("")){
+        if (s.equals("")) {
             out.writeInt(0);
             return 0;
         }
 
         try {
-            byte [] bs = s.getBytes();
+            byte[] bs = s.getBytes();
             out.writeInt(bs.length);
-            if(bs.length>0)
+            if (bs.length > 0)
                 out.write(bs);
             return bs.length;
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return 0;
         }
     }
 
     /**
-     *从输入流中读取数据填充对象
+     * 从输入流中读取数据填充对象
+     *
      * @param in 输入流
-     * @return  成功返回true，否则返回false
+     * @return 成功返回true，否则返回false
      * @throws IOException
      */
     public static String read(InputStream in) throws IOException {
         try {
-            byte [] lenBytes=new byte[4];
+            byte[] lenBytes = new byte[4];
             in.read(lenBytes);
             int bytesLength = StorableInt.decode(lenBytes);
-            if(bytesLength==0) return new String("");
-            byte [] bs = new byte[bytesLength];
+            if (bytesLength == 0) return new String("");
+            byte[] bs = new byte[bytesLength];
             in.read(bs);
-            return new String(bs,0,bytesLength);
-        }
-        catch (IOException e){
+            return new String(bs, 0, bytesLength);
+        } catch (IOException e) {
             e.printStackTrace();
             return new String("");
         }
     }
 
     /**
-     *向输出流中写出数据
+     * 向输出流中写出数据
+     *
      * @param out 输出流
      * @return 成功返回非0，否则返回0
      * @throws IOException
      */
-    public static int write(String s,OutputStream out ) throws IOException {
+    public static int write(String s, OutputStream out) throws IOException {
         try {
-            byte [] bs = s.getBytes();
+            byte[] bs = s.getBytes();
             out.write(StorableInt.encode(bs.length));
-            if(bs.length>0)
+            if (bs.length > 0)
                 out.write(bs);
-            return 4+bs.length;
-        }
-        catch (IOException e){
+            return 4 + bs.length;
+        } catch (IOException e) {
             e.printStackTrace();
             return 0;
         }
     }
 
-    public static String load(DataInput in) throws IOException{
+    public static String load(DataInput in) throws IOException {
         return loadString(in);
     }
 
-    public static int store(String s, DataOutput out) throws IOException{
-        return storeString(s,out);
+    public static int store(String s, DataOutput out) throws IOException {
+        return storeString(s, out);
     }
 
-    public static long getByteArraySize(String s){
-        return s.getBytes().length+4;
+    public static long getByteArraySize(String s) {
+        return s.getBytes().length + 4;
     }
 
     /**
@@ -251,10 +249,9 @@ public class StringUtils {
      * Given a hex string this will return the byte array corresponding to the
      * string .
      *
-     * @param hex
-     *        the hex String array
+     * @param hex the hex String array
      * @return a byte array that is a hex string representation of the given
-     *         string. The size of the byte array is therefore hex.length/2
+     * string. The size of the byte array is therefore hex.length/2
      */
     public static byte[] hexStringToByte(final String hex) {
         final byte[] bts = new byte[hex.length() / 2];
@@ -268,19 +265,15 @@ public class StringUtils {
      * Given an array of bytes it will convert the bytes to a hex string
      * representation of the bytes.
      *
-     * @param bytes
-     *        the bytes to convert in a hex string
-     * @param start
-     *        start index, inclusively
-     * @param end
-     *        end index, exclusively
+     * @param bytes the bytes to convert in a hex string
+     * @param start start index, inclusively
+     * @param end   end index, exclusively
      * @return hex string representation of the byte array
      */
     public static String byteToHexString(final byte[] bytes, final int start, final int end) {
         if (bytes == null) {
             throw new IllegalArgumentException("bytes == null");
         }
-
 
 
         int length = end - start;
@@ -298,8 +291,7 @@ public class StringUtils {
      * Given an array of bytes it will convert the bytes to a hex string
      * representation of the bytes.
      *
-     * @param bytes
-     *        the bytes to convert in a hex string
+     * @param bytes the bytes to convert in a hex string
      * @return hex string representation of the byte array
      */
     public static String byteToHexString(final byte[] bytes) {
@@ -349,7 +341,7 @@ public class StringUtils {
      * Creates a random string with a length within the given interval. The string contains only characters that
      * can be represented as a single code point.
      *
-     * @param rnd The random used to create the strings.
+     * @param rnd       The random used to create the strings.
      * @param minLength The minimum string length.
      * @param maxLength The maximum string length (inclusive).
      * @return A random String.
@@ -368,11 +360,11 @@ public class StringUtils {
      * Creates a random string with a length within the given interval. The string contains only characters that
      * can be represented as a single code point.
      *
-     * @param rnd The random used to create the strings.
+     * @param rnd       The random used to create the strings.
      * @param minLength The minimum string length.
      * @param maxLength The maximum string length (inclusive).
-     * @param minValue The minimum character value to occur.
-     * @param maxValue The maximum character value to occur.
+     * @param minValue  The minimum character value to occur.
+     * @param maxValue  The maximum character value to occur.
      * @return A random String.
      */
     public static String getRandomString(Random rnd, int minLength, int maxLength, char minValue, char maxValue) {

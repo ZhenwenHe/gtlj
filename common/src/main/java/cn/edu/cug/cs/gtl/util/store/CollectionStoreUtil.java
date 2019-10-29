@@ -67,11 +67,11 @@ public class CollectionStoreUtil extends ParameterizedTypeUtil {
     public static <T> T getInstance(Class<T> collectionType) throws IllegalAccessException, InstantiationException, StoreException {
         if (Collection.class.isAssignableFrom(collectionType) && isImplementedClass(collectionType)) {
             return collectionType.newInstance();
-        } else if (collectionType==List.class||collectionType==Collection.class) {
+        } else if (collectionType == List.class || collectionType == Collection.class) {
             return (T) new ArrayList<>();
-        } else if (collectionType==Set.class) {
+        } else if (collectionType == Set.class) {
             return (T) new HashSet<>();
-        }else{
+        } else {
             throw new StoreException(StoreException.CollectionInstance);
         }
 

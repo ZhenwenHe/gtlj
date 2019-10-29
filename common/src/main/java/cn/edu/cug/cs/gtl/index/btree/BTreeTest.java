@@ -29,7 +29,7 @@ import cn.edu.cug.cs.gtl.index.btree.unboxed.Pair;
 import cn.edu.cug.cs.gtl.index.btree.unboxed.UnboxedInt;
 
 /**
- *  A simple regression test for the BTree.
+ * A simple regression test for the BTree.
  */
 public class BTreeTest {
     public static void main(String[] s) throws Exception {
@@ -53,57 +53,60 @@ public class BTreeTest {
         int maxsize = Integer.parseInt(s[0]);
         int size = 0;
         CachingPageStorage ps = new CachingPageStorageWrapper(FilePageStorage.create(), cachesize, false);
-        BTree<Integer,Integer, Pair<Integer,Integer>> btree =
-            new BTree<Integer,Integer,Pair<Integer,Integer>>(ps, UnboxedInt.instance,
-                                                             UnboxedInt.instance,
-                                                             null,
-                                                             null);
-        TreeMap<Integer,Integer> tm = 
-            new TreeMap<Integer,Integer>();
+        BTree<Integer, Integer, Pair<Integer, Integer>> btree =
+                new BTree<Integer, Integer, Pair<Integer, Integer>>(ps, UnboxedInt.instance,
+                        UnboxedInt.instance,
+                        null,
+                        null);
+        TreeMap<Integer, Integer> tm =
+                new TreeMap<Integer, Integer>();
 
-        int puts=0, gets=0, deletes=0, misses=0, inserts=0;
-        long lastprint=0;
+        int puts = 0, gets = 0, deletes = 0, misses = 0, inserts = 0;
+        long lastprint = 0;
 
         // you can switch one of these off to gather crude performance measurements and compare them to TreeMap
         boolean do_tm = true;
         boolean do_bt = true;
 
-        for(int i=0; numops==0 || i<numops; i++) {
-            if (System.currentTimeMillis()-lastprint > 200) {
+        for (int i = 0; numops == 0 || i < numops; i++) {
+            if (System.currentTimeMillis() - lastprint > 200) {
                 lastprint = System.currentTimeMillis();
-                System.out.print("\r puts="+puts+" gets="+(gets-misses)+"/"+gets+" deletes="+deletes);
+                System.out.print("\r puts=" + puts + " gets=" + (gets - misses) + "/" + gets + " deletes=" + deletes);
             }
             int key = rand.nextInt() % 1000000;
-            switch(rand.nextInt() % 3) {
+            switch (rand.nextInt() % 3) {
                 case 0: { // get
                     Integer tget = do_tm ? tm.get(key) : null;
                     Integer bget = do_bt ? btree.getValFromKey(key) : null;
                     gets++;
                     if (do_tm && do_bt) {
-                        if (tget==null && bget==null) { misses++; break; }
-                        if (tget!=null && bget!=null && tget.equals(bget)) break;
-                        System.out.print("\r puts="+puts+" gets="+(gets-misses)+"/"+gets+" deletes="+deletes);
+                        if (tget == null && bget == null) {
+                            misses++;
+                            break;
+                        }
+                        if (tget != null && bget != null && tget.equals(bget)) break;
+                        System.out.print("\r puts=" + puts + " gets=" + (gets - misses) + "/" + gets + " deletes=" + deletes);
                         System.out.println();
                         System.out.println();
-                        throw new RuntimeException("  disagreement on key " + key + ": btree="+bget+", treemap="+tget);
+                        throw new RuntimeException("  disagreement on key " + key + ": btree=" + bget + ", treemap=" + tget);
                     }
                     break;
                 }
 
                 case 1: { // get ordinal
                     int sz = do_bt ? btree.size() : tm.size();
-                    int ord = sz==0 ? 0 : Math.abs(rand.nextInt()) % sz;
-                    Integer tget = do_tm ? (sz==0 ? null : tm.values().toArray(new Integer[0])[ord]) : null;
+                    int ord = sz == 0 ? 0 : Math.abs(rand.nextInt()) % sz;
+                    Integer tget = do_tm ? (sz == 0 ? null : tm.values().toArray(new Integer[0])[ord]) : null;
                     Integer bget = do_bt ? btree.getValFromOrd(ord) : null;
                     gets++;
                     if (do_tm && do_bt) {
-                        if (tget==null && bget==null) break;
-                        if (tget!=null && bget!=null && tget.equals(bget)) break;
-                        System.out.print("\r puts="+puts+" gets="+(gets-misses)+"/"+gets+" deletes="+deletes);
+                        if (tget == null && bget == null) break;
+                        if (tget != null && bget != null && tget.equals(bget)) break;
+                        System.out.print("\r puts=" + puts + " gets=" + (gets - misses) + "/" + gets + " deletes=" + deletes);
                         System.out.println();
                         System.out.println();
                         System.out.println("dump:");
-                        throw new RuntimeException("  disagreement on ordinal " + ord + ": btree="+bget+", treemap="+tget);
+                        throw new RuntimeException("  disagreement on ordinal " + ord + ": btree=" + bget + ", treemap=" + tget);
                     }
                     break;
                 }
@@ -112,11 +115,11 @@ public class BTreeTest {
                     int val = rand.nextInt();
                     boolean already_there = false;
                     if (do_tm) {
-                        if (do_bt) already_there = tm.get(key)!=null;
+                        if (do_bt) already_there = tm.get(key) != null;
                         tm.put(key, val);
                     }
                     if (do_bt) {
-                        if (!do_tm) already_there = btree.getValFromKey(key)!=null;
+                        if (!do_tm) already_there = btree.getValFromKey(key) != null;
                         if (already_there)
                             btree.replace(key, val);
                         else

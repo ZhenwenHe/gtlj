@@ -56,13 +56,13 @@ public class Geom2DSuits extends GeomSuits {
      * @return the {@link Location} of p relative to the ring
      */
     public static int locatePointInRing(Vertex2D p, Vertex2D[] ring) {
-        Coordinate [] cc = new Coordinate[ring.length];
-        int i=0;
-        for(Vertex2D v:ring) {
+        Coordinate[] cc = new Coordinate[ring.length];
+        int i = 0;
+        for (Vertex2D v : ring) {
             cc[i] = new Coordinate(v.x, v.y);
             ++i;
         }
-        return RayCrossingCounter.locatePointInRing(new Coordinate(p.x,p.y), cc);
+        return RayCrossingCounter.locatePointInRing(new Coordinate(p.x, p.y), cc);
     }
 
     /**
@@ -73,14 +73,14 @@ public class Geom2DSuits extends GeomSuits {
      * of a line segment in the linestring
      */
     public static boolean isOnLine(Vertex2D p, Vertex2D[] pt) {
-        Coordinate [] cc = new Coordinate[pt.length];
-        int i=0;
-        for(Vertex2D v:pt) {
+        Coordinate[] cc = new Coordinate[pt.length];
+        int i = 0;
+        for (Vertex2D v : pt) {
             cc[i] = new Coordinate(v.x, v.y);
             ++i;
         }
-        Coordinate cp= new Coordinate(p.x,p.y);
-        return CGAlgorithms.isOnLine(cp,cc);
+        Coordinate cp = new Coordinate(p.x, p.y);
+        return CGAlgorithms.isOnLine(cp, cc);
     }
 
     /**
@@ -296,10 +296,10 @@ public class Geom2DSuits extends GeomSuits {
      */
     public static double distanceLineLine(Vertex2D A, Vertex2D B,
                                           Vertex2D C, Vertex2D D) {
-        return CGAlgorithms.distanceLineLine(new Coordinate(A.x,A.y),
-                new Coordinate(B.x,B.y),
-                new Coordinate(C.x,C.y),
-                new Coordinate(D.x,D.y));
+        return CGAlgorithms.distanceLineLine(new Coordinate(A.x, A.y),
+                new Coordinate(B.x, B.y),
+                new Coordinate(C.x, C.y),
+                new Coordinate(D.x, D.y));
     }
 
     /**
@@ -657,76 +657,83 @@ public class Geom2DSuits extends GeomSuits {
 
     /**
      * 判断矩形和三角形是否相交
+     *
      * @param e2d 矩形
-     * @param t 三角形
+     * @param t   三角形
      * @return
      */
-    public static boolean intersects(Envelope e2d, Triangle t){
+    public static boolean intersects(Envelope e2d, Triangle t) {
         return JTSWrapper.toJTSGeometry(e2d).intersects(JTSWrapper.toJTSGeometry(t));
     }
 
     /**
      * 判断两个三角形是否相交
+     *
      * @param root
      * @param sub
      * @return
      */
-    public static boolean intersects(Triangle root, Triangle sub){
+    public static boolean intersects(Triangle root, Triangle sub) {
         return JTSWrapper.toJTSGeometry(root).intersects(JTSWrapper.toJTSGeometry(sub));
     }
 
     /**
      * 判断三角形root是否包含sub三角形
+     *
      * @param root
      * @param sub
      * @return
      */
-    public static boolean contains(Triangle root, Triangle sub){
+    public static boolean contains(Triangle root, Triangle sub) {
         return JTSWrapper.toJTSGeometry(root).intersects(JTSWrapper.toJTSGeometry(sub));
     }
 
     /**
      * 判断矩形是否包含三角形
+     *
      * @param e2d 矩形
-     * @param t 三角形
+     * @param t   三角形
      * @return
      */
-    public static boolean contains(Envelope e2d, Triangle t){
+    public static boolean contains(Envelope e2d, Triangle t) {
         return JTSWrapper.toJTSGeometry(e2d).contains(JTSWrapper.toJTSGeometry(t));
     }
 
-    public static boolean contains(Triangle t, double x, double y){
-        return JTSWrapper.toJTSGeometry(t).contains(JTSWrapper.toJTSGeometry(x,y));
+    public static boolean contains(Triangle t, double x, double y) {
+        return JTSWrapper.toJTSGeometry(t).contains(JTSWrapper.toJTSGeometry(x, y));
     }
 
 
     /**
      * 判断三角形是否包含矩形
+     *
      * @param t
      * @param e2d
      * @return
      */
-    public static boolean contains(Triangle t, Envelope e2d){
+    public static boolean contains(Triangle t, Envelope e2d) {
         return JTSWrapper.toJTSGeometry(t).contains(JTSWrapper.toJTSGeometry(e2d));
     }
 
     /**
      * 判断三角形与线段是否相交
+     *
      * @param t
      * @param ls
      * @return
      */
-    public static boolean intersects(Triangle t, LineSegment ls){
+    public static boolean intersects(Triangle t, LineSegment ls) {
         return JTSWrapper.toJTSGeometry(t).intersects(JTSWrapper.toJTSGeometry(ls));
     }
 
     /**
      * 判断三角形与线串是否相交
+     *
      * @param t
      * @param ls
      * @return
      */
-    public static boolean intersects(Triangle t, LineString ls){
+    public static boolean intersects(Triangle t, LineString ls) {
         return JTSWrapper.toJTSGeometry(t).intersects(JTSWrapper.toJTSGeometry(ls));
     }
 
@@ -734,12 +741,13 @@ public class Geom2DSuits extends GeomSuits {
     /**
      * 利用JTS 的VoronoiDiagramBuilder根据给定的样本，进行分区
      * 返回分区矩形
+     *
      * @param samples
      * @param partitions
      * @return
      */
-    public static Collection<Envelope> createVoronoiPartitioning(List<Envelope> samples, int partitions){
-        return JTSWrapper.createVoronoiPartitioning(samples,partitions);
+    public static Collection<Envelope> createVoronoiPartitioning(List<Envelope> samples, int partitions) {
+        return JTSWrapper.createVoronoiPartitioning(samples, partitions);
     }
 
 }

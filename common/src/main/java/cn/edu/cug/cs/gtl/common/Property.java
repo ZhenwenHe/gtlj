@@ -34,7 +34,7 @@ public class Property extends Variant implements Serializable {
         this.name = name;
     }
 
-    public Property(String name, Object value){
+    public Property(String name, Object value) {
         super(value);
         this.name = name;
     }
@@ -47,12 +47,13 @@ public class Property extends Variant implements Serializable {
         this.name = name;
     }
 
-    public PropertyType getPropertyType(){
-        return new PropertyType(super.getType(),super.value.getClass());
+    public PropertyType getPropertyType() {
+        return new PropertyType(super.getType(), super.value.getClass());
     }
 
     /**
      * 重载的判断是否相等的函数；
+     *
      * @param o 另一个Variant对象；
      * @return
      */
@@ -63,6 +64,7 @@ public class Property extends Variant implements Serializable {
 
     /**
      * 将对象转换成字符串；
+     *
      * @return 转换后的字符串；
      */
     @Override
@@ -72,6 +74,7 @@ public class Property extends Variant implements Serializable {
 
     /**
      * 复制函数，从给定对象复制出一个新的对象；
+     *
      * @param i 其它任何实现了Serializable接口的对象
      */
     @Override
@@ -84,6 +87,7 @@ public class Property extends Variant implements Serializable {
 
     /**
      * 通过输入流，读取对象的属性；
+     *
      * @param dis 表示可以读取的存储对象，可能是内存、文件、管道等；
      * @return
      * @throws IOException
@@ -97,6 +101,7 @@ public class Property extends Variant implements Serializable {
 
     /**
      * 通过输出流，将对象存储；
+     *
      * @param dos 表示可以写入的存储对象，可能是内存、文件、管道等
      * @return
      * @throws IOException
@@ -110,6 +115,7 @@ public class Property extends Variant implements Serializable {
 
     /**
      * 获得对象写成字节数组后的长度；
+     *
      * @return 字节数组长度；
      */
     @Override

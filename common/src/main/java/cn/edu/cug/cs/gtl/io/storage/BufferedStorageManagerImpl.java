@@ -46,7 +46,8 @@ class BufferedStorageManagerImpl implements BufferedStorageManager {
 
     /**
      * 读取指定页面内容
-     * @param  page 页面唯一ID
+     *
+     * @param page 页面唯一ID
      * @return
      * @throws IOException
      */
@@ -71,6 +72,7 @@ class BufferedStorageManagerImpl implements BufferedStorageManager {
 
     /**
      * 将字节数据写入指定页面
+     *
      * @param page 页面ID，如果为-1，则选择一个新的页面写入，并修改传入page并返回
      *             如果为有效页面ID，则写入该页面。
      * @param data 需要写入的字节数组
@@ -110,6 +112,7 @@ class BufferedStorageManagerImpl implements BufferedStorageManager {
 
     /**
      * 删除指定页面内容
+     *
      * @param page
      * @throws IOException
      */
@@ -214,6 +217,7 @@ class BufferedStorageManagerImpl implements BufferedStorageManager {
         byte[] data;
         int length;
         boolean dirty;
+
         Entry(byte[] d) {
             this.data = null;
             this.dirty = false;

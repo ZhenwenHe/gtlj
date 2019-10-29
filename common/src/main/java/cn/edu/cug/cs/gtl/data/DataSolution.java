@@ -26,10 +26,11 @@ public interface DataSolution extends Solution<FeatureType, Feature> {
      * 如果已经存在，则直接打开
      * 在指定位置建立方案,并初始化;
      * 初始化包括：1）创建方案目录
-     *             2）创建要素库目录
-     *             3）创建纹理库目录
-     *             4）创建材质库目录
-     *             5）创建风格库目录
+     * 2）创建要素库目录
+     * 3）创建纹理库目录
+     * 4）创建材质库目录
+     * 5）创建风格库目录
+     *
      * @param path
      * @return
      */
@@ -42,13 +43,16 @@ public interface DataSolution extends Solution<FeatureType, Feature> {
 
     /**
      * 创建一个要素库
+     *
      * @param storeName
      * @return
      * @throws IOException
      */
     FeatureStore createFeatureStore(String storeName) throws IOException;
+
     /**
      * 获取方案中存在的数据库
+     *
      * @param storeName
      * @return
      * @throws IOException
@@ -57,6 +61,7 @@ public interface DataSolution extends Solution<FeatureType, Feature> {
 
     /**
      * 获取方案中的所有要素库
+     *
      * @return
      * @throws IOException
      */
@@ -64,18 +69,23 @@ public interface DataSolution extends Solution<FeatureType, Feature> {
 
     /**
      * 获取材质库，在一个方案中，材质库是唯一的
+     *
      * @return
      * @throws IOException
      */
     MaterialStore getMaterialStore() throws IOException;
+
     /**
      * 获取纹理库，在一个方案中，纹理库是唯一的
+     *
      * @return
      * @throws IOException
      */
     TextureStore getTextureStore() throws IOException;
+
     /**
      * 获取风格库，在一个方案中，风格库是唯一的
+     *
      * @return
      * @throws IOException
      */

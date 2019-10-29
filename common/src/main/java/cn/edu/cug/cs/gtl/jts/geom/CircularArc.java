@@ -2,7 +2,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
  */
- 
+
 import static java.lang.Math.*;
 
 import java.util.Arrays;
@@ -89,10 +89,12 @@ public class CircularArc {
                     "Invalid control point array, it must be made of 6 ordinates for a total of 3 control points, start, mid and end");
         }
         this.controlPoints = controlPoints;
-    };
+    }
+
+    ;
 
     public CircularArc(double sx, double sy, double mx, double my, double ex, double ey) {
-        this(new double[] { sx, sy, mx, my, ex, ey });
+        this(new double[]{sx, sy, mx, my, ex, ey});
     }
 
     public int getDimension() {

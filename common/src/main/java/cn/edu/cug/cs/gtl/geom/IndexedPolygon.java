@@ -24,11 +24,11 @@ public class IndexedPolygon extends Geometry implements Polygonal {
      * ......
      * 第n个简单多边形对象
      */
-    private int [] indices;
+    private int[] indices;
 
     private long materialID;
 
-    private TextureParameter textureParameter=null;
+    private TextureParameter textureParameter = null;
 
     public IndexedPolygon(VectorSequence coordinates, int[] indices) {
         this.coordinates = VectorSequence.create(coordinates);
@@ -87,64 +87,58 @@ public class IndexedPolygon extends Geometry implements Polygonal {
     }
 
 
-
     @Override
-    public void copyFrom(Object i)
-    {
-        if (i instanceof IndexedPolygon)
-        {
+    public void copyFrom(Object i) {
+        if (i instanceof IndexedPolygon) {
             super.copyFrom(i);
             this.setMaterialID(((IndexedPolygon) i).getMaterialID());
-            this.setCoordinates((VectorSequence)((IndexedPolygon) i).getCoordinates().clone());
+            this.setCoordinates((VectorSequence) ((IndexedPolygon) i).getCoordinates().clone());
             int[] idx = ((IndexedPolygon) i).getIndices();
-            if(idx !=null)
-            {
-                int[] idx2= Arrays.copyOf(idx,idx.length);
+            if (idx != null) {
+                int[] idx2 = Arrays.copyOf(idx, idx.length);
                 this.setIndices(idx2);
             }
         }
     }
 
     @Override
-    public IndexedPolygon clone()    {
-        IndexedPolygon g = (IndexedPolygon)super.clone();
-        if(this.coordinates!=null)
+    public IndexedPolygon clone() {
+        IndexedPolygon g = (IndexedPolygon) super.clone();
+        if (this.coordinates != null)
             g.coordinates = (VectorSequence) this.coordinates.clone();
         else
-            g.coordinates=null;
+            g.coordinates = null;
 
-        if(this.indices!=null)
-            g.indices=Arrays.copyOf(this.indices,this.indices.length);
+        if (this.indices != null)
+            g.indices = Arrays.copyOf(this.indices, this.indices.length);
         else
-            g.indices=null;
+            g.indices = null;
 
-        g.materialID=this.materialID;
+        g.materialID = this.materialID;
 
-        if(this.textureParameter!=null)
-            g.textureParameter=(TextureParameter) this.textureParameter.clone();
+        if (this.textureParameter != null)
+            g.textureParameter = (TextureParameter) this.textureParameter.clone();
         else
-            g.textureParameter=null;
+            g.textureParameter = null;
 
         return g;
     }
 
     @Override
-    public boolean load(DataInput in) throws IOException
-    {
+    public boolean load(DataInput in) throws IOException {
         super.load(in);
         coordinates.load(in);
-        int s = in.readInt( );
-        if(s > 0)
-        {
+        int s = in.readInt();
+        if (s > 0) {
             this.indices = new int[s];
-            for(int i = 0; i < s; ++i)
+            for (int i = 0; i < s; ++i)
                 this.indices[i] = in.readInt();
         }
         materialID = in.readLong();
 
         s = in.readInt();
-        if(s>0){
-            this.textureParameter=new TextureParameter();
+        if (s > 0) {
+            this.textureParameter = new TextureParameter();
             this.textureParameter.load(in);
         }
 
@@ -152,34 +146,29 @@ public class IndexedPolygon extends Geometry implements Polygonal {
     }
 
     @Override
-    public boolean store(DataOutput out) throws IOException
-    {
+    public boolean store(DataOutput out) throws IOException {
         super.store(out);
         coordinates.store(out);
-        int s = indices == null?0:indices.length;
+        int s = indices == null ? 0 : indices.length;
         out.writeInt(s);
-        if(s>0)
-        {
-            for(int v: indices)
-            {
+        if (s > 0) {
+            for (int v : indices) {
                 out.writeInt(v);
             }
         }
         out.writeLong(materialID);
 
-        if(this.textureParameter!=null){
+        if (this.textureParameter != null) {
             out.writeInt(1);
             this.textureParameter.store(out);
-        }
-        else {
+        } else {
             out.writeInt(0);
         }
         return true;
     }
 
     @Override
-    public long getByteArraySize()
-    {
+    public long getByteArraySize() {
         long len = 0;
         len = coordinates.getByteArraySize() + indices.length + 8 + 4;
         return len;

@@ -9,11 +9,11 @@ import java.io.IOException;
 public class ResultDescriptor<T extends Storable> extends DataDescriptor<T> {
     private static final long serialVersionUID = 1L;
 
-    public ResultDescriptor (Variant v){
-        super((T)v);
+    public ResultDescriptor(Variant v) {
+        super((T) v);
     }
 
-    public ResultDescriptor (T v){
+    public ResultDescriptor(T v) {
         super(v);
     }
 
@@ -24,25 +24,24 @@ public class ResultDescriptor<T extends Storable> extends DataDescriptor<T> {
     public static ResultDescriptor read(DataInput in) throws IOException {
         ResultDescriptor pd = new ResultDescriptor();
         pd.readFields(in);
-        return  pd;
+        return pd;
     }
 
     @Override
     public Object clone() {
         try {
             return new ResultDescriptor((Storable) (getData().clone()));
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public Object getResult(){
+    public Object getResult() {
         return (Object) this.data;
     }
 
-    public void setResult(Object  i){
-        this.data = (T)i;
+    public void setResult(Object i) {
+        this.data = (T) i;
     }
 }

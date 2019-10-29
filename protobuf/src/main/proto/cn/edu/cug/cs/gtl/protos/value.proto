@@ -11,93 +11,92 @@ option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
 
 option cc_enable_arenas = true;
 
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Values";
 
 // same as sqlite3 storage type
-message Value{
-    enum Type{
-        NULL=0;
-        TEXT=1;
-        INTEGER=2;
-        REAL=3;
-        BLOB=4;
+message Value {
+    enum Type {
+        NULL = 0;
+        TEXT = 1;
+        INTEGER = 2;
+        REAL = 3;
+        BLOB = 4;
     }
-    Type   type=1;
-    google.protobuf.Any data=2;
+    Type type = 1;
+    google.protobuf.Any data = 2;
 }
 
-message NullValue{
+message NullValue {
 }
 
-message RealValue{
-    double value=1;
+message RealValue {
+    double value = 1;
 }
 
-message IntegerValue{
-    int64 value=1;
+message IntegerValue {
+    int64 value = 1;
 }
 
-message BlobValue{
-    bytes value=1;
+message BlobValue {
+    bytes value = 1;
 }
 
-message TextValue{
-    string value=1;
-}
-
-
-
-message ColumnInfo{
-    Value.Type type=1;
-    string name=2;
-    string code=3;
-    string title=4;
+message TextValue {
+    string value = 1;
 }
 
 
-message IntegerColumnValues{
-    repeated int64 data=1;
-}
-
-message RealColumnValues{
-    repeated double data=1;
-}
-
-message TextColumnValues{
-    repeated string data=1;
-}
-
-message BlobColumnValues{
-    repeated bytes data=1;
+message ColumnInfo {
+    Value.Type type = 1;
+    string name = 2;
+    string code = 3;
+    string title = 4;
 }
 
 
-message Column{
-    ColumnInfo info=1; 
-    google.protobuf.Any values=2;
+message IntegerColumnValues {
+    repeated int64 data = 1;
+}
+
+message RealColumnValues {
+    repeated double data = 1;
+}
+
+message TextColumnValues {
+    repeated string data = 1;
+}
+
+message BlobColumnValues {
+    repeated bytes data = 1;
 }
 
 
-message Row{
-    repeated Value data=1;
+message Column {
+    ColumnInfo info = 1;
+    google.protobuf.Any values = 2;
 }
 
-message TableInfo{
-    string name=1;
-    string code=2;
-    string title=3;
-    repeated ColumnInfo column_info=4;
+
+message Row {
+    repeated Value data = 1;
 }
 
-message Table{
-    Identifier  identifier=1;
-    TableInfo info=2;
-    repeated Column column=3;
+message TableInfo {
+    string name = 1;
+    string code = 2;
+    string title = 3;
+    repeated ColumnInfo column_info = 4;
 }
 
-message DataSet{
-    string sql=1;
-    repeated Row row=2;
+message Table {
+    Identifier identifier = 1;
+    TableInfo info = 2;
+    repeated Column column = 3;
+}
+
+message DataSet {
+    string sql = 1;
+    repeated Row row = 2;
 }

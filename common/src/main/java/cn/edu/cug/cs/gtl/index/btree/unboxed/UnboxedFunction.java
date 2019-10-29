@@ -26,13 +26,13 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 import java.io.*;
 
 /**
- *  A function from one Unboxed to another.
+ * A function from one Unboxed to another.
  */
 public interface UnboxedFunction<A extends Serializable, B extends Serializable> {
 
     /**
-     *  The function <b>MUST</b> support situations where the argument
-     *  and return buffers overlap.
+     * The function <b>MUST</b> support situations where the argument
+     * and return buffers overlap.
      */
     public void call(byte[] buf_a, int ofs_a,
                      byte[] buf_b, int ofs_b);

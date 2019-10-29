@@ -34,6 +34,7 @@
 package cn.edu.cug.cs.gtl.jts.index;
 
 import java.util.*;
+
 import cn.edu.cug.cs.gtl.jts.geom.Envelope;
 
 /**
@@ -47,41 +48,40 @@ import cn.edu.cug.cs.gtl.jts.geom.Envelope;
  *
  * @version 1.7
  */
-public interface SpatialIndex
-{
-  /**
-   * Adds a spatial item with an extent specified by the given {@link Envelope} to the index
-   */
-  void insert(Envelope itemEnv, Object item);
+public interface SpatialIndex {
+    /**
+     * Adds a spatial item with an extent specified by the given {@link Envelope} to the index
+     */
+    void insert(Envelope itemEnv, Object item);
 
-  /**
-   * Queries the index for all items whose extents intersect the given search {@link Envelope}
-   * Note that some kinds of indexes may also return objects which do not in fact
-   * intersect the query envelope.
-   *
-   * @param searchEnv the envelope to query for
-   * @return a list of the items found by the query
-   */
-  List query(Envelope searchEnv);
+    /**
+     * Queries the index for all items whose extents intersect the given search {@link Envelope}
+     * Note that some kinds of indexes may also return objects which do not in fact
+     * intersect the query envelope.
+     *
+     * @param searchEnv the envelope to query for
+     * @return a list of the items found by the query
+     */
+    List query(Envelope searchEnv);
 
-  /**
-   * Queries the index for all items whose extents intersect the given search {@link Envelope},
-   * and applies an {@link ItemVisitor} to them.
-   * Note that some kinds of indexes may also return objects which do not in fact
-   * intersect the query envelope.
-   *
-   * @param searchEnv the envelope to query for
-   * @param visitor a visitor object to apply to the items found
-   */
-  void query(Envelope searchEnv, ItemVisitor visitor);
+    /**
+     * Queries the index for all items whose extents intersect the given search {@link Envelope},
+     * and applies an {@link ItemVisitor} to them.
+     * Note that some kinds of indexes may also return objects which do not in fact
+     * intersect the query envelope.
+     *
+     * @param searchEnv the envelope to query for
+     * @param visitor   a visitor object to apply to the items found
+     */
+    void query(Envelope searchEnv, ItemVisitor visitor);
 
-  /**
-   * Removes a single item from the tree.
-   *
-   * @param itemEnv the Envelope of the item to remove
-   * @param item the item to remove
-   * @return <code>true</code> if the item was found
-   */
-  boolean remove(Envelope itemEnv, Object item);
+    /**
+     * Removes a single item from the tree.
+     *
+     * @param itemEnv the Envelope of the item to remove
+     * @param item    the item to remove
+     * @return <code>true</code> if the item was found
+     */
+    boolean remove(Envelope itemEnv, Object item);
 
 }

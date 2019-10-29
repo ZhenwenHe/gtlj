@@ -5,7 +5,7 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class CornerPointGrid extends Geometry implements Polyhedral{
+public class CornerPointGrid extends Geometry implements Polyhedral {
     protected int[] dimension;
     protected int propertiesNum;
     protected double[] pillars;
@@ -18,16 +18,18 @@ public class CornerPointGrid extends Geometry implements Polyhedral{
 
     public CornerPointGrid() {
     }
+
     public Geometry clone() {
         CornerPointGrid c = new CornerPointGrid();
         c.copyFrom(this);
         return c;
     }
+
     public void copyFrom(CornerPointGrid i) {
-        if (i instanceof  CornerPointGrid) {
+        if (i instanceof CornerPointGrid) {
             super.copyFrom(i);
             this.dimension = Arrays.copyOf(i.dimension, i.dimension.length);
-            propertiesNum=i.propertiesNum;
+            propertiesNum = i.propertiesNum;
             this.pillars = Arrays.copyOf(i.pillars, i.pillars.length);
             this.cells = Arrays.copyOf(i.cells, i.cells.length);
             this.valid = Arrays.copyOf(i.valid, i.valid.length);

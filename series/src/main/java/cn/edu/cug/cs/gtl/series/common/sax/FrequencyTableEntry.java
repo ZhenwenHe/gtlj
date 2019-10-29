@@ -25,8 +25,8 @@ public class FrequencyTableEntry implements Comparable<FrequencyTableEntry> {
     /**
      * Constructor.
      *
-     * @param position the original entry position.
-     * @param payload the payload string.
+     * @param position  the original entry position.
+     * @param payload   the payload string.
      * @param frequency the frequency.
      */
     public FrequencyTableEntry(Integer position, char[] payload, int frequency) {
@@ -97,22 +97,19 @@ public class FrequencyTableEntry implements Comparable<FrequencyTableEntry> {
      * Check the complexity of the string.
      *
      * @param complexity If 1 - single letter used, 2 - two or more letters, 3 - 3 or more etc..
-     *
      * @return Returns true if complexity conditions are met.
      */
     public boolean isTrivial(Integer complexity) {
         int len = payload.length;
         if ((null == complexity) || (len < 2)) {
             return true;
-        }
-        else if ((complexity.intValue() > 0) && (len > 2)) {
+        } else if ((complexity.intValue() > 0) && (len > 2)) {
             Set<Character> seen = new TreeSet<Character>();
             for (int i = 0; i < len; i++) {
                 Character c = Character.valueOf(this.payload[i]);
                 if (seen.contains(c)) {
                     continue;
-                }
-                else {
+                } else {
                     seen.add(c);
                 }
             }
@@ -130,8 +127,7 @@ public class FrequencyTableEntry implements Comparable<FrequencyTableEntry> {
         }
         if (this.frequency > arg0.getFrequency()) {
             return 1;
-        }
-        else if (this.frequency < arg0.getFrequency()) {
+        } else if (this.frequency < arg0.getFrequency()) {
             return -1;
         }
         return 0;

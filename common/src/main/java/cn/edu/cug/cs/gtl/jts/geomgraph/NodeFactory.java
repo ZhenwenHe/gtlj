@@ -40,11 +40,10 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
  * @version 1.7
  */
 public class NodeFactory {
-/**
- * The basic node constructor does not allow for incident edges
- */
-  public Node createNode(Coordinate coord)
-  {
-    return new Node(coord, null);
-  }
+    /**
+     * The basic node constructor does not allow for incident edges
+     */
+    public Node createNode(Coordinate coord) {
+        return new Node(coord, null);
+    }
 }

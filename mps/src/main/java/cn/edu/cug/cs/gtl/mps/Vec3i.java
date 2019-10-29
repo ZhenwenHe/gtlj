@@ -50,24 +50,24 @@ public class Vec3i implements Storable {
     }
 
     /**
- * @brief Constructors
- *
- * Default value is (0, 0, 0)
- */
+     * @brief Constructors
+     * <p>
+     * Default value is (0, 0, 0)
+     */
 
     public Vec3i() {
-        _x=0;
-        _y=0;
-        _z=0;
+        _x = 0;
+        _y = 0;
+        _z = 0;
     }
 
-/**
- * @brief Constructors from x, y, z
- * @param x x value
- * @param y y value
- * @param z z value
- */
-   public Vec3i(final int x, final int y, final int z) {
+    /**
+     * @param x x value
+     * @param y y value
+     * @param z z value
+     * @brief Constructors from x, y, z
+     */
+    public Vec3i(final int x, final int y, final int z) {
         _x = x;
         _y = y;
         _z = z;
@@ -95,22 +95,22 @@ public class Vec3i implements Storable {
 
     @Override
     public Object clone() {
-        return new Vec3i(this._x,this._y,this._z);
+        return new Vec3i(this._x, this._y, this._z);
     }
 
     @Override
     public boolean load(DataInput dataInput) throws IOException {
-       this._x=dataInput.readInt();
-       this._y=dataInput.readInt();
-       this._z=dataInput.readInt();
+        this._x = dataInput.readInt();
+        this._y = dataInput.readInt();
+        this._z = dataInput.readInt();
         return true;
     }
 
     @Override
     public boolean store(DataOutput out) throws IOException {
-       out.writeInt(this._x);
-       out.writeInt(this._y);
-       out.writeInt(this._z);
+        out.writeInt(this._x);
+        out.writeInt(this._y);
+        out.writeInt(this._z);
         return true;
     }
 }

@@ -6,42 +6,42 @@ option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
 
 option cc_enable_arenas = true;
 
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Vecs";
 
-message Vec2f{
-    repeated float data=1;
+message Vec2f {
+    repeated float data = 1;
 }
 
-message Vec2d{
-    repeated double data=1;
+message Vec2d {
+    repeated double data = 1;
 }
 
-message Vec2i{
-    repeated int32 data=1;
+message Vec2i {
+    repeated int32 data = 1;
 }
 
-message Vec3f{
-     repeated float data=1;
+message Vec3f {
+    repeated float data = 1;
 }
 
-message Vec3d{
-    repeated double data=1;
+message Vec3d {
+    repeated double data = 1;
 }
 
-message Vec3i{
-    repeated int32 data=1;
+message Vec3i {
+    repeated int32 data = 1;
 }
 
-message Vec4f{
-    repeated float data=1;
+message Vec4f {
+    repeated float data = 1;
 }
 
-message Vec4d{
-    repeated double data=1;
+message Vec4d {
+    repeated double data = 1;
 }
 
-message Vec4i{
-    repeated int32 data=1;
+message Vec4i {
+    repeated int32 data = 1;
 }

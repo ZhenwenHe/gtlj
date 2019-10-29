@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * when the data range is given firstly
  * and it will change never after that.
  * That is the data range does not vary.
+ *
  * @param <T>
  */
 public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
@@ -31,64 +32,64 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
     private static final long serialVersionUID = 1L;
 
     TriangleEncoder triangleEncoder;
-    StorageManager   storageManager;
-    Map<String,Identifier> leafInfos;
+    StorageManager storageManager;
+    Map<String, Identifier> leafInfos;
     ArrayList<String> emptyNodes;
     //spark variables
     transient JavaSparkContext sparkContext;
-    transient JavaRDD<Pair<String,Identifier>> sparkRDD;
-    AtomicBoolean   constructedRDD; //whether the RDD is constructed, threadsafe
+    transient JavaRDD<Pair<String, Identifier>> sparkRDD;
+    AtomicBoolean constructedRDD; //whether the RDD is constructed, threadsafe
 
-    public TDTree(TriangleShape root,int leafCapacity,StorageManager sm,JavaSparkContext sparkContext) {
-        super(root,leafCapacity);
-        triangleEncoder = new TriangleEncoder((TriangleShape)this.baseTriangle);
-        storageManager=sm;
-        leafInfos =  new HashMap<>();
+    public TDTree(TriangleShape root, int leafCapacity, StorageManager sm, JavaSparkContext sparkContext) {
+        super(root, leafCapacity);
+        triangleEncoder = new TriangleEncoder((TriangleShape) this.baseTriangle);
+        storageManager = sm;
+        leafInfos = new HashMap<>();
 
         emptyNodes = new ArrayList<String>();
         emptyNodes.add("1");
-        sparkRDD=null;
-        constructedRDD= new AtomicBoolean(false);
-        this.sparkContext=sparkContext;
+        sparkRDD = null;
+        constructedRDD = new AtomicBoolean(false);
+        this.sparkContext = sparkContext;
     }
 
-    public JavaRDD<Pair<String,Identifier>> constructRDD(){
-        if(constructedRDD.get()==false){
-            List<Pair<String,Identifier> > ls= new ArrayList<>(leafInfos.entrySet().size());
-            for(Map.Entry<String,Identifier> me : leafInfos.entrySet())
-                ls.add(new Pair<String,Identifier>(me.getKey(),me.getValue()));
+    public JavaRDD<Pair<String, Identifier>> constructRDD() {
+        if (constructedRDD.get() == false) {
+            List<Pair<String, Identifier>> ls = new ArrayList<>(leafInfos.entrySet().size());
+            for (Map.Entry<String, Identifier> me : leafInfos.entrySet())
+                ls.add(new Pair<String, Identifier>(me.getKey(), me.getValue()));
             sparkRDD = sparkContext.parallelize(ls);
             constructedRDD.set(true);
             return sparkRDD;
-        }
-        else
+        } else
             return sparkRDD;
 
     }
+
     @Override
     public List<T> pointQuery(final PointShape ps) {
         constructRDD();
         final TriangleEncoder te = triangleEncoder;
         JavaRDD<T> result = sparkRDD
-                .filter(r->{
+                .filter(r -> {
                     //if(r.getValue().longValue()!=-1L) return false;
                     TriangleShape t = te.parse(r.getKey());
-                    if(test(t,ps)!=0)
+                    if (test(t, ps) != 0)
                         return true;
                     else
                         return false;
                 })
-                .flatMap(r->{
+                .flatMap(r -> {
                     LeafNode ln = readNode(r.getValue());
                     List<Interval> li = new ArrayList<>();
-                    for(int i=0;i<ln.size;++i){
-                        if(ps.getX()==ln.intervals[i].getLowerBound()&&
-                                ps.getY()==ln.intervals[i].getUpperBound())
+                    for (int i = 0; i < ln.size; ++i) {
+                        if (ps.getX() == ln.intervals[i].getLowerBound() &&
+                                ps.getY() == ln.intervals[i].getUpperBound())
                             li.add(ln.intervals[i]);
                     }
                     return li.iterator();
                 })
-                .map(r ->(T)r);
+                .map(r -> (T) r);
         return result.collect();
     }
 
@@ -96,26 +97,26 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
     public List<T> lineQuery(final LineSegmentShape lsp) {
         constructRDD();
         final TriangleEncoder te = triangleEncoder;
-        final LineSegment ls =(LineSegment)lsp;
+        final LineSegment ls = (LineSegment) lsp;
         JavaRDD<T> result = sparkRDD
-                .filter(r->{
+                .filter(r -> {
                     //if(r.getValue().longValue()!=-1L) return false;
                     Triangle t = te.parse(r.getKey());
-                    return Geom2DSuits.intersects(t,ls);
+                    return Geom2DSuits.intersects(t, ls);
                 })
-                .flatMap(r->{
+                .flatMap(r -> {
                     LeafNode ln = readNode(r.getValue());
                     List<Interval> li = new ArrayList<>();
                     // point on line test
-                    for(int i=0;i<ln.size;++i){
-                        if(Geom2DSuits.pointInLineSegment(new Vector2D(
+                    for (int i = 0; i < ln.size; ++i) {
+                        if (Geom2DSuits.pointInLineSegment(new Vector2D(
                                 ln.intervals[i].getLowerBound(),
-                                ln.intervals[i].getUpperBound()),ls))
+                                ln.intervals[i].getUpperBound()), ls))
                             li.add(ln.intervals[i]);
                     }
                     return li.iterator();
                 })
-                .map(r ->(T)r);
+                .map(r -> (T) r);
         return result.collect();
     }
 
@@ -125,25 +126,24 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
         final TriangleEncoder te = triangleEncoder;
         final Envelope e2d = rs.getMBR().flap();
         JavaRDD<T> result = sparkRDD
-                .filter(r->{
+                .filter(r -> {
                     //if(r.getValue().longValue()!=-1L) return false;
                     Triangle t = te.parse(r.getKey());
-                    return Geom2DSuits.intersects(e2d,t);
+                    return Geom2DSuits.intersects(e2d, t);
                 })
-                .flatMap(r->{
+                .flatMap(r -> {
                     LeafNode ln = readNode(r.getValue());
                     List<Interval> li = new ArrayList<>();
                     Triangle t = te.parse(r.getKey());
-                    if(Geom2DSuits.contains(e2d,t)){
+                    if (Geom2DSuits.contains(e2d, t)) {
                         List<Interval> l = new ArrayList<>();
-                        for(int i=0;i<ln.size;++i)
+                        for (int i = 0; i < ln.size; ++i)
                             l.add(ln.intervals[i]);
                         li.addAll(l);
-                    }
-                    else{
+                    } else {
                         List<Interval> l = new ArrayList<>();
-                        for(int i=0;i<ln.size;++i)
-                            if(e2d.contains(Vector.create(
+                        for (int i = 0; i < ln.size; ++i)
+                            if (e2d.contains(Vector.create(
                                     ln.intervals[i].getLowerBound(),
                                     ln.intervals[i].getUpperBound())))
                                 l.add(ln.intervals[i]);
@@ -151,35 +151,34 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
                     }
                     return li.iterator();
                 })
-                .map(r ->(T)r);
+                .map(r -> (T) r);
         return result.collect();
     }
 
     @Override
     public boolean insert(T i) {
-        Pair<String,LeafNode> ln = chooseNode(i);
-        if(ln==null) return false;
-        if(ln.first()==null || ln.second()==null)
+        Pair<String, LeafNode> ln = chooseNode(i);
+        if (ln == null) return false;
+        if (ln.first() == null || ln.second() == null)
             return false;
 
-        int r = ln.getSecond().insert((Interval)i);
-        if(r==1) {//成功插入
+        int r = ln.getSecond().insert((Interval) i);
+        if (r == 1) {//成功插入
             Identifier page = null;
-            if(ln.second().size==1)
+            if (ln.second().size == 1)
                 page = Identifier.create(-1);
             else
                 page = leafInfos.get(ln.first());
 
             //rewrite the node to page
-            page=writeNode(ln.second(),page);
-            leafInfos.put(ln.first(),page);
+            page = writeNode(ln.second(), page);
+            leafInfos.put(ln.first(), page);
             constructedRDD.set(false);
             return true;
-        }
-        else if(r==0)//不在该节点范围内
+        } else if (r == 0)//不在该节点范围内
             return false;
         else {//分裂节点并插入
-            boolean b= splitAndInsert(i,ln);
+            boolean b = splitAndInsert(i, ln);
             constructedRDD.set(false);
             return b;
 //            Identifier page = leafInfos.get(ln.first());// get the old page of the node
@@ -242,119 +241,116 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
     /**
      * t located in the triangle of ln,
      * split the node and insert t
+     *
      * @param t
      * @param ln
      * @return
      */
-    boolean splitAndInsert(T t, Pair<String,LeafNode> ln){
+    boolean splitAndInsert(T t, Pair<String, LeafNode> ln) {
 
-        int splitTimes=0;
+        int splitTimes = 0;
 
         Interval[] intervals = ln.second().getIntervals();
-        assert intervals.length==leafNodeCapacity;
+        assert intervals.length == leafNodeCapacity;
         Interval[] leftIntervals = new Interval[leafNodeCapacity];
         Interval[] rightIntervals = new Interval[leafNodeCapacity];
         Interval[] tempIntervals = null;
 
-        int leftIntervalNumber=0;
-        int rightIntervalNumber=0;
+        int leftIntervalNumber = 0;
+        int rightIntervalNumber = 0;
         TriangleShape lnTriangle = ln.second().triangle;
-        String  lnString=ln.first();
-        TriangleShape leftTriangle=null;
-        TriangleShape rightTriangle=null;
-        String leftString=null;
-        String rightString =null;
+        String lnString = ln.first();
+        TriangleShape leftTriangle = null;
+        TriangleShape rightTriangle = null;
+        String leftString = null;
+        String rightString = null;
 
-        while(leftIntervalNumber==0 || rightIntervalNumber==0){
+        while (leftIntervalNumber == 0 || rightIntervalNumber == 0) {
 
-            if(splitTimes==10000) {
-                System.out.println("splitTimes="+splitTimes);
+            if (splitTimes == 10000) {
+                System.out.println("splitTimes=" + splitTimes);
                 System.out.println("you should increase the parameter leafNodeCapaity value!!!");
                 assert false;
-            }
-            else
+            } else
                 splitTimes++;
 
-            leftTriangle=lnTriangle.leftTriangle();
-            leftIntervalNumber=0;
-            rightIntervalNumber=0;
+            leftTriangle = lnTriangle.leftTriangle();
+            leftIntervalNumber = 0;
+            rightIntervalNumber = 0;
 
-            for(Interval i: intervals){
-                if(Geom2DSuits.contains(leftTriangle,i.getLowerBound(),i.getUpperBound())){
-                    leftIntervals[leftIntervalNumber]=i;
+            for (Interval i : intervals) {
+                if (Geom2DSuits.contains(leftTriangle, i.getLowerBound(), i.getUpperBound())) {
+                    leftIntervals[leftIntervalNumber] = i;
                     leftIntervalNumber++;
-                }
-                else{
-                    rightIntervals[rightIntervalNumber]=i;
+                } else {
+                    rightIntervals[rightIntervalNumber] = i;
                     rightIntervalNumber++;
                 }
             }
 
-            if(leftIntervalNumber==0){//all located at left side
+            if (leftIntervalNumber == 0) {//all located at left side
                 rightTriangle = lnTriangle.rightTriangle();
-                rightString = lnString+"1";
-                leftString=lnString+"0";
+                rightString = lnString + "1";
+                leftString = lnString + "0";
                 emptyNodes.add(leftString);
                 lnTriangle = rightTriangle;
-                lnString=rightString;
+                lnString = rightString;
 
-                tempIntervals=intervals;
-                intervals=rightIntervals;
-                rightIntervals=tempIntervals;
-            }
-            else if(rightIntervalNumber==0){//all located at right side
-                rightString = lnString+"1";
-                leftString=lnString+"0";
+                tempIntervals = intervals;
+                intervals = rightIntervals;
+                rightIntervals = tempIntervals;
+            } else if (rightIntervalNumber == 0) {//all located at right side
+                rightString = lnString + "1";
+                leftString = lnString + "0";
                 emptyNodes.add(rightString);
                 lnTriangle = leftTriangle;
-                lnString=leftString;
+                lnString = leftString;
 
-                tempIntervals=intervals;
-                intervals=leftIntervals;
-                leftIntervals=tempIntervals;
-            }
-            else { //spit successfully
+                tempIntervals = intervals;
+                intervals = leftIntervals;
+                leftIntervals = tempIntervals;
+            } else { //spit successfully
 
-                leftString=lnString+"0";
+                leftString = lnString + "0";
                 LeafNode leftNode = new LeafNode();
-                leftNode.intervals=leftIntervals;
-                leftNode.size=leftIntervalNumber;
-                leftNode.triangle=leftTriangle;
+                leftNode.intervals = leftIntervals;
+                leftNode.size = leftIntervalNumber;
+                leftNode.triangle = leftTriangle;
 
-                rightString = lnString+"1";
+                rightString = lnString + "1";
                 LeafNode rightNode = new LeafNode();
                 rightTriangle = lnTriangle.rightTriangle();
-                rightNode.triangle=rightTriangle;
-                rightNode.size=rightIntervalNumber;
-                rightNode.intervals=rightIntervals;
+                rightNode.triangle = rightTriangle;
+                rightNode.size = rightIntervalNumber;
+                rightNode.intervals = rightIntervals;
 
-                if(leftNode.insert(t)!=1){
+                if (leftNode.insert(t) != 1) {
                     rightNode.insert(t);
                 }
 
-                Identifier lnPage =leafInfos.remove(ln.first());
-                writeNode(leftNode,lnPage);
+                Identifier lnPage = leafInfos.remove(ln.first());
+                writeNode(leftNode, lnPage);
                 Identifier rightPage = Identifier.create(-1L);
-                writeNode(rightNode,rightPage);
+                writeNode(rightNode, rightPage);
 
-                leafInfos.put(leftString,lnPage);
-                leafInfos.put(rightString,rightPage);
+                leafInfos.put(leftString, lnPage);
+                leafInfos.put(rightString, rightPage);
                 return true;
             }
         }
         return false;
     }
 
-    Pair<String,LeafNode> chooseNode(T i){
+    Pair<String, LeafNode> chooseNode(T i) {
         //1. scan the leafInfos
-        Set<Map.Entry<String, Identifier>> s=  leafInfos.entrySet();
-        Identifier page=null;
+        Set<Map.Entry<String, Identifier>> s = leafInfos.entrySet();
+        Identifier page = null;
         LeafNode ln = null;
-        for(Map.Entry<String,Identifier> p: s){
+        for (Map.Entry<String, Identifier> p : s) {
             TriangleShape t = triangleEncoder.parse(p.getKey());
-            if(Geom2DSuits.contains(t,i.getLowerBound(),i.getUpperBound())){
+            if (Geom2DSuits.contains(t, i.getLowerBound(), i.getUpperBound())) {
                 ln = readNode(p.getValue());
-                return  new Pair<String,LeafNode>(p.getKey(),ln);
+                return new Pair<String, LeafNode>(p.getKey(), ln);
             }
 
 //            int r = test(t,(Interval)i);
@@ -372,92 +368,86 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
         }
 
         //2. there is no leaf node that contains i, scan the emptyNodes only when the insertion is running
-        int k=0;
-        for(String str: emptyNodes){
+        int k = 0;
+        for (String str : emptyNodes) {
             TriangleShape t = triangleEncoder.parse(str);
-            if(Geom2DSuits.contains(t,i.getLowerBound(),i.getUpperBound())){
+            if (Geom2DSuits.contains(t, i.getLowerBound(), i.getUpperBound())) {
                 String sss = emptyNodes.remove(k);
                 ln = new LeafNode();
                 ln.triangle = t;
-                return  new Pair<String,LeafNode>(sss,ln);
+                return new Pair<String, LeafNode>(sss, ln);
             }
             ++k;
         }
 
         //3. error
         assert false;
-        return new Pair<String,LeafNode>(null,null);
-    }
-    /**
-     *
-     * @param leafNode
-     * @return
-     */
-    Identifier writeNode(LeafNode leafNode,Identifier page){
-        try{
-            byte [] bs = leafNode.storeToByteArray();
-            this.storageManager.storeByteArray(page,bs);
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        return   page;
+        return new Pair<String, LeafNode>(null, null);
     }
 
     /**
-     *
+     * @param leafNode
+     * @return
+     */
+    Identifier writeNode(LeafNode leafNode, Identifier page) {
+        try {
+            byte[] bs = leafNode.storeToByteArray();
+            this.storageManager.storeByteArray(page, bs);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return page;
+    }
+
+    /**
      * @param page
      * @return
      */
-    LeafNode readNode(Identifier page){
-        try{
-            byte [] bs = this.storageManager.loadByteArray(page);
+    LeafNode readNode(Identifier page) {
+        try {
+            byte[] bs = this.storageManager.loadByteArray(page);
             LeafNode ln = new LeafNode();
             ln.loadFromByteArray(bs);
             return ln;
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
     /**
-     *
      * @param i
      * @return
      */
-    public boolean delete (T i){
-        Pair<String,LeafNode> ln = chooseNode(i);
-        if(ln==null) return false;
-        if(ln.first()==null || ln.second()==null)
+    public boolean delete(T i) {
+        Pair<String, LeafNode> ln = chooseNode(i);
+        if (ln == null) return false;
+        if (ln.first() == null || ln.second() == null)
             return false;
 
-        int r = ln.getSecond().delete((Interval)i);
-        if(r==1) {//成功删除
-            if(ln.second().size==0){//如果叶子节点为空
+        int r = ln.getSecond().delete((Interval) i);
+        if (r == 1) {//成功删除
+            if (ln.second().size == 0) {//如果叶子节点为空
                 //回收该节点和页面
                 emptyNodes.add(ln.first());
                 Identifier page = leafInfos.get(ln.first());
-                try{
-                    if(page.longValue()!=-1L)
+                try {
+                    if (page.longValue() != -1L)
                         storageManager.deleteByteArray(page);
-                }
-                catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                     return false;
                 }
-            }
-            else{//重写该节点
+            } else {//重写该节点
                 Identifier page = null;
-                if(ln.second().size==1)
+                if (ln.second().size == 1)
                     page = Identifier.create(-1);
                 else
                     page = leafInfos.get(ln.first());
 
                 //rewrite the node to page
-                page=writeNode(ln.second(),page);
-                leafInfos.put(ln.first(),page);
+                page = writeNode(ln.second(), page);
+                leafInfos.put(ln.first(), page);
             }
 
             constructedRDD.set(false);
@@ -465,57 +455,58 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
         }
         return false;
     }
+
     /**
      * 叶子节点类
      */
-    class LeafNode  implements Serializable {
+    class LeafNode implements Serializable {
 
         TriangleShape triangle;
-        Interval []     intervals;
-        int             size;
-        public LeafNode(){
-            intervals = new Interval [leafNodeCapacity];
-            triangle =(TriangleShape) baseTriangle.clone();
-            size=0;
+        Interval[] intervals;
+        int size;
+
+        public LeafNode() {
+            intervals = new Interval[leafNodeCapacity];
+            triangle = (TriangleShape) baseTriangle.clone();
+            size = 0;
         }
 
         public LeafNode(String identifier, Interval[] intervals, int size) {
-            triangle =(TriangleShape) triangleEncoder.parse(identifier);
+            triangle = (TriangleShape) triangleEncoder.parse(identifier);
             this.intervals = new Interval[leafNodeCapacity];
-            this.size = size>leafNodeCapacity? leafNodeCapacity:size;
-            for(int i=0;i<this.size;++i)
+            this.size = size > leafNodeCapacity ? leafNodeCapacity : size;
+            for (int i = 0; i < this.size; ++i)
                 this.intervals[i] = intervals[i];
         }
 
         public LeafNode(TriangleShape t, Interval[] intervals, int size) {
-            triangle =(TriangleShape) t.clone();
+            triangle = (TriangleShape) t.clone();
             this.intervals = new Interval[leafNodeCapacity];
-            this.size = size>leafNodeCapacity? leafNodeCapacity:size;
-            for(int i=0;i<this.size;++i)
+            this.size = size > leafNodeCapacity ? leafNodeCapacity : size;
+            for (int i = 0; i < this.size; ++i)
                 this.intervals[i] = intervals[i];
         }
 
-        public Interval [] getIntervals(){
-            Interval[] ints= new Interval[size];
-            for(int i=0;i<size;++i)
-                ints[i]=this.intervals[i];
+        public Interval[] getIntervals() {
+            Interval[] ints = new Interval[size];
+            for (int i = 0; i < size; ++i)
+                ints[i] = this.intervals[i];
             return ints;
         }
 
-        public List<LeafNode> split(){
+        public List<LeafNode> split() {
             LeafNode ln = new LeafNode();
             LeafNode rn = new LeafNode();
 
             TriangleShape lnTriangle = triangle.leftTriangle();
-            int t=0;
-            for(int i=0;i<size;++i){
-                t = test(lnTriangle,intervals[i]);
-                if(t==0){//add the interval to right node
-                    rn.intervals[rn.size]=(Interval) intervals[i].clone();
+            int t = 0;
+            for (int i = 0; i < size; ++i) {
+                t = test(lnTriangle, intervals[i]);
+                if (t == 0) {//add the interval to right node
+                    rn.intervals[rn.size] = (Interval) intervals[i].clone();
                     rn.size++;
-                }
-                else{
-                    ln.intervals[ln.size]=(Interval) intervals[i].clone();
+                } else {
+                    ln.intervals[ln.size] = (Interval) intervals[i].clone();
                     ln.size++;
                 }
             }
@@ -526,107 +517,102 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
         }
 
         /**
-         *
          * @param i
-         * @return
-         * 如果返回1，表示插入成功
+         * @return 如果返回1，表示插入成功
          * 如果返回0，表示在三角形的外面；插入失败
          * 如果返回-1，表示在基准三角形的左子三角形里面或边上，但是节点需要分裂，插入失败
          * 如果返回-2，表示在基准三角形的右子三角形里面或边上；但是节点需要分裂，插入失败
          */
-        public int insert(Interval i){
+        public int insert(Interval i) {
             int r = test(triangle, i);
             /*
-            * 如果返回0，表示在三角形的外面；
-            * 如果返回1，表示在基准三角形的左子三角形里面或边上
-            * 如果返回2，则表示在基准三角形的右子三角形里面或边上；
+             * 如果返回0，表示在三角形的外面；
+             * 如果返回1，表示在基准三角形的左子三角形里面或边上
+             * 如果返回2，则表示在基准三角形的右子三角形里面或边上；
              */
-            if(r==0)
+            if (r == 0)
                 return 0;
-            if(size<leafNodeCapacity) {
+            if (size < leafNodeCapacity) {
                 intervals[size] = i;
                 size++;
                 return 1;
-            }
-            else{//need to split
+            } else {//need to split
                 return -r;
             }
         }
 
         /**
-         *
          * @param i
-         * @return
-         * *如果返回1，表示删除成功
+         * @return *如果返回1，表示删除成功
          * 如果返回0，表示在三角形的外面；删除失败
          * 如果返回-1，表示在三角形里面，但是没有找到相等的Interval
          */
-        public int delete(Interval i){
-            if(size==0) return -1;
+        public int delete(Interval i) {
+            if (size == 0) return -1;
             int r = test(triangle, i);
             /*
-            * 如果返回0，表示在三角形的外面；
-            * 如果返回1，表示在基准三角形的左子三角形里面或边上
-            * 如果返回2，则表示在基准三角形的右子三角形里面或边上；
+             * 如果返回0，表示在三角形的外面；
+             * 如果返回1，表示在基准三角形的左子三角形里面或边上
+             * 如果返回2，则表示在基准三角形的右子三角形里面或边上；
              */
-            if(r==0)
+            if (r == 0)
                 return 0;
-            for(int it=0;it<size;++it) {
-                if(i.equals(intervals[it])){
-                    for(int k=it;k<size-1;++k)
-                        intervals[k]=intervals[k+1];
-                    size-=1;
+            for (int it = 0; it < size; ++it) {
+                if (i.equals(intervals[it])) {
+                    for (int k = it; k < size - 1; ++k)
+                        intervals[k] = intervals[k + 1];
+                    size -= 1;
                     return 1;
                 }
             }
             return -1;
         }
+
         @Override
         public Object clone() {
-            LeafNode ln =  new LeafNode(this.triangle,this.intervals,this.size);
-            for(int i=0;i<this.size;++i)
-                this.intervals[i] =(Interval) intervals[i].clone();
+            LeafNode ln = new LeafNode(this.triangle, this.intervals, this.size);
+            for (int i = 0; i < this.size; ++i)
+                this.intervals[i] = (Interval) intervals[i].clone();
             return ln;
         }
 
         @Override
         public void copyFrom(Object leafNode) {
-            LeafNode ln =   (LeafNode)leafNode;
+            LeafNode ln = (LeafNode) leafNode;
             this.triangle = (TriangleShape) ln.triangle.clone();
             this.size = ln.size;
-            for(int i=0;i<this.size;++i)
-                this.intervals[i] =(Interval) ln.intervals[i].clone();
+            for (int i = 0; i < this.size; ++i)
+                this.intervals[i] = (Interval) ln.intervals[i].clone();
         }
 
         @Override
         public boolean load(DataInput in) throws IOException {
-            try{
+            try {
                 //由于不知道triangle的具体类型，将其反序列化成对象
                 {
-                    int len =in.readInt();
-                    byte [] bs = new byte[len];
-                    in.readFully(bs,0,len);
+                    int len = in.readInt();
+                    byte[] bs = new byte[len];
+                    in.readFully(bs, 0, len);
                     ByteArrayInputStream bais = new ByteArrayInputStream(bs);
                     ObjectInputStream ois = new ObjectInputStream(bais);
                     triangle = (TriangleShape) ois.readObject();
                     ois.close();
                 }
                 size = in.readInt();
-                if(size==0) return true;
+                if (size == 0) return true;
                 //由于不知道Interval的具体类型，将其反序列化成对象
                 {
-                    int len =in.readInt();
-                    byte [] bs = new byte[len];
-                    in.readFully(bs,0,len);
+                    int len = in.readInt();
+                    byte[] bs = new byte[len];
+                    in.readFully(bs, 0, len);
                     ByteArrayInputStream bais = new ByteArrayInputStream(bs);
                     ObjectInputStream ois = new ObjectInputStream(bais);
-                    for(int i=0;i<size;++i) {
+                    for (int i = 0; i < size; ++i) {
                         intervals[i] = (Interval) ois.readObject();
                     }
                     ois.close();
                 }
-            }
-            catch (IOException | ClassNotFoundException e){
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
             return false;
@@ -634,34 +620,33 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
 
         @Override
         public boolean store(DataOutput out) throws IOException {
-            try{
+            try {
 
                 {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     ObjectOutputStream oos = new ObjectOutputStream(baos);
                     oos.writeObject(triangle);
-                    byte [] bs = baos.toByteArray();
+                    byte[] bs = baos.toByteArray();
                     out.writeInt(bs.length);
-                    out.write(bs,0,bs.length);
+                    out.write(bs, 0, bs.length);
                     oos.close();
                 }
                 out.writeInt(size);
-                if(size==0) return true;
+                if (size == 0) return true;
                 //由于不知道Interval的具体类型，将其序列化成对象
                 {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     ObjectOutputStream oos = new ObjectOutputStream(baos);
-                    for(int i=0;i<size;++i) {
+                    for (int i = 0; i < size; ++i) {
                         oos.writeObject(intervals[i]);
                     }
-                    byte [] bs = baos.toByteArray();
+                    byte[] bs = baos.toByteArray();
                     out.writeInt(bs.length);
-                    out.write(bs,0,bs.length);
+                    out.write(bs, 0, bs.length);
                     oos.close();
                 }
                 return true;
-            }
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
             return false;
@@ -669,9 +654,9 @@ public class TDTree<T extends Interval> extends BaseTriangleTree<T> {
 
         @Override
         public long getByteArraySize() {
-            long s =  triangle.getByteArraySize()+4;
-            for(int i=0;i<size;++i)
-                s+= intervals[i].getByteArraySize();
+            long s = triangle.getByteArraySize() + 4;
+            for (int i = 0; i < size; ++i)
+                s += intervals[i].getByteArraySize();
             return s;
         }
     }

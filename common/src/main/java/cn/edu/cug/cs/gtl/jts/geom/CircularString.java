@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014 - 2015, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
- */ 
+ */
 
 import java.util.Arrays;
 
@@ -76,8 +76,8 @@ public class CircularString extends LineString implements SingleCurvedGeometry<L
     /**
      * This sequence is used as a fake to trick the constructor
      */
-    static final CoordinateSequence FAKE_STRING_2D = new CoordinateArraySequence(new Coordinate[] {
-            new Coordinate(0, 0), new Coordinate(1, 1) });
+    static final CoordinateSequence FAKE_STRING_2D = new CoordinateArraySequence(new Coordinate[]{
+            new Coordinate(0, 0), new Coordinate(1, 1)});
 
     double[] controlPoints;
 
@@ -228,8 +228,8 @@ public class CircularString extends LineString implements SingleCurvedGeometry<L
 
     public Point getInteriorPoint() {
         int idx = controlPoints.length / 2;
-        return new Point(new CoordinateArraySequence(new Coordinate[] { new Coordinate(
-                controlPoints[idx], controlPoints[idx + 1]) }), getFactory());
+        return new Point(new CoordinateArraySequence(new Coordinate[]{new Coordinate(
+                controlPoints[idx], controlPoints[idx + 1])}), getFactory());
     }
 
     public Geometry getEnvelope() {
@@ -342,11 +342,11 @@ public class CircularString extends LineString implements SingleCurvedGeometry<L
 
     public String toCurvedText() {
         StringBuilder sb = new StringBuilder("CIRCULARSTRING ");
-        if(isEmpty()) {
+        if (isEmpty()) {
             sb.append("EMPTY");
         } else {
             sb.append("(");
-            for (int i = 0; i < controlPoints.length;) {
+            for (int i = 0; i < controlPoints.length; ) {
                 sb.append(controlPoints[i++] + " " + controlPoints[i++]);
                 if (i < controlPoints.length) {
                     sb.append(", ");
@@ -370,15 +370,15 @@ public class CircularString extends LineString implements SingleCurvedGeometry<L
     }
 
     public Point getStartPoint() {
-        return new Point(new CoordinateArraySequence(new Coordinate[] { new Coordinate(
-                controlPoints[0], controlPoints[1]) }), getFactory());
+        return new Point(new CoordinateArraySequence(new Coordinate[]{new Coordinate(
+                controlPoints[0], controlPoints[1])}), getFactory());
     }
 
     public Point getEndPoint() {
         return new Point(
-                new CoordinateArraySequence(new Coordinate[] { new Coordinate(
+                new CoordinateArraySequence(new Coordinate[]{new Coordinate(
                         controlPoints[controlPoints.length - 2],
-                        controlPoints[controlPoints.length - 1]) }), getFactory());
+                        controlPoints[controlPoints.length - 1])}), getFactory());
     }
 
     /*
@@ -514,7 +514,6 @@ public class CircularString extends LineString implements SingleCurvedGeometry<L
     public IntersectionMatrix relate(Geometry g) {
         return linearize().relate(g);
     }
-
 
 
     public Geometry buffer(double distance) {

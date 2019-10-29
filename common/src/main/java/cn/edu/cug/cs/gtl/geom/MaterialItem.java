@@ -10,37 +10,58 @@ import java.io.IOException;
 public class MaterialItem implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    /** 材质类型 */
+    /**
+     * 材质类型
+     */
     long materialType;
-    /** 纹理ID */
+    /**
+     * 纹理ID
+     */
     long textureID;
-    /** 强度 */
+    /**
+     * 强度
+     */
     float intensity;
-    /** 颜色 */
+    /**
+     * 颜色
+     */
     long color;
-    /** 在 u 纹理方向上重复的次数 */
-    double  uRepeat;
-    /** 在 v 纹理方向上重复的次数 */
-    double  vRepeat;
-    /** 纹理平移 */
-    float	uOffset;
-    /** 纹理平移 */
-    float	vOffset;
-    /** 纹理旋转 */
-    float	rotAngle;
-    /** 透明度  [ 0.0 (不透明)  ~  1.0 (完全透明) ] */
-    float	alpha;
+    /**
+     * 在 u 纹理方向上重复的次数
+     */
+    double uRepeat;
+    /**
+     * 在 v 纹理方向上重复的次数
+     */
+    double vRepeat;
+    /**
+     * 纹理平移
+     */
+    float uOffset;
+    /**
+     * 纹理平移
+     */
+    float vOffset;
+    /**
+     * 纹理旋转
+     */
+    float rotAngle;
+    /**
+     * 透明度  [ 0.0 (不透明)  ~  1.0 (完全透明) ]
+     */
+    float alpha;
 
     /**
      * MaterialItem有参构造函数
+     *
      * @param matType：材质类型
      * @param textureID：纹理ID
      * @param intensity：强度
      * @param color：颜色
-     * @param uRepeat：在 u 纹理方向上重复的次数
-     * @param vRepeat： 在 v 纹理方向上重复的次数
-     * @param uOffset：在 u 纹理方向平移
-     * @param vOffset：在 v 纹理方向平移
+     * @param uRepeat：在      u 纹理方向上重复的次数
+     * @param vRepeat：       在 v 纹理方向上重复的次数
+     * @param uOffset：在      u 纹理方向平移
+     * @param vOffset：在      v 纹理方向平移
      * @param rotAngle：纹理旋转
      * @param alpha：透明度
      */
@@ -65,6 +86,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得材质类型
+     *
      * @return
      */
     public long getMaterialType() {
@@ -73,6 +95,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置材质类型
+     *
      * @param materialType：材质类型
      */
     public void setMaterialType(long materialType) {
@@ -81,6 +104,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得纹理ID
+     *
      * @return：纹理ID
      */
     public long getTextureID() {
@@ -89,6 +113,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置纹理ID
+     *
      * @param textureID：纹理ID
      */
     public void setTextureID(long textureID) {
@@ -97,6 +122,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得强度
+     *
      * @return：纹理ID
      */
     public float getIntensity() {
@@ -105,6 +131,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置强度
+     *
      * @param intensity：强度
      */
     public void setIntensity(float intensity) {
@@ -113,6 +140,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得颜色
+     *
      * @return：颜色
      */
     public long getColor() {
@@ -121,6 +149,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置颜色
+     *
      * @param color：颜色
      */
     public void setColor(long color) {
@@ -129,6 +158,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得在 u 纹理方向上重复的次数
+     *
      * @return：在 u 纹理方向上重复的次数
      */
     public double getURepeat() {
@@ -137,6 +167,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置在 u 纹理方向上重复的次数
+     *
      * @param uRepeat：在 u 纹理方向上重复的次数
      */
     public void setURepeat(double uRepeat) {
@@ -145,6 +176,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得在 v 纹理方向上重复的次数
+     *
      * @return：在 v 纹理方向上重复的次数
      */
     public double getVRepeat() {
@@ -153,6 +185,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置在 v 纹理方向上重复的次数
+     *
      * @param vRepeat：在 v 纹理方向上重复的次数
      */
     public void setVRepeat(double vRepeat) {
@@ -161,6 +194,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得在 u 纹理方向平移
+     *
      * @return：在 u 纹理方向平移
      */
     public float getUOffset() {
@@ -169,6 +203,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置在 u 纹理方向平移
+     *
      * @param uOffset：在 u 纹理方向平移
      */
     public void setUOffset(float uOffset) {
@@ -177,6 +212,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得在 v 纹理方向平移
+     *
      * @return：在 v 纹理方向平移
      */
     public float getVOffset() {
@@ -185,6 +221,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置在 v 纹理方向平移
+     *
      * @return：在 v 纹理方向平移
      */
     public void setVOffset(float vOffset) {
@@ -193,6 +230,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得纹理旋转
+     *
      * @return：纹理旋转
      */
     public float getRotAngle() {
@@ -201,6 +239,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置纹理旋转
+     *
      * @return：纹理旋转
      */
     public void setRotAngle(float rotAngle) {
@@ -209,6 +248,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 获得透明度
+     *
      * @return：透明度
      */
     public float getAlpha() {
@@ -217,6 +257,7 @@ public class MaterialItem implements Serializable {
 
     /**
      * 设置透明度
+     *
      * @param alpha：透明度
      */
     public void setAlpha(float alpha) {
@@ -225,24 +266,24 @@ public class MaterialItem implements Serializable {
 
     /**
      * 拷贝本对象内容到其他同类对象
+     *
      * @return:MaterialItem
      */
     @Override
-    public MaterialItem clone()
-    {
-        MaterialItem p = new MaterialItem(this.materialType,this.textureID,this.intensity,this.color,this.uRepeat,this.vRepeat,this.uOffset,this.vOffset,this.rotAngle,this.alpha);
+    public MaterialItem clone() {
+        MaterialItem p = new MaterialItem(this.materialType, this.textureID, this.intensity, this.color, this.uRepeat, this.vRepeat, this.uOffset, this.vOffset, this.rotAngle, this.alpha);
         return p;
     }
 
     /**
      * 从存储对象中加载数据，填充本对象
+     *
      * @param in:表示可以读取的存储对象，可能是内存、文件、管道等
-     * @return:true or false
      * @throws IOException
+     * @return:true or false
      */
     @Override
-    public boolean load(DataInput in) throws IOException
-    {
+    public boolean load(DataInput in) throws IOException {
         /** 材质类型 */
         materialType = in.readLong();
         /** 纹理ID */
@@ -269,13 +310,13 @@ public class MaterialItem implements Serializable {
 
     /**
      * 将本对象写入存储对象中，存储对象可能是内存、文件、管道等
+     *
      * @param out:表示可以写入的存储对象，可能是内存、文件、管道等
-     * @return:true or false
      * @throws IOException
+     * @return:true or false
      */
     @Override
-    public boolean store(DataOutput out) throws IOException
-    {
+    public boolean store(DataOutput out) throws IOException {
         /** 材质类型 */
         out.writeLong(materialType);
         /** 纹理ID */
@@ -303,11 +344,11 @@ public class MaterialItem implements Serializable {
     /**
      * 对象序列化后的字节数，
      * 默认实现为将其写入一个字节数组中，然后返回该字节数
+     *
      * @return:字节数
      */
     @Override
-    public long getByteArraySize()
-    {
+    public long getByteArraySize() {
         long len = 0;
         len = 8 + 8 + 4 + 8 + 8 + 8 + 4 + 4 + 4 + 4;
         return len;

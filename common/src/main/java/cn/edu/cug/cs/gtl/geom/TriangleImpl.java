@@ -32,8 +32,7 @@ class TriangleImpl implements Triangle {
             for (int i = 0; i < 3; ++i) {
                 this.vertices[i] = (Vector) vertices[i].clone();
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -45,10 +44,9 @@ class TriangleImpl implements Triangle {
             this.vertices[0] = (Vector) v0.clone();
             this.vertices[1] = (Vector) v1.clone();
             this.vertices[2] = (Vector) v2.clone();
-        }
-       catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-       }
+        }
     }
 
     @Override
@@ -268,13 +266,13 @@ class TriangleImpl implements Triangle {
     }
 
     @Override
-    public boolean contains(double x, double y){
-        return Geom2DSuits.contains(this,x,y);
+    public boolean contains(double x, double y) {
+        return Geom2DSuits.contains(this, x, y);
     }
 
     @Override
-    public boolean contains(double x, double y,double z){
-        return Geom3DSuits.pointInTriangle(new VectorImpl(x,y,z), vertices[0], vertices[2], vertices[1]);
+    public boolean contains(double x, double y, double z) {
+        return Geom3DSuits.pointInTriangle(new VectorImpl(x, y, z), vertices[0], vertices[2], vertices[1]);
     }
 
     @Override

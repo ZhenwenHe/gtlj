@@ -56,7 +56,7 @@ public interface Triangle extends Serializable {
 
     boolean contains(double x, double y);
 
-    boolean contains(double x, double y,double z);
+    boolean contains(double x, double y, double z);
 
     boolean contains(LineSegment p);
 

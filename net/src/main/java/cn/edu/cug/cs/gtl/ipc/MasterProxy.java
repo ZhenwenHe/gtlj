@@ -10,27 +10,27 @@ import java.util.List;
 /**
  *
  */
-public abstract class MasterProxy implements MasterProtocol ,java.io.Serializable{
+public abstract class MasterProxy implements MasterProtocol, java.io.Serializable {
 
     private static final long serialVersionUID = 1L;
 
     MasterDescriptor masterDescriptor;
 
     /**
-     *
-     * @param ip default 127.0.0.1
+     * @param ip   default 127.0.0.1
      * @param port default 8888
      */
-    public MasterProxy(String ip, int port){
-        this.masterDescriptor = new MasterDescriptor(ip,port);
+    public MasterProxy(String ip, int port) {
+        this.masterDescriptor = new MasterDescriptor(ip, port);
     }
 
-    public MasterProxy(){
-        this.masterDescriptor = new MasterDescriptor("127.0.0.1",8888);
+    public MasterProxy() {
+        this.masterDescriptor = new MasterDescriptor("127.0.0.1", 8888);
     }
+
     @Override
     public boolean registerSlave(String slaveIP, int slavePort) {
-        SlaveDescriptor sd = new SlaveDescriptor(slaveIP,slavePort);
+        SlaveDescriptor sd = new SlaveDescriptor(slaveIP, slavePort);
 
         try {
             SlaveProtocol sp = RPC.waitForProxy(
@@ -44,7 +44,7 @@ public abstract class MasterProxy implements MasterProtocol ,java.io.Serializabl
         }
 
         this.masterDescriptor.addSlave(sd);
-        System.out.println("Slave "+slaveIP+":"+slavePort +" registered");
+        System.out.println("Slave " + slaveIP + ":" + slavePort + " registered");
         return true;
     }
 
@@ -65,9 +65,9 @@ public abstract class MasterProxy implements MasterProtocol ,java.io.Serializabl
     public long getProtocolVersion(String protocol, long l) throws IOException {
         if (protocol.equals(MasterProtocol.class.getName())) {
             return versionID;
-        } else if (protocol.equals(ClientProtocol.class.getName())){
+        } else if (protocol.equals(ClientProtocol.class.getName())) {
             return ClientProtocol.versionID;
-        } else if (protocol.equals(SlaveProtocol.class.getName())){
+        } else if (protocol.equals(SlaveProtocol.class.getName())) {
             return SlaveProtocol.versionID;
         } else {
             throw new IOException("Unknown protocol to master node: " + protocol);
@@ -76,17 +76,17 @@ public abstract class MasterProxy implements MasterProtocol ,java.io.Serializabl
 
     @Override
     public ProtocolSignature getProtocolSignature(String s, long l, int i) throws IOException {
-        return new ProtocolSignature(versionID,null);
+        return new ProtocolSignature(versionID, null);
     }
 
     public static MasterProtocol startServer(
             RPC.Builder builder,
-            MasterProtocol protocol) throws IOException{
+            MasterProtocol protocol) throws IOException {
         try {
-            if(protocol==null) return null;
+            if (protocol == null) return null;
             MasterDescriptor md = protocol.getMasterDescriptor();
-            if(md==null) return null;
-            RPC.Server server =builder.setBindAddress(md.getIPAddress())
+            if (md == null) return null;
+            RPC.Server server = builder.setBindAddress(md.getIPAddress())
                     .setPort(md.getPort())
                     .setProtocol(MasterProtocol.class)
                     .setNumHandlers(10)
@@ -95,8 +95,7 @@ public abstract class MasterProxy implements MasterProtocol ,java.io.Serializabl
 
             server.start();
             return protocol;
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return protocol;

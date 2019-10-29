@@ -9,29 +9,29 @@ import "cn/edu/cug/cs/gtl/protos/geometry.proto";
 option cc_enable_arenas = true;
 
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Features";
 
-message FeatureType{
-    Identifier  identifier=1;
-    string name=2;
-    GeometryType geometry_type=3;
-    repeated ColumnInfo column_info=4;
+message FeatureType {
+    Identifier identifier = 1;
+    string name = 2;
+    GeometryType geometry_type = 3;
+    repeated ColumnInfo column_info = 4;
 }
 
-message Feature{
-    Identifier  identifier=1;
-    string name=2;
-    Geometry geometry=3;
-    repeated Value value=4;
+message Feature {
+    Identifier identifier = 1;
+    string name = 2;
+    Geometry geometry = 3;
+    repeated Value value = 4;
 }
 
-message FeatureSet{
-    Identifier  identifier=1;
-    string name=2;
-    FeatureType  feature_type=3;
-    Envelope3D bound=4;
-    repeated Feature feature=5;
+message FeatureSet {
+    Identifier identifier = 1;
+    string name = 2;
+    FeatureType feature_type = 3;
+    Envelope3D bound = 4;
+    repeated Feature feature = 5;
 }
 

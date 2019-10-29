@@ -45,158 +45,150 @@ import cn.edu.cug.cs.gtl.jts.util.Assert;
  * @version 1.7
  */
 public class Node
-  extends NodeBase
-{
-  public static Node createNode(Envelope env)
-  {
-    Key key = new Key(env);
-    Node node = new Node(key.getEnvelope(), key.getLevel());
-    return node;
-  }
-
-  public static Node createExpanded(Node node, Envelope addEnv)
-  {
-    Envelope expandEnv = new Envelope(addEnv);
-    if (node != null) expandEnv.expandToInclude(node.env);
-
-    Node largerNode = createNode(expandEnv);
-    if (node != null) largerNode.insertNode(node);
-    return largerNode;
-  }
-
-  private Envelope env;
-  private double centrex;
-  private double centrey;
-  private int level;
-
-  public Node(Envelope env, int level)
-  {
-    //this.parent = parent;
-    this.env = env;
-    this.level = level;
-    centrex = (env.getMinX() + env.getMaxX()) / 2;
-    centrey = (env.getMinY() + env.getMaxY()) / 2;
-  }
-
-  public Envelope getEnvelope() { return env; }
-
-  public int getLevel() { return level; }
-
-  protected boolean isSearchMatch(Envelope searchEnv)
-  {
-    return env.intersects(searchEnv);
-  }
-
-  /**
-   * Returns the subquad containing the envelope <tt>searchEnv</tt>.
-   * Creates the subquad if
-   * it does not already exist.
-   * 
-   * @return the subquad containing the search envelope
-   */
-  public Node getNode(Envelope searchEnv)
-  {
-    int subnodeIndex = getSubnodeIndex(searchEnv, centrex, centrey);
-    // if subquadIndex is -1 searchEnv is not contained in a subquad
-    if (subnodeIndex != -1) {
-      // create the quad if it does not exist
-      Node node = getSubnode(subnodeIndex);
-      // recursively search the found/created quad
-      return node.getNode(searchEnv);
+        extends NodeBase {
+    public static Node createNode(Envelope env) {
+        Key key = new Key(env);
+        Node node = new Node(key.getEnvelope(), key.getLevel());
+        return node;
     }
-    else {
-      return this;
-    }
-  }
 
-  /**
-   * Returns the smallest <i>existing</i>
-   * node containing the envelope.
-   */
-  public NodeBase find(Envelope searchEnv)
-  {
-    int subnodeIndex = getSubnodeIndex(searchEnv, centrex, centrey);
-    if (subnodeIndex == -1)
-      return this;
-    if (subnode[subnodeIndex] != null) {
-      // query lies in subquad, so search it
-      Node node = subnode[subnodeIndex];
-      return node.find(searchEnv);
-    }
-    // no existing subquad, so return this one anyway
-    return this;
-  }
+    public static Node createExpanded(Node node, Envelope addEnv) {
+        Envelope expandEnv = new Envelope(addEnv);
+        if (node != null) expandEnv.expandToInclude(node.env);
 
-  void insertNode(Node node)
-  {
-    Assert.isTrue(env == null || env.contains(node.env));
+        Node largerNode = createNode(expandEnv);
+        if (node != null) largerNode.insertNode(node);
+        return largerNode;
+    }
+
+    private Envelope env;
+    private double centrex;
+    private double centrey;
+    private int level;
+
+    public Node(Envelope env, int level) {
+        //this.parent = parent;
+        this.env = env;
+        this.level = level;
+        centrex = (env.getMinX() + env.getMaxX()) / 2;
+        centrey = (env.getMinY() + env.getMaxY()) / 2;
+    }
+
+    public Envelope getEnvelope() {
+        return env;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    protected boolean isSearchMatch(Envelope searchEnv) {
+        return env.intersects(searchEnv);
+    }
+
+    /**
+     * Returns the subquad containing the envelope <tt>searchEnv</tt>.
+     * Creates the subquad if
+     * it does not already exist.
+     *
+     * @return the subquad containing the search envelope
+     */
+    public Node getNode(Envelope searchEnv) {
+        int subnodeIndex = getSubnodeIndex(searchEnv, centrex, centrey);
+        // if subquadIndex is -1 searchEnv is not contained in a subquad
+        if (subnodeIndex != -1) {
+            // create the quad if it does not exist
+            Node node = getSubnode(subnodeIndex);
+            // recursively search the found/created quad
+            return node.getNode(searchEnv);
+        } else {
+            return this;
+        }
+    }
+
+    /**
+     * Returns the smallest <i>existing</i>
+     * node containing the envelope.
+     */
+    public NodeBase find(Envelope searchEnv) {
+        int subnodeIndex = getSubnodeIndex(searchEnv, centrex, centrey);
+        if (subnodeIndex == -1)
+            return this;
+        if (subnode[subnodeIndex] != null) {
+            // query lies in subquad, so search it
+            Node node = subnode[subnodeIndex];
+            return node.find(searchEnv);
+        }
+        // no existing subquad, so return this one anyway
+        return this;
+    }
+
+    void insertNode(Node node) {
+        Assert.isTrue(env == null || env.contains(node.env));
 //System.out.println(env);
 //System.out.println(quad.env);
-    int index = getSubnodeIndex(node.env, centrex, centrey);
+        int index = getSubnodeIndex(node.env, centrex, centrey);
 //System.out.println(index);
-    if (node.level == level - 1) {
-      subnode[index] = node;
+        if (node.level == level - 1) {
+            subnode[index] = node;
 //System.out.println("inserted");
+        } else {
+            // the quad is not a direct child, so make a new child quad to contain it
+            // and recursively insert the quad
+            Node childNode = createSubnode(index);
+            childNode.insertNode(node);
+            subnode[index] = childNode;
+        }
     }
-    else {
-      // the quad is not a direct child, so make a new child quad to contain it
-      // and recursively insert the quad
-      Node childNode = createSubnode(index);
-      childNode.insertNode(node);
-      subnode[index] = childNode;
-    }
-  }
 
-  /**
-   * get the subquad for the index.
-   * If it doesn't exist, create it
-   */
-  private Node getSubnode(int index)
-  {
-    if (subnode[index] == null) {
-      subnode[index] = createSubnode(index);
+    /**
+     * get the subquad for the index.
+     * If it doesn't exist, create it
+     */
+    private Node getSubnode(int index) {
+        if (subnode[index] == null) {
+            subnode[index] = createSubnode(index);
+        }
+        return subnode[index];
     }
-    return subnode[index];
-  }
 
-  private Node createSubnode(int index)
-  {
+    private Node createSubnode(int index) {
         // create a new subquad in the appropriate quadrant
 
-      double minx = 0.0;
-      double maxx = 0.0;
-      double miny = 0.0;
-      double maxy = 0.0;
+        double minx = 0.0;
+        double maxx = 0.0;
+        double miny = 0.0;
+        double maxy = 0.0;
 
-      switch (index) {
-      case 0:
-        minx = env.getMinX();
-        maxx = centrex;
-        miny = env.getMinY();
-        maxy = centrey;
-        break;
-      case 1:
-        minx = centrex;
-        maxx = env.getMaxX();
-        miny = env.getMinY();
-        maxy = centrey;
-        break;
-      case 2:
-        minx = env.getMinX();
-        maxx = centrex;
-        miny = centrey;
-        maxy = env.getMaxY();
-        break;
-      case 3:
-        minx = centrex;
-        maxx = env.getMaxX();
-        miny = centrey;
-        maxy = env.getMaxY();
-        break;
-      }
-      Envelope sqEnv = new Envelope(minx, maxx, miny, maxy);
-      Node node = new Node(sqEnv, level - 1);
-    return node;
-  }
+        switch (index) {
+            case 0:
+                minx = env.getMinX();
+                maxx = centrex;
+                miny = env.getMinY();
+                maxy = centrey;
+                break;
+            case 1:
+                minx = centrex;
+                maxx = env.getMaxX();
+                miny = env.getMinY();
+                maxy = centrey;
+                break;
+            case 2:
+                minx = env.getMinX();
+                maxx = centrex;
+                miny = centrey;
+                maxy = env.getMaxY();
+                break;
+            case 3:
+                minx = centrex;
+                maxx = env.getMaxX();
+                miny = centrey;
+                maxy = env.getMaxY();
+                break;
+        }
+        Envelope sqEnv = new Envelope(minx, maxx, miny, maxy);
+        Node node = new Node(sqEnv, level - 1);
+        return node;
+    }
 
 }

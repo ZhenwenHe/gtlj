@@ -11,55 +11,55 @@ import java.util.*;
 
 public class FeatureTypeBuilder {
 
-    Pair<Identifier,String> names;
-    Pair<String,Object> geometryType;
+    Pair<Identifier, String> names;
+    Pair<String, Object> geometryType;
     CoordinateReferenceSystem coordinateReferenceSystem;
     ArrayList<AttributeDescriptor> attributeDescriptors;
+
     public FeatureTypeBuilder() {
-        names=new Pair<>();
-        geometryType=new Pair<>();
-        attributeDescriptors=new ArrayList<>()  ;
+        names = new Pair<>();
+        geometryType = new Pair<>();
+        attributeDescriptors = new ArrayList<>();
     }
 
-    public FeatureTypeBuilder setIdentifier(Identifier identifier){
+    public FeatureTypeBuilder setIdentifier(Identifier identifier) {
         names.setKey(identifier);
         return this;
     }
 
-    public FeatureTypeBuilder setName(String name){
+    public FeatureTypeBuilder setName(String name) {
         names.setValue(name);
         return this;
     }
 
-    public FeatureTypeBuilder add(String name, Class<?> binding){
-        if(Geometry.class.isAssignableFrom(binding)){
+    public FeatureTypeBuilder add(String name, Class<?> binding) {
+        if (Geometry.class.isAssignableFrom(binding)) {
             geometryType.setKey(name);
             geometryType.setValue(binding);
+        } else {
+            attributeDescriptors.add(new AttributeDescriptor(Variant.OBJECT, binding, name));
         }
-        else{
-            attributeDescriptors.add(new AttributeDescriptor(Variant.OBJECT,binding,name));
-        }
         return this;
     }
 
-    public FeatureTypeBuilder add(String name, int type){
-        attributeDescriptors.add(new AttributeDescriptor(type,null,name));
+    public FeatureTypeBuilder add(String name, int type) {
+        attributeDescriptors.add(new AttributeDescriptor(type, null, name));
         return this;
     }
 
-    public FeatureTypeBuilder setCoordinateReferenceSystem(CoordinateReferenceSystem coordinateReferenceSystem){
-        this.coordinateReferenceSystem=coordinateReferenceSystem;
+    public FeatureTypeBuilder setCoordinateReferenceSystem(CoordinateReferenceSystem coordinateReferenceSystem) {
+        this.coordinateReferenceSystem = coordinateReferenceSystem;
         return this;
     }
 
-    public FeatureType build(){
+    public FeatureType build() {
         return new FeatureType(
-                names.getKey(),names.getValue(),
+                names.getKey(), names.getValue(),
                 new GeometryDescriptor(
-                        (Class<?>)geometryType.getValue(),
+                        (Class<?>) geometryType.getValue(),
                         this.coordinateReferenceSystem,
                         geometryType.getKey(),
-                        1,1,true,null),
+                        1, 1, true, null),
                 attributeDescriptors);
     }
 

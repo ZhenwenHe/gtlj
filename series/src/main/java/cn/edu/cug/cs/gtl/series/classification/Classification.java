@@ -13,7 +13,6 @@ public class Classification {
 
 
     /**
-     *
      * @param trainTimeSeries
      * @param testTimeSeries
      * @param distanceMetrics
@@ -21,9 +20,9 @@ public class Classification {
      * @return
      */
     public static double classify(MultiSeries trainTimeSeries,
-                                              MultiSeries testTimeSeries,
-                                              DistanceMetrics<TimeSeries> distanceMetrics,
-                                              Classifier<TimeSeries,String> classifier) {
+                                  MultiSeries testTimeSeries,
+                                  DistanceMetrics<TimeSeries> distanceMetrics,
+                                  Classifier<TimeSeries, String> classifier) {
         classifier.setDistanceMetrics(distanceMetrics);
         classifier.setTrainSet(trainTimeSeries.toTrainSet());
         classifier.setTestSet(testTimeSeries.toTestSet());
@@ -32,11 +31,12 @@ public class Classification {
 
     /**
      * calculate classification accuracy
+     *
      * @param trainTimeSeries multi train time series
      * @param testTimeSeries  multi test time series
      * @return probs accuracy
      */
-    public static double timeSeriesClassifier(MultiSeries trainTimeSeries, MultiSeries testTimeSeries, DistanceMetrics<TimeSeries> disfunc){
+    public static double timeSeriesClassifier(MultiSeries trainTimeSeries, MultiSeries testTimeSeries, DistanceMetrics<TimeSeries> disfunc) {
         int trainDataLen = trainTimeSeries.getLabels().size();
         int testDataLen = testTimeSeries.getLabels().size();
 
@@ -64,7 +64,7 @@ public class Classification {
             if (labelList.get(i).equals(testTimeSeries.getLabel(i)))
                 count++;
         }
-        double probs = count*1.0 / testDataLen;
+        double probs = count * 1.0 / testDataLen;
         return probs;
     }
 

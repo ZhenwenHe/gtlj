@@ -39,30 +39,27 @@ import cn.edu.cug.cs.gtl.jts.geom.Puntal;
  * A prepared version for {@link Puntal} geometries.
  * <p>
  * Instances of this class are thread-safe.
- * 
- * @author Martin Davis
  *
+ * @author Martin Davis
  */
 public class PreparedPoint
-  extends BasicPreparedGeometry
-{
-  public PreparedPoint(Puntal point) {
-    super((Geometry) point);
-  }
+        extends BasicPreparedGeometry {
+    public PreparedPoint(Puntal point) {
+        super((Geometry) point);
+    }
 
-  /**
-   * Tests whether this point intersects a {@link Geometry}.
-   * <p>
-   * The optimization here is that computing topology for the test geometry
-   * is avoided.  This can be significant for large geometries.
-   */
-  public boolean intersects(Geometry g)
-  {
-  	if (! envelopesIntersect(g)) return false;
-  	
-  	/**
-  	 * This avoids computing topology for the test geometry
-  	 */
-    return isAnyTargetComponentInTest(g);
-  }  
+    /**
+     * Tests whether this point intersects a {@link Geometry}.
+     * <p>
+     * The optimization here is that computing topology for the test geometry
+     * is avoided.  This can be significant for large geometries.
+     */
+    public boolean intersects(Geometry g) {
+        if (!envelopesIntersect(g)) return false;
+
+        /**
+         * This avoids computing topology for the test geometry
+         */
+        return isAnyTargetComponentInTest(g);
+    }
 }

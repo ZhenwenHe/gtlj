@@ -10,7 +10,7 @@ public class IdentifiersTest {
     public void allTest() {
         Identifier.Builder builder = Identifier.newBuilder();
         builder.setData(12l);
-        Identifier identifier=builder.build();
-        assertEquals(12l,identifier.getData());
+        Identifier identifier = builder.build();
+        assertEquals(12l, identifier.getData());
     }
 }

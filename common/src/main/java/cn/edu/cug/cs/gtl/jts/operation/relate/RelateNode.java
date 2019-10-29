@@ -49,34 +49,32 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.IntersectionMatrix;
 import cn.edu.cug.cs.gtl.jts.geomgraph.EdgeEndStar;
 import cn.edu.cug.cs.gtl.jts.geomgraph.Node;
+
 /**
  * Represents a node in the topological graph used to compute spatial relationships.
  *
  * @version 1.7
  */
 public class RelateNode
-  extends Node
-{
+        extends Node {
 
-  public RelateNode(Coordinate coord, EdgeEndStar edges)
-  {
-    super(coord, edges);
-  }
+    public RelateNode(Coordinate coord, EdgeEndStar edges) {
+        super(coord, edges);
+    }
 
-  /**
-   * Update the IM with the contribution for this component.
-   * A component only contributes if it has a labelling for both parent geometries
-   */
-  protected void computeIM(IntersectionMatrix im)
-  {
-    im.setAtLeastIfValid(label.getLocation(0), label.getLocation(1), 0);
-  }
-  /**
-   * Update the IM with the contribution for the EdgeEnds incident on this node.
-   */
-  void updateIMFromEdges(IntersectionMatrix im)
-  {
-    ((EdgeEndBundleStar) edges).updateIM(im);
-  }
+    /**
+     * Update the IM with the contribution for this component.
+     * A component only contributes if it has a labelling for both parent geometries
+     */
+    protected void computeIM(IntersectionMatrix im) {
+        im.setAtLeastIfValid(label.getLocation(0), label.getLocation(1), 0);
+    }
+
+    /**
+     * Update the IM with the contribution for the EdgeEnds incident on this node.
+     */
+    void updateIMFromEdges(IntersectionMatrix im) {
+        ((EdgeEndBundleStar) edges).updateIM(im);
+    }
 
 }

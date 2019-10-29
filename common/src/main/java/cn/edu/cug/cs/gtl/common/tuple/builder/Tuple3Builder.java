@@ -23,7 +23,6 @@
 // --------------------------------------------------------------
 
 
-
 package cn.edu.cug.cs.gtl.common.tuple.builder;
 
 import java.util.ArrayList;
@@ -35,15 +34,15 @@ import cn.edu.cug.cs.gtl.common.tuple.Tuple3;
 @Public
 public class Tuple3Builder<T0, T1, T2> {
 
-	private List<Tuple3<T0, T1, T2>> tuples = new ArrayList<>();
+    private List<Tuple3<T0, T1, T2>> tuples = new ArrayList<>();
 
-	public Tuple3Builder<T0, T1, T2> add(T0 value0, T1 value1, T2 value2){
-		tuples.add(new Tuple3<>(value0, value1, value2));
-		return this;
-	}
+    public Tuple3Builder<T0, T1, T2> add(T0 value0, T1 value1, T2 value2) {
+        tuples.add(new Tuple3<>(value0, value1, value2));
+        return this;
+    }
 
-	@SuppressWarnings("unchecked")
-	public Tuple3<T0, T1, T2>[] build(){
-		return tuples.toArray(new Tuple3[tuples.size()]);
-	}
+    @SuppressWarnings("unchecked")
+    public Tuple3<T0, T1, T2>[] build() {
+        return tuples.toArray(new Tuple3[tuples.size()]);
+    }
 }

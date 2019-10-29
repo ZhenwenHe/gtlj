@@ -360,7 +360,7 @@ class VertexArrays {
         Envelope env = new Envelope();
         for (int i = 0; i < vertices.length; i++) {
             //env.expandToInclude(vertices[i]);
-            env.combine(Vector.create(vertices[i].x,vertices[i].y));
+            env.combine(Vector.create(vertices[i].x, vertices[i].y));
         }
         return env;
     }
@@ -375,7 +375,7 @@ class VertexArrays {
     public static Vertex[] intersection(Vertex2D[] vertices, Envelope env) {
         VertexList coordList = new VertexList();
         for (int i = 0; i < vertices.length; i++) {
-            if (env.contains(Vector.create(vertices[i].x,vertices[i].y)))
+            if (env.contains(Vector.create(vertices[i].x, vertices[i].y)))
                 coordList.add(vertices[i], true);
         }
         return coordList.toCoordinateArray();

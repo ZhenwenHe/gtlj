@@ -8,7 +8,9 @@ import javax.imageio.ImageIO;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
+
 import cn.edu.cug.cs.gtl.io.File;
+
 import java.io.IOException;
 
 import static org.junit.Assert.*;
@@ -19,7 +21,7 @@ import static org.junit.Assert.*;
 public class TextureTest {
     Texture textureTest = null;
 
-    static final String JPG_FILE_NAME= Config.getTestInputDirectory()+File.separator+"images"+File.separator+"test.jpg";
+    static final String JPG_FILE_NAME = Config.getTestInputDirectory() + File.separator + "images" + File.separator + "test.jpg";
 
     @Test
     public void cloneTest() {
@@ -30,7 +32,7 @@ public class TextureTest {
         textureTest.setTextureName("纹理");
         textureTest.setWrapMode(0);
 
-        Texture textureTest2 = (Texture)textureTest.clone();
+        Texture textureTest2 = (Texture) textureTest.clone();
         System.out.println("纹理1类型" + textureTest.getTextureType() + " 纹理1ID:" + textureTest.getTextureID());
         System.out.println("纹理2类型" + textureTest2.getTextureType() + " 纹理2ID:" + textureTest2.getTextureID());
 
@@ -48,12 +50,11 @@ public class TextureTest {
     public void load() {
         try {
             File f = new File(JPG_FILE_NAME);
-            if(f.exists()){
+            if (f.exists()) {
                 BufferedImage bufferedImage = ImageIO.read(f);
                 Raster r = bufferedImage.getData();
             }
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -63,11 +64,9 @@ public class TextureTest {
         try {
             Texture t = Texture.class.newInstance();
             System.out.println(t.getTextureID());
-        }
-        catch (InstantiationException e){
+        } catch (InstantiationException e) {
             e.printStackTrace();
-        }
-        catch (IllegalAccessException e){
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
 
@@ -78,12 +77,12 @@ public class TextureTest {
     }
 
     @Test
-    public void loadFile(){
-        if(File.exists(JPG_FILE_NAME)){
+    public void loadFile() {
+        if (File.exists(JPG_FILE_NAME)) {
             Texture t = new Texture(JPG_FILE_NAME);
             String s = File.getFileNameWithoutSuffix(JPG_FILE_NAME);
-            Assert.assertTrue(t.getTextureName().compareTo(s)==0);
-            Assert.assertTrue(t.getTextureType()==Texture.TEXTURE_IMAGE_JPG);
+            Assert.assertTrue(t.getTextureName().compareTo(s) == 0);
+            Assert.assertTrue(t.getTextureType() == Texture.TEXTURE_IMAGE_JPG);
         }
     }
 }

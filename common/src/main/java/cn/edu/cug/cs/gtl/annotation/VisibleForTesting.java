@@ -32,6 +32,7 @@ import java.lang.annotation.Target;
  * some tests need to have access to it.
  */
 @Documented
-@Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR })
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR})
 @Internal
-public @interface VisibleForTesting {}
+public @interface VisibleForTesting {
+}

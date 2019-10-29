@@ -25,14 +25,14 @@ public class IndexedSolid extends Geometry implements Polyhedral {
      * ......
      * 第n个简单体对象
      */
-    protected int [] indices;
+    protected int[] indices;
 
     /**
      * 材质ID
      */
     protected long materialID;
 
-    private TextureParameter textureParameter=null;
+    private TextureParameter textureParameter = null;
 
     public IndexedSolid() {
         this.geometryType = INDEXEDSOLID;
@@ -82,14 +82,15 @@ public class IndexedSolid extends Geometry implements Polyhedral {
         this.indices = indices;
         this.geometryType = INDEXEDSOLID;
     }
+
     @Override
     public boolean isEmpty() {
-        return this.coordinates==null || this.coordinates.size()==0;
+        return this.coordinates == null || this.coordinates.size() == 0;
     }
 
     @Override
     public IndexedSolid clone() {
-        return (IndexedSolid)super.clone();
+        return (IndexedSolid) super.clone();
     }
 
     @Override
@@ -97,9 +98,9 @@ public class IndexedSolid extends Geometry implements Polyhedral {
         super.load(in);
         coordinates.load(in);
         int s = in.readInt();
-        if(s > 0){
+        if (s > 0) {
             this.indices = new int[s];
-            for(int i = 0; i < s; ++i)
+            for (int i = 0; i < s; ++i)
                 this.indices[i] = in.readInt();
         }
 
@@ -111,10 +112,10 @@ public class IndexedSolid extends Geometry implements Polyhedral {
     public boolean store(DataOutput out) throws IOException {
         super.store(out);
         coordinates.store(out);
-        int s = indices == null?0:indices.length;
+        int s = indices == null ? 0 : indices.length;
         out.writeInt(s);
-        if(s>0){
-            for(int v: indices){
+        if (s > 0) {
+            for (int v : indices) {
                 out.writeInt(v);
             }
         }
@@ -124,7 +125,7 @@ public class IndexedSolid extends Geometry implements Polyhedral {
 
     @Override
     public long getByteArraySize() {
-        int s = this.indices == null?0:this.indices.length; // 传入的索引数组长度
+        int s = this.indices == null ? 0 : this.indices.length; // 传入的索引数组长度
         return this.coordinates.getByteArraySize() + s + 4 + 4 + 4; // 节点数组大小 + 索引数组长度 + 数组内容 + width + style
     }
 

@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2004-2008, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
  */
- 
 
 
 // JTS dependencies
+
 import cn.edu.cug.cs.gtl.jts.geom.CoordinateSequence;
 
 // OpenGIS dependencies
@@ -32,19 +32,17 @@ import org.opengis.referencing.operation.TransformException;
  * {@linkplain MathTransform transformation} to a
  * {@linkplain CoordinateSequence coordinate sequence}.
  *
- * @since 2.1
- *
- *
- * @source $URL$
- * @version $Id$
  * @author Andrea Aime
+ * @version $Id$
+ * @source $URL$
+ * @since 2.1
  */
 public interface CoordinateSequenceTransformer {
     /**
      * Returns a transformed coordinate sequence.
      *
-     * @param  sequence The sequence to transform.
-     * @param  transform The transformation to apply.
+     * @param sequence  The sequence to transform.
+     * @param transform The transformation to apply.
      * @throws TransformException if at least one coordinate can't be transformed.
      */
     public CoordinateSequence transform(CoordinateSequence sequence, MathTransform transform)

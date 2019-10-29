@@ -37,9 +37,9 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.LineSegment;
 
 /**
- * Models a constraint segment which can be split in two in various ways, 
+ * Models a constraint segment which can be split in two in various ways,
  * according to certain geometric constraints.
- * 
+ *
  * @author Martin Davis
  */
 public class SplitSegment {
@@ -47,8 +47,8 @@ public class SplitSegment {
      * Computes the {@link Coordinate} that lies a given fraction along the line defined by the
      * reverse of the given segment. A fraction of <code>0.0</code> returns the end point of the
      * segment; a fraction of <code>1.0</code> returns the start point of the segment.
-     * 
-     * @param seg the LineSegment
+     *
+     * @param seg                   the LineSegment
      * @param segmentLengthFraction the fraction of the segment length along the line
      * @return the point at that distance
      */
@@ -60,9 +60,9 @@ public class SplitSegment {
     }
 
     private LineSegment seg;
-    private double      segLen;
-    private Coordinate  splitPt;
-    private double      minimumLen = 0.0;
+    private double segLen;
+    private Coordinate splitPt;
+    private double minimumLen = 0.0;
 
     public SplitSegment(LineSegment seg) {
         this.seg = seg;

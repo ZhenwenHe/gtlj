@@ -27,10 +27,9 @@ public class ImageTest {
     public void gray() {
         try {
             Image im = Image.read(new File("dat/word.jpg"));
-            Image imGray= im.gray();
-            imGray.write("jpg",new File("dat/word_gray.jpg"));
-        }
-        catch (IOException e){
+            Image imGray = im.gray();
+            imGray.write("jpg", new File("dat/word_gray.jpg"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -39,10 +38,9 @@ public class ImageTest {
     public void binary() {
         try {
             Image im = Image.read(new File("dat/word.jpg"));
-            Image imGray= im.binary();
-            imGray.write("jpg",new File("dat/word_binary.jpg"));
-        }
-        catch (IOException e){
+            Image imGray = im.binary();
+            imGray.write("jpg", new File("dat/word_binary.jpg"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

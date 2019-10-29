@@ -9,19 +9,19 @@ import cn.edu.cug.cs.gtl.index.shape.RegionShape;
  * leftTop 2
  * rightTop 3
  */
-public class Region2DEncoder implements RegionEncoder{
+public class Region2DEncoder implements RegionEncoder {
 
     RegionShape regionShape;
 
     public Region2DEncoder(RegionShape regionShape) {
-        this.regionShape =(RegionShape) regionShape.clone();
+        this.regionShape = (RegionShape) regionShape.clone();
     }
 
     @Override
     public RegionShape parse(String code) {
-        if(code==null) return null;
-        if(code.isEmpty()) return null;
-        if(code.equals("1"))
+        if (code == null) return null;
+        if (code.isEmpty()) return null;
+        if (code.equals("1"))
             return regionShape;
         return null;
     }

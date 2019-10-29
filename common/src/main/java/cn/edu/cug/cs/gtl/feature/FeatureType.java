@@ -45,18 +45,17 @@ ByteString:
      是由字节数组转换成的十进制的数构成的字符串，每个byte转换成一个整数字符串，每个整数之间以\t分割；
      通过这种字符串转换Feature是无损的。
  */
+
 /**
  * 要素类型，例如道路、建筑等
  * 以道路为例，其几何对象是线装LineString，属性有道路名称，道路类型、道路长度等。
  * 其创建采用FeatureTypeBuilder,示例代码如下：
- *
- *
  */
 public class FeatureType implements DataSchema {
 
 
     private static final long serialVersionUID = -4627070846660440083L;
-    private Identifier  identifier;//仅供系统内部使用，外部通过名称查找
+    private Identifier identifier;//仅供系统内部使用，外部通过名称查找
     private String name;//要素名称，在Data
     private GeometryDescriptor defaultGeometry;//要素类型的几何类型描述
     private List<AttributeDescriptor> properties;//要素类型的属性类型集合
@@ -64,30 +63,31 @@ public class FeatureType implements DataSchema {
     /**
      *
      */
-    public FeatureType(){
-        this.identifier=Identifier.create();
-        this.name=null;
+    public FeatureType() {
+        this.identifier = Identifier.create();
+        this.name = null;
         this.defaultGeometry = null;
         this.properties = new ArrayList<AttributeDescriptor>();
     }
 
     /**
      * \
+     *
      * @param name
      * @param defaultGeometry
      * @param properties
      */
     public FeatureType(String name, GeometryDescriptor defaultGeometry, Collection<AttributeDescriptor> properties) {
-        this.identifier=Identifier.create();
-        this.name=name;
+        this.identifier = Identifier.create();
+        this.name = name;
         this.defaultGeometry = defaultGeometry;
         this.properties = new ArrayList<AttributeDescriptor>();
         this.properties.addAll(properties);
     }
 
     public FeatureType(Identifier identifier, String name, GeometryDescriptor defaultGeometry, Collection<AttributeDescriptor> properties) {
-        this.identifier=identifier;
-        this.name=name;
+        this.identifier = identifier;
+        this.name = name;
         this.defaultGeometry = defaultGeometry;
         this.properties = new ArrayList<AttributeDescriptor>();
         this.properties.addAll(properties);
@@ -98,19 +98,18 @@ public class FeatureType implements DataSchema {
     }
 
     public List<AttributeDescriptor> getDescriptors() {
-        ArrayList<AttributeDescriptor> aa = new ArrayList<>(properties.size()+1);
+        ArrayList<AttributeDescriptor> aa = new ArrayList<>(properties.size() + 1);
         aa.add(defaultGeometry);
         aa.addAll(properties);
         return aa;
     }
 
     public AttributeDescriptor getDescriptor(String name) {
-        if(name.equals(defaultGeometry.getName())){
+        if (name.equals(defaultGeometry.getName())) {
             return defaultGeometry;
-        }
-        else{
-            for(AttributeDescriptor a: properties){
-                if(name.equals(a.getName()))
+        } else {
+            for (AttributeDescriptor a : properties) {
+                if (name.equals(a.getName()))
                     return a;
             }
         }
@@ -122,8 +121,8 @@ public class FeatureType implements DataSchema {
     }
 
     public CoordinateReferenceSystem getCoordinateReferenceSystem() {
-        if(defaultGeometry==null) return null;
-        if(defaultGeometry.getType()==null) return null;
+        if (defaultGeometry == null) return null;
+        if (defaultGeometry.getType() == null) return null;
 
         return defaultGeometry.getGeometryType().getCoordinateReferenceSystem();
     }
@@ -131,10 +130,10 @@ public class FeatureType implements DataSchema {
     @Override
     public Object clone() {
         ArrayList<AttributeDescriptor> aa = new ArrayList<>(properties.size());
-        for(AttributeDescriptor a: properties){
+        for (AttributeDescriptor a : properties) {
             aa.add((AttributeDescriptor) a.clone());
         }
-        FeatureType ft = new FeatureType(this.name,(GeometryDescriptor)defaultGeometry.clone(),
+        FeatureType ft = new FeatureType(this.name, (GeometryDescriptor) defaultGeometry.clone(),
                 (Collection<AttributeDescriptor>) aa);
         ft.identifier.reset(this.identifier.longValue());
         return ft;
@@ -143,21 +142,20 @@ public class FeatureType implements DataSchema {
     @Override
     public boolean load(DataInput in) throws IOException {
         identifier.load(in);
-        name= StringUtils.load(in);
+        name = StringUtils.load(in);
         defaultGeometry = (GeometryDescriptor) ObjectUtils.load(in);
         int n = in.readInt();
-        if(n<=0)
+        if (n <= 0)
             return false;
 
-        if(this.properties == null){
+        if (this.properties == null) {
             this.properties = new ArrayList<>(n);
-        }
-        else {
+        } else {
             this.properties = new ArrayList<>(n);
         }
 
-        for(int i=0;i<n;++i){
-            this.properties.add((AttributeDescriptor)ObjectUtils.load(in));
+        for (int i = 0; i < n; ++i) {
+            this.properties.add((AttributeDescriptor) ObjectUtils.load(in));
         }
         return true;
     }
@@ -165,30 +163,31 @@ public class FeatureType implements DataSchema {
     @Override
     public boolean store(DataOutput out) throws IOException {
         identifier.store(out);
-        StringUtils.store(name,out);
-        ObjectUtils.store(defaultGeometry,out);
+        StringUtils.store(name, out);
+        ObjectUtils.store(defaultGeometry, out);
         out.writeInt(properties.size());
-        for(AttributeDescriptor a: properties)
-            ObjectUtils.store(a,out);
+        for (AttributeDescriptor a : properties)
+            ObjectUtils.store(a, out);
         return true;
     }
 
     @Override
     public long getByteArraySize() {
-        long len =identifier.getByteArraySize()
-                +StringUtils.getByteArraySize(name)
+        long len = identifier.getByteArraySize()
+                + StringUtils.getByteArraySize(name)
                 + ObjectUtils.getByteArraySize(defaultGeometry)
-                +4;
-        for(AttributeDescriptor a: properties)
-            len += ObjectUtils.getByteArraySize(a );
+                + 4;
+        for (AttributeDescriptor a : properties)
+            len += ObjectUtils.getByteArraySize(a);
 
         return len;
     }
 
     @Override
-    public String toString(){
-        return   byteString(this);
+    public String toString() {
+        return byteString(this);
     }
+
     @Override
     public Identifier getIdentifier() {
         return this.identifier;
@@ -203,15 +202,15 @@ public class FeatureType implements DataSchema {
         this.properties = properties;
     }
 
-    public static String tsvString(FeatureType ft){
-        StringBuilder stringBuilder=new StringBuilder(
+    public static String tsvString(FeatureType ft) {
+        StringBuilder stringBuilder = new StringBuilder(
                 ft.getName()
         );
         stringBuilder.append(FileDataSplitter.TSV.getDelimiter());
         stringBuilder.append(ft.getGeometryDescriptor().getName());
         stringBuilder.append(FileDataSplitter.PERCENT.getDelimiter());
-        stringBuilder.append( ft.getGeometryDescriptor().getGeometryType().getBinding().getSimpleName().toUpperCase());
-        for(AttributeDescriptor v: ft.getAttributeDescriptors()){
+        stringBuilder.append(ft.getGeometryDescriptor().getGeometryType().getBinding().getSimpleName().toUpperCase());
+        for (AttributeDescriptor v : ft.getAttributeDescriptors()) {
             stringBuilder.append(FileDataSplitter.TSV.getDelimiter());
             stringBuilder.append(v.getAttributeType().getName());
         }
@@ -219,31 +218,31 @@ public class FeatureType implements DataSchema {
         return stringBuilder.toString();
     }
 
-    public static FeatureType tsvString(String tsvString){
+    public static FeatureType tsvString(String tsvString) {
         String[] columns = tsvString.split(FileDataSplitter.TSV.getDelimiter());
         FeatureTypeBuilder ftb = new FeatureTypeBuilder()
                 .setIdentifier(Identifier.create())
                 .setName(columns[0])
                 .setCoordinateReferenceSystem(null);
 
-        String []geomInfo = columns[1].split(FileDataSplitter.PERCENT.getDelimiter());
-        assert geomInfo.length==2;
+        String[] geomInfo = columns[1].split(FileDataSplitter.PERCENT.getDelimiter());
+        assert geomInfo.length == 2;
         ftb.add(geomInfo[0], Geometry.getTypeBinding(Geometry.getType(geomInfo[1])));
-        for(int i=2;i<columns.length;++i)
+        for (int i = 2; i < columns.length; ++i)
             ftb.add(columns[i], Variant.STRING);
         return ftb.build();
     }
 
 
-    public static String ssvString(FeatureType ft){
-        StringBuilder stringBuilder=new StringBuilder(
+    public static String ssvString(FeatureType ft) {
+        StringBuilder stringBuilder = new StringBuilder(
                 ft.getName()
         );
         stringBuilder.append(FileDataSplitter.SSV.getDelimiter());
         stringBuilder.append(ft.getGeometryDescriptor().getName());
         stringBuilder.append(FileDataSplitter.PERCENT.getDelimiter());
-        stringBuilder.append( ft.getGeometryDescriptor().getGeometryType().getBinding().getSimpleName().toUpperCase());
-        for(AttributeDescriptor v: ft.getAttributeDescriptors()){
+        stringBuilder.append(ft.getGeometryDescriptor().getGeometryType().getBinding().getSimpleName().toUpperCase());
+        for (AttributeDescriptor v : ft.getAttributeDescriptors()) {
             stringBuilder.append(FileDataSplitter.SSV.getDelimiter());
             stringBuilder.append(v.getAttributeType().getName());
         }
@@ -251,7 +250,7 @@ public class FeatureType implements DataSchema {
         return stringBuilder.toString();
     }
 
-    public static FeatureType ssvString(String ssvString){
+    public static FeatureType ssvString(String ssvString) {
         //只能处理一个空格分割的情况
         //String[] columns = ssvString.split(FileDataSplitter.SSV.getDelimiter());
         String[] columns = ssvString.split("\\s+");
@@ -261,23 +260,23 @@ public class FeatureType implements DataSchema {
                 .setName(columns[0])
                 .setCoordinateReferenceSystem(null);
 
-        String []geomInfo = columns[1].split(FileDataSplitter.PERCENT.getDelimiter());
-        assert geomInfo.length==2;
+        String[] geomInfo = columns[1].split(FileDataSplitter.PERCENT.getDelimiter());
+        assert geomInfo.length == 2;
         ftb.add(geomInfo[0], Geometry.getTypeBinding(Geometry.getType(geomInfo[1])));
-        for(int i=2;i<columns.length;++i)
+        for (int i = 2; i < columns.length; ++i)
             ftb.add(columns[i], Variant.STRING);
         return ftb.build();
     }
 
-    public static String csvString(FeatureType ft){
-        StringBuilder stringBuilder=new StringBuilder(
+    public static String csvString(FeatureType ft) {
+        StringBuilder stringBuilder = new StringBuilder(
                 ft.getName()
         );
         stringBuilder.append(FileDataSplitter.CSV.getDelimiter());
         stringBuilder.append(ft.getGeometryDescriptor().getName());
         stringBuilder.append(FileDataSplitter.PERCENT.getDelimiter());
-        stringBuilder.append( ft.getGeometryDescriptor().getGeometryType().getBinding().getSimpleName().toUpperCase());
-        for(AttributeDescriptor v: ft.getAttributeDescriptors()){
+        stringBuilder.append(ft.getGeometryDescriptor().getGeometryType().getBinding().getSimpleName().toUpperCase());
+        for (AttributeDescriptor v : ft.getAttributeDescriptors()) {
             stringBuilder.append(FileDataSplitter.CSV.getDelimiter());
             stringBuilder.append(v.getAttributeType().getName());
         }
@@ -285,57 +284,51 @@ public class FeatureType implements DataSchema {
         return stringBuilder.toString();
     }
 
-    public static FeatureType csvString(String csvString){
+    public static FeatureType csvString(String csvString) {
         String[] columns = csvString.split(FileDataSplitter.CSV.getDelimiter());
         FeatureTypeBuilder ftb = new FeatureTypeBuilder()
                 .setIdentifier(Identifier.create())
                 .setName(columns[0])
                 .setCoordinateReferenceSystem(null);
 
-        String []geomInfo = columns[1].split(FileDataSplitter.PERCENT.getDelimiter());
-        assert geomInfo.length==2;
+        String[] geomInfo = columns[1].split(FileDataSplitter.PERCENT.getDelimiter());
+        assert geomInfo.length == 2;
         ftb.add(geomInfo[0], Geometry.getTypeBinding(Geometry.getType(geomInfo[1])));
-        for(int i=2;i<columns.length;++i)
+        for (int i = 2; i < columns.length; ++i)
             ftb.add(columns[i], Variant.STRING);
         return ftb.build();
     }
 
-    public static FeatureType byteString(String s) throws IOException{
-        FeatureType ft =  new FeatureType();
+    public static FeatureType byteString(String s) throws IOException {
+        FeatureType ft = new FeatureType();
         ft.loadFromByteString(s);
         return ft;
     }
 
-    public static String byteString(FeatureType  ft)  {
+    public static String byteString(FeatureType ft) {
         try {
             return ft.storeToByteString();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
     public static FeatureType fromString(String s) {
-        if(s.contains(FileDataSplitter.TSV.getDelimiter())) {
+        if (s.contains(FileDataSplitter.TSV.getDelimiter())) {
             return tsvString(s);
-        }
-        else if(s.contains(FileDataSplitter.CSV.getDelimiter())) {
+        } else if (s.contains(FileDataSplitter.CSV.getDelimiter())) {
             return csvString(s);
-        }
-        else if (s.contains(FileDataSplitter.SEMICOLON.getDelimiter())){
+        } else if (s.contains(FileDataSplitter.SEMICOLON.getDelimiter())) {
             try {
                 return byteString(s);
-            }
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
                 return null;
             }
-        }
-        else if(s.contains(FileDataSplitter.SSV.getDelimiter())){
+        } else if (s.contains(FileDataSplitter.SSV.getDelimiter())) {
             return ssvString(s);
-        }
-        else
+        } else
             return null;
     }
 }

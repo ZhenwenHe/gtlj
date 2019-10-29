@@ -47,149 +47,145 @@ import cn.edu.cug.cs.gtl.jts.geom.Envelope;
  */
 public abstract class NodeBase {
 
-  /**
-   * Returns the index of the subnode that wholely contains the given interval.
-   * If none does, returns -1.
-   */
-  public static int getSubnodeIndex(Interval interval, double centre)
-  {
-    int subnodeIndex = -1;
-    if (interval.min >= centre) subnodeIndex = 1;
-    if (interval.max <= centre) subnodeIndex = 0;
-    return subnodeIndex;
-  }
-
-  protected List items = new ArrayList();
-
-  /**
-   * subnodes are numbered as follows:
-   *
-   *  0 | 1
-   */
-  protected Node[] subnode = new Node[2];
-
-  public NodeBase() {
-  }
-
-  public List getItems() { return items; }
-
-  public void add(Object item)
-  {
-    items.add(item);
-  }
-  public List addAllItems(List items)
-  {
-    items.addAll(this.items);
-    for (int i = 0; i < 2; i++) {
-      if (subnode[i] != null) {
-        subnode[i].addAllItems(items);
-      }
+    /**
+     * Returns the index of the subnode that wholely contains the given interval.
+     * If none does, returns -1.
+     */
+    public static int getSubnodeIndex(Interval interval, double centre) {
+        int subnodeIndex = -1;
+        if (interval.min >= centre) subnodeIndex = 1;
+        if (interval.max <= centre) subnodeIndex = 0;
+        return subnodeIndex;
     }
-    return items;
-  }
-  protected abstract boolean isSearchMatch(Interval interval);
 
-  /**
-   * Adds items in the tree which potentially overlap the query interval
-   * to the given collection.
-   * If the query interval is <tt>null</tt>, add all items in the tree.
-   * 
-   * @param interval a query nterval, or null
-   * @param resultItems the candidate items found
-   */
-  public void addAllItemsFromOverlapping(Interval interval, Collection resultItems)
-  {
-    if (interval != null && ! isSearchMatch(interval))
-      return;
+    protected List items = new ArrayList();
 
-    // some of these may not actually overlap - this is allowed by the bintree contract
-    resultItems.addAll(items);
+    /**
+     * subnodes are numbered as follows:
+     * <p>
+     * 0 | 1
+     */
+    protected Node[] subnode = new Node[2];
 
-    if (subnode[0] != null) subnode[0].addAllItemsFromOverlapping(interval, resultItems);
-    if (subnode[1] != null) subnode[1].addAllItemsFromOverlapping(interval, resultItems);
-  }
+    public NodeBase() {
+    }
 
-  /**
-   * Removes a single item from this subtree.
-   *
-   * @param itemInterval the envelope containing the item
-   * @param item the item to remove
-   * @return <code>true</code> if the item was found and removed
-   */
-  public boolean remove(Interval itemInterval, Object item)
-  {
-    // use interval to restrict nodes scanned
-    if (! isSearchMatch(itemInterval))
-      return false;
+    public List getItems() {
+        return items;
+    }
 
-    boolean found = false;
-    for (int i = 0; i < 2; i++) {
-      if (subnode[i] != null) {
-        found = subnode[i].remove(itemInterval, item);
-        if (found) {
-          // trim subtree if empty
-          if (subnode[i].isPrunable())
-            subnode[i] = null;
-          break;
+    public void add(Object item) {
+        items.add(item);
+    }
+
+    public List addAllItems(List items) {
+        items.addAll(this.items);
+        for (int i = 0; i < 2; i++) {
+            if (subnode[i] != null) {
+                subnode[i].addAllItems(items);
+            }
         }
-      }
+        return items;
     }
-    // if item was found lower down, don't need to search for it here
-    if (found) return found;
-    // otherwise, try and remove the item from the list of items in this node
-    found = items.remove(item);
-    return found;
-  }
 
-  public boolean isPrunable()
-  {
-    return ! (hasChildren() || hasItems());
-  }
+    protected abstract boolean isSearchMatch(Interval interval);
 
-  public boolean hasChildren()
-  {
-    for (int i = 0; i < 2; i++) {
-      if (subnode[i] != null)
-        return true;
+    /**
+     * Adds items in the tree which potentially overlap the query interval
+     * to the given collection.
+     * If the query interval is <tt>null</tt>, add all items in the tree.
+     *
+     * @param interval    a query nterval, or null
+     * @param resultItems the candidate items found
+     */
+    public void addAllItemsFromOverlapping(Interval interval, Collection resultItems) {
+        if (interval != null && !isSearchMatch(interval))
+            return;
+
+        // some of these may not actually overlap - this is allowed by the bintree contract
+        resultItems.addAll(items);
+
+        if (subnode[0] != null) subnode[0].addAllItemsFromOverlapping(interval, resultItems);
+        if (subnode[1] != null) subnode[1].addAllItemsFromOverlapping(interval, resultItems);
     }
-    return false;
-  }
 
-  public boolean hasItems() { return ! items.isEmpty(); }
+    /**
+     * Removes a single item from this subtree.
+     *
+     * @param itemInterval the envelope containing the item
+     * @param item         the item to remove
+     * @return <code>true</code> if the item was found and removed
+     */
+    public boolean remove(Interval itemInterval, Object item) {
+        // use interval to restrict nodes scanned
+        if (!isSearchMatch(itemInterval))
+            return false;
 
-  int depth()
-  {
-    int maxSubDepth = 0;
-    for (int i = 0; i < 2; i++) {
-      if (subnode[i] != null) {
-        int sqd = subnode[i].depth();
-        if (sqd > maxSubDepth)
-          maxSubDepth = sqd;
-      }
+        boolean found = false;
+        for (int i = 0; i < 2; i++) {
+            if (subnode[i] != null) {
+                found = subnode[i].remove(itemInterval, item);
+                if (found) {
+                    // trim subtree if empty
+                    if (subnode[i].isPrunable())
+                        subnode[i] = null;
+                    break;
+                }
+            }
+        }
+        // if item was found lower down, don't need to search for it here
+        if (found) return found;
+        // otherwise, try and remove the item from the list of items in this node
+        found = items.remove(item);
+        return found;
     }
-    return maxSubDepth + 1;
-  }
 
-  int size()
-  {
-    int subSize = 0;
-    for (int i = 0; i < 2; i++) {
-      if (subnode[i] != null) {
-        subSize += subnode[i].size();
-      }
+    public boolean isPrunable() {
+        return !(hasChildren() || hasItems());
     }
-    return subSize + items.size();
-  }
 
-  int nodeSize()
-  {
-    int subSize = 0;
-    for (int i = 0; i < 2; i++) {
-      if (subnode[i] != null) {
-        subSize += subnode[i].nodeSize();
-      }
+    public boolean hasChildren() {
+        for (int i = 0; i < 2; i++) {
+            if (subnode[i] != null)
+                return true;
+        }
+        return false;
     }
-    return subSize + 1;
-  }
+
+    public boolean hasItems() {
+        return !items.isEmpty();
+    }
+
+    int depth() {
+        int maxSubDepth = 0;
+        for (int i = 0; i < 2; i++) {
+            if (subnode[i] != null) {
+                int sqd = subnode[i].depth();
+                if (sqd > maxSubDepth)
+                    maxSubDepth = sqd;
+            }
+        }
+        return maxSubDepth + 1;
+    }
+
+    int size() {
+        int subSize = 0;
+        for (int i = 0; i < 2; i++) {
+            if (subnode[i] != null) {
+                subSize += subnode[i].size();
+            }
+        }
+        return subSize + items.size();
+    }
+
+    int nodeSize() {
+        int subSize = 0;
+        for (int i = 0; i < 2; i++) {
+            if (subnode[i] != null) {
+                subSize += subnode[i].nodeSize();
+            }
+        }
+        return subSize + 1;
+    }
 
 }

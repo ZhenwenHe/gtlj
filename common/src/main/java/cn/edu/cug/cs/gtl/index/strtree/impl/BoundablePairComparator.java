@@ -8,9 +8,11 @@ import java.util.Comparator;
  */
 public class BoundablePairComparator implements Comparator<BoundablePair>, Serializable {
 
-    private static final long serialVersionUID =1L;
+    private static final long serialVersionUID = 1L;
 
-    /** The normal order. */
+    /**
+     * The normal order.
+     */
     boolean normalOrder;
 
     /**
@@ -18,8 +20,7 @@ public class BoundablePairComparator implements Comparator<BoundablePair>, Seria
      *
      * @param normalOrder The true means puts the least record at the head of this queue. peek() will get the least element. Vice versa.
      */
-    public BoundablePairComparator(boolean normalOrder)
-    {
+    public BoundablePairComparator(boolean normalOrder) {
         this.normalOrder = normalOrder;
     }
 
@@ -29,17 +30,14 @@ public class BoundablePairComparator implements Comparator<BoundablePair>, Seria
     public int compare(BoundablePair p1, BoundablePair p2) {
         double distance1 = p1.getDistance();
         double distance2 = p2.getDistance();
-        if(this.normalOrder)
-        {
+        if (this.normalOrder) {
             if (distance1 > distance2) {
                 return 1;
             } else if (distance1 == distance2) {
                 return 0;
             }
             return -1;
-        }
-        else
-        {
+        } else {
             if (distance1 > distance2) {
                 return -1;
             } else if (distance1 == distance2) {

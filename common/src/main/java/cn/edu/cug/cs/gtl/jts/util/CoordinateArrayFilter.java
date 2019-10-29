@@ -37,37 +37,38 @@ package cn.edu.cug.cs.gtl.jts.util;
 import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.CoordinateFilter;
 import cn.edu.cug.cs.gtl.jts.geom.Geometry;
+
 /**
- *  A {@link CoordinateFilter} that creates an array containing every
- *  coordinate in a {@link Geometry}.
+ * A {@link CoordinateFilter} that creates an array containing every
+ * coordinate in a {@link Geometry}.
  *
- *@version 1.7
+ * @version 1.7
  */
 public class CoordinateArrayFilter implements CoordinateFilter {
-  Coordinate[] pts = null;
-  int n = 0;
+    Coordinate[] pts = null;
+    int n = 0;
 
-  /**
-   *  Constructs a <code>CoordinateArrayFilter</code>.
-   *
-   *@param  size  the number of points that the <code>CoordinateArrayFilter</code>
-   *      will collect
-   */
-  public CoordinateArrayFilter(int size) {
-    pts = new Coordinate[size];
-  }
+    /**
+     * Constructs a <code>CoordinateArrayFilter</code>.
+     *
+     * @param size the number of points that the <code>CoordinateArrayFilter</code>
+     *             will collect
+     */
+    public CoordinateArrayFilter(int size) {
+        pts = new Coordinate[size];
+    }
 
-  /**
-   *  Returns the gathered <code>Coordinate</code>s.
-   *
-   *@return    the <code>Coordinate</code>s collected by this <code>CoordinateArrayFilter</code>
-   */
-  public Coordinate[] getCoordinates() {
-    return pts;
-  }
+    /**
+     * Returns the gathered <code>Coordinate</code>s.
+     *
+     * @return the <code>Coordinate</code>s collected by this <code>CoordinateArrayFilter</code>
+     */
+    public Coordinate[] getCoordinates() {
+        return pts;
+    }
 
-  public void filter(Coordinate coord) {
-    pts[n++] = coord;
-  }
+    public void filter(Coordinate coord) {
+        pts[n++] = coord;
+    }
 }
 

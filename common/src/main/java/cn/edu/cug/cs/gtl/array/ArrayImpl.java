@@ -19,11 +19,12 @@ class ArrayImpl implements Array {
     /**
      * internal function only for this package,please use Array.create() public function
      */
-    ArrayImpl(){
+    ArrayImpl() {
     }
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param dim0
      */
     ArrayImpl(int dim0) {
@@ -32,6 +33,7 @@ class ArrayImpl implements Array {
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param dim0
      * @param dim1
      */
@@ -41,6 +43,7 @@ class ArrayImpl implements Array {
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param dim0
      * @param dim1
      * @param dim2
@@ -51,17 +54,19 @@ class ArrayImpl implements Array {
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param dim0
      * @param dim1
      * @param dim2
      * @param dim3
      */
     ArrayImpl(int dim0, int dim1, int dim2, int dim3) {
-        reset(dim0, dim1, dim2, dim3 ,new double[dim0*dim1*dim2*dim3]);
+        reset(dim0, dim1, dim2, dim3, new double[dim0 * dim1 * dim2 * dim3]);
     }
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param d4
      */
     ArrayImpl(Dimensions d4) {
@@ -71,9 +76,10 @@ class ArrayImpl implements Array {
 
     /**
      * just return the raw data, internal function only for this package
+     *
      * @return
      */
-    public double[] raw(){
+    public double[] raw() {
         return data;
     }
 
@@ -168,36 +174,38 @@ class ArrayImpl implements Array {
      * @param data pointer (points to a buffer on the host/device)
      */
     ArrayImpl(int dim0, int dim1, int dim2, int dim3, double[] data) {
-        reset(dim0,dim1,dim2,dim3,data);
+        reset(dim0, dim1, dim2, dim3, data);
     }
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param d4   must be a 4D
      * @param data
      */
     ArrayImpl(Dimensions d4, double[] data) {
-        reset(d4,data);
+        reset(d4, data);
     }
 
     /**
      * internal function only for this package,please use Array.create() public function
+     *
      * @param d4   must be a 4D
      * @param data
      */
     ArrayImpl(int[] d4, double[] data) {
-        Dimensions d = new Dimensions(d4,false);
-        reset(d,data);
+        Dimensions d = new Dimensions(d4, false);
+        reset(d, data);
     }
 
     /**
-     *
      * @return
      */
     @Override
     public Array array() {
         return this;
     }
+
     /**
      * for 4D ArrayImpl
      * int h_buffer[] = {0, 1, 2, 3,
@@ -248,7 +256,7 @@ class ArrayImpl implements Array {
     @Override
     public void set(double v, int... idxs) {
         int i = index(idxs);
-        data[i]=v;
+        data[i] = v;
     }
 
     /**
@@ -295,7 +303,7 @@ class ArrayImpl implements Array {
      * @return
      */
     public double[] host() {
-        return Arrays.copyOf(data,data.length);
+        return Arrays.copyOf(data, data.length);
     }
 
 
@@ -304,13 +312,13 @@ class ArrayImpl implements Array {
      * @return a reference to a row defined by i
      */
     public Visitor row(int i) {
-        Index []idxs = new Index[MAXDIMS];
-        idxs[0]=new Index(i);
-        idxs[1]=new Index(0,dims(1));
-        idxs[2]=new Index(0);
-        idxs[3]=new Index(0);
-        Dimensions d4 = new Dimensions(1,dims(1),1,1);
-        return new VisitorImpl(this,idxs,d4);
+        Index[] idxs = new Index[MAXDIMS];
+        idxs[0] = new Index(i);
+        idxs[1] = new Index(0, dims(1));
+        idxs[2] = new Index(0);
+        idxs[3] = new Index(0);
+        Dimensions d4 = new Dimensions(1, dims(1), 1, 1);
+        return new VisitorImpl(this, idxs, d4);
     }
 
     /**
@@ -319,13 +327,13 @@ class ArrayImpl implements Array {
      * @return
      */
     public Visitor rows(int first, int last) {
-        Index []idxs = new Index[MAXDIMS];
-        idxs[0]=new Index(first,last);
-        idxs[1]=new Index(0,dims(1));
-        idxs[2]=new Index(0);
-        idxs[3]=new Index(0);
-        Dimensions d4 = new Dimensions(last-first,dims(1),1,1);
-        return new VisitorImpl(this,idxs,d4);
+        Index[] idxs = new Index[MAXDIMS];
+        idxs[0] = new Index(first, last);
+        idxs[1] = new Index(0, dims(1));
+        idxs[2] = new Index(0);
+        idxs[3] = new Index(0);
+        Dimensions d4 = new Dimensions(last - first, dims(1), 1, 1);
+        return new VisitorImpl(this, idxs, d4);
     }
 
     /**
@@ -333,13 +341,13 @@ class ArrayImpl implements Array {
      * @return a reference to a col
      */
     public Visitor col(int i) {
-        Index []idxs = new Index[MAXDIMS];
-        idxs[0]=new Index(0,dims(0));
-        idxs[1]=new Index(i);
-        idxs[2]=new Index(0);
-        idxs[3]=new Index(0);
-        Dimensions d4 = new Dimensions(dims(0),1,1,1);
-        return new VisitorImpl(this,idxs,d4);
+        Index[] idxs = new Index[MAXDIMS];
+        idxs[0] = new Index(0, dims(0));
+        idxs[1] = new Index(i);
+        idxs[2] = new Index(0);
+        idxs[3] = new Index(0);
+        Dimensions d4 = new Dimensions(dims(0), 1, 1, 1);
+        return new VisitorImpl(this, idxs, d4);
     }
 
     /**
@@ -348,13 +356,13 @@ class ArrayImpl implements Array {
      * @return
      */
     public Visitor cols(int first, int last) {
-        Index []idxs = new Index[MAXDIMS];
-        idxs[0]=new Index(0,dims(0));
-        idxs[1]=new Index(first,last);
-        idxs[2]=new Index(0);
-        idxs[3]=new Index(0);
-        Dimensions d4 = new Dimensions(dims(0),last-first,1,1);
-        return new VisitorImpl(this,idxs,d4);
+        Index[] idxs = new Index[MAXDIMS];
+        idxs[0] = new Index(0, dims(0));
+        idxs[1] = new Index(first, last);
+        idxs[2] = new Index(0);
+        idxs[3] = new Index(0);
+        Dimensions d4 = new Dimensions(dims(0), last - first, 1, 1);
+        return new VisitorImpl(this, idxs, d4);
     }
 
     /**
@@ -362,13 +370,13 @@ class ArrayImpl implements Array {
      * @return
      */
     public Visitor slice(int index) {
-        Index []idxs = new Index[MAXDIMS];
-        idxs[0]=new Index(0,dims(0));
-        idxs[1]=new Index(0,dims(1));
-        idxs[2]=new Index(index);
-        idxs[3]=new Index(0);
-        Dimensions d4 = new Dimensions(dims(0),dims(1),1,1);
-        return new VisitorImpl(this,idxs,d4);
+        Index[] idxs = new Index[MAXDIMS];
+        idxs[0] = new Index(0, dims(0));
+        idxs[1] = new Index(0, dims(1));
+        idxs[2] = new Index(index);
+        idxs[3] = new Index(0);
+        Dimensions d4 = new Dimensions(dims(0), dims(1), 1, 1);
+        return new VisitorImpl(this, idxs, d4);
     }
 
     /**
@@ -377,13 +385,13 @@ class ArrayImpl implements Array {
      * @return
      */
     public Visitor slices(int first, int last) {
-        Index []idxs = new Index[MAXDIMS];
-        idxs[0]=new Index(0,dims(0));
-        idxs[1]=new Index(0,dims(1));
-        idxs[2]=new Index(first,last);
-        idxs[3]=new Index(0);
-        Dimensions d4 = new Dimensions(dims(0),dims(1),last-first,1);
-        return new VisitorImpl(this,idxs,d4);
+        Index[] idxs = new Index[MAXDIMS];
+        idxs[0] = new Index(0, dims(0));
+        idxs[1] = new Index(0, dims(1));
+        idxs[2] = new Index(first, last);
+        idxs[3] = new Index(0);
+        Dimensions d4 = new Dimensions(dims(0), dims(1), last - first, 1);
+        return new VisitorImpl(this, idxs, d4);
     }
 
 
@@ -413,7 +421,7 @@ class ArrayImpl implements Array {
     public boolean load(DataInput in) throws IOException {
         int f = in.readInt();
         if (f > 0) {
-            dimensions = new Dimensions(1,1,1,1);
+            dimensions = new Dimensions(1, 1, 1, 1);
             dimensions.load(in);
         }
         f = in.readInt();
@@ -448,17 +456,17 @@ class ArrayImpl implements Array {
 
     @Override
     public Array reset(int dim0, double[] data) {
-        return reset(dim0,1,1,1,data);
+        return reset(dim0, 1, 1, 1, data);
     }
 
     @Override
     public Array reset(int dim0, int dim1, double[] data) {
-        return reset(dim0,dim1,1,1,data);
+        return reset(dim0, dim1, 1, 1, data);
     }
 
     @Override
     public Array reset(int dim0, int dim1, int dim2, double[] data) {
-        return reset(dim0,dim1,dim2,1,data);
+        return reset(dim0, dim1, dim2, 1, data);
     }
 
     @Override

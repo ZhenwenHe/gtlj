@@ -23,11 +23,13 @@
  */
 package cn.edu.cug.cs.gtl.index.btree;
 
-/** A PageStorage that uses plain old memory. */
+/**
+ * A PageStorage that uses plain old memory.
+ */
 public class MemoryPageStorage extends CachingPageStorage {
 
-    private       CachedPageImpl[] pages;
-    private       int              numpages;
+    private CachedPageImpl[] pages;
+    private int numpages;
 
     public MemoryPageStorage(int pagesize) {
         super(pagesize);
@@ -35,39 +37,79 @@ public class MemoryPageStorage extends CachingPageStorage {
         this.pages = new CachedPageImpl[1];
     }
 
-    public int getNumPages() { return numpages; }
+    public int getNumPages() {
+        return numpages;
+    }
+
     public int createPage() {
         if (numpages >= pages.length) {
-            CachedPageImpl[] newpages = new CachedPageImpl[pages.length*2];
+            CachedPageImpl[] newpages = new CachedPageImpl[pages.length * 2];
             System.arraycopy(pages, 0, newpages, 0, pages.length);
             pages = newpages;
         }
         pages[numpages] = new CachedPageImpl(numpages);
         return numpages++;
     }
-    /** no-op */
-    public void fsync(int pageid) { }
-    /** no-op */
-    public void fsync() { }
+
+    /**
+     * no-op
+     */
+    public void fsync(int pageid) {
+    }
+
+    /**
+     * no-op
+     */
+    public void fsync() {
+    }
+
     public void writePage(int pageid, byte[] buf, int ofs) {
         System.arraycopy(buf, ofs, pages[pageid].buf, 0, getPageSize());
     }
+
     public void readPage(int pageid, byte[] buf, int ofs) {
         System.arraycopy(pages[pageid].buf, 0, buf, ofs, getPageSize());
     }
-    public synchronized void close() { pages = null; }
-    public CachedPage getPage(int pageid, boolean readBytes) { return pages[pageid]; }
+
+    public synchronized void close() {
+        pages = null;
+    }
+
+    public CachedPage getPage(int pageid, boolean readBytes) {
+        return pages[pageid];
+    }
 
     private class CachedPageImpl extends CachedPage {
         private int pageid;
         private byte[] buf;
         private boolean dirty;
-        public CachedPageImpl(int pageid) { this.pageid = pageid; this.buf = new byte[getPageSize()]; }
-        public byte[] getBuf() { return buf; }
-        public int    getPageId() { return pageid; }
-        public void touch() { }
-        public void setDirty() { this.dirty = true; }
-        public void flush() { this.dirty = false; }
-        public boolean isDirty() { return dirty; }
+
+        public CachedPageImpl(int pageid) {
+            this.pageid = pageid;
+            this.buf = new byte[getPageSize()];
+        }
+
+        public byte[] getBuf() {
+            return buf;
+        }
+
+        public int getPageId() {
+            return pageid;
+        }
+
+        public void touch() {
+        }
+
+        public void setDirty() {
+            this.dirty = true;
+        }
+
+        public void flush() {
+            this.dirty = false;
+        }
+
+        public boolean isDirty() {
+            return dirty;
+        }
     }
 }

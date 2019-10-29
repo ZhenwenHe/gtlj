@@ -8,7 +8,7 @@ public class DEMGrid extends Geometry implements Polygonal {
     private static final long serialVersionUID = 1L;
 
     public DEMGrid(int dim) {
-            this.makeDimension(dim);
+        this.makeDimension(dim);
     }
 
     public DEMGrid() {
@@ -23,7 +23,7 @@ public class DEMGrid extends Geometry implements Polygonal {
 
     @Override
     public DEMGrid clone() {
-        DEMGrid t =new DEMGrid();
+        DEMGrid t = new DEMGrid();
         t.copyFrom(this);
         return t;
     }

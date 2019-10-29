@@ -1,28 +1,26 @@
-package cn.edu.cug.cs.gtl.mybatis.rpc;
+package cn.edu.cug.cs.gtl.grpc;
 
 import cn.edu.cug.cs.gtl.io.File;
+import cn.edu.cug.cs.gtl.mybatis.Session;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileInputStream;
+
 import java.io.IOException;
 import java.io.Reader;
 
 public class SqlCommandServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(SqlCommandServer.class);
 
-    private  final int port;
-    private  final Server server;
-    private  SqlSessionFactory factory;
-    private  SqlSession sqlSession ;
+    private final int port;
+    private final Server server;
+    private Session sqlSession;
 
-    /** Start serving requests. */
+    /**
+     * Start serving requests.
+     */
     public void start() throws IOException {
         server.start();
         LOGGER.info("Server started, listening on " + port);
@@ -37,12 +35,13 @@ public class SqlCommandServer {
         });
     }
 
-    /** Stop serving requests and shutdown resources. */
+    /**
+     * Stop serving requests and shutdown resources.
+     */
     public void stop() {
         if (server != null) {
             server.shutdown();
         }
-        this.sqlSession.close();
     }
 
     /**
@@ -54,27 +53,16 @@ public class SqlCommandServer {
         }
     }
 
-    public SqlCommandServer(){
+    public SqlCommandServer() throws Exception {
         this(8980);
     }
 
-    public SqlCommandServer(int port) {
+    public SqlCommandServer(int port) throws Exception {
         this.port = port;
-        String resource = "mybatis-config.xml";
-        try {
-            Reader reader = Resources.getResourceAsReader(resource);
-            factory = new SqlSessionFactoryBuilder().build(reader);
-            reader.close();
-            //factory = new SqlSessionFactoryBuilder().build(new FileInputStream(new File(resource)));
-            sqlSession = factory.openSession();
+        sqlSession = Session.open();
+        ServerBuilder serverBuilder = ServerBuilder.forPort(port);
 
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-        ServerBuilder serverBuilder= ServerBuilder.forPort(port);
-
-        this.server=serverBuilder
+        this.server = serverBuilder
                 .addService(new SqlCommandService(this.sqlSession))
                 .build();
 

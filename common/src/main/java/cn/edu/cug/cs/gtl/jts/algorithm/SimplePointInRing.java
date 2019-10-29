@@ -43,18 +43,15 @@ import cn.edu.cug.cs.gtl.jts.geom.LinearRing;
  * @version 1.7
  */
 public class SimplePointInRing
-  implements PointInRing
-{
+        implements PointInRing {
 
-  private Coordinate[] pts;
+    private Coordinate[] pts;
 
-  public SimplePointInRing(LinearRing ring)
-  {
-    pts = ring.getCoordinates();
-  }
+    public SimplePointInRing(LinearRing ring) {
+        pts = ring.getCoordinates();
+    }
 
-  public boolean isInside(Coordinate pt)
-  {
-    return CGAlgorithms.isPointInRing(pt, pts);
-  }
+    public boolean isInside(Coordinate pt) {
+        return CGAlgorithms.isPointInRing(pt, pts);
+    }
 }

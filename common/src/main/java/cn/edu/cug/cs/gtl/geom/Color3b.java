@@ -51,14 +51,14 @@ public class Color3b implements Serializable {
 
     @Override
     public Object clone() {
-            return new Color3b(r,g,b);
+        return new Color3b(r, g, b);
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        r=in.readByte();
-        g=in.readByte();
-        b=in.readByte();
+        r = in.readByte();
+        g = in.readByte();
+        b = in.readByte();
         return true;
     }
 
@@ -72,6 +72,6 @@ public class Color3b implements Serializable {
 
     @Override
     public long getByteArraySize() {
-        return 8*3;
+        return 8 * 3;
     }
 }

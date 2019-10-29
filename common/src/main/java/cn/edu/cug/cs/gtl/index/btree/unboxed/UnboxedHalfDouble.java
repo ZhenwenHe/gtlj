@@ -23,26 +23,40 @@
  */
 package cn.edu.cug.cs.gtl.index.btree.unboxed;
 
-/** A 64-bit <tt>long</tt> which is stored internally as a 32-bit <tt>float</tt> in unboxed form */
+/**
+ * A 64-bit <tt>long</tt> which is stored internally as a 32-bit <tt>float</tt> in unboxed form
+ */
 public class UnboxedHalfDouble implements UnboxedComparable<Double> {
     public static final UnboxedHalfDouble instance = new UnboxedHalfDouble();
-    public int getSize() { return 4; }
-    public Double deserialize(byte[] buf, int ofs) { return new Double(deserializeFloat(buf, ofs)); }
-    public void serialize(Double k, byte[] buf, int ofs) { serializeFloat(k.floatValue(), buf, ofs); }
+
+    public int getSize() {
+        return 4;
+    }
+
+    public Double deserialize(byte[] buf, int ofs) {
+        return new Double(deserializeFloat(buf, ofs));
+    }
+
+    public void serialize(Double k, byte[] buf, int ofs) {
+        serializeFloat(k.floatValue(), buf, ofs);
+    }
+
     public float deserializeFloat(byte[] buf, int ofs) {
         return
-            Float.intBitsToFloat(((buf[ofs+0] & 0xff) <<  0) |
-                                 ((buf[ofs+1] & 0xff) <<  8) |
-                                 ((buf[ofs+2] & 0xff) << 16) |
-                                 ((buf[ofs+3] & 0xff) << 24));
+                Float.intBitsToFloat(((buf[ofs + 0] & 0xff) << 0) |
+                        ((buf[ofs + 1] & 0xff) << 8) |
+                        ((buf[ofs + 2] & 0xff) << 16) |
+                        ((buf[ofs + 3] & 0xff) << 24));
     }
+
     public void serializeFloat(float f, byte[] buf, int ofs) {
         int i = Float.floatToRawIntBits(f);
-        buf[ofs+0] = (byte)((i >>  0) & 0xff);
-        buf[ofs+1] = (byte)((i >>  8) & 0xff);
-        buf[ofs+2] = (byte)((i >> 16) & 0xff);
-        buf[ofs+3] = (byte)((i >> 24) & 0xff);
+        buf[ofs + 0] = (byte) ((i >> 0) & 0xff);
+        buf[ofs + 1] = (byte) ((i >> 8) & 0xff);
+        buf[ofs + 2] = (byte) ((i >> 16) & 0xff);
+        buf[ofs + 3] = (byte) ((i >> 24) & 0xff);
     }
+
     public int compare(byte[] buf1, int ofs1, byte[] buf2, int ofs2) {
         float f1 = deserializeFloat(buf1, ofs1);
         float f2 = deserializeFloat(buf2, ofs2);

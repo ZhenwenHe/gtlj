@@ -11,179 +11,179 @@ option cc_enable_arenas = true;
 
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
 
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Geometries";
 
-enum GeometryType{
-    POINT2D=0;
-    SEGMENT2D=1;
-    RECTANGLE2D=2;
-    LINESTRING2D=3;
-    LINEARRING2D=4;
-    POLYGON2D=5;
-    MULTIPOINT2D=6;
-    MULTILINESTRING2D=7;
-    MULTIPOLYGON2D=8;
-    POINT3D=9;
-    SEGMENT3D=10;
-    RECTANGLE3D=11;
-    LINESTRING3D=12;
-    LINEARRING3D=13;
-    POLYGON3D=14;
-    MULTIPOINT3D=15;
-    MULTILINESTRING3D=16;
-    MULTIPOLYGON3D=17;
-    TRIANGLEMESH3D=18;
-    SOLID3D=19;
-    MULTISOLID3D=20;
-    TETRAHEDRALMESH3D=21;
-    POLYHEDRALMESH3D=22;
-    CUBICMESH3D=23;
-    HEXAHEDRALMESH3D=24;
-    QUADMESH3D=25;
-    POLYLINE3D=26;
+enum GeometryType {
+    POINT2D = 0;
+    SEGMENT2D = 1;
+    RECTANGLE2D = 2;
+    LINESTRING2D = 3;
+    LINEARRING2D = 4;
+    POLYGON2D = 5;
+    MULTIPOINT2D = 6;
+    MULTILINESTRING2D = 7;
+    MULTIPOLYGON2D = 8;
+    POINT3D = 9;
+    SEGMENT3D = 10;
+    RECTANGLE3D = 11;
+    LINESTRING3D = 12;
+    LINEARRING3D = 13;
+    POLYGON3D = 14;
+    MULTIPOINT3D = 15;
+    MULTILINESTRING3D = 16;
+    MULTIPOLYGON3D = 17;
+    TRIANGLEMESH3D = 18;
+    SOLID3D = 19;
+    MULTISOLID3D = 20;
+    TETRAHEDRALMESH3D = 21;
+    POLYHEDRALMESH3D = 22;
+    CUBICMESH3D = 23;
+    HEXAHEDRALMESH3D = 24;
+    QUADMESH3D = 25;
+    POLYLINE3D = 26;
 }
 
-message Point2D{
-    Vertex2d location=1;
+message Point2D {
+    Vertex2d location = 1;
 }
 
-message Segment2D{
-    Vertex2d start=1;
-    Vertex2d end=2;
+message Segment2D {
+    Vertex2d start = 1;
+    Vertex2d end = 2;
 }
 
-message Rectangle2D{
-    double left=1;
-    double right=2;
-    double bottom=3;
-    double top=4;
+message Rectangle2D {
+    double left = 1;
+    double right = 2;
+    double bottom = 3;
+    double top = 4;
 }
 
-message LineString2D{
-    repeated Vertex2d  vertices=1;
+message LineString2D {
+    repeated Vertex2d vertices = 1;
 }
 
-message LinearRing2D{
-    repeated Vertex2d vertices=1;
+message LinearRing2D {
+    repeated Vertex2d vertices = 1;
 }
 
-message Polygon2D{
-    LinearRing2D shell=1;
-    repeated LinearRing2D rings=2;
+message Polygon2D {
+    LinearRing2D shell = 1;
+    repeated LinearRing2D rings = 2;
 }
 
-message MultiPoint2D{
-    repeated Point2D points=1;
+message MultiPoint2D {
+    repeated Point2D points = 1;
 }
 
-message MultiLineString2D{
-    repeated LineString2D line_strings=1;
+message MultiLineString2D {
+    repeated LineString2D line_strings = 1;
 }
 
-message MultiPolygon2D{
-    repeated Polygon2D polygons=1;
+message MultiPolygon2D {
+    repeated Polygon2D polygons = 1;
 }
 
 
-message Point3D{
-    Vertex3d location=1;
+message Point3D {
+    Vertex3d location = 1;
 }
 
-message Segment3D{
-    Vertex3d start=1;
-    Vertex3d end=2;
+message Segment3D {
+    Vertex3d start = 1;
+    Vertex3d end = 2;
 }
 
-message Rectangle3D{
-    double x_min=1;
-    double y_min=2;
-    double z_min=3;
-    double x_max=4;
-    double y_max=5;
-    double z_max=6;
+message Rectangle3D {
+    double x_min = 1;
+    double y_min = 2;
+    double z_min = 3;
+    double x_max = 4;
+    double y_max = 5;
+    double z_max = 6;
 }
 
-message LineString3D{
-    repeated Vertex3d vertices=1;
+message LineString3D {
+    repeated Vertex3d vertices = 1;
 }
 
-message LinearRing3D{
-    repeated Vertex3d vertices=1;
+message LinearRing3D {
+    repeated Vertex3d vertices = 1;
 }
 
-message Polyline3D{ //quantysoft 3D  Polyline
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message Polyline3D { //quantysoft 3D  Polyline
+                     repeated Vertex3d vertices = 1;
+                     repeated uint32 indices = 2;
 }
 
-message Polygon3D{
-    LinearRing3D shell=1;
-    repeated LinearRing3D rings=2;
+message Polygon3D {
+    LinearRing3D shell = 1;
+    repeated LinearRing3D rings = 2;
 }
 
-message MultiPoint3D{
-    repeated Point3D points=1;
+message MultiPoint3D {
+    repeated Point3D points = 1;
 }
 
-message MultiLineString3D{
-    repeated LineString3D line_strings=1;
+message MultiLineString3D {
+    repeated LineString3D line_strings = 1;
 }
 
-message MultiPolygon3D{
-    repeated Polygon3D polygons=1;
+message MultiPolygon3D {
+    repeated Polygon3D polygons = 1;
 }
 
-message TriangleMesh3D{
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message TriangleMesh3D {
+    repeated Vertex3d vertices = 1;
+    repeated uint32 indices = 2;
 }
 
-message QuadMesh3D{
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message QuadMesh3D {
+    repeated Vertex3d vertices = 1;
+    repeated uint32 indices = 2;
 }
 
-message Solid3D{
-    TriangleMesh3D shell=1;
-    repeated TriangleMesh3D holes=2;
+message Solid3D {
+    TriangleMesh3D shell = 1;
+    repeated TriangleMesh3D holes = 2;
 }
 
-message MultiSolid3D{
-    repeated Solid3D solids=1;
+message MultiSolid3D {
+    repeated Solid3D solids = 1;
 }
 
-message TetrahedralMesh3D{
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message TetrahedralMesh3D {
+    repeated Vertex3d vertices = 1;
+    repeated uint32 indices = 2;
 }
 
-message PolygonalMesh3D{//quantysoft 3D  Polygon
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message PolygonalMesh3D { //quantysoft 3D  Polygon
+                          repeated Vertex3d vertices = 1;
+                          repeated uint32 indices = 2;
 }
 
-message PolyhedralMesh3D{//quantysoft 3D  Polyhedron
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message PolyhedralMesh3D { //quantysoft 3D  Polyhedron
+                           repeated Vertex3d vertices = 1;
+                           repeated uint32 indices = 2;
 }
 
-message CubicMesh3D{
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message CubicMesh3D {
+    repeated Vertex3d vertices = 1;
+    repeated uint32 indices = 2;
 }
 
-message HexahedralMesh3D{
-    repeated Vertex3d vertices=1;
-    repeated uint32   indices=2;
+message HexahedralMesh3D {
+    repeated Vertex3d vertices = 1;
+    repeated uint32 indices = 2;
 }
 
-message Geometry{
-    Identifier  identifier=1;
-    GeometryType type=2;
-    Color4f  color=3;
-    Color4f  fill_color=4;
-    Envelope3D bound=5;
-    google.protobuf.Any shape=6;
+message Geometry {
+    Identifier identifier = 1;
+    GeometryType type = 2;
+    Color4f color = 3;
+    Color4f fill_color = 4;
+    Envelope3D bound = 5;
+    google.protobuf.Any shape = 6;
 }

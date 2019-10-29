@@ -26,21 +26,21 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 import java.io.*;
 
 /**
- *  An associative operation on unboxed values.
- *
- *  http://en.wikipedia.org/wiki/Monoid
- *  http://en.wikipedia.org/wiki/Semigroup
+ * An associative operation on unboxed values.
+ * <p>
+ * http://en.wikipedia.org/wiki/Monoid
+ * http://en.wikipedia.org/wiki/Semigroup
  */
 public interface AssociativeOperation<S extends Serializable>
-    extends Unboxed<S> /* and UnboxedFunction<Pair<S,S>,S> ... */ {
+        extends Unboxed<S> /* and UnboxedFunction<Pair<S,S>,S> ... */ {
 
     /**
-     *  Compute (buf1,ofs1)*(buf2,ofs2) and write it to (buf_dest,ofs_dest).
-     *  MUST support the case where (buf1,ofs1)==(buf_dest,ofs_dest)
-     *  or (buf2,ofs2)==(buf_dest,ofs_dest) or ther is some overlap.
-     *
-     *  MUST BE ABLE TO DEAL WITH THE CASE WHERE DESTINATION BUFFER
-     *  OVERLAPS ONE OF SOURCE BUFFERS!!!
+     * Compute (buf1,ofs1)*(buf2,ofs2) and write it to (buf_dest,ofs_dest).
+     * MUST support the case where (buf1,ofs1)==(buf_dest,ofs_dest)
+     * or (buf2,ofs2)==(buf_dest,ofs_dest) or ther is some overlap.
+     * <p>
+     * MUST BE ABLE TO DEAL WITH THE CASE WHERE DESTINATION BUFFER
+     * OVERLAPS ONE OF SOURCE BUFFERS!!!
      */
     public void multiply(byte[] buf1, int ofs1,
                          byte[] buf2, int ofs2,

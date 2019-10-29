@@ -4,12 +4,13 @@ import cn.edu.cug.cs.gtl.geom.Geometry;
 import cn.edu.cug.cs.gtl.geom.GeometryOperators;
 import cn.edu.cug.cs.gtl.jts.JTSWrapper;
 
-public class GeometryOperatorsImpl implements GeometryOperators{
+public class GeometryOperatorsImpl implements GeometryOperators {
     Geometry thisGeometry;
 
-    public GeometryOperatorsImpl(Geometry g){
-        thisGeometry=g;
+    public GeometryOperatorsImpl(Geometry g) {
+        thisGeometry = g;
     }
+
     @Override
     public double distance(Geometry g) {
         return JTSWrapper
@@ -82,53 +83,53 @@ public class GeometryOperatorsImpl implements GeometryOperators{
 
     @Override
     public Geometry buffer(double distance) {
-        return  JTSWrapper.toGTLGeometry(
-                    JTSWrapper
-                            .toJTSGeometry(thisGeometry)
-                            .buffer(distance)) ;
+        return JTSWrapper.toGTLGeometry(
+                JTSWrapper
+                        .toJTSGeometry(thisGeometry)
+                        .buffer(distance));
     }
 
     @Override
     public Geometry convexHull() {
-        return  JTSWrapper.toGTLGeometry(
+        return JTSWrapper.toGTLGeometry(
                 JTSWrapper
                         .toJTSGeometry(thisGeometry)
-                        .convexHull()) ;
+                        .convexHull());
     }
 
     @Override
     public Geometry intersection(Geometry other) {
-        return  JTSWrapper.toGTLGeometry(
+        return JTSWrapper.toGTLGeometry(
                 JTSWrapper
                         .toJTSGeometry(thisGeometry)
                         .intersection(JTSWrapper.
-                                toJTSGeometry(other))) ;
+                                toJTSGeometry(other)));
     }
 
     @Override
     public Geometry union(Geometry other) {
-        return  JTSWrapper.toGTLGeometry(
+        return JTSWrapper.toGTLGeometry(
                 JTSWrapper
                         .toJTSGeometry(thisGeometry)
                         .union(JTSWrapper.
-                                toJTSGeometry(other))) ;
+                                toJTSGeometry(other)));
     }
 
     @Override
     public Geometry difference(Geometry other) {
-        return  JTSWrapper.toGTLGeometry(
+        return JTSWrapper.toGTLGeometry(
                 JTSWrapper
                         .toJTSGeometry(thisGeometry)
                         .difference(JTSWrapper.
-                                toJTSGeometry(other))) ;
+                                toJTSGeometry(other)));
     }
 
     @Override
     public Geometry symDifference(Geometry other) {
-        return  JTSWrapper.toGTLGeometry(
+        return JTSWrapper.toGTLGeometry(
                 JTSWrapper
                         .toJTSGeometry(thisGeometry)
                         .symDifference(JTSWrapper.
-                                toJTSGeometry(other))) ;
+                                toJTSGeometry(other)));
     }
 }

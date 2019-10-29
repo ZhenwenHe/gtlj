@@ -26,13 +26,15 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 import java.io.*;
 
 /**
- *  An unboxed which is <tt>Comparable</tt>, and for which the
- *  comparison can be performed directly on the unboxed form.
+ * An unboxed which is <tt>Comparable</tt>, and for which the
+ * comparison can be performed directly on the unboxed form.
  */
 public interface UnboxedComparable<V extends Serializable & Comparable>
-    extends Unboxed<V> {
+        extends Unboxed<V> {
 
-    /** Same as Comparable.compare(), but operates directly on serialized representation */
+    /**
+     * Same as Comparable.compare(), but operates directly on serialized representation
+     */
     public int compare(byte[] buf1, int ofs1, byte[] buf2, int ofs2);
-  
+
 }

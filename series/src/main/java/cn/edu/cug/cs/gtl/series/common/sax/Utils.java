@@ -16,17 +16,17 @@ public class Utils {
 
     /**
      * Convert the series into SAX string representation.
-     * @param ts the series.
+     *
+     * @param ts       the series.
      * @param paaSize  the PAA size.
      * @param alphabet
      * @return
      */
-    public static char[] sax(Series ts, int paaSize, int alphabet){
-        try{
-            NormalAlphabet normalAlphabet=new NormalAlphabet();
-            return seriesToString(ts.getValues(),paaSize,normalAlphabet.getCuts(alphabet),Double.MIN_NORMAL);
-        }
-        catch (Exception e){
+    public static char[] sax(Series ts, int paaSize, int alphabet) {
+        try {
+            NormalAlphabet normalAlphabet = new NormalAlphabet();
+            return seriesToString(ts.getValues(), paaSize, normalAlphabet.getCuts(alphabet), Double.MIN_NORMAL);
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -35,35 +35,33 @@ public class Utils {
     /**
      * Convert the series into SAX string representation.
      *
-     * @param ts the series.
-     * @param paaSize the PAA size.
-     * @param cuts the alphabet cuts.
+     * @param ts         the series.
+     * @param paaSize    the PAA size.
+     * @param cuts       the alphabet cuts.
      * @param nThreshold the normalization thresholds.
-     *
      * @return The SAX representation for series.
      */
-    public static char[] sax(double[] ts, int paaSize, double[] cuts, double nThreshold){
-        try{
-            return seriesToString(ts,paaSize,cuts,nThreshold);
-        }
-        catch (Exception e){
+    public static char[] sax(double[] ts, int paaSize, double[] cuts, double nThreshold) {
+        try {
+            return seriesToString(ts, paaSize, cuts, nThreshold);
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
     /**
      * Converts the input time series into a SAX data structure via chunking and Z normalization.
      *
-     * @param ts the input data.
-     * @param paaSize the PAA size.
-     * @param cuts the Alphabet cuts.
+     * @param ts         the input data.
+     * @param paaSize    the PAA size.
+     * @param cuts       the Alphabet cuts.
      * @param nThreshold the normalization threshold value.
-     *
      * @return SAX representation of the time series.
      * @throws SAXException if error occurs.
      */
     public SAXRecords saxByChunking(double[] ts, int paaSize, double[] cuts, double nThreshold)
-            throws Exception,SAXException {
+            throws Exception, SAXException {
 
         SAXRecords saxFrequencyData = new SAXRecords();
 
@@ -91,19 +89,18 @@ public class Utils {
      * Converts the input time series into a SAX data structure via sliding window and Z
      * normalization.
      *
-     * @param ts the input data.
+     * @param ts         the input data.
      * @param windowSize the sliding window size.
-     * @param paaSize the PAA size.
-     * @param cuts the Alphabet cuts.
+     * @param paaSize    the PAA size.
+     * @param cuts       the Alphabet cuts.
      * @param nThreshold the normalization threshold value.
-     * @param strategy the NR strategy.
-     *
+     * @param strategy   the NR strategy.
      * @return SAX representation of the time series.
      * @throws SAXException if error occurs.
      */
     public SAXRecords saxByWindow(double[] ts, int windowSize, int paaSize, double[] cuts,
-                                      NumerosityReductionStrategy strategy, double nThreshold)
-            throws Exception,SAXException {
+                                  NumerosityReductionStrategy strategy, double nThreshold)
+            throws Exception, SAXException {
 
         if (windowSize > ts.length) {
             throw new SAXException(
@@ -136,8 +133,7 @@ public class Utils {
                         && Arrays.equals(previousString, currentString)) {
                     // NumerosityReduction
                     continue;
-                }
-                else if (NumerosityReductionStrategy.MINDIST.equals(strategy)
+                } else if (NumerosityReductionStrategy.MINDIST.equals(strategy)
                         && checkMinDistIsZero(previousString, currentString)) {
                     continue;
                 }
@@ -163,18 +159,17 @@ public class Utils {
      * normalization. The difference between this function and ts2saxViaWindow is that in this
      * function, Z normalization occurs on entire range, rather than the sliding window.
      *
-     * @param ts the input data.
+     * @param ts         the input data.
      * @param windowSize the sliding window size.
-     * @param paaSize the PAA size.
-     * @param cuts the Alphabet cuts.
+     * @param paaSize    the PAA size.
+     * @param cuts       the Alphabet cuts.
      * @param nThreshold the normalization threshold value.
-     * @param strategy the NR strategy.
-     *
+     * @param strategy   the NR strategy.
      * @return SAX representation of the time series.
      * @throws SAXException if error occurs.
      */
     public SAXRecords saxByWindowGlobalZNorm(double[] ts, int windowSize, int paaSize,
-                                                 double[] cuts, NumerosityReductionStrategy strategy,
+                                             double[] cuts, NumerosityReductionStrategy strategy,
                                              double nThreshold) throws Exception, SAXException {
 
         // the resulting data structure init
@@ -204,8 +199,7 @@ public class Utils {
                         && Arrays.equals(previousString, currentString)) {
                     // NumerosityReduction
                     continue;
-                }
-                else if (NumerosityReductionStrategy.MINDIST.equals(strategy)
+                } else if (NumerosityReductionStrategy.MINDIST.equals(strategy)
                         && checkMinDistIsZero(previousString, currentString)) {
                     continue;
                 }
@@ -225,23 +219,22 @@ public class Utils {
      * Converts the input time series into a SAX data structure via sliding window and Z
      * normalization.
      *
-     * @param ts the input data.
+     * @param ts         the input data.
      * @param windowSize the sliding window size.
-     * @param paaSize the PAA size.
-     * @param cuts the Alphabet cuts.
+     * @param paaSize    the PAA size.
+     * @param cuts       the Alphabet cuts.
      * @param nThreshold the normalization threshold value.
-     * @param strategy the NR strategy.
-     * @param skips The list of points which shall be skipped during conversion; this feature is
-     * particularly important when building a concatenated from pieces time series and junction shall
-     * not make it into the grammar.
-     *
+     * @param strategy   the NR strategy.
+     * @param skips      The list of points which shall be skipped during conversion; this feature is
+     *                   particularly important when building a concatenated from pieces time series and junction shall
+     *                   not make it into the grammar.
      * @return SAX representation of the time series.
      * @throws SAXException if error occurs.
      */
     public SAXRecords saxByWindowSkipping(double[] ts, int windowSize, int paaSize, double[] cuts,
-                                              NumerosityReductionStrategy strategy, double nThreshold,
+                                          NumerosityReductionStrategy strategy, double nThreshold,
                                           ArrayList<Integer> skips)
-            throws SAXException,Exception {
+            throws SAXException, Exception {
 
         // the resulting data structure init
         //
@@ -281,8 +274,7 @@ public class Utils {
                         && Arrays.equals(previousString, currentString)) {
                     // NumerosityReduction
                     continue;
-                }
-                else if (NumerosityReductionStrategy.MINDIST.equals(strategy)
+                } else if (NumerosityReductionStrategy.MINDIST.equals(strategy)
                         && checkMinDistIsZero(previousString, currentString)) {
                     continue;
                 }
@@ -304,11 +296,10 @@ public class Utils {
     /**
      * Convert the series into SAX string representation.
      *
-     * @param ts the series.
-     * @param paaSize the PAA size.
-     * @param cuts the alphabet cuts.
+     * @param ts         the series.
+     * @param paaSize    the PAA size.
+     * @param cuts       the alphabet cuts.
      * @param nThreshold the normalization thresholds.
-     *
      * @return The SAX representation for series.
      * @throws SAXException if error occurs.
      */
@@ -316,8 +307,7 @@ public class Utils {
             throws Exception, SAXException {
         if (paaSize == ts.length) {
             return seriesToString(Series.zNormalize(ts, nThreshold), cuts);
-        }
-        else {
+        } else {
             // perform PAA conversion
             double[] paa = paa(Series.zNormalize(ts, nThreshold), paaSize);
             return seriesToString(paa, cuts);
@@ -344,7 +334,7 @@ public class Utils {
      * Convert the series into the index using SAX cuts.
      *
      * @param series The series to convert.
-     * @param cuts The alphabet cuts.
+     * @param cuts   The alphabet cuts.
      * @return SAX cuts indices.
      * @throws Exception if error occurs.
      */
@@ -384,8 +374,7 @@ public class Utils {
                 distance += tDist;
             }
             return distance;
-        }
-        else {
+        } else {
             throw new SAXException("Unable to compute SAX distance, string lengths are not equal");
         }
     }
@@ -393,11 +382,11 @@ public class Utils {
     /**
      * This function implements SAX MINDIST function which uses alphabet based distance matrix.
      *
-     * @param a The SAX string.
-     * @param b The SAX string.
+     * @param a              The SAX string.
+     * @param b              The SAX string.
      * @param distanceMatrix The distance matrix to use.
-     * @param n the time series length (sliding window length).
-     * @param w the number of PAA segments.
+     * @param n              the time series length (sliding window length).
+     * @param w              the number of PAA segments.
      * @return distance between strings.
      * @throws SAXException If error occurs.
      */
@@ -417,14 +406,12 @@ public class Utils {
                     }
                     double localDist = distanceMatrix[numA][numB];
                     dist = dist + localDist * localDist;
-                }
-                else {
+                } else {
                     throw new SAXException("Non-literal character found!");
                 }
             }
             return Math.sqrt((double) n / (double) w) * Math.sqrt(dist);
-        }
-        else {
+        } else {
             throw new SAXException("Data arrays lengths are not equal!");
         }
     }
@@ -450,7 +437,7 @@ public class Utils {
      * Get mapping of a number to char.
      *
      * @param value the value to map.
-     * @param cuts the array of intervals.
+     * @param cuts  the array of intervals.
      * @return character corresponding to numeric value.
      */
     public static char numberToCharacter(double value, double[] cuts) {
@@ -460,8 +447,7 @@ public class Utils {
             while ((idx > 0) && (cuts[idx - 1] > value)) {
                 idx--;
             }
-        }
-        else {
+        } else {
             while ((idx < cuts.length) && (cuts[idx] <= value)) {
                 idx++;
             }
@@ -483,7 +469,7 @@ public class Utils {
      * Get mapping of number to cut index.
      *
      * @param value the value to map.
-     * @param cuts the array of intervals.
+     * @param cuts  the array of intervals.
      * @return character corresponding to numeric value.
      */
     public static int numberToIndex(double value, double[] cuts) {
@@ -494,12 +480,11 @@ public class Utils {
         return count;
     }
 
-     /**
+    /**
      * Prettyfies the series for screen output.
      *
      * @param series the data.
-     * @param df the number format to use.
-     *
+     * @param df     the number format to use.
      * @return The series formatted for screen output.
      */
     public String seriesToString(double[] series, NumberFormat df) {
@@ -529,12 +514,13 @@ public class Utils {
 
     /**
      * generate sax alphabet set
+     *
      * @param alphabet_size
      * @return
      */
     public static int[] saxGenerateAlphabet(int alphabet_size) {
 
-        int [] res = new int [alphabet_size];
+        int[] res = new int[alphabet_size];
         for (int i = 0; i < alphabet_size; i++) {
             res[i] = i;
         }
@@ -543,65 +529,64 @@ public class Utils {
 
     /**
      * compute the breakpoints
+     *
      * @param alphabetSize
      * @param meanValue
      * @param stdValue
      * @return
      */
-    public static double[] saxComputeBreakpoints(int alphabetSize,double meanValue, double stdValue){
-        double [] res = new double[alphabetSize-1];
-        NormalDistribution normalDistribution = new NormalDistribution(meanValue,stdValue);
+    public static double[] saxComputeBreakpoints(int alphabetSize, double meanValue, double stdValue) {
+        double[] res = new double[alphabetSize - 1];
+        NormalDistribution normalDistribution = new NormalDistribution(meanValue, stdValue);
 
-        for(int i = 1; i < alphabetSize;++i){
+        for (int i = 1; i < alphabetSize; ++i) {
             //compute the breakingpoints
-            double value = normalDistribution.inverseCumulativeProbability((float) i * (1 / (float)alphabetSize));
-            res[i-1] = value;
+            double value = normalDistribution.inverseCumulativeProbability((float) i * (1 / (float) alphabetSize));
+            res[i - 1] = value;
         }
-        return  res;
+        return res;
     }
 
     /**
+     * @param ts
+     * @param w        the total number of divisions.
+     * @param alphabet is the size of alphabet
+     * @return result An array of string index [a,z].
      * @brief Symbolic Aggregate approXimation (SAX). It transforms a numeric time series into a time series of string with
      * the reduced size w. The algorithm was proposed by Zhenwen He et al.) and extends the PAA-based approach inheriting the original
      * algorithm simplicity and low computational complexity while providing satisfactory sensitivity and selectivity in
      * range query processing.
-
-     * @param ts
-     * @param w the total number of divisions.
-     * @param alphabet is the size of alphabet
-     * @return result An array of string index [a,z].
      */
-    public static int[] seriesToIndex(double[] ts , int w, int  alphabet ){
+    public static int[] seriesToIndex(double[] ts, int w, int alphabet) {
         //paa 降维
         double[] reducedDataY = new double[(int) w];
         try {
             reducedDataY = paa(ts, (int) w);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //sax符号化
         double mean_value = mean(reducedDataY);
         double std_value = Series.standardDeviation(mean_value, reducedDataY);
-        int [] aux = new int[(int)w];
+        int[] aux = new int[(int) w];
 
-        if(std_value > 0 ){
-            double[] breakingpoints = saxComputeBreakpoints(alphabet,mean_value,std_value);
-            int[] alphabets =  saxGenerateAlphabet(alphabet);
+        if (std_value > 0) {
+            double[] breakingpoints = saxComputeBreakpoints(alphabet, mean_value, std_value);
+            int[] alphabets = saxGenerateAlphabet(alphabet);
 
             // Iterate across elements of reducedDataY
-            for(int i =0 ;i< (int)w;i++){
+            for (int i = 0; i < (int) w; i++) {
                 int j = 0;
                 int alpha = alphabets[0];
 
-                while((j < breakingpoints.length) && (reducedDataY[i] > breakingpoints[j])){
+                while ((j < breakingpoints.length) && (reducedDataY[i] > breakingpoints[j])) {
                     j++;
                 }
                 alpha = alphabets[j];
                 aux[i] = alpha;
             }
-        }
-        else {
-            for(int i = 0;i< (int)w;++i)
+        } else {
+            for (int i = 0; i < (int) w; ++i)
                 aux[i] = 0;
         }
         return aux;
@@ -610,21 +595,21 @@ public class Utils {
 
     /**
      * 计算两个时序数据对象之间的SAX距离
-     * @param s1 时序数据对象
-     * @param s2 时序数据对象
-     * @param w  paa的段数
+     *
+     * @param s1       时序数据对象
+     * @param s2       时序数据对象
+     * @param w        paa的段数
      * @param alphabet
      * @return 返回两个时序数据对象之间的SAX MINDIST
      */
-    public static double distance (Series s1, Series s2, int w, int alphabet){
+    public static double distance(Series s1, Series s2, int w, int alphabet) {
         NormalAlphabet normalAlphabet = new NormalAlphabet();
-        long n = Math.min(s1.length(),s2.length());
+        long n = Math.min(s1.length(), s2.length());
         try {
-            char[] a  = seriesToString(s1.getValues(),w,normalAlphabet.getCuts(alphabet),Double.MIN_NORMAL);
-            char[] b = seriesToString(s2.getValues(),w,normalAlphabet.getCuts(alphabet),Double.MIN_NORMAL);
-            return saxMinDist(a,b,normalAlphabet.getDistanceMatrix(alphabet),(int)n,w);
-        }
-        catch (Exception e){
+            char[] a = seriesToString(s1.getValues(), w, normalAlphabet.getCuts(alphabet), Double.MIN_NORMAL);
+            char[] b = seriesToString(s2.getValues(), w, normalAlphabet.getCuts(alphabet), Double.MIN_NORMAL);
+            return saxMinDist(a, b, normalAlphabet.getDistanceMatrix(alphabet), (int) n, w);
+        } catch (Exception e) {
             e.printStackTrace();
             return Double.MAX_VALUE;
         }
@@ -632,32 +617,32 @@ public class Utils {
 
     /**
      * 计算两个数据集合中每条时序数据对象之间的距离
-     * @param s1 m条时序数据的集合
-     * @param s2 n条时序数据的集合
-     * @param w  paa的段数
+     *
+     * @param s1       m条时序数据的集合
+     * @param s2       n条时序数据的集合
+     * @param w        paa的段数
      * @param alphabet
      * @return 返回n行m列的2D数组 a
-     *         也即，s1中的第0条与s2中的n条时序数据的距离存储在第0列；
-     *         s1中的第i条与s2中的第j条时序数据之间的距离为 a.get(j,i);
-     *         获取s1中第i条与s2中所有时序数据对象的距离为一个n元列向量，也即 a.col(i)
+     * 也即，s1中的第0条与s2中的n条时序数据的距离存储在第0列；
+     * s1中的第i条与s2中的第j条时序数据之间的距离为 a.get(j,i);
+     * 获取s1中第i条与s2中所有时序数据对象的距离为一个n元列向量，也即 a.col(i)
      */
-    public static Array distances(MultiSeries s1, MultiSeries s2, int w, int alphabet){
-        try{
-            int m = (int)s1.count();
-            int n =(int)s2.count();
-            double [] dist = new double[m*n];
-            int k=0;
-            for(int i=0;i<m;++i){
+    public static Array distances(MultiSeries s1, MultiSeries s2, int w, int alphabet) {
+        try {
+            int m = (int) s1.count();
+            int n = (int) s2.count();
+            double[] dist = new double[m * n];
+            int k = 0;
+            for (int i = 0; i < m; ++i) {
                 Series s11 = s1.getSeries(i);
-                for(int j=0;j<n;++j){
+                for (int j = 0; j < n; ++j) {
                     Series s22 = s2.getSeries(j);
-                    dist[k]=distance(s11,s22,w,alphabet);
+                    dist[k] = distance(s11, s22, w, alphabet);
                     ++k;
                 }
             }
-            return Array.of(n,m,dist);
-        }
-        catch (Exception e){
+            return Array.of(n, m, dist);
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

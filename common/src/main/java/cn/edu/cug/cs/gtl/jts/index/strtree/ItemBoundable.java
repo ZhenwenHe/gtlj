@@ -42,17 +42,19 @@ import java.io.Serializable;
  * @version 1.7
  */
 public class ItemBoundable implements Boundable, Serializable {
-  private Object bounds;
-  private Object item;
+    private Object bounds;
+    private Object item;
 
-  public ItemBoundable(Object bounds, Object item) {
-    this.bounds = bounds;
-    this.item = item;
-  }
+    public ItemBoundable(Object bounds, Object item) {
+        this.bounds = bounds;
+        this.item = item;
+    }
 
-  public Object getBounds() {
-    return bounds;
-  }
+    public Object getBounds() {
+        return bounds;
+    }
 
-  public Object getItem() { return item; }
+    public Object getItem() {
+        return item;
+    }
 }

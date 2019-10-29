@@ -28,7 +28,7 @@ import java.util.function.Function;
  * During Query: Qs < Is < Ie < Qe; as shown in Fig. 4e.
  * Contains Query: Is < Qs < Qe < Ie; as shown in Fig. 4f.
  */
-public class QueryExecutor <T extends Interval, TREE extends BaseTriangleTree <T> > {
+public class QueryExecutor<T extends Interval, TREE extends BaseTriangleTree<T>> {
     private static final long serialVersionUID = 1L;
 
     TREE tree;
@@ -38,93 +38,93 @@ public class QueryExecutor <T extends Interval, TREE extends BaseTriangleTree <T
     }
 
     public int equals(T q, Function<T, Boolean> f) {
-        PointShape  s = (PointShape) tree.queryShapeGenerator.equals(q);
-        List<T> list =  tree.pointQuery(s);
-        list.forEach(r->f.apply(r));
+        PointShape s = (PointShape) tree.queryShapeGenerator.equals(q);
+        List<T> list = tree.pointQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int starts(T q, Function<T, Boolean> f) {
         LineSegmentShape s = (LineSegmentShape) tree.queryShapeGenerator.starts(q);
-        List<T> list =  tree.lineQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.lineQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int startedBy(T q, Function<T, Boolean> f) {
         LineSegmentShape s = (LineSegmentShape) tree.queryShapeGenerator.startedBy(q);
-        List<T> list =  tree.lineQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.lineQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int meets(T q, Function<T, Boolean> f) {
         LineSegmentShape s = (LineSegmentShape) tree.queryShapeGenerator.meets(q);
-        List<T> list =  tree.lineQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.lineQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int metBy(T q, Function<T, Boolean> f) {
         LineSegmentShape s = (LineSegmentShape) tree.queryShapeGenerator.metBy(q);
-        List<T> list =  tree.lineQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.lineQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int finishes(T q, Function<T, Boolean> f) {
         LineSegmentShape s = (LineSegmentShape) tree.queryShapeGenerator.finishes(q);
-        List<T> list =  tree.lineQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.lineQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int finishedBy(T q, Function<T, Boolean> f) {
         LineSegmentShape s = (LineSegmentShape) tree.queryShapeGenerator.finishedBy(q);
-        List<T> list =  tree.lineQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.lineQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int before(T q, Function<T, Boolean> f) {
         RegionShape s = (RegionShape) tree.queryShapeGenerator.before(q);
-        List<T> list =  tree.regionQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.regionQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int after(T q, Function<T, Boolean> f) {
         RegionShape s = (RegionShape) tree.queryShapeGenerator.after(q);
-        List<T> list =  tree.regionQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.regionQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int overlaps(T q, Function<T, Boolean> f) {
         RegionShape s = (RegionShape) tree.queryShapeGenerator.overlaps(q);
-        List<T> list =  tree.regionQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.regionQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int overlappedBy(T q, Function<T, Boolean> f) {
         RegionShape s = (RegionShape) tree.queryShapeGenerator.overlappedBy(q);
-        List<T> list =  tree.regionQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.regionQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int during(T q, Function<T, Boolean> f) {
         RegionShape s = (RegionShape) tree.queryShapeGenerator.during(q);
-        List<T> list =  tree.regionQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.regionQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 
     public int contains(T q, Function<T, Boolean> f) {
         RegionShape s = (RegionShape) tree.queryShapeGenerator.contains(q);
-        List<T> list =  tree.regionQuery(s);
-        list.forEach(r->f.apply(r));
+        List<T> list = tree.regionQuery(s);
+        list.forEach(r -> f.apply(r));
         return list.size();
     }
 

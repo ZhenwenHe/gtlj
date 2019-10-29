@@ -31,8 +31,7 @@ public class InfiniteLine implements Serializable, Comparable<InfiniteLine> {
         try {
             this.startPoint = (Vector) startPoint.clone();
             this.endPoint = (Vector) endPoint.clone();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

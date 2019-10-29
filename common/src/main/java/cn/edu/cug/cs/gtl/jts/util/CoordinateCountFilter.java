@@ -38,27 +38,28 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.CoordinateFilter;
 
 /**
- *  A {@link CoordinateFilter} that counts the total number of coordinates
- *  in a <code>Geometry</code>.
+ * A {@link CoordinateFilter} that counts the total number of coordinates
+ * in a <code>Geometry</code>.
  *
- *@version 1.7
+ * @version 1.7
  */
 public class CoordinateCountFilter implements CoordinateFilter {
-  private int n = 0;
+    private int n = 0;
 
-  public CoordinateCountFilter() { }
+    public CoordinateCountFilter() {
+    }
 
-  /**
-   *  Returns the result of the filtering.
-   *
-   *@return    the number of points found by this <code>CoordinateCountFilter</code>
-   */
-  public int getCount() {
-    return n;
-  }
+    /**
+     * Returns the result of the filtering.
+     *
+     * @return the number of points found by this <code>CoordinateCountFilter</code>
+     */
+    public int getCount() {
+        return n;
+    }
 
-  public void filter(Coordinate coord) {
-    n++;
-  }
+    public void filter(Coordinate coord) {
+        n++;
+    }
 }
 

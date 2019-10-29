@@ -30,14 +30,14 @@ public class FeatureTypeBuilderTest {
 
     @Test
     public void build() {
-        FeatureType ft=new FeatureTypeBuilder()
+        FeatureType ft = new FeatureTypeBuilder()
                 .setIdentifier(Identifier.create())
                 .setName("Road")
                 .setCoordinateReferenceSystem(null)
                 .add("geometry", LineString.class)
-                .add("道路名称",Variant.STRING)
+                .add("道路名称", Variant.STRING)
                 .add("道路长度", Variant.DOUBLE)
-                .add("道路等级",Variant.INTEGER)
+                .add("道路等级", Variant.INTEGER)
                 .build();
     }
 }

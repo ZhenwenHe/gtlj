@@ -8,54 +8,54 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-class ComplexIntervalImpl extends IntervalImpl implements ComplexInterval{
+class ComplexIntervalImpl extends IntervalImpl implements ComplexInterval {
     private static final long serialVersionUID = 1L;
-    Identifier   pid;//parent ID
-    Identifier   order;// order in the parent object
-    String       label;//label string
-    byte[]      data;
+    Identifier pid;//parent ID
+    Identifier order;// order in the parent object
+    String label;//label string
+    byte[] data;
 
     public ComplexIntervalImpl(IntervalType type, double low, double high, String label, long pid, long order) {
-        super(type,low,high);
-        this.label=label;
-        this.pid= Identifier.create(pid);
-        this.order=Identifier.create(order);
-        this.data=null;
+        super(type, low, high);
+        this.label = label;
+        this.pid = Identifier.create(pid);
+        this.order = Identifier.create(order);
+        this.data = null;
     }
 
     public ComplexIntervalImpl(IntervalType type, double low, double high, String label, Identifier pid, Identifier order) {
-        super(type,low,high);
-        this.label=label;
-        this.pid= Identifier.create(pid.longValue());
-        this.order=Identifier.create(order.longValue());
-        this.data=null;
+        super(type, low, high);
+        this.label = label;
+        this.pid = Identifier.create(pid.longValue());
+        this.order = Identifier.create(order.longValue());
+        this.data = null;
     }
 
     public ComplexIntervalImpl(double low, double high, String label, long pid, long order) {
-        super(low,high);
-        this.label=label;
-        this.pid= Identifier.create(pid);
-        this.order=Identifier.create(order);
-        this.data=null;
+        super(low, high);
+        this.label = label;
+        this.pid = Identifier.create(pid);
+        this.order = Identifier.create(order);
+        this.data = null;
     }
 
     public ComplexIntervalImpl(Interval i, String label, long pid, long order) {
-        super(i.getType(),i.getLowerBound(),i.getUpperBound());
-        this.label=label;
-        this.pid= Identifier.create(pid);
-        this.order=Identifier.create(order);
-        this.data=null;
+        super(i.getType(), i.getLowerBound(), i.getUpperBound());
+        this.label = label;
+        this.pid = Identifier.create(pid);
+        this.order = Identifier.create(order);
+        this.data = null;
     }
 
     public ComplexIntervalImpl() {
         super();
-        this.label=new String();
-        this.pid= Identifier.create(-1L);
-        this.order=Identifier.create(-1L);
-        this.data=null;
+        this.label = new String();
+        this.pid = Identifier.create(-1L);
+        this.order = Identifier.create(-1L);
+        this.data = null;
     }
 
-    public String getName(){
+    public String getName() {
         return label;
     }
 
@@ -103,10 +103,9 @@ class ComplexIntervalImpl extends IntervalImpl implements ComplexInterval{
 
         if (!pid.equals(that.pid)) return false;
         if (!order.equals(that.order)) return false;
-        if(getName().equals(that.getName())){
-            return ArrayUtils.compare(this.data, that.getData())==0;
-        }
-        else
+        if (getName().equals(that.getName())) {
+            return ArrayUtils.compare(this.data, that.getData()) == 0;
+        } else
             return false;
     }
 
@@ -124,25 +123,25 @@ class ComplexIntervalImpl extends IntervalImpl implements ComplexInterval{
         return "ComplexIntervalImpl{" +
                 "pid=" + pid +
                 ", order=" + order +
-                ", label='" + label + '\'' + super.toString()+
+                ", label='" + label + '\'' + super.toString() +
                 '}';
     }
 
     @Override
     public Object clone() {
-        ComplexIntervalImpl li= new ComplexIntervalImpl(getType(),getLowerBound(),getUpperBound(),label,pid,order);
+        ComplexIntervalImpl li = new ComplexIntervalImpl(getType(), getLowerBound(), getUpperBound(), label, pid, order);
         li.data = ArrayUtils.createByteArray(this.data);
-        return (Object)li;
+        return (Object) li;
     }
 
     @Override
     public void copyFrom(Object i) {
         if (i instanceof ComplexIntervalImpl) {
             reset(((Interval) i).getType(), ((Interval) i).getLowerBound(), ((Interval) i).getUpperBound());
-            this.label=((ComplexIntervalImpl)i).label;
-            this.pid=((ComplexIntervalImpl)i).pid;
-            this.order=((ComplexIntervalImpl)i).order;
-            this.data = ArrayUtils.createByteArray(((ComplexIntervalImpl)i).data);
+            this.label = ((ComplexIntervalImpl) i).label;
+            this.pid = ((ComplexIntervalImpl) i).pid;
+            this.order = ((ComplexIntervalImpl) i).order;
+            this.data = ArrayUtils.createByteArray(((ComplexIntervalImpl) i).data);
         }
     }
 
@@ -150,15 +149,15 @@ class ComplexIntervalImpl extends IntervalImpl implements ComplexInterval{
     public boolean load(DataInput dis) throws IOException {
         super.load(dis);
         int len = dis.readInt();
-        byte [] cc = new byte [len];
+        byte[] cc = new byte[len];
         dis.readFully(cc);
-        this.label = new String(cc,0,cc.length);
+        this.label = new String(cc, 0, cc.length);
         this.pid.load(dis);
         this.order.load(dis);
-        len=0;
+        len = 0;
         len = dis.readInt();
-        if(len>0) {
-            this.data=new byte[len];
+        if (len > 0) {
+            this.data = new byte[len];
             dis.readFully(this.data);
         }
         return true;
@@ -174,18 +173,18 @@ class ComplexIntervalImpl extends IntervalImpl implements ComplexInterval{
         //dos.writeLong(this.order.longValue());
         this.pid.store(dos);
         this.order.store(dos);
-        int s = this.data==null?0:this.data.length;
+        int s = this.data == null ? 0 : this.data.length;
         dos.writeInt(s);
-        if(s>0)
+        if (s > 0)
             dos.write(this.data);
         return true;
     }
 
     @Override
     public long getByteArraySize() {
-        long s =  8 * 2 + 4+label.getBytes().length+4+ pid.getByteArraySize()+order.getByteArraySize();
-        if(data!=null)
-            s+=data.length;
+        long s = 8 * 2 + 4 + label.getBytes().length + 4 + pid.getByteArraySize() + order.getByteArraySize();
+        if (data != null)
+            s += data.length;
         return s;
     }
 

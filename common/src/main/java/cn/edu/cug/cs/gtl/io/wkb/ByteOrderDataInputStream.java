@@ -18,13 +18,11 @@ class ByteOrderDataInputStream implements Serializable {
     private byte[] buf4 = new byte[4];
     private byte[] buf8 = new byte[8];
 
-    public ByteOrderDataInputStream()
-    {
+    public ByteOrderDataInputStream() {
         this.stream = null;
     }
 
-    public ByteOrderDataInputStream(InputStream stream)
-    {
+    public ByteOrderDataInputStream(InputStream stream) {
         this.stream = stream;
     }
 
@@ -34,12 +32,11 @@ class ByteOrderDataInputStream implements Serializable {
      *
      * @param stream
      */
-    public void setInputStream(InputStream stream)
-    {
+    public void setInputStream(InputStream stream) {
         this.stream = stream;
     }
-    public void setOrder(int byteOrder)
-    {
+
+    public void setOrder(int byteOrder) {
         this.byteOrder = byteOrder;
     }
 
@@ -49,28 +46,25 @@ class ByteOrderDataInputStream implements Serializable {
      * @return the byte read
      */
     public byte readByte()
-            throws IOException
-    {
+            throws IOException {
         stream.read(buf1);
         return buf1[0];
     }
 
     public int readInt()
-            throws IOException
-    {
+            throws IOException {
         stream.read(buf4);
         return ByteOrderValues.getInt(buf4, byteOrder);
     }
+
     public long readLong()
-            throws IOException
-    {
+            throws IOException {
         stream.read(buf8);
         return ByteOrderValues.getLong(buf8, byteOrder);
     }
 
     public double readDouble()
-            throws IOException
-    {
+            throws IOException {
         stream.read(buf8);
         return ByteOrderValues.getDouble(buf8, byteOrder);
     }

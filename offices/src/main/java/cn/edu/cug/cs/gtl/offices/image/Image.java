@@ -17,8 +17,10 @@ import static java.awt.image.BufferedImage.TYPE_BYTE_GRAY;
 
 public class Image {
     private BufferedImage bufferedImage;
-    private Image(){
+
+    private Image() {
     }
+
     /**
      * Constructs a <code>BufferedImage</code> of one of the predefined
      * image types.  The <code>ColorSpace</code> for the image is the
@@ -43,7 +45,7 @@ public class Image {
      * @see #TYPE_USHORT_555_RGB
      */
     public Image(int width, int height, int imageType) {
-        this.bufferedImage=new BufferedImage(width, height, imageType);
+        this.bufferedImage = new BufferedImage(width, height, imageType);
     }
 
     /**
@@ -105,56 +107,54 @@ public class Image {
      * @see WritableRaster
      */
     public Image(ColorModel cm, WritableRaster raster, boolean isRasterPremultiplied, Hashtable<?, ?> properties) {
-        this.bufferedImage=new BufferedImage(cm, raster, isRasterPremultiplied, properties);
+        this.bufferedImage = new BufferedImage(cm, raster, isRasterPremultiplied, properties);
     }
 
     /**
-     *
      * @return
      */
-    public int getWidth(){
+    public int getWidth() {
         return this.bufferedImage.getWidth();
     }
 
     /**
-     *
      * @return
      */
-    public int getHeight(){
+    public int getHeight() {
         return this.bufferedImage.getHeight();
     }
 
     /**
-     *
      * @param x
      * @param y
      * @return
      */
-    public int getRGB(int x, int y){
-        return this.bufferedImage.getRGB(x,y);
+    public int getRGB(int x, int y) {
+        return this.bufferedImage.getRGB(x, y);
     }
 
     /**
-     *
      * @param x
      * @param y
      * @param rgb
      */
-    public void setRGB(int x, int y, int rgb){
-        this.bufferedImage.setRGB(x,y,rgb);
+    public void setRGB(int x, int y, int rgb) {
+        this.bufferedImage.setRGB(x, y, rgb);
     }
+
     /**
      * gray image
+     *
      * @return
      */
-    public Image gray(){
+    public Image gray() {
         int w = getWidth();
         int h = getHeight();
-        Image image = new Image(w,h,TYPE_BYTE_GRAY);
-        for (int i=0;i<w;++i){
-            for(int j=0;j<h;++j){
-                int rgb = getRGB(i,j);
-                image.setRGB(i,j,rgb);
+        Image image = new Image(w, h, TYPE_BYTE_GRAY);
+        for (int i = 0; i < w; ++i) {
+            for (int j = 0; j < h; ++j) {
+                int rgb = getRGB(i, j);
+                image.setRGB(i, j, rgb);
             }
         }
         return image;
@@ -162,16 +162,17 @@ public class Image {
 
     /**
      * binary image
+     *
      * @return
      */
-    public Image binary(){
+    public Image binary() {
         int w = getWidth();
         int h = getHeight();
-        Image image = new Image(w,h,TYPE_BYTE_BINARY);
-        for (int i=0;i<w;++i){
-            for(int j=0;j<h;++j){
-                int rgb = getRGB(i,j);
-                image.setRGB(i,j,rgb);
+        Image image = new Image(w, h, TYPE_BYTE_BINARY);
+        for (int i = 0; i < w; ++i) {
+            for (int j = 0; j < h; ++j) {
+                int rgb = getRGB(i, j);
+                image.setRGB(i, j, rgb);
             }
         }
         return image;
@@ -182,18 +183,17 @@ public class Image {
      * that supports the given format to a <code>File</code>.  If
      * there is already a <code>File</code> present, its contents are
      * discarded.
+     *
      * @param formatName a <code>String</code> containing the informal
-     * name of the format.
-     * @param output a <code>File</code> to be written to.
-     *
+     *                   name of the format.
+     * @param output     a <code>File</code> to be written to.
      * @return <code>false</code> if no appropriate writer is found.
-     *
-     * @exception IllegalArgumentException if any parameter is
-     * <code>null</code>.
-     * @exception IOException if an error occurs during writing.
+     * @throws IllegalArgumentException if any parameter is
+     *                                  <code>null</code>.
+     * @throws IOException              if an error occurs during writing.
      */
-    public void write(String formatName, File output) throws IOException{
-        ImageIO.write(this.bufferedImage,formatName,output);
+    public void write(String formatName, File output) throws IOException {
+        ImageIO.write(this.bufferedImage, formatName, output);
     }
 
 
@@ -207,18 +207,17 @@ public class Image {
      *
      * <p> The current cache settings from <code>getUseCache</code>and
      * <code>getCacheDirectory</code> will be used to control caching.
+     *
      * @param formatName a <code>String</code> containing the informal
-     * name of the format.
-     * @param output an <code>OutputStream</code> to be written to.
-     *
+     *                   name of the format.
+     * @param output     an <code>OutputStream</code> to be written to.
      * @return <code>false</code> if no appropriate writer is found.
-     *
-     * @exception IllegalArgumentException if any parameter is
-     * <code>null</code>.
-     * @exception IOException if an error occurs during writing.
+     * @throws IllegalArgumentException if any parameter is
+     *                                  <code>null</code>.
+     * @throws IOException              if an error occurs during writing.
      */
-    public void write(String formatName, OutputStream output) throws IOException{
-        ImageIO.write(this.bufferedImage,formatName,output);
+    public void write(String formatName, OutputStream output) throws IOException {
+        ImageIO.write(this.bufferedImage, formatName, output);
     }
 
     /**
@@ -244,17 +243,15 @@ public class Image {
      * <code>IIORegistry</code> and <code>ImageReaderSpi</code>.
      *
      * @param input a <code>File</code> to read from.
-     *
      * @return a <code>BufferedImage</code> containing the decoded
      * contents of the input, or <code>null</code>.
-     *
-     * @exception IllegalArgumentException if <code>input</code> is
-     * <code>null</code>.
-     * @exception IOException if an error occurs during reading.
+     * @throws IllegalArgumentException if <code>input</code> is
+     *                                  <code>null</code>.
+     * @throws IOException              if an error occurs during reading.
      */
     public static Image read(File input) throws IOException {
         Image im = new Image();
-        im.bufferedImage=ImageIO.read(input);
+        im.bufferedImage = ImageIO.read(input);
         return im;
     }
 
@@ -281,17 +278,15 @@ public class Image {
      * it is the responsibility of the caller to close the stream, if desired.
      *
      * @param input an <code>InputStream</code> to read from.
-     *
      * @return a <code>BufferedImage</code> containing the decoded
      * contents of the input, or <code>null</code>.
-     *
-     * @exception IllegalArgumentException if <code>input</code> is
-     * <code>null</code>.
-     * @exception IOException if an error occurs during reading.
+     * @throws IllegalArgumentException if <code>input</code> is
+     *                                  <code>null</code>.
+     * @throws IOException              if an error occurs during reading.
      */
     public static Image read(InputStream input) throws IOException {
         Image im = new Image();
-        im.bufferedImage=ImageIO.read(input);
+        im.bufferedImage = ImageIO.read(input);
         return im;
     }
 
@@ -314,17 +309,15 @@ public class Image {
      * <code>IIORegistry</code> and <code>ImageReaderSpi</code>.
      *
      * @param input a <code>URL</code> to read from.
-     *
      * @return a <code>BufferedImage</code> containing the decoded
      * contents of the input, or <code>null</code>.
-     *
-     * @exception IllegalArgumentException if <code>input</code> is
-     * <code>null</code>.
-     * @exception IOException if an error occurs during reading.
+     * @throws IllegalArgumentException if <code>input</code> is
+     *                                  <code>null</code>.
+     * @throws IOException              if an error occurs during reading.
      */
     public static Image read(URL input) throws IOException {
         Image im = new Image();
-        im.bufferedImage=ImageIO.read(input);
+        im.bufferedImage = ImageIO.read(input);
         return im;
     }
 

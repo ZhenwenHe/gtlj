@@ -158,8 +158,7 @@ public class PointShape implements Shape {
     public Vector getCenter() {
         try {
             return (Vector) this.data.clone();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

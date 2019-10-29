@@ -2,7 +2,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2015, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
  */
- 
+
 
 import java.util.List;
 

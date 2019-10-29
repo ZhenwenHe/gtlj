@@ -34,12 +34,12 @@ class IdentifierImpl implements Identifier {
     public IdentifierImpl() {
 
         this.leastSigBits = 0;
-        this.mostSigBits=0;
+        this.mostSigBits = 0;
     }
 
     public IdentifierImpl(long leastSigBits) {
         this.leastSigBits = leastSigBits;
-        this.mostSigBits=0;
+        this.mostSigBits = 0;
     }
 
     /**
@@ -48,11 +48,8 @@ class IdentifierImpl implements Identifier {
      * IdentifierImpl} and {@code leastSigBits} becomes the least significant 64 bits of
      * the {@code IdentifierImpl}.
      *
-     * @param  mostSigBits
-     *         The most significant bits of the {@code IdentifierImpl}
-     *
-     * @param  leastSigBits
-     *         The least significant bits of the {@code IdentifierImpl}
+     * @param mostSigBits  The most significant bits of the {@code IdentifierImpl}
+     * @param leastSigBits The least significant bits of the {@code IdentifierImpl}
      */
     public IdentifierImpl(long mostSigBits, long leastSigBits) {
         this.mostSigBits = mostSigBits;
@@ -81,14 +78,14 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public Object clone() {
-        return new IdentifierImpl(this.leastSigBits,this.mostSigBits);
+        return new IdentifierImpl(this.leastSigBits, this.mostSigBits);
     }
 
 
     @Override
     public boolean load(DataInput dis) throws IOException {
         this.leastSigBits = dis.readLong();
-        this.mostSigBits=dis.readLong();
+        this.mostSigBits = dis.readLong();
         return true;
     }
 
@@ -106,15 +103,14 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public String toString() {
-        return new UUID(this.leastSigBits,this.mostSigBits).toString();
+        return new UUID(this.leastSigBits, this.mostSigBits).toString();
     }
-
 
 
     @Override
     public void reset(long leastSigBits) {
-        this.leastSigBits =leastSigBits;
-        this.mostSigBits=0;
+        this.leastSigBits = leastSigBits;
+        this.mostSigBits = 0;
     }
 
     @Override
@@ -125,7 +121,7 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public void copyFrom(Object i) {
-        if (i instanceof Identifier){
+        if (i instanceof Identifier) {
             this.leastSigBits = ((Identifier) i).lowValue();
             this.mostSigBits = ((Identifier) i).highValue();
         }
@@ -133,10 +129,9 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public void increase() {
-        if(this.leastSigBits==Long.MAX_VALUE){
+        if (this.leastSigBits == Long.MAX_VALUE) {
             ++this.mostSigBits;
-        }
-        else
+        } else
             ++this.leastSigBits;
     }
 
@@ -158,18 +153,17 @@ class IdentifierImpl implements Identifier {
 
     @Override
     public int compareTo(@NotNull Identifier o) {
-        if(this.highValue()>o.highValue())
+        if (this.highValue() > o.highValue())
             return 1;
-        else{
-            if(this.highValue()==o.highValue()){
-                if(this.lowValue()>o.lowValue())
+        else {
+            if (this.highValue() == o.highValue()) {
+                if (this.lowValue() > o.lowValue())
                     return 1;
-                else if(this.lowValue()==o.lowValue())
+                else if (this.lowValue() == o.lowValue())
                     return 0;
                 else
                     return -1;
-            }
-            else{
+            } else {
                 return -1;
             }
         }

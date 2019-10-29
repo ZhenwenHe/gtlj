@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SNESIMTree extends SNESIM{
+public class SNESIMTree extends SNESIM {
     /**
      * @brief Structure for the tree node
      */
-    protected  class TreeNode{
+    protected class TreeNode {
 
         public float value;
         public int counter;
         public int level;
         public ArrayList<TreeNode> children = new ArrayList<>();
     }
+
     /**
      * @brief Search tree
      */
@@ -24,15 +25,15 @@ public class SNESIMTree extends SNESIM{
     /**
      * @brief Constructors from a configuration file
      */
-    SNESIMTree(final String configurationFile){
+    SNESIMTree(final String configurationFile) {
         super();
         initialize(configurationFile);
     }
 
 
     /**
-     * @brief Initialize the simulation from a configuration file
      * @param configurationFile configuration file name
+     * @brief Initialize the simulation from a configuration file
      */
     void initialize(final String configurationFile) {
         //Reading configuration file
@@ -42,20 +43,20 @@ public class SNESIMTree extends SNESIM{
         _readDataFromFiles();
 
         //Checking the TI array dimensions
-        _tiDimX = (int)_TI.getDimensionX();
-        _tiDimY = (int)_TI.getDimensionX();
-        _tiDimZ = (int)_TI.getDimensionZ();
+        _tiDimX = (int) _TI.getDimensionX();
+        _tiDimY = (int) _TI.getDimensionX();
+        _tiDimZ = (int) _TI.getDimensionZ();
 
         if (_debugMode > -1) {
-            System.out.print("TI size (X,Y,Z):"+_tiDimX+" "+_tiDimY+" "+_tiDimZ+"\n");
+            System.out.print("TI size (X,Y,Z):" + _tiDimX + " " + _tiDimY + " " + _tiDimZ + "\n");
         }
     }
 
     /**
-     * @brief Abstract function allow acces to the beginning of each simulation of each multiple grid
      * @param level the current grid level
+     * @brief Abstract function allow acces to the beginning of each simulation of each multiple grid
      */
-     protected void _InitStartSimulationEachMultipleGrid(final int level) {
+    protected void _InitStartSimulationEachMultipleGrid(final int level) {
         int totalLevel = _totalGridsLevel;
         ////Adaptive template size, reserve for later
         //int minTemplateX = 4 < _templateSizeX ? 4 : _templateSizeX;
@@ -71,8 +72,8 @@ public class SNESIMTree extends SNESIM{
         int templateX = minTemplateX, templateY = minTemplateY, templateZ = minTemplateZ;
         //Ajust the template size based on the current level, template get smaller when the level get lower
         templateX = (int) (_templateSizeX - (totalLevel - level) * (Math.ceil(_templateSizeX - minTemplateX) / totalLevel));
-        templateY = (int)(_templateSizeY - (totalLevel - level) * (Math.ceil(_templateSizeY - minTemplateY) / totalLevel));
-        templateZ = (int)(_templateSizeZ - (totalLevel - level) * (Math.ceil(_templateSizeZ - minTemplateZ) / totalLevel));
+        templateY = (int) (_templateSizeY - (totalLevel - level) * (Math.ceil(_templateSizeY - minTemplateY) / totalLevel));
+        templateZ = (int) (_templateSizeZ - (totalLevel - level) * (Math.ceil(_templateSizeZ - minTemplateZ) / totalLevel));
 
         //Building template structure
         _constructTemplateFaces(templateX, templateY, templateZ);
@@ -81,37 +82,37 @@ public class SNESIMTree extends SNESIM{
         //Building the search tree
         _searchTree.clear();
 
-        int offset = (int)(Math.pow(2, level));
+        int offset = (int) (Math.pow(2, level));
         if (_debugMode > -1) {
-            System.out.println("level: "+level+" offset: " +offset);
-            System.out.print("original template size X: "+_templateSizeX+" adjusted template size X: "+templateX+"\n");
-            System.out.print("original template size Y: "+_templateSizeY+" adjusted template size Y: "+templateY+"\n");
-            System.out.print("original template size Z: "+_templateSizeZ+" adjusted template size Z: "+templateZ+"\n");
+            System.out.println("level: " + level + " offset: " + offset);
+            System.out.print("original template size X: " + _templateSizeX + " adjusted template size X: " + templateX + "\n");
+            System.out.print("original template size Y: " + _templateSizeY + " adjusted template size Y: " + templateY + "\n");
+            System.out.print("original template size Z: " + _templateSizeZ + " adjusted template size Z: " + templateZ + "\n");
         }
 
         int tiX, tiY, tiZ;
         int deltaX, deltaY, deltaZ;
         int nodeCnt = 0;
-        boolean  foundExistingValue = false;
+        boolean foundExistingValue = false;
         int foundIdx = 0;
         int totalNodes = _tiDimX * _tiDimY * _tiDimZ;
         int lastProgress = 0;
         //Put the current node as the root node
-         ArrayList<TreeNode> currentTreeNode ;
+        ArrayList<TreeNode> currentTreeNode;
         //std::vector<TreeNode>* currentTreeNode = &_searchTree;
 
-        for (int z=0; z<_tiDimZ; z+=1) {
-            for (int y=0; y<_tiDimY; y+=1) {
-                for (int x=0; x<_tiDimX; x+=1) {
+        for (int z = 0; z < _tiDimZ; z += 1) {
+            for (int y = 0; y < _tiDimY; y += 1) {
+                for (int x = 0; x < _tiDimX; x += 1) {
                     //For each pixel
-                    nodeCnt ++;
+                    nodeCnt++;
                     if (_debugMode > -1) {
                         //Doing the progression
                         //Print progression on screen
-                        int progress = (int)((nodeCnt / (float)totalNodes) * 100);
+                        int progress = (int) ((nodeCnt / (float) totalNodes) * 100);
                         if ((progress % 10) == 0 && progress != lastProgress) { //Report every 10%
                             lastProgress = progress;
-                            System.out.print("Building search tree at level: "+level+" Progression (%): "+progress+"\n");
+                            System.out.print("Building search tree at level: " + level + " Progression (%): " + progress + "\n");
                         }
                     }
 
@@ -119,7 +120,7 @@ public class SNESIMTree extends SNESIM{
                     //Reset current node to root node
                     currentTreeNode = _searchTree;
                     //currentTreeNode = &_searchTree;
-                    for ( int i=0; i<_templateFaces.size(); i++) {
+                    for (int i = 0; i < _templateFaces.size(); i++) {
 //                        System.out.println("templateFaces"+i);
                         //Go deeper in the pattern template or to a higher level node
                         deltaX = offset * _templateFaces.get(i).getX();
@@ -132,13 +133,13 @@ public class SNESIMTree extends SNESIM{
                         foundExistingValue = false;
                         foundIdx = 0;
                         //Checking of NaN value
-                        if ((tiX < 0 || tiX >= _tiDimX) || (tiY < 0 || tiY >= _tiDimY) || (tiZ < 0 || tiZ >= _tiDimZ) || Utility.isNAN(_TI.getElement(tiX,tiY,tiZ))) { //Out of bound or nan
+                        if ((tiX < 0 || tiX >= _tiDimX) || (tiY < 0 || tiY >= _tiDimY) || (tiZ < 0 || tiZ >= _tiDimZ) || Utility.isNAN(_TI.getElement(tiX, tiY, tiZ))) { //Out of bound or nan
                             break; //Ignore border stop here
                         } else {
                             //Searching the TI cell value inside the current node
-                            for ( int j = 0; j < currentTreeNode.size(); j++) {
+                            for (int j = 0; j < currentTreeNode.size(); j++) {
 //                                System.out.println("current" + j);
-                                if(_TI.getElement(tiX,tiY,tiZ) == currentTreeNode.get(j).value) {
+                                if (_TI.getElement(tiX, tiY, tiZ) == currentTreeNode.get(j).value) {
                                     //Existing value so increase the counter
                                     foundExistingValue = true;
                                     currentTreeNode.get(j).counter = currentTreeNode.get(j).counter + 1;
@@ -151,7 +152,7 @@ public class SNESIMTree extends SNESIM{
                             if (!foundExistingValue) {
                                 TreeNode aTreeNode = new TreeNode();
                                 aTreeNode.counter = 1;
-                                aTreeNode.value = _TI.getElement(tiX,tiY,tiZ);
+                                aTreeNode.value = _TI.getElement(tiX, tiY, tiZ);
                                 aTreeNode.level = i;
                                 currentTreeNode.add(aTreeNode);
                                 foundIdx = currentTreeNode.size() - 1;
@@ -164,7 +165,7 @@ public class SNESIMTree extends SNESIM{
             }
         }
         if (_debugMode > -1) {
-            System.out.print("Finish building search tree"+"\n");
+            System.out.print("Finish building search tree" + "\n");
         }
         //std::cout << "Total nodes: " << nodeCnt << std::endl;
         //Check out dictionary
@@ -198,30 +199,30 @@ public class SNESIMTree extends SNESIM{
     }
 
     /**
-     * @brief MPS dsim simulation algorithm main function
      * @param sgIdxX index X of a node inside the simulation grind
      * @param sgIdxY index Y of a node inside the simulation grind
      * @param sgIdxZ index Z of a node inside the simulation grind
-     * @param level multigrid level
+     * @param level  multigrid level
      * @return found node's value
+     * @brief MPS dsim simulation algorithm main function
      */
     protected float _simulate(final int sgIdxX, final int sgIdxY, final int sgIdxZ, final int level) {
         //Initialize with node's value
-        float foundValue = _sg.getElement(sgIdxX,sgIdxY,sgIdxZ);
+        float foundValue = _sg.getElement(sgIdxX, sgIdxY, sgIdxZ);
         //If have NaN value then doing the simulation ...
-        if (Utility.isNAN(_sg.getElement(sgIdxX,sgIdxY,sgIdxZ))) {
-            int offset = (int)(Math.pow(2, level));
+        if (Utility.isNAN(_sg.getElement(sgIdxX, sgIdxY, sgIdxZ))) {
+            int offset = (int) (Math.pow(2, level));
             int sgX, sgY, sgZ;
             int deltaX, deltaY, deltaZ;
             //foundValue = std::numeric_limits<float>::quiet_NaN();
             foundValue = Float.NaN;
             int maxConditionalPoints = -1, conditionPointsUsedCnt = 0;
             //Initialize a value
-           // std::vector<float> aPartialTemplate;
+            // std::vector<float> aPartialTemplate;
             ArrayList<Float> aPartialTemplate = new ArrayList<>();
             //Building a template based on the neighbor points
             // Find conditional data
-            for ( int i=1; i<_templateFaces.size(); i++) { //For all the set of templates available except the first one at the template center
+            for (int i = 1; i < _templateFaces.size(); i++) { //For all the set of templates available except the first one at the template center
                 //For each template faces
                 deltaX = offset * _templateFaces.get(i).getX();
                 deltaY = offset * _templateFaces.get(i).getY();
@@ -231,8 +232,8 @@ public class SNESIMTree extends SNESIM{
                 sgZ = sgIdxZ + deltaZ;
                 if (!(sgX < 0 || sgX >= _sgDimX) && !(sgY < 0 || sgY >= _sgDimY) && !(sgZ < 0 || sgZ >= _sgDimZ)) {
                     //not overflow
-                    if (!Utility.isNAN(_sg.getElement(sgIdxX,sgIdxY,sgIdxZ))) {
-                        aPartialTemplate.add(_sg.getElement(sgIdxX,sgIdxY,sgIdxZ));
+                    if (!Utility.isNAN(_sg.getElement(sgIdxX, sgIdxY, sgIdxZ))) {
+                        aPartialTemplate.add(_sg.getElement(sgIdxX, sgIdxY, sgIdxZ));
                     } else { //NaN value
                         aPartialTemplate.add(Float.NaN);
                     }
@@ -252,31 +253,30 @@ public class SNESIMTree extends SNESIM{
 
             ArrayList<TreeNode> currentTreeNode = new ArrayList<>();
             ArrayList<ArrayList<TreeNode>> nodesToCheck = new ArrayList<>();
-            Map<Float,Integer> conditionalPoints = new HashMap<>();
+            Map<Float, Integer> conditionalPoints = new HashMap<>();
             int sumCounters = 0;
             int currentLevel = 0, maxLevel = 0;
 
             //For all possible values of root tree
-            for ( int j=0; j<_searchTree.size(); j++) {
+            for (int j = 0; j < _searchTree.size(); j++) {
                 conditionPointsUsedCnt = 0;
                 maxLevel = 0;
                 sumCounters = _searchTree.get(j).counter;
                 nodesToCheck.clear();
                 nodesToCheck.add(_searchTree.get(j).children); //Initialize at children in first level
                 //Looping through all the node from top to bottom
-                while(nodesToCheck.size() > 0) {
-                    currentTreeNode = nodesToCheck.get(nodesToCheck.size()-1);
-                    nodesToCheck.remove(nodesToCheck.size()-1);
+                while (nodesToCheck.size() > 0) {
+                    currentTreeNode = nodesToCheck.get(nodesToCheck.size() - 1);
+                    nodesToCheck.remove(nodesToCheck.size() - 1);
                     //Showing the current node value and counter
-                    for ( int i=0; i<currentTreeNode.size(); i++) {
+                    for (int i = 0; i < currentTreeNode.size(); i++) {
                         if (Utility.isNAN(aPartialTemplate.get(currentTreeNode.get(i).level - 1))) {
                             //If the template value is non defined then just go to children
-                           // nodesToCheck.push_front(currentTreeNode.get(i).children);
-                            for(int k =nodesToCheck.size();k>0;--k)
-                            {
-                                nodesToCheck.set(k,nodesToCheck.get((k-1)));
+                            // nodesToCheck.push_front(currentTreeNode.get(i).children);
+                            for (int k = nodesToCheck.size(); k > 0; --k) {
+                                nodesToCheck.set(k, nodesToCheck.get((k - 1)));
                             }
-                            if(nodesToCheck.size() != 0) {
+                            if (nodesToCheck.size() != 0) {
                                 nodesToCheck.set(0, currentTreeNode.get(i).children);
                             }
                         } else if (currentTreeNode.get(i).value == aPartialTemplate.get(currentTreeNode.get(i).level - 1)) {
@@ -286,21 +286,20 @@ public class SNESIMTree extends SNESIM{
                                 maxLevel = currentLevel;
                                 //Restart counter at only maximum level
                                 sumCounters = currentTreeNode.get(i).counter;
-                                conditionPointsUsedCnt ++;
+                                conditionPointsUsedCnt++;
                             } else if (currentLevel == maxLevel) {
                                 //Adding the counter to the sum counters
                                 sumCounters += currentTreeNode.get(i).counter;
                             }
 
                             //Only continue to the children node if the current node counter is big enough or if the number of conditional points used is smaller than a given limit
-                            if(currentTreeNode.get(i).counter > _minNodeCount && (conditionPointsUsedCnt < _maxCondData || _maxCondData == -1)) {
+                            if (currentTreeNode.get(i).counter > _minNodeCount && (conditionPointsUsedCnt < _maxCondData || _maxCondData == -1)) {
                                 //Adding the children node to the list node to be checked
                                 //nodesToCheck.push_front(currentTreeNode.get(i).children);
-                                for(int k =nodesToCheck.size();k>0;--k)
-                                {
-                                    nodesToCheck.set(k,nodesToCheck.get((k-1)));
+                                for (int k = nodesToCheck.size(); k > 0; --k) {
+                                    nodesToCheck.set(k, nodesToCheck.get((k - 1)));
                                 }
-                                if(nodesToCheck.size() != 0) {
+                                if (nodesToCheck.size() != 0) {
                                     nodesToCheck.set(0, currentTreeNode.get(i).children);
                                 }
                             }
@@ -311,16 +310,16 @@ public class SNESIMTree extends SNESIM{
                 //finish searching for a value, now do the sum
                 if (conditionPointsUsedCnt > maxConditionalPoints) {
                     conditionalPoints.clear();
-                    conditionalPoints.put ( _searchTree.get(j).value, sumCounters) ;
+                    conditionalPoints.put(_searchTree.get(j).value, sumCounters);
                     maxConditionalPoints = conditionPointsUsedCnt;
                     //foundValue = _searchTree[level][j].value;
-                } else if(conditionPointsUsedCnt == maxConditionalPoints) {
-                    conditionalPoints.put ( _searchTree.get(j).value, sumCounters );
+                } else if (conditionPointsUsedCnt == maxConditionalPoints) {
+                    conditionalPoints.put(_searchTree.get(j).value, sumCounters);
                 }
             }
 
-            if (_debugMode>1) {
-                _tg1.setElement(sgIdxX,sgIdxY,sgIdxZ, conditionPointsUsedCnt);
+            if (_debugMode > 1) {
+                _tg1.setElement(sgIdxX, sgIdxY, sgIdxZ, conditionPointsUsedCnt);
             }
             //Get the value from cpdf
             foundValue = _cpdf(conditionalPoints, sgIdxX, sgIdxY, sgIdxZ);
@@ -328,9 +327,6 @@ public class SNESIMTree extends SNESIM{
         }
         return foundValue;
     }
-
-
-
 
 
 }

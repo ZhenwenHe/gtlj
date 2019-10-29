@@ -80,26 +80,27 @@ public interface Interval extends Serializable {
 
     /**
      * 计算两个Interval相交的长度
+     *
      * @param q
      * @return
      */
-    default double intersection(Interval q){
-        double s=  Math.min(q.getUpperBound(),getUpperBound())-Math.max(getLowerBound(),q.getLowerBound());
-        if(s<=0)
+    default double intersection(Interval q) {
+        double s = Math.min(q.getUpperBound(), getUpperBound()) - Math.max(getLowerBound(), q.getLowerBound());
+        if (s <= 0)
             return 0;
         else
             return s;
     }
 
-    static Interval create(){
+    static Interval create() {
         return new IntervalImpl();
     }
 
     static Interval create(IntervalType type, double low, double high) {
-        return new IntervalImpl(type,low,high);
+        return new IntervalImpl(type, low, high);
     }
 
-    static Interval create(double low, double high){
-        return new IntervalImpl(low,high);
+    static Interval create(double low, double high) {
+        return new IntervalImpl(low, high);
     }
 }

@@ -13,7 +13,7 @@ public class EnvelopeIntersectsFeatureFilter implements FeatureFilter {
     private final Envelope envelope;
 
     public EnvelopeIntersectsFeatureFilter(Envelope envelope) {
-        this.envelope=envelope.clone();
+        this.envelope = envelope.clone();
     }
 
     public EnvelopeIntersectsFeatureFilter() {
@@ -23,7 +23,7 @@ public class EnvelopeIntersectsFeatureFilter implements FeatureFilter {
     @Override
     public boolean test(Feature feature) {
         Geometry g = feature.getGeometry();
-        if(g==null) return false;
+        if (g == null) return false;
         return this.envelope.intersects(g.getEnvelope());
     }
 

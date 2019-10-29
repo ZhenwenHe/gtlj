@@ -3,12 +3,12 @@ package cn.edu.cug.cs.gtl.ml.classification;
 import cn.edu.cug.cs.gtl.ml.distances.DistanceMetrics;
 import cn.edu.cug.cs.gtl.ml.dataset.DataSet;
 
-public abstract class DefaultClassifier<S,L> implements Classifier<S,L> {
-    DataSet<S,L> trainSet=null;
-    DataSet<S,L> testSet=null;
-    DistanceMetrics<S> distanceMetrics=null;
+public abstract class DefaultClassifier<S, L> implements Classifier<S, L> {
+    DataSet<S, L> trainSet = null;
+    DataSet<S, L> testSet = null;
+    DistanceMetrics<S> distanceMetrics = null;
 
-    protected DefaultClassifier(){
+    protected DefaultClassifier() {
     }
 
     public DefaultClassifier(DataSet<S, L> trainSet, DataSet<S, L> testSet, DistanceMetrics<S> distanceMetrics) {
@@ -29,24 +29,24 @@ public abstract class DefaultClassifier<S,L> implements Classifier<S,L> {
 
     @Override
     public void fit(DataSet<S, L> trainSet) {
-        this.trainSet=trainSet;
+        this.trainSet = trainSet;
     }
 
     @Override
-    public abstract Iterable<L> predict(Iterable<S> testSamples) ;
+    public abstract Iterable<L> predict(Iterable<S> testSamples);
 
     @Override
     public double score(DataSet<S, L> testSet, Iterable<L> predictedLabels) {
-        this.testSet=testSet;
+        this.testSet = testSet;
         double probs = 0.0;
         int count = 0;
-        int i=0;
-        for(L p: predictedLabels){
+        int i = 0;
+        for (L p : predictedLabels) {
             if (this.testSet.getLabel(i).equals(p))
                 count++;
             ++i;
         }
-        probs = count*1.0 / i;
+        probs = count * 1.0 / i;
         return probs;
     }
 
@@ -61,11 +61,12 @@ public abstract class DefaultClassifier<S,L> implements Classifier<S,L> {
     }
 
     @Override
-    public void setTrainSet(DataSet<S,L> dataSet){
-        this.trainSet=dataSet;
+    public void setTrainSet(DataSet<S, L> dataSet) {
+        this.trainSet = dataSet;
     }
+
     @Override
-    public void setTestSet(DataSet<S,L> dataSet){
-        this.testSet=dataSet;
+    public void setTestSet(DataSet<S, L> dataSet) {
+        this.testSet = dataSet;
     }
 }

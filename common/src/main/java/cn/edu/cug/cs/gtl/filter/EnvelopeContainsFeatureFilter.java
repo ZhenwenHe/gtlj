@@ -15,7 +15,7 @@ public class EnvelopeContainsFeatureFilter implements FeatureFilter {
     private final Envelope envelope;
 
     public EnvelopeContainsFeatureFilter(Envelope envelope) {
-        this.envelope=envelope.clone();
+        this.envelope = envelope.clone();
     }
 
     public EnvelopeContainsFeatureFilter() {
@@ -25,7 +25,7 @@ public class EnvelopeContainsFeatureFilter implements FeatureFilter {
     @Override
     public boolean test(Feature feature) {
         Geometry g = feature.getGeometry();
-        if(g==null) return false;
+        if (g == null) return false;
         return this.envelope.contains(g.getEnvelope());
     }
 

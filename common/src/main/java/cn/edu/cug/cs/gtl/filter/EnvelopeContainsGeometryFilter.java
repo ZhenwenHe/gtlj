@@ -8,14 +8,14 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class EnvelopeContainsGeometryFilter implements GeometryFilter{
+public class EnvelopeContainsGeometryFilter implements GeometryFilter {
     private final Envelope envelope;
 
     public EnvelopeContainsGeometryFilter(Envelope envelope) {
-        this.envelope=envelope.clone();
+        this.envelope = envelope.clone();
     }
 
-    public EnvelopeContainsGeometryFilter(){
+    public EnvelopeContainsGeometryFilter() {
         this(Envelope.create(Config.getDimension()));
     }
 

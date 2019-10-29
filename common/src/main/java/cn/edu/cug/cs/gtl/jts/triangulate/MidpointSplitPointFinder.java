@@ -46,7 +46,7 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
  * <li>The point on the segment which is the same distance from an endpoint as the encroaching
  * point
  * </ul>
- * 
+ *
  * @author Martin Davis
  */
 public class MidpointSplitPointFinder implements ConstraintSplitPointFinder {

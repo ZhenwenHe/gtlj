@@ -8,25 +8,25 @@ import java.util.Arrays;
 /**
  * Geo3dML
  */
-public class CubicalMesh extends HexahedralMesh{
+public class CubicalMesh extends HexahedralMesh {
 
     private static final long serialVersionUID = -2390373016302672615L;
 
     private double xStep;
     private double yStep;
     private double zStep;
-    private int    xCellNumber;
-    private int    yCellNumber;
-    private int    zCellNumber;
+    private int xCellNumber;
+    private int yCellNumber;
+    private int zCellNumber;
 
 
     public CubicalMesh() {
-        this.geometryType=CUBICALMESH;
+        this.geometryType = CUBICALMESH;
     }
 
     public CubicalMesh(int dim) {
         super(dim);
-        this.geometryType=CUBICALMESH;
+        this.geometryType = CUBICALMESH;
     }
 
     public CubicalMesh(Vector origin, double xStep, double yStep, double zStep, int xCellNumber, int yCellNumber, int zCellNumber) {
@@ -36,7 +36,7 @@ public class CubicalMesh extends HexahedralMesh{
         this.xCellNumber = xCellNumber;
         this.yCellNumber = yCellNumber;
         this.zCellNumber = zCellNumber;
-        this.geometryType=CUBICALMESH;
+        this.geometryType = CUBICALMESH;
         setOrigin(origin);
     }
 
@@ -52,24 +52,24 @@ public class CubicalMesh extends HexahedralMesh{
 
     /**
      * 获取单体的个数
+     *
      * @return
      */
     public int getCellNumber() {
-        return xCellNumber*yCellNumber*zCellNumber;
+        return xCellNumber * yCellNumber * zCellNumber;
     }
 
-    public Vector getOrigin(){
-        if(this.coordinates==null)
+    public Vector getOrigin() {
+        if (this.coordinates == null)
             return null;
         return this.coordinates.getVector(0);
     }
 
-    public void setOrigin(Vector v){
-        if(this.coordinates==null){
-            this.coordinates = VectorSequence.create(1,v.getDimension());
+    public void setOrigin(Vector v) {
+        if (this.coordinates == null) {
+            this.coordinates = VectorSequence.create(1, v.getDimension());
             this.coordinates.add(v);
-        }
-        else {
+        } else {
             this.coordinates.getVector(0).reset(v.getCoordinates());
         }
     }
@@ -123,27 +123,27 @@ public class CubicalMesh extends HexahedralMesh{
         this.zCellNumber = zCellNumber;
     }
 
-    public double[] getCellProperties(int x,int y, int z) {
-        return super.getCellProperties(getCellOrder(x,y,z));
+    public double[] getCellProperties(int x, int y, int z) {
+        return super.getCellProperties(getCellOrder(x, y, z));
     }
 
-    public int getCellOrder(int x, int y ,int z){
-        return z*xCellNumber*yCellNumber+y*xCellNumber+x;
+    public int getCellOrder(int x, int y, int z) {
+        return z * xCellNumber * yCellNumber + y * xCellNumber + x;
     }
 
-    public Cuboid getCell(int x, int y ,int z){
+    public Cuboid getCell(int x, int y, int z) {
         return null;
     }
 
     @Override
     public CubicalMesh clone() {
-        CubicalMesh p = (CubicalMesh)super.clone();
-        p.xCellNumber=this.xCellNumber;
-        p.yCellNumber=this.yCellNumber;
-        p.zCellNumber=this.zCellNumber;
-        p.xStep=this.xStep;
-        p.yStep=this.yStep;
-        p.zStep=this.zStep;
+        CubicalMesh p = (CubicalMesh) super.clone();
+        p.xCellNumber = this.xCellNumber;
+        p.yCellNumber = this.yCellNumber;
+        p.zCellNumber = this.zCellNumber;
+        p.xStep = this.xStep;
+        p.yStep = this.yStep;
+        p.zStep = this.zStep;
         return p;
     }
 
@@ -151,14 +151,15 @@ public class CubicalMesh extends HexahedralMesh{
     @Override
     public boolean load(DataInput in) throws IOException {
         super.load(in);
-        xStep=in.readDouble();
-        yStep=in.readDouble();
-        zStep=in.readDouble();
-        xCellNumber=in.readInt();
-        yCellNumber=in.readInt();
-        zCellNumber=in.readInt();
+        xStep = in.readDouble();
+        yStep = in.readDouble();
+        zStep = in.readDouble();
+        xCellNumber = in.readInt();
+        yCellNumber = in.readInt();
+        zCellNumber = in.readInt();
         return true;
     }
+
     @Override
     public boolean store(DataOutput out) throws IOException {
         super.store(out);
@@ -173,7 +174,7 @@ public class CubicalMesh extends HexahedralMesh{
 
     @Override
     public long getByteArraySize() {
-        long len=  super.getByteArraySize()+8*3+4*3;
+        long len = super.getByteArraySize() + 8 * 3 + 4 * 3;
         return len;
     }
 

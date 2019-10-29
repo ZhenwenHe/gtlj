@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
- */ 
+ */
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -67,7 +67,7 @@ public class CurvedGeometries {
      * @return
      */
     public static boolean isCircle(Geometry geom) {
-        if(geom.isEmpty()) {
+        if (geom.isEmpty()) {
             return false;
         }
         if (!(geom instanceof CircularRing) && !(geom instanceof CompoundRing)) {

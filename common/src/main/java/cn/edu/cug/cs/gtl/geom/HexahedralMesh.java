@@ -1,6 +1,6 @@
 package cn.edu.cug.cs.gtl.geom;
 
-public class HexahedralMesh extends PolyhedralMesh{
+public class HexahedralMesh extends PolyhedralMesh {
 
     private static final long serialVersionUID = -5705599883721052654L;
 

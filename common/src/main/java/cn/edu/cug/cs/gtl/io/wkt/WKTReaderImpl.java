@@ -7,7 +7,7 @@ import cn.edu.cug.cs.gtl.exception.ParseException;
 import java.io.*;
 import java.util.ArrayList;
 
-public class WKTReaderImpl implements WKTReader , Serializable{
+public class WKTReaderImpl implements WKTReader, Serializable {
     private static final long serialVersionUID = 1L;
 
     private static final String EMPTY = "EMPTY";
@@ -17,32 +17,31 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     private static final String NAN_SYMBOL = "NaN";
     private static final String DOUBLE_QUOTE = "\"";
     private static final String SINGLE_QUOTE = "\'";
- 
+
     private PrecisionModel precisionModel;
     private StreamTokenizer tokenizer;
 
-    
+
     public WKTReaderImpl() {
         precisionModel = new PrecisionModel();
     }
 
-    public Geometry read(String wellKnownText)   {
+    public Geometry read(String wellKnownText) {
         //remove the quotes in the string
-        if(wellKnownText.substring(0,1).equals(DOUBLE_QUOTE))
-            wellKnownText = wellKnownText.replace(DOUBLE_QUOTE,"");
-        if(wellKnownText.substring(0,1).equals(SINGLE_QUOTE))
-            wellKnownText = wellKnownText.replace(SINGLE_QUOTE,"");
+        if (wellKnownText.substring(0, 1).equals(DOUBLE_QUOTE))
+            wellKnownText = wellKnownText.replace(DOUBLE_QUOTE, "");
+        if (wellKnownText.substring(0, 1).equals(SINGLE_QUOTE))
+            wellKnownText = wellKnownText.replace(SINGLE_QUOTE, "");
 
         StringReader reader = new StringReader(wellKnownText);
         try {
             return read(reader);
-        }
-        finally {
+        } finally {
             reader.close();
         }
     }
 
-    public Geometry read(Reader reader)  {
+    public Geometry read(Reader reader) {
         tokenizer = new StreamTokenizer(reader);
         // set tokenizer to NOT parse numbers
         tokenizer.resetSyntax();
@@ -58,8 +57,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
 
         try {
             return readGeometryTaggedText();
-        }
-        catch (IOException | ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
             return null;
         }
@@ -68,7 +66,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     private Vector[] getCoordinates() throws IOException, ParseException {
         String nextToken = getNextEmptyOrOpener();
         if (nextToken.equals(EMPTY)) {
-            return new Vector[] {};
+            return new Vector[]{};
         }
         ArrayList coordinates = new ArrayList();
         coordinates.add(getPreciseCoordinate());
@@ -95,18 +93,16 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     }
 
     private Vector getPreciseCoordinate()
-            throws IOException, ParseException
-    {
+            throws IOException, ParseException {
         double x = getNextNumber();
         double y = getNextNumber();
         if (isNumberNext()) {
             double z = getNextNumber();
-            Vector coord = Vector.create(x,y,z);
+            Vector coord = Vector.create(x, y, z);
             precisionModel.makePrecise(coord);
             return coord;
-        }
-        else {
-            Vector coord = Vector.create(x,y);
+        } else {
+            Vector coord = Vector.create(x, y);
             precisionModel.makePrecise(coord);
             return coord;
         }
@@ -123,16 +119,13 @@ public class WKTReaderImpl implements WKTReader , Serializable{
             ParseException {
         int type = tokenizer.nextToken();
         switch (type) {
-            case StreamTokenizer.TT_WORD:
-            {
+            case StreamTokenizer.TT_WORD: {
                 if (tokenizer.sval.equalsIgnoreCase(NAN_SYMBOL)) {
                     return Double.NaN;
-                }
-                else {
+                } else {
                     try {
                         return Double.parseDouble(tokenizer.sval);
-                    }
-                    catch (NumberFormatException ex) {
+                    } catch (NumberFormatException ex) {
                         parseErrorWithLine("Invalid number: " + tokenizer.sval);
                     }
                 }
@@ -181,9 +174,12 @@ public class WKTReaderImpl implements WKTReader , Serializable{
                     return EMPTY;
                 return word;
 
-            case '(': return L_PAREN;
-            case ')': return R_PAREN;
-            case ',': return COMMA;
+            case '(':
+                return L_PAREN;
+            case ')':
+                return R_PAREN;
+            case ',':
+                return COMMA;
         }
         parseErrorExpected("word");
         return null;
@@ -196,7 +192,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     }
 
     private void parseErrorExpected(String expected)
-            throws ParseException    {
+            throws ParseException {
         // throws Asserts for tokens that should never be seen
         if (tokenizer.ttype == StreamTokenizer.TT_NUMBER)
             assert false;//Assert.shouldNeverReachHere("Unexpected NUMBER token");
@@ -208,7 +204,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     }
 
     private void parseErrorWithLine(String msg)
-            throws ParseException    {
+            throws ParseException {
         throw new ParseException(msg + " (line " + tokenizer.lineno() + ")");
     }
 
@@ -217,14 +213,16 @@ public class WKTReaderImpl implements WKTReader , Serializable{
      *
      * @return a description of the current token
      */
-    private String tokenString()    {
+    private String tokenString() {
         switch (tokenizer.ttype) {
             case StreamTokenizer.TT_NUMBER:
                 return "<NUMBER>";
             case StreamTokenizer.TT_EOL:
                 return "End-of-Line";
-            case StreamTokenizer.TT_EOF: return "End-of-Stream";
-            case StreamTokenizer.TT_WORD: return "'" + tokenizer.sval + "'";
+            case StreamTokenizer.TT_EOF:
+                return "End-of-Stream";
+            case StreamTokenizer.TT_WORD:
+                return "'" + tokenizer.sval + "'";
         }
         return "'" + (char) tokenizer.ttype + "'";
     }
@@ -232,36 +230,29 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     private Geometry readGeometryTaggedText() throws IOException, ParseException {
         String type = null;
 
-        try{
+        try {
             type = getNextWord();
-        }catch(IOException e){
+        } catch (IOException e) {
             return null;
-        }catch(ParseException e){
+        } catch (ParseException e) {
             return null;
         }
 
         if (type.equalsIgnoreCase("POINT")) {
             return readPointText();
-        }
-        else if (type.equalsIgnoreCase("LINESTRING")) {
+        } else if (type.equalsIgnoreCase("LINESTRING")) {
             return readLineStringText();
-        }
-        else if (type.equalsIgnoreCase("LINEARRING")) {
+        } else if (type.equalsIgnoreCase("LINEARRING")) {
             return readLinearRingText();
-        }
-        else if (type.equalsIgnoreCase("POLYGON")) {
+        } else if (type.equalsIgnoreCase("POLYGON")) {
             return readPolygonText();
-        }
-        else if (type.equalsIgnoreCase("MULTIPOINT")) {
+        } else if (type.equalsIgnoreCase("MULTIPOINT")) {
             return readMultiPointText();
-        }
-        else if (type.equalsIgnoreCase("MULTILINESTRING")) {
+        } else if (type.equalsIgnoreCase("MULTILINESTRING")) {
             return readMultiLineStringText();
-        }
-        else if (type.equalsIgnoreCase("MULTIPOLYGON")) {
+        } else if (type.equalsIgnoreCase("MULTIPOLYGON")) {
             return readMultiPolygonText();
-        }
-        else if (type.equalsIgnoreCase("GEOMETRYCOLLECTION")) {
+        } else if (type.equalsIgnoreCase("GEOMETRYCOLLECTION")) {
             return readGeometryCollectionText();
         }
         parseErrorWithLine("Unknown geometry type: " + type);
@@ -272,7 +263,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     private Point readPointText() throws IOException, ParseException {
         String nextToken = getNextEmptyOrOpener();
         if (nextToken.equals(EMPTY)) {
-            return new Point(Vector.NULL_ORDINATE,Vector.NULL_ORDINATE);
+            return new Point(Vector.NULL_ORDINATE, Vector.NULL_ORDINATE);
         }
         Point point = new Point(getPreciseCoordinate());
         getNextCloser();
@@ -285,8 +276,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
 
 
     private LinearRing readLinearRingText()
-            throws IOException, ParseException
-    {
+            throws IOException, ParseException {
         return new LinearRing(getCoordinates());
     }
 
@@ -294,8 +284,7 @@ public class WKTReaderImpl implements WKTReader , Serializable{
     private static final boolean ALLOW_OLD_JTS_MULTIPOINT_SYNTAX = true;
 
 
-    private MultiPoint readMultiPointText() throws IOException, ParseException
-    {
+    private MultiPoint readMultiPointText() throws IOException, ParseException {
         String nextToken = getNextEmptyOrOpener();
         if (nextToken.equals(EMPTY)) {
             return new MultiPoint(new Point[0]);

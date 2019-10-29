@@ -44,24 +44,23 @@ import java.util.*;
  *
  * @version 1.7
  */
-public interface Noder
-{
+public interface Noder {
 
-  /**
-   * Computes the noding for a collection of {@link SegmentString}s.
-   * Some Noders may add all these nodes to the input SegmentStrings;
-   * others may only add some or none at all.
-   *
-   * @param segStrings a collection of {@link SegmentString}s to node
-   */
-  void computeNodes(Collection segStrings);
+    /**
+     * Computes the noding for a collection of {@link SegmentString}s.
+     * Some Noders may add all these nodes to the input SegmentStrings;
+     * others may only add some or none at all.
+     *
+     * @param segStrings a collection of {@link SegmentString}s to node
+     */
+    void computeNodes(Collection segStrings);
 
-  /**
-   * Returns a {@link Collection} of fully noded {@link SegmentString}s.
-   * The SegmentStrings have the same context as their parent.
-   *
-   * @return a Collection of SegmentStrings
-   */
-  Collection getNodedSubstrings();
+    /**
+     * Returns a {@link Collection} of fully noded {@link SegmentString}s.
+     * The SegmentStrings have the same context as their parent.
+     *
+     * @return a Collection of SegmentStrings
+     */
+    Collection getNodedSubstrings();
 
 }

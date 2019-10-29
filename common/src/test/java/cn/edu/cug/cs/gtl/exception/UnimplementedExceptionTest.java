@@ -20,16 +20,15 @@ public class UnimplementedExceptionTest {
     }
 
     @Test
-    public void addTest(){
+    public void addTest() {
         try {
 
             Vector v = Vector.create();
             Class<?> cls = v.getClass();
             Method m = cls.getMethod("add", Vector.class);
-            UnimplementedException e =  new UnimplementedException(cls.getName() +"." + m.getName());
-            assertTrue(e.getMessage().compareTo("VectorImpl.add")!=0);
-        }
-        catch (Exception e){
+            UnimplementedException e = new UnimplementedException(cls.getName() + "." + m.getName());
+            assertTrue(e.getMessage().compareTo("VectorImpl.add") != 0);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

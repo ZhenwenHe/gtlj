@@ -13,9 +13,9 @@ public interface DefaultStorable extends Storable {
 
     @Override
     default Object clone() {
-        Storable storable=null;
+        Storable storable = null;
         try {
-            storable =this.getClass().newInstance();
+            storable = this.getClass().newInstance();
             storable.loadFromByteArray(this.storeToByteArray());
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -30,7 +30,7 @@ public interface DefaultStorable extends Storable {
     @Override
     default boolean load(DataInput in) throws IOException {
         try {
-            StorableObjectStoreUtil.load(in,this);
+            StorableObjectStoreUtil.load(in, this);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
             return false;
@@ -41,7 +41,7 @@ public interface DefaultStorable extends Storable {
     @Override
     default boolean store(DataOutput out) throws IOException {
         try {
-            StorableObjectStoreUtil.store(out,this);
+            StorableObjectStoreUtil.store(out, this);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
             return false;

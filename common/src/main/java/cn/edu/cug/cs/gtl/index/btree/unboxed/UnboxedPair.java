@@ -25,21 +25,32 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 
 import java.io.*;
 
-/** an implementation of Pair<A,B> in unboxed form */
-public class UnboxedPair<A extends Serializable,B extends Serializable>
-    implements Unboxed<Pair<A,B>> {
+/**
+ * an implementation of Pair<A,B> in unboxed form
+ */
+public class UnboxedPair<A extends Serializable, B extends Serializable>
+        implements Unboxed<Pair<A, B>> {
 
     private final Unboxed<A> ua;
     private final Unboxed<B> ub;
-    public UnboxedPair(Unboxed<A> ua, Unboxed<B> ub) { this.ua = ua; this.ub = ub; }
-    public int getSize() { return ua.getSize()+ub.getSize(); }
-    public Pair<A,B> deserialize(byte[] buf, int ofs) {
-        A a = ua.deserialize(buf, ofs);
-        B b = ub.deserialize(buf, ofs+ua.getSize());
-        return new Pair<A,B>(a,b);
+
+    public UnboxedPair(Unboxed<A> ua, Unboxed<B> ub) {
+        this.ua = ua;
+        this.ub = ub;
     }
-    public void serialize(Pair<A,B> sme, byte[] buf, int ofs) {
+
+    public int getSize() {
+        return ua.getSize() + ub.getSize();
+    }
+
+    public Pair<A, B> deserialize(byte[] buf, int ofs) {
+        A a = ua.deserialize(buf, ofs);
+        B b = ub.deserialize(buf, ofs + ua.getSize());
+        return new Pair<A, B>(a, b);
+    }
+
+    public void serialize(Pair<A, B> sme, byte[] buf, int ofs) {
         ua.serialize(sme.getKey(), buf, ofs);
-        ub.serialize(sme.getValue(), buf, ofs+ua.getSize());
+        ub.serialize(sme.getValue(), buf, ofs + ua.getSize());
     }
 }

@@ -14,9 +14,9 @@ public class MultiLineStringTest {
         double[] d2 = {2.1, 2.2, 2.3};
         VectorSequence coordinate2 = new PackedVectorSequence(d2, 3);
         LineString line2 = new LineString(coordinate2);
-        LineString [] lineStrings={line1,line2};
-        MultiLineString multiLineString=new MultiLineString(lineStrings);
-        MultiLineString m2=multiLineString.clone();
+        LineString[] lineStrings = {line1, line2};
+        MultiLineString multiLineString = new MultiLineString(lineStrings);
+        MultiLineString m2 = multiLineString.clone();
         System.out.println(m2.geometryType);
     }
 }

@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class DTITreeMainApp {
-    public static void main(String [] args) throws IOException{
-        SparkSession spark=SparkSession
+    public static void main(String[] args) throws IOException {
+        SparkSession spark = SparkSession
                 .builder()
                 .master("local[*]")
                 .appName("TITreeTest")
@@ -22,46 +22,46 @@ public class DTITreeMainApp {
         Timeline t = TimelineGenerator.generate();
 
         //2. calculate the min and max values
-        double minTime=TimelineGenerator.timeMinValue;
-        double maxTime= TimelineGenerator.timeMaxValue;
+        double minTime = TimelineGenerator.timeMinValue;
+        double maxTime = TimelineGenerator.timeMaxValue;
         final Triangle triangle = new TriangleShape(
-                new Vector2D(minTime-1,maxTime+1),
-                new Vector2D(maxTime+1,maxTime+1),
-                new Vector2D(minTime-1,minTime-1)
+                new Vector2D(minTime - 1, maxTime + 1),
+                new Vector2D(maxTime + 1, maxTime + 1),
+                new Vector2D(minTime - 1, minTime - 1)
         );
 
-        final TITree<ComplexInterval> tree= new TITree<ComplexInterval>(
-                (TriangleShape)triangle.clone(),
+        final TITree<ComplexInterval> tree = new TITree<ComplexInterval>(
+                (TriangleShape) triangle.clone(),
                 1024,
                 sm,
                 JavaSparkContext.fromSparkContext(spark.sparkContext())
         );
 
         //1.load data from file
-        System.out.println("begin load data:"+System.currentTimeMillis());
+        System.out.println("begin load data:" + System.currentTimeMillis());
         JavaRDD<ComplexInterval> data = spark
                 .sparkContext()
-                .textFile(TimelineGenerator.outputFileName,1)
+                .textFile(TimelineGenerator.outputFileName, 1)
                 .toJavaRDD()                                  //JavaRDD<String>
-                .map(r-> GeomSuits.createTimeline(r)) //JavaRDD<Timeline>
-                .flatMap(r->r.getLabeledIntervals().iterator())//JavaRDD<ComplexInterval>
-                .filter(r->triangle.contains(r.getLowerBound(),r.getUpperBound()));
+                .map(r -> GeomSuits.createTimeline(r)) //JavaRDD<Timeline>
+                .flatMap(r -> r.getLabeledIntervals().iterator())//JavaRDD<ComplexInterval>
+                .filter(r -> triangle.contains(r.getLowerBound(), r.getUpperBound()));
 
-        System.out.println("end load data:"+System.currentTimeMillis());
+        System.out.println("end load data:" + System.currentTimeMillis());
 
-        System.out.println("begin collect:"+System.currentTimeMillis());
-        List<ComplexInterval> list= data.collect();
+        System.out.println("begin collect:" + System.currentTimeMillis());
+        List<ComplexInterval> list = data.collect();
 
-        System.out.println("end collect:"+System.currentTimeMillis());
+        System.out.println("end collect:" + System.currentTimeMillis());
 
-        long  time0=System.currentTimeMillis();
-        System.out.println("begin insert:"+System.currentTimeMillis());
-        int i=0;
+        long time0 = System.currentTimeMillis();
+        System.out.println("begin insert:" + System.currentTimeMillis());
+        int i = 0;
         System.out.println("begin insert " + i + " time:" + System.currentTimeMillis());
-       for(ComplexInterval li:list){
-           tree.insert(li);
-           i++;
-       }
+        for (ComplexInterval li : list) {
+            tree.insert(li);
+            i++;
+        }
         System.out.println("end insert " + i + " time:" + System.currentTimeMillis());
         return;
 //        data.foreach(r->tree.insert(r));

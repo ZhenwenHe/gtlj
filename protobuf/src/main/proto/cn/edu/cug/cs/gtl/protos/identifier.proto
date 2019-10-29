@@ -3,16 +3,15 @@ syntax = "proto3";
 package cn.edu.cug.cs.gtl.protos;
 
 
-
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
 
 option cc_enable_arenas = true;
 
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Identifiers";
 
 
-message Identifier{
-    uint64 data=1;
+message Identifier {
+    uint64 data = 1;
 }

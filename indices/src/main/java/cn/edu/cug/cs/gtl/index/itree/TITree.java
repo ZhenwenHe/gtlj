@@ -11,19 +11,19 @@ import org.apache.spark.api.java.JavaSparkContext;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TITree <T extends Interval> extends TDTree<T> {
+public class TITree<T extends Interval> extends TDTree<T> {
 
     private static final long serialVersionUID = 1L;
 
 
-    public TITree(TriangleShape root, int leafCapacity, StorageManager sm, JavaSparkContext jsc){
-        super(root,leafCapacity,sm,jsc);
+    public TITree(TriangleShape root, int leafCapacity, StorageManager sm, JavaSparkContext jsc) {
+        super(root, leafCapacity, sm, jsc);
     }
 
     @Override
     public boolean insert(T i) {
-        int r = test(this.baseTriangle,i);
-        if(r==0)
+        int r = test(this.baseTriangle, i);
+        if (r == 0)
             extend(i);
         return super.insert(i);
     }
@@ -47,16 +47,17 @@ public class TITree <T extends Interval> extends TDTree<T> {
         constructedRDD.set(false);
         constructRDD();
     }
+
     /**
      * 以传入的节点为基准三角形，进行范围扩展， 并返回扩展后的父节点
      * 图形参考 spatio-temporal query.vsox->extension->left extension
-     *        newRoot
+     * newRoot
      * left              right
-     *           rootNode     right
+     * rootNode     right
      *
      * @return
      */
-    void leftExtension( ) {
+    void leftExtension() {
         //triangle ABC
         TriangleShape ABC = this.baseTriangle;
 
@@ -70,7 +71,7 @@ public class TITree <T extends Interval> extends TDTree<T> {
         //triangle GCK
         TriangleShape GCK = new TriangleShape(V0, V1, V2);
         //triangle BKG
-        TriangleShape BKG= GCK.leftTriangle();
+        TriangleShape BKG = GCK.leftTriangle();
         //triangle BGC
         TriangleShape BGC = GCK.rightTriangle();
         //triangle ABG
@@ -83,9 +84,9 @@ public class TITree <T extends Interval> extends TDTree<T> {
         //3.reset TriangleEncoder
         this.triangleEncoder.reset(baseTriangle);
         //4. generate new leafInfos
-        Map<String,Identifier> newMap = new HashMap<>();
-        for(Map.Entry<String,Identifier> e: leafInfos.entrySet()){
-            newMap.put("110"+e.getKey().substring(1),e.getValue());
+        Map<String, Identifier> newMap = new HashMap<>();
+        for (Map.Entry<String, Identifier> e : leafInfos.entrySet()) {
+            newMap.put("110" + e.getKey().substring(1), e.getValue());
         }
         //5.insert empty leaf node ABG
         newMap.put("111", Identifier.create(-1L));
@@ -98,13 +99,13 @@ public class TITree <T extends Interval> extends TDTree<T> {
     /**
      * 以传入的节点为基准三角形，进行范围扩展， 并返回扩展后的父节点
      * 图形参考 spatio-temporal query.vsox->extension->right extension
-     *                 newRoot
-     *         left              right(leaf)
+     * newRoot
+     * left              right(leaf)
      * left（leaf)  rootNode
      *
      * @return
      */
-    void rightExtension( ) {
+    void rightExtension() {
         //triangle ABC
         TriangleShape ABC = this.baseTriangle;
 
@@ -118,7 +119,7 @@ public class TITree <T extends Interval> extends TDTree<T> {
         //triangle DEB
         TriangleShape DEB = new TriangleShape(V0, V1, V2);
         //triangle CBD
-        TriangleShape CBD= DEB.leftTriangle();
+        TriangleShape CBD = DEB.leftTriangle();
         //triangle CDE
         TriangleShape CDE = DEB.rightTriangle();
         //triangle ADC
@@ -131,9 +132,9 @@ public class TITree <T extends Interval> extends TDTree<T> {
         //3.reset TriangleEncoder
         this.triangleEncoder.reset(baseTriangle);
         //4. generate new leafInfos
-        Map<String,Identifier> newMap = new HashMap<>();
-        for(Map.Entry<String,Identifier> e: leafInfos.entrySet()){
-            newMap.put("101"+e.getKey().substring(1),e.getValue());
+        Map<String, Identifier> newMap = new HashMap<>();
+        for (Map.Entry<String, Identifier> e : leafInfos.entrySet()) {
+            newMap.put("101" + e.getKey().substring(1), e.getValue());
         }
         //5.insert empty leaf node ADC
         newMap.put("100", Identifier.create(-1L));

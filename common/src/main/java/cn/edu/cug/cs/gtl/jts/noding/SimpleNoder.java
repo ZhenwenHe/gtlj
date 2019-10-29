@@ -46,40 +46,36 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
  * @version 1.7
  */
 public class SimpleNoder
-    extends SinglePassNoder
-{
+        extends SinglePassNoder {
 
-  private Collection nodedSegStrings;
+    private Collection nodedSegStrings;
 
-  public SimpleNoder() {
-  }
-
-  public Collection getNodedSubstrings()
-  {
-    return  NodedSegmentString.getNodedSubstrings(nodedSegStrings);
-  }
-
-  public void computeNodes(Collection inputSegStrings)
-  {
-    this.nodedSegStrings = inputSegStrings;
-    for (Iterator i0 = inputSegStrings.iterator(); i0.hasNext(); ) {
-      SegmentString edge0 = (SegmentString) i0.next();
-      for (Iterator i1 = inputSegStrings.iterator(); i1.hasNext(); ) {
-        SegmentString edge1 = (SegmentString) i1.next();
-        computeIntersects(edge0, edge1);
-      }
+    public SimpleNoder() {
     }
-  }
 
-  private void computeIntersects(SegmentString e0, SegmentString e1)
-  {
-    Coordinate[] pts0 = e0.getCoordinates();
-    Coordinate[] pts1 = e1.getCoordinates();
-    for (int i0 = 0; i0 < pts0.length - 1; i0++) {
-      for (int i1 = 0; i1 < pts1.length - 1; i1++) {
-        segInt.processIntersections(e0, i0, e1, i1);
-      }
+    public Collection getNodedSubstrings() {
+        return NodedSegmentString.getNodedSubstrings(nodedSegStrings);
     }
-  }
+
+    public void computeNodes(Collection inputSegStrings) {
+        this.nodedSegStrings = inputSegStrings;
+        for (Iterator i0 = inputSegStrings.iterator(); i0.hasNext(); ) {
+            SegmentString edge0 = (SegmentString) i0.next();
+            for (Iterator i1 = inputSegStrings.iterator(); i1.hasNext(); ) {
+                SegmentString edge1 = (SegmentString) i1.next();
+                computeIntersects(edge0, edge1);
+            }
+        }
+    }
+
+    private void computeIntersects(SegmentString e0, SegmentString e1) {
+        Coordinate[] pts0 = e0.getCoordinates();
+        Coordinate[] pts1 = e1.getCoordinates();
+        for (int i0 = 0; i0 < pts0.length - 1; i0++) {
+            for (int i1 = 0; i1 < pts1.length - 1; i1++) {
+                segInt.processIntersections(e0, i0, e1, i1);
+            }
+        }
+    }
 
 }

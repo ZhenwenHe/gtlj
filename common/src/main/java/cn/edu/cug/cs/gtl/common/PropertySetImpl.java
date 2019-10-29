@@ -16,6 +16,7 @@ import java.util.Map;
 class PropertySetImpl extends HashMap<String, Variant> implements PropertySet {
 
     private static final long serialVersionUID = 1L;
+
     /**
      *
      */

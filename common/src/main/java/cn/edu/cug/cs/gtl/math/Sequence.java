@@ -65,22 +65,23 @@ public class Sequence implements Storable {
     }
 
     public Sequence(double dBegin, double end) {
-       this(dBegin,end,1);
+        this(dBegin, end, 1);
     }
 
-    public int size(){
-        return (int)((dEnd-dBegin)/dStep);
+    public int size() {
+        return (int) ((dEnd - dBegin) / dStep);
     }
+
     @Override
     public Object clone() {
-        return new Sequence(this.dBegin,this.dEnd,this.dStep);
+        return new Sequence(this.dBegin, this.dEnd, this.dStep);
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.dBegin =in.readDouble();
-        this.dEnd =in.readDouble();
-        this.dStep =in.readDouble();
+        this.dBegin = in.readDouble();
+        this.dEnd = in.readDouble();
+        this.dStep = in.readDouble();
         return true;
     }
 
@@ -92,20 +93,20 @@ public class Sequence implements Storable {
         return true;
     }
 
-    public static Sequence plus(Sequence s,double x){
-        return new Sequence(s.dBegin +x,s.dEnd +x,s.dStep);
+    public static Sequence plus(Sequence s, double x) {
+        return new Sequence(s.dBegin + x, s.dEnd + x, s.dStep);
     }
 
-    public static Sequence minus(Sequence s,double x){
-        return new Sequence(s.dBegin -x,s.dEnd -x,s.dStep);
+    public static Sequence minus(Sequence s, double x) {
+        return new Sequence(s.dBegin - x, s.dEnd - x, s.dStep);
     }
 
-    public static Sequence multiply(Sequence s,double x){
-        return new Sequence(s.dBegin *x,s.dEnd *x,s.dStep *x);
+    public static Sequence multiply(Sequence s, double x) {
+        return new Sequence(s.dBegin * x, s.dEnd * x, s.dStep * x);
     }
 
-    public static Sequence divide(Sequence s,double x){
-        return new Sequence(s.dBegin /x,s.dEnd /x,s.dStep /x);
+    public static Sequence divide(Sequence s, double x) {
+        return new Sequence(s.dBegin / x, s.dEnd / x, s.dStep / x);
     }
 
 

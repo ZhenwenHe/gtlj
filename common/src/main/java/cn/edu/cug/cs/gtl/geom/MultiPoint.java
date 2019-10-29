@@ -18,7 +18,6 @@ public class MultiPoint extends GeometryCollection implements Puntal {
     private static final long serialVersionUID = 1L;
 
 
-
     public MultiPoint(Point[] gs) {
         super(gs);
         this.geometryType = MULTIPOINT;
@@ -47,13 +46,13 @@ public class MultiPoint extends GeometryCollection implements Puntal {
     //没有克隆成功
     @Override
     public MultiPoint clone() {
-        MultiPoint p = new MultiPoint( );
+        MultiPoint p = new MultiPoint();
         p.copyFrom(this);
         return p;
     }
 
-    public Point getPoint(int n){
-        return (Point)getGeometry(n);
+    public Point getPoint(int n) {
+        return (Point) getGeometry(n);
     }
 }
 

@@ -10,12 +10,14 @@ import cn.edu.cug.cs.gtl.common.Identifier;
 public interface DataSchema extends Serializable {
     /**
      * 获取数据模式的ID
+     *
      * @return 数据模式的ID
      */
     Identifier getIdentifier();
 
     /**
      * 获取数据模式的名称
+     *
      * @return 数据模式的名称
      */
     String getName();

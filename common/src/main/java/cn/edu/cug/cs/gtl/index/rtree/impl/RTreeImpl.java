@@ -42,10 +42,10 @@ public class RTreeImpl implements RTree, Serializable {
     RegionShape infiniteRegionShape;
     StatisticsImpl stats;
     boolean tightMBRs;
-//    ArrayList<Command> writeNodeCommands;
+    //    ArrayList<Command> writeNodeCommands;
 //    ArrayList<Command> readNodeCommands;
 //    ArrayList<Command> deleteNodeCommands;
-    transient ArrayList<Pair<Command,CommandType>> commands =null;
+    transient ArrayList<Pair<Command, CommandType>> commands = null;
 
     /**
      * String                   Value     Description
@@ -89,8 +89,9 @@ public class RTreeImpl implements RTree, Serializable {
                 32, 0.4, 0.3, true);
     }
 
-    public RTreeImpl(  ) {
+    public RTreeImpl() {
     }
+
     ; // NNEntry
 
     /**
@@ -132,7 +133,7 @@ public class RTreeImpl implements RTree, Serializable {
 //        this.writeNodeCommands = new ArrayList<Command>();
 //        this.readNodeCommands = new ArrayList<Command>();
 //        this.deleteNodeCommands = new ArrayList<Command>();
-        commands =new ArrayList<>();
+        commands = new ArrayList<>();
 
         try {
             Variant v = propSet.getProperty("IndexIdentifier");
@@ -189,7 +190,7 @@ public class RTreeImpl implements RTree, Serializable {
 //        this.writeNodeCommands = new ArrayList<Command>();
 //        this.readNodeCommands = new ArrayList<Command>();
 //        this.deleteNodeCommands = new ArrayList<Command>();
-        commands =new ArrayList<>();
+        commands = new ArrayList<>();
 
         if (indexIdentifier == null) {//new
             this.stats.treeHeight = 1;
@@ -356,11 +357,10 @@ public class RTreeImpl implements RTree, Serializable {
 
     @Override
     public void queryStrategy(QueryStrategy qs) {
-        Identifier next =null;
+        Identifier next = null;
         try {
             next = (Identifier) this.rootIdentifier.clone();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -420,7 +420,7 @@ public class RTreeImpl implements RTree, Serializable {
 //                this.deleteNodeCommands.add(in);
 //                break;
 //        }
-        this.commands.add(new Pair<Command,CommandType>(in,ct));
+        this.commands.add(new Pair<Command, CommandType>(in, ct));
     }
 
     @Override
@@ -810,8 +810,8 @@ public class RTreeImpl implements RTree, Serializable {
 //            for (int cIndex = 0; cIndex < this.writeNodeCommands.size(); ++cIndex) {
 //                this.writeNodeCommands.get(cIndex).execute(n);
 //            }
-            for(Pair<Command,CommandType> p : this.commands){
-                if(p.second()==CommandType.CT_NODEWRITE)
+            for (Pair<Command, CommandType> p : this.commands) {
+                if (p.second() == CommandType.CT_NODEWRITE)
                     p.first().execute(n);
             }
             return page;
@@ -842,8 +842,8 @@ public class RTreeImpl implements RTree, Serializable {
 //            for (int cIndex = 0; cIndex < this.readNodeCommands.size(); ++cIndex) {
 //                this.readNodeCommands.get(cIndex).execute(n);
 //            }
-            for(Pair<Command,CommandType> p : this.commands){
-                if(p.second()==CommandType.CT_NODEREAD)
+            for (Pair<Command, CommandType> p : this.commands) {
+                if (p.second() == CommandType.CT_NODEREAD)
                     p.first().execute(n);
             }
             return n;
@@ -869,8 +869,8 @@ public class RTreeImpl implements RTree, Serializable {
 //        for (int cIndex = 0; cIndex < this.deleteNodeCommands.size(); ++cIndex) {
 //            this.deleteNodeCommands.get(cIndex).execute(n);
 //        }
-        for(Pair<Command,CommandType> p : this.commands){
-            if(p.second()==CommandType.CT_NODEDELETE)
+        for (Pair<Command, CommandType> p : this.commands) {
+            if (p.second() == CommandType.CT_NODEDELETE)
                 p.first().execute(n);
         }
     }
@@ -966,12 +966,12 @@ public class RTreeImpl implements RTree, Serializable {
     }
 
 
-
-    class ValidateEntry implements java.io.Serializable{
+    class ValidateEntry implements java.io.Serializable {
         private static final long serialVersionUID = 1L;
 
         RegionShape parentMBR;
         Node node;
+
         ValidateEntry(RegionShape r, Node pNode) {
             this.parentMBR = (RegionShape) r.clone();
             this.node = pNode;
@@ -981,30 +981,30 @@ public class RTreeImpl implements RTree, Serializable {
 
     /**
      * get all leaf node boundaries
+     *
      * @return
      */
     @Override
-    public List<Envelope> getPartitionEnvelopes(){
+    public List<Envelope> getPartitionEnvelopes() {
 
-        if(this.rootIdentifier==null || this.rootIdentifier.longValue()==StorageManager.NEW_PAGE)
+        if (this.rootIdentifier == null || this.rootIdentifier.longValue() == StorageManager.NEW_PAGE)
             return null;
         Identifier nodePageIdentifier = Identifier.create(this.rootIdentifier);
-        Stack<Identifier>  stack = new Stack<>();
+        Stack<Identifier> stack = new Stack<>();
         stack.push(nodePageIdentifier);
-        nodePageIdentifier=null;
+        nodePageIdentifier = null;
 
         ArrayList<Envelope> results = new ArrayList<>();
 
-        while (stack.empty()==false){
+        while (stack.empty() == false) {
             nodePageIdentifier = stack.pop();
             Node node = readNode(nodePageIdentifier);
-            if(node instanceof RTreeExternalNodeImpl){
+            if (node instanceof RTreeExternalNodeImpl) {
                 results.add(node.getShape().getMBR());
-            }
-            else{
-                for(int i=0;i<4;++i){
+            } else {
+                for (int i = 0; i < 4; ++i) {
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE)
+                    if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE)
                         continue;
                     stack.push(nodePageIdentifier);
                 }

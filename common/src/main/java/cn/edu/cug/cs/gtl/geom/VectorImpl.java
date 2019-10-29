@@ -341,17 +341,18 @@ public class VectorImpl implements Vector {
 
     /**
      * 按照X，Y，Z方向上的坐标分量大小比较，返回1，0，-1
+     *
      * @param o
      * @return
      */
     @Override
-    public int compareTo(Vector o){
+    public int compareTo(Vector o) {
         OrdinateComparator<Vector> c = new OrdinateComparator<>(0);
-        int dim = Math.min(getDimension(),o.getDimension());
-        for(int i=0;i<dim;++i){
+        int dim = Math.min(getDimension(), o.getDimension());
+        for (int i = 0; i < dim; ++i) {
             c.setDimensionOrder(i);
-            int r = c.compare(this,o);
-            if(r!=0) return r;
+            int r = c.compare(this, o);
+            if (r != 0) return r;
         }
         return 0;
     }

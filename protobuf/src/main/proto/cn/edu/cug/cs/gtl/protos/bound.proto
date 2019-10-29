@@ -4,29 +4,29 @@ package cn.edu.cug.cs.gtl.protos;
 
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Bounds";
 
-message Envelope3D{
-    double min_x=1;
-    double min_y=2;
-    double min_z=3;
-    double max_x=4;
-    double max_y=5;
-    double max_z=6;
+message Envelope3D {
+    double min_x = 1;
+    double min_y = 2;
+    double min_z = 3;
+    double max_x = 4;
+    double max_y = 5;
+    double max_z = 6;
 }
 
-message Envelope2D{
-    double min_x=1;
-    double min_y=2;
-    double max_x=4;
-    double max_y=5;
+message Envelope2D {
+    double min_x = 1;
+    double min_y = 2;
+    double max_x = 4;
+    double max_y = 5;
 }
 
-message Sphere3D{
-    double radius=1;
-    double x=2;
-    double y=3;
-    double z=4;
+message Sphere3D {
+    double radius = 1;
+    double x = 2;
+    double y = 3;
+    double z = 4;
 }

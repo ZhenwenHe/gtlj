@@ -23,7 +23,6 @@ import java.util.List;
 
 /**
  * This file is written by students.
- *
  */
 @Deprecated
 public class Main {
@@ -31,9 +30,9 @@ public class Main {
     public static Logger logger = Logger.getLogger(Main.class);
 
 
-    String trainFilePath = Config.getTestInputDirectory()+ cn.edu.cug.cs.gtl.io.File.separator+"UCRArchive_2018"+ cn.edu.cug.cs.gtl.io.File.separator+"BirdChicken"+File.separator+"BirdChicken_TRAIN.tsv";
+    String trainFilePath = Config.getTestInputDirectory() + cn.edu.cug.cs.gtl.io.File.separator + "UCRArchive_2018" + cn.edu.cug.cs.gtl.io.File.separator + "BirdChicken" + File.separator + "BirdChicken_TRAIN.tsv";
 
-    String testFilePath =Config.getTestInputDirectory()+ cn.edu.cug.cs.gtl.io.File.separator+"UCRArchive_2018"+ cn.edu.cug.cs.gtl.io.File.separator+"BirdChicken"+File.separator+"BirdChicken_TEST.tsv";
+    String testFilePath = Config.getTestInputDirectory() + cn.edu.cug.cs.gtl.io.File.separator + "UCRArchive_2018" + cn.edu.cug.cs.gtl.io.File.separator + "BirdChicken" + File.separator + "BirdChicken_TEST.tsv";
 
 
     /**
@@ -49,7 +48,7 @@ public class Main {
      */
     public static ArrayList<Double> dtwList = new ArrayList<>();
     public static ArrayList<Double> saxList = new ArrayList<>();
-    public static  ArrayList<Double> haxList = new ArrayList<>();
+    public static ArrayList<Double> haxList = new ArrayList<>();
     public static ArrayList<Double> euList = new ArrayList<>();
 
 
@@ -64,10 +63,10 @@ public class Main {
             MultiSeries trainMultiSeries = MultiSeries.readTSV(trainFilePath);
             MultiSeries testMultiSeries = MultiSeries.readTSV(testFilePath);
 
-            TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(),testMultiSeries.min()),
-                    Math.max(trainMultiSeries.max(),testMultiSeries.max()));
+            TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(), testMultiSeries.min()),
+                    Math.max(trainMultiSeries.max(), testMultiSeries.max()));
 
-            HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
+            HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10, tioPlane);
             System.out.println(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,10 +74,10 @@ public class Main {
     }
 
 
-    public void timeSeriesClassifier_sax() throws  Exception{
+    public void timeSeriesClassifier_sax() throws Exception {
         BasicConfigurator.configure();
         Layout layout = new PatternLayout("%d %r [%t] %p %c %x - %m%n");
-        Appender appender = new RollingFileAppender(layout,"example.log");
+        Appender appender = new RollingFileAppender(layout, "example.log");
         logger.addAppender(appender);
         try {
 
@@ -94,7 +93,7 @@ public class Main {
     }
 
 
-    public void timeSeriesClassifier_esax() throws  Exception{
+    public void timeSeriesClassifier_esax() throws Exception {
         try {
             MultiSeries trainMultiSeries = MultiSeries.readTSV(trainFilePath);
             MultiSeries testMultiSeries = MultiSeries.readTSV(testFilePath);
@@ -173,30 +172,29 @@ public class Main {
         for (File f : subFile) {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
 
-        for (int k = 0; k < pathSize; k++)
-        {
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
 
-                TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(),testMultiSeries.min()),
-                        Math.max(trainMultiSeries.max(),testMultiSeries.max()));
+                TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(), testMultiSeries.min()),
+                        Math.max(trainMultiSeries.max(), testMultiSeries.max()));
 
-                HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
+                HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10, tioPlane);
                 dtwList.add(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
                 System.out.println(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
             } catch (Exception e) {
@@ -205,9 +203,11 @@ public class Main {
         }
 
     }
+
     /**
      * pathList保存的是根目录下各个数据文件下的训练数据和测试数据的绝对路径
      * nameList保存的是根目录下各个数据文件的名称且只需要跑一遍
+     *
      * @throws Exception
      */
 
@@ -223,23 +223,22 @@ public class Main {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
                 nameList.add(f.getName());
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
 
-        for (int k = 0; k < pathSize; k++)
-        {
+        for (int k = 0; k < pathSize; k++) {
             System.out.print(nameList.get(k) + "\t");
-            for (int w = 5; w < 21; w++){
+            for (int w = 5; w < 21; w++) {
                 try {
                     MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                     MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
@@ -266,34 +265,33 @@ public class Main {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
                 nameList.add(f.getName());
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
         int w = 20;
         int alphabet = 16;
-        System.out.println("w = "+ w +"        "+"alphabet = " + alphabet);
-        for (int k = 0; k < pathSize; k++)
-        {
+        System.out.println("w = " + w + "        " + "alphabet = " + alphabet);
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
-                SaxDistanceMetrics<TimeSeries> disFunc = new SaxDistanceMetrics<>(w,alphabet);
-                SaxTDDistanceMetrics<TimeSeries> disFunc1 = new SaxTDDistanceMetrics<>(w,alphabet);
-                SaxTGDistanceMetrics<TimeSeries> disFunc2 = new SaxTGDistanceMetrics<>(w,alphabet);
-                ESaxDistanceMetrics<TimeSeries> disFunc3 = new ESaxDistanceMetrics<>(w,alphabet);
-                System.out.print(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc)+"        ");
-                System.out.print(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc1)+"        ");
-                System.out.print(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc2)+"        ");
+                SaxDistanceMetrics<TimeSeries> disFunc = new SaxDistanceMetrics<>(w, alphabet);
+                SaxTDDistanceMetrics<TimeSeries> disFunc1 = new SaxTDDistanceMetrics<>(w, alphabet);
+                SaxTGDistanceMetrics<TimeSeries> disFunc2 = new SaxTGDistanceMetrics<>(w, alphabet);
+                ESaxDistanceMetrics<TimeSeries> disFunc3 = new ESaxDistanceMetrics<>(w, alphabet);
+                System.out.print(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc) + "        ");
+                System.out.print(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc1) + "        ");
+                System.out.print(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc2) + "        ");
                 System.out.println(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc3));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -312,26 +310,25 @@ public class Main {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
                 nameList.add(f.getName());
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
 
-        for (int k = 0; k < pathSize; k++)
-        {
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
-                SaxTGDistanceMetrics<TimeSeries> disFunc = new SaxTGDistanceMetrics<>(20,16);
+                SaxTGDistanceMetrics<TimeSeries> disFunc = new SaxTGDistanceMetrics<>(20, 16);
                 System.out.println(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -349,29 +346,28 @@ public class Main {
         for (File f : subFile) {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
 
-        for (int k = 0; k < pathSize; k++)
-        {
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
-                TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(),testMultiSeries.min()),
-                        Math.max(trainMultiSeries.max(),testMultiSeries.max()));
+                TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(), testMultiSeries.min()),
+                        Math.max(trainMultiSeries.max(), testMultiSeries.max()));
 
-                HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
+                HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10, tioPlane);
                 haxList.add(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
                 System.out.println(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
             } catch (Exception e) {
@@ -380,7 +376,6 @@ public class Main {
         }
 
     }
-
 
 
     public void timeSeries_testEu_all() throws Exception {
@@ -394,21 +389,20 @@ public class Main {
         for (File f : subFile) {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
 
-        for (int k = 0; k < pathSize; k++)
-        {
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
@@ -424,12 +418,10 @@ public class Main {
     }
 
 
-
-
     public void timeSeries_testEsax_all() throws Exception {
         BasicConfigurator.configure();
         Layout layout = new PatternLayout("%d %r [%t] %p %c %x - %m%n");
-        Appender appender = new RollingFileAppender(layout,"esax_full.log");
+        Appender appender = new RollingFileAppender(layout, "esax_full.log");
         logger.addAppender(appender);
 
 
@@ -441,38 +433,37 @@ public class Main {
             if (f.isDirectory()) {
                 File[] subFile1 = f.listFiles();
                 nameList.add(f.getName());
-                for (File f1 : subFile1){
-                    if (f1.isFile() && f1.getName().endsWith(".tsv")){
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
                         pathList.add(f1.getPath());
                     }
                 }
             }
         }
-        int pathSize = pathList.size()/2;
-        for (int j = 0; j < pathSize; j++){
-            trainPathList.add(pathList.get(2*j+1));
-            testPathList.add(pathList.get(2*j));
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
         }
 
-        for (int k = 0; k < pathSize; k++)
-        {
+        for (int k = 0; k < pathSize; k++) {
             //System.out.print(nameList.get(k) + "\t");
             //logger.info(nameList.get(k));
-            String log="";
-            for (int w = 5; w < 21; w++){
+            String log = "";
+            for (int w = 5; w < 21; w++) {
                 try {
                     MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                     MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
                     ESaxDistanceMetrics<TimeSeries> disFunc = new ESaxDistanceMetrics<>(w, alphabet);
-                    String res=String.valueOf(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
-                    log +=res+" ";
+                    String res = String.valueOf(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
+                    log += res + " ";
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
             }
-            logger.info(nameList.get(k)+ " "+log);
+            logger.info(nameList.get(k) + " " + log);
             //System.out.println();
         }
         PrintStream out = System.out;
@@ -482,53 +473,52 @@ public class Main {
 
     /**
      * title 得到数据的Excel表的标题
-     *因为跑一个就很慢了所以把四个度量方式的分开写了
+     * 因为跑一个就很慢了所以把四个度量方式的分开写了
+     *
      * @throws Exception
      */
 
 
-
-    public void writeExcel() throws Exception{
-        String[] title = {"DataName","Dtw(error)","Sax(error)","Hax(error)","Eu(error)"};
+    public void writeExcel() throws Exception {
+        String[] title = {"DataName", "Dtw(error)", "Sax(error)", "Hax(error)", "Eu(error)"};
         File file = new File("D:\\gtl\\trunk\\data\\result.xls");
-        try{
+        try {
             file.createNewFile();
             WritableWorkbook workbook = Workbook.createWorkbook(file);
-            WritableSheet sheet = workbook.createSheet("sheet1",0);
+            WritableSheet sheet = workbook.createSheet("sheet1", 0);
             Label label = null;
-            for  (int i =0; i<title.length; i++){
-                label = new Label(i,0,title[i]);
+            for (int i = 0; i < title.length; i++) {
+                label = new Label(i, 0, title[i]);
                 sheet.addCell(label);
             }
 
-            for (int j = 0; j<pathList.size(); j++){
-                label = new Label(0,j,nameList.get(j));
+            for (int j = 0; j < pathList.size(); j++) {
+                label = new Label(0, j, nameList.get(j));
                 sheet.addCell(label);
-                label = new Label(1,j,String.valueOf(dtwList.get(j)));
+                label = new Label(1, j, String.valueOf(dtwList.get(j)));
                 sheet.addCell(label);
-                label = new Label(2,j,String.valueOf(saxList.get(j)));
+                label = new Label(2, j, String.valueOf(saxList.get(j)));
                 sheet.addCell(label);
-                label = new Label(3,j,String.valueOf(haxList.get(j)));
+                label = new Label(3, j, String.valueOf(haxList.get(j)));
                 sheet.addCell(label);
-                label = new Label(4,j,String.valueOf(euList.get(j)));
+                label = new Label(4, j, String.valueOf(euList.get(j)));
                 sheet.addCell(label);
             }
             workbook.write();
             workbook.close();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    public static double oneNNClassifier(MultiSeries trainTimeSeries, MultiSeries testTimeSeries, DistanceMetrics<TimeSeries> disfunc){
-        NNClassifier<TimeSeries,String> classifier=new NNClassifier<>(trainTimeSeries.toTrainSet(),testTimeSeries.toTestSet(),disfunc);
+    public static double oneNNClassifier(MultiSeries trainTimeSeries, MultiSeries testTimeSeries, DistanceMetrics<TimeSeries> disfunc) {
+        NNClassifier<TimeSeries, String> classifier = new NNClassifier<>(trainTimeSeries.toTrainSet(), testTimeSeries.toTestSet(), disfunc);
         return classifier.score();
     }
 
-    public static double kNNClassifier(MultiSeries trainTimeSeries, MultiSeries testTimeSeries, DistanceMetrics<TimeSeries> disfunc){
-        KNNClassifier<TimeSeries,String> classifier=new KNNClassifier<>(trainTimeSeries.toTrainSet(),testTimeSeries.toTestSet(),disfunc);
+    public static double kNNClassifier(MultiSeries trainTimeSeries, MultiSeries testTimeSeries, DistanceMetrics<TimeSeries> disfunc) {
+        KNNClassifier<TimeSeries, String> classifier = new KNNClassifier<>(trainTimeSeries.toTrainSet(), testTimeSeries.toTestSet(), disfunc);
         return classifier.score();
     }
 
@@ -538,39 +528,38 @@ public class Main {
      * 其中trainPathList为训练数据的绝对路径
      * testPathList为测试数据的绝对路径
      */
-        public static List<String> trainPathList = new ArrayList<>();
-        public static List<String> testPathList = new ArrayList<>();
+    public static List<String> trainPathList = new ArrayList<>();
+    public static List<String> testPathList = new ArrayList<>();
 
 
-        public void getDataPath(File file){
-            File[] subFile = file.listFiles();
-            for (File f : subFile) {
-                if (f.isDirectory()) {
-                    File[] subFile1 = f.listFiles();
-                    nameList.add(f.getName());
-                    for (File f1 : subFile1){
-                        if (f1.isFile() && f1.getName().endsWith(".tsv")){
-                            pathList.add(f1.getPath());
-                        }
+    public void getDataPath(File file) {
+        File[] subFile = file.listFiles();
+        for (File f : subFile) {
+            if (f.isDirectory()) {
+                File[] subFile1 = f.listFiles();
+                nameList.add(f.getName());
+                for (File f1 : subFile1) {
+                    if (f1.isFile() && f1.getName().endsWith(".tsv")) {
+                        pathList.add(f1.getPath());
                     }
                 }
             }
-            int pathSize = pathList.size()/2;
-            for (int j = 0; j < pathSize; j++){
-                trainPathList.add(pathList.get(2*j+1));
-                testPathList.add(pathList.get(2*j));
-            }
         }
+        int pathSize = pathList.size() / 2;
+        for (int j = 0; j < pathSize; j++) {
+            trainPathList.add(pathList.get(2 * j + 1));
+            testPathList.add(pathList.get(2 * j));
+        }
+    }
 
-    public  void Sax_all() throws Exception {
-        int pathSize = pathList.size()/2;
-        for (int k = 0; k < pathSize; k++)
-        {
+    public void Sax_all() throws Exception {
+        int pathSize = pathList.size() / 2;
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
-                SaxDistanceMetrics<TimeSeries> disFunc = new SaxDistanceMetrics<>(10,9);
+                SaxDistanceMetrics<TimeSeries> disFunc = new SaxDistanceMetrics<>(10, 9);
                 saxList.add(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
                 System.out.println(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
             } catch (Exception e) {
@@ -579,24 +568,23 @@ public class Main {
         }
     }
 
-    public  void Hax_all() throws Exception {
-        int pathSize = pathList.size()/2;
+    public void Hax_all() throws Exception {
+        int pathSize = pathList.size() / 2;
         File file = new File("D:\\gtl\\trunk\\data\\result.xls");
         Label dis = null;
         WritableWorkbook workbook = Workbook.createWorkbook(file);
-        WritableSheet sheet = workbook.createSheet("sheet1",0);
-        for (int k = 0; k < pathSize; k++)
-        {
+        WritableSheet sheet = workbook.createSheet("sheet1", 0);
+        for (int k = 0; k < pathSize; k++) {
             try {
                 MultiSeries trainMultiSeries = MultiSeries.readTSV(trainPathList.get(k));
                 MultiSeries testMultiSeries = MultiSeries.readTSV(testPathList.get(k));
 
-                TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(),testMultiSeries.min()),
-                        Math.max(trainMultiSeries.max(),testMultiSeries.max()));
+                TIOPlane tioPlane = TIOPlane.of(Math.min(trainMultiSeries.min(), testMultiSeries.min()),
+                        Math.max(trainMultiSeries.max(), testMultiSeries.max()));
 
-                HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10,tioPlane);
+                HaxDistanceMetrics<TimeSeries> disFunc = new HaxDistanceMetrics<>(10, tioPlane);
                 haxList.add(Classification.timeSeriesClassifier(trainMultiSeries, testMultiSeries, disFunc));
-                dis = new Label(1,k,String.valueOf(haxList.get(k)));
+                dis = new Label(1, k, String.valueOf(haxList.get(k)));
                 sheet.addCell(dis);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -607,7 +595,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         File abs = new File("D:\\gtl\\trunk\\data\\UCRArchive_2018");
         Main set = new Main();
         set.getDataPath(abs);

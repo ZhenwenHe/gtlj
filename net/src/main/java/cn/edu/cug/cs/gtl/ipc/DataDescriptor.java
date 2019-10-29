@@ -1,4 +1,5 @@
 package cn.edu.cug.cs.gtl.ipc;
+
 import cn.edu.cug.cs.gtl.io.Storable;
 import org.apache.hadoop.io.Writable;
 
@@ -15,7 +16,7 @@ public class DataDescriptor<T extends Storable>
     }
 
     public DataDescriptor() {
-        this.data=null;
+        this.data = null;
     }
 
     public Storable getData() {
@@ -27,28 +28,27 @@ public class DataDescriptor<T extends Storable>
     }
 
     @Override
-    public Object clone()  {
+    public Object clone() {
         return new DataDescriptor((Storable) this.data.clone());
     }
 
     @Override
     public void copyFrom(Object i) {
-        if(i instanceof DataDescriptor){
-            this.data = (T)((DataDescriptor)i).data.clone();
+        if (i instanceof DataDescriptor) {
+            this.data = (T) ((DataDescriptor) i).data.clone();
         }
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
         try {
-            int len =in.readInt();
-            byte [] bs = new byte[len];
-            in.readFully(bs,0,len);
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-            this.data= (T) ois.readObject();
+            this.data = (T) ois.readObject();
             ois.close();
-        }
-        catch (IOException | ClassNotFoundException e){
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return true;
@@ -60,12 +60,11 @@ public class DataDescriptor<T extends Storable>
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(this.data);
-            byte [] bs = baos.toByteArray();
+            byte[] bs = baos.toByteArray();
             out.writeInt(bs.length);
-            out.write(bs,0,bs.length);
+            out.write(bs, 0, bs.length);
             oos.close();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return true;
@@ -78,19 +77,17 @@ public class DataDescriptor<T extends Storable>
             ObjectOutputStream oos = new ObjectOutputStream(baos);
             oos.writeObject(this.data);
             return baos.size();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return this.data.getByteArraySize();
     }
 
 
-
     public static DataDescriptor read(DataInput in) throws IOException {
         DataDescriptor pd = new DataDescriptor();
         pd.readFields(in);
-        return  pd;
+        return pd;
     }
 
     @Override

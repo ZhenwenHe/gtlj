@@ -4,156 +4,156 @@ package cn.edu.cug.cs.gtl.protos;
 
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Vertices";
 
-message Vertex2d{
-    double x=1;
-    double y=2;
+message Vertex2d {
+    double x = 1;
+    double y = 2;
 }
 
-message Vertex3d{
-     double x=1;
-     double y=2;
-     double z=3;
+message Vertex3d {
+    double x = 1;
+    double y = 2;
+    double z = 3;
 }
 
-message Vertex4d{
-    double x=1;
-    double y=2;
-    double z=3;
-    double w=4;
+message Vertex4d {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double w = 4;
 }
 
-message Vertex2f{
-    float x=1;
-    float y=2;
+message Vertex2f {
+    float x = 1;
+    float y = 2;
 }
 
-message Vertex3f{
-    float x=1;
-    float y=2;
-    float z=3;
+message Vertex3f {
+    float x = 1;
+    float y = 2;
+    float z = 3;
 }
 
-message Vertex4f{
-    float x=1;
-    float y=2;
-    float z=3;
-    float w=4;
+message Vertex4f {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float w = 4;
 }
 
-message Vertex2i{
-    int32 x=1;
-    int32 y=2;
+message Vertex2i {
+    int32 x = 1;
+    int32 y = 2;
 }
 
-message Vertex3i{
-    int32 x=1;
-    int32 y=2;
-    int32 z=3;
+message Vertex3i {
+    int32 x = 1;
+    int32 y = 2;
+    int32 z = 3;
 }
 
-message Vertex4i{
-    int32 x=1;
-    int32 y=2;
-    int32 z=3;
-    int32 w=4;
+message Vertex4i {
+    int32 x = 1;
+    int32 y = 2;
+    int32 z = 3;
+    int32 w = 4;
 }
 
-message ShadedVertex3d3d4f{
-    double x=1;
-    double y=2;
-    double z=3;
-    double nx=4;
-    double ny=5;
-    double nz=6;
-    float  r=7;
-    float  g=8;
-    float  b=9;
-    float  a=10;
+message ShadedVertex3d3d4f {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double nx = 4;
+    double ny = 5;
+    double nz = 6;
+    float r = 7;
+    float g = 8;
+    float b = 9;
+    float a = 10;
 }
 
-message ShadedVertex3f3f4f{
-    float x=1;
-    float y=2;
-    float z=3;
-    float nx=4;
-    float ny=5;
-    float nz=6;
-    float  r=7;
-    float  g=8;
-    float  b=9;
-    float  a=10;
+message ShadedVertex3f3f4f {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float nx = 4;
+    float ny = 5;
+    float nz = 6;
+    float r = 7;
+    float g = 8;
+    float b = 9;
+    float a = 10;
 }
 
-message TexturedVertex3f2f{
-    float x=1;
-    float y=2;
-    float z=3;
-    float u=4;
-    float v=5;
+message TexturedVertex3f2f {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float u = 4;
+    float v = 5;
 }
 
-message TexturedVertex3d2d{
-    double x=1;
-    double y=2;
-    double z=3;
-    double u=4;
-    double v=5;
+message TexturedVertex3d2d {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double u = 4;
+    double v = 5;
 }
 
-message TexturedVertex3d2f{
-    double x=1;
-    double y=2;
-    double z=3;
-    float u=4;
-    float v=5;
+message TexturedVertex3d2f {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    float u = 4;
+    float v = 5;
 }
 
-message VersatileVertex3d3d2d4f{
-    double x=1;
-    double y=2;
-    double z=3;
-    double nx=4;
-    double ny=5;
-    double nz=6;
-    double u=7;
-    double v=8;
-    float  r=9;
-    float  g=10;
-    float  b=11;
-    float  a=12;
+message VersatileVertex3d3d2d4f {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double nx = 4;
+    double ny = 5;
+    double nz = 6;
+    double u = 7;
+    double v = 8;
+    float r = 9;
+    float g = 10;
+    float b = 11;
+    float a = 12;
 }
 
 
-message VersatileVertex3d3d2f4f{
-    double x=1;
-    double y=2;
-    double z=3;
-    double nx=4;
-    double ny=5;
-    double nz=6;
-    float u=7;
-    float v=8;
-    float  r=9;
-    float  g=10;
-    float  b=11;
-    float  a=12;
+message VersatileVertex3d3d2f4f {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+    double nx = 4;
+    double ny = 5;
+    double nz = 6;
+    float u = 7;
+    float v = 8;
+    float r = 9;
+    float g = 10;
+    float b = 11;
+    float a = 12;
 }
 
-message VersatileVertex3f3f2f4f{
-    float x=1;
-    float y=2;
-    float z=3;
-    float nx=4;
-    float ny=5;
-    float nz=6;
-    float u=7;
-    float v=8;
-    float  r=9;
-    float  g=10;
-    float  b=11;
-    float  a=12;
+message VersatileVertex3f3f2f4f {
+    float x = 1;
+    float y = 2;
+    float z = 3;
+    float nx = 4;
+    float ny = 5;
+    float nz = 6;
+    float u = 7;
+    float v = 8;
+    float r = 9;
+    float g = 10;
+    float b = 11;
+    float a = 12;
 }

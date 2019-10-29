@@ -19,14 +19,14 @@ public class MasterDescriptor implements Storable, Writable {
     public MasterDescriptor(String ipAddress, int port) {
         this.ipAddress = ipAddress;
         this.port = port;
-        master=null;
+        master = null;
         slaves = new ArrayList<SlaveDescriptor>();
     }
 
-    public MasterDescriptor( ) {
+    public MasterDescriptor() {
         ipAddress = "127.0.0.1";
         port = 8888;
-        master=null;
+        master = null;
         slaves = new ArrayList<SlaveDescriptor>();
     }
 
@@ -46,8 +46,8 @@ public class MasterDescriptor implements Storable, Writable {
         this.port = port;
     }
 
-    public InetSocketAddress getAddress(){
-        return new InetSocketAddress(ipAddress,port);
+    public InetSocketAddress getAddress() {
+        return new InetSocketAddress(ipAddress, port);
     }
 
     public MasterProtocol getMaster() {
@@ -67,7 +67,7 @@ public class MasterDescriptor implements Storable, Writable {
         this.slaves.addAll(slaves);
     }
 
-    public void addSlave(SlaveDescriptor sd){
+    public void addSlave(SlaveDescriptor sd) {
         this.slaves.add(sd);
     }
 
@@ -95,19 +95,19 @@ public class MasterDescriptor implements Storable, Writable {
 
     @Override
     public Object clone() {
-        MasterDescriptor md = new MasterDescriptor(this.ipAddress,this.port);
-        md.master=this.master;
+        MasterDescriptor md = new MasterDescriptor(this.ipAddress, this.port);
+        md.master = this.master;
         md.slaves.addAll(this.slaves);
         return md;
     }
 
     @Override
     public void copyFrom(Object i) {
-        if(i instanceof MasterDescriptor){
-            MasterDescriptor md = (MasterDescriptor)(i);
-            this.ipAddress=md.ipAddress;
-            this.port=md.port;
-            this.master=md.master;
+        if (i instanceof MasterDescriptor) {
+            MasterDescriptor md = (MasterDescriptor) (i);
+            this.ipAddress = md.ipAddress;
+            this.port = md.port;
+            this.master = md.master;
             this.slaves.clear();
             this.slaves.addAll(md.slaves);
         }
@@ -116,13 +116,13 @@ public class MasterDescriptor implements Storable, Writable {
     @Override
     public boolean load(DataInput in) throws IOException {
         try {
-            int len =in.readInt();
-            byte [] bs = new byte[len];
-            in.readFully(bs,0,len);
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-            this.ipAddress=  (String) ois.readObject();
-            Integer s= (Integer) ois.readObject();
-            this.port=s.intValue();
+            this.ipAddress = (String) ois.readObject();
+            Integer s = (Integer) ois.readObject();
+            this.port = s.intValue();
             /*
             Boolean b =(Boolean) ois.readObject();
             if(!b)
@@ -134,11 +134,10 @@ public class MasterDescriptor implements Storable, Writable {
 
             s = in.readInt();
             this.slaves.clear();
-            for(int i=0;i<s.intValue();++i){
-                this.slaves.add( SlaveDescriptor.read((DataInput)in));
+            for (int i = 0; i < s.intValue(); ++i) {
+                this.slaves.add(SlaveDescriptor.read((DataInput) in));
             }
-        }
-        catch (IOException | ClassNotFoundException|NullPointerException e){
+        } catch (IOException | ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -158,19 +157,18 @@ public class MasterDescriptor implements Storable, Writable {
             if(!b)
                 oos.writeObject(b);
             */
-            byte [] bs = baos.toByteArray();
+            byte[] bs = baos.toByteArray();
             out.writeInt(bs.length);
-            out.write(bs,0,bs.length);
+            out.write(bs, 0, bs.length);
             oos.close();
 
             out.writeInt(this.slaves.size());
-            if(this.slaves.size()>0) {
-                for(SlaveDescriptor p: this.slaves){
+            if (this.slaves.size() > 0) {
+                for (SlaveDescriptor p : this.slaves) {
                     p.write(out);
                 }
             }
-        }
-        catch (IOException | NullPointerException e){
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -192,14 +190,13 @@ public class MasterDescriptor implements Storable, Writable {
             */
             long c = baos.size();
             oos.close();
-            c+=4;
+            c += 4;
 
-            for(SlaveDescriptor p: this.slaves){
-                c+=p.getByteArraySize();
+            for (SlaveDescriptor p : this.slaves) {
+                c += p.getByteArraySize();
             }
             return c;
-        }
-        catch (IOException | NullPointerException e){
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return 0;
@@ -209,7 +206,7 @@ public class MasterDescriptor implements Storable, Writable {
     public static MasterDescriptor read(DataInput in) throws IOException {
         MasterDescriptor pd = new MasterDescriptor();
         pd.readFields(in);
-        return  pd;
+        return pd;
     }
 
     @Override

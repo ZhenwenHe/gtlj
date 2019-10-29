@@ -9,7 +9,7 @@ import cn.edu.cug.cs.gtl.index.Visitor;
 
 import java.io.Serializable;
 
-public abstract class AbstractVisitor implements Visitor, ItemVisitor,Serializable {
+public abstract class AbstractVisitor implements Visitor, ItemVisitor, Serializable {
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -19,21 +19,22 @@ public abstract class AbstractVisitor implements Visitor, ItemVisitor,Serializab
 
     @Override
     public void visitData(Entry[] ev) {
-        for(Entry e : ev){
+        for (Entry e : ev) {
             visitData(e);
         }
     }
+
     @Override
     public void visitItem(Object item) {
-        if(item instanceof Entry)
+        if (item instanceof Entry)
             visitData((Entry) item);
-        else if(item instanceof Geometry){
-            visitGeometry((Geometry)item);
-        }
-        else {
+        else if (item instanceof Geometry) {
+            visitGeometry((Geometry) item);
+        } else {
             visitObject(item);
         }
     }
+
     @Override
     public void visitNode(Node in) {
 

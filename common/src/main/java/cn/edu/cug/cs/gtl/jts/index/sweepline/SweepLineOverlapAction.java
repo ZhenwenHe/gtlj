@@ -42,5 +42,5 @@ package cn.edu.cug.cs.gtl.jts.index.sweepline;
  */
 public interface SweepLineOverlapAction {
 
-  void overlap(SweepLineInterval s0, SweepLineInterval s1);
+    void overlap(SweepLineInterval s0, SweepLineInterval s1);
 }

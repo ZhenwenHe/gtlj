@@ -39,12 +39,12 @@ import java.util.Collection;
  * Locates {@link QuadEdge}s in a {@link QuadEdgeSubdivision},
  * optimizing the search by starting in the
  * locality of the last edge found.
- * 
+ *
  * @author Martin Davis
  */
 public class LastFoundQuadEdgeLocator implements QuadEdgeLocator {
     private QuadEdgeSubdivision subdiv;
-    private QuadEdge            lastEdge = null;
+    private QuadEdge lastEdge = null;
 
     public LastFoundQuadEdgeLocator(QuadEdgeSubdivision subdiv) {
         this.subdiv = subdiv;
@@ -66,7 +66,7 @@ public class LastFoundQuadEdgeLocator implements QuadEdgeLocator {
      * The search starts from the last located edge amd proceeds on the general direction of v.
      */
     public QuadEdge locate(Vertex v) {
-        if (! lastEdge.isLive()) {
+        if (!lastEdge.isLive()) {
             init();
         }
 

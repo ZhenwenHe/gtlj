@@ -29,7 +29,7 @@ public final class MathUtils {
      *
      * @param value The value to compute the logarithm for.
      * @return The logarithm to the base of 2.
-     * @throws ArithmeticException Thrown, if the given value is zero.
+     * @throws ArithmeticException      Thrown, if the given value is zero.
      * @throws IllegalArgumentException Thrown, if the given value is not a power of two.
      */
     public static int log2strict(int value) throws ArithmeticException, IllegalArgumentException {
@@ -126,17 +126,16 @@ public final class MathUtils {
 
         if (code >= 0) {
             return code;
-        }
-        else if (code != Integer.MIN_VALUE) {
+        } else if (code != Integer.MIN_VALUE) {
             return -code;
-        }
-        else {
+        } else {
             return 0;
         }
     }
 
     /**
      * Round the given number to the next power of two.
+     *
      * @param x number to round
      * @return x rounded up to the next power of two
      */
@@ -184,5 +183,6 @@ public final class MathUtils {
     /**
      * Prevent Instantiation through private constructor.
      */
-    private MathUtils() {}
+    private MathUtils() {
+    }
 }

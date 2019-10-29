@@ -25,18 +25,22 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 
 import java.io.*;
 
-/** an example of an AssociativeCommutativeOperation */
+/**
+ * an example of an AssociativeCommutativeOperation
+ */
 public class UnboxedMinMaxHalfDouble<K extends Serializable>
-    extends UnboxedPair<Double,Double>
-    implements
-        AssociativeCommutativeOperation<Pair<Double,Double>>,
-        UnboxedFunction<Pair<K,Double>,Pair<Double,Double>> {
+        extends UnboxedPair<Double, Double>
+        implements
+        AssociativeCommutativeOperation<Pair<Double, Double>>,
+        UnboxedFunction<Pair<K, Double>, Pair<Double, Double>> {
 
     public static final UnboxedMinMaxHalfDouble instance = new UnboxedMinMaxHalfDouble();
 
     private final UnboxedHalfDouble uhd = UnboxedHalfDouble.instance;
 
-    public UnboxedMinMaxHalfDouble() { super(UnboxedHalfDouble.instance, UnboxedHalfDouble.instance); }
+    public UnboxedMinMaxHalfDouble() {
+        super(UnboxedHalfDouble.instance, UnboxedHalfDouble.instance);
+    }
 
     public void call(byte[] buf_kv, int ofs_kv,
                      byte[] buf_s, int ofs_s) {
@@ -46,16 +50,16 @@ public class UnboxedMinMaxHalfDouble<K extends Serializable>
         */
         throw new RuntimeException("not implemented");
     }
-  
+
     public void multiply(byte[] buf1, int ofs1,
                          byte[] buf2, int ofs2,
                          byte[] buf_dest, int ofs_dest) {
         float min1 = uhd.deserializeFloat(buf1, ofs1);
-        float max1 = uhd.deserializeFloat(buf1, ofs1+uhd.getSize());
+        float max1 = uhd.deserializeFloat(buf1, ofs1 + uhd.getSize());
         float min2 = uhd.deserializeFloat(buf2, ofs2);
-        float max2 = uhd.deserializeFloat(buf2, ofs2+uhd.getSize());
-        uhd.serializeFloat(Math.min(min1,min2), buf_dest, ofs_dest);
-        uhd.serializeFloat(Math.max(max1,max2), buf_dest, ofs_dest+uhd.getSize());
+        float max2 = uhd.deserializeFloat(buf2, ofs2 + uhd.getSize());
+        uhd.serializeFloat(Math.min(min1, min2), buf_dest, ofs_dest);
+        uhd.serializeFloat(Math.max(max1, max2), buf_dest, ofs_dest + uhd.getSize());
     }
 
 }

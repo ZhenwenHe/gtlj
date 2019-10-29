@@ -36,7 +36,7 @@ public abstract class NodeImpl implements Node {
     public NodeImpl(Identifier identifier, int level, int capacity) {
         this.identifier = Identifier.create(identifier.longValue());
         //this.shape = newShape();
-        this.shape=null;
+        this.shape = null;
         this.level = level;
         this.children = 0;
         this.totalDataLength = 0;
@@ -48,7 +48,7 @@ public abstract class NodeImpl implements Node {
     public NodeImpl() {
         this.identifier = Identifier.create(-1L);
         //this.shape = newShape();
-        this.shape=null;
+        this.shape = null;
         this.capacity = 64;
         this.level = 0;
         this.children = 0;

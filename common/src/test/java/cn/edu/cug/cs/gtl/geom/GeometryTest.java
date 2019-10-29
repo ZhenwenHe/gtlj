@@ -14,10 +14,10 @@ public class GeometryTest {
 
     @Test
     public void create1() {
-        Point p = (Point) Geometry.create(Point.class,3);
+        Point p = (Point) Geometry.create(Point.class, 3);
         System.out.println(p.getDimension());
         System.out.println(Geometry.getTypeName(Geometry.POINT));
-        assertTrue(Geometry.getSimpleTypeName(Geometry.POINT).compareTo("Point")==0);
+        assertTrue(Geometry.getSimpleTypeName(Geometry.POINT).compareTo("Point") == 0);
     }
 
     @Test

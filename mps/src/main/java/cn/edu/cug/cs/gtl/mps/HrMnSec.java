@@ -66,14 +66,14 @@ public class HrMnSec implements Storable {
 
     @Override
     public Object clone() {
-        return new HrMnSec(this.hour,this.minute,this.second);
+        return new HrMnSec(this.hour, this.minute, this.second);
     }
 
     @Override
     public boolean load(DataInput dataInput) throws IOException {
-        this.hour=dataInput.readInt();
-        this.minute=dataInput.readInt();
-        this.second=dataInput.readInt();
+        this.hour = dataInput.readInt();
+        this.minute = dataInput.readInt();
+        this.second = dataInput.readInt();
         return true;
     }
 

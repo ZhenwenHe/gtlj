@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2004-2008, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
  */
- 
 
 
 // JTS dependencies
+
 import cn.edu.cug.cs.gtl.jts.geom.impl.CoordinateArraySequenceFactory;
 import cn.edu.cug.cs.gtl.jts.geom.impl.CoordinateArraySequenceFactory;
 
@@ -38,13 +38,11 @@ import org.opengis.referencing.operation.TransformException;
  * This transformer support {@linkplain MathTransform math transform} with up to 3 source
  * or target dimensions. This transformer is not thread-safe.
  *
- * @since 2.1
- *
- *
- * @source $URL$
- * @version $Id$
  * @author Andrea Aime
  * @author Martin Desruisseaux
+ * @version $Id$
+ * @source $URL$
+ * @since 2.1
  */
 public class DefaultCoordinateSequenceTransformer implements CoordinateSequenceTransformer {
     /**

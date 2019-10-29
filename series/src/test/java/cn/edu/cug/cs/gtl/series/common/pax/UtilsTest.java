@@ -18,16 +18,16 @@ public class UtilsTest {
 
     @Test
     public void poly() {
-        PolynomialCurveFitter p =PolynomialCurveFitter.create(1);
+        PolynomialCurveFitter p = PolynomialCurveFitter.create(1);
         List<WeightedObservedPoint> points = new ArrayList<>();
-        points.add(new WeightedObservedPoint(1.0,0.0,1.0));
-        points.add(new WeightedObservedPoint(1.0,2.0,2.0));
-        points.add(new WeightedObservedPoint(1.0,4.0,3.0));
-        points.add(new WeightedObservedPoint(1.0,6.0,4.0));
-        double [] f = p.fit(points);
-        Assert.assertEquals(f[0],1.0,0.000001);
-        Assert.assertEquals(f[1],0.5,0.000001);
-        Assert.assertEquals(Math.toDegrees(Math.atan(1)),45.0,0.000001);
+        points.add(new WeightedObservedPoint(1.0, 0.0, 1.0));
+        points.add(new WeightedObservedPoint(1.0, 2.0, 2.0));
+        points.add(new WeightedObservedPoint(1.0, 4.0, 3.0));
+        points.add(new WeightedObservedPoint(1.0, 6.0, 4.0));
+        double[] f = p.fit(points);
+        Assert.assertEquals(f[0], 1.0, 0.000001);
+        Assert.assertEquals(f[1], 0.5, 0.000001);
+        Assert.assertEquals(Math.toDegrees(Math.atan(1)), 45.0, 0.000001);
     }
 
     @Test

@@ -4,36 +4,36 @@ package cn.edu.cug.cs.gtl.protos;
 
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Colors";
 
-message Color3f{
-    float r=1;
-    float g=2;
-    float b=3;
+message Color3f {
+    float r = 1;
+    float g = 2;
+    float b = 3;
 }
 
-message Color4f{
-    float r=1;
-    float g=2;
-    float b=3;
-    float a=4;
+message Color4f {
+    float r = 1;
+    float g = 2;
+    float b = 3;
+    float a = 4;
 }
 
-message Color3i{
-    int32 r=1;
-    int32 g=2;
-    int32 b=3;
+message Color3i {
+    int32 r = 1;
+    int32 g = 2;
+    int32 b = 3;
 }
 
-message Color4i{
-    int32 r=1;
-    int32 g=2;
-    int32 b=3;
-    int32 a=4;
+message Color4i {
+    int32 r = 1;
+    int32 g = 2;
+    int32 b = 3;
+    int32 a = 4;
 }
 
-message Color4b{
-    int32 rgba=1;
+message Color4b {
+    int32 rgba = 1;
 }

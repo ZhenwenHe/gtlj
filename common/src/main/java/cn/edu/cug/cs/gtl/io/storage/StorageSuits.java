@@ -7,6 +7,7 @@ import java.io.IOException;
  */
 public class StorageSuits {
     private static final long serialVersionUID = 1L;
+
     public static BufferedStorageManager createBufferedStorageManager(StorageManager storageManager, int capacity, boolean writeThrough) {
         return new BufferedStorageManagerImpl(storageManager, capacity, writeThrough);
     }

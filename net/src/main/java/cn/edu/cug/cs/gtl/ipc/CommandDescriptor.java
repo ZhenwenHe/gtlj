@@ -47,7 +47,7 @@ public class CommandDescriptor implements Storable, Writable {
         this.parameterDescriptors.addAll(parameterDescriptors);
     }
 
-    public void addParameterDescriptor(ParameterDescriptor pd){
+    public void addParameterDescriptor(ParameterDescriptor pd) {
         this.parameterDescriptors.add(pd);
     }
 
@@ -80,22 +80,21 @@ public class CommandDescriptor implements Storable, Writable {
     @Override
     public Object clone() {
         CommandDescriptor cd = new CommandDescriptor(this.name);
-        for(ParameterDescriptor p : this.parameterDescriptors)
+        for (ParameterDescriptor p : this.parameterDescriptors)
             cd.addParameterDescriptor((ParameterDescriptor) p.clone());
         return cd;
     }
 
     @Override
     public void copyFrom(Object i) {
-        if( i instanceof CommandDescriptor){
-            CommandDescriptor cd = (CommandDescriptor)(i);
-            this.name=cd.name;
+        if (i instanceof CommandDescriptor) {
+            CommandDescriptor cd = (CommandDescriptor) (i);
+            this.name = cd.name;
             this.parameterDescriptors.clear();
-            try{
-                for(ParameterDescriptor p : cd.parameterDescriptors)
+            try {
+                for (ParameterDescriptor p : cd.parameterDescriptors)
                     this.parameterDescriptors.add((ParameterDescriptor) p.clone());
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -104,19 +103,18 @@ public class CommandDescriptor implements Storable, Writable {
     @Override
     public boolean load(DataInput in) throws IOException {
         try {
-            int len =in.readInt();
-            byte [] bs = new byte[len];
-            in.readFully(bs,0,len);
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-            this.name=  (String) ois.readObject();
-            Integer s= (Integer) ois.readObject();
+            this.name = (String) ois.readObject();
+            Integer s = (Integer) ois.readObject();
             this.parameterDescriptors.clear();
-            for(int i=0;i<s.intValue();++i){
+            for (int i = 0; i < s.intValue(); ++i) {
                 this.parameterDescriptors.add((ParameterDescriptor) ois.readObject());
             }
             ois.close();
-        }
-        catch (IOException | ClassNotFoundException|NullPointerException e){
+        } catch (IOException | ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -130,17 +128,16 @@ public class CommandDescriptor implements Storable, Writable {
             oos.writeObject(this.name);
             Integer s = new Integer(this.parameterDescriptors.size());
             oos.writeObject(s);
-            if(s.intValue()>0) {
-                for(ParameterDescriptor p: this.parameterDescriptors){
+            if (s.intValue() > 0) {
+                for (ParameterDescriptor p : this.parameterDescriptors) {
                     oos.writeObject(p);
                 }
             }
 
-            byte [] bs = baos.toByteArray();
+            byte[] bs = baos.toByteArray();
             out.writeInt(bs.length);
-            out.write(bs,0,bs.length);
-        }
-        catch (IOException | NullPointerException e){
+            out.write(bs, 0, bs.length);
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -154,13 +151,12 @@ public class CommandDescriptor implements Storable, Writable {
             oos.writeObject(this.name);
             int s = this.parameterDescriptors.size();
             oos.writeInt(s);
-            if(s<=0) return baos.size();
-            for(ParameterDescriptor p: this.parameterDescriptors){
+            if (s <= 0) return baos.size();
+            for (ParameterDescriptor p : this.parameterDescriptors) {
                 oos.writeObject(p);
             }
             return baos.size();
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return 0;
@@ -170,7 +166,7 @@ public class CommandDescriptor implements Storable, Writable {
     public static CommandDescriptor read(DataInput in) throws IOException {
         CommandDescriptor pd = new CommandDescriptor();
         pd.readFields(in);
-        return  pd;
+        return pd;
     }
 
     @Override

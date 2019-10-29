@@ -39,7 +39,7 @@ import cn.edu.cug.cs.gtl.jts.triangulate.quadedge.Vertex;
 
 /**
  * An interface for factories which create a {@link ConstraintVertex}
- * 
+ *
  * @author Martin Davis
  */
 public interface ConstraintVertexFactory {

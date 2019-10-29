@@ -6,7 +6,7 @@ import java.util.Collection;
 
 public interface ColorSequence extends Collection<Color>, Serializable {
 
-    static ColorSequence create(){
+    static ColorSequence create() {
         return new ColorSequenceImpl();
     }
 }

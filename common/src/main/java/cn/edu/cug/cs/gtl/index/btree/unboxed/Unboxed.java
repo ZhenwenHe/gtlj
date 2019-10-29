@@ -26,27 +26,33 @@ package cn.edu.cug.cs.gtl.index.btree.unboxed;
 import java.io.*;
 
 /**
- *  A class which knows how to intrepret sequences of bytes as an
- *  object.
- *
- *  We use this singleton class which performs operations (such as
- *  comparisons) directly on the byte[]'s rather than using some
- *  instance of Serializable&Comparable because the latter approach
- *  puts heavy stress on the garbage collector and -- much more
- *  importantly -- the memory subsystem.  By not instantiating
- *  heavyweight objects for the keys we let the whole program live
- *  lower in the meomory hierarchy.  GC is nice, except in your
- *  innermost loops.
+ * A class which knows how to intrepret sequences of bytes as an
+ * object.
+ * <p>
+ * We use this singleton class which performs operations (such as
+ * comparisons) directly on the byte[]'s rather than using some
+ * instance of Serializable&Comparable because the latter approach
+ * puts heavy stress on the garbage collector and -- much more
+ * importantly -- the memory subsystem.  By not instantiating
+ * heavyweight objects for the keys we let the whole program live
+ * lower in the meomory hierarchy.  GC is nice, except in your
+ * innermost loops.
  */
 public interface Unboxed<V extends Serializable> {
 
-    /** Return the size, in bytes, of a value; all values must have the same size */
+    /**
+     * Return the size, in bytes, of a value; all values must have the same size
+     */
     public int getSize();
 
-    /** Deserialize a value; <b>need not be compatible with <tt>V.readObject()</tt></b>! */
+    /**
+     * Deserialize a value; <b>need not be compatible with <tt>V.readObject()</tt></b>!
+     */
     public V deserialize(byte[] buf, int ofs);
-    
-    /** Serialize a value; <b>need not be compatible with <tt>V.writeObject()</tt></b>! */
+
+    /**
+     * Serialize a value; <b>need not be compatible with <tt>V.writeObject()</tt></b>!
+     */
     public void serialize(V v, byte[] buf, int ofs);
 
 }

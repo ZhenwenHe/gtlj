@@ -27,7 +27,7 @@ public interface Indexable extends Serializable {
 
     long serialVersionUID = 1L;
 
-    default void merge(Indexable indexable){
+    default void merge(Indexable indexable) {
 
     }
 
@@ -59,35 +59,33 @@ public interface Indexable extends Serializable {
 
     int getDimension();
 
-    default void insert(Geometry g){
+    default void insert(Geometry g) {
         Envelope e = g.getEnvelope();
-        try{
-            byte [] da = ObjectUtils.storeToByteArray(g);
+        try {
+            byte[] da = ObjectUtils.storeToByteArray(g);
             insert(da, new RegionShape(e), Identifier.create());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    default void insert(Feature g){
+    default void insert(Feature g) {
         Envelope e = g.getEnvelope();
-        try{
-            byte [] da = g.storeToByteArray();
+        try {
+            byte[] da = g.storeToByteArray();
             insert(da, new RegionShape(e), Identifier.create());
-        }
-        catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    default  Collection<Geometry> intersects(Shape query){
+    default Collection<Geometry> intersects(Shape query) {
         GeometryVisitor gv = new GeometryVisitor();
         intersects(query, gv);
         return gv.getGeometries();
     }
 
-    default  Collection<Geometry> contains(Shape query){
+    default Collection<Geometry> contains(Shape query) {
         GeometryVisitor gv = new GeometryVisitor();
         contains(query, gv);
         return gv.getGeometries();

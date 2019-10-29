@@ -26,10 +26,11 @@ public class TextureParameter implements Serializable {
     private float fMagFilter;
     private float fMinFilter;
 
-    public TextureParameter() { }
+    public TextureParameter() {
+    }
 
-    public TextureParameter(int nImageIndex,Byte byFace,Byte byDir,Byte byTran,Byte byAuto,Byte byHint,float fS_Coeff,float fT_Coeff,float fS_Offset,
-                            float fT_Offset,float fClampS,float fClampT,float fMode,float fMagFilter,float fMinFilter){
+    public TextureParameter(int nImageIndex, Byte byFace, Byte byDir, Byte byTran, Byte byAuto, Byte byHint, float fS_Coeff, float fT_Coeff, float fS_Offset,
+                            float fT_Offset, float fClampS, float fClampT, float fMode, float fMagFilter, float fMinFilter) {
         this.nImageIndex = nImageIndex;
         this.byFace = byFace;
         this.byDir = byDir;
@@ -49,8 +50,8 @@ public class TextureParameter implements Serializable {
 
     @Override
     public Object clone() {
-        return new TextureParameter(nImageIndex,byFace,byDir,byTran,byAuto,byHint,fS_Coeff,fT_Coeff,
-                fS_Offset,fT_Offset,fClampS,fClampT,fMode,fMagFilter,fMinFilter);
+        return new TextureParameter(nImageIndex, byFace, byDir, byTran, byAuto, byHint, fS_Coeff, fT_Coeff,
+                fS_Offset, fT_Offset, fClampS, fClampT, fMode, fMagFilter, fMinFilter);
     }
 
     @Override

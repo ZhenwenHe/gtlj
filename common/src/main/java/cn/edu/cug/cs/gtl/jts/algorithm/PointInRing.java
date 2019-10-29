@@ -41,10 +41,9 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
  * a ring.
  *
  * @version 1.7
- * 
  * @see PointOnGeometryLocator
  */
 public interface PointInRing {
 
-  boolean isInside(Coordinate pt);
+    boolean isInside(Coordinate pt);
 }

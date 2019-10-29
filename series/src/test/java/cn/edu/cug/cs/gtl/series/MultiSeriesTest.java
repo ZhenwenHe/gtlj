@@ -19,20 +19,19 @@ public class MultiSeriesTest {
 
     @Test
     public void of() {
-        double []xs = {1,2,3,4,5,6,7,8,9};
-        double[][] ys={{1,1,1,1,1,1,1,1,1},
-                {2,2,2,2,2,2,2,2,2},
-                {3,3,3,3,3,3,3,3,3},
-                {4,4,4,4,4,4,4,4,4},
-                {5,5,5,5,5,5,5,5,5}};
-        MultiSeries ms = MultiSeries.of(xs,ys);
+        double[] xs = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        double[][] ys = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {2, 2, 2, 2, 2, 2, 2, 2, 2},
+                {3, 3, 3, 3, 3, 3, 3, 3, 3},
+                {4, 4, 4, 4, 4, 4, 4, 4, 4},
+                {5, 5, 5, 5, 5, 5, 5, 5, 5}};
+        MultiSeries ms = MultiSeries.of(xs, ys);
         try {
-            byte [] bytes = ms.storeToByteArray();
+            byte[] bytes = ms.storeToByteArray();
             MultiSeries ms2 = MultiSeries.of(bytes);
             TimeSeries s2 = ms2.getSeries(0);
-            Assert.assertArrayEquals(s2.getValues(),ys[0],0.001);
-        }
-        catch (IOException e){
+            Assert.assertArrayEquals(s2.getValues(), ys[0], 0.001);
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -40,23 +39,22 @@ public class MultiSeriesTest {
 
     @Test
     public void of1() {
-        double []xs = {1,2,3,4,5,6,7,8,9};
-        double[][] ys={{1,1,1,1,1,1,1,1,1},
-                {2,2,2,2,2,2,2,2,2},
-                {3,3,3,3,3,3,3,3,3},
-                {4,4,4,4,4,4,4,4,4},
-                {5,5,5,5,5,5,5,5,5}};
-        MultiSeries ms = MultiSeries.of(xs,ys);
+        double[] xs = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        double[][] ys = {{1, 1, 1, 1, 1, 1, 1, 1, 1},
+                {2, 2, 2, 2, 2, 2, 2, 2, 2},
+                {3, 3, 3, 3, 3, 3, 3, 3, 3},
+                {4, 4, 4, 4, 4, 4, 4, 4, 4},
+                {5, 5, 5, 5, 5, 5, 5, 5, 5}};
+        MultiSeries ms = MultiSeries.of(xs, ys);
         try {
-            FileOutputStream f = new FileOutputStream(Config.getTestOutputDirectory()+ File.separator+"test.series");
+            FileOutputStream f = new FileOutputStream(Config.getTestOutputDirectory() + File.separator + "test.series");
             ms.write(f);
             f.close();
-            FileInputStream f2= new FileInputStream(Config.getTestOutputDirectory()+ File.separator+"test.series");
+            FileInputStream f2 = new FileInputStream(Config.getTestOutputDirectory() + File.separator + "test.series");
             MultiSeries ms2 = MultiSeries.of(f2);
             TimeSeries s2 = ms2.getSeries(0);
-            Assert.assertArrayEquals(s2.getValues(),ys[0],0.001);
-        }
-        catch (IOException e){
+            Assert.assertArrayEquals(s2.getValues(), ys[0], 0.001);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

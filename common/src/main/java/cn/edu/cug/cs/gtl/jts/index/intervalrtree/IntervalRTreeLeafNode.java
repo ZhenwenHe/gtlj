@@ -35,25 +35,22 @@ package cn.edu.cug.cs.gtl.jts.index.intervalrtree;
 import cn.edu.cug.cs.gtl.jts.index.ItemVisitor;
 
 
-public class IntervalRTreeLeafNode 
-extends IntervalRTreeNode
-{
-  private Object item;
-	
-	public IntervalRTreeLeafNode(double min, double max, Object item)
-	{
-		this.min = min;
-		this.max = max;
-		this.item = item;
-	}
-	
-	public void query(double queryMin, double queryMax, ItemVisitor visitor)
-	{
-		if (! intersects(queryMin, queryMax)) 
-      return;
-		
-		visitor.visitItem(item);
-	}
+public class IntervalRTreeLeafNode
+        extends IntervalRTreeNode {
+    private Object item;
 
-	
+    public IntervalRTreeLeafNode(double min, double max, Object item) {
+        this.min = min;
+        this.max = max;
+        this.item = item;
+    }
+
+    public void query(double queryMin, double queryMax, ItemVisitor visitor) {
+        if (!intersects(queryMin, queryMax))
+            return;
+
+        visitor.visitItem(item);
+    }
+
+
 }

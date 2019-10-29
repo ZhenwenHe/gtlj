@@ -5,6 +5,7 @@ package cn.edu.cug.cs.gtl.geom;
  */
 public class IsoscelesRightTriangle extends IsoscelesTriangle {
     private static final long serialVersionUID = 1L;
+
     public IsoscelesRightTriangle(Vector v0, Vector v1, Vector v2) {
         super(v0, v1, v2);
     }

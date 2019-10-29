@@ -4,17 +4,22 @@ package cn.edu.cug.cs.gtl.series.common.sax;
  * The SAX Collection srategy.
  *
  * @author Pavel Senin
- *
  */
 public enum NumerosityReductionStrategy {
 
-    /** No reduction at all - all the words going make it into collection. */
+    /**
+     * No reduction at all - all the words going make it into collection.
+     */
     NONE(0),
 
-    /** Exact - the strategy based on the exact string match. */
+    /**
+     * Exact - the strategy based on the exact string match.
+     */
     EXACT(1),
 
-    /** Classic - the Lin's and Keogh's MINDIST based strategy. */
+    /**
+     * Classic - the Lin's and Keogh's MINDIST based strategy.
+     */
     MINDIST(2);
 
     private final int index;
@@ -81,14 +86,11 @@ public enum NumerosityReductionStrategy {
     public static NumerosityReductionStrategy fromString(String value) {
         if ("none".equalsIgnoreCase(value)) {
             return NumerosityReductionStrategy.NONE;
-        }
-        else if ("exact".equalsIgnoreCase(value)) {
+        } else if ("exact".equalsIgnoreCase(value)) {
             return NumerosityReductionStrategy.EXACT;
-        }
-        else if ("mindist".equalsIgnoreCase(value)) {
+        } else if ("mindist".equalsIgnoreCase(value)) {
             return NumerosityReductionStrategy.MINDIST;
-        }
-        else {
+        } else {
             throw new RuntimeException("Unknown index:" + value);
         }
     }

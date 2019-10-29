@@ -5,7 +5,7 @@ import cn.edu.cug.cs.gtl.geom.Vector;
 
 import java.io.Serializable;
 
-public class KDNode<T extends Vector> implements Comparable<KDNode>,Serializable {
+public class KDNode<T extends Vector> implements Comparable<KDNode>, Serializable {
     private static final long serialVersionUID = 1L;
 
     public final Vector id;
@@ -37,7 +37,7 @@ public class KDNode<T extends Vector> implements Comparable<KDNode>,Serializable
 //        if (axis == OrdinateComparator.Y_AXIS)
 //            return OrdinateComparator.Y_COMPARATOR.compare(o1, o2);
 //        return OrdinateComparator.Z_COMPARATOR.compare(o1, o2);
-        return new OrdinateComparator<Vector>(axis).compare(o1,o2);
+        return new OrdinateComparator<Vector>(axis).compare(o1, o2);
     }
 
     /**

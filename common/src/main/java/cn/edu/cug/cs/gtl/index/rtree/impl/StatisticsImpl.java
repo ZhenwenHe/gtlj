@@ -155,12 +155,11 @@ public class StatisticsImpl implements Statistics {
 
     @Override
     public Object clone() {
-        try{
+        try {
             StatisticsImpl s = new StatisticsImpl();
             copyTo(s);
             return s;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

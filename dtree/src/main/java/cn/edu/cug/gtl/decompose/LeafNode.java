@@ -8,21 +8,21 @@ public class LeafNode {
 
     private ArrayList<Vertex> entryArray;
 
-    LeafNode(){
+    LeafNode() {
         identifer = 0;
         entryArray = new ArrayList<>(0);
     }
 
-    LeafNode(long identifer){
+    LeafNode(long identifer) {
         this.identifer = identifer;
         entryArray = new ArrayList<>(0);
     }
 
-    void push(Vertex v){
+    void push(Vertex v) {
         entryArray.add(v);
     }
 
-    int entrySize(){
+    int entrySize() {
         return entryArray.size();
     }
 

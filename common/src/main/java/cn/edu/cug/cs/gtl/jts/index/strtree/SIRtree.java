@@ -42,85 +42,87 @@ import java.util.List;
  * "Sort-Interval-Recursive". STR-packed R-trees are described in:
  * P. Rigaux, Michel Scholl and Agnes Voisard. Spatial Databases With
  * Application To GIS. Morgan Kaufmann, San Francisco, 2002.
- * @see STRtree
  *
  * @version 1.7
+ * @see STRtree
  */
 public class SIRtree extends AbstractSTRtree {
 
-  private Comparator comparator = new Comparator() {
-    public int compare(Object o1, Object o2) {
-      return compareDoubles(
-          ((Interval)((Boundable)o1).getBounds()).getCentre(),
-          ((Interval)((Boundable)o2).getBounds()).getCentre());
-    }
-  };
-
-  private IntersectsOp intersectsOp = new IntersectsOp() {
-    public boolean intersects(Object aBounds, Object bBounds) {
-      return ((Interval)aBounds).intersects((Interval)bBounds);
-    }
-  };
-  
-  /**
-   * Constructs an SIRtree with the default node capacity.
-   */
-  public SIRtree() { this(10); }
-   
-  /**
-   * Constructs an SIRtree with the given maximum number of child nodes that
-   * a node may have
-   */
-  public SIRtree(int nodeCapacity) {
-    super(nodeCapacity);
-  }
-
-  protected AbstractNode createNode(int level) {
-    return new AbstractNode(level) {
-      protected Object computeBounds() {
-        Interval bounds = null;
-        for (Iterator i = getChildBoundables().iterator(); i.hasNext(); ) {
-          Boundable childBoundable = (Boundable) i.next();
-          if (bounds == null) {
-            bounds = new Interval((Interval)childBoundable.getBounds());
-          }
-          else {
-            bounds.expandToInclude((Interval)childBoundable.getBounds());
-          }
+    private Comparator comparator = new Comparator() {
+        public int compare(Object o1, Object o2) {
+            return compareDoubles(
+                    ((Interval) ((Boundable) o1).getBounds()).getCentre(),
+                    ((Interval) ((Boundable) o2).getBounds()).getCentre());
         }
-        return bounds;
-      }
     };
-  }
 
-  /**
-   * Inserts an item having the given bounds into the tree.
-   */
-  public void insert(double x1, double x2, Object item) {
-    super.insert(new Interval(Math.min(x1, x2), Math.max(x1, x2)), item);
-  }
+    private IntersectsOp intersectsOp = new IntersectsOp() {
+        public boolean intersects(Object aBounds, Object bBounds) {
+            return ((Interval) aBounds).intersects((Interval) bBounds);
+        }
+    };
 
-  /**
-   * Returns items whose bounds intersect the given value.
-   */
-  public List query(double x) {
-    return query(x, x);
-  }
+    /**
+     * Constructs an SIRtree with the default node capacity.
+     */
+    public SIRtree() {
+        this(10);
+    }
 
-  /**
-   * Returns items whose bounds intersect the given bounds.
-   * @param x1 possibly equal to x2
-   */
-  public List query(double x1, double x2) {
-    return super.query(new Interval(Math.min(x1, x2), Math.max(x1, x2)));
-  }
+    /**
+     * Constructs an SIRtree with the given maximum number of child nodes that
+     * a node may have
+     */
+    public SIRtree(int nodeCapacity) {
+        super(nodeCapacity);
+    }
 
-  protected IntersectsOp getIntersectsOp() {
-    return intersectsOp;
-  }
+    protected AbstractNode createNode(int level) {
+        return new AbstractNode(level) {
+            protected Object computeBounds() {
+                Interval bounds = null;
+                for (Iterator i = getChildBoundables().iterator(); i.hasNext(); ) {
+                    Boundable childBoundable = (Boundable) i.next();
+                    if (bounds == null) {
+                        bounds = new Interval((Interval) childBoundable.getBounds());
+                    } else {
+                        bounds.expandToInclude((Interval) childBoundable.getBounds());
+                    }
+                }
+                return bounds;
+            }
+        };
+    }
 
-  protected Comparator getComparator() {
-    return comparator;
-  }
+    /**
+     * Inserts an item having the given bounds into the tree.
+     */
+    public void insert(double x1, double x2, Object item) {
+        super.insert(new Interval(Math.min(x1, x2), Math.max(x1, x2)), item);
+    }
+
+    /**
+     * Returns items whose bounds intersect the given value.
+     */
+    public List query(double x) {
+        return query(x, x);
+    }
+
+    /**
+     * Returns items whose bounds intersect the given bounds.
+     *
+     * @param x1 possibly equal to x2
+     */
+    public List query(double x1, double x2) {
+        return super.query(new Interval(Math.min(x1, x2), Math.max(x1, x2)));
+    }
+
+    protected IntersectsOp getIntersectsOp() {
+        return intersectsOp;
+    }
+
+    protected Comparator getComparator() {
+        return comparator;
+    }
 
 }

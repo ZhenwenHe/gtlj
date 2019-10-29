@@ -48,45 +48,42 @@ import cn.edu.cug.cs.gtl.jts.geom.Point;
  */
 public class InteriorPointPoint {
 
-  private Coordinate centroid;
-  private double minDistance = Double.MAX_VALUE;
+    private Coordinate centroid;
+    private double minDistance = Double.MAX_VALUE;
 
-  private Coordinate interiorPoint = null;
+    private Coordinate interiorPoint = null;
 
-  public InteriorPointPoint(Geometry g)
-  {
-    centroid = g.getCentroid().getCoordinate();
-    add(g);
-  }
-
-  /**
-   * Tests the point(s) defined by a Geometry for the best inside point.
-   * If a Geometry is not of dimension 0 it is not tested.
-   * @param geom the geometry to add
-   */
-  private void add(Geometry geom)
-  {
-    if (geom instanceof Point) {
-      add(geom.getCoordinate());
+    public InteriorPointPoint(Geometry g) {
+        centroid = g.getCentroid().getCoordinate();
+        add(g);
     }
-    else if (geom instanceof GeometryCollection) {
-      GeometryCollection gc = (GeometryCollection) geom;
-      for (int i = 0; i < gc.getNumGeometries(); i++) {
-        add(gc.getGeometryN(i));
-      }
-    }
-  }
-  private void add(Coordinate point)
-  {
-    double dist = point.distance(centroid);
-    if (dist < minDistance) {
-      interiorPoint = new Coordinate(point);
-      minDistance = dist;
-    }
-  }
 
-  public Coordinate getInteriorPoint()
-  {
-    return interiorPoint;
-  }
+    /**
+     * Tests the point(s) defined by a Geometry for the best inside point.
+     * If a Geometry is not of dimension 0 it is not tested.
+     *
+     * @param geom the geometry to add
+     */
+    private void add(Geometry geom) {
+        if (geom instanceof Point) {
+            add(geom.getCoordinate());
+        } else if (geom instanceof GeometryCollection) {
+            GeometryCollection gc = (GeometryCollection) geom;
+            for (int i = 0; i < gc.getNumGeometries(); i++) {
+                add(gc.getGeometryN(i));
+            }
+        }
+    }
+
+    private void add(Coordinate point) {
+        double dist = point.distance(centroid);
+        if (dist < minDistance) {
+            interiorPoint = new Coordinate(point);
+            minDistance = dist;
+        }
+    }
+
+    public Coordinate getInteriorPoint() {
+        return interiorPoint;
+    }
 }

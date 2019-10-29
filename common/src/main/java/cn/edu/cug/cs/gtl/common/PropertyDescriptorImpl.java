@@ -11,7 +11,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class PropertyDescriptorImpl implements PropertyDescriptor{
+public class PropertyDescriptorImpl implements PropertyDescriptor {
 
     private static final long serialVersionUID = 1L;
 
@@ -72,30 +72,30 @@ public class PropertyDescriptorImpl implements PropertyDescriptor{
 
     @Deprecated
     public PropertyDescriptorImpl(PropertyType type, String name, int min, int max, boolean isNillable) {
-        this(name,type,0,0,min,max,isNillable);
+        this(name, type, 0, 0, min, max, isNillable);
     }
 
-    public PropertyDescriptorImpl(String name ,PropertyType type, int length, int decimal, boolean isNillable) {
-        this(name,type,length,decimal,1,1,isNillable);
+    public PropertyDescriptorImpl(String name, PropertyType type, int length, int decimal, boolean isNillable) {
+        this(name, type, length, decimal, 1, 1, isNillable);
     }
 
-    public PropertyDescriptorImpl(String name ,PropertyType type, int length, int decimal,int minOccurs, int maxOccurs, boolean isNillable) {
+    public PropertyDescriptorImpl(String name, PropertyType type, int length, int decimal, int minOccurs, int maxOccurs, boolean isNillable) {
         this.type = type;
         this.name = name;
         this.minOccurs = minOccurs;
         this.maxOccurs = maxOccurs;
         this.isNillable = isNillable;
-        this.decimal=decimal;
-        this.length=length;
-        if ( type == null ) {
+        this.decimal = decimal;
+        this.length = length;
+        if (type == null) {
             throw new NullPointerException("type");
         }
 
-        if ( name == null ) {
+        if (name == null) {
             throw new NullPointerException("name");
         }
 
-        if (this.maxOccurs > 0 && (this.maxOccurs < this.minOccurs) ) {
+        if (this.maxOccurs > 0 && (this.maxOccurs < this.minOccurs)) {
             throw new IllegalArgumentException("max must be -1, or >= min");
         }
     }
@@ -106,26 +106,26 @@ public class PropertyDescriptorImpl implements PropertyDescriptor{
     @Override
     public Object clone() {
         return new PropertyDescriptorImpl(name,
-                (PropertyType)type.clone(),
-                length,decimal,minOccurs,maxOccurs,isNillable);
+                (PropertyType) type.clone(),
+                length, decimal, minOccurs, maxOccurs, isNillable);
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.type= (PropertyType) ObjectUtils.load(in);
+        this.type = (PropertyType) ObjectUtils.load(in);
         this.name = StringUtils.load(in);
-        this.decimal=in.readInt();
-        this.length=in.readInt();
-        this.minOccurs=in.readInt();
-        this.maxOccurs=in.readInt();
-        this.isNillable=in.readBoolean();
+        this.decimal = in.readInt();
+        this.length = in.readInt();
+        this.minOccurs = in.readInt();
+        this.maxOccurs = in.readInt();
+        this.isNillable = in.readBoolean();
         return true;
     }
 
     @Override
     public boolean store(DataOutput out) throws IOException {
-        ObjectUtils.store(this.type,out);
-        StringUtils.store(this.name,out);
+        ObjectUtils.store(this.type, out);
+        StringUtils.store(this.name, out);
         out.writeInt(this.decimal);
         out.writeInt(this.length);
         out.writeInt(this.minOccurs);
@@ -136,7 +136,7 @@ public class PropertyDescriptorImpl implements PropertyDescriptor{
 
     @Override
     public long getByteArraySize() {
-        return ObjectUtils.getByteArraySize(this.type)+StringUtils.getByteArraySize(this.name)+4+4+1+4+4;
+        return ObjectUtils.getByteArraySize(this.type) + StringUtils.getByteArraySize(this.name) + 4 + 4 + 1 + 4 + 4;
     }
 
     public PropertyType getType() {
@@ -180,31 +180,30 @@ public class PropertyDescriptorImpl implements PropertyDescriptor{
     }
 
     public int hashCode() {
-        return (37 * minOccurs + 37 * maxOccurs ) ^ type.hashCode() ^ name.hashCode();
+        return (37 * minOccurs + 37 * maxOccurs) ^ type.hashCode() ^ name.hashCode();
     }
 
     public String toString() {
         StringBuffer sb = new StringBuffer(Classes.getShortClassName(this));
         sb.append(" ");
-        sb.append( getName() );
-        if( type != null ){
-            sb.append( " <" );
-            sb.append( type.getName());
+        sb.append(getName());
+        if (type != null) {
+            sb.append(" <");
+            sb.append(type.getName());
             sb.append(":");
-            sb.append( Classes.getShortName( type.getBinding() ));
-            sb.append( ">" );
+            sb.append(Classes.getShortName(type.getBinding()));
+            sb.append(">");
         }
-        if( isNillable  ){
-            sb.append( " nillable" );
+        if (isNillable) {
+            sb.append(" nillable");
         }
-        if( minOccurs == 1 && maxOccurs == 1 ){
+        if (minOccurs == 1 && maxOccurs == 1) {
             // ignore the 1:1
-        }
-        else {
-            sb.append( " " );
-            sb.append( minOccurs );
-            sb.append(  ":" );
-            sb.append( maxOccurs );
+        } else {
+            sb.append(" ");
+            sb.append(minOccurs);
+            sb.append(":");
+            sb.append(maxOccurs);
         }
 
         return sb.toString();

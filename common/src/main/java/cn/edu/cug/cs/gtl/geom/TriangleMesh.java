@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * Created by hadoop on 18-9-1
  */
-public class TriangleMesh extends IndexedPolygon  {
+public class TriangleMesh extends IndexedPolygon {
 
     private static final long serialVersionUID = 3253371829643430267L;
 

@@ -32,10 +32,9 @@ import java.lang.annotation.Target;
  *
  * <p>This annotation also excludes methods and classes with evolving interfaces / signatures
  * within classes annotated with {@link Public}.
- *
  */
 @Documented
-@Target({ ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR })
+@Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR})
 @Public
 public @interface PublicEvolving {
 }

@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
-public class QuadTreeImpl implements QuadTree, Serializable{
+public class QuadTreeImpl implements QuadTree, Serializable {
     private static final long serialVersionUID = 1L;
 
     StorageManager storageManager;
@@ -33,56 +33,56 @@ public class QuadTreeImpl implements QuadTree, Serializable{
     int dimension;
     int leafCapacity;
     Envelope envelope;
-    transient ArrayList<Pair<Command,CommandType>> commands =null;
+    transient ArrayList<Pair<Command, CommandType>> commands = null;
 
-    public QuadTreeImpl(StorageManager storageManager, int leafCapacity, int dimension,Envelope totalEnvelope) {
+    public QuadTreeImpl(StorageManager storageManager, int leafCapacity, int dimension, Envelope totalEnvelope) {
         this.storageManager = storageManager;
         this.dimension = dimension;
         this.leafCapacity = leafCapacity;
         this.rootIdentifier = Identifier.create(StorageManager.NEW_PAGE);
-        this.headerIdentifier=Identifier.create(StorageManager.NEW_PAGE);
+        this.headerIdentifier = Identifier.create(StorageManager.NEW_PAGE);
     }
 
-    public QuadTreeImpl(StorageManager storageManager, int leafCapacity,Envelope totalEnvelope ) {
+    public QuadTreeImpl(StorageManager storageManager, int leafCapacity, Envelope totalEnvelope) {
         this.storageManager = storageManager;
         this.dimension = 2;
         this.leafCapacity = leafCapacity;
         this.rootIdentifier = Identifier.create(StorageManager.NEW_PAGE);
-        this.headerIdentifier=Identifier.create(StorageManager.NEW_PAGE);
+        this.headerIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         this.envelope = totalEnvelope;
     }
 
-    public QuadTreeImpl(StorageManager storageManager,Envelope totalEnvelope) {
+    public QuadTreeImpl(StorageManager storageManager, Envelope totalEnvelope) {
         this.storageManager = storageManager;
         this.dimension = 2;
         this.leafCapacity = 64;
         this.rootIdentifier = Identifier.create(StorageManager.NEW_PAGE);
-        this.headerIdentifier=Identifier.create(StorageManager.NEW_PAGE);
+        this.headerIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         this.envelope = totalEnvelope;
     }
 
-    public QuadTreeImpl( ) {
+    public QuadTreeImpl() {
         this.storageManager = StorageManager.createMemoryStorageManager();
         this.dimension = 2;
         this.leafCapacity = 64;
         this.rootIdentifier = Identifier.create(StorageManager.NEW_PAGE);
-        this.headerIdentifier=Identifier.create(StorageManager.NEW_PAGE);
+        this.headerIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         Vector v = Vector.create(this.dimension);
-        this.envelope = Envelope.create(v,1.0);
+        this.envelope = Envelope.create(v, 1.0);
 
     }
 
     @Override
-    public void reset(StorageManager storageManager, Identifier headerIdentifier, int leafCapacity, int dimension,Envelope totalEnvelope) {
+    public void reset(StorageManager storageManager, Identifier headerIdentifier, int leafCapacity, int dimension, Envelope totalEnvelope) {
         this.storageManager = storageManager;
         this.rootIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         this.headerIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         this.leafCapacity = leafCapacity;
-        this.dimension=dimension;
+        this.dimension = dimension;
         this.envelope = totalEnvelope;
 
         if (headerIdentifier == null) {//new
-            QuadTreeExternalNodeImpl root = new QuadTreeExternalNodeImpl(this.rootIdentifier,leafCapacity,this,new RegionShape(this.envelope));
+            QuadTreeExternalNodeImpl root = new QuadTreeExternalNodeImpl(this.rootIdentifier, leafCapacity, this, new RegionShape(this.envelope));
 
             this.rootIdentifier = writeNode(root);
             storeHeader();
@@ -96,22 +96,22 @@ public class QuadTreeImpl implements QuadTree, Serializable{
     public void reset(
             int leafCapacity,
             int dimension,
-            Envelope totalEnvelope){
+            Envelope totalEnvelope) {
         this.storageManager = StorageManager.createMemoryStorageManager();
         this.rootIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         this.headerIdentifier = Identifier.create(StorageManager.NEW_PAGE);
         this.leafCapacity = leafCapacity;
-        this.dimension=dimension;
+        this.dimension = dimension;
         this.envelope = totalEnvelope;
 
 
-        QuadTreeExternalNodeImpl root = new QuadTreeExternalNodeImpl(this.rootIdentifier,leafCapacity,this,new RegionShape(this.envelope));
+        QuadTreeExternalNodeImpl root = new QuadTreeExternalNodeImpl(this.rootIdentifier, leafCapacity, this, new RegionShape(this.envelope));
         this.rootIdentifier = writeNode(root);
         storeHeader();
 
     }
 
-    protected void storeHeader(){
+    protected void storeHeader() {
         try {
             ByteArrayOutputStream bos = new ByteArrayOutputStream(1024);
             DataOutputStream dos = new DataOutputStream(bos);
@@ -128,7 +128,7 @@ public class QuadTreeImpl implements QuadTree, Serializable{
         }
     }
 
-    protected void loadHeader(){
+    protected void loadHeader() {
         try {
             byte[] data = this.storageManager.loadByteArray(this.headerIdentifier);
             DataInputStream dis = new DataInputStream(new ByteArrayInputStream(data));
@@ -159,7 +159,7 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     @Override
     public void insert(byte[] pData, Shape shape, Identifier shapeIdentifier) {
-        if(this.envelope.intersects(shape.getMBR())==false)
+        if (this.envelope.intersects(shape.getMBR()) == false)
             return;
 
 //        if(this.rootIdentifier==null
@@ -171,37 +171,34 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 //        }
 
         Node node = readNode(this.rootIdentifier);
-        Identifier nodePageIdentifier=null;
-        Shape nodeShape = (RegionShape)node.newShape();
+        Identifier nodePageIdentifier = null;
+        Shape nodeShape = (RegionShape) node.newShape();
         nodeShape.copyFrom(this.envelope);
-        while(nodeShape.intersectsShape(shape)){
-            if(node instanceof QuadTreeExternalNodeImpl){//if is leaf node
-                if(node.getChildrenCount()<node.getCapacity()) {// insert
+        while (nodeShape.intersectsShape(shape)) {
+            if (node instanceof QuadTreeExternalNodeImpl) {//if is leaf node
+                if (node.getChildrenCount() < node.getCapacity()) {// insert
                     node.insertEntry(shapeIdentifier, shape, pData);
                     writeNode(node);
                     return;
-                }
-                else{//split node
-                    splitAndInsert(node,pData, shape, shapeIdentifier) ;
+                } else {//split node
+                    splitAndInsert(node, pData, shape, shapeIdentifier);
                     return;
                 }
-            }
-            else {//if it non-leaf node
-                assert node.getChildrenCount()==4;
-                for(int i=0;i<node.getChildrenCount();++i){
+            } else {//if it non-leaf node
+                assert node.getChildrenCount() == 4;
+                for (int i = 0; i < node.getChildrenCount(); ++i) {
                     nodeShape = node.getChildShape(i);//QuadTreeInternalNodeImpl默认填充四个四边形，没有数据的ID为null
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodeShape.intersectsShape(shape)){
-                        if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE){//该象限没有子节点，需要生成一个新的子节点
+                    if (nodeShape.intersectsShape(shape)) {
+                        if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE) {//该象限没有子节点，需要生成一个新的子节点
                             nodePageIdentifier = Identifier.create();
-                            QuadTreeExternalNodeImpl externalNode = new QuadTreeExternalNodeImpl(nodePageIdentifier, leafCapacity, this,(Shape) nodeShape.clone());
-                            externalNode.insertEntry(shapeIdentifier,shape,pData);
+                            QuadTreeExternalNodeImpl externalNode = new QuadTreeExternalNodeImpl(nodePageIdentifier, leafCapacity, this, (Shape) nodeShape.clone());
+                            externalNode.insertEntry(shapeIdentifier, shape, pData);
                             nodePageIdentifier = writeNode(externalNode);
-                            node.setChildIdentifier(i,nodePageIdentifier);//update the parent node information
+                            node.setChildIdentifier(i, nodePageIdentifier);//update the parent node information
                             writeNode(node);//PageID does not be changed
                             return;
-                        }
-                        else{//该象限有子节点，则读取该节点赋值给node
+                        } else {//该象限有子节点，则读取该节点赋值给node
                             node = readNode(node.getChildIdentifier(i));
                             nodeShape.copyFrom(node.getShape());
                             break;
@@ -212,112 +209,108 @@ public class QuadTreeImpl implements QuadTree, Serializable{
         }
     }
 
-    protected void splitAndInsert(Node node,byte[] pData, Shape shape, Identifier shapeIdentifier ){
-        QuadTreeInternalNodeImpl internalNode=new QuadTreeInternalNodeImpl(node.getIdentifier(),this,(Shape) node.getShape().clone());
-        RegionShape rp =(RegionShape) internalNode.getShape();
-        QuadTreeExternalNodeImpl [] subnodes=new QuadTreeExternalNodeImpl[4];
-        RegionShape subregion=null;
-        int splitAgain=-1;
-        for(int i=0;i<4;++i){
+    protected void splitAndInsert(Node node, byte[] pData, Shape shape, Identifier shapeIdentifier) {
+        QuadTreeInternalNodeImpl internalNode = new QuadTreeInternalNodeImpl(node.getIdentifier(), this, (Shape) node.getShape().clone());
+        RegionShape rp = (RegionShape) internalNode.getShape();
+        QuadTreeExternalNodeImpl[] subnodes = new QuadTreeExternalNodeImpl[4];
+        RegionShape subregion = null;
+        int splitAgain = -1;
+        for (int i = 0; i < 4; ++i) {
             subregion = rp.subregion(i);
-            internalNode.insertEntry(Identifier.create(StorageManager.EMPTY_PAGE),subregion,null);
-            subnodes[i]=new QuadTreeExternalNodeImpl(leafCapacity,this,subregion);
-            for(int j=0;j<node.getChildrenCount();++j){
-                if(subregion.intersectsShape(node.getChildShape(j))){
+            internalNode.insertEntry(Identifier.create(StorageManager.EMPTY_PAGE), subregion, null);
+            subnodes[i] = new QuadTreeExternalNodeImpl(leafCapacity, this, subregion);
+            for (int j = 0; j < node.getChildrenCount(); ++j) {
+                if (subregion.intersectsShape(node.getChildShape(j))) {
                     subnodes[i].insertEntry(node.getChildEntry(j));
                 }
             }
-            if(subnodes[i].getChildrenCount()==node.getChildrenCount()) {
-                if(subregion.intersectsShape(shape))
+            if (subnodes[i].getChildrenCount() == node.getChildrenCount()) {
+                if (subregion.intersectsShape(shape))
                     splitAgain = i;
-            }
-            else{
-                if(subregion.intersectsShape(shape))
-                    subnodes[i].insertEntry( shapeIdentifier,shape,pData);
+            } else {
+                if (subregion.intersectsShape(shape))
+                    subnodes[i].insertEntry(shapeIdentifier, shape, pData);
             }
         }
 
-        Identifier identifier =null;
-        for(int i=0;i<4;++i){
-            if(subnodes[i].getChildrenCount()>0){
+        Identifier identifier = null;
+        for (int i = 0; i < 4; ++i) {
+            if (subnodes[i].getChildrenCount() > 0) {
                 identifier = writeNode(subnodes[i]);
-                internalNode.setChildIdentifier(i,identifier);
+                internalNode.setChildIdentifier(i, identifier);
             }
         }
-        identifier= writeNode(internalNode);
+        identifier = writeNode(internalNode);
 
-        if(splitAgain>0){
-            splitAndInsert(subnodes[splitAgain],pData,shape,shapeIdentifier);
+        if (splitAgain > 0) {
+            splitAndInsert(subnodes[splitAgain], pData, shape, shapeIdentifier);
         }
     }
 
     /**
      * delete all the object contained by shape and the id is equal to shapeIdentifier
+     *
      * @param shape
      * @param shapeIdentifier
      * @return
      */
     @Override
     public boolean delete(Shape shape, Identifier shapeIdentifier) {
-        if(this.envelope.intersects(shape.getMBR())==false)
+        if (this.envelope.intersects(shape.getMBR()) == false)
             return false;
-        if(this.rootIdentifier==null || this.rootIdentifier.longValue()==StorageManager.NEW_PAGE)
+        if (this.rootIdentifier == null || this.rootIdentifier.longValue() == StorageManager.NEW_PAGE)
             return false;
         Identifier nodePageIdentifier = Identifier.create(this.rootIdentifier);
-        Stack<Pair<Identifier,Identifier>>  stack = new Stack<>();
-        stack.push(new Pair<>(nodePageIdentifier,null));
-        nodePageIdentifier=null;
+        Stack<Pair<Identifier, Identifier>> stack = new Stack<>();
+        stack.push(new Pair<>(nodePageIdentifier, null));
+        nodePageIdentifier = null;
 
-        while (stack.empty()==false){
-            Pair<Identifier,Identifier> nodePageIdentifiers = stack.pop();
+        while (stack.empty() == false) {
+            Pair<Identifier, Identifier> nodePageIdentifiers = stack.pop();
             nodePageIdentifier = nodePageIdentifiers.first();
             Node node = readNode(nodePageIdentifier);
-            if(node instanceof QuadTreeExternalNodeImpl){
-                for(int i=0;i<node.getChildrenCount();++i){
-                    if(shape.containsShape(node.getChildShape(i))){
-                        if(node.getChildEntry(i).getIdentifier().equals(shapeIdentifier)){
+            if (node instanceof QuadTreeExternalNodeImpl) {
+                for (int i = 0; i < node.getChildrenCount(); ++i) {
+                    if (shape.containsShape(node.getChildShape(i))) {
+                        if (node.getChildEntry(i).getIdentifier().equals(shapeIdentifier)) {
                             node.removeEntry(i);
                         }
                     }
                 }
                 //if the node is empty
-                if(node.getChildrenCount()==0){
+                if (node.getChildrenCount() == 0) {
                     try {
                         storageManager.deleteByteArray(nodePageIdentifier);
-                        if(nodePageIdentifiers.second()==null || nodePageIdentifiers.second().longValue()==StorageManager.NEW_PAGE){
-                            assert nodePageIdentifier.longValue()==this.rootIdentifier.longValue();
+                        if (nodePageIdentifiers.second() == null || nodePageIdentifiers.second().longValue() == StorageManager.NEW_PAGE) {
+                            assert nodePageIdentifier.longValue() == this.rootIdentifier.longValue();
                             return true;
-                        }
-                        else{
+                        } else {
                             Node parentNode = readNode(nodePageIdentifiers.second());
-                            for(int i=0;i<4;++i){
-                                if(parentNode.getChildIdentifier(i)!=null){
-                                    if(parentNode.getChildIdentifier(i).longValue()==nodePageIdentifier.longValue()){
-                                        parentNode.setChildIdentifier(i,Identifier.create(StorageManager.NEW_PAGE));
+                            for (int i = 0; i < 4; ++i) {
+                                if (parentNode.getChildIdentifier(i) != null) {
+                                    if (parentNode.getChildIdentifier(i).longValue() == nodePageIdentifier.longValue()) {
+                                        parentNode.setChildIdentifier(i, Identifier.create(StorageManager.NEW_PAGE));
                                         writeNode(parentNode);
                                         return true;
                                     }
                                 }
                             }
                         }
-                    }
-                    catch (IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                         return false;
                     }
-                }
-                else{
+                } else {
                     writeNode(node);
                     return true;
                 }
-            }
-            else{
-                for(int i=0;i<4;++i){
+            } else {
+                for (int i = 0; i < 4; ++i) {
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE)
+                    if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE)
                         continue;
-                    if(shape.intersectsShape(node.getChildShape(i)))
-                        stack.push(new Pair(nodePageIdentifier,node.getIdentifier()));
+                    if (shape.intersectsShape(node.getChildShape(i)))
+                        stack.push(new Pair(nodePageIdentifier, node.getIdentifier()));
                 }
             }
         }
@@ -326,31 +319,30 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     @Override
     public void contains(Shape query, Visitor v) {
-        if(this.envelope.intersects(query.getMBR())==false)
+        if (this.envelope.intersects(query.getMBR()) == false)
             return;
-        if(this.rootIdentifier==null || this.rootIdentifier.longValue()==StorageManager.NEW_PAGE)
+        if (this.rootIdentifier == null || this.rootIdentifier.longValue() == StorageManager.NEW_PAGE)
             return;
         Identifier nodePageIdentifier = Identifier.create(this.rootIdentifier);
-        Stack<Identifier>  stack = new Stack<>();
+        Stack<Identifier> stack = new Stack<>();
         stack.push(nodePageIdentifier);
-        nodePageIdentifier=null;
+        nodePageIdentifier = null;
 
-        while (stack.empty()==false){
+        while (stack.empty() == false) {
             nodePageIdentifier = stack.pop();
             Node node = readNode(nodePageIdentifier);
-            if(node instanceof QuadTreeExternalNodeImpl){
-                for(int i=0;i<node.getChildrenCount();++i){
-                    if(query.containsShape(node.getChildShape(i))){
+            if (node instanceof QuadTreeExternalNodeImpl) {
+                for (int i = 0; i < node.getChildrenCount(); ++i) {
+                    if (query.containsShape(node.getChildShape(i))) {
                         v.visitData(node.getChildEntry(i));
                     }
                 }
-            }
-            else{
-                for(int i=0;i<4;++i){
+            } else {
+                for (int i = 0; i < 4; ++i) {
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE)
+                    if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE)
                         continue;
-                    if(query.intersectsShape(node.getChildShape(i)))
+                    if (query.intersectsShape(node.getChildShape(i)))
                         stack.push(nodePageIdentifier);
                 }
             }
@@ -359,31 +351,30 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     @Override
     public void intersects(Shape query, Visitor v) {
-        if(this.envelope.intersects(query.getMBR())==false)
+        if (this.envelope.intersects(query.getMBR()) == false)
             return;
-        if(this.rootIdentifier==null || this.rootIdentifier.longValue()==StorageManager.NEW_PAGE)
+        if (this.rootIdentifier == null || this.rootIdentifier.longValue() == StorageManager.NEW_PAGE)
             return;
         Identifier nodePageIdentifier = Identifier.create(this.rootIdentifier);
-        Stack<Identifier>  stack = new Stack<>();
+        Stack<Identifier> stack = new Stack<>();
         stack.push(nodePageIdentifier);
-        nodePageIdentifier=null;
+        nodePageIdentifier = null;
 
-        while (stack.empty()==false){
+        while (stack.empty() == false) {
             nodePageIdentifier = stack.pop();
             Node node = readNode(nodePageIdentifier);
-            if(node instanceof QuadTreeExternalNodeImpl){
-                for(int i=0;i<node.getChildrenCount();++i){
-                    if(query.intersectsShape(node.getChildShape(i))){
+            if (node instanceof QuadTreeExternalNodeImpl) {
+                for (int i = 0; i < node.getChildrenCount(); ++i) {
+                    if (query.intersectsShape(node.getChildShape(i))) {
                         v.visitData(node.getChildEntry(i));
                     }
                 }
-            }
-            else{
-                for(int i=0;i<4;++i){
+            } else {
+                for (int i = 0; i < 4; ++i) {
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE)
+                    if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE)
                         continue;
-                    if(query.intersectsShape(node.getChildShape(i)))
+                    if (query.intersectsShape(node.getChildShape(i)))
                         stack.push(nodePageIdentifier);
                 }
             }
@@ -391,37 +382,35 @@ public class QuadTreeImpl implements QuadTree, Serializable{
     }
 
     /**
-     *
      * @param query
      * @param v
      */
     @Override
     public void pointLocation(PointShape query, Visitor v) {
-        if(this.envelope.contains(query.getCenter())==false)
+        if (this.envelope.contains(query.getCenter()) == false)
             return;
-        if(this.rootIdentifier==null || this.rootIdentifier.longValue()==StorageManager.NEW_PAGE)
+        if (this.rootIdentifier == null || this.rootIdentifier.longValue() == StorageManager.NEW_PAGE)
             return;
         Identifier nodePageIdentifier = Identifier.create(this.rootIdentifier);
-        Stack<Identifier>  stack = new Stack<>();
+        Stack<Identifier> stack = new Stack<>();
         stack.push(nodePageIdentifier);
-        nodePageIdentifier=null;
+        nodePageIdentifier = null;
 
-        while (stack.empty()==false){
+        while (stack.empty() == false) {
             nodePageIdentifier = stack.pop();
             Node node = readNode(nodePageIdentifier);
-            if(node instanceof QuadTreeExternalNodeImpl){
-                for(int i=0;i<node.getChildrenCount();++i){
-                    if(node.getChildShape(i).containsShape(query)){
+            if (node instanceof QuadTreeExternalNodeImpl) {
+                for (int i = 0; i < node.getChildrenCount(); ++i) {
+                    if (node.getChildShape(i).containsShape(query)) {
                         v.visitData(node.getChildEntry(i));
                     }
                 }
-            }
-            else{
-                for(int i=0;i<4;++i){
+            } else {
+                for (int i = 0; i < 4; ++i) {
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE)
+                    if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE)
                         continue;
-                    if(node.getChildShape(i).containsShape(query))
+                    if (node.getChildShape(i).containsShape(query))
                         stack.push(nodePageIdentifier);
                 }
             }
@@ -538,11 +527,10 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     @Override
     public void queryStrategy(QueryStrategy qs) {
-        Identifier next =null;
+        Identifier next = null;
         try {
             next = (Identifier) this.rootIdentifier.clone();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -566,21 +554,22 @@ public class QuadTreeImpl implements QuadTree, Serializable{
         ps.put("LeafCapacity", new Variant(this.leafCapacity));
 
 
-        ps.put("Envelope",new Variant(this.envelope));
+        ps.put("Envelope", new Variant(this.envelope));
 
         return ps;
     }
 
     @Override
     public void addCommand(Command in, CommandType ct) {
-        if(this.commands==null){
+        if (this.commands == null) {
             this.commands = new ArrayList<>();
         }
-        this.commands.add(new Pair(in,ct));
+        this.commands.add(new Pair(in, ct));
     }
 
     /**
      * it is always valid
+     *
      * @return
      */
     @Override
@@ -591,6 +580,7 @@ public class QuadTreeImpl implements QuadTree, Serializable{
     /**
      * have not the statistics information,
      * return null
+     *
      * @return
      */
     @Override
@@ -605,6 +595,7 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     /**
      * write the node to storageManger
+     *
      * @param n
      * @return
      */
@@ -632,6 +623,7 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     /**
      * read the node from storageManger
+     *
      * @param page is the page identifier in the storageManager
      * @return
      */
@@ -642,9 +634,9 @@ public class QuadTreeImpl implements QuadTree, Serializable{
             int nodeType = dis.readInt();
             QuadTreeNodeImpl n = null;
             if (nodeType == 1)
-                n = new QuadTreeInternalNodeImpl(Identifier.create(-1L),this,new RegionShape(this.getDimension()));
+                n = new QuadTreeInternalNodeImpl(Identifier.create(-1L), this, new RegionShape(this.getDimension()));
             else
-                n = new QuadTreeExternalNodeImpl(Identifier.create(-1L),getCapacity(),this,new RegionShape(this.getDimension()));
+                n = new QuadTreeExternalNodeImpl(Identifier.create(-1L), getCapacity(), this, new RegionShape(this.getDimension()));
             n.loadFromByteArray(buffer);
             n.setIdentifier(page);//change the identifier
             return n;
@@ -657,29 +649,29 @@ public class QuadTreeImpl implements QuadTree, Serializable{
 
     /**
      * get all leaf node boundaries
+     *
      * @return
      */
     @Override
     public List<Envelope> getLeafNodeEnvelopes() {
-        if(this.rootIdentifier==null || this.rootIdentifier.longValue()==StorageManager.NEW_PAGE)
+        if (this.rootIdentifier == null || this.rootIdentifier.longValue() == StorageManager.NEW_PAGE)
             return null;
         Identifier nodePageIdentifier = Identifier.create(this.rootIdentifier);
-        Stack<Identifier>  stack = new Stack<>();
+        Stack<Identifier> stack = new Stack<>();
         stack.push(nodePageIdentifier);
-        nodePageIdentifier=null;
+        nodePageIdentifier = null;
 
         ArrayList<Envelope> results = new ArrayList<>();
 
-        while (stack.empty()==false){
+        while (stack.empty() == false) {
             nodePageIdentifier = stack.pop();
             Node node = readNode(nodePageIdentifier);
-            if(node instanceof QuadTreeExternalNodeImpl){
+            if (node instanceof QuadTreeExternalNodeImpl) {
                 results.add(node.getShape().getMBR());
-            }
-            else{
-                for(int i=0;i<4;++i){
+            } else {
+                for (int i = 0; i < 4; ++i) {
                     nodePageIdentifier = node.getChildIdentifier(i);
-                    if(nodePageIdentifier==null || nodePageIdentifier.longValue()==StorageManager.NEW_PAGE)
+                    if (nodePageIdentifier == null || nodePageIdentifier.longValue() == StorageManager.NEW_PAGE)
                         continue;
                     stack.push(nodePageIdentifier);
                 }

@@ -3,9 +3,9 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2004 - 2015, Open Source Geospatial Foundation (OSGeo)
- *    
+ *
  *    This library is free software; you can redistribute it and/or
  *    modify it under the terms of the GNU Lesser General Public
  *    License as published by the Free Software Foundation;
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
- */ 
+ */
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -65,7 +65,7 @@ public class CurvedGeometryFactory extends GeometryFactory {
      * Creates a {@link CircularString}
      *
      * @param dimension Number of dimensions in the control point array. For the time being, any
-     *        value other than 2 will cause a IllegalArgumentException
+     *                  value other than 2 will cause a IllegalArgumentException
      */
     public LineString createCircularString(int dimension, double... controlPoints) {
         if (dimension != 2) {
@@ -80,7 +80,7 @@ public class CurvedGeometryFactory extends GeometryFactory {
      * are forming a closed ring, or not
      *
      * @param dimension Number of dimensions in the control point array. For the time being, any
-     *        value other than 2 will cause a IllegalArgumentException
+     *                  value other than 2 will cause a IllegalArgumentException
      */
     public LineString createCurvedGeometry(int dimension, double... controlPoints) {
         if (dimension != 2) {
@@ -122,7 +122,7 @@ public class CurvedGeometryFactory extends GeometryFactory {
     public LineString createCurvedGeometry(LineString... components) {
         if (components == null) {
             // return an empty lineString?
-            return createLineString(new Coordinate[] {});
+            return createLineString(new Coordinate[]{});
         }
         return createCurvedGeometry(Arrays.asList(components));
     }
@@ -348,7 +348,7 @@ public class CurvedGeometryFactory extends GeometryFactory {
 
             @Override
             public void filter(Geometry geom) {
-                if(geom instanceof CurvedGeometry) {
+                if (geom instanceof CurvedGeometry) {
                     hasCurves.set(true);
                 }
 

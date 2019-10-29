@@ -11,20 +11,20 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class EnvelopeIntersectsGeometryFilter implements GeometryFilter  {
+public class EnvelopeIntersectsGeometryFilter implements GeometryFilter {
     private final Envelope envelope;
 
     public EnvelopeIntersectsGeometryFilter(Envelope envelope) {
-        this.envelope=envelope.clone();
+        this.envelope = envelope.clone();
     }
 
-    public EnvelopeIntersectsGeometryFilter( ) {
+    public EnvelopeIntersectsGeometryFilter() {
         this(Envelope.create(Config.getDimension()));
     }
 
     @Override
     public boolean test(Geometry g) {
-        if(g==null) return false;
+        if (g == null) return false;
         return this.envelope.intersects(g.getEnvelope());
     }
 

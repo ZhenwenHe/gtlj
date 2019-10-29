@@ -25,20 +25,19 @@ public class GeometryVisitor implements Visitor {
 
     }
 
-    public void visitGeometry(Geometry g){
-        if(g!=null) {
+    public void visitGeometry(Geometry g) {
+        if (g != null) {
             geometries.add(g);
         }
     }
 
     @Override
     public void visitData(Entry in) {
-        try{
-            if(in==null) return;
+        try {
+            if (in == null) return;
             Geometry g = (Geometry) ObjectUtils.loadFromByteArray(in.getData());
             visitGeometry(g);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

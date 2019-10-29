@@ -14,7 +14,7 @@ public interface PropertySet extends Map<String, Variant>, Serializable {
 
     Variant getProperty(String key);
 
-    static PropertySet create(){
+    static PropertySet create() {
         return new PropertySetImpl();
     }
 }

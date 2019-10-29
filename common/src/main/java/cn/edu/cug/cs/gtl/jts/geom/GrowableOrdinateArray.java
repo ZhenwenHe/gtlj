@@ -2,7 +2,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014 - 2015, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -22,7 +22,6 @@ package cn.edu.cug.cs.gtl.jts.geom;
  * the data gets added.
  *
  * @author Andrea Aime - GeoSolutions
- *
  */
 class GrowableOrdinateArray {
 
@@ -113,6 +112,7 @@ class GrowableOrdinateArray {
 
     /**
      * Returns the current data array, raw, uncut
+     *
      * @return
      */
     public double[] getDataRaw() {
@@ -207,14 +207,14 @@ class GrowableOrdinateArray {
     }
 
     /**
-     *  Closes the sequence by adding the last point as first
+     * Closes the sequence by adding the last point as first
      */
     public void close() {
         add(data[0], data[1]);
     }
 
     /**
-     * Copies a sub-array from another growable array 
+     * Copies a sub-array from another growable array
      *
      * @param other
      * @param from

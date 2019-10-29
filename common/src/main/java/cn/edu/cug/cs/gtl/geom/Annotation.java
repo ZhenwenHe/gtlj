@@ -9,18 +9,17 @@ import java.io.IOException;
  */
 public class Annotation extends Point {
     private static final long serialVersionUID = -53680446996870561L;
-    private String text=null;
-    private Font   font=null;
+    private String text = null;
+    private Font font = null;
     private Vector baselineDirection;//基线方向
 
 
-
-    public Annotation( ) {
+    public Annotation() {
         this.text = null;
         this.font = null;
     }
 
-    public Annotation( int dim) {
+    public Annotation(int dim) {
         super(dim);
         this.text = null;
         this.font = null;
@@ -99,7 +98,7 @@ public class Annotation extends Point {
 
     @Override
     public Annotation clone() {
-        Annotation p = (Annotation)super.clone();
+        Annotation p = (Annotation) super.clone();
         return p;
     }
 }

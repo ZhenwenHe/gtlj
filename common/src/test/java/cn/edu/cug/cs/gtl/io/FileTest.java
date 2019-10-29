@@ -50,8 +50,8 @@ public class FileTest {
 
     @Test
     public void ListFiles() {
-        List<String> ls = File.listFiles("/Users/zhenwenhe/git/studies","*.java");
-        for(String s: ls){
+        List<String> ls = File.listFiles("/Users/zhenwenhe/git/studies", "*.java");
+        for (String s : ls) {
             System.out.println(s);
         }
 
@@ -59,8 +59,8 @@ public class FileTest {
 
     @Test
     public void ListAllFiles() {
-        List<String> ls = File.listFiles("/Users/zhenwenhe/git/studies","*.*");
-        for(String s: ls){
+        List<String> ls = File.listFiles("/Users/zhenwenhe/git/studies", "*.*");
+        for (String s : ls) {
             System.out.println(s);
         }
 
@@ -68,8 +68,8 @@ public class FileTest {
 
     @Test
     public void listFilesAndDirs() {
-        List<String> ls = File.listFiles("/Users/zhenwenhe/git/studies",null);
-        for(String s: ls){
+        List<String> ls = File.listFiles("/Users/zhenwenhe/git/studies", null);
+        for (String s : ls) {
             System.out.println(s);
         }
 

@@ -14,16 +14,15 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * rectangle decomposition tree
- *
  */
-public class RDTree <T extends Serializable> implements java.io.Serializable{
+public class RDTree<T extends Serializable> implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
     /**
      * 每个叶子节点中最多能存放leafNodeCapacity数据对象
      */
     protected int leafNodeCapacity;
     protected StorageManager storageManager;
-    protected Map<String,Identifier> leafNodes;
+    protected Map<String, Identifier> leafNodes;
     protected ArrayList<String> emptyNodes;
 
     protected RegionShape baseRegionShape;
@@ -32,9 +31,8 @@ public class RDTree <T extends Serializable> implements java.io.Serializable{
 
     //spark variables
     transient JavaSparkContext sparkContext;
-    transient JavaRDD<Pair<String,Identifier>> sparkRDD;
+    transient JavaRDD<Pair<String, Identifier>> sparkRDD;
     transient AtomicBoolean constructedRDD; //whether the RDD is constructed, threadsafe
-
 
 
 }

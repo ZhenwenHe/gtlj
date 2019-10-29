@@ -34,46 +34,51 @@ public class LinearRing extends LineString {
 
     /**
      * LinearRing有参构造函数
+     *
      * @param coordinates：包括线环的维度和坐标
      */
     public LinearRing(VectorSequence coordinates) {
         super(coordinates);
-        this.geometryType= LINEARRING;
+        this.geometryType = LINEARRING;
     }
 
     /**
      * LinearRing有参构造函数
+     *
      * @param coordinates:线环的坐标点数组
      */
     public LinearRing(Vector[] coordinates) {
         super(coordinates);
-        this.geometryType= LINEARRING;
+        this.geometryType = LINEARRING;
     }
 
     /**
      * LinearRing有参构造函数
+     *
      * @param dim：线环的维度
      */
-    public LinearRing(int dim ) {
+    public LinearRing(int dim) {
         super(dim);
-        this.geometryType= LINEARRING;
+        this.geometryType = LINEARRING;
     }
 
     public LinearRing() {
         super();
-        this.geometryType= LINEARRING;
+        this.geometryType = LINEARRING;
     }
 
     /**
      * 获得线环的序列，包括维度和坐标
+     *
      * @return
      */
-    public VectorSequence getVectorSequence(){
+    public VectorSequence getVectorSequence() {
         return coordinates;
     }
 
     /**
      * 从存储对象中加载数据，填充本对象
+     *
      * @param in:表示可以读取的存储对象，可能是内存、文件、管道等
      * @return
      * @throws IOException
@@ -86,6 +91,7 @@ public class LinearRing extends LineString {
 
     /**
      * 将本对象写入存储对象中，存储对象可能是内存、文件、管道等
+     *
      * @param out:表示可以写入的存储对象，可能是内存、文件、管道等
      * @return
      * @throws IOException
@@ -99,6 +105,7 @@ public class LinearRing extends LineString {
     /**
      * 对象序列化后的字节数，
      * 默认实现为将其写入一个字节数组中，然后返回该字节数
+     *
      * @return
      */
     @Override
@@ -108,6 +115,7 @@ public class LinearRing extends LineString {
 
     /**
      * 拷贝本对象内容到其他同类对象
+     *
      * @return
      */
     @Override

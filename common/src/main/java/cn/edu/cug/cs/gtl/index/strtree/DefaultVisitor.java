@@ -6,7 +6,7 @@ import cn.edu.cug.cs.gtl.index.Entry;
 import java.util.Collection;
 
 public class DefaultVisitor extends AbstractVisitor {
-    protected Collection<Object> objects=null;
+    protected Collection<Object> objects = null;
 
     public DefaultVisitor() {
         //this.objects = new ArrayList<Object>();

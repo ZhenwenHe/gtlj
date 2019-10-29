@@ -18,32 +18,32 @@ import java.util.List;
 
 public class EuclideanNNClassification {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         ExperimentalConfig config = new ExperimentalConfig();
-        int m=config.getDataFiles().size();
-        int n=1;
-        List<Pair<String,double[]>> results = new ArrayList<>();
-        int k=0;
+        int m = config.getDataFiles().size();
+        int n = 1;
+        List<Pair<String, double[]>> results = new ArrayList<>();
+        int k = 0;
         config.setResultFileName("euclidean_nn.xls");
-        try{
-            for (Pair<String,String> p: config.getDataFiles()){
+        try {
+            for (Pair<String, String> p : config.getDataFiles()) {
                 String name = File.getFileNameWithoutSuffix(p.first());
-                name=name.substring(0,name.indexOf('_'));
-                MultiSeries train= Series.readTSV(p.first());
-                MultiSeries test=Series.readTSV(p.second());
-                TrainSet<TimeSeries,String> trainSet=train.toTrainSet();
-                TestSet<TimeSeries,String> testSet=test.toTestSet();
+                name = name.substring(0, name.indexOf('_'));
+                MultiSeries train = Series.readTSV(p.first());
+                MultiSeries test = Series.readTSV(p.second());
+                TrainSet<TimeSeries, String> trainSet = train.toTrainSet();
+                TestSet<TimeSeries, String> testSet = test.toTestSet();
                 double[] r = new double[n];
-                k=0;
-                for(int i=0;i<n;++i){
+                k = 0;
+                for (int i = 0; i < n; ++i) {
                     EuclideanDistanceMetrics<TimeSeries> disFunc = new EuclideanDistanceMetrics<>();
-                    NNClassifier<TimeSeries,String> nnClassifier=new NNClassifier<>(trainSet,testSet,disFunc);
-                    r[k]=nnClassifier.score(); k++;
+                    NNClassifier<TimeSeries, String> nnClassifier = new NNClassifier<>(trainSet, testSet, disFunc);
+                    r[k] = nnClassifier.score();
+                    k++;
                 }
-                results.add(new Pair<>(name,r));
+                results.add(new Pair<>(name, r));
             }
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         config.writeResults(results);

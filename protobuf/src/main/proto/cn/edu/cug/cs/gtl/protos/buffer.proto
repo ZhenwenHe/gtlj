@@ -5,74 +5,74 @@ import "google/protobuf/any.proto";
 
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
-option java_package="cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
 option java_multiple_files = true;
 option java_outer_classname = "Buffers";
 
 
-message Int8Buffer{
-    bytes element=1;
+message Int8Buffer {
+    bytes element = 1;
 }
 
-message Uint8Buffer{
-    repeated int32 element=1;
+message Uint8Buffer {
+    repeated int32 element = 1;
 }
 
-message Int16Buffer{
-    repeated int32 element=1;
+message Int16Buffer {
+    repeated int32 element = 1;
 }
 
-message Uint16Buffer{
-    repeated int32 element=1;
+message Uint16Buffer {
+    repeated int32 element = 1;
 }
 
-message Int32Buffer{
-    repeated int32 element=1;
+message Int32Buffer {
+    repeated int32 element = 1;
 }
 
-message Uint32Buffer{
-    repeated uint32 element=1;
+message Uint32Buffer {
+    repeated uint32 element = 1;
 }
 
-message Int64Buffer{
-    repeated int64 element=1;
+message Int64Buffer {
+    repeated int64 element = 1;
 }
 
-message Uint64Buffer{
-    repeated uint64 element=1;
+message Uint64Buffer {
+    repeated uint64 element = 1;
 }
 
-message Float64Buffer{
-    repeated double element=1;
+message Float64Buffer {
+    repeated double element = 1;
 }
 
-message Float32Buffer{
-    repeated float element=1;
+message Float32Buffer {
+    repeated float element = 1;
 }
 
-message BoolBuffer{
-    repeated bool element=1;
+message BoolBuffer {
+    repeated bool element = 1;
 }
 
-message StringBuffer{
-    repeated string element=1;
+message StringBuffer {
+    repeated string element = 1;
 }
 
-message DataBuffer{
-    enum Type{
-        INT8=0;
-        INT16=1;
-        INT32=2;
-        INT64=3;
-        UNIT8=4;
-        UINT16=5;
-        UINT32=6;
-        UINT64=7;
-        FLOAT32=8;
-        FLOAT64=9;
-        STRING=10;
-        BOOL=11;
+message DataBuffer {
+    enum Type {
+        INT8 = 0;
+        INT16 = 1;
+        INT32 = 2;
+        INT64 = 3;
+        UNIT8 = 4;
+        UINT16 = 5;
+        UINT32 = 6;
+        UINT64 = 7;
+        FLOAT32 = 8;
+        FLOAT64 = 9;
+        STRING = 10;
+        BOOL = 11;
     }
-    Type type=1;
-    google.protobuf.Any  buffer=2;
+    Type type = 1;
+    google.protobuf.Any buffer = 2;
 }

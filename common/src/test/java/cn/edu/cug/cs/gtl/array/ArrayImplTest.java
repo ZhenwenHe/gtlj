@@ -49,15 +49,15 @@ public class ArrayImplTest {
 
     @Test
     public void col() {
-        double [] dat = {1,2,3,4,
-                         5,6,7,8,
-                         9,10,11,12};
-        Array a = Array.of(4,3,dat);
+        double[] dat = {1, 2, 3, 4,
+                5, 6, 7, 8,
+                9, 10, 11, 12};
+        Array a = Array.of(4, 3, dat);
         Array.print(a);
-        Assert.assertEquals(6,a.get(1,1),0.0001);
+        Assert.assertEquals(6, a.get(1, 1), 0.0001);
         Visitor v = a.col(1);
-        double[] b = {5,6,7,8};
-        Assert.assertArrayEquals(v.array().raw(),b,Double.MIN_NORMAL);
+        double[] b = {5, 6, 7, 8};
+        Assert.assertArrayEquals(v.array().raw(), b, Double.MIN_NORMAL);
     }
 
     @Test

@@ -9,12 +9,14 @@ import java.io.IOException;
 public interface BufferedStorageManager extends StorageManager {
     /**
      * 得到命中次数
+     *
      * @return 返回hits
      */
     long getHits();
 
     /**
      * 将缓存写回到存储设备，强制写入存储介质
+     *
      * @throws IOException 文件IO异常
      */
     void clear() throws IOException;

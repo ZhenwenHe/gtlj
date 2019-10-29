@@ -39,15 +39,12 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 
 /**
  * Copies point ordinates with no transformation.
- * 
- * @author Martin Davis
  *
+ * @author Martin Davis
  */
 public class IdentityPointTransformation
-implements PointTransformation
-{
-	public void transform(Coordinate model, Point2D view)
-	{
-		view.setLocation(model.x, model.y);
-	}
+        implements PointTransformation {
+    public void transform(Coordinate model, Point2D view) {
+        view.setLocation(model.x, model.y);
+    }
 }

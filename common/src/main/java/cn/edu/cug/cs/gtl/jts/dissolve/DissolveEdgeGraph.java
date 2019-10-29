@@ -8,16 +8,13 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 
 /**
  * A graph containing {@link DissolveHalfEdge}s.
- * 
- * @author Martin Davis
  *
+ * @author Martin Davis
  */
-class DissolveEdgeGraph extends EdgeGraph
-{
-  protected HalfEdge createEdge(Coordinate p0)
-  {
-    return new DissolveHalfEdge(p0);
-  }
-  
+class DissolveEdgeGraph extends EdgeGraph {
+    protected HalfEdge createEdge(Coordinate p0) {
+        return new DissolveHalfEdge(p0);
+    }
+
 
 }

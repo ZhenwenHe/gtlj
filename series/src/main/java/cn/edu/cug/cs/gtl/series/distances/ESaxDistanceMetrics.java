@@ -8,16 +8,16 @@ public class ESaxDistanceMetrics<T> implements DistanceMetrics<T> {
     protected long wordSize;
 
     public ESaxDistanceMetrics(long w, int alphabet) {
-        this.alphabet=alphabet;
-        this.wordSize=w;
+        this.alphabet = alphabet;
+        this.wordSize = w;
     }
+
     @Override
     public double distance(T a, T b) {
-        if(a instanceof TimeSeries && b instanceof TimeSeries){
+        if (a instanceof TimeSeries && b instanceof TimeSeries) {
             //return DistanceUtils.esax((TimeSeries) a,(TimeSeries)b,this.wordSize);
             return 0;
-        }
-        else{
+        } else {
             System.out.println("Error");
             return Double.MAX_VALUE;
         }

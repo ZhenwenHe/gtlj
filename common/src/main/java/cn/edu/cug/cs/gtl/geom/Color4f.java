@@ -4,24 +4,24 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class Color4f extends Color3f{
+public class Color4f extends Color3f {
 
     private static final long serialVersionUID = 1L;
 
     protected float a;
 
     public Color4f(float r, float g, float b, float a) {
-        super(r,g,b);
+        super(r, g, b);
         this.a = a;
     }
 
     public Color4f(float r, float g, float b) {
-        super(r,g,b);
-        this.a=0.0f;
+        super(r, g, b);
+        this.a = 0.0f;
     }
 
     public Color4f() {
-        super( );
+        super();
         this.a = 0.0f;
     }
 
@@ -35,15 +35,15 @@ public class Color4f extends Color3f{
 
     @Override
     public Color4f clone() {
-        return new Color4f(r,g,b,a);
+        return new Color4f(r, g, b, a);
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        r=in.readFloat();
-        g=in.readFloat();
-        b=in.readFloat();
-        a=in.readFloat();
+        r = in.readFloat();
+        g = in.readFloat();
+        b = in.readFloat();
+        a = in.readFloat();
         return true;
     }
 
@@ -58,6 +58,6 @@ public class Color4f extends Color3f{
 
     @Override
     public long getByteArraySize() {
-        return 32*4;
+        return 32 * 4;
     }
 }

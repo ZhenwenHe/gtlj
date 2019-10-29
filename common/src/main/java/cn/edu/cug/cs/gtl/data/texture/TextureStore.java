@@ -12,17 +12,17 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
- 打开纹理库
- 添加纹理
- 删除纹理
- 查找纹理
- 关闭纹理库
-
+ * 打开纹理库
+ * 添加纹理
+ * 删除纹理
+ * 查找纹理
+ * 关闭纹理库
  */
 public interface TextureStore extends DataStore<DataSchema, Texture> {
 
     /**
      * 打开纹理库,如果该纹理库不存在，则新建一个纹理库并打开
+     *
      * @param path
      * @return
      * @throws IOException
@@ -31,6 +31,7 @@ public interface TextureStore extends DataStore<DataSchema, Texture> {
 
     /**
      * 添加纹理
+     *
      * @param texture
      * @return
      * @throws IOException
@@ -39,6 +40,7 @@ public interface TextureStore extends DataStore<DataSchema, Texture> {
 
     /**
      * 移除纹理
+     *
      * @param identifier
      * @return
      * @throws IOException
@@ -47,6 +49,7 @@ public interface TextureStore extends DataStore<DataSchema, Texture> {
 
     /**
      * 移除纹理
+     *
      * @param textureName
      * @return
      * @throws IOException
@@ -55,6 +58,7 @@ public interface TextureStore extends DataStore<DataSchema, Texture> {
 
     /**
      * 查找纹理
+     *
      * @param identifier
      * @return
      * @throws IOException

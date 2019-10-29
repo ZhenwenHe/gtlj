@@ -24,8 +24,8 @@ public class ExperimentalConfigTest {
     }
 
     @Test
-    public void generalTest(){
-        ExperimentalConfig config=null;
+    public void generalTest() {
+        ExperimentalConfig config = null;
 //        config=new ExperimentalConfig(null);
 //        Assert.assertEquals(96,config.getDataFiles().size());
 //        Assert.assertEquals(5,config.getPaaSizeRange().first().intValue());
@@ -40,24 +40,24 @@ public class ExperimentalConfigTest {
 //        Assert.assertEquals(3,config.getAlphabetRange().first().intValue());
 //        Assert.assertEquals(16,config.getAlphabetRange().second().intValue());
 
-        config=new ExperimentalConfig(Config.getDataDirectory()+ File.separatorChar+"log"+File.separatorChar+"series.db");
-        Assert.assertEquals(96,config.getDataFiles().size());
-        Assert.assertEquals(5,config.getPaaSizeRange().first().intValue());
-        Assert.assertEquals(21,config.getPaaSizeRange().second().intValue());
-        Assert.assertEquals(3,config.getAlphabetRange().first().intValue());
-        Assert.assertEquals(17,config.getAlphabetRange().second().intValue());
+        config = new ExperimentalConfig(Config.getDataDirectory() + File.separatorChar + "log" + File.separatorChar + "series.db");
+        Assert.assertEquals(96, config.getDataFiles().size());
+        Assert.assertEquals(5, config.getPaaSizeRange().first().intValue());
+        Assert.assertEquals(21, config.getPaaSizeRange().second().intValue());
+        Assert.assertEquals(3, config.getAlphabetRange().first().intValue());
+        Assert.assertEquals(17, config.getAlphabetRange().second().intValue());
     }
 
     @Test
     public void writeResults() {
-        ExperimentalConfig config=new ExperimentalConfig("series.db");
-        List<Pair<String,double[]>> results = new ArrayList<>();
-        for(int i=0;i<10;++i){
-            double [] d = new double[5];
-            for(int j=0;j<5;++j){
-                d[j]=(j+10)*3;
+        ExperimentalConfig config = new ExperimentalConfig("series.db");
+        List<Pair<String, double[]>> results = new ArrayList<>();
+        for (int i = 0; i < 10; ++i) {
+            double[] d = new double[5];
+            for (int j = 0; j < 5; ++j) {
+                d[j] = (j + 10) * 3;
             }
-            Pair<String,double[]> p = new Pair<>(String.valueOf(i),d);
+            Pair<String, double[]> p = new Pair<>(String.valueOf(i), d);
             results.add(p);
         }
         config.writeResults(results);

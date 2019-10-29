@@ -33,6 +33,7 @@
 package cn.edu.cug.cs.gtl.jts.noding;
 
 import java.io.PrintStream;
+
 import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 
 /**
@@ -41,62 +42,59 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
  * @version 1.7
  */
 public class SegmentNode
-    implements Comparable
-{
-  private final NodedSegmentString segString;
-  public final Coordinate coord;   // the point of intersection
-  public final int segmentIndex;   // the index of the containing line segment in the parent edge
-  private final int segmentOctant;
-  private final boolean isInterior;
+        implements Comparable {
+    private final NodedSegmentString segString;
+    public final Coordinate coord;   // the point of intersection
+    public final int segmentIndex;   // the index of the containing line segment in the parent edge
+    private final int segmentOctant;
+    private final boolean isInterior;
 
-  public SegmentNode(NodedSegmentString segString, Coordinate coord, int segmentIndex, int segmentOctant) {
-    this.segString = segString;
-    this.coord = new Coordinate(coord);
-    this.segmentIndex = segmentIndex;
-    this.segmentOctant = segmentOctant;
-    isInterior = ! coord.equals2D(segString.getCoordinate(segmentIndex));
-  }
+    public SegmentNode(NodedSegmentString segString, Coordinate coord, int segmentIndex, int segmentOctant) {
+        this.segString = segString;
+        this.coord = new Coordinate(coord);
+        this.segmentIndex = segmentIndex;
+        this.segmentOctant = segmentOctant;
+        isInterior = !coord.equals2D(segString.getCoordinate(segmentIndex));
+    }
 
-  /**
-   * Gets the {@link Coordinate} giving the location of this node.
-   * 
-   * @return the coordinate of the node
-   */
-  public Coordinate getCoordinate() 
-  {
-    return coord;
-  }
-  
-  public boolean isInterior() { return isInterior; }
+    /**
+     * Gets the {@link Coordinate} giving the location of this node.
+     *
+     * @return the coordinate of the node
+     */
+    public Coordinate getCoordinate() {
+        return coord;
+    }
 
-  public boolean isEndPoint(int maxSegmentIndex)
-  {
-    if (segmentIndex == 0 && ! isInterior) return true;
-    if (segmentIndex == maxSegmentIndex) return true;
-    return false;
-  }
+    public boolean isInterior() {
+        return isInterior;
+    }
 
-  /**
-   * @return -1 this SegmentNode is located before the argument location;
-   * 0 this SegmentNode is at the argument location;
-   * 1 this SegmentNode is located after the argument location
-   */
-  public int compareTo(Object obj)
-  {
-    SegmentNode other = (SegmentNode) obj;
+    public boolean isEndPoint(int maxSegmentIndex) {
+        if (segmentIndex == 0 && !isInterior) return true;
+        if (segmentIndex == maxSegmentIndex) return true;
+        return false;
+    }
 
-    if (segmentIndex < other.segmentIndex) return -1;
-    if (segmentIndex > other.segmentIndex) return 1;
+    /**
+     * @return -1 this SegmentNode is located before the argument location;
+     * 0 this SegmentNode is at the argument location;
+     * 1 this SegmentNode is located after the argument location
+     */
+    public int compareTo(Object obj) {
+        SegmentNode other = (SegmentNode) obj;
 
-    if (coord.equals2D(other.coord)) return 0;
+        if (segmentIndex < other.segmentIndex) return -1;
+        if (segmentIndex > other.segmentIndex) return 1;
 
-    return SegmentPointComparator.compare(segmentOctant, coord, other.coord);
-    //return segment.compareNodePosition(this, other);
-  }
+        if (coord.equals2D(other.coord)) return 0;
 
-  public void print(PrintStream out)
-  {
-    out.print(coord);
-    out.print(" seg # = " + segmentIndex);
-  }
+        return SegmentPointComparator.compare(segmentOctant, coord, other.coord);
+        //return segment.compareNodePosition(this, other);
+    }
+
+    public void print(PrintStream out) {
+        out.print(coord);
+        out.print(" seg # = " + segmentIndex);
+    }
 }

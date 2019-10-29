@@ -49,80 +49,77 @@ import cn.edu.cug.cs.gtl.jts.index.strtree.STRtree;
  *
  * @version 1.7
  */
-public class IndexedNestedRingTester
-{
-  private GeometryGraph graph;  // used to find non-node vertices
-  private List rings = new ArrayList();
-  private Envelope totalEnv = new Envelope();
-  private SpatialIndex index;
-  private Coordinate nestedPt;
+public class IndexedNestedRingTester {
+    private GeometryGraph graph;  // used to find non-node vertices
+    private List rings = new ArrayList();
+    private Envelope totalEnv = new Envelope();
+    private SpatialIndex index;
+    private Coordinate nestedPt;
 
-  public IndexedNestedRingTester(GeometryGraph graph)
-  {
-    this.graph = graph;
-  }
+    public IndexedNestedRingTester(GeometryGraph graph) {
+        this.graph = graph;
+    }
 
-  public Coordinate getNestedPoint() { return nestedPt; }
+    public Coordinate getNestedPoint() {
+        return nestedPt;
+    }
 
-  public void add(LinearRing ring)
-  {
-    rings.add(ring);
-    totalEnv.expandToInclude(ring.getEnvelopeInternal());
-  }
+    public void add(LinearRing ring) {
+        rings.add(ring);
+        totalEnv.expandToInclude(ring.getEnvelopeInternal());
+    }
 
-  public boolean isNonNested()
-  {
-    buildIndex();
+    public boolean isNonNested() {
+        buildIndex();
 
-    for (int i = 0; i < rings.size(); i++) {
-      LinearRing innerRing = (LinearRing) rings.get(i);
-      Coordinate[] innerRingPts = innerRing.getCoordinates();
+        for (int i = 0; i < rings.size(); i++) {
+            LinearRing innerRing = (LinearRing) rings.get(i);
+            Coordinate[] innerRingPts = innerRing.getCoordinates();
 
-      List results = index.query(innerRing.getEnvelopeInternal());
+            List results = index.query(innerRing.getEnvelopeInternal());
 //System.out.println(results.size());
-      for (int j = 0; j < results.size(); j++) {
-        LinearRing searchRing = (LinearRing) results.get(j);
-        Coordinate[] searchRingPts = searchRing.getCoordinates();
+            for (int j = 0; j < results.size(); j++) {
+                LinearRing searchRing = (LinearRing) results.get(j);
+                Coordinate[] searchRingPts = searchRing.getCoordinates();
 
-        if (innerRing == searchRing)
-          continue;
+                if (innerRing == searchRing)
+                    continue;
 
-        if (! innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
-          continue;
+                if (!innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
+                    continue;
 
-        Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
-        
-        /**
-         * If no non-node pts can be found, this means
-         * that the searchRing touches ALL of the innerRing vertices.
-         * This indicates an invalid polygon, since either
-         * the two holes create a disconnected interior, 
-         * or they touch in an infinite number of points 
-         * (i.e. along a line segment).
-         * Both of these cases are caught by other tests,
-         * so it is safe to simply skip this situation here.
-         */
-        if (innerRingPt == null)
-          continue;
+                Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
 
-        boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
-        if (isInside) {
-          nestedPt = innerRingPt;
-          return false;
+                /**
+                 * If no non-node pts can be found, this means
+                 * that the searchRing touches ALL of the innerRing vertices.
+                 * This indicates an invalid polygon, since either
+                 * the two holes create a disconnected interior,
+                 * or they touch in an infinite number of points
+                 * (i.e. along a line segment).
+                 * Both of these cases are caught by other tests,
+                 * so it is safe to simply skip this situation here.
+                 */
+                if (innerRingPt == null)
+                    continue;
+
+                boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
+                if (isInside) {
+                    nestedPt = innerRingPt;
+                    return false;
+                }
+            }
         }
-      }
+        return true;
     }
-    return true;
-  }
 
-  private void buildIndex()
-  {
-    index = new STRtree();
+    private void buildIndex() {
+        index = new STRtree();
 
-    for (int i = 0; i < rings.size(); i++) {
-      LinearRing ring = (LinearRing) rings.get(i);
-      Envelope env = ring.getEnvelopeInternal();
-      index.insert(env, ring);
+        for (int i = 0; i < rings.size(); i++) {
+            LinearRing ring = (LinearRing) rings.get(i);
+            Envelope env = ring.getEnvelopeInternal();
+            index.insert(env, ring);
+        }
     }
-  }
 }

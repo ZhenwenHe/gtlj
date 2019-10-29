@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2004-2008, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
  */
- 
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,16 +47,14 @@ import cn.edu.cug.cs.gtl.jts.geom.Polygon;
  * to the coordinates it contains, creating a new
  * geometry as the transformed output.
  * <p>
- * The standard usage pattern is 
+ * The standard usage pattern is
  * to supply a {@link MathTransform} and @link CoordinateReferenceSystem} explicitly.
- * The {@link #transform(Geometry)} method can then be 
+ * The {@link #transform(Geometry)} method can then be
  * used to construct transformed geometries using the {@link GeometryFactory}
  * and {@link CoordinateSequenceFactory} of the input geometry.
  *
  * @author Andrea Aime
  * @author Martin Davis
- *
- *
  * @source $URL$
  */
 public class GeometryCoordinateSequenceTransformer {
@@ -70,7 +68,7 @@ public class GeometryCoordinateSequenceTransformer {
 
     /**
      * Creates a transformer which uses the {@link CoordinateSequenceFactory}
-     * of the source geometries. 
+     * of the source geometries.
      */
     public GeometryCoordinateSequenceTransformer() {
         // the csTransformer is initialized from the first geometry
@@ -81,9 +79,9 @@ public class GeometryCoordinateSequenceTransformer {
      * Creates a transformer which uses a client-specified
      * {@link CoordinateSequenceTransformer}.
      * <p>
-     * <b>WARNING:</b> The CoordinateSequenceTransformer must use 
+     * <b>WARNING:</b> The CoordinateSequenceTransformer must use
      * the same {@link CoordinateSequenceFactory} as the output
-     * GeometryFactory, so that geometries are constructed consistently.  
+     * GeometryFactory, so that geometries are constructed consistently.
      *
      * @param transformer
      */
@@ -94,6 +92,7 @@ public class GeometryCoordinateSequenceTransformer {
 
     /**
      * Sets the math transform to be used for transformation
+     *
      * @param transform
      */
     public void setMathTransform(MathTransform transform) {
@@ -107,6 +106,7 @@ public class GeometryCoordinateSequenceTransformer {
      * This value is used to set the coordinate reference system of geometries
      * after they have been transformed.
      * </p>
+     *
      * @param crs The target coordinate reference system.
      */
     public void setCoordinateReferenceSystem(CoordinateReferenceSystem crs) {
@@ -119,8 +119,7 @@ public class GeometryCoordinateSequenceTransformer {
      *
      * @param gf the factory to use
      */
-    private void init(GeometryFactory gf)
-    {
+    private void init(GeometryFactory gf) {
         // don't init if csTransformer already exists
         if (inputCSTransformer != null)
             return;
@@ -209,7 +208,6 @@ public class GeometryCoordinateSequenceTransformer {
     }
 
     /**
-     *
      * @throws TransformException
      */
     public LineString transformLineString(LineString ls, GeometryFactory gf)
@@ -247,7 +245,7 @@ public class GeometryCoordinateSequenceTransformer {
             transformed = gf.createLineString(cs);
         }
 
-        transformed.setUserData( ls.getUserData() );
+        transformed.setUserData(ls.getUserData());
         return transformed;
     }
 
@@ -274,7 +272,6 @@ public class GeometryCoordinateSequenceTransformer {
 
     /**
      * @param point
-     *
      * @throws TransformException
      */
     public Point transformPoint(Point point, GeometryFactory gf)
@@ -285,13 +282,12 @@ public class GeometryCoordinateSequenceTransformer {
 
         CoordinateSequence cs = projectCoordinateSequence(point.getCoordinateSequence());
         Point transformed = gf.createPoint(cs);
-        transformed.setUserData( point.getUserData() );
+        transformed.setUserData(point.getUserData());
         return transformed;
     }
 
     /**
      * @param cs a CoordinateSequence
-     *
      * @throws TransformException
      */
     private CoordinateSequence projectCoordinateSequence(CoordinateSequence cs)
@@ -313,7 +309,7 @@ public class GeometryCoordinateSequenceTransformer {
         }
 
         Polygon transformed = gf.createPolygon(exterior, interiors);
-        transformed.setUserData( polygon.getUserData() );
+        transformed.setUserData(polygon.getUserData());
         return transformed;
     }
 }

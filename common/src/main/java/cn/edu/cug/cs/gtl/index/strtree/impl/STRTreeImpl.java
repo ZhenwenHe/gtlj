@@ -28,7 +28,7 @@ public class STRTreeImpl extends STRtree implements STRTree {
     private static final long serialVersionUID = 1L;
 
 
-    transient ArrayList<Pair<Command,CommandType>> commands =null;
+    transient ArrayList<Pair<Command, CommandType>> commands = null;
 
     public STRTreeImpl() {
     }
@@ -40,16 +40,17 @@ public class STRTreeImpl extends STRtree implements STRTree {
     /**
      * Inserts an item having the given bounds into the tree.
      */
-    public synchronized  void insert(cn.edu.cug.cs.gtl.geom.Envelope itemEnv, Object item) {
+    public synchronized void insert(cn.edu.cug.cs.gtl.geom.Envelope itemEnv, Object item) {
         super.insert(JTSWrapper.toJTSEnvelope(itemEnv), item);
     }
 
     /**
      * Returns items whose bounds intersect the given envelope.
      * item type maybe
-     *            Entry  -- inserted by the function insert(byte[] , Shape shape , Identifier id)
-     *           Object  -- insert(Envelope itemEnv, Object item)
-     *           Geometry -- insert(Geometry)
+     * Entry  -- inserted by the function insert(byte[] , Shape shape , Identifier id)
+     * Object  -- insert(Envelope itemEnv, Object item)
+     * Geometry -- insert(Geometry)
+     *
      * @param searchEnv
      * @return
      */
@@ -58,57 +59,56 @@ public class STRTreeImpl extends STRtree implements STRTree {
         return super.query(JTSWrapper.toJTSEnvelope(searchEnv));
     }
 
-    public void query(cn.edu.cug.cs.gtl.geom.Envelope searchEnv, AbstractVisitor visitor){
-        super.query(JTSWrapper.toJTSEnvelope(searchEnv),(ItemVisitor)visitor);
+    public void query(cn.edu.cug.cs.gtl.geom.Envelope searchEnv, AbstractVisitor visitor) {
+        super.query(JTSWrapper.toJTSEnvelope(searchEnv), (ItemVisitor) visitor);
     }
 
     public List<cn.edu.cug.cs.gtl.geom.Envelope> getLeafNodeEnvelopes() {
         List list = queryBoundary();
-        if(list==null) return null;
-        List<cn.edu.cug.cs.gtl.geom.Envelope> results =new ArrayList<>(list.size());
-        for(Object o: list){
-            results.add(JTSWrapper.toGTLEnvelope((Envelope)o));
+        if (list == null) return null;
+        List<cn.edu.cug.cs.gtl.geom.Envelope> results = new ArrayList<>(list.size());
+        for (Object o : list) {
+            results.add(JTSWrapper.toGTLEnvelope((Envelope) o));
         }
         return results;
     }
+
     /**
-     *
      * @param pData
      * @param shape
      * @param shapeIdentifier
      */
     @Override
     public void insert(byte[] pData, Shape shape, Identifier shapeIdentifier) {
-        this.insert(shape.getMBR(), Entry.create(shapeIdentifier,shape,pData));
+        this.insert(shape.getMBR(), Entry.create(shapeIdentifier, shape, pData));
     }
 
     /**
      * Removes a single item from the tree.
+     *
      * @param shape
      * @param shapeIdentifier
      * @return
      */
     @Override
     public boolean delete(Shape shape, Identifier shapeIdentifier) {
-        return this.remove(JTSWrapper.toJTSEnvelope(shape.getMBR()),Entry.create(shapeIdentifier,shape,null));
+        return this.remove(JTSWrapper.toJTSEnvelope(shape.getMBR()), Entry.create(shapeIdentifier, shape, null));
     }
 
     @Override
     public void contains(Shape query, Visitor v) {
-        intersects(query,v);
+        intersects(query, v);
     }
 
     @Override
     public void intersects(Shape query, Visitor v) {
-        if(v instanceof AbstractVisitor) {
-            AbstractVisitor dv = (AbstractVisitor)v;
-            this.query(query.getMBR(),dv);
-        }
-        else {
+        if (v instanceof AbstractVisitor) {
+            AbstractVisitor dv = (AbstractVisitor) v;
+            this.query(query.getMBR(), dv);
+        } else {
             try {
                 throw new IllegalArgumentException("intersects:Visitor should be a subclass of AbstractVisitor");
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -116,15 +116,13 @@ public class STRTreeImpl extends STRtree implements STRTree {
 
     @Override
     public void pointLocation(PointShape query, Visitor v) {
-        if(v instanceof AbstractVisitor) {
-            AbstractVisitor dv = (AbstractVisitor)v;
-            this.query(query.getMBR(),dv);
-        }
-        else {
+        if (v instanceof AbstractVisitor) {
+            AbstractVisitor dv = (AbstractVisitor) v;
+            this.query(query.getMBR(), dv);
+        } else {
             try {
                 throw new IllegalArgumentException("pointLocation:Visitor should be a subclass of AbstractVisitor");
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -133,15 +131,13 @@ public class STRTreeImpl extends STRtree implements STRTree {
     @Override
     public void nearestNeighbor(int k, Shape query, Visitor v, NearestNeighborComparator nnc) {
         try {
-            if(v instanceof AbstractVisitor) {
-                AbstractVisitor dv = (AbstractVisitor)v;
+            if (v instanceof AbstractVisitor) {
+                AbstractVisitor dv = (AbstractVisitor) v;
                 throw new UnimplementedException("STRTreeImpl:nearestNeighbor(int k, Shape query, Visitor v, NearestNeighborComparator nnc)");
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("nearestNeighbor:Visitor should be a subclass of AbstractVisitor");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -149,15 +145,13 @@ public class STRTreeImpl extends STRtree implements STRTree {
     @Override
     public void nearestNeighbor(int k, Shape query, Visitor v) {
         try {
-            if(v instanceof AbstractVisitor) {
-                AbstractVisitor dv = (AbstractVisitor)v;
+            if (v instanceof AbstractVisitor) {
+                AbstractVisitor dv = (AbstractVisitor) v;
                 throw new UnimplementedException("STRTreeImpl:nearestNeighbor(int k, Shape query, Visitor v)");
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("nearestNeighbor:Visitor should be a subclass of AbstractVisitor");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -165,15 +159,13 @@ public class STRTreeImpl extends STRtree implements STRTree {
     @Override
     public void selfJoin(Shape s, Visitor v) {
         try {
-            if(v instanceof AbstractVisitor) {
-                AbstractVisitor dv = (AbstractVisitor)v;
+            if (v instanceof AbstractVisitor) {
+                AbstractVisitor dv = (AbstractVisitor) v;
                 throw new UnimplementedException("selfJoin(Shape s, Visitor v)");
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("nearestNeighbor:Visitor should be a subclass of AbstractVisitor");
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -182,8 +174,7 @@ public class STRTreeImpl extends STRtree implements STRTree {
     public void queryStrategy(QueryStrategy qs) {
         try {
             throw new UnimplementedException("queryStrategy(QueryStrategy qs)");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -201,17 +192,21 @@ public class STRTreeImpl extends STRtree implements STRTree {
 
     @Override
     public void addCommand(Command in, CommandType ct) {
-        if(this.commands==null)
-            this.commands=new ArrayList<>();
-        this.commands.add(new Pair<Command,CommandType>(in,ct));
+        if (this.commands == null)
+            this.commands = new ArrayList<>();
+        this.commands.add(new Pair<Command, CommandType>(in, ct));
     }
 
 
     @Override
-    public boolean isValid() {return true; }
+    public boolean isValid() {
+        return true;
+    }
 
     @Override
-    public Statistics getStatistics() {return null; }
+    public Statistics getStatistics() {
+        return null;
+    }
 
     @Override
     public int getDimension() {
@@ -220,16 +215,16 @@ public class STRTreeImpl extends STRtree implements STRTree {
 
     @Override
     public void insert(Geometry g) {
-        insert(g.getEnvelope(),g);
+        insert(g.getEnvelope(), g);
     }
 
     @Override
     public Collection<Geometry> intersects(Shape query) {
         List<Object> ls = this.query(query.getMBR());
-        if(ls.get(0) instanceof Geometry){
+        if (ls.get(0) instanceof Geometry) {
             ArrayList<Geometry> al = new ArrayList<>(ls.size());
-            for(Object o: ls)
-                al.add((Geometry)o);
+            for (Object o : ls)
+                al.add((Geometry) o);
 
             return al;
         }
@@ -245,10 +240,10 @@ public class STRTreeImpl extends STRtree implements STRTree {
     /**
      * This function traverses the boundaries of all leaf nodes.
      * This function should be called after all insertions.
+     *
      * @return The list of lea nodes boundaries
      */
-    public List queryBoundary()
-    {
+    public List queryBoundary() {
         build();
         List boundaries = new ArrayList();
         if (isEmpty()) {
@@ -261,35 +256,32 @@ public class STRTreeImpl extends STRtree implements STRTree {
 
         return boundaries;
     }
+
     /**
      * This function is to traverse the children of the root.
+     *
      * @param node
      * @param boundaries
      */
-    private void queryBoundary(AbstractNode node, List  boundaries) {
+    private void queryBoundary(AbstractNode node, List boundaries) {
         List childBoundables = node.getChildBoundables();
-        boolean flagLeafnode=true;
+        boolean flagLeafnode = true;
         for (int i = 0; i < childBoundables.size(); i++) {
             Boundable childBoundable = (Boundable) childBoundables.get(i);
             if (childBoundable instanceof AbstractNode) {
                 //We find this is not a leaf node.
-                flagLeafnode=false;
+                flagLeafnode = false;
                 break;
 
             }
         }
-        if(flagLeafnode==true)
-        {
-            boundaries.add((Envelope)node.getBounds());
+        if (flagLeafnode == true) {
+            boundaries.add((Envelope) node.getBounds());
             return;
-        }
-        else
-        {
-            for (int i = 0; i < childBoundables.size(); i++)
-            {
+        } else {
+            for (int i = 0; i < childBoundables.size(); i++) {
                 Boundable childBoundable = (Boundable) childBoundables.get(i);
-                if (childBoundable instanceof AbstractNode)
-                {
+                if (childBoundable instanceof AbstractNode) {
                     queryBoundary((AbstractNode) childBoundable, boundaries);
                 }
 
@@ -312,39 +304,35 @@ public class STRTreeImpl extends STRtree implements STRTree {
      * have to be compatible with the <tt>itemDist</tt>
      * distance metric.
      *
-     * @param env the envelope of the query item
-     * @param item the item to find the nearest neighbour of
+     * @param env      the envelope of the query item
+     * @param item     the item to find the nearest neighbour of
      * @param itemDist a distance metric applicable to the items in this tree and the query item
-     * @param k the K nearest items in KNN
+     * @param k        the K nearest items in KNN
      * @return the K nearest items in this tree
      */
-    public Object[] nearestNeighbour(Envelope env, Object item, ItemDistance itemDist,int k)
-    {
+    public Object[] nearestNeighbour(Envelope env, Object item, ItemDistance itemDist, int k) {
         Boundable bnd = new ItemBoundable(env, item);
         cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair bp = new cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair(this.getRoot(), bnd, itemDist);
-        return nearestNeighbour(bp,k);
+        return nearestNeighbour(bp, k);
     }
 
-    public Object[] nearestNeighbour(cn.edu.cug.cs.gtl.geom.Envelope env, Object item, ItemDistance itemDist, int k)
-    {
+    public Object[] nearestNeighbour(cn.edu.cug.cs.gtl.geom.Envelope env, Object item, ItemDistance itemDist, int k) {
 
         Boundable bnd = new ItemBoundable(JTSWrapper.toJTSEnvelope(env), item);
         cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair bp = new cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair(this.getRoot(), bnd, itemDist);
-        return nearestNeighbour(bp,k);
+        return nearestNeighbour(bp, k);
     }
 
-    protected Object[] nearestNeighbour(cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair initBndPair, int k)
-    {
-        return nearestNeighbour(initBndPair, Double.POSITIVE_INFINITY,k);
+    protected Object[] nearestNeighbour(cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair initBndPair, int k) {
+        return nearestNeighbour(initBndPair, Double.POSITIVE_INFINITY, k);
     }
 
-    protected Object[] nearestNeighbour(cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair initBndPair, double maxDistance, int k)
-    {
-    /*
-     * This method implements the KNN algorithm described in the following paper:
-     * Roussopoulos, Nick, Stephen Kelley, and Frédéric Vincent. "Nearest neighbor queries." ACM sigmod record. Vol. 24. No. 2. ACM, 1995.
-     * We only use the minDistance and ignore minmaxDistance.
-     */
+    protected Object[] nearestNeighbour(cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair initBndPair, double maxDistance, int k) {
+        /*
+         * This method implements the KNN algorithm described in the following paper:
+         * Roussopoulos, Nick, Stephen Kelley, and Frédéric Vincent. "Nearest neighbor queries." ACM sigmod record. Vol. 24. No. 2. ACM, 1995.
+         * We only use the minDistance and ignore minmaxDistance.
+         */
 
         double distanceLowerBound = maxDistance;
 
@@ -356,7 +344,7 @@ public class STRTreeImpl extends STRtree implements STRTree {
 
         java.util.PriorityQueue<cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair> kNearestNeighbors = new java.util.PriorityQueue<cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair>(k, new BoundablePairComparator(false));
 
-        while (! priQ.isEmpty() && distanceLowerBound >= 0.0) {
+        while (!priQ.isEmpty() && distanceLowerBound >= 0.0) {
             // pop head of queue and expand one side of pair
             cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair bndPair = (cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair) priQ.poll();
             double currentDistance = bndPair.getDistance();
@@ -371,7 +359,7 @@ public class STRTreeImpl extends STRtree implements STRTree {
              */
 
 
-            if (currentDistance >= distanceLowerBound){
+            if (currentDistance >= distanceLowerBound) {
                 break;
             }
             /**
@@ -384,25 +372,21 @@ public class STRTreeImpl extends STRtree implements STRTree {
             if (bndPair.isLeaves()) {
                 // assert: currentDistance < minimumDistanceFound
 
-                if(kNearestNeighbors.size()<k){
+                if (kNearestNeighbors.size() < k) {
                     kNearestNeighbors.add(bndPair);
-                }
-                else
-                {
+                } else {
 
-                    if(kNearestNeighbors.peek().getDistance()>currentDistance)
-                    {
+                    if (kNearestNeighbors.peek().getDistance() > currentDistance) {
                         kNearestNeighbors.poll();
                         kNearestNeighbors.add(bndPair);
                     }
-    		  /*
-    		   * minDistance should be the farthest point in the K nearest neighbor queue.
-    		   */
+                    /*
+                     * minDistance should be the farthest point in the K nearest neighbor queue.
+                     */
                     distanceLowerBound = kNearestNeighbors.peek().getDistance();
 
                 }
-            }
-            else {
+            } else {
                 // testing - does allowing a tolerance improve speed?
                 // Ans: by only about 10% - not enough to matter
         /*
@@ -423,10 +407,9 @@ public class STRTreeImpl extends STRtree implements STRTree {
 
         Object[] result = new Object[kNearestNeighbors.size()];
         Iterator<cn.edu.cug.cs.gtl.index.strtree.impl.BoundablePair> resultIterator = kNearestNeighbors.iterator();
-        int count=0;
-        while(resultIterator.hasNext())
-        {
-            result[count]=((ItemBoundable)resultIterator.next().getBoundable(0)).getItem();
+        int count = 0;
+        while (resultIterator.hasNext()) {
+            result[count] = ((ItemBoundable) resultIterator.next().getBoundable(0)).getItem();
             count++;
         }
         return result;

@@ -13,16 +13,16 @@ public class SlaveDescriptor implements Storable, Writable {
     int port;
     transient SlaveProtocol slave;//不作序列化，需要通过getProxy或waitForProxy获取
 
-    public SlaveDescriptor(String ip, int port){
-        this.ipAddress=ip;
-        this.port=port;
-        this.slave=null;
+    public SlaveDescriptor(String ip, int port) {
+        this.ipAddress = ip;
+        this.port = port;
+        this.slave = null;
     }
 
-    public SlaveDescriptor( ){
-        this.ipAddress="127.0.0.1";
-        this.port=6666;
-        this.slave=null;
+    public SlaveDescriptor() {
+        this.ipAddress = "127.0.0.1";
+        this.port = 6666;
+        this.slave = null;
     }
 
     public String getIPAddress() {
@@ -33,8 +33,8 @@ public class SlaveDescriptor implements Storable, Writable {
         this.ipAddress = ipAddress;
     }
 
-    public InetSocketAddress getAddress(){
-        return new InetSocketAddress(ipAddress,port);
+    public InetSocketAddress getAddress() {
+        return new InetSocketAddress(ipAddress, port);
     }
 
     public int getPort() {
@@ -50,8 +50,9 @@ public class SlaveDescriptor implements Storable, Writable {
     }
 
     public void setSlave(SlaveProtocol sp) {
-        slave=sp;
+        slave = sp;
     }
+
     @Override
     public String toString() {
         return "SlaveDescriptor{" +
@@ -83,30 +84,30 @@ public class SlaveDescriptor implements Storable, Writable {
 
     @Override
     public Object clone() {
-        SlaveDescriptor sd =  new SlaveDescriptor(this.ipAddress,this.port);
+        SlaveDescriptor sd = new SlaveDescriptor(this.ipAddress, this.port);
         sd.slave = this.slave;
         return sd;
     }
 
     @Override
     public void copyFrom(Object i) {
-        if(i instanceof SlaveDescriptor){
-            SlaveDescriptor sd =  (SlaveDescriptor)(i);
+        if (i instanceof SlaveDescriptor) {
+            SlaveDescriptor sd = (SlaveDescriptor) (i);
             this.slave = sd.slave;
-            this.port=sd.port;
-            this.ipAddress=sd.ipAddress;
+            this.port = sd.port;
+            this.ipAddress = sd.ipAddress;
         }
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
         try {
-            int len =in.readInt();
-            byte [] bs = new byte[len];
-            in.readFully(bs,0,len);
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
             ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-            this.ipAddress=  (String) ois.readObject();
-            this.port= ((Integer) ois.readObject()).intValue();
+            this.ipAddress = (String) ois.readObject();
+            this.port = ((Integer) ois.readObject()).intValue();
             /*
             Boolean b = (Boolean) ois.readObject();
             if(!b)
@@ -115,8 +116,7 @@ public class SlaveDescriptor implements Storable, Writable {
                 this.slave=null;
             */
             ois.close();
-        }
-        catch (IOException | ClassNotFoundException|NullPointerException e){
+        } catch (IOException | ClassNotFoundException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -136,11 +136,10 @@ public class SlaveDescriptor implements Storable, Writable {
             if(!b)
                 oos.writeObject(this.slave);
             */
-            byte [] bs = baos.toByteArray();
+            byte[] bs = baos.toByteArray();
             out.writeInt(bs.length);
-            out.write(bs,0,bs.length);
-        }
-        catch (IOException | NullPointerException e){
+            out.write(bs, 0, bs.length);
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return true;
@@ -154,13 +153,12 @@ public class SlaveDescriptor implements Storable, Writable {
             oos.writeObject(this.ipAddress);
             Integer s = new Integer(this.port);
             oos.writeObject(s);
-            Boolean b = new Boolean(this.slave==null);
+            Boolean b = new Boolean(this.slave == null);
             oos.writeObject(b);
-            if(!b)
+            if (!b)
                 oos.writeObject(this.slave);
             return baos.size();
-        }
-        catch (IOException | NullPointerException e){
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
         return 0;
@@ -169,7 +167,7 @@ public class SlaveDescriptor implements Storable, Writable {
     public static SlaveDescriptor read(DataInput in) throws IOException {
         SlaveDescriptor pd = new SlaveDescriptor();
         pd.readFields(in);
-        return  pd;
+        return pd;
     }
 
     @Override

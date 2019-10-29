@@ -86,8 +86,8 @@ public class ModelRegression {
 
     public static void main(String[] args) {
 
-        String datFile = "d:"+ File.separator+"devs"+ File.separator +"data"
-                +File.separator+"spark"+File.separator+"channel_100_xy.csv";
+        String datFile = "d:" + File.separator + "devs" + File.separator + "data"
+                + File.separator + "spark" + File.separator + "channel_100_xy.csv";
 
         SparkSession spark = SparkSession
                 .builder()
@@ -103,7 +103,7 @@ public class ModelRegression {
                 .load(datFile);
 
         //中间处理数据过程
-      //  Dataset<Row> training = spark.read().csv(datFile);
+        //  Dataset<Row> training = spark.read().csv(datFile);
 
         LinearRegression lr = new LinearRegression()
                 .setMaxIter(10)

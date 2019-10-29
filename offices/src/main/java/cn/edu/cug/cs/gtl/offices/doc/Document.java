@@ -84,11 +84,11 @@ public class Document {
         this.anAbstract = anAbstract;
     }
 
-    public Raw getRaw(){
+    public Raw getRaw() {
         return this.raw;
     }
 
-    public void setRaw(Raw raw){
-        this.raw=raw;
+    public void setRaw(Raw raw) {
+        this.raw = raw;
     }
 }

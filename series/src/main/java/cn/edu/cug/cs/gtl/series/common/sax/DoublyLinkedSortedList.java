@@ -7,9 +7,8 @@ import java.util.NoSuchElementException;
 /**
  * Implement Iterable doubly linked list.
  *
- * @author psenin
- *
  * @param <T> the elemnt type.
+ * @author psenin
  */
 public class DoublyLinkedSortedList<T> {
 
@@ -45,8 +44,7 @@ public class DoublyLinkedSortedList<T> {
                 }
                 current = current.next;
                 return current.data;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 throw new NoSuchElementException(
                         "There was an exception thrown");
             }
@@ -85,7 +83,7 @@ public class DoublyLinkedSortedList<T> {
     /**
      * Constructor.
      *
-     * @param listSize elements that falls off the list are discarded.
+     * @param listSize   elements that falls off the list are discarded.
      * @param comparator the comparator.
      */
     public DoublyLinkedSortedList(int listSize, Comparator<T> comparator) {
@@ -107,8 +105,7 @@ public class DoublyLinkedSortedList<T> {
             // if it is the very first node in the list
             first = newNode;
             size = 1;
-        }
-        else {
+        } else {
 
             // if this node is greater than the list's head
             //
@@ -118,8 +115,7 @@ public class DoublyLinkedSortedList<T> {
                 first.next = tmp;
                 tmp.prev = first;
                 size++;
-            }
-            else {
+            } else {
 
                 Node<T> prev = first;
                 Node<T> current = first.next;

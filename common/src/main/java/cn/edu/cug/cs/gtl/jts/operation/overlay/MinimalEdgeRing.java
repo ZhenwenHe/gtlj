@@ -49,20 +49,18 @@ import cn.edu.cug.cs.gtl.jts.geomgraph.EdgeRing;
  * @see MaximalEdgeRing
  */
 public class MinimalEdgeRing
-  extends EdgeRing
-{
+        extends EdgeRing {
 
-  public MinimalEdgeRing(DirectedEdge start, GeometryFactory geometryFactory) {
-    super(start, geometryFactory);
-  }
+    public MinimalEdgeRing(DirectedEdge start, GeometryFactory geometryFactory) {
+        super(start, geometryFactory);
+    }
 
-  public DirectedEdge getNext(DirectedEdge de)
-  {
-    return de.getNextMin();
-  }
-  public void setEdgeRing(DirectedEdge de, EdgeRing er)
-  {
-    de.setMinEdgeRing(er);
-  }
+    public DirectedEdge getNext(DirectedEdge de) {
+        return de.getNextMin();
+    }
+
+    public void setEdgeRing(DirectedEdge de, EdgeRing er) {
+        de.setMinEdgeRing(er);
+    }
 
 }

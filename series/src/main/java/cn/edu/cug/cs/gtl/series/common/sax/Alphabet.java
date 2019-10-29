@@ -1,4 +1,5 @@
 package cn.edu.cug.cs.gtl.series.common.sax;
+
 public abstract class Alphabet {
 
     /**
@@ -24,7 +25,7 @@ public abstract class Alphabet {
      * @return The distance matrix.
      * @throws Exception if error occurs.
      */
-    public  abstract double[][] getDistanceMatrix(Integer size) throws Exception;
+    public abstract double[][] getDistanceMatrix(Integer size) throws Exception;
 
 }
 

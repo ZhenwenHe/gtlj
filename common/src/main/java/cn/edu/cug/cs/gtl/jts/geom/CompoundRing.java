@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
- */ 
+ */
 
 import java.util.List;
 
@@ -229,7 +229,7 @@ public class CompoundRing extends LinearRing implements CompoundCurvedGeometry<L
     }
 
     public Point getPointN(int n) {
-        if(n == 0) {
+        if (n == 0) {
             return getStartPoint();
         }
         return linearize().getPointN(n);

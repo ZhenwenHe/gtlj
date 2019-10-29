@@ -47,7 +47,7 @@ public class Vec1i implements Storable {
 
     @Override
     public boolean load(DataInput dataInput) throws IOException {
-        this._x=dataInput.readInt();
+        this._x = dataInput.readInt();
         return true;
     }
 

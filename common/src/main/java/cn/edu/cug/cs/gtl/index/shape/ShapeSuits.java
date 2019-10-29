@@ -6,7 +6,7 @@ import cn.edu.cug.cs.gtl.geom.Vector;
 /**
  * Created by ZhenwenHe on 2017/3/15.
  */
-public class ShapeSuits implements java.io.Serializable{
+public class ShapeSuits implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
     public static LineSegmentShape createLineSegment(Vector s, Vector e) {

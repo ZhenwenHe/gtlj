@@ -44,41 +44,37 @@ import cn.edu.cug.cs.gtl.jts.geom.*;
  * @version 1.9
  */
 public class ComponentCoordinateExtracter
-  implements GeometryComponentFilter
-{
+        implements GeometryComponentFilter {
 
-  /**
-   * Extracts the linear components from a single geometry.
-   * If more than one geometry is to be processed, it is more
-   * efficient to create a single {@link ComponentCoordinateExtracter} instance
-   * and pass it to multiple geometries.
-   *
-   * @param geom the Geometry from which to extract
-   * @return a list of Coordinates
-   */
-  public static List getCoordinates(Geometry geom)
-  {
-    List coords = new ArrayList();
-    geom.apply(new ComponentCoordinateExtracter(coords));
-    return coords;
-  }
+    /**
+     * Extracts the linear components from a single geometry.
+     * If more than one geometry is to be processed, it is more
+     * efficient to create a single {@link ComponentCoordinateExtracter} instance
+     * and pass it to multiple geometries.
+     *
+     * @param geom the Geometry from which to extract
+     * @return a list of Coordinates
+     */
+    public static List getCoordinates(Geometry geom) {
+        List coords = new ArrayList();
+        geom.apply(new ComponentCoordinateExtracter(coords));
+        return coords;
+    }
 
-  private List coords;
+    private List coords;
 
-  /**
-   * Constructs a LineExtracterFilter with a list in which to store LineStrings found.
-   */
-  public ComponentCoordinateExtracter(List coords)
-  {
-    this.coords = coords;
-  }
+    /**
+     * Constructs a LineExtracterFilter with a list in which to store LineStrings found.
+     */
+    public ComponentCoordinateExtracter(List coords) {
+        this.coords = coords;
+    }
 
-  public void filter(Geometry geom)
-  {
-    // add coordinates from connected components
-    if (geom instanceof LineString
-        || geom instanceof Point)
-      coords.add(geom.getCoordinate());
-  }
+    public void filter(Geometry geom) {
+        // add coordinates from connected components
+        if (geom instanceof LineString
+                || geom instanceof Point)
+            coords.add(geom.getCoordinate());
+    }
 
 }

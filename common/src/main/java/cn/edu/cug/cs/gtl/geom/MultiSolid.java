@@ -2,27 +2,27 @@ package cn.edu.cug.cs.gtl.geom;
 
 import java.util.ArrayList;
 
-public class MultiSolid  extends GeometryCollection implements Polyhedral{
+public class MultiSolid extends GeometryCollection implements Polyhedral {
     private static final long serialVersionUID = 1L;
 
     public MultiSolid(Solid[] geometries) {
         super(geometries);
-        this.geometryType=MULTISOLID;
+        this.geometryType = MULTISOLID;
     }
 
     public MultiSolid() {
         super();
-        this.geometryType=MULTISOLID;
+        this.geometryType = MULTISOLID;
     }
 
     public MultiSolid(int dim) {
         super(dim);
-        this.geometryType=MULTISOLID;
+        this.geometryType = MULTISOLID;
     }
 
     @Override
     public MultiSolid clone() {
-        MultiSolid p = new MultiSolid( );
+        MultiSolid p = new MultiSolid();
         p.copyFrom(this);
         return p;
     }

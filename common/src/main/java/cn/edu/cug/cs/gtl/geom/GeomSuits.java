@@ -54,31 +54,33 @@ public class GeomSuits {
 
     public static ComplexInterval createLabeledInterval(
             IntervalType t, double low, double high, String label,
-            long pid,long order){
-        return new ComplexIntervalImpl(t,  low,  high,  label,pid,order);
+            long pid, long order) {
+        return new ComplexIntervalImpl(t, low, high, label, pid, order);
     }
 
     public static ComplexInterval createLabeledInterval(
             int t, double low, double high, String label,
-            long pid,long order){
-        return new ComplexIntervalImpl(IntervalType.values()[t],  low,  high,  label,pid,order);
+            long pid, long order) {
+        return new ComplexIntervalImpl(IntervalType.values()[t], low, high, label, pid, order);
     }
 
-    public static Timeline createTimeline(Identifier identifier, List<Interval> li, List<String> ls){
-        return new TimelineImpl(identifier,li,ls);
+    public static Timeline createTimeline(Identifier identifier, List<Interval> li, List<String> ls) {
+        return new TimelineImpl(identifier, li, ls);
     }
 
-    public static Timeline createTimeline(Identifier identifier, List<ComplexInterval> li){
-        return new TimelineImpl(identifier,li);
+    public static Timeline createTimeline(Identifier identifier, List<ComplexInterval> li) {
+        return new TimelineImpl(identifier, li);
     }
 
-    public static Timeline createTimeline(String s){
+    public static Timeline createTimeline(String s) {
         return new TimelineImpl().parse(s);
     }
+
     @Deprecated
     public static Envelope createEnvelope(int dim) {
         return new Envelope(dim);
     }
+
     @Deprecated
     public static Envelope createEnvelope(double[] low, double[] high) {
         return new Envelope(low, high);

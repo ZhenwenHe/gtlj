@@ -5,7 +5,7 @@ import cn.edu.cug.cs.gtl.io.Storable;
 
 import java.io.*;
 
-public class ParameterDescriptor<T extends Storable> extends  DataDescriptor<T>{
+public class ParameterDescriptor<T extends Storable> extends DataDescriptor<T> {
     private static final long serialVersionUID = 1L;
 
 
@@ -13,7 +13,7 @@ public class ParameterDescriptor<T extends Storable> extends  DataDescriptor<T>{
         super(parameter);
     }
 
-    public ParameterDescriptor( ) {
+    public ParameterDescriptor() {
         super();
     }
 
@@ -21,22 +21,22 @@ public class ParameterDescriptor<T extends Storable> extends  DataDescriptor<T>{
         return getData();
     }
 
-    public void setParameter(T  parameter) {
+    public void setParameter(T parameter) {
         setData(parameter);
     }
 
     public void setParameter(Variant parameter) {
-        setData((T)parameter);
+        setData((T) parameter);
     }
 
     public static ParameterDescriptor read(DataInput in) throws IOException {
         ParameterDescriptor pd = new ParameterDescriptor();
         pd.readFields(in);
-        return  pd;
+        return pd;
     }
 
     @Override
     public Object clone() {
-        return new ParameterDescriptor((T)(getData().clone()));
+        return new ParameterDescriptor((T) (getData().clone()));
     }
 }

@@ -44,31 +44,30 @@ import cn.edu.cug.cs.gtl.jts.geomgraph.Edge;
  */
 public class SweepLineSegment {
 
-  Edge edge;
-  Coordinate[] pts;
-  int ptIndex;
+    Edge edge;
+    Coordinate[] pts;
+    int ptIndex;
 
-  public SweepLineSegment(Edge edge,  int ptIndex) {
-    this.edge = edge;
-    this.ptIndex = ptIndex;
-    pts = edge.getCoordinates();
-  }
+    public SweepLineSegment(Edge edge, int ptIndex) {
+        this.edge = edge;
+        this.ptIndex = ptIndex;
+        pts = edge.getCoordinates();
+    }
 
-  public double getMinX()
-  {
-    double x1 = pts[ptIndex].x;
-    double x2 = pts[ptIndex + 1].x;
-    return x1 < x2 ? x1 : x2;
-  }
-  public double getMaxX()
-  {
-    double x1 = pts[ptIndex].x;
-    double x2 = pts[ptIndex + 1].x;
-    return x1 > x2 ? x1 : x2;
-  }
-  public void computeIntersections(SweepLineSegment ss, SegmentIntersector si)
-  {
-    si.addIntersections(edge, ptIndex, ss.edge, ss.ptIndex);
-  }
+    public double getMinX() {
+        double x1 = pts[ptIndex].x;
+        double x2 = pts[ptIndex + 1].x;
+        return x1 < x2 ? x1 : x2;
+    }
+
+    public double getMaxX() {
+        double x1 = pts[ptIndex].x;
+        double x2 = pts[ptIndex + 1].x;
+        return x1 > x2 ? x1 : x2;
+    }
+
+    public void computeIntersections(SweepLineSegment ss, SegmentIntersector si) {
+        si.addIntersections(edge, ptIndex, ss.edge, ss.ptIndex);
+    }
 
 }

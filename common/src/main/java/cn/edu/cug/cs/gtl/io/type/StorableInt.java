@@ -33,7 +33,7 @@ public class StorableInt implements StorableComparable<StorableInt> {
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        this.value=in.readInt();
+        this.value = in.readInt();
         return true;
     }
 
@@ -48,16 +48,16 @@ public class StorableInt implements StorableComparable<StorableInt> {
         return 0;
     }
 
-    public static byte[] encode(int v){
-        byte[] bs  = new byte[4];
-        bs[0]=(byte)((v >>> 24) & 0xFF);
-        bs[1]=(byte)((v >>> 16) & 0xFF);
-        bs[2]=(byte)((v >>>  8) & 0xFF);
-        bs[3]=(byte)((v >>>  0) & 0xFF);
+    public static byte[] encode(int v) {
+        byte[] bs = new byte[4];
+        bs[0] = (byte) ((v >>> 24) & 0xFF);
+        bs[1] = (byte) ((v >>> 16) & 0xFF);
+        bs[2] = (byte) ((v >>> 8) & 0xFF);
+        bs[3] = (byte) ((v >>> 0) & 0xFF);
         return bs;
     }
 
-    public static int decode(byte[] bs){
+    public static int decode(byte[] bs) {
         int ch1 = bs[0];
         int ch2 = bs[1];
         int ch3 = bs[2];

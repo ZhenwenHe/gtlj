@@ -24,37 +24,57 @@
 package cn.edu.cug.cs.gtl.index.btree;
 
 /**
- *  Stores and retrieves fixed-size byte sequences indexed by a page
- *  number; page numbers are guaranteed to be contiguous starting at
- *  zero.
+ * Stores and retrieves fixed-size byte sequences indexed by a page
+ * number; page numbers are guaranteed to be contiguous starting at
+ * zero.
  */
 public abstract class PageStorage {
 
     private final int pageSize;
 
-    public PageStorage(int pageSize) { this.pageSize = pageSize; }
+    public PageStorage(int pageSize) {
+        this.pageSize = pageSize;
+    }
 
-    /** returns the size, in bytes, of each page */
-    public final int getPageSize() { return pageSize; }
+    /**
+     * returns the size, in bytes, of each page
+     */
+    public final int getPageSize() {
+        return pageSize;
+    }
 
-    /** creates a new page with undefined contents; returns its pageid */
-    public abstract int  createPage();
+    /**
+     * creates a new page with undefined contents; returns its pageid
+     */
+    public abstract int createPage();
 
-    /** returns the number of pages; all pageids strictly less than this are valid */
-    public abstract int  getNumPages();
+    /**
+     * returns the number of pages; all pageids strictly less than this are valid
+     */
+    public abstract int getNumPages();
 
-    /** writes a page; throws an exception if the page did not exist */ 
+    /**
+     * writes a page; throws an exception if the page did not exist
+     */
     public abstract void writePage(int pageid, byte[] buf, int ofs);
 
-    /** reads a page */
+    /**
+     * reads a page
+     */
     public abstract void readPage(int pageid, byte[] buf, int ofs);
 
-    /** ensure that the designated page is written to nonvolatile storage */
+    /**
+     * ensure that the designated page is written to nonvolatile storage
+     */
     public abstract void fsync(int pageid);
-    
-    /** ensure that the all pages are written to nonvolatile storage */
+
+    /**
+     * ensure that the all pages are written to nonvolatile storage
+     */
     public abstract void fsync();
 
-    /** close the PageStorage; invocation of any other methods after close() has undefined results */
+    /**
+     * close the PageStorage; invocation of any other methods after close() has undefined results
+     */
     public abstract void close();
 }

@@ -37,22 +37,22 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 
 /**
  * A node of a {@link KdTree}, which represents one or more points in the same location.
- * 
+ *
  * @author dskea
  */
 public class KdNode {
 
     private Coordinate p = null;
-    private Object     data;
-    private KdNode     left;
-    private KdNode     right;
-    private int        count;
+    private Object data;
+    private KdNode left;
+    private KdNode right;
+    private int count;
 
     /**
      * Creates a new KdNode.
-     * 
-     * @param _x coordinate of point
-     * @param _y coordinate of point
+     *
+     * @param _x   coordinate of point
+     * @param _y   coordinate of point
      * @param data a data objects to associate with this node
      */
     public KdNode(double _x, double _y, Object data) {
@@ -65,8 +65,8 @@ public class KdNode {
 
     /**
      * Creates a new KdNode.
-     * 
-     * @param p point location of new node
+     *
+     * @param p    point location of new node
      * @param data a data objects to associate with this node
      */
     public KdNode(Coordinate p, Object data) {
@@ -79,7 +79,7 @@ public class KdNode {
 
     /**
      * Returns the X coordinate of the node
-     * 
+     *
      * @retrun X coordiante of the node
      */
     public double getX() {
@@ -88,7 +88,7 @@ public class KdNode {
 
     /**
      * Returns the Y coordinate of the node
-     * 
+     *
      * @return Y coordiante of the node
      */
     public double getY() {
@@ -97,7 +97,7 @@ public class KdNode {
 
     /**
      * Returns the location of this node
-     * 
+     *
      * @return p location of this node
      */
     public Coordinate getCoordinate() {
@@ -106,6 +106,7 @@ public class KdNode {
 
     /**
      * Gets the user data object associated with this node.
+     *
      * @return
      */
     public Object getData() {
@@ -114,7 +115,7 @@ public class KdNode {
 
     /**
      * Returns the left node of the tree
-     * 
+     *
      * @return left node
      */
     public KdNode getLeft() {
@@ -123,7 +124,7 @@ public class KdNode {
 
     /**
      * Returns the right node of the tree
-     * 
+     *
      * @return right node
      */
     public KdNode getRight() {
@@ -137,7 +138,7 @@ public class KdNode {
 
     /**
      * Returns the number of inserted points that are coincident at this location.
-     * 
+     *
      * @return number of inserted points that this node represents
      */
     public int getCount() {
@@ -146,7 +147,7 @@ public class KdNode {
 
     /**
      * Tests whether more than one point with this value have been inserted (up to the tolerance)
-     * 
+     *
      * @return true if more than one point have been inserted with this value
      */
     public boolean isRepeated() {

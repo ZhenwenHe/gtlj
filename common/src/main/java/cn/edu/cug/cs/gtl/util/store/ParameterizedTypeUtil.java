@@ -5,10 +5,11 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public class ParameterizedTypeUtil {
-    public static Type getParameterizedType(Class<?> cls, int index){
-        return ((ParameterizedType)cls.getGenericSuperclass()).getActualTypeArguments()[index];
+    public static Type getParameterizedType(Class<?> cls, int index) {
+        return ((ParameterizedType) cls.getGenericSuperclass()).getActualTypeArguments()[index];
     }
-    public static boolean isImplementedClass(Class<?> cls){
-        return !(cls.isEnum()||cls.isInterface()|| Modifier.isAbstract(cls.getModifiers()));
+
+    public static boolean isImplementedClass(Class<?> cls) {
+        return !(cls.isEnum() || cls.isInterface() || Modifier.isAbstract(cls.getModifiers()));
     }
 }

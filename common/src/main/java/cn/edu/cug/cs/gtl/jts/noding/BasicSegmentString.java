@@ -34,6 +34,7 @@
 package cn.edu.cug.cs.gtl.jts.noding;
 
 import java.util.*;
+
 import cn.edu.cug.cs.gtl.jts.algorithm.LineIntersector;
 import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geom.impl.CoordinateArraySequence;
@@ -52,61 +53,68 @@ import cn.edu.cug.cs.gtl.jts.io.WKTWriter;
  * @version 1.7
  */
 public class BasicSegmentString
-	implements SegmentString 
-{
-  private Coordinate[] pts;
-  private Object data;
+        implements SegmentString {
+    private Coordinate[] pts;
+    private Object data;
 
-  /**
-   * Creates a new segment string from a list of vertices.
-   *
-   * @param pts the vertices of the segment string
-   * @param data the user-defined data of this segment string (may be null)
-   */
-  public BasicSegmentString(Coordinate[] pts, Object data)
-  {
-    this.pts = pts;
-    this.data = data;
-  }
+    /**
+     * Creates a new segment string from a list of vertices.
+     *
+     * @param pts  the vertices of the segment string
+     * @param data the user-defined data of this segment string (may be null)
+     */
+    public BasicSegmentString(Coordinate[] pts, Object data) {
+        this.pts = pts;
+        this.data = data;
+    }
 
-  /**
-   * Gets the user-defined data for this segment string.
-   *
-   * @return the user-defined data
-   */
-  public Object getData() { return data; }
+    /**
+     * Gets the user-defined data for this segment string.
+     *
+     * @return the user-defined data
+     */
+    public Object getData() {
+        return data;
+    }
 
-  /**
-   * Sets the user-defined data for this segment string.
-   *
-   * @param data an Object containing user-defined data
-   */
-  public void setData(Object data) { this.data = data; }
+    /**
+     * Sets the user-defined data for this segment string.
+     *
+     * @param data an Object containing user-defined data
+     */
+    public void setData(Object data) {
+        this.data = data;
+    }
 
-  public int size() { return pts.length; }
-  public Coordinate getCoordinate(int i) { return pts[i]; }
-  public Coordinate[] getCoordinates() { return pts; }
+    public int size() {
+        return pts.length;
+    }
 
-  public boolean isClosed()
-  {
-    return pts[0].equals(pts[pts.length - 1]);
-  }
+    public Coordinate getCoordinate(int i) {
+        return pts[i];
+    }
 
-  /**
-   * Gets the octant of the segment starting at vertex <code>index</code>.
-   *
-   * @param index the index of the vertex starting the segment.  Must not be
-   * the last index in the vertex list
-   * @return the octant of the segment at the vertex
-   */
-  public int getSegmentOctant(int index)
-  {
-    if (index == pts.length - 1) return -1;
-    return Octant.octant(getCoordinate(index), getCoordinate(index + 1));
-  }
+    public Coordinate[] getCoordinates() {
+        return pts;
+    }
 
-  public String toString()
-  {
-    return WKTWriter.toLineString(new CoordinateArraySequence(pts));
-  }
+    public boolean isClosed() {
+        return pts[0].equals(pts[pts.length - 1]);
+    }
+
+    /**
+     * Gets the octant of the segment starting at vertex <code>index</code>.
+     *
+     * @param index the index of the vertex starting the segment.  Must not be
+     *              the last index in the vertex list
+     * @return the octant of the segment at the vertex
+     */
+    public int getSegmentOctant(int index) {
+        if (index == pts.length - 1) return -1;
+        return Octant.octant(getCoordinate(index), getCoordinate(index + 1));
+    }
+
+    public String toString() {
+        return WKTWriter.toLineString(new CoordinateArraySequence(pts));
+    }
 }

@@ -620,7 +620,7 @@ public abstract class RTreeNodeImpl extends NodeImpl {
             } else {
                 // adjust the entry in 'p' to contain the new bounding regionShape of this node.
                 //*(p->m_ptrMBR[child]) = nodeMBR;
-                nodeMBR.copyTo(p.getChildShape(child)) ;
+                nodeMBR.copyTo(p.getChildShape(child));
                 // global recalculation necessary since the MBR can only shrink in size,
                 // due to data removal.
                 if (this.tree.tightMBRs) {
@@ -671,7 +671,7 @@ public abstract class RTreeNodeImpl extends NodeImpl {
         }
     } // RstarSplitEntry
 
-    class RstarSplitEntryLowComparator implements Comparator<RstarSplitEntry> ,Serializable{
+    class RstarSplitEntryLowComparator implements Comparator<RstarSplitEntry>, Serializable {
         private static final long serialVersionUID = 1L;
 
         @Override
@@ -685,7 +685,7 @@ public abstract class RTreeNodeImpl extends NodeImpl {
         }
     }
 
-    class RstarSplitEntryHighComparator implements Comparator<RstarSplitEntry>,Serializable {
+    class RstarSplitEntryHighComparator implements Comparator<RstarSplitEntry>, Serializable {
         private static final long serialVersionUID = 1L;
 
         @Override
@@ -701,7 +701,7 @@ public abstract class RTreeNodeImpl extends NodeImpl {
         }
     }
 
-    class ReinsertEntry implements Comparable ,Serializable{
+    class ReinsertEntry implements Comparable, Serializable {
         private static final long serialVersionUID = 1L;
 
         int index;

@@ -39,13 +39,14 @@ package cn.edu.cug.cs.gtl.jts.index.strtree;
  * @version 1.7
  */
 public interface Boundable {
-  /**
-   * Returns a representation of space that encloses this Boundable, preferably
-   * not much bigger than this Boundable's boundary yet fast to test for intersection
-   * with the bounds of other Boundables. The class of object returned depends
-   * on the subclass of AbstractSTRtree.
-   * @return an Envelope (for STRtrees), an Interval (for SIRtrees), or other object
-   * (for other subclasses of AbstractSTRtree)
-   */
-  Object getBounds();
+    /**
+     * Returns a representation of space that encloses this Boundable, preferably
+     * not much bigger than this Boundable's boundary yet fast to test for intersection
+     * with the bounds of other Boundables. The class of object returned depends
+     * on the subclass of AbstractSTRtree.
+     *
+     * @return an Envelope (for STRtrees), an Interval (for SIRtrees), or other object
+     * (for other subclasses of AbstractSTRtree)
+     */
+    Object getBounds();
 }

@@ -18,10 +18,9 @@ public interface Identifier extends Serializable, Comparable<Identifier> {
     int intValue();
 
     /**
-     *
      * @return
      */
-    default long longValue(){
+    default long longValue() {
         return lowValue();
     }
 
@@ -37,17 +36,19 @@ public interface Identifier extends Serializable, Comparable<Identifier> {
 
     int compare(Identifier i);
 
-    static Identifier create(){
+    static Identifier create() {
         return new IdentifierImpl(-1L);
     }
 
-    static Identifier create(long l){
+    static Identifier create(long l) {
         return new IdentifierImpl(l);
     }
 
-    static Identifier create(Identifier i){
-        return new IdentifierImpl(i.highValue(),i.lowValue());
+    static Identifier create(Identifier i) {
+        return new IdentifierImpl(i.highValue(), i.lowValue());
     }
 
-    static Identifier randomIdentifier(){  return new IdentifierImpl(UUID.randomUUID());}
+    static Identifier randomIdentifier() {
+        return new IdentifierImpl(UUID.randomUUID());
+    }
 }

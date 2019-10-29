@@ -50,80 +50,74 @@ import cn.edu.cug.cs.gtl.jts.algorithm.CGAlgorithms;
  * @version 1.7
  */
 public class SimplePointInAreaLocator
-	implements PointOnGeometryLocator
-{
+        implements PointOnGeometryLocator {
 
-  /**
-   * Determines the {@link Location} of a point in an areal {@link Geometry}.
-   * Currently this will never return a value of BOUNDARY.  
-   * 
-   * @param p the point to test
-   * @param geom the areal geometry to test
-   * @return the Location of the point in the geometry  
-   */
-  public static int locate(Coordinate p, Geometry geom)
-  {
-    if (geom.isEmpty()) return Location.EXTERIOR;
+    /**
+     * Determines the {@link Location} of a point in an areal {@link Geometry}.
+     * Currently this will never return a value of BOUNDARY.
+     *
+     * @param p    the point to test
+     * @param geom the areal geometry to test
+     * @return the Location of the point in the geometry
+     */
+    public static int locate(Coordinate p, Geometry geom) {
+        if (geom.isEmpty()) return Location.EXTERIOR;
 
-    if (containsPoint(p, geom))
-      return Location.INTERIOR;
-    return Location.EXTERIOR;
-  }
-
-  private static boolean containsPoint(Coordinate p, Geometry geom)
-  {
-    if (geom instanceof Polygon) {
-      return containsPointInPolygon(p, (Polygon) geom);
+        if (containsPoint(p, geom))
+            return Location.INTERIOR;
+        return Location.EXTERIOR;
     }
-    else if (geom instanceof GeometryCollection) {
-      Iterator geomi = new GeometryCollectionIterator((GeometryCollection) geom);
-      while (geomi.hasNext()) {
-        Geometry g2 = (Geometry) geomi.next();
-        if (g2 != geom)
-          if (containsPoint(p, g2))
-            return true;
-      }
+
+    private static boolean containsPoint(Coordinate p, Geometry geom) {
+        if (geom instanceof Polygon) {
+            return containsPointInPolygon(p, (Polygon) geom);
+        } else if (geom instanceof GeometryCollection) {
+            Iterator geomi = new GeometryCollectionIterator((GeometryCollection) geom);
+            while (geomi.hasNext()) {
+                Geometry g2 = (Geometry) geomi.next();
+                if (g2 != geom)
+                    if (containsPoint(p, g2))
+                        return true;
+            }
+        }
+        return false;
     }
-    return false;
-  }
 
-  public static boolean containsPointInPolygon(Coordinate p, Polygon poly)
-  {
-    if (poly.isEmpty()) return false;
-    LinearRing shell = (LinearRing) poly.getExteriorRing();
-    if (! isPointInRing(p, shell)) return false;
-    // now test if the point lies in or on the holes
-    for (int i = 0; i < poly.getNumInteriorRing(); i++) {
-      LinearRing hole = (LinearRing) poly.getInteriorRingN(i);
-      if (isPointInRing(p, hole)) return false;
+    public static boolean containsPointInPolygon(Coordinate p, Polygon poly) {
+        if (poly.isEmpty()) return false;
+        LinearRing shell = (LinearRing) poly.getExteriorRing();
+        if (!isPointInRing(p, shell)) return false;
+        // now test if the point lies in or on the holes
+        for (int i = 0; i < poly.getNumInteriorRing(); i++) {
+            LinearRing hole = (LinearRing) poly.getInteriorRingN(i);
+            if (isPointInRing(p, hole)) return false;
+        }
+        return true;
     }
-    return true;
-  }
 
-  /**
-   * Determines whether a point lies in a LinearRing,
-   * using the ring envelope to short-circuit if possible.
-   * 
-   * @param p the point to test
-   * @param ring a linear ring
-   * @return true if the point lies inside the ring
-   */
-  private static boolean isPointInRing(Coordinate p, LinearRing ring)
-  {
-  	// short-circuit if point is not in ring envelope
-  	if (! ring.getEnvelopeInternal().intersects(p))
-  		return false;
-  	return CGAlgorithms.isPointInRing(p, ring.getCoordinates());
-  }
+    /**
+     * Determines whether a point lies in a LinearRing,
+     * using the ring envelope to short-circuit if possible.
+     *
+     * @param p    the point to test
+     * @param ring a linear ring
+     * @return true if the point lies inside the ring
+     */
+    private static boolean isPointInRing(Coordinate p, LinearRing ring) {
+        // short-circuit if point is not in ring envelope
+        if (!ring.getEnvelopeInternal().intersects(p))
+            return false;
+        return CGAlgorithms.isPointInRing(p, ring.getCoordinates());
+    }
 
-	private Geometry geom;
+    private Geometry geom;
 
-	public SimplePointInAreaLocator(Geometry geom) {
-		this.geom = geom;
-	}
+    public SimplePointInAreaLocator(Geometry geom) {
+        this.geom = geom;
+    }
 
-	public int locate(Coordinate p) {
-		return SimplePointInAreaLocator.locate(p, geom);
-	}
+    public int locate(Coordinate p) {
+        return SimplePointInAreaLocator.locate(p, geom);
+    }
 
 }

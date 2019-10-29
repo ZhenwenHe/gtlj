@@ -37,42 +37,47 @@ import cn.edu.cug.cs.gtl.jts.util.Assert;
 
 /**
  * A contiguous portion of 1D-space. Used internally by SIRtree.
- * @see SIRtree
  *
  * @version 1.7
+ * @see SIRtree
  */
 public class Interval {
 
-  public Interval(Interval other) {
-    this(other.min, other.max);
-  }
+    public Interval(Interval other) {
+        this(other.min, other.max);
+    }
 
-  public Interval(double min, double max) {
-    Assert.isTrue(min <= max);
-    this.min = min;
-    this.max = max;
-  }
+    public Interval(double min, double max) {
+        Assert.isTrue(min <= max);
+        this.min = min;
+        this.max = max;
+    }
 
-  private double min;
-  private double max;
+    private double min;
+    private double max;
 
-  public double getCentre() { return (min+max)/2; }
+    public double getCentre() {
+        return (min + max) / 2;
+    }
 
-  /**
-   * @return this
-   */
-  public Interval expandToInclude(Interval other) {
-    max = Math.max(max, other.max);
-    min = Math.min(min, other.min);
-    return this;
-  }
+    /**
+     * @return this
+     */
+    public Interval expandToInclude(Interval other) {
+        max = Math.max(max, other.max);
+        min = Math.min(min, other.min);
+        return this;
+    }
 
-  public boolean intersects(Interval other) {
-    return !(other.min > max || other.max < min);
-  }
-  public boolean equals(Object o) {
-    if (! (o instanceof Interval)) { return false; }
-    Interval other = (Interval) o;
-    return min == other.min && max == other.max;
-  }
+    public boolean intersects(Interval other) {
+        return !(other.min > max || other.max < min);
+    }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof Interval)) {
+            return false;
+        }
+        Interval other = (Interval) o;
+        return min == other.min && max == other.max;
+    }
 }

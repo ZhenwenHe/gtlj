@@ -37,11 +37,13 @@ package cn.edu.cug.cs.gtl.jts.operation.overlay;
 /**
  * @version 1.7
  */
+
 import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 import cn.edu.cug.cs.gtl.jts.geomgraph.DirectedEdgeStar;
 import cn.edu.cug.cs.gtl.jts.geomgraph.Node;
 import cn.edu.cug.cs.gtl.jts.geomgraph.NodeFactory;
 import cn.edu.cug.cs.gtl.jts.geomgraph.PlanarGraph;
+
 /**
  * Creates nodes for use in the {@link PlanarGraph}s constructed during
  * overlay operations.
@@ -49,10 +51,8 @@ import cn.edu.cug.cs.gtl.jts.geomgraph.PlanarGraph;
  * @version 1.7
  */
 public class OverlayNodeFactory
-  extends NodeFactory
-{
-  public Node createNode(Coordinate coord)
-  {
-    return new Node(coord, new DirectedEdgeStar());
-  }
+        extends NodeFactory {
+    public Node createNode(Coordinate coord) {
+        return new Node(coord, new DirectedEdgeStar());
+    }
 }

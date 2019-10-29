@@ -24,12 +24,13 @@ public class RegionShape extends Envelope implements Shape {
     }
 
     public RegionShape(Envelope e) {
-       super(e.getLowCoordinates(), e.getHighCoordinates());
+        super(e.getLowCoordinates(), e.getHighCoordinates());
     }
 
     public RegionShape(Vector leftBottom, Vector rightTop) {
         super(leftBottom.getCoordinates(), rightTop.getCoordinates());
     }
+
     @Override
     public boolean equals(Object o) {
         return super.equals(o);
@@ -108,7 +109,7 @@ public class RegionShape extends Envelope implements Shape {
 
     @Override
     public Envelope getMBR() {
-        return (Envelope)this.clone();
+        return (Envelope) this.clone();
     }
 
     @Override
@@ -243,7 +244,6 @@ public class RegionShape extends Envelope implements Shape {
     }
 
 
-
     public void combineRegion(RegionShape in) {
         combine(in.getMBR());
     }
@@ -266,23 +266,23 @@ public class RegionShape extends Envelope implements Shape {
      * 如果是二维，则索引需要为0,1,2,3
      * 如果为三维，则索引序号为0,1,2,4,5,6,7,
      * 如果为四维，则索引序号为0~15
+     *
      * @return
      */
-    public RegionShape subregion(int i){
+    public RegionShape subregion(int i) {
 
         int dim = getDimension();
-        try{
-            switch (dim){
+        try {
+            switch (dim) {
                 case 2:
                     return subregion2D(i);
                 case 3:
                     return subregion3D(i);
                 default:
-                        return null;
+                    return null;
             }
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -293,91 +293,86 @@ public class RegionShape extends Envelope implements Shape {
      * 如果是二维，则索引需要为0,1,2,3
      * 如果为三维，则索引序号为0,1,2,4,5,6,7,
      * 如果为四维，则索引序号为0~15
+     *
      * @return
      */
-    private RegionShape subregion2D(int i) throws Exception{
-        if(getDimension()!=2)
-            throw new IllegalDimensionException("the RegionShape must be two dimension in the function RegionShape subregion2D(int i)" );
+    private RegionShape subregion2D(int i) throws Exception {
+        if (getDimension() != 2)
+            throw new IllegalDimensionException("the RegionShape must be two dimension in the function RegionShape subregion2D(int i)");
 
         Vector lv = getLowVector();
         Vector hv = getHighVector();
         Vector tv = hv.subtract(lv).divide(2);
-        switch (i){
+        switch (i) {
             case 0: {
-                return new RegionShape(this.getLowVector(),lv.add(tv));
+                return new RegionShape(this.getLowVector(), lv.add(tv));
             }
-            case 1:{
-                lv.setX(lv.getX()+tv.getX());
-                hv.setY(hv.getY()-tv.getY());
-                return new RegionShape(lv,hv);
+            case 1: {
+                lv.setX(lv.getX() + tv.getX());
+                hv.setY(hv.getY() - tv.getY());
+                return new RegionShape(lv, hv);
             }
-            case 2:{
-                return new RegionShape(lv.add(tv),hv);
+            case 2: {
+                return new RegionShape(lv.add(tv), hv);
             }
-            case 3:{
-                lv.setY(lv.getY()+tv.getY());
-                hv.setX(hv.getX()-tv.getX());
-                return new RegionShape(lv,hv);
+            case 3: {
+                lv.setY(lv.getY() + tv.getY());
+                hv.setX(hv.getX() - tv.getX());
+                return new RegionShape(lv, hv);
             }
-            default:{
+            default: {
                 throw new IllegalArgumentException("the legal parameter must be between 0 and 3");
             }
         }
 
     }
+
     /**
      * 按照X,Y,Z,W方向由小向大排列
      * 如果是二维，则索引需要为0,1,2,3
      * 如果为三维，则索引序号为0,1,2,4,5,6,7,
      * 如果为四维，则索引序号为0~15
+     *
      * @return
      */
-    private RegionShape subregion3D(int i) throws Exception{
-        if(getDimension()!=3)
-            throw new IllegalDimensionException("the RegionShape must be three dimension in the function RegionShape subregion3D(int i)" );
+    private RegionShape subregion3D(int i) throws Exception {
+        if (getDimension() != 3)
+            throw new IllegalDimensionException("the RegionShape must be three dimension in the function RegionShape subregion3D(int i)");
 
         Vector lv = getLowVector();
         Vector hv = getHighVector();
         Vector tv = hv.subtract(lv).divide(2);
 
-        switch (i){
-            case 0:
-            {
-                return new RegionShape(lv,lv.subtract(tv));
+        switch (i) {
+            case 0: {
+                return new RegionShape(lv, lv.subtract(tv));
             }
-            case 1:
-            {
-                lv.setX(lv.getX()+tv.getX());
-                hv=lv.add(tv);
-                return new RegionShape(lv,hv);
+            case 1: {
+                lv.setX(lv.getX() + tv.getX());
+                hv = lv.add(tv);
+                return new RegionShape(lv, hv);
             }
-            case 2:
-            {
-                lv.setX(lv.getX()+tv.getX());
-                lv.setY(lv.getY()+tv.getY());
-                hv=lv.add(tv);
-                return new RegionShape(lv,hv);
+            case 2: {
+                lv.setX(lv.getX() + tv.getX());
+                lv.setY(lv.getY() + tv.getY());
+                hv = lv.add(tv);
+                return new RegionShape(lv, hv);
             }
-            case 3:
-            {
-                lv.setY(lv.getY()+tv.getY());
-                hv=lv.add(tv);
-                return new RegionShape(lv,hv);
+            case 3: {
+                lv.setY(lv.getY() + tv.getY());
+                hv = lv.add(tv);
+                return new RegionShape(lv, hv);
             }
-            case 4:
-            {
+            case 4: {
 
             }
-            case 5:
-            {
+            case 5: {
 
             }
-            case 6:
-            {
+            case 6: {
 
             }
-            case 7:
-            {
+            case 7: {
 
             }
         }

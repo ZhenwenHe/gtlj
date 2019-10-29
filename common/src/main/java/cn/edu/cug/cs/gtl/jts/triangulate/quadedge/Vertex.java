@@ -40,33 +40,32 @@ import cn.edu.cug.cs.gtl.jts.geom.Coordinate;
 
 
 /**
- * Models a site (node) in a {@link QuadEdgeSubdivision}. 
+ * Models a site (node) in a {@link QuadEdgeSubdivision}.
  * The sites can be points on a line string representing a
- * linear site. 
+ * linear site.
  * <p>
  * The vertex can be considered as a vector with a norm, length, inner product, cross
  * product, etc. Additionally, point relations (e.g., is a point to the left of a line, the circle
  * defined by this point and two others, etc.) are also defined in this class.
  * <p>
- * It is common to want to attach user-defined data to 
- * the vertices of a subdivision.  
+ * It is common to want to attach user-defined data to
+ * the vertices of a subdivision.
  * One way to do this is to subclass <tt>Vertex</tt>
  * to carry any desired information.
- * 
+ *
  * @author David Skea
  * @author Martin Davis
  */
-public class Vertex 
-{
-    public static final int LEFT        = 0;
-    public static final int RIGHT       = 1;
-    public static final int BEYOND      = 2;
-    public static final int BEHIND      = 3;
-    public static final int BETWEEN     = 4;
-    public static final int ORIGIN      = 5;
+public class Vertex {
+    public static final int LEFT = 0;
+    public static final int RIGHT = 1;
+    public static final int BEYOND = 2;
+    public static final int BEHIND = 3;
+    public static final int BETWEEN = 4;
+    public static final int ORIGIN = 5;
     public static final int DESTINATION = 6;
 
-    private Coordinate      p;
+    private Coordinate p;
     // private int edgeNumber = -1;
 
     public Vertex(double _x, double _y) {
@@ -143,7 +142,7 @@ public class Vertex
 
     /**
      * Computes the cross product k = u X v.
-     * 
+     *
      * @param v a vertex
      * @return returns the magnitude of u X v
      */
@@ -153,7 +152,7 @@ public class Vertex
 
     /**
      * Computes the inner or dot product
-     * 
+     *
      * @param v a vertex
      * @return returns the dot product u.v
      */
@@ -163,7 +162,7 @@ public class Vertex
 
     /**
      * Computes the scalar product c(v)
-     * 
+     *
      * @param v a vertex
      * @return returns the scaled vector
      */
@@ -191,37 +190,35 @@ public class Vertex
         return (new Vertex(p.y, -p.x));
     }
 
-  /** ************************************************************* */
-  /***********************************************************************************************
-   * Geometric primitives /
-   **********************************************************************************************/
+    /** ************************************************************* */
+    /***********************************************************************************************
+     * Geometric primitives /
+     **********************************************************************************************/
 
-  /**
-   * Tests if the vertex is inside the circle defined by 
-   * the triangle with vertices a, b, c (oriented counter-clockwise). 
-   * 
-   * @param a a vertex of the triangle
-   * @param b a vertex of the triangle
-   * @param c a vertex of the triangle
-   * @return true if this vertex is in the circumcircle of (a,b,c)
-   */
-  public boolean isInCircle(Vertex a, Vertex b, Vertex c) 
-  {
-    return TrianglePredicate.isInCircleRobust(a.p, b.p, c.p, this.p);
-    // non-robust - best to not use
-    //return TrianglePredicate.isInCircle(a.p, b.p, c.p, this.p);
-  }
+    /**
+     * Tests if the vertex is inside the circle defined by
+     * the triangle with vertices a, b, c (oriented counter-clockwise).
+     *
+     * @param a a vertex of the triangle
+     * @param b a vertex of the triangle
+     * @param c a vertex of the triangle
+     * @return true if this vertex is in the circumcircle of (a,b,c)
+     */
+    public boolean isInCircle(Vertex a, Vertex b, Vertex c) {
+        return TrianglePredicate.isInCircleRobust(a.p, b.p, c.p, this.p);
+        // non-robust - best to not use
+        //return TrianglePredicate.isInCircle(a.p, b.p, c.p, this.p);
+    }
 
-  /**
-   * Tests whether the triangle formed by this vertex and two
-   * other vertices is in CCW orientation.
-   * 
-   * @param b a vertex
-   * @param c a vertex
-   * @returns true if the triangle is oriented CCW
-   */
-  public final boolean isCCW(Vertex b, Vertex c) 
-  {
+    /**
+     * Tests whether the triangle formed by this vertex and two
+     * other vertices is in CCW orientation.
+     *
+     * @param b a vertex
+     * @param c a vertex
+     * @returns true if the triangle is oriented CCW
+     */
+    public final boolean isCCW(Vertex b, Vertex c) {
       /*
       // test code used to check for robustness of triArea 
       boolean isCCW = (b.p.x - p.x) * (c.p.y - p.y) 
@@ -232,15 +229,15 @@ public class Vertex
       System.out.println("CCW failure");
      //*/
 
-    	// is equal to the signed area of the triangle
-    	
-      return (b.p.x - p.x) * (c.p.y - p.y) 
-           - (b.p.y - p.y) * (c.p.x - p.x) > 0;
-      
-      // original rolled code
-      //boolean isCCW = triArea(this, b, c) > 0;
-      //return isCCW;
-      
+        // is equal to the signed area of the triangle
+
+        return (b.p.x - p.x) * (c.p.y - p.y)
+                - (b.p.y - p.y) * (c.p.x - p.x) > 0;
+
+        // original rolled code
+        //boolean isCCW = triArea(this, b, c) > 0;
+        //return isCCW;
+
     }
 
     public final boolean rightOf(QuadEdge e) {
@@ -270,7 +267,7 @@ public class Vertex
      * given tolerance B, the associated triangle is considered skinny. For an equal lateral
      * triangle this value is 0.57735. The ratio is related to the minimum triangle angle theta by:
      * circumRadius/shortestEdge = 1/(2sin(theta)).
-     * 
+     *
      * @param b second vertex of the triangle
      * @param c third vertex of the triangle
      * @return ratio of circumradius to shortest edge.
@@ -292,7 +289,7 @@ public class Vertex
 
     /**
      * returns a new vertex that is mid-way between this vertex and another end point.
-     * 
+     *
      * @param a the other end point.
      * @return the point mid-way between this and that.
      */
@@ -305,7 +302,7 @@ public class Vertex
 
     /**
      * Computes the centre of the circumcircle of this vertex and two others.
-     * 
+     *
      * @param b
      * @param c
      * @return the Coordinate which is the circumcircle of the 3 points.
@@ -352,14 +349,14 @@ public class Vertex
      * Interpolates the Z-value (height) of a point enclosed in a triangle
      * whose vertices all have Z values.
      * The containing triangle must not be degenerate
-     * (in other words, the three vertices must enclose a 
+     * (in other words, the three vertices must enclose a
      * non-zero area).
-     * 
-     * @param p the point to interpolate the Z value of
+     *
+     * @param p  the point to interpolate the Z value of
      * @param v0 a vertex of a triangle containing the p
      * @param v1 a vertex of a triangle containing the p
      * @param v2 a vertex of a triangle containing the p
-     * @return the interpolated Z-value (height) of the point  
+     * @return the interpolated Z-value (height) of the point
      */
     public static double interpolateZ(Coordinate p, Coordinate v0, Coordinate v1, Coordinate v2) {
         double x0 = v0.x;
@@ -379,7 +376,7 @@ public class Vertex
 
     /**
      * Computes the interpolated Z-value for a point p lying on the segment p0-p1
-     * 
+     *
      * @param p
      * @param p0
      * @param p1
@@ -392,11 +389,6 @@ public class Vertex
         double pz = p0.z + dz * (ptLen / segLen);
         return pz;
     }
-
-
-
-
-
 
 
 }

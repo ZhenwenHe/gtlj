@@ -15,15 +15,23 @@ import java.io.IOException;
 public abstract class Material implements DataContent {
     public static final long serialVersionUID = 1L;
 
-    /** 0-简单材质，1-复杂材质 */
+    /**
+     * 0-简单材质，1-复杂材质
+     */
     public static final int SIMPLE_MATERIAL = 0;
     public static final int COMPLEX_MATERIAL = 1;
 
-    /** 材质类型 */
+    /**
+     * 材质类型
+     */
     protected int materialType;
-    /** 材质ID */
+    /**
+     * 材质ID
+     */
     protected long materialID;
-    /** 材质名称 */
+    /**
+     * 材质名称
+     */
     protected String materialName;
 
     protected Status status;
@@ -32,14 +40,14 @@ public abstract class Material implements DataContent {
         this.materialType = SIMPLE_MATERIAL;
         this.materialID = -1;
         this.materialName = "";
-        this.status=new Status();
+        this.status = new Status();
     }
 
     public Material(int materialType, long materialID, String materialName) {
         this.materialType = materialType;
         this.materialID = materialID;
         this.materialName = materialName;
-        this.status=new Status();
+        this.status = new Status();
     }
 
     public String getMaterialName() {
@@ -63,24 +71,22 @@ public abstract class Material implements DataContent {
     }
 
     @Override
-    public Material clone(){
+    public Material clone() {
         try {
-            Material m =(Material) super.clone();
-            m.materialID=this.materialID;
-            m.materialName=this.materialName;
-            m.materialType=this.materialType;
-            m.status=this.status.clone();
+            Material m = (Material) super.clone();
+            m.materialID = this.materialID;
+            m.materialName = this.materialName;
+            m.materialType = this.materialType;
+            m.status = this.status.clone();
             return m;
-        }
-        catch (CloneNotSupportedException e){
+        } catch (CloneNotSupportedException e) {
             e.printStackTrace();
         }
         return null;
     }
 
     @Override
-    public boolean load(DataInput in) throws IOException
-    {
+    public boolean load(DataInput in) throws IOException {
         /** 材质ID */
         materialID = in.readLong();
         /** 材质名称 */
@@ -94,12 +100,12 @@ public abstract class Material implements DataContent {
     }
 
     @Override
-    public boolean store(DataOutput out) throws IOException
-    {
+    public boolean store(DataOutput out) throws IOException {
         /** 材质ID */
         out.writeLong(materialID);
         /** 材质名称 */
-        StringUtils.store(materialName,out);        ;
+        StringUtils.store(materialName, out);
+        ;
         /** 材质类型 */
         out.writeInt(materialType);
 
@@ -108,21 +114,20 @@ public abstract class Material implements DataContent {
     }
 
     @Override
-    public long getByteArraySize()
-    {
+    public long getByteArraySize() {
         long len = 0;
-        len = 8 + StringUtils.getByteArraySize(materialName) + 4+this.status.getByteArraySize();
+        len = 8 + StringUtils.getByteArraySize(materialName) + 4 + this.status.getByteArraySize();
         return len;
     }
 
-    public static Material create(int type){
-        if(type==0)
+    public static Material create(int type) {
+        if (type == 0)
             return new SimpleMaterial();
         else
             return new ComplexMaterial();
     }
 
-    public static Material createMaterial(int type){
+    public static Material createMaterial(int type) {
         return create(type);
     }
 
@@ -133,7 +138,7 @@ public abstract class Material implements DataContent {
         return m;
     }
 
-    public static boolean storeMaterial(DataOutput out,Material m) throws IOException {
+    public static boolean storeMaterial(DataOutput out, Material m) throws IOException {
         int matType = m.getMaterialType();
         out.writeInt(matType);
         m.store(out);
@@ -151,7 +156,7 @@ public abstract class Material implements DataContent {
     }
 
     @Override
-    public Status getStatus(){
+    public Status getStatus() {
         return this.status;
     }
 }

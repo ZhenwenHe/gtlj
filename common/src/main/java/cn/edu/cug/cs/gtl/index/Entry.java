@@ -5,6 +5,7 @@ import cn.edu.cug.cs.gtl.io.Serializable;
 import cn.edu.cug.cs.gtl.common.Identifier;
 import cn.edu.cug.cs.gtl.index.shape.Shape;
 import cn.edu.cug.cs.gtl.io.Serializable;
+
 /**
  * Created by ZhenwenHe on 2016/12/7.
  */
@@ -25,7 +26,7 @@ public interface Entry extends Serializable {
 
     long getDataLength();
 
-    static Entry create(Identifier identifier, Shape shape, byte[] data){
-        return new  EntryImpl( identifier,  shape, data);
+    static Entry create(Identifier identifier, Shape shape, byte[] data) {
+        return new EntryImpl(identifier, shape, data);
     }
 }

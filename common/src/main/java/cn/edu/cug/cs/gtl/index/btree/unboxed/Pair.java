@@ -25,22 +25,39 @@ import java.io.*;
 import java.util.*;
 
 /**
- *  Note that Map.Entry<A,B> is just the Java idiom for Pair<A,B>
- *  (there is no standard generic Pair).
- *
- *  JDK1.6 has AbstractMap.SimpleImmutableEntry for this.
+ * Note that Map.Entry<A,B> is just the Java idiom for Pair<A,B>
+ * (there is no standard generic Pair).
+ * <p>
+ * JDK1.6 has AbstractMap.SimpleImmutableEntry for this.
  */
-public class Pair<A,B> implements Serializable, Map.Entry<A,B> {
+public class Pair<A, B> implements Serializable, Map.Entry<A, B> {
     private final A a;
     private final B b;
-    public Pair(A a, B b) { this.a = a; this.b = b; }
-    public B setValue(B b) { throw new Error("don't do this"); }
-    public A getKey() { return a; }
-    public B getValue() { return b; }
-    public int hashCode() { return a.hashCode() ^ b.hashCode(); }
+
+    public Pair(A a, B b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public B setValue(B b) {
+        throw new Error("don't do this");
+    }
+
+    public A getKey() {
+        return a;
+    }
+
+    public B getValue() {
+        return b;
+    }
+
+    public int hashCode() {
+        return a.hashCode() ^ b.hashCode();
+    }
+
     public boolean equals(Object o) {
-        if (o==null || !(o instanceof Pair)) return false;
-        Pair<A,B> sme = (Pair<A,B>)o;
+        if (o == null || !(o instanceof Pair)) return false;
+        Pair<A, B> sme = (Pair<A, B>) o;
         return a.equals(sme.a) && b.equals(sme.b);
     }
 }

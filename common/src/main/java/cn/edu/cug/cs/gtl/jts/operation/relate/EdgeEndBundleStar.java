@@ -49,42 +49,38 @@ import cn.edu.cug.cs.gtl.jts.geomgraph.EdgeEndStar;
  * @version 1.7
  */
 public class EdgeEndBundleStar
-  extends EdgeEndStar
-{
-  /**
-   * Creates a new empty EdgeEndBundleStar
-   */
-  public EdgeEndBundleStar() {
-  }
+        extends EdgeEndStar {
+    /**
+     * Creates a new empty EdgeEndBundleStar
+     */
+    public EdgeEndBundleStar() {
+    }
 
-  /**
-   * Insert a EdgeEnd in order in the list.
-   * If there is an existing EdgeStubBundle which is parallel, the EdgeEnd is
-   * added to the bundle.  Otherwise, a new EdgeEndBundle is created
-   * to contain the EdgeEnd.
-   * <br>
-   */
-  public void insert(EdgeEnd e)
-  {
-    EdgeEndBundle eb = (EdgeEndBundle) edgeMap.get(e);
-    if (eb == null) {
-      eb = new EdgeEndBundle(e);
-      insertEdgeEnd(e, eb);
+    /**
+     * Insert a EdgeEnd in order in the list.
+     * If there is an existing EdgeStubBundle which is parallel, the EdgeEnd is
+     * added to the bundle.  Otherwise, a new EdgeEndBundle is created
+     * to contain the EdgeEnd.
+     * <br>
+     */
+    public void insert(EdgeEnd e) {
+        EdgeEndBundle eb = (EdgeEndBundle) edgeMap.get(e);
+        if (eb == null) {
+            eb = new EdgeEndBundle(e);
+            insertEdgeEnd(e, eb);
+        } else {
+            eb.insert(e);
+        }
     }
-    else {
-      eb.insert(e);
-    }
-  }
 
-  /**
-   * Update the IM with the contribution for the EdgeStubs around the node.
-   */
-  void updateIM(IntersectionMatrix im)
-  {
-    for (Iterator it = iterator(); it.hasNext(); ) {
-      EdgeEndBundle esb = (EdgeEndBundle) it.next();
-      esb.updateIM(im);
+    /**
+     * Update the IM with the contribution for the EdgeStubs around the node.
+     */
+    void updateIM(IntersectionMatrix im) {
+        for (Iterator it = iterator(); it.hasNext(); ) {
+            EdgeEndBundle esb = (EdgeEndBundle) it.next();
+            esb.updateIM(im);
+        }
     }
-  }
 
 }

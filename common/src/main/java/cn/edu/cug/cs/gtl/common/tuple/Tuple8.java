@@ -24,6 +24,7 @@
 
 
 package cn.edu.cug.cs.gtl.common.tuple;
+
 import cn.edu.cug.cs.gtl.util.StringUtils;
 import cn.edu.cug.cs.gtl.annotation.Public;
 import cn.edu.cug.cs.gtl.util.StringUtils;
@@ -39,13 +40,12 @@ import java.io.*;
  * with Tuples to reuse objects in order to reduce pressure on the garbage collector.</p>
  *
  * <p>Warning: If you subclass Tuple8, then be sure to either <ul>
- *  <li> not add any new fields, or </li>
- *  <li> make it a POJO, and always declare the element type of your DataStreams/DataSets to your descendant
- *       type. (That is, if you have a "class Foo extends Tuple8", then don't use instances of
- *       Foo in a DataStream&lt;Tuple8&gt; / DataSet&lt;Tuple8&gt;, but declare it as
- *       DataStream&lt;Foo&gt; / DataSet&lt;Foo&gt;.) </li>
+ * <li> not add any new fields, or </li>
+ * <li> make it a POJO, and always declare the element type of your DataStreams/DataSets to your descendant
+ * type. (That is, if you have a "class Foo extends Tuple8", then don't use instances of
+ * Foo in a DataStream&lt;Tuple8&gt; / DataSet&lt;Tuple8&gt;, but declare it as
+ * DataStream&lt;Foo&gt; / DataSet&lt;Foo&gt;.) </li>
  * </ul></p>
- * @see Tuple
  *
  * @param <T0> The type of field 0
  * @param <T1> The type of field 1
@@ -55,298 +55,348 @@ import java.io.*;
  * @param <T5> The type of field 5
  * @param <T6> The type of field 6
  * @param <T7> The type of field 7
+ * @see Tuple
  */
 @Public
 public class Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> extends Tuple {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/** Field 0 of the tuple. */
-	public T0 f0;
-	/** Field 1 of the tuple. */
-	public T1 f1;
-	/** Field 2 of the tuple. */
-	public T2 f2;
-	/** Field 3 of the tuple. */
-	public T3 f3;
-	/** Field 4 of the tuple. */
-	public T4 f4;
-	/** Field 5 of the tuple. */
-	public T5 f5;
-	/** Field 6 of the tuple. */
-	public T6 f6;
-	/** Field 7 of the tuple. */
-	public T7 f7;
+    /**
+     * Field 0 of the tuple.
+     */
+    public T0 f0;
+    /**
+     * Field 1 of the tuple.
+     */
+    public T1 f1;
+    /**
+     * Field 2 of the tuple.
+     */
+    public T2 f2;
+    /**
+     * Field 3 of the tuple.
+     */
+    public T3 f3;
+    /**
+     * Field 4 of the tuple.
+     */
+    public T4 f4;
+    /**
+     * Field 5 of the tuple.
+     */
+    public T5 f5;
+    /**
+     * Field 6 of the tuple.
+     */
+    public T6 f6;
+    /**
+     * Field 7 of the tuple.
+     */
+    public T7 f7;
 
-	/**
-	 * Creates a new tuple where all fields are null.
-	 */
-	public Tuple8() {}
+    /**
+     * Creates a new tuple where all fields are null.
+     */
+    public Tuple8() {
+    }
 
-	/**
-	 * Creates a new tuple and assigns the given values to the tuple's fields.
-	 *
-	 * @param value0 The value for field 0
-	 * @param value1 The value for field 1
-	 * @param value2 The value for field 2
-	 * @param value3 The value for field 3
-	 * @param value4 The value for field 4
-	 * @param value5 The value for field 5
-	 * @param value6 The value for field 6
-	 * @param value7 The value for field 7
-	 */
-	public Tuple8(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) {
-		this.f0 = value0;
-		this.f1 = value1;
-		this.f2 = value2;
-		this.f3 = value3;
-		this.f4 = value4;
-		this.f5 = value5;
-		this.f6 = value6;
-		this.f7 = value7;
-	}
+    /**
+     * Creates a new tuple and assigns the given values to the tuple's fields.
+     *
+     * @param value0 The value for field 0
+     * @param value1 The value for field 1
+     * @param value2 The value for field 2
+     * @param value3 The value for field 3
+     * @param value4 The value for field 4
+     * @param value5 The value for field 5
+     * @param value6 The value for field 6
+     * @param value7 The value for field 7
+     */
+    public Tuple8(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) {
+        this.f0 = value0;
+        this.f1 = value1;
+        this.f2 = value2;
+        this.f3 = value3;
+        this.f4 = value4;
+        this.f5 = value5;
+        this.f6 = value6;
+        this.f7 = value7;
+    }
 
-	@Override
-	public int getArity() { return 8; }
+    @Override
+    public int getArity() {
+        return 8;
+    }
 
-	@Override
-	public void copyFrom(Object i) {
-		Tuple8<T0,T1,T2,T3,T4,T5,T6,T7> t = (Tuple8<T0,T1,T2,T3,T4,T5,T6,T7>)i;
-		f0 = t.f0;
-		f1 = t.f1;
-		f2 = t.f2;
-		f3 = t.f3;
-		f4 = t.f4;
-		f5 = t.f5;
-		f6 = t.f6;
-		f7 = t.f7;
-	}
+    @Override
+    public void copyFrom(Object i) {
+        Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> t = (Tuple8<T0, T1, T2, T3, T4, T5, T6, T7>) i;
+        f0 = t.f0;
+        f1 = t.f1;
+        f2 = t.f2;
+        f3 = t.f3;
+        f4 = t.f4;
+        f5 = t.f5;
+        f6 = t.f6;
+        f7 = t.f7;
+    }
 
-	@Override
-	public boolean load(DataInput in) throws IOException {
+    @Override
+    public boolean load(DataInput in) throws IOException {
 
-		try {
-			int len =in.readInt();
-			byte [] bs = new byte[len];
-			in.readFully(bs,0,len);
-			ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-			f0= (T0) ois.readObject();
-			f1= (T1) ois.readObject();
-			f2= (T2) ois.readObject();
-			f3= (T3) ois.readObject();
-			f4=(T4)ois.readObject();
-			f5=(T5)ois.readObject();
-			f6=(T6)ois.readObject();
-			f7=(T7)ois.readObject();
-			ois.close();
-		}
-		catch (IOException | ClassNotFoundException e){
-			e.printStackTrace();
-		}
-		return true;
-	}
+        try {
+            int len = in.readInt();
+            byte[] bs = new byte[len];
+            in.readFully(bs, 0, len);
+            ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
+            f0 = (T0) ois.readObject();
+            f1 = (T1) ois.readObject();
+            f2 = (T2) ois.readObject();
+            f3 = (T3) ois.readObject();
+            f4 = (T4) ois.readObject();
+            f5 = (T5) ois.readObject();
+            f6 = (T6) ois.readObject();
+            f7 = (T7) ois.readObject();
+            ois.close();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 
-	@Override
-	public boolean store(DataOutput out) throws IOException {
-		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(baos);
-			oos.writeObject(f0);
-			oos.writeObject(f1);
-			oos.writeObject(f2);
-			oos.writeObject(f3);
-			oos.writeObject(f4);
-			oos.writeObject(f5);
-			oos.writeObject(f6);
-			oos.writeObject(f7);
-			byte [] bs = baos.toByteArray();
-			out.writeInt(bs.length);
-			out.write(bs,0,bs.length);
-			oos.close();
-		}
-		catch (IOException e){
-			e.printStackTrace();
-		}
-		return true;
-	}
+    @Override
+    public boolean store(DataOutput out) throws IOException {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(f0);
+            oos.writeObject(f1);
+            oos.writeObject(f2);
+            oos.writeObject(f3);
+            oos.writeObject(f4);
+            oos.writeObject(f5);
+            oos.writeObject(f6);
+            oos.writeObject(f7);
+            byte[] bs = baos.toByteArray();
+            out.writeInt(bs.length);
+            out.write(bs, 0, bs.length);
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 
-	@Override
-	public long getByteArraySize() {
-		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ObjectOutputStream oos = new ObjectOutputStream(baos);
-			oos.writeObject(f0);
-			oos.writeObject(f1);
-			oos.writeObject(f2);
-			oos.writeObject(f3);
-			oos.writeObject(f4);
-			oos.writeObject(f5);
-			oos.writeObject(f6);
-			oos.writeObject(f7);
-			return  baos.size();
-		}
-		catch (IOException e){
-			e.printStackTrace();
-		}
-		return 0L;
-	}
+    @Override
+    public long getByteArraySize() {
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(f0);
+            oos.writeObject(f1);
+            oos.writeObject(f2);
+            oos.writeObject(f3);
+            oos.writeObject(f4);
+            oos.writeObject(f5);
+            oos.writeObject(f6);
+            oos.writeObject(f7);
+            return baos.size();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0L;
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public <T> T getField(int pos) {
-		switch(pos) {
-			case 0: return (T) this.f0;
-			case 1: return (T) this.f1;
-			case 2: return (T) this.f2;
-			case 3: return (T) this.f3;
-			case 4: return (T) this.f4;
-			case 5: return (T) this.f5;
-			case 6: return (T) this.f6;
-			case 7: return (T) this.f7;
-			default: throw new IndexOutOfBoundsException(String.valueOf(pos));
-		}
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T> T getField(int pos) {
+        switch (pos) {
+            case 0:
+                return (T) this.f0;
+            case 1:
+                return (T) this.f1;
+            case 2:
+                return (T) this.f2;
+            case 3:
+                return (T) this.f3;
+            case 4:
+                return (T) this.f4;
+            case 5:
+                return (T) this.f5;
+            case 6:
+                return (T) this.f6;
+            case 7:
+                return (T) this.f7;
+            default:
+                throw new IndexOutOfBoundsException(String.valueOf(pos));
+        }
+    }
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public <T> void setField(T value, int pos) {
-		switch(pos) {
-			case 0:
-				this.f0 = (T0) value;
-				break;
-			case 1:
-				this.f1 = (T1) value;
-				break;
-			case 2:
-				this.f2 = (T2) value;
-				break;
-			case 3:
-				this.f3 = (T3) value;
-				break;
-			case 4:
-				this.f4 = (T4) value;
-				break;
-			case 5:
-				this.f5 = (T5) value;
-				break;
-			case 6:
-				this.f6 = (T6) value;
-				break;
-			case 7:
-				this.f7 = (T7) value;
-				break;
-			default: throw new IndexOutOfBoundsException(String.valueOf(pos));
-		}
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T> void setField(T value, int pos) {
+        switch (pos) {
+            case 0:
+                this.f0 = (T0) value;
+                break;
+            case 1:
+                this.f1 = (T1) value;
+                break;
+            case 2:
+                this.f2 = (T2) value;
+                break;
+            case 3:
+                this.f3 = (T3) value;
+                break;
+            case 4:
+                this.f4 = (T4) value;
+                break;
+            case 5:
+                this.f5 = (T5) value;
+                break;
+            case 6:
+                this.f6 = (T6) value;
+                break;
+            case 7:
+                this.f7 = (T7) value;
+                break;
+            default:
+                throw new IndexOutOfBoundsException(String.valueOf(pos));
+        }
+    }
 
-	/**
-	 * Sets new values to all fields of the tuple.
-	 *
-	 * @param value0 The value for field 0
-	 * @param value1 The value for field 1
-	 * @param value2 The value for field 2
-	 * @param value3 The value for field 3
-	 * @param value4 The value for field 4
-	 * @param value5 The value for field 5
-	 * @param value6 The value for field 6
-	 * @param value7 The value for field 7
-	 */
-	public void setFields(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) {
-		this.f0 = value0;
-		this.f1 = value1;
-		this.f2 = value2;
-		this.f3 = value3;
-		this.f4 = value4;
-		this.f5 = value5;
-		this.f6 = value6;
-		this.f7 = value7;
-	}
+    /**
+     * Sets new values to all fields of the tuple.
+     *
+     * @param value0 The value for field 0
+     * @param value1 The value for field 1
+     * @param value2 The value for field 2
+     * @param value3 The value for field 3
+     * @param value4 The value for field 4
+     * @param value5 The value for field 5
+     * @param value6 The value for field 6
+     * @param value7 The value for field 7
+     */
+    public void setFields(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) {
+        this.f0 = value0;
+        this.f1 = value1;
+        this.f2 = value2;
+        this.f3 = value3;
+        this.f4 = value4;
+        this.f5 = value5;
+        this.f6 = value6;
+        this.f7 = value7;
+    }
 
 
-	// -------------------------------------------------------------------------------------------------
-	// standard utilities
-	// -------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------
+    // standard utilities
+    // -------------------------------------------------------------------------------------------------
 
-	/**
-	 * Creates a string representation of the tuple in the form
-	 * (f0, f1, f2, f3, f4, f5, f6, f7),
-	 * where the individual fields are the value returned by calling {@link Object#toString} on that field.
-	 * @return The string representation of the tuple.
-	 */
-	@Override
-	public String toString() {
-		return "(" + StringUtils.arrayAwareToString(this.f0)
-			+ "," + StringUtils.arrayAwareToString(this.f1)
-			+ "," + StringUtils.arrayAwareToString(this.f2)
-			+ "," + StringUtils.arrayAwareToString(this.f3)
-			+ "," + StringUtils.arrayAwareToString(this.f4)
-			+ "," + StringUtils.arrayAwareToString(this.f5)
-			+ "," + StringUtils.arrayAwareToString(this.f6)
-			+ "," + StringUtils.arrayAwareToString(this.f7)
-			+ ")";
-	}
+    /**
+     * Creates a string representation of the tuple in the form
+     * (f0, f1, f2, f3, f4, f5, f6, f7),
+     * where the individual fields are the value returned by calling {@link Object#toString} on that field.
+     *
+     * @return The string representation of the tuple.
+     */
+    @Override
+    public String toString() {
+        return "(" + StringUtils.arrayAwareToString(this.f0)
+                + "," + StringUtils.arrayAwareToString(this.f1)
+                + "," + StringUtils.arrayAwareToString(this.f2)
+                + "," + StringUtils.arrayAwareToString(this.f3)
+                + "," + StringUtils.arrayAwareToString(this.f4)
+                + "," + StringUtils.arrayAwareToString(this.f5)
+                + "," + StringUtils.arrayAwareToString(this.f6)
+                + "," + StringUtils.arrayAwareToString(this.f7)
+                + ")";
+    }
 
-	/**
-	 * Deep equality for tuples by calling equals() on the tuple members
-	 * @param o the object checked for equality
-	 * @return true if this is equal to o.
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if(this == o) { return true; }
-		if (!(o instanceof Tuple8)) { return false; }
-		@SuppressWarnings("rawtypes")
-		Tuple8 tuple = (Tuple8) o;
-		if (f0 != null ? !f0.equals(tuple.f0) : tuple.f0 != null) { return false; }
-		if (f1 != null ? !f1.equals(tuple.f1) : tuple.f1 != null) { return false; }
-		if (f2 != null ? !f2.equals(tuple.f2) : tuple.f2 != null) { return false; }
-		if (f3 != null ? !f3.equals(tuple.f3) : tuple.f3 != null) { return false; }
-		if (f4 != null ? !f4.equals(tuple.f4) : tuple.f4 != null) { return false; }
-		if (f5 != null ? !f5.equals(tuple.f5) : tuple.f5 != null) { return false; }
-		if (f6 != null ? !f6.equals(tuple.f6) : tuple.f6 != null) { return false; }
-		if (f7 != null ? !f7.equals(tuple.f7) : tuple.f7 != null) { return false; }
-		return true;
-	}
+    /**
+     * Deep equality for tuples by calling equals() on the tuple members
+     *
+     * @param o the object checked for equality
+     * @return true if this is equal to o.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Tuple8)) {
+            return false;
+        }
+        @SuppressWarnings("rawtypes")
+        Tuple8 tuple = (Tuple8) o;
+        if (f0 != null ? !f0.equals(tuple.f0) : tuple.f0 != null) {
+            return false;
+        }
+        if (f1 != null ? !f1.equals(tuple.f1) : tuple.f1 != null) {
+            return false;
+        }
+        if (f2 != null ? !f2.equals(tuple.f2) : tuple.f2 != null) {
+            return false;
+        }
+        if (f3 != null ? !f3.equals(tuple.f3) : tuple.f3 != null) {
+            return false;
+        }
+        if (f4 != null ? !f4.equals(tuple.f4) : tuple.f4 != null) {
+            return false;
+        }
+        if (f5 != null ? !f5.equals(tuple.f5) : tuple.f5 != null) {
+            return false;
+        }
+        if (f6 != null ? !f6.equals(tuple.f6) : tuple.f6 != null) {
+            return false;
+        }
+        if (f7 != null ? !f7.equals(tuple.f7) : tuple.f7 != null) {
+            return false;
+        }
+        return true;
+    }
 
-	@Override
-	public int hashCode() {
-		int result = f0 != null ? f0.hashCode() : 0;
-		result = 31 * result + (f1 != null ? f1.hashCode() : 0);
-		result = 31 * result + (f2 != null ? f2.hashCode() : 0);
-		result = 31 * result + (f3 != null ? f3.hashCode() : 0);
-		result = 31 * result + (f4 != null ? f4.hashCode() : 0);
-		result = 31 * result + (f5 != null ? f5.hashCode() : 0);
-		result = 31 * result + (f6 != null ? f6.hashCode() : 0);
-		result = 31 * result + (f7 != null ? f7.hashCode() : 0);
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        int result = f0 != null ? f0.hashCode() : 0;
+        result = 31 * result + (f1 != null ? f1.hashCode() : 0);
+        result = 31 * result + (f2 != null ? f2.hashCode() : 0);
+        result = 31 * result + (f3 != null ? f3.hashCode() : 0);
+        result = 31 * result + (f4 != null ? f4.hashCode() : 0);
+        result = 31 * result + (f5 != null ? f5.hashCode() : 0);
+        result = 31 * result + (f6 != null ? f6.hashCode() : 0);
+        result = 31 * result + (f7 != null ? f7.hashCode() : 0);
+        return result;
+    }
 
-	/**
-	* Shallow tuple copy.
-	* @return A new Tuple with the same fields as this.
-	*/
-	@Override
-	@SuppressWarnings("unchecked")
-	public Tuple8<T0,T1,T2,T3,T4,T5,T6,T7> copy(){ 
-		return new Tuple8<T0,T1,T2,T3,T4,T5,T6,T7>(this.f0,
-			this.f1,
-			this.f2,
-			this.f3,
-			this.f4,
-			this.f5,
-			this.f6,
-			this.f7);
-	}
+    /**
+     * Shallow tuple copy.
+     *
+     * @return A new Tuple with the same fields as this.
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> copy() {
+        return new Tuple8<T0, T1, T2, T3, T4, T5, T6, T7>(this.f0,
+                this.f1,
+                this.f2,
+                this.f3,
+                this.f4,
+                this.f5,
+                this.f6,
+                this.f7);
+    }
 
-	/**
-	 * Creates a new tuple and assigns the given values to the tuple's fields.
-	 * This is more convenient than using the constructor, because the compiler can
-	 * infer the generic type arguments implicitly. For example:
-	 * {@code Tuple3.of(n, x, s)}
-	 * instead of
-	 * {@code new Tuple3<Integer, Double, String>(n, x, s)}
-	 */
-	public static <T0,T1,T2,T3,T4,T5,T6,T7> Tuple8<T0,T1,T2,T3,T4,T5,T6,T7> of(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) {
-		return new Tuple8<T0,T1,T2,T3,T4,T5,T6,T7>(value0, value1, value2, value3, value4, value5, value6, value7);
-	}
+    /**
+     * Creates a new tuple and assigns the given values to the tuple's fields.
+     * This is more convenient than using the constructor, because the compiler can
+     * infer the generic type arguments implicitly. For example:
+     * {@code Tuple3.of(n, x, s)}
+     * instead of
+     * {@code new Tuple3<Integer, Double, String>(n, x, s)}
+     */
+    public static <T0, T1, T2, T3, T4, T5, T6, T7> Tuple8<T0, T1, T2, T3, T4, T5, T6, T7> of(T0 value0, T1 value1, T2 value2, T3 value3, T4 value4, T5 value5, T6 value6, T7 value7) {
+        return new Tuple8<T0, T1, T2, T3, T4, T5, T6, T7>(value0, value1, value2, value3, value4, value5, value6, value7);
+    }
 }

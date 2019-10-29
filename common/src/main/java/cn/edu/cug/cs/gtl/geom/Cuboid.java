@@ -57,7 +57,7 @@ public class Cuboid extends Geometry implements Serializable {
 
     @Override
     public boolean isEmpty() {
-        return this.vertices==null || this.vertices.length==0;
+        return this.vertices == null || this.vertices.length == 0;
     }
 
     @Override

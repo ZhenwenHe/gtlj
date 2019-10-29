@@ -8,23 +8,30 @@ import java.util.Map.Entry;
  * The collection for SAXRecords. This data structure is used in the parallel SAX implementation.
  *
  * @author psenin
- *
  */
 // public class SAXRecords {
 public class SAXRecords implements Iterable<SAXRecord> {
 
     private static final Object CR = "\n";
 
-    /** The id is used to identify the chunk. */
+    /**
+     * The id is used to identify the chunk.
+     */
     private final long id;
 
-    /** All the SAX records. */
+    /**
+     * All the SAX records.
+     */
     private final HashMap<String, SAXRecord> records;
 
-    /** The index of occurrences, key is the position in the time series. */
+    /**
+     * The index of occurrences, key is the position in the time series.
+     */
     private final HashMap<Integer, SAXRecord> realTSindex;
 
-    /** The mapping from SAX string positions to real time series positions. */
+    /**
+     * The mapping from SAX string positions to real time series positions.
+     */
     private HashMap<Integer, Integer> stringPosToRealPos;
 
     /**
@@ -115,8 +122,7 @@ public class SAXRecords implements Iterable<SAXRecord> {
         if (null == rr) {
             rr = new SAXRecord(str, idx);
             this.records.put(String.valueOf(str), rr);
-        }
-        else {
+        } else {
             rr.addIndex(idx);
         }
         this.realTSindex.put(idx, rr);
@@ -187,7 +193,6 @@ public class SAXRecords implements Iterable<SAXRecord> {
      * Get the SAX string of this whole collection.
      *
      * @param separatorToken The separator token to use for the string.
-     *
      * @return The whole data as a string.
      */
     public String getSAXString(String separatorToken) {

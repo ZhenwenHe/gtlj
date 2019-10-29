@@ -8,17 +8,22 @@ import java.util.Set;
  * Implement a data container for the parallel SAX.
  *
  * @author psenin
- *
  */
 public class SAXRecord implements Comparable<SAXRecord> {
 
-    /** The payload. */
+    /**
+     * The payload.
+     */
     private char[] saxString;
 
-    /** The index of occurrences in the raw sequence. */
+    /**
+     * The index of occurrences in the raw sequence.
+     */
     private HashSet<Integer> occurrences;
 
-    /** Disable the constructor. */
+    /**
+     * Disable the constructor.
+     */
     @SuppressWarnings("unused")
     private SAXRecord() {
         super();
@@ -88,8 +93,7 @@ public class SAXRecord implements Comparable<SAXRecord> {
         int b = o.getIndexes().size();
         if (a == b) {
             return 0;
-        }
-        else if (a > b) {
+        } else if (a > b) {
             return 1;
         }
         return -1;
@@ -124,8 +128,7 @@ public class SAXRecord implements Comparable<SAXRecord> {
         int num0 = 0;
         if (null == this.saxString || 0 == this.saxString.length) {
             num0 = 32;
-        }
-        else {
+        } else {
             for (int i = 0; i < this.saxString.length; i++) {
                 num0 = num0 + Character.getNumericValue(this.saxString[i]);
             }
@@ -134,8 +137,7 @@ public class SAXRecord implements Comparable<SAXRecord> {
         int num1 = 0;
         if (this.occurrences.isEmpty()) {
             num1 = 17;
-        }
-        else {
+        } else {
             for (Integer i : this.occurrences) {
                 num1 = num1 + i;
             }

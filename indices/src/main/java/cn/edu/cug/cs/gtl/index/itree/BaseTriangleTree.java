@@ -35,10 +35,10 @@ public abstract class BaseTriangleTree<T extends Interval> implements Serializab
      */
     transient QueryShapeGenerator<T> queryShapeGenerator;
 
-    public BaseTriangleTree(TriangleShape triangle,int leafNodeCapacity ){
+    public BaseTriangleTree(TriangleShape triangle, int leafNodeCapacity) {
         this.baseTriangle = new TriangleShape(triangle);
-        this.leafNodeCapacity=leafNodeCapacity;
-        this.queryShapeGenerator=new QueryShapeGenerator<T>(baseTriangle);
+        this.leafNodeCapacity = leafNodeCapacity;
+        this.queryShapeGenerator = new QueryShapeGenerator<T>(baseTriangle);
     }
 
     /**
@@ -48,6 +48,7 @@ public abstract class BaseTriangleTree<T extends Interval> implements Serializab
      * @return 返回查询结果
      */
     public abstract List<T> pointQuery(final PointShape ps);
+
     /**
      * 线查询，由间隔数据查询转换成的所有的现状图形的查询，
      * 所有落在线上的点构成查询结果集合
@@ -56,6 +57,7 @@ public abstract class BaseTriangleTree<T extends Interval> implements Serializab
      * @return 返回查询结果的个数
      */
     public abstract List<T> lineQuery(final LineSegmentShape lsp);
+
     /**
      * 区域查询，由间隔数据查询转换成的所有的现状图形的查询，
      * 所有落在线上的点构成查询结果集合
@@ -65,10 +67,11 @@ public abstract class BaseTriangleTree<T extends Interval> implements Serializab
      *           这样更加便于相交计算）或矩形查询图形
      * @return 返回查询结果
      */
-    public abstract List<T> regionQuery(final RegionShape rs );
+    public abstract List<T> regionQuery(final RegionShape rs);
 
     /**
      * 插入一个Interval对象
+     *
      * @param i
      * @return
      */

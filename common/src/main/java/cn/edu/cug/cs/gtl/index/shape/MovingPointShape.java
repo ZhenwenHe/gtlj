@@ -5,6 +5,7 @@ package cn.edu.cug.cs.gtl.index.shape;
  */
 public class MovingPointShape extends TimePointShape implements EvolvingShape {
     private static final long serialVersionUID = 1L;
+
     @Override
     public RegionShape getVMBR() {
         return null;

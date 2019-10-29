@@ -39,13 +39,12 @@ public class LineStringTest {
         line = new LineString(coordinates);
         try {
             byte[] bytes = line.storeToByteArray();
-            long s =line.getByteArraySize();
-            assertTrue(bytes.length==s);
+            long s = line.getByteArraySize();
+            assertTrue(bytes.length == s);
             LineString l1 = new LineString();
             l1.loadFromByteArray(bytes);
-            assertTrue(l1.getDimension()==3);
-        }
-        catch (IOException e){
+            assertTrue(l1.getDimension() == 3);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -55,14 +54,13 @@ public class LineStringTest {
         double[] d = {1.1, 1.2, 1.3};
         coordinates = new PackedVectorSequence(d, 3);
         line = new LineString(coordinates);
-        try{
-            byte [] t = line.storeToByteArray();
+        try {
+            byte[] t = line.storeToByteArray();
             LineString l1 = (LineString) line.clone();
-            byte [] t2 = l1.storeToByteArray();
-            assertEquals(t.length,t2.length);
-            assertArrayEquals(t,t2);
-        }
-        catch (IOException e){
+            byte[] t2 = l1.storeToByteArray();
+            assertEquals(t.length, t2.length);
+            assertArrayEquals(t, t2);
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -76,8 +74,7 @@ public class LineStringTest {
         System.out.println(byteArraySize);
         try {
             assertEquals(line.getByteArraySize(), line.storeToByteArray().length);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

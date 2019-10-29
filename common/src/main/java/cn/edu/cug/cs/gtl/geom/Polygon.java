@@ -51,7 +51,7 @@ public class Polygon extends Geometry implements Polygonal {
      * This instance var is never null.
      * If there are no holes, the array is of zero length.
      */
-    protected LinearRing[] holes=null;
+    protected LinearRing[] holes = null;
 
     /**
      * 材质ID，主要用于三维对象，默认为-1,表示不适用材质
@@ -62,37 +62,37 @@ public class Polygon extends Geometry implements Polygonal {
         super.makeDimension(shell.getDimension());
         this.shell = shell;
         this.holes = holes;
-        this.geometryType=POLYGON;
+        this.geometryType = POLYGON;
         this.envelope.combine(this.shell.getEnvelope());
-        if(holes!=null){
-            for(LinearRing r: holes)
+        if (holes != null) {
+            for (LinearRing r : holes)
                 this.envelope.combine(r.getEnvelope());
         }
-        materialID=-1;
+        materialID = -1;
     }
 
     public Polygon(@NotNull LinearRing shell) {
         super.makeDimension(shell.getDimension());
         this.shell = shell;
-        this.geometryType=POLYGON;
+        this.geometryType = POLYGON;
         this.envelope.combine(this.shell.getEnvelope());
-        if(holes!=null){
-            for(LinearRing r: holes)
+        if (holes != null) {
+            for (LinearRing r : holes)
                 this.envelope.combine(r.getEnvelope());
         }
-        materialID=-1;
+        materialID = -1;
     }
 
-    public Polygon(){
-        this.geometryType=POLYGON;
+    public Polygon() {
+        this.geometryType = POLYGON;
         this.shell = new LinearRing(2);
-        materialID=-1;
+        materialID = -1;
     }
 
-    public Polygon(int dim){
+    public Polygon(int dim) {
         super.makeDimension(dim);
-        this.geometryType=POLYGON;
-        materialID=-1;
+        this.geometryType = POLYGON;
+        materialID = -1;
     }
 
     @Override
@@ -105,60 +105,58 @@ public class Polygon extends Geometry implements Polygonal {
         if (i instanceof Polygon) {
             Polygon g = (Polygon) i;
             super.copyFrom(i);
-            this.shell=(LinearRing) g.shell.clone();
-            if(g.holes!=null){
+            this.shell = (LinearRing) g.shell.clone();
+            if (g.holes != null) {
                 this.holes = new LinearRing[g.holes.length];
-                int k=0;
-                for(LinearRing r: g.holes) {
+                int k = 0;
+                for (LinearRing r : g.holes) {
                     this.holes[k] = (LinearRing) r.clone();
                     k++;
                 }
             }
-            this.materialID=g.materialID;
+            this.materialID = g.materialID;
         }
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
         super.load(in);
-        int s= in.readInt();
-        if(s>0){
-            if(this.shell==null)
-                this.shell=(LinearRing) create(LINEARRING,2);
+        int s = in.readInt();
+        if (s > 0) {
+            if (this.shell == null)
+                this.shell = (LinearRing) create(LINEARRING, 2);
             this.shell.load(in);
-        }
-        else{
-            this.shell=null;
+        } else {
+            this.shell = null;
         }
 
         int len = in.readInt();
-        if(len>0){
-            this.holes=new LinearRing[len];
-            for(int i=0;i<len;++i) {
-                this.holes[i] =new LinearRing();
+        if (len > 0) {
+            this.holes = new LinearRing[len];
+            for (int i = 0; i < len; ++i) {
+                this.holes[i] = new LinearRing();
             }
         }
 
-        this.materialID=in.readLong();
+        this.materialID = in.readLong();
         return true;
     }
 
     @Override
     public boolean store(DataOutput out) throws IOException {
         super.store(out);
-        if(this.shell!=null){
+        if (this.shell != null) {
             out.writeInt(1);
             this.shell.store(out);
-        }
-        else{
+        } else {
             out.writeInt(0);
         }
 
         int len = 0;
-        if(this.holes!=null) len=this.holes.length;
+        if (this.holes != null) len = this.holes.length;
         out.writeInt(len);
-        if(len>0){
-            for(LinearRing r : this.holes)
+        if (len > 0) {
+            for (LinearRing r : this.holes)
                 r.store(out);
         }
         out.writeLong(this.materialID);
@@ -167,45 +165,46 @@ public class Polygon extends Geometry implements Polygonal {
 
     @Override
     public long getByteArraySize() {
-        long len =  super.getByteArraySize()+4+this.shell.getByteArraySize();
+        long len = super.getByteArraySize() + 4 + this.shell.getByteArraySize();
 
-        len+=4;//holes number
-        if(this.holes!=null) {
-            for(LinearRing r: this.holes)
+        len += 4;//holes number
+        if (this.holes != null) {
+            for (LinearRing r : this.holes)
                 len += ObjectUtils.getByteArraySize(r);
         }
 
-        len+=8;
+        len += 8;
 
         return len;
     }
 
     @Override
     public Polygon clone() {
-        Polygon p = new Polygon( );
+        Polygon p = new Polygon();
         p.copyFrom(this);
         return p;
     }
 
-    public LinearRing getExteriorRing(){
+    public LinearRing getExteriorRing() {
         return this.shell;
     }
 
-    public void setExteriorRing(LinearRing lr){
-        this.shell=lr;
-        this.envelope =(Envelope)lr.getEnvelope().clone();
+    public void setExteriorRing(LinearRing lr) {
+        this.shell = lr;
+        this.envelope = (Envelope) lr.getEnvelope().clone();
     }
 
-    public LinearRing [] getInteriorRings(){
+    public LinearRing[] getInteriorRings() {
         return this.holes;
     }
 
-    public LinearRing getInteriorRing(int i){
-        if(this.holes==null) return null;
+    public LinearRing getInteriorRing(int i) {
+        if (this.holes == null) return null;
         return this.holes[i];
     }
-    public void setInteriorRings(LinearRing [] lrs){
-        this.holes=lrs;
+
+    public void setInteriorRings(LinearRing[] lrs) {
+        this.holes = lrs;
     }
 
     public long getMaterialID() {

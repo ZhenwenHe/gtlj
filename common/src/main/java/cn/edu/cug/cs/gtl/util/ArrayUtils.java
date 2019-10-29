@@ -7,21 +7,21 @@ import java.util.List;
 public class ArrayUtils {
 
     public static byte[] createByteArray(byte[] ba) {
-        if(ba==null)
+        if (ba == null)
             return null;
         byte[] r = new byte[ba.length];
         System.arraycopy(ba, 0, r, 0, r.length);
         return r;
     }
 
-    public static int compare(byte[] a, byte [] b){
-        if(a.length>b.length) return 1;
-        if(a.length<b.length) return -1;
+    public static int compare(byte[] a, byte[] b) {
+        if (a.length > b.length) return 1;
+        if (a.length < b.length) return -1;
 
-        for(int i=0;i<a.length;++i) {
-            if(a[i]>b[i])
+        for (int i = 0; i < a.length; ++i) {
+            if (a[i] > b[i])
                 return 1;
-            else if(a[i]<b[i])
+            else if (a[i] < b[i])
                 return -1;
             else
                 continue;
@@ -45,39 +45,36 @@ public class ArrayUtils {
         return r;
     }
 
-    public static <E> Collection<E> iterableToCollection(Iterable<E> i){
-        if(i instanceof Collection){
-            return (Collection<E>)i;
-        }
-        else{
+    public static <E> Collection<E> iterableToCollection(Iterable<E> i) {
+        if (i instanceof Collection) {
+            return (Collection<E>) i;
+        } else {
             ArrayList<E> al = new ArrayList<>();
-            for(E  e: i){
+            for (E e : i) {
                 al.add(e);
             }
             return al;
         }
     }
 
-    public static <E> List<E> iterableToList(Iterable<E> i){
-        if(i instanceof List){
-            return (List<E>)i;
-        }
-        else{
+    public static <E> List<E> iterableToList(Iterable<E> i) {
+        if (i instanceof List) {
+            return (List<E>) i;
+        } else {
             ArrayList<E> al = new ArrayList<>();
-            for(E  e: i){
+            for (E e : i) {
                 al.add(e);
             }
             return al;
         }
     }
 
-    public static <E> List<E> collectionToList(Collection<E> i){
-        if(i instanceof List){
-            return (List<E>)i;
-        }
-        else{
+    public static <E> List<E> collectionToList(Collection<E> i) {
+        if (i instanceof List) {
+            return (List<E>) i;
+        } else {
             ArrayList<E> al = new ArrayList<>();
-            for(E  e: i){
+            for (E e : i) {
                 al.add(e);
             }
             return al;

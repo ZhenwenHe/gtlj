@@ -3,7 +3,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
 /*
  *    GeoTools - The Open Source Java GIS Toolkit
  *    http://geotools.org
- * 
+ *
  *    (C) 2014, Open Source Geospatial Foundation (OSGeo)
  *
  *    This library is free software; you can redistribute it and/or
@@ -15,7 +15,7 @@ package cn.edu.cug.cs.gtl.jts.geom;
  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  *    Lesser General Public License for more details.
- */ 
+ */
 
 import cn.edu.cug.cs.gtl.jts.geom.Geometry;
 
@@ -40,8 +40,8 @@ public interface CurvedGeometry<T extends Geometry> {
      * {@link CircularArc#MAX_SEGMENTS_QUADRANT}
      *
      * @param tolerance Linearization tolerance, should be zero or positive. When zero is used, the
-     *        maximum number of allowed linearization points will be used, see
-     *        {@link CircularArc#MAX_SEGMENTS_QUADRANT}
+     *                  maximum number of allowed linearization points will be used, see
+     *                  {@link CircularArc#MAX_SEGMENTS_QUADRANT}
      * @return
      */
     T linearize(double tolerance);

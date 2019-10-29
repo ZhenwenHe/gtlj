@@ -11,11 +11,11 @@ import cn.edu.cug.cs.gtl.util.StringUtils;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 
-public class Coder <T > implements Serializable{
+public class Coder<T> implements Serializable {
 
     private Class<T> type;
 
-    public static <T > Coder<T> of(Class<T> clazz) {
+    public static <T> Coder<T> of(Class<T> clazz) {
         return new Coder<>(clazz);
     }
 
@@ -25,11 +25,10 @@ public class Coder <T > implements Serializable{
 
 
     public void encode(T value, OutputStream outStream) throws IOException {
-        if(this.type.equals(String.class)){
-            StringUtils.write((String)value,outStream);
-        }
-       else {
-           Storable v = (Storable) value;
+        if (this.type.equals(String.class)) {
+            StringUtils.write((String) value, outStream);
+        } else {
+            Storable v = (Storable) value;
             v.write(new DataOutputStream(outStream));
         }
     }
@@ -40,13 +39,12 @@ public class Coder <T > implements Serializable{
                 // StorableNull has no default constructor
                 return (T) StorableNull.get();
             }
-            if(this.type.equals(String.class)){
+            if (this.type.equals(String.class)) {
                 return (T) StringUtils.read(inStream);
-            }
-            else {
+            } else {
                 //每个实现了Serializable接口的类，必须具有缺省构造函数
                 T t = type.getDeclaredConstructor().newInstance();
-                ((Storable)t).read(new DataInputStream(inStream));
+                ((Storable) t).read(new DataInputStream(inStream));
                 return t;
             }
 
@@ -65,18 +63,18 @@ public class Coder <T > implements Serializable{
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        int s= in.readInt();
-        if(s==0) return false;
-        byte [] b = new byte[s];
+        int s = in.readInt();
+        if (s == 0) return false;
+        byte[] b = new byte[s];
         in.readFully(b);
-        this.type=(Class<T>) ObjectUtils.loadFromByteArray(b);
+        this.type = (Class<T>) ObjectUtils.loadFromByteArray(b);
         return true;
     }
 
     @Override
     public boolean store(DataOutput out) throws IOException {
         byte[] t = ObjectUtils.storeToByteArray(this.type);
-        if(t==null) return false;
+        if (t == null) return false;
         out.writeInt(t.length);
         out.write(t);
         return false;

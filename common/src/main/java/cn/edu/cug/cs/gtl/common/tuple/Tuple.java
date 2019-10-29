@@ -17,6 +17,7 @@
  */
 
 package cn.edu.cug.cs.gtl.common.tuple;
+
 import cn.edu.cug.cs.gtl.exception.NullFieldException;
 import cn.edu.cug.cs.gtl.io.Serializable;
 import cn.edu.cug.cs.gtl.annotation.Public;
@@ -40,104 +41,105 @@ import java.io.IOException;
  */
 @Public
 public abstract class Tuple implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	public static final int MAX_ARITY = 25;
-	
-	
-	/**
-	 * Gets the field at the specified position.
-	 *
-	 * @param pos The position of the field, zero indexed.
-	 * @return The field at the specified position.
-	 * @throws IndexOutOfBoundsException Thrown, if the position is negative, or equal to, or larger than the number of fields.
-	 */
-	public abstract <T> T getField(int pos);
-	
-	/**
-	 * Gets the field at the specified position, throws NullFieldException if the field is null. Used for comparing key fields.
-	 * 
-	 * @param pos The position of the field, zero indexed. 
-	 * @return The field at the specified position.
-	 * @throws IndexOutOfBoundsException Thrown, if the position is negative, or equal to, or larger than the number of fields.
-	 * @throws NullFieldException Thrown, if the field at pos is null.
-	 */
-	public <T> T getFieldNotNull(int pos) throws Exception{
-		T field = getField(pos);
-		if (field != null) {
-			return field;
-		} else {
-			throw new NullFieldException(pos);
-		}
-	}
 
-	/**
-	 * Sets the field at the specified position.
-	 *
-	 * @param value The value to be assigned to the field at the specified position.
-	 * @param pos The position of the field, zero indexed.
-	 * @throws IndexOutOfBoundsException Thrown, if the position is negative, or equal to, or larger than the number of fields.
-	 */
-	public abstract <T> void setField(T value, int pos);
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Gets the number of field in the tuple (the tuple arity).
-	 *
-	 * @return The number of fields in the tuple.
-	 */
-	public abstract int getArity();
-
-	/**
-	 * Shallow tuple copy.
-	 * @return A new Tuple with the same fields as this.
-	 */
-	public abstract <T extends Tuple> T copy();
-
-	// --------------------------------------------------------------------------------------------
-	
-	/**
-	 * Gets the class corresponding to the tuple of the given arity (dimensions). For
-	 * example, {@code getTupleClass(3)} will return the {@code Tuple3.class}.
-	 * 
-	 * @param arity The arity of the tuple class to get.
-	 * @return The tuple class with the given arity.
-	 */
-	@SuppressWarnings("unchecked")
-	public static Class<? extends Tuple> getTupleClass(int arity) {
-		if (arity < 0 || arity > MAX_ARITY) {
-			throw new IllegalArgumentException("The tuple arity must be in [0, " + MAX_ARITY + "].");
-		}
-		return (Class<? extends Tuple>) CLASSES[arity];
-	}
-	
-	// --------------------------------------------------------------------------------------------	
-	// The following lines are generated.
-	// --------------------------------------------------------------------------------------------
-	
-	// BEGIN_OF_TUPLE_DEPENDENT_CODE	
-	// GENERATED FROM org.apache.flink.api.java.tuple.TupleGenerator.
-	private static final Class<?>[] CLASSES = new Class<?>[] {
-		Tuple0.class, Tuple1.class, Tuple2.class, Tuple3.class, Tuple4.class, Tuple5.class, Tuple6.class, Tuple7.class, Tuple8.class, Tuple9.class, Tuple10.class, Tuple11.class, Tuple12.class, Tuple13.class, Tuple14.class, Tuple15.class, Tuple16.class, Tuple17.class, Tuple18.class, Tuple19.class, Tuple20.class, Tuple21.class, Tuple22.class, Tuple23.class, Tuple24.class, Tuple25.class
-	};
-
-	@Override
-	public Object clone()  {
-		return (Object) copy();
-	}
-
-	@Override
-	public abstract void copyFrom(Object i) ;
-
-	@Override
-	public abstract boolean load(DataInput in) throws IOException;
-
-	@Override
-	public abstract boolean store(DataOutput out) throws IOException;
-
-	@Override
-	public abstract long getByteArraySize() ;
+    public static final int MAX_ARITY = 25;
 
 
-	// END_OF_TUPLE_DEPENDENT_CODE
+    /**
+     * Gets the field at the specified position.
+     *
+     * @param pos The position of the field, zero indexed.
+     * @return The field at the specified position.
+     * @throws IndexOutOfBoundsException Thrown, if the position is negative, or equal to, or larger than the number of fields.
+     */
+    public abstract <T> T getField(int pos);
+
+    /**
+     * Gets the field at the specified position, throws NullFieldException if the field is null. Used for comparing key fields.
+     *
+     * @param pos The position of the field, zero indexed.
+     * @return The field at the specified position.
+     * @throws IndexOutOfBoundsException Thrown, if the position is negative, or equal to, or larger than the number of fields.
+     * @throws NullFieldException        Thrown, if the field at pos is null.
+     */
+    public <T> T getFieldNotNull(int pos) throws Exception {
+        T field = getField(pos);
+        if (field != null) {
+            return field;
+        } else {
+            throw new NullFieldException(pos);
+        }
+    }
+
+    /**
+     * Sets the field at the specified position.
+     *
+     * @param value The value to be assigned to the field at the specified position.
+     * @param pos   The position of the field, zero indexed.
+     * @throws IndexOutOfBoundsException Thrown, if the position is negative, or equal to, or larger than the number of fields.
+     */
+    public abstract <T> void setField(T value, int pos);
+
+    /**
+     * Gets the number of field in the tuple (the tuple arity).
+     *
+     * @return The number of fields in the tuple.
+     */
+    public abstract int getArity();
+
+    /**
+     * Shallow tuple copy.
+     *
+     * @return A new Tuple with the same fields as this.
+     */
+    public abstract <T extends Tuple> T copy();
+
+    // --------------------------------------------------------------------------------------------
+
+    /**
+     * Gets the class corresponding to the tuple of the given arity (dimensions). For
+     * example, {@code getTupleClass(3)} will return the {@code Tuple3.class}.
+     *
+     * @param arity The arity of the tuple class to get.
+     * @return The tuple class with the given arity.
+     */
+    @SuppressWarnings("unchecked")
+    public static Class<? extends Tuple> getTupleClass(int arity) {
+        if (arity < 0 || arity > MAX_ARITY) {
+            throw new IllegalArgumentException("The tuple arity must be in [0, " + MAX_ARITY + "].");
+        }
+        return (Class<? extends Tuple>) CLASSES[arity];
+    }
+
+    // --------------------------------------------------------------------------------------------
+    // The following lines are generated.
+    // --------------------------------------------------------------------------------------------
+
+    // BEGIN_OF_TUPLE_DEPENDENT_CODE
+    // GENERATED FROM org.apache.flink.api.java.tuple.TupleGenerator.
+    private static final Class<?>[] CLASSES = new Class<?>[]{
+            Tuple0.class, Tuple1.class, Tuple2.class, Tuple3.class, Tuple4.class, Tuple5.class, Tuple6.class, Tuple7.class, Tuple8.class, Tuple9.class, Tuple10.class, Tuple11.class, Tuple12.class, Tuple13.class, Tuple14.class, Tuple15.class, Tuple16.class, Tuple17.class, Tuple18.class, Tuple19.class, Tuple20.class, Tuple21.class, Tuple22.class, Tuple23.class, Tuple24.class, Tuple25.class
+    };
+
+    @Override
+    public Object clone() {
+        return (Object) copy();
+    }
+
+    @Override
+    public abstract void copyFrom(Object i);
+
+    @Override
+    public abstract boolean load(DataInput in) throws IOException;
+
+    @Override
+    public abstract boolean store(DataOutput out) throws IOException;
+
+    @Override
+    public abstract long getByteArraySize();
+
+
+    // END_OF_TUPLE_DEPENDENT_CODE
 }

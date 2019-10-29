@@ -4,23 +4,23 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class Color4b extends Color3b{
+public class Color4b extends Color3b {
     private static final long serialVersionUID = 1L;
 
     protected byte a;
 
     public Color4b(byte r, byte g, byte b, byte a) {
-        super(r,g,b);
+        super(r, g, b);
         this.a = a;
     }
 
     public Color4b(byte r, byte g, byte b) {
-        super(r,g,b);
-        this.a=0;
+        super(r, g, b);
+        this.a = 0;
     }
 
     public Color4b() {
-        super((byte)0,(byte)0,(byte)0);
+        super((byte) 0, (byte) 0, (byte) 0);
         this.a = 0;
     }
 
@@ -34,15 +34,15 @@ public class Color4b extends Color3b{
 
     @Override
     public Object clone() {
-        return new Color4b(r,g,b,a);
+        return new Color4b(r, g, b, a);
     }
 
     @Override
     public boolean load(DataInput in) throws IOException {
-        r=in.readByte();
-        g=in.readByte();
-        b=in.readByte();
-        a=in.readByte();
+        r = in.readByte();
+        g = in.readByte();
+        b = in.readByte();
+        a = in.readByte();
         return true;
     }
 
@@ -57,6 +57,6 @@ public class Color4b extends Color3b{
 
     @Override
     public long getByteArraySize() {
-        return 8*4;
+        return 8 * 4;
     }
 }

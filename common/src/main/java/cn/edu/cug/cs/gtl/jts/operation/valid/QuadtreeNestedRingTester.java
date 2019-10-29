@@ -50,70 +50,67 @@ import cn.edu.cug.cs.gtl.jts.index.quadtree.Quadtree;
  *
  * @version 1.7
  */
-public class QuadtreeNestedRingTester
-{
+public class QuadtreeNestedRingTester {
 
-  private GeometryGraph graph;  // used to find non-node vertices
-  private List rings = new ArrayList();
-  private Envelope totalEnv = new Envelope();
-  private Quadtree quadtree;
-  private Coordinate nestedPt;
+    private GeometryGraph graph;  // used to find non-node vertices
+    private List rings = new ArrayList();
+    private Envelope totalEnv = new Envelope();
+    private Quadtree quadtree;
+    private Coordinate nestedPt;
 
-  public QuadtreeNestedRingTester(GeometryGraph graph)
-  {
-    this.graph = graph;
-  }
+    public QuadtreeNestedRingTester(GeometryGraph graph) {
+        this.graph = graph;
+    }
 
-  public Coordinate getNestedPoint() { return nestedPt; }
+    public Coordinate getNestedPoint() {
+        return nestedPt;
+    }
 
-  public void add(LinearRing ring)
-  {
-    rings.add(ring);
-    totalEnv.expandToInclude(ring.getEnvelopeInternal());
-  }
+    public void add(LinearRing ring) {
+        rings.add(ring);
+        totalEnv.expandToInclude(ring.getEnvelopeInternal());
+    }
 
-  public boolean isNonNested()
-  {
-    buildQuadtree();
+    public boolean isNonNested() {
+        buildQuadtree();
 
-    for (int i = 0; i < rings.size(); i++) {
-      LinearRing innerRing = (LinearRing) rings.get(i);
-      Coordinate[] innerRingPts = innerRing.getCoordinates();
+        for (int i = 0; i < rings.size(); i++) {
+            LinearRing innerRing = (LinearRing) rings.get(i);
+            Coordinate[] innerRingPts = innerRing.getCoordinates();
 
-      List results = quadtree.query(innerRing.getEnvelopeInternal());
+            List results = quadtree.query(innerRing.getEnvelopeInternal());
 //System.out.println(results.size());
-      for (int j = 0; j < results.size(); j++) {
-        LinearRing searchRing = (LinearRing) results.get(j);
-        Coordinate[] searchRingPts = searchRing.getCoordinates();
+            for (int j = 0; j < results.size(); j++) {
+                LinearRing searchRing = (LinearRing) results.get(j);
+                Coordinate[] searchRingPts = searchRing.getCoordinates();
 
-        if (innerRing == searchRing)
-          continue;
+                if (innerRing == searchRing)
+                    continue;
 
-        if (! innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
-          continue;
+                if (!innerRing.getEnvelopeInternal().intersects(searchRing.getEnvelopeInternal()))
+                    continue;
 
-        Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
-        Assert.isTrue(innerRingPt != null, "Unable to find a ring point not a node of the search ring");
-        //Coordinate innerRingPt = innerRingPts[0];
+                Coordinate innerRingPt = IsValidOp.findPtNotNode(innerRingPts, searchRing, graph);
+                Assert.isTrue(innerRingPt != null, "Unable to find a ring point not a node of the search ring");
+                //Coordinate innerRingPt = innerRingPts[0];
 
-        boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
-        if (isInside) {
-          nestedPt = innerRingPt;
-          return false;
+                boolean isInside = CGAlgorithms.isPointInRing(innerRingPt, searchRingPts);
+                if (isInside) {
+                    nestedPt = innerRingPt;
+                    return false;
+                }
+            }
         }
-      }
+        return true;
     }
-    return true;
-  }
 
-  private void buildQuadtree()
-  {
-    quadtree = new Quadtree();
+    private void buildQuadtree() {
+        quadtree = new Quadtree();
 
-    for (int i = 0; i < rings.size(); i++) {
-      LinearRing ring = (LinearRing) rings.get(i);
-      Envelope env = ring.getEnvelopeInternal();
-      quadtree.insert(env, ring);
+        for (int i = 0; i < rings.size(); i++) {
+            LinearRing ring = (LinearRing) rings.get(i);
+            Envelope env = ring.getEnvelopeInternal();
+            quadtree.insert(env, ring);
+        }
     }
-  }
 }

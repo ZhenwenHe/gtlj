@@ -44,8 +44,8 @@ package cn.edu.cug.cs.gtl.jts.algorithm;
  */
 public class NotRepresentableException extends Exception {
 
-  public NotRepresentableException() {
-    super("Projective point not representable on the Cartesian plane.");
-  }
+    public NotRepresentableException() {
+        super("Projective point not representable on the Cartesian plane.");
+    }
 
 }
