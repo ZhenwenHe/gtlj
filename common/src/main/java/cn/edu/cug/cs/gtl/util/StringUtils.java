@@ -11,6 +11,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Random;
 
 
@@ -379,4 +380,21 @@ public class StringUtils {
         return new String(data);
     }
 
+    /**
+     *
+     * @param d
+     * @return
+     */
+    public String encodeToString(byte[] d){
+        return Base64.getEncoder().encodeToString(d);
+    }
+
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public byte[] decodeToBytes(String s){
+        return Base64.getDecoder().decode(s);
+    }
 }

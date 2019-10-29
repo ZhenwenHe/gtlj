@@ -17,6 +17,12 @@ message SqlRecord {
     repeated string element = 1;
 }
 
+message SqlColumn{
+    string column_name = 1;
+    string column_comment = 2;
+    repeated string element = 3;
+}
+
 message SqlDataSet {
     repeated string column_name = 1;
     repeated string column_comment = 2;
