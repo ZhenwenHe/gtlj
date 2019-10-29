@@ -15,9 +15,9 @@ public class SqlServer {
 
     public static void main(String[] args) throws Exception {
         new SqlServer();
-        System.out.println("Server ready...");
+        System.out.println("Sql Command Service Server ready...");
         Thread.sleep(Long.MAX_VALUE);
-        System.out.println("Server exiting");
+        System.out.println("Sql Command Service Server exiting");
         System.exit(0);
     }
 }
