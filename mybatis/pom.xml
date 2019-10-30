@@ -46,6 +46,13 @@
             <artifactId>maven-site-plugin</artifactId>
             <version>${maven-site-plugin.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>${ojdbc.version}</version>
+        </dependency>
+
     </dependencies>
     <!--mybatis_generator代码生成器专用-->
     <build>
