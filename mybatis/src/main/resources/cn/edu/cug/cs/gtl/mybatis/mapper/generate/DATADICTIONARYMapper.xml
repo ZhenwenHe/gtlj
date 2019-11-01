@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DATADICTIONARYMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DATADICTIONARY">
+    <result column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="COLUMN_NAME" jdbcType="VARCHAR" property="columnName" />
+    <result column="DATA_TYPE" jdbcType="VARCHAR" property="dataType" />
+    <result column="DATA_LENGTH" jdbcType="VARCHAR" property="dataLength" />
+    <result column="COMMENTS" jdbcType="VARCHAR" property="comments" />
+    <result column="DATA_PRECISION" jdbcType="NUMERIC" property="dataPrecision" />
+    <result column="DATA_SCALE" jdbcType="VARCHAR" property="dataScale" />
+    <result column="NULLABLE" jdbcType="VARCHAR" property="nullable" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DATADICTIONARY">
+    insert into DATADICTIONARY (TABLE_NAME, COLUMN_NAME, DATA_TYPE, 
+      DATA_LENGTH, COMMENTS, DATA_PRECISION, 
+      DATA_SCALE, NULLABLE)
+    values (#{tableName,jdbcType=VARCHAR}, #{columnName,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR}, 
+      #{dataLength,jdbcType=VARCHAR}, #{comments,jdbcType=VARCHAR}, #{dataPrecision,jdbcType=NUMERIC}, 
+      #{dataScale,jdbcType=VARCHAR}, #{nullable,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select TABLE_NAME, COLUMN_NAME, DATA_TYPE, DATA_LENGTH, COMMENTS, DATA_PRECISION, 
+    DATA_SCALE, NULLABLE
+    from DATADICTIONARY
+  </select>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DICT_FIELDINFOMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DICT_FIELDINFO">
+    <result column="FCNAME" jdbcType="VARCHAR" property="fcname" />
+    <result column="FENAME" jdbcType="VARCHAR" property="fename" />
+    <result column="FCODE" jdbcType="VARCHAR" property="fcode" />
+    <result column="FTYPE" jdbcType="VARCHAR" property="ftype" />
+    <result column="FLENGTH" jdbcType="NUMERIC" property="flength" />
+    <result column="FDECIMAL" jdbcType="NUMERIC" property="fdecimal" />
+    <result column="FISNULL" jdbcType="VARCHAR" property="fisnull" />
+    <result column="FDEFAULT" jdbcType="VARCHAR" property="fdefault" />
+    <result column="FMAX" jdbcType="NUMERIC" property="fmax" />
+    <result column="FMIN" jdbcType="NUMERIC" property="fmin" />
+    <result column="FCHECK" jdbcType="VARCHAR" property="fcheck" />
+    <result column="FMEMO" jdbcType="VARCHAR" property="fmemo" />
+    <result column="FTABLENAME" jdbcType="VARCHAR" property="ftablename" />
+    <result column="FENUM" jdbcType="VARCHAR" property="fenum" />
+    <result column="FPROCEDURE" jdbcType="BLOB" property="fprocedure" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DICT_FIELDINFO">
+    insert into DICT_FIELDINFO (FCNAME, FENAME, FCODE, 
+      FTYPE, FLENGTH, FDECIMAL, 
+      FISNULL, FDEFAULT, FMAX, 
+      FMIN, FCHECK, FMEMO, 
+      FTABLENAME, FENUM, FPROCEDURE
+      )
+    values (#{fcname,jdbcType=VARCHAR}, #{fename,jdbcType=VARCHAR}, #{fcode,jdbcType=VARCHAR}, 
+      #{ftype,jdbcType=VARCHAR}, #{flength,jdbcType=NUMERIC}, #{fdecimal,jdbcType=NUMERIC}, 
+      #{fisnull,jdbcType=VARCHAR}, #{fdefault,jdbcType=VARCHAR}, #{fmax,jdbcType=NUMERIC}, 
+      #{fmin,jdbcType=NUMERIC}, #{fcheck,jdbcType=VARCHAR}, #{fmemo,jdbcType=VARCHAR}, 
+      #{ftablename,jdbcType=VARCHAR}, #{fenum,jdbcType=VARCHAR}, #{fprocedure,jdbcType=BLOB}
+      )
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select FCNAME, FENAME, FCODE, FTYPE, FLENGTH, FDECIMAL, FISNULL, FDEFAULT, FMAX, 
+    FMIN, FCHECK, FMEMO, FTABLENAME, FENUM, FPROCEDURE
+    from DICT_FIELDINFO
+  </select>
+</mapper>

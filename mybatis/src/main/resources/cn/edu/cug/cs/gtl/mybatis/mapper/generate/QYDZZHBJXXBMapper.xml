@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QYDZZHBJXXBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QYDZZHBJXXB">
+    <id column="GQPBH" jdbcType="VARCHAR" property="gqpbh" />
+    <result column="GQPMC" jdbcType="VARCHAR" property="gqpmc" />
+    <result column="SSSS" jdbcType="VARCHAR" property="ssss" />
+    <result column="SSQX" jdbcType="VARCHAR" property="ssqx" />
+    <result column="NPJJYL" jdbcType="NUMERIC" property="npjjyl" />
+    <result column="NZDJYL" jdbcType="NUMERIC" property="nzdjyl" />
+    <result column="RZDJYL" jdbcType="NUMERIC" property="rzdjyl" />
+    <result column="YXRK" jdbcType="NUMERIC" property="yxrk" />
+    <result column="YXFW" jdbcType="NUMERIC" property="yxfw" />
+    <result column="DXSLX" jdbcType="VARCHAR" property="dxslx" />
+    <result column="YCPHMS" jdbcType="VARCHAR" property="ycphms" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from QYDZZHBJXXB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QYDZZHBJXXB">
+    insert into QYDZZHBJXXB (GQPBH, GQPMC, SSSS, 
+      SSQX, NPJJYL, NZDJYL, 
+      RZDJYL, YXRK, YXFW, 
+      DXSLX, YCPHMS)
+    values (#{gqpbh,jdbcType=VARCHAR}, #{gqpmc,jdbcType=VARCHAR}, #{ssss,jdbcType=VARCHAR}, 
+      #{ssqx,jdbcType=VARCHAR}, #{npjjyl,jdbcType=NUMERIC}, #{nzdjyl,jdbcType=NUMERIC}, 
+      #{rzdjyl,jdbcType=NUMERIC}, #{yxrk,jdbcType=NUMERIC}, #{yxfw,jdbcType=NUMERIC}, 
+      #{dxslx,jdbcType=VARCHAR}, #{ycphms,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QYDZZHBJXXB">
+    update QYDZZHBJXXB
+    set GQPMC = #{gqpmc,jdbcType=VARCHAR},
+      SSSS = #{ssss,jdbcType=VARCHAR},
+      SSQX = #{ssqx,jdbcType=VARCHAR},
+      NPJJYL = #{npjjyl,jdbcType=NUMERIC},
+      NZDJYL = #{nzdjyl,jdbcType=NUMERIC},
+      RZDJYL = #{rzdjyl,jdbcType=NUMERIC},
+      YXRK = #{yxrk,jdbcType=NUMERIC},
+      YXFW = #{yxfw,jdbcType=NUMERIC},
+      DXSLX = #{dxslx,jdbcType=VARCHAR},
+      YCPHMS = #{ycphms,jdbcType=VARCHAR}
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select GQPBH, GQPMC, SSSS, SSQX, NPJJYL, NZDJYL, RZDJYL, YXRK, YXFW, DXSLX, YCPHMS
+    from QYDZZHBJXXB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GQPBH, GQPMC, SSSS, SSQX, NPJJYL, NZDJYL, RZDJYL, YXRK, YXFW, DXSLX, YCPHMS
+    from QYDZZHBJXXB
+  </select>
+</mapper>

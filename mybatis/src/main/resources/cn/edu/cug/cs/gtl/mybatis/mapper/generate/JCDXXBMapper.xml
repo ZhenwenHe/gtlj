@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.JCDXXBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.JCDXXB">
+    <id column="GQPBH" jdbcType="VARCHAR" property="gqpbh" />
+    <id column="JCDBH" jdbcType="VARCHAR" property="jcdbh" />
+    <result column="JCDMC" jdbcType="VARCHAR" property="jcdmc" />
+    <result column="XZB" jdbcType="VARCHAR" property="xzb" />
+    <result column="YZB" jdbcType="VARCHAR" property="yzb" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from JCDXXB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and JCDBH = #{jcdbh,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.JCDXXB">
+    insert into JCDXXB (GQPBH, JCDBH, JCDMC, 
+      XZB, YZB)
+    values (#{gqpbh,jdbcType=VARCHAR}, #{jcdbh,jdbcType=VARCHAR}, #{jcdmc,jdbcType=VARCHAR}, 
+      #{xzb,jdbcType=VARCHAR}, #{yzb,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.JCDXXB">
+    update JCDXXB
+    set JCDMC = #{jcdmc,jdbcType=VARCHAR},
+      XZB = #{xzb,jdbcType=VARCHAR},
+      YZB = #{yzb,jdbcType=VARCHAR}
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and JCDBH = #{jcdbh,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select GQPBH, JCDBH, JCDMC, XZB, YZB
+    from JCDXXB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and JCDBH = #{jcdbh,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GQPBH, JCDBH, JCDMC, XZB, YZB
+    from JCDXXB
+  </select>
+</mapper>

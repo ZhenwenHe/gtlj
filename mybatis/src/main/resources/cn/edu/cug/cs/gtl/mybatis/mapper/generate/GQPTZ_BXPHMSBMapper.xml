@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPTZ_BXPHMSBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPTZ_BXPHMSB">
+    <id column="GQPBH" jdbcType="VARCHAR" property="gqpbh" />
+    <id column="GQPMC" jdbcType="VARCHAR" property="gqpmc" />
+    <result column="SCSJ" jdbcType="VARCHAR" property="scsj" />
+    <result column="YFSBXPH" jdbcType="VARCHAR" property="yfsbxph" />
+    <result column="YCBXPHMS" jdbcType="VARCHAR" property="ycbxphms" />
+    <result column="FZCS" jdbcType="VARCHAR" property="fzcs" />
+    <result column="AQDJ" jdbcType="VARCHAR" property="aqdj" />
+    <result column="ZYWHDX" jdbcType="VARCHAR" property="zywhdx" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from GQPTZ_BXPHMSB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and GQPMC = #{gqpmc,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPTZ_BXPHMSB">
+    insert into GQPTZ_BXPHMSB (GQPBH, GQPMC, SCSJ, 
+      YFSBXPH, YCBXPHMS, FZCS, 
+      AQDJ, ZYWHDX)
+    values (#{gqpbh,jdbcType=VARCHAR}, #{gqpmc,jdbcType=VARCHAR}, #{scsj,jdbcType=VARCHAR}, 
+      #{yfsbxph,jdbcType=VARCHAR}, #{ycbxphms,jdbcType=VARCHAR}, #{fzcs,jdbcType=VARCHAR}, 
+      #{aqdj,jdbcType=VARCHAR}, #{zywhdx,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPTZ_BXPHMSB">
+    update GQPTZ_BXPHMSB
+    set SCSJ = #{scsj,jdbcType=VARCHAR},
+      YFSBXPH = #{yfsbxph,jdbcType=VARCHAR},
+      YCBXPHMS = #{ycbxphms,jdbcType=VARCHAR},
+      FZCS = #{fzcs,jdbcType=VARCHAR},
+      AQDJ = #{aqdj,jdbcType=VARCHAR},
+      ZYWHDX = #{zywhdx,jdbcType=VARCHAR}
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and GQPMC = #{gqpmc,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select GQPBH, GQPMC, SCSJ, YFSBXPH, YCBXPHMS, FZCS, AQDJ, ZYWHDX
+    from GQPTZ_BXPHMSB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and GQPMC = #{gqpmc,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GQPBH, GQPMC, SCSJ, YFSBXPH, YCBXPHMS, FZCS, AQDJ, ZYWHDX
+    from GQPTZ_BXPHMSB
+  </select>
+</mapper>

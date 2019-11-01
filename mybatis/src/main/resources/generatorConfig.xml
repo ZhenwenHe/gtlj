@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 引用"application.properties配置文件  -->
+    <properties resource="oracle.properties"/>
+    <!--指定特定数据库的jdbc驱动jar包的位置-->
+    <classPathEntry location="${jdbc.driverLocation}"/>
+    <!--
+        context：代码生成规则配置的上下文
+            id:标识
+            targetRuntime: MyBatis3Simple 只会生成基本的CRUD操作
+    -->
+    <context id="JdbcTables" targetRuntime="MyBatis3Simple">
+
+        <!--commentGenerator：注释生成策略-->
+        <commentGenerator>
+            <!--suppressAllComments:是否阻止注释生成-->
+            <property name="suppressAllComments" value="true"/>
+            <!--suppressDate:是否阻止时间戳生成-->
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--jdbcConnection：数据库的链接属性-->
+        <jdbcConnection driverClass="${jdbc.driverClassName}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!--javaTypeResolver：java类型转换策略-->
+        <javaTypeResolver>
+            <!-- forceBigDecimals
+                 false:如果数据库中的字段类型为numeric或者decimal，在代码生成的时候根据数据库中设定的长度自动选择java类型进行转换
+                 true:直接使用java.math.BigDecimal类型-->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--domain生成策略；targetPackage：生成到哪个包下面，targetProject：生成到哪个项目目录下面-->
+        <javaModelGenerator targetPackage="cn.edu.cug.cs.gtl.mybatis.mapper.generate" targetProject="src/main/java">
+            <!--<property name="enableSubPackages" value="true" />-->
+            <!--表示是否修剪字符串（去掉空格-->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--sqlMapGenerator：映射文件生成策略
+               targetPackage:生成到哪个包下面，targetProject：生成到哪个项目目录下面
+        -->
+        <sqlMapGenerator targetPackage="cn.edu.cug.cs.gtl.mybatis.mapper.generate" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--mapper接口生成策略
+           type:ANNOTATEDMAPPER:注解的形式
+                XMLMAPPER：xml映射的形式-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.edu.cug.cs.gtl.mybatis.mapper.generate"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--指定要生成代码的表
+                domainObjectName：设置表对应的domain实体类生成的名称
+        -->
+        <!-- sqlite database : series.db-->
+<!--        <table tableName="origin_dataset_infos" domainObjectName="OriginDatasetInfos"></table>-->
+<!--        <table tableName="valid_dataset_infos" domainObjectName="ValidDatasetInfos"></table>-->
+
+
+        <tables>
+
+        </tables>
+        <!-- oracle database gqp-->
+        <!--原始文件记录表,YSWJJLB,,,,,C##CUG4GQP-->
+        <table tableName="YSWJJLB" domainObjectName="YSWJJLB"></table>
+        <!--文档数据记录表,WDSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="WDSJJLB" domainObjectName="WDSJJLB"></table>
+        <!--群测群防数据核校,QCQFSJHJ,,,,,C##CUG4GQP-->
+        <table tableName="QCQFSJHJ" domainObjectName="QCQFSJHJ"></table>
+        <!--区域地质灾害背景信息表,QYDZZHBJXXB,,,,,C##CUG4GQP-->
+        <table tableName="QYDZZHBJXXB" domainObjectName="QYDZZHBJXXB"></table>
+        <!--声发射检测数据记录表,SFSJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="SFSJCSJJLB" domainObjectName="SFSJCSJJLB"></table>
+        <!--水文数据表,SWSJB,,,,,C##CUG4GQP-->
+        <table tableName="SWSJB" domainObjectName="SWSJB"></table>
+<!--        位移监测数据记录表,WYJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="WYJCSJJLB" domainObjectName="WYJCSJJLB"></table>
+<!--        钻孔倾斜仪检测数据记录表,ZKQXYJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="ZKQXYJCSJJLB" domainObjectName="ZKQXYJCSJJLB"></table>
+<!--        专业监测数据表,ZYJCSJB,,,,,C##CUG4GQP-->
+        <table tableName="ZYJCSJB" domainObjectName="ZYJCSJB"></table>
+<!--        专业监测数据核校,ZYJCSJHJ,,,,,C##CUG4GQP-->
+        <table tableName="ZYJCSJHJ" domainObjectName="ZYJCSJHJ"></table>
+<!--        分布式光纤检测数据记录表,FBSGXJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="FBSGXJCSJJLB" domainObjectName="FBSGXJCSJJLB"></table>
+<!--        ,DATADICTIONARY,,,,,C##CUG4GQP-->
+        <table tableName="DATADICTIONARY" domainObjectName="DATADICTIONARY"></table>
+<!--        ,DICT_FIELDINFO,,,,,C##CUG4GQP-->
+        <table tableName="DICT_FIELDINFO" domainObjectName="DICT_FIELDINFO"></table>
+<!--        ,DICT_TABINFO,,,,,C##CUG4GQP-->
+        <table tableName="DICT_TABINFO" domainObjectName="DICT_TABINFO"></table>
+<!--        多点位移计检测数据记录表,DDWYJJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="DDWYJJCSJJLB" domainObjectName="DDWYJJCSJJLB"></table>
+<!--        地下水检测数据记录表,DXSJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="DXSJCSJJLB" domainObjectName="DXSJCSJJLB"></table>
+<!--        地质背景基本信息表,DZBJJBXXB,,,,,C##CUG4GQP-->
+        <table tableName="DZBJJBXXB" domainObjectName="DZBJJBXXB"></table>
+<!--        高切坡地层数据表,GQPDCSJB,,,,,C##CUG4GQP-->
+        <table tableName="GQPDCSJB" domainObjectName="GQPDCSJB"></table>
+<!--        高切坡点数据表,GQPDSJB,,,,,C##CUG4GQP-->
+        <table tableName="GQPDSJB" domainObjectName="GQPDSJB"></table>
+<!--        高切坡地质代号表,GQPDZDHB,,,,,C##CUG4GQP-->
+        <table tableName="GQPDZDHB" domainObjectName="GQPDZDHB"></table>
+<!--        高切坡防护工程措施详情表,GQPFHGCCSXQXXB,,,,,C##CUG4GQP-->
+        <table tableName="GQPFHGCCSXQXXB" domainObjectName="GQPFHGCCSXQXXB"></table>
+<!--        高切坡防护工程措施信息表,GQPFHGCCSXXB,,,,,C##CUG4GQP-->
+        <table tableName="GQPFHGCCSXXB" domainObjectName="GQPFHGCCSXXB"></table>
+<!--        高切坡监测信息表,GQPJCXXB,,,,,C##CUG4GQP-->
+        <table tableName="GQPJCXXB" domainObjectName="GQPJCXXB">
+            <columnOverride column="jctp1" javaType="java.lang.String" jdbcType="VARCHAR"  />
+            <columnOverride column="jctp2" javaType="java.lang.String" jdbcType="VARCHAR"  />
+            <columnOverride column="jctp3" javaType="java.lang.String" jdbcType="VARCHAR"  />
+        </table>
+<!--        高切坡基础资料表,GQPJCZLB,,,,,C##CUG4GQP-->
+        <table tableName="GQPJCZLB" domainObjectName="GQPJCZLB"></table>
+<!--        高切坡岩性数据表,GQPYXSJB,,,,,C##CUG4GQP-->
+        <table tableName="GQPYXSJB" domainObjectName="GQPYXSJB"></table>
+<!--        监测点信息表,JCDXXB,,,,,C##CUG4GQP-->
+        <table tableName="JCDXXB" domainObjectName="JCDXXB"></table>
+<!--        锚杆应变计检测数据记录表,MGYBJJCSJJLB,,,,,C##CUG4GQP-->
+        <table tableName="MGYBJJCSJJLB" domainObjectName="MGYBJJCSJJLB"></table>
+<!--        群测群防宏观巡查信息表,QCQFHGXCXXB,,,,,C##CUG4GQP-->
+        <table tableName="QCQFHGXCXXB" domainObjectName="QCQFHGXCXXB"></table>
+<!--        群测群防监信息测表,QCQFJCXXB,,,,,C##CUG4GQP-->
+        <table tableName="QCQFJCXXB" domainObjectName="QCQFJCXXB"></table>
+<!--        ,GQPTZ_ZYJCSJB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_ZYJCSJB" domainObjectName="GQPTZ_ZYJCSJB"></table>
+<!--        ,GQPTZ_GQPJBXXB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_GQPJBXXB" domainObjectName="GQPTZ_GQPJBXXB"></table>
+<!--        ,GQPTZ_BXPHMSB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_BXPHMSB" domainObjectName="GQPTZ_BXPHMSB"></table>
+<!--        ,GQPTZ_SWSJJ,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_SWSJJ" domainObjectName="GQPTZ_SWSJJ"></table>
+<!--        ,GQPTZ_QXSJB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_QXSJB" domainObjectName="GQPTZ_QXSJB"></table>
+<!--        ,GQPTZ_YCSJB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_YCSJB" domainObjectName="GQPTZ_YCSJB"></table>
+<!--        ,GQPTZ_WLXCSB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_WLXCSB" domainObjectName="GQPTZ_WLXCSB"></table>
+<!--        ,GQPTZ_QCQFSJZHB,,,,,C##CUG4GQP-->
+        <table tableName="GQPTZ_QCQFSJZHB" domainObjectName="GQPTZ_QCQFSJZHB"></table>
+<!--        气象数据表,QXSJB,,,,,C##CUG4GQP-->
+        <table tableName="QXSJB" domainObjectName="QXSJB"></table>
+<!--        库水位数据表,KSWSJB,,,,,C##CUG4GQP-->
+        <table tableName="KSWSJB" domainObjectName="KSWSJB"></table>
+<!--        用户权限表,YHQXB,,,,,C##CUG4GQP-->
+        <table tableName="YHQXB" domainObjectName="YHQXB"></table>
+<!--        ,T_WEATHER,,,,,C##CUG4GQP-->
+        <table tableName="T_WEATHER" domainObjectName="T_WEATHER"></table>
+<!--        ,T_RESERVOIR_WATER_LEVEL,,,,,C##CUG4GQP-->
+        <table tableName="T_RESERVOIR_WATER_LEVEL" domainObjectName="T_RESERVOIR_WATER_LEVEL"></table>
+<!--        ,T_ROLE,,,,,C##CUG4GQP-->
+        <table tableName="T_ROLE" domainObjectName="T_ROLE"></table>
+<!--        ,T_FUNCATION,,,,,C##CUG4GQP-->
+        <table tableName="T_FUNCATION" domainObjectName="T_FUNCATION"></table>
+<!--        ,T_ROLE_FUNCATION,,,,,C##CUG4GQP-->
+        <table tableName="T_ROLE_FUNCATION" domainObjectName="T_ROLE_FUNCATION"></table>
+<!--        ,T_USER_ROLE,,,,,C##CUG4GQP-->
+        <table tableName="T_USER_ROLE" domainObjectName="T_USER_ROLE"></table>
+<!--        ,T_LOGIN,,,,,C##CUG4GQP-->
+        <table tableName="T_LOGIN" domainObjectName="T_LOGIN"></table>
+<!--        ,T_OPERATION,,,,,C##CUG4GQP-->
+        <table tableName="T_OPERATION" domainObjectName="T_OPERATION"></table>
+<!--        ,T_USER,,,,,C##CUG4GQP-->
+        <table tableName="T_USER" domainObjectName="T_USER"></table>
+    </context>
+</generatorConfiguration>

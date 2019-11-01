@@ -9,7 +9,7 @@ public class SqlServer {
         sf.setResourceClasses(ResultService.class);
         sf.setResourceProvider(ResultService.class,
                 new SingletonResourceProvider(new ResultService()));
-        sf.setAddress("http://localhost:9000/");
+        sf.setAddress("http://localhost:8999/");
         sf.create();
     }
 

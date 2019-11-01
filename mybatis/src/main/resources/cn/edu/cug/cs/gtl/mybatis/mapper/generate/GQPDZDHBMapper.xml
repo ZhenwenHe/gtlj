@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPDZDHBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPDZDHB">
+    <id column="GQPBH" jdbcType="VARCHAR" property="gqpbh" />
+    <result column="GQPMC" jdbcType="VARCHAR" property="gqpmc" />
+    <result column="SSSS" jdbcType="VARCHAR" property="ssss" />
+    <result column="SSQX" jdbcType="VARCHAR" property="ssqx" />
+    <result column="DZZC" jdbcType="VARCHAR" property="dzzc" />
+    <result column="DZDH" jdbcType="VARCHAR" property="dzdh" />
+    <result column="DZMC" jdbcType="VARCHAR" property="dzmc" />
+    <result column="DZMS" jdbcType="VARCHAR" property="dzms" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from GQPDZDHB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPDZDHB">
+    insert into GQPDZDHB (GQPBH, GQPMC, SSSS, 
+      SSQX, DZZC, DZDH, DZMC, 
+      DZMS)
+    values (#{gqpbh,jdbcType=VARCHAR}, #{gqpmc,jdbcType=VARCHAR}, #{ssss,jdbcType=VARCHAR}, 
+      #{ssqx,jdbcType=VARCHAR}, #{dzzc,jdbcType=VARCHAR}, #{dzdh,jdbcType=VARCHAR}, #{dzmc,jdbcType=VARCHAR}, 
+      #{dzms,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.GQPDZDHB">
+    update GQPDZDHB
+    set GQPMC = #{gqpmc,jdbcType=VARCHAR},
+      SSSS = #{ssss,jdbcType=VARCHAR},
+      SSQX = #{ssqx,jdbcType=VARCHAR},
+      DZZC = #{dzzc,jdbcType=VARCHAR},
+      DZDH = #{dzdh,jdbcType=VARCHAR},
+      DZMC = #{dzmc,jdbcType=VARCHAR},
+      DZMS = #{dzms,jdbcType=VARCHAR}
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select GQPBH, GQPMC, SSSS, SSQX, DZZC, DZDH, DZMC, DZMS
+    from GQPDZDHB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GQPBH, GQPMC, SSSS, SSQX, DZZC, DZDH, DZMC, DZMS
+    from GQPDZDHB
+  </select>
+</mapper>

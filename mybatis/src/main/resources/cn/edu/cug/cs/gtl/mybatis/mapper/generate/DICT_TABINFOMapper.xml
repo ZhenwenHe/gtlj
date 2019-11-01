@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DICT_TABINFOMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DICT_TABINFO">
+    <result column="TCNAME" jdbcType="VARCHAR" property="tcname" />
+    <result column="TENAME" jdbcType="VARCHAR" property="tename" />
+    <result column="TCODE" jdbcType="VARCHAR" property="tcode" />
+    <result column="TTYPE" jdbcType="VARCHAR" property="ttype" />
+    <result column="TCHECK" jdbcType="VARCHAR" property="tcheck" />
+    <result column="TMEMO" jdbcType="VARCHAR" property="tmemo" />
+    <result column="TSCHEMA" jdbcType="VARCHAR" property="tschema" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.DICT_TABINFO">
+    insert into DICT_TABINFO (TCNAME, TENAME, TCODE, 
+      TTYPE, TCHECK, TMEMO, 
+      TSCHEMA)
+    values (#{tcname,jdbcType=VARCHAR}, #{tename,jdbcType=VARCHAR}, #{tcode,jdbcType=VARCHAR}, 
+      #{ttype,jdbcType=VARCHAR}, #{tcheck,jdbcType=VARCHAR}, #{tmemo,jdbcType=VARCHAR}, 
+      #{tschema,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select TCNAME, TENAME, TCODE, TTYPE, TCHECK, TMEMO, TSCHEMA
+    from DICT_TABINFO
+  </select>
+</mapper>

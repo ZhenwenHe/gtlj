@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.SWSJBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.SWSJB">
+    <id column="ZD" jdbcType="VARCHAR" property="zd" />
+    <id column="SCSJ" jdbcType="TIMESTAMP" property="scsj" />
+    <result column="LY" jdbcType="VARCHAR" property="ly" />
+    <result column="SZSF" jdbcType="VARCHAR" property="szsf" />
+    <result column="LYMC" jdbcType="VARCHAR" property="lymc" />
+    <result column="SW" jdbcType="NUMERIC" property="sw" />
+    <result column="LL" jdbcType="NUMERIC" property="ll" />
+    <result column="JJSW" jdbcType="NUMERIC" property="jjsw" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from SWSJB
+    where ZD = #{zd,jdbcType=VARCHAR}
+      and SCSJ = #{scsj,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.SWSJB">
+    insert into SWSJB (ZD, SCSJ, LY, 
+      SZSF, LYMC, SW, LL, 
+      JJSW)
+    values (#{zd,jdbcType=VARCHAR}, #{scsj,jdbcType=TIMESTAMP}, #{ly,jdbcType=VARCHAR}, 
+      #{szsf,jdbcType=VARCHAR}, #{lymc,jdbcType=VARCHAR}, #{sw,jdbcType=NUMERIC}, #{ll,jdbcType=NUMERIC}, 
+      #{jjsw,jdbcType=NUMERIC})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.SWSJB">
+    update SWSJB
+    set LY = #{ly,jdbcType=VARCHAR},
+      SZSF = #{szsf,jdbcType=VARCHAR},
+      LYMC = #{lymc,jdbcType=VARCHAR},
+      SW = #{sw,jdbcType=NUMERIC},
+      LL = #{ll,jdbcType=NUMERIC},
+      JJSW = #{jjsw,jdbcType=NUMERIC}
+    where ZD = #{zd,jdbcType=VARCHAR}
+      and SCSJ = #{scsj,jdbcType=TIMESTAMP}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select ZD, SCSJ, LY, SZSF, LYMC, SW, LL, JJSW
+    from SWSJB
+    where ZD = #{zd,jdbcType=VARCHAR}
+      and SCSJ = #{scsj,jdbcType=TIMESTAMP}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ZD, SCSJ, LY, SZSF, LYMC, SW, LL, JJSW
+    from SWSJB
+  </select>
+</mapper>

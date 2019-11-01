@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_WEATHERMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_WEATHER">
+    <result column="SZSF" jdbcType="VARCHAR" property="szsf" />
+    <result column="JCDBH" jdbcType="NUMERIC" property="jcdbh" />
+    <result column="ZDMC" jdbcType="VARCHAR" property="zdmc" />
+    <result column="ZDZB" jdbcType="VARCHAR" property="zdzb" />
+    <result column="SCSJ" jdbcType="TIMESTAMP" property="scsj" />
+    <result column="ZDQW" jdbcType="NUMERIC" property="zdqw" />
+    <result column="PJQW" jdbcType="NUMERIC" property="pjqw" />
+    <result column="ZGQW" jdbcType="NUMERIC" property="zgqw" />
+    <result column="JYL" jdbcType="NUMERIC" property="jyl" />
+    <result column="ZDQY" jdbcType="NUMERIC" property="zdqy" />
+    <result column="PJQY" jdbcType="NUMERIC" property="pjqy" />
+    <result column="ZGQY" jdbcType="NUMERIC" property="zgqy" />
+    <result column="HPMQY" jdbcType="NUMERIC" property="hpmqy" />
+    <result column="PJFS" jdbcType="NUMERIC" property="pjfs" />
+    <result column="ZDFS" jdbcType="NUMERIC" property="zdfs" />
+    <result column="JDFS" jdbcType="NUMERIC" property="jdfs" />
+    <result column="ZDFSFX" jdbcType="NUMERIC" property="zdfsfx" />
+    <result column="JDFSFX" jdbcType="NUMERIC" property="jdfsfx" />
+    <result column="ZXXDSD" jdbcType="NUMERIC" property="zxxdsd" />
+    <result column="PJXDSD" jdbcType="NUMERIC" property="pjxdsd" />
+    <result column="SQY" jdbcType="NUMERIC" property="sqy" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_WEATHER">
+    insert into T_WEATHER (SZSF, JCDBH, ZDMC, 
+      ZDZB, SCSJ, ZDQW, 
+      PJQW, ZGQW, JYL, ZDQY, 
+      PJQY, ZGQY, HPMQY, 
+      PJFS, ZDFS, JDFS, ZDFSFX, 
+      JDFSFX, ZXXDSD, PJXDSD, 
+      SQY)
+    values (#{szsf,jdbcType=VARCHAR}, #{jcdbh,jdbcType=NUMERIC}, #{zdmc,jdbcType=VARCHAR}, 
+      #{zdzb,jdbcType=VARCHAR}, #{scsj,jdbcType=TIMESTAMP}, #{zdqw,jdbcType=NUMERIC}, 
+      #{pjqw,jdbcType=NUMERIC}, #{zgqw,jdbcType=NUMERIC}, #{jyl,jdbcType=NUMERIC}, #{zdqy,jdbcType=NUMERIC}, 
+      #{pjqy,jdbcType=NUMERIC}, #{zgqy,jdbcType=NUMERIC}, #{hpmqy,jdbcType=NUMERIC}, 
+      #{pjfs,jdbcType=NUMERIC}, #{zdfs,jdbcType=NUMERIC}, #{jdfs,jdbcType=NUMERIC}, #{zdfsfx,jdbcType=NUMERIC}, 
+      #{jdfsfx,jdbcType=NUMERIC}, #{zxxdsd,jdbcType=NUMERIC}, #{pjxdsd,jdbcType=NUMERIC}, 
+      #{sqy,jdbcType=NUMERIC})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select SZSF, JCDBH, ZDMC, ZDZB, SCSJ, ZDQW, PJQW, ZGQW, JYL, ZDQY, PJQY, ZGQY, HPMQY, 
+    PJFS, ZDFS, JDFS, ZDFSFX, JDFSFX, ZXXDSD, PJXDSD, SQY
+    from T_WEATHER
+  </select>
+</mapper>

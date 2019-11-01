@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_ROLE_FUNCATIONMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_ROLE_FUNCATION">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="RID" jdbcType="VARCHAR" property="rid" />
+    <result column="FID" jdbcType="VARCHAR" property="fid" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_ROLE_FUNCATION
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_ROLE_FUNCATION">
+    insert into T_ROLE_FUNCATION (ID, RID, FID, 
+      DESCRIPTION)
+    values (#{id,jdbcType=VARCHAR}, #{rid,jdbcType=VARCHAR}, #{fid,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_ROLE_FUNCATION">
+    update T_ROLE_FUNCATION
+    set RID = #{rid,jdbcType=VARCHAR},
+      FID = #{fid,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID, RID, FID, DESCRIPTION
+    from T_ROLE_FUNCATION
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, RID, FID, DESCRIPTION
+    from T_ROLE_FUNCATION
+  </select>
+</mapper>

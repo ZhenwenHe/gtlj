@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_OPERATIONMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_OPERATION">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="OPERATION" jdbcType="VARCHAR" property="operation" />
+    <result column="OTIME" jdbcType="TIMESTAMP" property="otime" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_OPERATION
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_OPERATION">
+    insert into T_OPERATION (ID, UUID, OPERATION, 
+      OTIME, DESCRIPTION)
+    values (#{id,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{operation,jdbcType=VARCHAR}, 
+      #{otime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_OPERATION">
+    update T_OPERATION
+    set UUID = #{uuid,jdbcType=VARCHAR},
+      OPERATION = #{operation,jdbcType=VARCHAR},
+      OTIME = #{otime,jdbcType=TIMESTAMP},
+      DESCRIPTION = #{description,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID, UUID, OPERATION, OTIME, DESCRIPTION
+    from T_OPERATION
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, UUID, OPERATION, OTIME, DESCRIPTION
+    from T_OPERATION
+  </select>
+</mapper>

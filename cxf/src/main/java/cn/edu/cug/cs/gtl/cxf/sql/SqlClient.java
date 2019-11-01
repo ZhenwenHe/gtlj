@@ -10,15 +10,15 @@ import java.net.URL;
 public class SqlClient {
     public static void main(String[] args) throws Exception {
         // Sent HTTP GET request to query
-        String sql = "select name , w5 from hax_view where w5>0.3 and w5<=0.4";
+        String sql = "select FENAME, FCNAME, FTYPE from DICT_FIELDINFO where FTYPE ='BLOB'";
         sql= URLCoder.encode(sql,"utf-8");
-        String strUrl = "http://localhost:9000/resultservice/execute/"+sql;
+        String strUrl = "http://localhost:8999/resultservice/execute/"+sql;
         URL url = new URL(strUrl);
         InputStream in = url.openStream();
         System.out.println(fromInputStream(in));
 
         // Sent HTTP GET request to query
-        sql = "select count(*) from hax_view";
+        sql = "select count(*) from DICT_TABINFO";
         sql= URLCoder.encode(sql,"utf-8");
         strUrl = "http://localhost:9000/resultservice/execute/"+sql;
         url = new URL(strUrl);

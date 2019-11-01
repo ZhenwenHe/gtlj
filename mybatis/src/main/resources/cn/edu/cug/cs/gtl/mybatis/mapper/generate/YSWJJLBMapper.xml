@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.YSWJJLBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.YSWJJLB">
+    <id column="WJBH" jdbcType="NUMERIC" property="wjbh" />
+    <result column="WJBB" jdbcType="NUMERIC" property="wjbb" />
+    <result column="WJMC" jdbcType="VARCHAR" property="wjmc" />
+    <result column="WJNR" jdbcType="BLOB" property="wjnr" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from YSWJJLB
+    where WJBH = #{wjbh,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.YSWJJLB">
+    insert into YSWJJLB (WJBH, WJBB, WJMC, 
+      WJNR)
+    values (#{wjbh,jdbcType=NUMERIC}, #{wjbb,jdbcType=NUMERIC}, #{wjmc,jdbcType=VARCHAR}, 
+      #{wjnr,jdbcType=BLOB})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.YSWJJLB">
+    update YSWJJLB
+    set WJBB = #{wjbb,jdbcType=NUMERIC},
+      WJMC = #{wjmc,jdbcType=VARCHAR},
+      WJNR = #{wjnr,jdbcType=BLOB}
+    where WJBH = #{wjbh,jdbcType=NUMERIC}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select WJBH, WJBB, WJMC, WJNR
+    from YSWJJLB
+    where WJBH = #{wjbh,jdbcType=NUMERIC}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select WJBH, WJBB, WJMC, WJNR
+    from YSWJJLB
+  </select>
+</mapper>

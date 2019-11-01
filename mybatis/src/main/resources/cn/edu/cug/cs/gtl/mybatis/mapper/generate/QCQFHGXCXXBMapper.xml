@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QCQFHGXCXXBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QCQFHGXCXXB">
+    <id column="GQPBH" jdbcType="VARCHAR" property="gqpbh" />
+    <id column="XCRQ" jdbcType="TIMESTAMP" property="xcrq" />
+    <result column="GQPMC" jdbcType="VARCHAR" property="gqpmc" />
+    <result column="JCY" jdbcType="VARCHAR" property="jcy" />
+    <result column="PMSFCXGZ" jdbcType="VARCHAR" property="pmsfcxgz" />
+    <result column="PMSFCXFQ" jdbcType="VARCHAR" property="pmsfcxfq" />
+    <result column="SSFSFCK" jdbcType="VARCHAR" property="ssfsfck" />
+    <result column="SFYDKXX" jdbcType="VARCHAR" property="sfydkxx" />
+    <result column="SFCZPMSPJCLF" jdbcType="VARCHAR" property="sfczpmspjclf" />
+    <result column="XSKDPSSFTC" jdbcType="VARCHAR" property="xskdpssftc" />
+    <result column="SFCZGQPZTBXLL" jdbcType="VARCHAR" property="sfczgqpztbxll" />
+    <result column="QTPMHGXCJG" jdbcType="VARCHAR" property="qtpmhgxcjg" />
+    <result column="PDFHJGSFPH" jdbcType="VARCHAR" property="pdfhjgsfph" />
+    <result column="PSGSFYLFSL" jdbcType="VARCHAR" property="psgsfylfsl" />
+    <result column="SFYDLLLCXXX" jdbcType="VARCHAR" property="sfydlllcxxx" />
+    <result column="PDSMJDGSFQXQD" jdbcType="VARCHAR" property="pdsmjdgsfqxqd" />
+    <result column="PDHBSFYXZLLTJ" jdbcType="VARCHAR" property="pdhbsfyxzlltj" />
+    <result column="PDFWQTSFKL" jdbcType="VARCHAR" property="pdfwqtsfkl" />
+    <result column="QTPDHGXCJG" jdbcType="VARCHAR" property="qtpdhgxcjg" />
+    <result column="PDSFHDLG" jdbcType="VARCHAR" property="pdsfhdlg" />
+    <result column="PDSFCZQZDZ" jdbcType="VARCHAR" property="pdsfczqzdz" />
+    <result column="PJSFCZKWQTXX" jdbcType="VARCHAR" property="pjsfczkwqtxx" />
+    <result column="PDJSGSFDS" jdbcType="VARCHAR" property="pdjsgsfds" />
+    <result column="PJPSGSFDS" jdbcType="VARCHAR" property="pjpsgsfds" />
+    <result column="PMPSKSFSX" jdbcType="VARCHAR" property="pmpsksfsx" />
+    <result column="PDSFCZGZGG" jdbcType="VARCHAR" property="pdsfczgzgg" />
+    <result column="PMFHCSSFCZJBPH" jdbcType="VARCHAR" property="pmfhcssfczjbph" />
+    <result column="ZYJCSSSFZDSH" jdbcType="VARCHAR" property="zyjcsssfzdsh" />
+    <result column="QTGQPWHGLXCJG" jdbcType="VARCHAR" property="qtgqpwhglxcjg" />
+    <result column="BZ" jdbcType="VARCHAR" property="bz" />
+    <result column="JCDBH" jdbcType="VARCHAR" property="jcdbh" />
+    <result column="SSQX" jdbcType="VARCHAR" property="ssqx" />
+    <result column="PDHBSFYGLTXHXLL" jdbcType="VARCHAR" property="pdhbsfygltxhxll" />
+    <result column="SFCL" jdbcType="VARCHAR" property="sfcl" />
+    <result column="SFYC" jdbcType="VARCHAR" property="sfyc" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from QCQFHGXCXXB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and XCRQ = #{xcrq,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QCQFHGXCXXB">
+    insert into QCQFHGXCXXB (GQPBH, XCRQ, GQPMC, 
+      JCY, PMSFCXGZ, PMSFCXFQ, 
+      SSFSFCK, SFYDKXX, SFCZPMSPJCLF, 
+      XSKDPSSFTC, SFCZGQPZTBXLL, QTPMHGXCJG, 
+      PDFHJGSFPH, PSGSFYLFSL, SFYDLLLCXXX, 
+      PDSMJDGSFQXQD, PDHBSFYXZLLTJ, PDFWQTSFKL, 
+      QTPDHGXCJG, PDSFHDLG, PDSFCZQZDZ, 
+      PJSFCZKWQTXX, PDJSGSFDS, PJPSGSFDS, 
+      PMPSKSFSX, PDSFCZGZGG, PMFHCSSFCZJBPH, 
+      ZYJCSSSFZDSH, QTGQPWHGLXCJG, BZ, 
+      JCDBH, SSQX, PDHBSFYGLTXHXLL, 
+      SFCL, SFYC)
+    values (#{gqpbh,jdbcType=VARCHAR}, #{xcrq,jdbcType=TIMESTAMP}, #{gqpmc,jdbcType=VARCHAR}, 
+      #{jcy,jdbcType=VARCHAR}, #{pmsfcxgz,jdbcType=VARCHAR}, #{pmsfcxfq,jdbcType=VARCHAR}, 
+      #{ssfsfck,jdbcType=VARCHAR}, #{sfydkxx,jdbcType=VARCHAR}, #{sfczpmspjclf,jdbcType=VARCHAR}, 
+      #{xskdpssftc,jdbcType=VARCHAR}, #{sfczgqpztbxll,jdbcType=VARCHAR}, #{qtpmhgxcjg,jdbcType=VARCHAR}, 
+      #{pdfhjgsfph,jdbcType=VARCHAR}, #{psgsfylfsl,jdbcType=VARCHAR}, #{sfydlllcxxx,jdbcType=VARCHAR}, 
+      #{pdsmjdgsfqxqd,jdbcType=VARCHAR}, #{pdhbsfyxzlltj,jdbcType=VARCHAR}, #{pdfwqtsfkl,jdbcType=VARCHAR}, 
+      #{qtpdhgxcjg,jdbcType=VARCHAR}, #{pdsfhdlg,jdbcType=VARCHAR}, #{pdsfczqzdz,jdbcType=VARCHAR}, 
+      #{pjsfczkwqtxx,jdbcType=VARCHAR}, #{pdjsgsfds,jdbcType=VARCHAR}, #{pjpsgsfds,jdbcType=VARCHAR}, 
+      #{pmpsksfsx,jdbcType=VARCHAR}, #{pdsfczgzgg,jdbcType=VARCHAR}, #{pmfhcssfczjbph,jdbcType=VARCHAR}, 
+      #{zyjcsssfzdsh,jdbcType=VARCHAR}, #{qtgqpwhglxcjg,jdbcType=VARCHAR}, #{bz,jdbcType=VARCHAR}, 
+      #{jcdbh,jdbcType=VARCHAR}, #{ssqx,jdbcType=VARCHAR}, #{pdhbsfygltxhxll,jdbcType=VARCHAR}, 
+      #{sfcl,jdbcType=VARCHAR}, #{sfyc,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.QCQFHGXCXXB">
+    update QCQFHGXCXXB
+    set GQPMC = #{gqpmc,jdbcType=VARCHAR},
+      JCY = #{jcy,jdbcType=VARCHAR},
+      PMSFCXGZ = #{pmsfcxgz,jdbcType=VARCHAR},
+      PMSFCXFQ = #{pmsfcxfq,jdbcType=VARCHAR},
+      SSFSFCK = #{ssfsfck,jdbcType=VARCHAR},
+      SFYDKXX = #{sfydkxx,jdbcType=VARCHAR},
+      SFCZPMSPJCLF = #{sfczpmspjclf,jdbcType=VARCHAR},
+      XSKDPSSFTC = #{xskdpssftc,jdbcType=VARCHAR},
+      SFCZGQPZTBXLL = #{sfczgqpztbxll,jdbcType=VARCHAR},
+      QTPMHGXCJG = #{qtpmhgxcjg,jdbcType=VARCHAR},
+      PDFHJGSFPH = #{pdfhjgsfph,jdbcType=VARCHAR},
+      PSGSFYLFSL = #{psgsfylfsl,jdbcType=VARCHAR},
+      SFYDLLLCXXX = #{sfydlllcxxx,jdbcType=VARCHAR},
+      PDSMJDGSFQXQD = #{pdsmjdgsfqxqd,jdbcType=VARCHAR},
+      PDHBSFYXZLLTJ = #{pdhbsfyxzlltj,jdbcType=VARCHAR},
+      PDFWQTSFKL = #{pdfwqtsfkl,jdbcType=VARCHAR},
+      QTPDHGXCJG = #{qtpdhgxcjg,jdbcType=VARCHAR},
+      PDSFHDLG = #{pdsfhdlg,jdbcType=VARCHAR},
+      PDSFCZQZDZ = #{pdsfczqzdz,jdbcType=VARCHAR},
+      PJSFCZKWQTXX = #{pjsfczkwqtxx,jdbcType=VARCHAR},
+      PDJSGSFDS = #{pdjsgsfds,jdbcType=VARCHAR},
+      PJPSGSFDS = #{pjpsgsfds,jdbcType=VARCHAR},
+      PMPSKSFSX = #{pmpsksfsx,jdbcType=VARCHAR},
+      PDSFCZGZGG = #{pdsfczgzgg,jdbcType=VARCHAR},
+      PMFHCSSFCZJBPH = #{pmfhcssfczjbph,jdbcType=VARCHAR},
+      ZYJCSSSFZDSH = #{zyjcsssfzdsh,jdbcType=VARCHAR},
+      QTGQPWHGLXCJG = #{qtgqpwhglxcjg,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      JCDBH = #{jcdbh,jdbcType=VARCHAR},
+      SSQX = #{ssqx,jdbcType=VARCHAR},
+      PDHBSFYGLTXHXLL = #{pdhbsfygltxhxll,jdbcType=VARCHAR},
+      SFCL = #{sfcl,jdbcType=VARCHAR},
+      SFYC = #{sfyc,jdbcType=VARCHAR}
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and XCRQ = #{xcrq,jdbcType=TIMESTAMP}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select GQPBH, XCRQ, GQPMC, JCY, PMSFCXGZ, PMSFCXFQ, SSFSFCK, SFYDKXX, SFCZPMSPJCLF, 
+    XSKDPSSFTC, SFCZGQPZTBXLL, QTPMHGXCJG, PDFHJGSFPH, PSGSFYLFSL, SFYDLLLCXXX, PDSMJDGSFQXQD, 
+    PDHBSFYXZLLTJ, PDFWQTSFKL, QTPDHGXCJG, PDSFHDLG, PDSFCZQZDZ, PJSFCZKWQTXX, PDJSGSFDS, 
+    PJPSGSFDS, PMPSKSFSX, PDSFCZGZGG, PMFHCSSFCZJBPH, ZYJCSSSFZDSH, QTGQPWHGLXCJG, BZ, 
+    JCDBH, SSQX, PDHBSFYGLTXHXLL, SFCL, SFYC
+    from QCQFHGXCXXB
+    where GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and XCRQ = #{xcrq,jdbcType=TIMESTAMP}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select GQPBH, XCRQ, GQPMC, JCY, PMSFCXGZ, PMSFCXFQ, SSFSFCK, SFYDKXX, SFCZPMSPJCLF, 
+    XSKDPSSFTC, SFCZGQPZTBXLL, QTPMHGXCJG, PDFHJGSFPH, PSGSFYLFSL, SFYDLLLCXXX, PDSMJDGSFQXQD, 
+    PDHBSFYXZLLTJ, PDFWQTSFKL, QTPDHGXCJG, PDSFHDLG, PDSFCZQZDZ, PJSFCZKWQTXX, PDJSGSFDS, 
+    PJPSGSFDS, PMPSKSFSX, PDSFCZGZGG, PMFHCSSFCZJBPH, ZYJCSSSFZDSH, QTGQPWHGLXCJG, BZ, 
+    JCDBH, SSQX, PDHBSFYGLTXHXLL, SFCL, SFYC
+    from QCQFHGXCXXB
+  </select>
+</mapper>

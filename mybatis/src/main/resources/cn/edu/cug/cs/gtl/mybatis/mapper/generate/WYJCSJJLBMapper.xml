@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.WYJCSJJLBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.WYJCSJJLB">
+    <id column="JCDBH" jdbcType="VARCHAR" property="jcdbh" />
+    <id column="GQPBH" jdbcType="VARCHAR" property="gqpbh" />
+    <id column="JCSJ" jdbcType="TIMESTAMP" property="jcsj" />
+    <result column="GCZX" jdbcType="NUMERIC" property="gczx" />
+    <result column="GCZY" jdbcType="NUMERIC" property="gczy" />
+    <result column="GCZH" jdbcType="NUMERIC" property="gczh" />
+    <result column="BQXWY" jdbcType="NUMERIC" property="bqxwy" />
+    <result column="BQYWY" jdbcType="NUMERIC" property="bqywy" />
+    <result column="BQHWY" jdbcType="NUMERIC" property="bqhwy" />
+    <result column="BQXFXWY" jdbcType="NUMERIC" property="bqxfxwy" />
+    <result column="BQYFXWY" jdbcType="NUMERIC" property="bqyfxwy" />
+    <result column="BQHFXWY" jdbcType="NUMERIC" property="bqhfxwy" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from WYJCSJJLB
+    where JCDBH = #{jcdbh,jdbcType=VARCHAR}
+      and GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and JCSJ = #{jcsj,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.WYJCSJJLB">
+    insert into WYJCSJJLB (JCDBH, GQPBH, JCSJ, 
+      GCZX, GCZY, GCZH, BQXWY, 
+      BQYWY, BQHWY, BQXFXWY, 
+      BQYFXWY, BQHFXWY)
+    values (#{jcdbh,jdbcType=VARCHAR}, #{gqpbh,jdbcType=VARCHAR}, #{jcsj,jdbcType=TIMESTAMP}, 
+      #{gczx,jdbcType=NUMERIC}, #{gczy,jdbcType=NUMERIC}, #{gczh,jdbcType=NUMERIC}, #{bqxwy,jdbcType=NUMERIC}, 
+      #{bqywy,jdbcType=NUMERIC}, #{bqhwy,jdbcType=NUMERIC}, #{bqxfxwy,jdbcType=NUMERIC}, 
+      #{bqyfxwy,jdbcType=NUMERIC}, #{bqhfxwy,jdbcType=NUMERIC})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.WYJCSJJLB">
+    update WYJCSJJLB
+    set GCZX = #{gczx,jdbcType=NUMERIC},
+      GCZY = #{gczy,jdbcType=NUMERIC},
+      GCZH = #{gczh,jdbcType=NUMERIC},
+      BQXWY = #{bqxwy,jdbcType=NUMERIC},
+      BQYWY = #{bqywy,jdbcType=NUMERIC},
+      BQHWY = #{bqhwy,jdbcType=NUMERIC},
+      BQXFXWY = #{bqxfxwy,jdbcType=NUMERIC},
+      BQYFXWY = #{bqyfxwy,jdbcType=NUMERIC},
+      BQHFXWY = #{bqhfxwy,jdbcType=NUMERIC}
+    where JCDBH = #{jcdbh,jdbcType=VARCHAR}
+      and GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and JCSJ = #{jcsj,jdbcType=TIMESTAMP}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select JCDBH, GQPBH, JCSJ, GCZX, GCZY, GCZH, BQXWY, BQYWY, BQHWY, BQXFXWY, BQYFXWY, 
+    BQHFXWY
+    from WYJCSJJLB
+    where JCDBH = #{jcdbh,jdbcType=VARCHAR}
+      and GQPBH = #{gqpbh,jdbcType=VARCHAR}
+      and JCSJ = #{jcsj,jdbcType=TIMESTAMP}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select JCDBH, GQPBH, JCSJ, GCZX, GCZY, GCZH, BQXWY, BQYWY, BQHWY, BQXFXWY, BQYFXWY, 
+    BQHFXWY
+    from WYJCSJJLB
+  </select>
+</mapper>

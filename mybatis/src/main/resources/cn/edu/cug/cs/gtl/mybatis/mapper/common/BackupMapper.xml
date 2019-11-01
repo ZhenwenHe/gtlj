@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.common.BackupMapper">
+    <update id="alterTableName">
+        alter table ${originalTableName} rename ${newTableName}
+    </update>
+
+    <update id="truncateTable">
+        truncate table ${tableName}
+    </update>
+
+    <update id="createNewTableAndInsertData">
+        create table ${newTableName} as select * from ${originalTableName}
+    </update>
+
+    <select id="getRecordCount" resultType="int">
+        select count(1) from ${tableName}
+    </select>
+
+    <select id="getCurDataBaseName" resultType="string">
+        select database();
+    </select>
+
+    <select id="isTargetTableExistInDB" resultType="string">
+        SELECT table_name FROM information_schema.tables WHERE table_schema = #{dataBaseName} and TABLE_NAME = #{tableName}
+    </select>
+</mapper>

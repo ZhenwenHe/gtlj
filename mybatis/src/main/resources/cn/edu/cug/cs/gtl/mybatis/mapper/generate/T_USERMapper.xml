@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_USERMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_USER">
+    <id column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="UNAME" jdbcType="VARCHAR" property="uname" />
+    <result column="LOGINAME" jdbcType="VARCHAR" property="loginame" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="UNIT" jdbcType="VARCHAR" property="unit" />
+    <result column="PHONE" jdbcType="VARCHAR" property="phone" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_USER
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_USER">
+    insert into T_USER (UUID, UNAME, LOGINAME, 
+      PASSWORD, UNIT, PHONE, 
+      DESCRIPTION)
+    values (#{uuid,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, #{loginame,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.T_USER">
+    update T_USER
+    set UNAME = #{uname,jdbcType=VARCHAR},
+      LOGINAME = #{loginame,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      UNIT = #{unit,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR}
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select UUID, UNAME, LOGINAME, PASSWORD, UNIT, PHONE, DESCRIPTION
+    from T_USER
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select UUID, UNAME, LOGINAME, PASSWORD, UNIT, PHONE, DESCRIPTION
+    from T_USER
+  </select>
+</mapper>

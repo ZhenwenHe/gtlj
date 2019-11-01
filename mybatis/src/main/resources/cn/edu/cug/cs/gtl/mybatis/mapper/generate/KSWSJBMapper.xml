@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.cug.cs.gtl.mybatis.mapper.generate.KSWSJBMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.cug.cs.gtl.mybatis.mapper.generate.KSWSJB">
+    <id column="ID" jdbcType="NUMERIC" property="id" />
+    <result column="GZZM" jdbcType="VARCHAR" property="gzzm" />
+    <result column="SCSJ" jdbcType="TIMESTAMP" property="scsj" />
+    <result column="SKSW" jdbcType="NUMERIC" property="sksw" />
+    <result column="RKLL" jdbcType="NUMERIC" property="rkll" />
+    <result column="CKLL" jdbcType="NUMERIC" property="ckll" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short">
+    delete from KSWSJB
+    where ID = #{id,jdbcType=NUMERIC}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.KSWSJB">
+    insert into KSWSJB (ID, GZZM, SCSJ, 
+      SKSW, RKLL, CKLL)
+    values (#{id,jdbcType=NUMERIC}, #{gzzm,jdbcType=VARCHAR}, #{scsj,jdbcType=TIMESTAMP}, 
+      #{sksw,jdbcType=NUMERIC}, #{rkll,jdbcType=NUMERIC}, #{ckll,jdbcType=NUMERIC})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.cug.cs.gtl.mybatis.mapper.generate.KSWSJB">
+    update KSWSJB
+    set GZZM = #{gzzm,jdbcType=VARCHAR},
+      SCSJ = #{scsj,jdbcType=TIMESTAMP},
+      SKSW = #{sksw,jdbcType=NUMERIC},
+      RKLL = #{rkll,jdbcType=NUMERIC},
+      CKLL = #{ckll,jdbcType=NUMERIC}
+    where ID = #{id,jdbcType=NUMERIC}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Short" resultMap="BaseResultMap">
+    select ID, GZZM, SCSJ, SKSW, RKLL, CKLL
+    from KSWSJB
+    where ID = #{id,jdbcType=NUMERIC}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, GZZM, SCSJ, SKSW, RKLL, CKLL
+    from KSWSJB
+  </select>
+</mapper>
