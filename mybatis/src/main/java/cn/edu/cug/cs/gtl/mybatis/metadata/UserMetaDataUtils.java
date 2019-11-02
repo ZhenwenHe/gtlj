@@ -1,9 +1,11 @@
 package cn.edu.cug.cs.gtl.mybatis.metadata;
 
+import cn.edu.cug.cs.gtl.common.Pair;
 import cn.edu.cug.cs.gtl.mybatis.Session;
 import cn.edu.cug.cs.gtl.protos.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * DICT_TABINFO
@@ -84,4 +86,22 @@ public class UserMetaDataUtils implements MetaDataUtils {
         }
         return null;
     }
+
+    /**
+     *
+     * @return
+     */
+    public List<String> getAllUserTableNames(){
+        return null;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public List<TableInfo> getAllUserTableTags(){
+        return null;
+    }
+
+
 }
