@@ -23,17 +23,26 @@ public interface ColumnOrBuilder extends
   cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getInfoOrBuilder();
 
   /**
-   * <code>.google.protobuf.Any values = 2;</code>
-   * @return Whether the values field is set.
+   * <code>repeated .google.protobuf.Any value = 2;</code>
    */
-  boolean hasValues();
+  java.util.List<com.google.protobuf.Any> 
+      getValueList();
   /**
-   * <code>.google.protobuf.Any values = 2;</code>
-   * @return The values.
+   * <code>repeated .google.protobuf.Any value = 2;</code>
    */
-  com.google.protobuf.Any getValues();
+  com.google.protobuf.Any getValue(int index);
   /**
-   * <code>.google.protobuf.Any values = 2;</code>
+   * <code>repeated .google.protobuf.Any value = 2;</code>
    */
-  com.google.protobuf.AnyOrBuilder getValuesOrBuilder();
+  int getValueCount();
+  /**
+   * <code>repeated .google.protobuf.Any value = 2;</code>
+   */
+  java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
+      getValueOrBuilderList();
+  /**
+   * <code>repeated .google.protobuf.Any value = 2;</code>
+   */
+  com.google.protobuf.AnyOrBuilder getValueOrBuilder(
+      int index);
 }

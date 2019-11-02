@@ -16,8 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DataSet() {
-    sql_ = "";
-    row_ = java.util.Collections.emptyList();
+    columnInfo_ = java.util.Collections.emptyList();
+    tuple_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -51,19 +51,22 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            sql_ = s;
-            break;
-          }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              row_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Row>();
+              columnInfo_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.ColumnInfo>();
               mutable_bitField0_ |= 0x00000001;
             }
-            row_.add(
-                input.readMessage(cn.edu.cug.cs.gtl.protos.Row.parser(), extensionRegistry));
+            columnInfo_.add(
+                input.readMessage(cn.edu.cug.cs.gtl.protos.ColumnInfo.parser(), extensionRegistry));
+            break;
+          }
+          case 26: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              tuple_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Tuple>();
+              mutable_bitField0_ |= 0x00000002;
+            }
+            tuple_.add(
+                input.readMessage(cn.edu.cug.cs.gtl.protos.Tuple.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -82,7 +85,10 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        row_ = java.util.Collections.unmodifiableList(row_);
+        columnInfo_ = java.util.Collections.unmodifiableList(columnInfo_);
+      }
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        tuple_ = java.util.Collections.unmodifiableList(tuple_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -101,75 +107,74 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.DataSet.class, cn.edu.cug.cs.gtl.protos.DataSet.Builder.class);
   }
 
-  public static final int SQL_FIELD_NUMBER = 1;
-  private volatile java.lang.Object sql_;
+  public static final int COLUMN_INFO_FIELD_NUMBER = 2;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> columnInfo_;
   /**
-   * <code>string sql = 1;</code>
-   * @return The sql.
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
    */
-  public java.lang.String getSql() {
-    java.lang.Object ref = sql_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      sql_ = s;
-      return s;
-    }
+  public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> getColumnInfoList() {
+    return columnInfo_;
   }
   /**
-   * <code>string sql = 1;</code>
-   * @return The bytes for sql.
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
    */
-  public com.google.protobuf.ByteString
-      getSqlBytes() {
-    java.lang.Object ref = sql_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      sql_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
+      getColumnInfoOrBuilderList() {
+    return columnInfo_;
+  }
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
+   */
+  public int getColumnInfoCount() {
+    return columnInfo_.size();
+  }
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
+   */
+  public cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index) {
+    return columnInfo_.get(index);
+  }
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
+   */
+  public cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
+      int index) {
+    return columnInfo_.get(index);
   }
 
-  public static final int ROW_FIELD_NUMBER = 2;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.Row> row_;
+  public static final int TUPLE_FIELD_NUMBER = 3;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.Tuple> tuple_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.Row> getRowList() {
-    return row_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.Tuple> getTupleList() {
+    return tuple_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  public java.util.List<? extends cn.edu.cug.cs.gtl.protos.RowOrBuilder> 
-      getRowOrBuilderList() {
-    return row_;
+  public java.util.List<? extends cn.edu.cug.cs.gtl.protos.TupleOrBuilder> 
+      getTupleOrBuilderList() {
+    return tuple_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  public int getRowCount() {
-    return row_.size();
+  public int getTupleCount() {
+    return tuple_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Row getRow(int index) {
-    return row_.get(index);
+  public cn.edu.cug.cs.gtl.protos.Tuple getTuple(int index) {
+    return tuple_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.RowOrBuilder getRowOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.TupleOrBuilder getTupleOrBuilder(
       int index) {
-    return row_.get(index);
+    return tuple_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -186,11 +191,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getSqlBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sql_);
+    for (int i = 0; i < columnInfo_.size(); i++) {
+      output.writeMessage(2, columnInfo_.get(i));
     }
-    for (int i = 0; i < row_.size(); i++) {
-      output.writeMessage(2, row_.get(i));
+    for (int i = 0; i < tuple_.size(); i++) {
+      output.writeMessage(3, tuple_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -201,12 +206,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getSqlBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, sql_);
-    }
-    for (int i = 0; i < row_.size(); i++) {
+    for (int i = 0; i < columnInfo_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, row_.get(i));
+        .computeMessageSize(2, columnInfo_.get(i));
+    }
+    for (int i = 0; i < tuple_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, tuple_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -223,10 +229,10 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.DataSet other = (cn.edu.cug.cs.gtl.protos.DataSet) obj;
 
-    if (!getSql()
-        .equals(other.getSql())) return false;
-    if (!getRowList()
-        .equals(other.getRowList())) return false;
+    if (!getColumnInfoList()
+        .equals(other.getColumnInfoList())) return false;
+    if (!getTupleList()
+        .equals(other.getTupleList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -238,11 +244,13 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + SQL_FIELD_NUMBER;
-    hash = (53 * hash) + getSql().hashCode();
-    if (getRowCount() > 0) {
-      hash = (37 * hash) + ROW_FIELD_NUMBER;
-      hash = (53 * hash) + getRowList().hashCode();
+    if (getColumnInfoCount() > 0) {
+      hash = (37 * hash) + COLUMN_INFO_FIELD_NUMBER;
+      hash = (53 * hash) + getColumnInfoList().hashCode();
+    }
+    if (getTupleCount() > 0) {
+      hash = (37 * hash) + TUPLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTupleList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -372,19 +380,24 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getRowFieldBuilder();
+        getColumnInfoFieldBuilder();
+        getTupleFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      sql_ = "";
-
-      if (rowBuilder_ == null) {
-        row_ = java.util.Collections.emptyList();
+      if (columnInfoBuilder_ == null) {
+        columnInfo_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        rowBuilder_.clear();
+        columnInfoBuilder_.clear();
+      }
+      if (tupleBuilder_ == null) {
+        tuple_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      } else {
+        tupleBuilder_.clear();
       }
       return this;
     }
@@ -413,15 +426,23 @@ private static final long serialVersionUID = 0L;
     public cn.edu.cug.cs.gtl.protos.DataSet buildPartial() {
       cn.edu.cug.cs.gtl.protos.DataSet result = new cn.edu.cug.cs.gtl.protos.DataSet(this);
       int from_bitField0_ = bitField0_;
-      result.sql_ = sql_;
-      if (rowBuilder_ == null) {
+      if (columnInfoBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          row_ = java.util.Collections.unmodifiableList(row_);
+          columnInfo_ = java.util.Collections.unmodifiableList(columnInfo_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.row_ = row_;
+        result.columnInfo_ = columnInfo_;
       } else {
-        result.row_ = rowBuilder_.build();
+        result.columnInfo_ = columnInfoBuilder_.build();
+      }
+      if (tupleBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) != 0)) {
+          tuple_ = java.util.Collections.unmodifiableList(tuple_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.tuple_ = tuple_;
+      } else {
+        result.tuple_ = tupleBuilder_.build();
       }
       onBuilt();
       return result;
@@ -471,33 +492,55 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.DataSet other) {
       if (other == cn.edu.cug.cs.gtl.protos.DataSet.getDefaultInstance()) return this;
-      if (!other.getSql().isEmpty()) {
-        sql_ = other.sql_;
-        onChanged();
-      }
-      if (rowBuilder_ == null) {
-        if (!other.row_.isEmpty()) {
-          if (row_.isEmpty()) {
-            row_ = other.row_;
+      if (columnInfoBuilder_ == null) {
+        if (!other.columnInfo_.isEmpty()) {
+          if (columnInfo_.isEmpty()) {
+            columnInfo_ = other.columnInfo_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureRowIsMutable();
-            row_.addAll(other.row_);
+            ensureColumnInfoIsMutable();
+            columnInfo_.addAll(other.columnInfo_);
           }
           onChanged();
         }
       } else {
-        if (!other.row_.isEmpty()) {
-          if (rowBuilder_.isEmpty()) {
-            rowBuilder_.dispose();
-            rowBuilder_ = null;
-            row_ = other.row_;
+        if (!other.columnInfo_.isEmpty()) {
+          if (columnInfoBuilder_.isEmpty()) {
+            columnInfoBuilder_.dispose();
+            columnInfoBuilder_ = null;
+            columnInfo_ = other.columnInfo_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            rowBuilder_ = 
+            columnInfoBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getRowFieldBuilder() : null;
+                 getColumnInfoFieldBuilder() : null;
           } else {
-            rowBuilder_.addAllMessages(other.row_);
+            columnInfoBuilder_.addAllMessages(other.columnInfo_);
+          }
+        }
+      }
+      if (tupleBuilder_ == null) {
+        if (!other.tuple_.isEmpty()) {
+          if (tuple_.isEmpty()) {
+            tuple_ = other.tuple_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureTupleIsMutable();
+            tuple_.addAll(other.tuple_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.tuple_.isEmpty()) {
+          if (tupleBuilder_.isEmpty()) {
+            tupleBuilder_.dispose();
+            tupleBuilder_ = null;
+            tuple_ = other.tuple_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+            tupleBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getTupleFieldBuilder() : null;
+          } else {
+            tupleBuilder_.addAllMessages(other.tuple_);
           }
         }
       }
@@ -531,320 +574,484 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object sql_ = "";
-    /**
-     * <code>string sql = 1;</code>
-     * @return The sql.
-     */
-    public java.lang.String getSql() {
-      java.lang.Object ref = sql_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sql_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string sql = 1;</code>
-     * @return The bytes for sql.
-     */
-    public com.google.protobuf.ByteString
-        getSqlBytes() {
-      java.lang.Object ref = sql_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sql_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string sql = 1;</code>
-     * @param value The sql to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSql(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      sql_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string sql = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearSql() {
-      
-      sql_ = getDefaultInstance().getSql();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string sql = 1;</code>
-     * @param value The bytes for sql to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSqlBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      sql_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.util.List<cn.edu.cug.cs.gtl.protos.Row> row_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> columnInfo_ =
       java.util.Collections.emptyList();
-    private void ensureRowIsMutable() {
+    private void ensureColumnInfoIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        row_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Row>(row_);
+        columnInfo_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.ColumnInfo>(columnInfo_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Row, cn.edu.cug.cs.gtl.protos.Row.Builder, cn.edu.cug.cs.gtl.protos.RowOrBuilder> rowBuilder_;
+        cn.edu.cug.cs.gtl.protos.ColumnInfo, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder, cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> columnInfoBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.Row> getRowList() {
-      if (rowBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(row_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> getColumnInfoList() {
+      if (columnInfoBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(columnInfo_);
       } else {
-        return rowBuilder_.getMessageList();
+        return columnInfoBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public int getRowCount() {
-      if (rowBuilder_ == null) {
-        return row_.size();
+    public int getColumnInfoCount() {
+      if (columnInfoBuilder_ == null) {
+        return columnInfo_.size();
       } else {
-        return rowBuilder_.getCount();
+        return columnInfoBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Row getRow(int index) {
-      if (rowBuilder_ == null) {
-        return row_.get(index);
+    public cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index) {
+      if (columnInfoBuilder_ == null) {
+        return columnInfo_.get(index);
       } else {
-        return rowBuilder_.getMessage(index);
+        return columnInfoBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder setRow(
-        int index, cn.edu.cug.cs.gtl.protos.Row value) {
-      if (rowBuilder_ == null) {
+    public Builder setColumnInfo(
+        int index, cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
+      if (columnInfoBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRowIsMutable();
-        row_.set(index, value);
+        ensureColumnInfoIsMutable();
+        columnInfo_.set(index, value);
         onChanged();
       } else {
-        rowBuilder_.setMessage(index, value);
+        columnInfoBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder setRow(
-        int index, cn.edu.cug.cs.gtl.protos.Row.Builder builderForValue) {
-      if (rowBuilder_ == null) {
-        ensureRowIsMutable();
-        row_.set(index, builderForValue.build());
+    public Builder setColumnInfo(
+        int index, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
+      if (columnInfoBuilder_ == null) {
+        ensureColumnInfoIsMutable();
+        columnInfo_.set(index, builderForValue.build());
         onChanged();
       } else {
-        rowBuilder_.setMessage(index, builderForValue.build());
+        columnInfoBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder addRow(cn.edu.cug.cs.gtl.protos.Row value) {
-      if (rowBuilder_ == null) {
+    public Builder addColumnInfo(cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
+      if (columnInfoBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRowIsMutable();
-        row_.add(value);
+        ensureColumnInfoIsMutable();
+        columnInfo_.add(value);
         onChanged();
       } else {
-        rowBuilder_.addMessage(value);
+        columnInfoBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder addRow(
-        int index, cn.edu.cug.cs.gtl.protos.Row value) {
-      if (rowBuilder_ == null) {
+    public Builder addColumnInfo(
+        int index, cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
+      if (columnInfoBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRowIsMutable();
-        row_.add(index, value);
+        ensureColumnInfoIsMutable();
+        columnInfo_.add(index, value);
         onChanged();
       } else {
-        rowBuilder_.addMessage(index, value);
+        columnInfoBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder addRow(
-        cn.edu.cug.cs.gtl.protos.Row.Builder builderForValue) {
-      if (rowBuilder_ == null) {
-        ensureRowIsMutable();
-        row_.add(builderForValue.build());
+    public Builder addColumnInfo(
+        cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
+      if (columnInfoBuilder_ == null) {
+        ensureColumnInfoIsMutable();
+        columnInfo_.add(builderForValue.build());
         onChanged();
       } else {
-        rowBuilder_.addMessage(builderForValue.build());
+        columnInfoBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder addRow(
-        int index, cn.edu.cug.cs.gtl.protos.Row.Builder builderForValue) {
-      if (rowBuilder_ == null) {
-        ensureRowIsMutable();
-        row_.add(index, builderForValue.build());
+    public Builder addColumnInfo(
+        int index, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
+      if (columnInfoBuilder_ == null) {
+        ensureColumnInfoIsMutable();
+        columnInfo_.add(index, builderForValue.build());
         onChanged();
       } else {
-        rowBuilder_.addMessage(index, builderForValue.build());
+        columnInfoBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder addAllRow(
-        java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.Row> values) {
-      if (rowBuilder_ == null) {
-        ensureRowIsMutable();
+    public Builder addAllColumnInfo(
+        java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.ColumnInfo> values) {
+      if (columnInfoBuilder_ == null) {
+        ensureColumnInfoIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, row_);
+            values, columnInfo_);
         onChanged();
       } else {
-        rowBuilder_.addAllMessages(values);
+        columnInfoBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder clearRow() {
-      if (rowBuilder_ == null) {
-        row_ = java.util.Collections.emptyList();
+    public Builder clearColumnInfo() {
+      if (columnInfoBuilder_ == null) {
+        columnInfo_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        rowBuilder_.clear();
+        columnInfoBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public Builder removeRow(int index) {
-      if (rowBuilder_ == null) {
-        ensureRowIsMutable();
-        row_.remove(index);
+    public Builder removeColumnInfo(int index) {
+      if (columnInfoBuilder_ == null) {
+        ensureColumnInfoIsMutable();
+        columnInfo_.remove(index);
         onChanged();
       } else {
-        rowBuilder_.remove(index);
+        columnInfoBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Row.Builder getRowBuilder(
+    public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder getColumnInfoBuilder(
         int index) {
-      return getRowFieldBuilder().getBuilder(index);
+      return getColumnInfoFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.RowOrBuilder getRowOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
         int index) {
-      if (rowBuilder_ == null) {
-        return row_.get(index);  } else {
-        return rowBuilder_.getMessageOrBuilder(index);
+      if (columnInfoBuilder_ == null) {
+        return columnInfo_.get(index);  } else {
+        return columnInfoBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public java.util.List<? extends cn.edu.cug.cs.gtl.protos.RowOrBuilder> 
-         getRowOrBuilderList() {
-      if (rowBuilder_ != null) {
-        return rowBuilder_.getMessageOrBuilderList();
+    public java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
+         getColumnInfoOrBuilderList() {
+      if (columnInfoBuilder_ != null) {
+        return columnInfoBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(row_);
+        return java.util.Collections.unmodifiableList(columnInfo_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Row.Builder addRowBuilder() {
-      return getRowFieldBuilder().addBuilder(
-          cn.edu.cug.cs.gtl.protos.Row.getDefaultInstance());
+    public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder addColumnInfoBuilder() {
+      return getColumnInfoFieldBuilder().addBuilder(
+          cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Row.Builder addRowBuilder(
+    public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder addColumnInfoBuilder(
         int index) {
-      return getRowFieldBuilder().addBuilder(
-          index, cn.edu.cug.cs.gtl.protos.Row.getDefaultInstance());
+      return getColumnInfoFieldBuilder().addBuilder(
+          index, cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.Row.Builder> 
-         getRowBuilderList() {
-      return getRowFieldBuilder().getBuilderList();
+    public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder> 
+         getColumnInfoBuilderList() {
+      return getColumnInfoFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Row, cn.edu.cug.cs.gtl.protos.Row.Builder, cn.edu.cug.cs.gtl.protos.RowOrBuilder> 
-        getRowFieldBuilder() {
-      if (rowBuilder_ == null) {
-        rowBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Row, cn.edu.cug.cs.gtl.protos.Row.Builder, cn.edu.cug.cs.gtl.protos.RowOrBuilder>(
-                row_,
+        cn.edu.cug.cs.gtl.protos.ColumnInfo, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder, cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
+        getColumnInfoFieldBuilder() {
+      if (columnInfoBuilder_ == null) {
+        columnInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            cn.edu.cug.cs.gtl.protos.ColumnInfo, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder, cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder>(
+                columnInfo_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        row_ = null;
+        columnInfo_ = null;
       }
-      return rowBuilder_;
+      return columnInfoBuilder_;
+    }
+
+    private java.util.List<cn.edu.cug.cs.gtl.protos.Tuple> tuple_ =
+      java.util.Collections.emptyList();
+    private void ensureTupleIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        tuple_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Tuple>(tuple_);
+        bitField0_ |= 0x00000002;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Tuple, cn.edu.cug.cs.gtl.protos.Tuple.Builder, cn.edu.cug.cs.gtl.protos.TupleOrBuilder> tupleBuilder_;
+
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public java.util.List<cn.edu.cug.cs.gtl.protos.Tuple> getTupleList() {
+      if (tupleBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(tuple_);
+      } else {
+        return tupleBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public int getTupleCount() {
+      if (tupleBuilder_ == null) {
+        return tuple_.size();
+      } else {
+        return tupleBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Tuple getTuple(int index) {
+      if (tupleBuilder_ == null) {
+        return tuple_.get(index);
+      } else {
+        return tupleBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder setTuple(
+        int index, cn.edu.cug.cs.gtl.protos.Tuple value) {
+      if (tupleBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTupleIsMutable();
+        tuple_.set(index, value);
+        onChanged();
+      } else {
+        tupleBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder setTuple(
+        int index, cn.edu.cug.cs.gtl.protos.Tuple.Builder builderForValue) {
+      if (tupleBuilder_ == null) {
+        ensureTupleIsMutable();
+        tuple_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        tupleBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder addTuple(cn.edu.cug.cs.gtl.protos.Tuple value) {
+      if (tupleBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTupleIsMutable();
+        tuple_.add(value);
+        onChanged();
+      } else {
+        tupleBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder addTuple(
+        int index, cn.edu.cug.cs.gtl.protos.Tuple value) {
+      if (tupleBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTupleIsMutable();
+        tuple_.add(index, value);
+        onChanged();
+      } else {
+        tupleBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder addTuple(
+        cn.edu.cug.cs.gtl.protos.Tuple.Builder builderForValue) {
+      if (tupleBuilder_ == null) {
+        ensureTupleIsMutable();
+        tuple_.add(builderForValue.build());
+        onChanged();
+      } else {
+        tupleBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder addTuple(
+        int index, cn.edu.cug.cs.gtl.protos.Tuple.Builder builderForValue) {
+      if (tupleBuilder_ == null) {
+        ensureTupleIsMutable();
+        tuple_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        tupleBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder addAllTuple(
+        java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.Tuple> values) {
+      if (tupleBuilder_ == null) {
+        ensureTupleIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, tuple_);
+        onChanged();
+      } else {
+        tupleBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder clearTuple() {
+      if (tupleBuilder_ == null) {
+        tuple_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+      } else {
+        tupleBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public Builder removeTuple(int index) {
+      if (tupleBuilder_ == null) {
+        ensureTupleIsMutable();
+        tuple_.remove(index);
+        onChanged();
+      } else {
+        tupleBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Tuple.Builder getTupleBuilder(
+        int index) {
+      return getTupleFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.TupleOrBuilder getTupleOrBuilder(
+        int index) {
+      if (tupleBuilder_ == null) {
+        return tuple_.get(index);  } else {
+        return tupleBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public java.util.List<? extends cn.edu.cug.cs.gtl.protos.TupleOrBuilder> 
+         getTupleOrBuilderList() {
+      if (tupleBuilder_ != null) {
+        return tupleBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(tuple_);
+      }
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Tuple.Builder addTupleBuilder() {
+      return getTupleFieldBuilder().addBuilder(
+          cn.edu.cug.cs.gtl.protos.Tuple.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Tuple.Builder addTupleBuilder(
+        int index) {
+      return getTupleFieldBuilder().addBuilder(
+          index, cn.edu.cug.cs.gtl.protos.Tuple.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
+     */
+    public java.util.List<cn.edu.cug.cs.gtl.protos.Tuple.Builder> 
+         getTupleBuilderList() {
+      return getTupleFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Tuple, cn.edu.cug.cs.gtl.protos.Tuple.Builder, cn.edu.cug.cs.gtl.protos.TupleOrBuilder> 
+        getTupleFieldBuilder() {
+      if (tupleBuilder_ == null) {
+        tupleBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            cn.edu.cug.cs.gtl.protos.Tuple, cn.edu.cug.cs.gtl.protos.Tuple.Builder, cn.edu.cug.cs.gtl.protos.TupleOrBuilder>(
+                tuple_,
+                ((bitField0_ & 0x00000002) != 0),
+                getParentForChildren(),
+                isClean());
+        tuple_ = null;
+      }
+      return tupleBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

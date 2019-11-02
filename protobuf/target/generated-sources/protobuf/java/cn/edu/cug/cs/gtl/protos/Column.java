@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Column() {
+    value_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -38,6 +39,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -62,16 +64,12 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            com.google.protobuf.Any.Builder subBuilder = null;
-            if (values_ != null) {
-              subBuilder = values_.toBuilder();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              value_ = new java.util.ArrayList<com.google.protobuf.Any>();
+              mutable_bitField0_ |= 0x00000001;
             }
-            values_ = input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(values_);
-              values_ = subBuilder.buildPartial();
-            }
-
+            value_.add(
+                input.readMessage(com.google.protobuf.Any.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -89,6 +87,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        value_ = java.util.Collections.unmodifiableList(value_);
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -129,27 +130,39 @@ private static final long serialVersionUID = 0L;
     return getInfo();
   }
 
-  public static final int VALUES_FIELD_NUMBER = 2;
-  private com.google.protobuf.Any values_;
+  public static final int VALUE_FIELD_NUMBER = 2;
+  private java.util.List<com.google.protobuf.Any> value_;
   /**
-   * <code>.google.protobuf.Any values = 2;</code>
-   * @return Whether the values field is set.
+   * <code>repeated .google.protobuf.Any value = 2;</code>
    */
-  public boolean hasValues() {
-    return values_ != null;
+  public java.util.List<com.google.protobuf.Any> getValueList() {
+    return value_;
   }
   /**
-   * <code>.google.protobuf.Any values = 2;</code>
-   * @return The values.
+   * <code>repeated .google.protobuf.Any value = 2;</code>
    */
-  public com.google.protobuf.Any getValues() {
-    return values_ == null ? com.google.protobuf.Any.getDefaultInstance() : values_;
+  public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
+      getValueOrBuilderList() {
+    return value_;
   }
   /**
-   * <code>.google.protobuf.Any values = 2;</code>
+   * <code>repeated .google.protobuf.Any value = 2;</code>
    */
-  public com.google.protobuf.AnyOrBuilder getValuesOrBuilder() {
-    return getValues();
+  public int getValueCount() {
+    return value_.size();
+  }
+  /**
+   * <code>repeated .google.protobuf.Any value = 2;</code>
+   */
+  public com.google.protobuf.Any getValue(int index) {
+    return value_.get(index);
+  }
+  /**
+   * <code>repeated .google.protobuf.Any value = 2;</code>
+   */
+  public com.google.protobuf.AnyOrBuilder getValueOrBuilder(
+      int index) {
+    return value_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -169,8 +182,8 @@ private static final long serialVersionUID = 0L;
     if (info_ != null) {
       output.writeMessage(1, getInfo());
     }
-    if (values_ != null) {
-      output.writeMessage(2, getValues());
+    for (int i = 0; i < value_.size(); i++) {
+      output.writeMessage(2, value_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -185,9 +198,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getInfo());
     }
-    if (values_ != null) {
+    for (int i = 0; i < value_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getValues());
+        .computeMessageSize(2, value_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -209,11 +222,8 @@ private static final long serialVersionUID = 0L;
       if (!getInfo()
           .equals(other.getInfo())) return false;
     }
-    if (hasValues() != other.hasValues()) return false;
-    if (hasValues()) {
-      if (!getValues()
-          .equals(other.getValues())) return false;
-    }
+    if (!getValueList()
+        .equals(other.getValueList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -229,9 +239,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + INFO_FIELD_NUMBER;
       hash = (53 * hash) + getInfo().hashCode();
     }
-    if (hasValues()) {
-      hash = (37 * hash) + VALUES_FIELD_NUMBER;
-      hash = (53 * hash) + getValues().hashCode();
+    if (getValueCount() > 0) {
+      hash = (37 * hash) + VALUE_FIELD_NUMBER;
+      hash = (53 * hash) + getValueList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -361,6 +371,7 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getValueFieldBuilder();
       }
     }
     @java.lang.Override
@@ -372,11 +383,11 @@ private static final long serialVersionUID = 0L;
         info_ = null;
         infoBuilder_ = null;
       }
-      if (valuesBuilder_ == null) {
-        values_ = null;
+      if (valueBuilder_ == null) {
+        value_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        values_ = null;
-        valuesBuilder_ = null;
+        valueBuilder_.clear();
       }
       return this;
     }
@@ -404,15 +415,20 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cn.edu.cug.cs.gtl.protos.Column buildPartial() {
       cn.edu.cug.cs.gtl.protos.Column result = new cn.edu.cug.cs.gtl.protos.Column(this);
+      int from_bitField0_ = bitField0_;
       if (infoBuilder_ == null) {
         result.info_ = info_;
       } else {
         result.info_ = infoBuilder_.build();
       }
-      if (valuesBuilder_ == null) {
-        result.values_ = values_;
+      if (valueBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          value_ = java.util.Collections.unmodifiableList(value_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.value_ = value_;
       } else {
-        result.values_ = valuesBuilder_.build();
+        result.value_ = valueBuilder_.build();
       }
       onBuilt();
       return result;
@@ -465,8 +481,31 @@ private static final long serialVersionUID = 0L;
       if (other.hasInfo()) {
         mergeInfo(other.getInfo());
       }
-      if (other.hasValues()) {
-        mergeValues(other.getValues());
+      if (valueBuilder_ == null) {
+        if (!other.value_.isEmpty()) {
+          if (value_.isEmpty()) {
+            value_ = other.value_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureValueIsMutable();
+            value_.addAll(other.value_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.value_.isEmpty()) {
+          if (valueBuilder_.isEmpty()) {
+            valueBuilder_.dispose();
+            valueBuilder_ = null;
+            value_ = other.value_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            valueBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getValueFieldBuilder() : null;
+          } else {
+            valueBuilder_.addAllMessages(other.value_);
+          }
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -496,6 +535,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private cn.edu.cug.cs.gtl.protos.ColumnInfo info_;
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -616,123 +656,244 @@ private static final long serialVersionUID = 0L;
       return infoBuilder_;
     }
 
-    private com.google.protobuf.Any values_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> valuesBuilder_;
-    /**
-     * <code>.google.protobuf.Any values = 2;</code>
-     * @return Whether the values field is set.
-     */
-    public boolean hasValues() {
-      return valuesBuilder_ != null || values_ != null;
+    private java.util.List<com.google.protobuf.Any> value_ =
+      java.util.Collections.emptyList();
+    private void ensureValueIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        value_ = new java.util.ArrayList<com.google.protobuf.Any>(value_);
+        bitField0_ |= 0x00000001;
+       }
     }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> valueBuilder_;
+
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
-     * @return The values.
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public com.google.protobuf.Any getValues() {
-      if (valuesBuilder_ == null) {
-        return values_ == null ? com.google.protobuf.Any.getDefaultInstance() : values_;
+    public java.util.List<com.google.protobuf.Any> getValueList() {
+      if (valueBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(value_);
       } else {
-        return valuesBuilder_.getMessage();
+        return valueBuilder_.getMessageList();
       }
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public Builder setValues(com.google.protobuf.Any value) {
-      if (valuesBuilder_ == null) {
+    public int getValueCount() {
+      if (valueBuilder_ == null) {
+        return value_.size();
+      } else {
+        return valueBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public com.google.protobuf.Any getValue(int index) {
+      if (valueBuilder_ == null) {
+        return value_.get(index);
+      } else {
+        return valueBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public Builder setValue(
+        int index, com.google.protobuf.Any value) {
+      if (valueBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        values_ = value;
+        ensureValueIsMutable();
+        value_.set(index, value);
         onChanged();
       } else {
-        valuesBuilder_.setMessage(value);
+        valueBuilder_.setMessage(index, value);
       }
-
       return this;
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public Builder setValues(
-        com.google.protobuf.Any.Builder builderForValue) {
-      if (valuesBuilder_ == null) {
-        values_ = builderForValue.build();
+    public Builder setValue(
+        int index, com.google.protobuf.Any.Builder builderForValue) {
+      if (valueBuilder_ == null) {
+        ensureValueIsMutable();
+        value_.set(index, builderForValue.build());
         onChanged();
       } else {
-        valuesBuilder_.setMessage(builderForValue.build());
+        valueBuilder_.setMessage(index, builderForValue.build());
       }
-
       return this;
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public Builder mergeValues(com.google.protobuf.Any value) {
-      if (valuesBuilder_ == null) {
-        if (values_ != null) {
-          values_ =
-            com.google.protobuf.Any.newBuilder(values_).mergeFrom(value).buildPartial();
-        } else {
-          values_ = value;
+    public Builder addValue(com.google.protobuf.Any value) {
+      if (valueBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
         }
+        ensureValueIsMutable();
+        value_.add(value);
         onChanged();
       } else {
-        valuesBuilder_.mergeFrom(value);
+        valueBuilder_.addMessage(value);
       }
-
       return this;
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public Builder clearValues() {
-      if (valuesBuilder_ == null) {
-        values_ = null;
+    public Builder addValue(
+        int index, com.google.protobuf.Any value) {
+      if (valueBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureValueIsMutable();
+        value_.add(index, value);
         onChanged();
       } else {
-        values_ = null;
-        valuesBuilder_ = null;
+        valueBuilder_.addMessage(index, value);
       }
-
       return this;
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public com.google.protobuf.Any.Builder getValuesBuilder() {
-      
-      onChanged();
-      return getValuesFieldBuilder().getBuilder();
+    public Builder addValue(
+        com.google.protobuf.Any.Builder builderForValue) {
+      if (valueBuilder_ == null) {
+        ensureValueIsMutable();
+        value_.add(builderForValue.build());
+        onChanged();
+      } else {
+        valueBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    public com.google.protobuf.AnyOrBuilder getValuesOrBuilder() {
-      if (valuesBuilder_ != null) {
-        return valuesBuilder_.getMessageOrBuilder();
+    public Builder addValue(
+        int index, com.google.protobuf.Any.Builder builderForValue) {
+      if (valueBuilder_ == null) {
+        ensureValueIsMutable();
+        value_.add(index, builderForValue.build());
+        onChanged();
       } else {
-        return values_ == null ?
-            com.google.protobuf.Any.getDefaultInstance() : values_;
+        valueBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public Builder addAllValue(
+        java.lang.Iterable<? extends com.google.protobuf.Any> values) {
+      if (valueBuilder_ == null) {
+        ensureValueIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, value_);
+        onChanged();
+      } else {
+        valueBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public Builder clearValue() {
+      if (valueBuilder_ == null) {
+        value_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        valueBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public Builder removeValue(int index) {
+      if (valueBuilder_ == null) {
+        ensureValueIsMutable();
+        value_.remove(index);
+        onChanged();
+      } else {
+        valueBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public com.google.protobuf.Any.Builder getValueBuilder(
+        int index) {
+      return getValueFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public com.google.protobuf.AnyOrBuilder getValueOrBuilder(
+        int index) {
+      if (valueBuilder_ == null) {
+        return value_.get(index);  } else {
+        return valueBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>.google.protobuf.Any values = 2;</code>
+     * <code>repeated .google.protobuf.Any value = 2;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
+         getValueOrBuilderList() {
+      if (valueBuilder_ != null) {
+        return valueBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(value_);
+      }
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public com.google.protobuf.Any.Builder addValueBuilder() {
+      return getValueFieldBuilder().addBuilder(
+          com.google.protobuf.Any.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public com.google.protobuf.Any.Builder addValueBuilder(
+        int index) {
+      return getValueFieldBuilder().addBuilder(
+          index, com.google.protobuf.Any.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .google.protobuf.Any value = 2;</code>
+     */
+    public java.util.List<com.google.protobuf.Any.Builder> 
+         getValueBuilderList() {
+      return getValueFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
-        getValuesFieldBuilder() {
-      if (valuesBuilder_ == null) {
-        valuesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        getValueFieldBuilder() {
+      if (valueBuilder_ == null) {
+        valueBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
-                getValues(),
+                value_,
+                ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        values_ = null;
+        value_ = null;
       }
-      return valuesBuilder_;
+      return valueBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -385,7 +385,7 @@ public class StringUtils {
      * @param d
      * @return
      */
-    public String encodeToString(byte[] d){
+    public static String encodeToString(byte[] d){
         return Base64.getEncoder().encodeToString(d);
     }
 
@@ -394,7 +394,7 @@ public class StringUtils {
      * @param s
      * @return
      */
-    public byte[] decodeToBytes(String s){
+    public static byte[] decodeToBytes(String s){
         return Base64.getDecoder().decode(s);
     }
 }

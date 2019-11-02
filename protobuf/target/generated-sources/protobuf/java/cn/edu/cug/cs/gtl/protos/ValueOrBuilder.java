@@ -8,15 +8,19 @@ public interface ValueOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-   * @return The enum numeric value on the wire for type.
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   * @return Whether the type field is set.
    */
-  int getTypeValue();
+  boolean hasType();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
    * @return The type.
    */
-  cn.edu.cug.cs.gtl.protos.Value.Type getType();
+  cn.edu.cug.cs.gtl.protos.Type getType();
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   */
+  cn.edu.cug.cs.gtl.protos.TypeOrBuilder getTypeOrBuilder();
 
   /**
    * <code>.google.protobuf.Any data = 2;</code>

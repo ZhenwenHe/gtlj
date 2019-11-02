@@ -19,6 +19,11 @@ private static final long serialVersionUID = 0L;
     name_ = "";
     code_ = "";
     title_ = "";
+    type_ = "";
+    check_ = "";
+    comment_ = "";
+    schema_ = "";
+    tag_ = "";
     columnInfo_ = java.util.Collections.emptyList();
   }
 
@@ -72,6 +77,36 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            type_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            check_ = s;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            comment_ = s;
+            break;
+          }
+          case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            schema_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            tag_ = s;
+            break;
+          }
+          case 74: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               columnInfo_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.ColumnInfo>();
               mutable_bitField0_ |= 0x00000001;
@@ -118,6 +153,10 @@ private static final long serialVersionUID = 0L;
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
+   * <pre>
+   *TENAME
+   * </pre>
+   *
    * <code>string name = 1;</code>
    * @return The name.
    */
@@ -134,6 +173,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *TENAME
+   * </pre>
+   *
    * <code>string name = 1;</code>
    * @return The bytes for name.
    */
@@ -154,6 +197,10 @@ private static final long serialVersionUID = 0L;
   public static final int CODE_FIELD_NUMBER = 2;
   private volatile java.lang.Object code_;
   /**
+   * <pre>
+   *TCODE
+   * </pre>
+   *
    * <code>string code = 2;</code>
    * @return The code.
    */
@@ -170,6 +217,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *TCODE
+   * </pre>
+   *
    * <code>string code = 2;</code>
    * @return The bytes for code.
    */
@@ -190,6 +241,10 @@ private static final long serialVersionUID = 0L;
   public static final int TITLE_FIELD_NUMBER = 3;
   private volatile java.lang.Object title_;
   /**
+   * <pre>
+   *TCNAME
+   * </pre>
+   *
    * <code>string title = 3;</code>
    * @return The title.
    */
@@ -206,6 +261,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *TCNAME
+   * </pre>
+   *
    * <code>string title = 3;</code>
    * @return The bytes for title.
    */
@@ -223,35 +282,255 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COLUMN_INFO_FIELD_NUMBER = 4;
+  public static final int TYPE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object type_;
+  /**
+   * <pre>
+   *TTYPE
+   * </pre>
+   *
+   * <code>string type = 4;</code>
+   * @return The type.
+   */
+  public java.lang.String getType() {
+    java.lang.Object ref = type_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      type_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *TTYPE
+   * </pre>
+   *
+   * <code>string type = 4;</code>
+   * @return The bytes for type.
+   */
+  public com.google.protobuf.ByteString
+      getTypeBytes() {
+    java.lang.Object ref = type_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      type_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int CHECK_FIELD_NUMBER = 5;
+  private volatile java.lang.Object check_;
+  /**
+   * <pre>
+   *TCHECK
+   * </pre>
+   *
+   * <code>string check = 5;</code>
+   * @return The check.
+   */
+  public java.lang.String getCheck() {
+    java.lang.Object ref = check_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      check_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *TCHECK
+   * </pre>
+   *
+   * <code>string check = 5;</code>
+   * @return The bytes for check.
+   */
+  public com.google.protobuf.ByteString
+      getCheckBytes() {
+    java.lang.Object ref = check_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      check_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int COMMENT_FIELD_NUMBER = 6;
+  private volatile java.lang.Object comment_;
+  /**
+   * <pre>
+   *TMEMO
+   * </pre>
+   *
+   * <code>string comment = 6;</code>
+   * @return The comment.
+   */
+  public java.lang.String getComment() {
+    java.lang.Object ref = comment_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      comment_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *TMEMO
+   * </pre>
+   *
+   * <code>string comment = 6;</code>
+   * @return The bytes for comment.
+   */
+  public com.google.protobuf.ByteString
+      getCommentBytes() {
+    java.lang.Object ref = comment_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      comment_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SCHEMA_FIELD_NUMBER = 7;
+  private volatile java.lang.Object schema_;
+  /**
+   * <pre>
+   *TSCHEMA
+   * </pre>
+   *
+   * <code>string schema = 7;</code>
+   * @return The schema.
+   */
+  public java.lang.String getSchema() {
+    java.lang.Object ref = schema_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      schema_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *TSCHEMA
+   * </pre>
+   *
+   * <code>string schema = 7;</code>
+   * @return The bytes for schema.
+   */
+  public com.google.protobuf.ByteString
+      getSchemaBytes() {
+    java.lang.Object ref = schema_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      schema_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TAG_FIELD_NUMBER = 8;
+  private volatile java.lang.Object tag_;
+  /**
+   * <pre>
+   *TTAG
+   * </pre>
+   *
+   * <code>string tag = 8;</code>
+   * @return The tag.
+   */
+  public java.lang.String getTag() {
+    java.lang.Object ref = tag_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      tag_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *TTAG
+   * </pre>
+   *
+   * <code>string tag = 8;</code>
+   * @return The bytes for tag.
+   */
+  public com.google.protobuf.ByteString
+      getTagBytes() {
+    java.lang.Object ref = tag_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      tag_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int COLUMN_INFO_FIELD_NUMBER = 9;
   private java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> columnInfo_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> getColumnInfoList() {
     return columnInfo_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
       getColumnInfoOrBuilderList() {
     return columnInfo_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   public int getColumnInfoCount() {
     return columnInfo_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   public cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index) {
     return columnInfo_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   public cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
       int index) {
@@ -281,8 +560,23 @@ private static final long serialVersionUID = 0L;
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, title_);
     }
+    if (!getTypeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, type_);
+    }
+    if (!getCheckBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, check_);
+    }
+    if (!getCommentBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, comment_);
+    }
+    if (!getSchemaBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, schema_);
+    }
+    if (!getTagBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, tag_);
+    }
     for (int i = 0; i < columnInfo_.size(); i++) {
-      output.writeMessage(4, columnInfo_.get(i));
+      output.writeMessage(9, columnInfo_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -302,9 +596,24 @@ private static final long serialVersionUID = 0L;
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, title_);
     }
+    if (!getTypeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, type_);
+    }
+    if (!getCheckBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, check_);
+    }
+    if (!getCommentBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, comment_);
+    }
+    if (!getSchemaBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, schema_);
+    }
+    if (!getTagBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, tag_);
+    }
     for (int i = 0; i < columnInfo_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, columnInfo_.get(i));
+        .computeMessageSize(9, columnInfo_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -327,6 +636,16 @@ private static final long serialVersionUID = 0L;
         .equals(other.getCode())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
+    if (!getType()
+        .equals(other.getType())) return false;
+    if (!getCheck()
+        .equals(other.getCheck())) return false;
+    if (!getComment()
+        .equals(other.getComment())) return false;
+    if (!getSchema()
+        .equals(other.getSchema())) return false;
+    if (!getTag()
+        .equals(other.getTag())) return false;
     if (!getColumnInfoList()
         .equals(other.getColumnInfoList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -346,6 +665,16 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getCode().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getType().hashCode();
+    hash = (37 * hash) + CHECK_FIELD_NUMBER;
+    hash = (53 * hash) + getCheck().hashCode();
+    hash = (37 * hash) + COMMENT_FIELD_NUMBER;
+    hash = (53 * hash) + getComment().hashCode();
+    hash = (37 * hash) + SCHEMA_FIELD_NUMBER;
+    hash = (53 * hash) + getSchema().hashCode();
+    hash = (37 * hash) + TAG_FIELD_NUMBER;
+    hash = (53 * hash) + getTag().hashCode();
     if (getColumnInfoCount() > 0) {
       hash = (37 * hash) + COLUMN_INFO_FIELD_NUMBER;
       hash = (53 * hash) + getColumnInfoList().hashCode();
@@ -490,6 +819,16 @@ private static final long serialVersionUID = 0L;
 
       title_ = "";
 
+      type_ = "";
+
+      check_ = "";
+
+      comment_ = "";
+
+      schema_ = "";
+
+      tag_ = "";
+
       if (columnInfoBuilder_ == null) {
         columnInfo_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -526,6 +865,11 @@ private static final long serialVersionUID = 0L;
       result.name_ = name_;
       result.code_ = code_;
       result.title_ = title_;
+      result.type_ = type_;
+      result.check_ = check_;
+      result.comment_ = comment_;
+      result.schema_ = schema_;
+      result.tag_ = tag_;
       if (columnInfoBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           columnInfo_ = java.util.Collections.unmodifiableList(columnInfo_);
@@ -595,6 +939,26 @@ private static final long serialVersionUID = 0L;
         title_ = other.title_;
         onChanged();
       }
+      if (!other.getType().isEmpty()) {
+        type_ = other.type_;
+        onChanged();
+      }
+      if (!other.getCheck().isEmpty()) {
+        check_ = other.check_;
+        onChanged();
+      }
+      if (!other.getComment().isEmpty()) {
+        comment_ = other.comment_;
+        onChanged();
+      }
+      if (!other.getSchema().isEmpty()) {
+        schema_ = other.schema_;
+        onChanged();
+      }
+      if (!other.getTag().isEmpty()) {
+        tag_ = other.tag_;
+        onChanged();
+      }
       if (columnInfoBuilder_ == null) {
         if (!other.columnInfo_.isEmpty()) {
           if (columnInfo_.isEmpty()) {
@@ -653,6 +1017,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object name_ = "";
     /**
+     * <pre>
+     *TENAME
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The name.
      */
@@ -669,6 +1037,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *TENAME
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return The bytes for name.
      */
@@ -686,6 +1058,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *TENAME
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @param value The name to set.
      * @return This builder for chaining.
@@ -701,6 +1077,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *TENAME
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @return This builder for chaining.
      */
@@ -711,6 +1091,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *TENAME
+     * </pre>
+     *
      * <code>string name = 1;</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
@@ -729,6 +1113,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object code_ = "";
     /**
+     * <pre>
+     *TCODE
+     * </pre>
+     *
      * <code>string code = 2;</code>
      * @return The code.
      */
@@ -745,6 +1133,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *TCODE
+     * </pre>
+     *
      * <code>string code = 2;</code>
      * @return The bytes for code.
      */
@@ -762,6 +1154,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *TCODE
+     * </pre>
+     *
      * <code>string code = 2;</code>
      * @param value The code to set.
      * @return This builder for chaining.
@@ -777,6 +1173,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *TCODE
+     * </pre>
+     *
      * <code>string code = 2;</code>
      * @return This builder for chaining.
      */
@@ -787,6 +1187,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *TCODE
+     * </pre>
+     *
      * <code>string code = 2;</code>
      * @param value The bytes for code to set.
      * @return This builder for chaining.
@@ -805,6 +1209,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object title_ = "";
     /**
+     * <pre>
+     *TCNAME
+     * </pre>
+     *
      * <code>string title = 3;</code>
      * @return The title.
      */
@@ -821,6 +1229,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *TCNAME
+     * </pre>
+     *
      * <code>string title = 3;</code>
      * @return The bytes for title.
      */
@@ -838,6 +1250,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *TCNAME
+     * </pre>
+     *
      * <code>string title = 3;</code>
      * @param value The title to set.
      * @return This builder for chaining.
@@ -853,6 +1269,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *TCNAME
+     * </pre>
+     *
      * <code>string title = 3;</code>
      * @return This builder for chaining.
      */
@@ -863,6 +1283,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *TCNAME
+     * </pre>
+     *
      * <code>string title = 3;</code>
      * @param value The bytes for title to set.
      * @return This builder for chaining.
@@ -875,6 +1299,486 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       title_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object type_ = "";
+    /**
+     * <pre>
+     *TTYPE
+     * </pre>
+     *
+     * <code>string type = 4;</code>
+     * @return The type.
+     */
+    public java.lang.String getType() {
+      java.lang.Object ref = type_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        type_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TTYPE
+     * </pre>
+     *
+     * <code>string type = 4;</code>
+     * @return The bytes for type.
+     */
+    public com.google.protobuf.ByteString
+        getTypeBytes() {
+      java.lang.Object ref = type_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        type_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TTYPE
+     * </pre>
+     *
+     * <code>string type = 4;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TTYPE
+     * </pre>
+     *
+     * <code>string type = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = getDefaultInstance().getType();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TTYPE
+     * </pre>
+     *
+     * <code>string type = 4;</code>
+     * @param value The bytes for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object check_ = "";
+    /**
+     * <pre>
+     *TCHECK
+     * </pre>
+     *
+     * <code>string check = 5;</code>
+     * @return The check.
+     */
+    public java.lang.String getCheck() {
+      java.lang.Object ref = check_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        check_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TCHECK
+     * </pre>
+     *
+     * <code>string check = 5;</code>
+     * @return The bytes for check.
+     */
+    public com.google.protobuf.ByteString
+        getCheckBytes() {
+      java.lang.Object ref = check_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        check_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TCHECK
+     * </pre>
+     *
+     * <code>string check = 5;</code>
+     * @param value The check to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCheck(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      check_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TCHECK
+     * </pre>
+     *
+     * <code>string check = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCheck() {
+      
+      check_ = getDefaultInstance().getCheck();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TCHECK
+     * </pre>
+     *
+     * <code>string check = 5;</code>
+     * @param value The bytes for check to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCheckBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      check_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object comment_ = "";
+    /**
+     * <pre>
+     *TMEMO
+     * </pre>
+     *
+     * <code>string comment = 6;</code>
+     * @return The comment.
+     */
+    public java.lang.String getComment() {
+      java.lang.Object ref = comment_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        comment_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TMEMO
+     * </pre>
+     *
+     * <code>string comment = 6;</code>
+     * @return The bytes for comment.
+     */
+    public com.google.protobuf.ByteString
+        getCommentBytes() {
+      java.lang.Object ref = comment_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        comment_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TMEMO
+     * </pre>
+     *
+     * <code>string comment = 6;</code>
+     * @param value The comment to set.
+     * @return This builder for chaining.
+     */
+    public Builder setComment(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      comment_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TMEMO
+     * </pre>
+     *
+     * <code>string comment = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearComment() {
+      
+      comment_ = getDefaultInstance().getComment();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TMEMO
+     * </pre>
+     *
+     * <code>string comment = 6;</code>
+     * @param value The bytes for comment to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCommentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      comment_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object schema_ = "";
+    /**
+     * <pre>
+     *TSCHEMA
+     * </pre>
+     *
+     * <code>string schema = 7;</code>
+     * @return The schema.
+     */
+    public java.lang.String getSchema() {
+      java.lang.Object ref = schema_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        schema_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TSCHEMA
+     * </pre>
+     *
+     * <code>string schema = 7;</code>
+     * @return The bytes for schema.
+     */
+    public com.google.protobuf.ByteString
+        getSchemaBytes() {
+      java.lang.Object ref = schema_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        schema_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TSCHEMA
+     * </pre>
+     *
+     * <code>string schema = 7;</code>
+     * @param value The schema to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSchema(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      schema_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TSCHEMA
+     * </pre>
+     *
+     * <code>string schema = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSchema() {
+      
+      schema_ = getDefaultInstance().getSchema();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TSCHEMA
+     * </pre>
+     *
+     * <code>string schema = 7;</code>
+     * @param value The bytes for schema to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSchemaBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      schema_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object tag_ = "";
+    /**
+     * <pre>
+     *TTAG
+     * </pre>
+     *
+     * <code>string tag = 8;</code>
+     * @return The tag.
+     */
+    public java.lang.String getTag() {
+      java.lang.Object ref = tag_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tag_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TTAG
+     * </pre>
+     *
+     * <code>string tag = 8;</code>
+     * @return The bytes for tag.
+     */
+    public com.google.protobuf.ByteString
+        getTagBytes() {
+      java.lang.Object ref = tag_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tag_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TTAG
+     * </pre>
+     *
+     * <code>string tag = 8;</code>
+     * @param value The tag to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTag(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      tag_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TTAG
+     * </pre>
+     *
+     * <code>string tag = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTag() {
+      
+      tag_ = getDefaultInstance().getTag();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TTAG
+     * </pre>
+     *
+     * <code>string tag = 8;</code>
+     * @param value The bytes for tag to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTagBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      tag_ = value;
       onChanged();
       return this;
     }
@@ -892,7 +1796,7 @@ private static final long serialVersionUID = 0L;
         cn.edu.cug.cs.gtl.protos.ColumnInfo, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder, cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> columnInfoBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> getColumnInfoList() {
       if (columnInfoBuilder_ == null) {
@@ -902,7 +1806,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public int getColumnInfoCount() {
       if (columnInfoBuilder_ == null) {
@@ -912,7 +1816,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index) {
       if (columnInfoBuilder_ == null) {
@@ -922,7 +1826,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder setColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
@@ -939,7 +1843,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder setColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
@@ -953,7 +1857,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder addColumnInfo(cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
       if (columnInfoBuilder_ == null) {
@@ -969,7 +1873,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder addColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
@@ -986,7 +1890,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder addColumnInfo(
         cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
@@ -1000,7 +1904,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder addColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
@@ -1014,7 +1918,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder addAllColumnInfo(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.ColumnInfo> values) {
@@ -1029,7 +1933,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder clearColumnInfo() {
       if (columnInfoBuilder_ == null) {
@@ -1042,7 +1946,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public Builder removeColumnInfo(int index) {
       if (columnInfoBuilder_ == null) {
@@ -1055,14 +1959,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder getColumnInfoBuilder(
         int index) {
       return getColumnInfoFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
         int index) {
@@ -1072,7 +1976,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
          getColumnInfoOrBuilderList() {
@@ -1083,14 +1987,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder addColumnInfoBuilder() {
       return getColumnInfoFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder addColumnInfoBuilder(
         int index) {
@@ -1098,7 +2002,7 @@ private static final long serialVersionUID = 0L;
           index, cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder> 
          getColumnInfoBuilderList() {

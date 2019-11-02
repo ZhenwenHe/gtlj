@@ -1,18 +1,21 @@
 package cn.edu.cug.cs.gtl.mybatis;
 
 import cn.edu.cug.cs.gtl.mybatis.mapper.common.*;
-import cn.edu.cug.cs.gtl.protos.SqlCommand;
-import cn.edu.cug.cs.gtl.protos.SqlDataSet;
-import cn.edu.cug.cs.gtl.protos.SqlRecord;
-import cn.edu.cug.cs.gtl.protos.SqlResult;
+import cn.edu.cug.cs.gtl.protos.*;
 import cn.edu.cug.cs.gtl.util.StringUtils;
+import com.google.protobuf.Any;
+import org.apache.ibatis.datasource.DataSourceFactory;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.log.output.db.ColumnInfo;
 
+import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.DatabaseMetaData;
+import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -112,19 +115,21 @@ public class Session {
         try {
             SelectMapper mapper = this.sqlSession.getMapper(SelectMapper.class);
             List<LinkedHashMap<String, Object>> ls = mapper.query(commandText);
-            SqlDataSet.Builder dsBuilder = SqlDataSet.newBuilder();
+            DataSet.Builder dsBuilder = DataSet.newBuilder();
             //set column infos
             LinkedHashMap<String, Object> m = ls.get(0);
             for (String s : m.keySet()) {
-                dsBuilder.addColumnName(s);
+                dsBuilder.addColumnInfo(cn.edu.cug.cs.gtl.protos.ColumnInfo.newBuilder().setName(s).build());
             }
             //set records
-            SqlRecord.Builder recBuilder = SqlRecord.newBuilder();
+            Tuple.Builder recBuilder = Tuple.newBuilder();
             for (LinkedHashMap<String, Object> lhm : ls) {
                 for (Object o : lhm.values()) {
-                    recBuilder.addElement(o.toString());
+                    //recBuilder.addElement(ValueBuilder.buildTextValue(o.toString()));
+                    TextValue textValue=TextValue.newBuilder().setValue(o.toString()).build();
+                    recBuilder.addElement(Any.pack(textValue));
                 }
-                dsBuilder.addRecord(recBuilder.build());
+                dsBuilder.addTuple(recBuilder.build());
                 recBuilder.clearElement();
             }
             builder.setDataset(dsBuilder.build());
@@ -177,5 +182,31 @@ public class Session {
 
         builder.setStatus(true);
         return builder.build();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public DataSource getDataSource(){
+        return factory.getConfiguration().getEnvironment().getDataSource();
+    }
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
+    public DatabaseMetaData getMetaData() throws SQLException{
+        return getDataSource().getConnection().getMetaData();
+    }
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
+    public String getURL() throws SQLException{
+        return getMetaData().getURL();
     }
 }

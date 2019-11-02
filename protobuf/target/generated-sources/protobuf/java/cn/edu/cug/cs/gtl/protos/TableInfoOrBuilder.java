@@ -8,11 +8,19 @@ public interface TableInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   *TENAME
+   * </pre>
+   *
    * <code>string name = 1;</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
+   * <pre>
+   *TENAME
+   * </pre>
+   *
    * <code>string name = 1;</code>
    * @return The bytes for name.
    */
@@ -20,11 +28,19 @@ public interface TableInfoOrBuilder extends
       getNameBytes();
 
   /**
+   * <pre>
+   *TCODE
+   * </pre>
+   *
    * <code>string code = 2;</code>
    * @return The code.
    */
   java.lang.String getCode();
   /**
+   * <pre>
+   *TCODE
+   * </pre>
+   *
    * <code>string code = 2;</code>
    * @return The bytes for code.
    */
@@ -32,11 +48,19 @@ public interface TableInfoOrBuilder extends
       getCodeBytes();
 
   /**
+   * <pre>
+   *TCNAME
+   * </pre>
+   *
    * <code>string title = 3;</code>
    * @return The title.
    */
   java.lang.String getTitle();
   /**
+   * <pre>
+   *TCNAME
+   * </pre>
+   *
    * <code>string title = 3;</code>
    * @return The bytes for title.
    */
@@ -44,25 +68,125 @@ public interface TableInfoOrBuilder extends
       getTitleBytes();
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <pre>
+   *TTYPE
+   * </pre>
+   *
+   * <code>string type = 4;</code>
+   * @return The type.
+   */
+  java.lang.String getType();
+  /**
+   * <pre>
+   *TTYPE
+   * </pre>
+   *
+   * <code>string type = 4;</code>
+   * @return The bytes for type.
+   */
+  com.google.protobuf.ByteString
+      getTypeBytes();
+
+  /**
+   * <pre>
+   *TCHECK
+   * </pre>
+   *
+   * <code>string check = 5;</code>
+   * @return The check.
+   */
+  java.lang.String getCheck();
+  /**
+   * <pre>
+   *TCHECK
+   * </pre>
+   *
+   * <code>string check = 5;</code>
+   * @return The bytes for check.
+   */
+  com.google.protobuf.ByteString
+      getCheckBytes();
+
+  /**
+   * <pre>
+   *TMEMO
+   * </pre>
+   *
+   * <code>string comment = 6;</code>
+   * @return The comment.
+   */
+  java.lang.String getComment();
+  /**
+   * <pre>
+   *TMEMO
+   * </pre>
+   *
+   * <code>string comment = 6;</code>
+   * @return The bytes for comment.
+   */
+  com.google.protobuf.ByteString
+      getCommentBytes();
+
+  /**
+   * <pre>
+   *TSCHEMA
+   * </pre>
+   *
+   * <code>string schema = 7;</code>
+   * @return The schema.
+   */
+  java.lang.String getSchema();
+  /**
+   * <pre>
+   *TSCHEMA
+   * </pre>
+   *
+   * <code>string schema = 7;</code>
+   * @return The bytes for schema.
+   */
+  com.google.protobuf.ByteString
+      getSchemaBytes();
+
+  /**
+   * <pre>
+   *TTAG
+   * </pre>
+   *
+   * <code>string tag = 8;</code>
+   * @return The tag.
+   */
+  java.lang.String getTag();
+  /**
+   * <pre>
+   *TTAG
+   * </pre>
+   *
+   * <code>string tag = 8;</code>
+   * @return The bytes for tag.
+   */
+  com.google.protobuf.ByteString
+      getTagBytes();
+
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> 
       getColumnInfoList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   int getColumnInfoCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
       getColumnInfoOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 4;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
    */
   cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
       int index);

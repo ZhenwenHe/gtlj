@@ -8,22 +8,46 @@ public interface ColumnInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-   * @return The enum numeric value on the wire for type.
+   * <pre>
+   *FTYPE
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   * @return Whether the type field is set.
    */
-  int getTypeValue();
+  boolean hasType();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
+   * <pre>
+   *FTYPE
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
    * @return The type.
    */
-  cn.edu.cug.cs.gtl.protos.Value.Type getType();
+  cn.edu.cug.cs.gtl.protos.Type getType();
+  /**
+   * <pre>
+   *FTYPE
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   */
+  cn.edu.cug.cs.gtl.protos.TypeOrBuilder getTypeOrBuilder();
 
   /**
+   * <pre>
+   *English Name, FENAME
+   * </pre>
+   *
    * <code>string name = 2;</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
+   * <pre>
+   *English Name, FENAME
+   * </pre>
+   *
    * <code>string name = 2;</code>
    * @return The bytes for name.
    */
@@ -31,11 +55,19 @@ public interface ColumnInfoOrBuilder extends
       getNameBytes();
 
   /**
+   * <pre>
+   *FCODE
+   * </pre>
+   *
    * <code>string code = 3;</code>
    * @return The code.
    */
   java.lang.String getCode();
   /**
+   * <pre>
+   *FCODE
+   * </pre>
+   *
    * <code>string code = 3;</code>
    * @return The bytes for code.
    */
@@ -43,14 +75,224 @@ public interface ColumnInfoOrBuilder extends
       getCodeBytes();
 
   /**
+   * <pre>
+   *Chinese Name,FCNAME
+   * </pre>
+   *
    * <code>string title = 4;</code>
    * @return The title.
    */
   java.lang.String getTitle();
   /**
+   * <pre>
+   *Chinese Name,FCNAME
+   * </pre>
+   *
    * <code>string title = 4;</code>
    * @return The bytes for title.
    */
   com.google.protobuf.ByteString
       getTitleBytes();
+
+  /**
+   * <pre>
+   *FLENGTH
+   * </pre>
+   *
+   * <code>int32 length = 5;</code>
+   * @return The length.
+   */
+  int getLength();
+
+  /**
+   * <pre>
+   *FDECIMAL
+   * </pre>
+   *
+   * <code>int32 decimal = 6;</code>
+   * @return The decimal.
+   */
+  int getDecimal();
+
+  /**
+   * <pre>
+   *FISNULL
+   * </pre>
+   *
+   * <code>bool nullable = 7;</code>
+   * @return The nullable.
+   */
+  boolean getNullable();
+
+  /**
+   * <pre>
+   *FDEFAULT
+   * </pre>
+   *
+   * <code>string default_value = 8;</code>
+   * @return The defaultValue.
+   */
+  java.lang.String getDefaultValue();
+  /**
+   * <pre>
+   *FDEFAULT
+   * </pre>
+   *
+   * <code>string default_value = 8;</code>
+   * @return The bytes for defaultValue.
+   */
+  com.google.protobuf.ByteString
+      getDefaultValueBytes();
+
+  /**
+   * <pre>
+   *FMAX
+   * </pre>
+   *
+   * <code>string max_value = 9;</code>
+   * @return The maxValue.
+   */
+  java.lang.String getMaxValue();
+  /**
+   * <pre>
+   *FMAX
+   * </pre>
+   *
+   * <code>string max_value = 9;</code>
+   * @return The bytes for maxValue.
+   */
+  com.google.protobuf.ByteString
+      getMaxValueBytes();
+
+  /**
+   * <pre>
+   *FMIN
+   * </pre>
+   *
+   * <code>string min_value = 10;</code>
+   * @return The minValue.
+   */
+  java.lang.String getMinValue();
+  /**
+   * <pre>
+   *FMIN
+   * </pre>
+   *
+   * <code>string min_value = 10;</code>
+   * @return The bytes for minValue.
+   */
+  com.google.protobuf.ByteString
+      getMinValueBytes();
+
+  /**
+   * <pre>
+   *FCHECK
+   * </pre>
+   *
+   * <code>string check = 11;</code>
+   * @return The check.
+   */
+  java.lang.String getCheck();
+  /**
+   * <pre>
+   *FCHECK
+   * </pre>
+   *
+   * <code>string check = 11;</code>
+   * @return The bytes for check.
+   */
+  com.google.protobuf.ByteString
+      getCheckBytes();
+
+  /**
+   * <pre>
+   *FMEMO
+   * </pre>
+   *
+   * <code>string comment = 12;</code>
+   * @return The comment.
+   */
+  java.lang.String getComment();
+  /**
+   * <pre>
+   *FMEMO
+   * </pre>
+   *
+   * <code>string comment = 12;</code>
+   * @return The bytes for comment.
+   */
+  com.google.protobuf.ByteString
+      getCommentBytes();
+
+  /**
+   * <pre>
+   *FTABLENAME
+   * </pre>
+   *
+   * <code>string table_name = 13;</code>
+   * @return The tableName.
+   */
+  java.lang.String getTableName();
+  /**
+   * <pre>
+   *FTABLENAME
+   * </pre>
+   *
+   * <code>string table_name = 13;</code>
+   * @return The bytes for tableName.
+   */
+  com.google.protobuf.ByteString
+      getTableNameBytes();
+
+  /**
+   * <pre>
+   *FENUM
+   * </pre>
+   *
+   * <code>string enumeration = 14;</code>
+   * @return The enumeration.
+   */
+  java.lang.String getEnumeration();
+  /**
+   * <pre>
+   *FENUM
+   * </pre>
+   *
+   * <code>string enumeration = 14;</code>
+   * @return The bytes for enumeration.
+   */
+  com.google.protobuf.ByteString
+      getEnumerationBytes();
+
+  /**
+   * <pre>
+   *FPROCEDURE
+   * </pre>
+   *
+   * <code>string procedure = 15;</code>
+   * @return The procedure.
+   */
+  java.lang.String getProcedure();
+  /**
+   * <pre>
+   *FPROCEDURE
+   * </pre>
+   *
+   * <code>string procedure = 15;</code>
+   * @return The bytes for procedure.
+   */
+  com.google.protobuf.ByteString
+      getProcedureBytes();
+
+  /**
+   * <code>string tag = 16;</code>
+   * @return The tag.
+   */
+  java.lang.String getTag();
+  /**
+   * <code>string tag = 16;</code>
+   * @return The bytes for tag.
+   */
+  com.google.protobuf.ByteString
+      getTagBytes();
 }

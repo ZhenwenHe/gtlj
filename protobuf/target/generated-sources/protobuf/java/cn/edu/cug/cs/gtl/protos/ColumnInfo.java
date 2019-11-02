@@ -16,10 +16,18 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ColumnInfo() {
-    type_ = 0;
     name_ = "";
     code_ = "";
     title_ = "";
+    defaultValue_ = "";
+    maxValue_ = "";
+    minValue_ = "";
+    check_ = "";
+    comment_ = "";
+    tableName_ = "";
+    enumeration_ = "";
+    procedure_ = "";
+    tag_ = "";
   }
 
   @java.lang.Override
@@ -52,10 +60,17 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-            int rawValue = input.readEnum();
+          case 10: {
+            cn.edu.cug.cs.gtl.protos.Type.Builder subBuilder = null;
+            if (type_ != null) {
+              subBuilder = type_.toBuilder();
+            }
+            type_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Type.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(type_);
+              type_ = subBuilder.buildPartial();
+            }
 
-            type_ = rawValue;
             break;
           }
           case 18: {
@@ -74,6 +89,75 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             title_ = s;
+            break;
+          }
+          case 40: {
+
+            length_ = input.readInt32();
+            break;
+          }
+          case 48: {
+
+            decimal_ = input.readInt32();
+            break;
+          }
+          case 56: {
+
+            nullable_ = input.readBool();
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            defaultValue_ = s;
+            break;
+          }
+          case 74: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            maxValue_ = s;
+            break;
+          }
+          case 82: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            minValue_ = s;
+            break;
+          }
+          case 90: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            check_ = s;
+            break;
+          }
+          case 98: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            comment_ = s;
+            break;
+          }
+          case 106: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            tableName_ = s;
+            break;
+          }
+          case 114: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            enumeration_ = s;
+            break;
+          }
+          case 122: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            procedure_ = s;
+            break;
+          }
+          case 130: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            tag_ = s;
             break;
           }
           default: {
@@ -109,27 +193,47 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TYPE_FIELD_NUMBER = 1;
-  private int type_;
+  private cn.edu.cug.cs.gtl.protos.Type type_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-   * @return The enum numeric value on the wire for type.
+   * <pre>
+   *FTYPE
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   * @return Whether the type field is set.
    */
-  public int getTypeValue() {
-    return type_;
+  public boolean hasType() {
+    return type_ != null;
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
+   * <pre>
+   *FTYPE
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
    * @return The type.
    */
-  public cn.edu.cug.cs.gtl.protos.Value.Type getType() {
-    @SuppressWarnings("deprecation")
-    cn.edu.cug.cs.gtl.protos.Value.Type result = cn.edu.cug.cs.gtl.protos.Value.Type.valueOf(type_);
-    return result == null ? cn.edu.cug.cs.gtl.protos.Value.Type.UNRECOGNIZED : result;
+  public cn.edu.cug.cs.gtl.protos.Type getType() {
+    return type_ == null ? cn.edu.cug.cs.gtl.protos.Type.getDefaultInstance() : type_;
+  }
+  /**
+   * <pre>
+   *FTYPE
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   */
+  public cn.edu.cug.cs.gtl.protos.TypeOrBuilder getTypeOrBuilder() {
+    return getType();
   }
 
   public static final int NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object name_;
   /**
+   * <pre>
+   *English Name, FENAME
+   * </pre>
+   *
    * <code>string name = 2;</code>
    * @return The name.
    */
@@ -146,6 +250,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *English Name, FENAME
+   * </pre>
+   *
    * <code>string name = 2;</code>
    * @return The bytes for name.
    */
@@ -166,6 +274,10 @@ private static final long serialVersionUID = 0L;
   public static final int CODE_FIELD_NUMBER = 3;
   private volatile java.lang.Object code_;
   /**
+   * <pre>
+   *FCODE
+   * </pre>
+   *
    * <code>string code = 3;</code>
    * @return The code.
    */
@@ -182,6 +294,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *FCODE
+   * </pre>
+   *
    * <code>string code = 3;</code>
    * @return The bytes for code.
    */
@@ -202,6 +318,10 @@ private static final long serialVersionUID = 0L;
   public static final int TITLE_FIELD_NUMBER = 4;
   private volatile java.lang.Object title_;
   /**
+   * <pre>
+   *Chinese Name,FCNAME
+   * </pre>
+   *
    * <code>string title = 4;</code>
    * @return The title.
    */
@@ -218,6 +338,10 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
+   * <pre>
+   *Chinese Name,FCNAME
+   * </pre>
+   *
    * <code>string title = 4;</code>
    * @return The bytes for title.
    */
@@ -229,6 +353,436 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       title_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int LENGTH_FIELD_NUMBER = 5;
+  private int length_;
+  /**
+   * <pre>
+   *FLENGTH
+   * </pre>
+   *
+   * <code>int32 length = 5;</code>
+   * @return The length.
+   */
+  public int getLength() {
+    return length_;
+  }
+
+  public static final int DECIMAL_FIELD_NUMBER = 6;
+  private int decimal_;
+  /**
+   * <pre>
+   *FDECIMAL
+   * </pre>
+   *
+   * <code>int32 decimal = 6;</code>
+   * @return The decimal.
+   */
+  public int getDecimal() {
+    return decimal_;
+  }
+
+  public static final int NULLABLE_FIELD_NUMBER = 7;
+  private boolean nullable_;
+  /**
+   * <pre>
+   *FISNULL
+   * </pre>
+   *
+   * <code>bool nullable = 7;</code>
+   * @return The nullable.
+   */
+  public boolean getNullable() {
+    return nullable_;
+  }
+
+  public static final int DEFAULT_VALUE_FIELD_NUMBER = 8;
+  private volatile java.lang.Object defaultValue_;
+  /**
+   * <pre>
+   *FDEFAULT
+   * </pre>
+   *
+   * <code>string default_value = 8;</code>
+   * @return The defaultValue.
+   */
+  public java.lang.String getDefaultValue() {
+    java.lang.Object ref = defaultValue_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      defaultValue_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FDEFAULT
+   * </pre>
+   *
+   * <code>string default_value = 8;</code>
+   * @return The bytes for defaultValue.
+   */
+  public com.google.protobuf.ByteString
+      getDefaultValueBytes() {
+    java.lang.Object ref = defaultValue_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      defaultValue_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MAX_VALUE_FIELD_NUMBER = 9;
+  private volatile java.lang.Object maxValue_;
+  /**
+   * <pre>
+   *FMAX
+   * </pre>
+   *
+   * <code>string max_value = 9;</code>
+   * @return The maxValue.
+   */
+  public java.lang.String getMaxValue() {
+    java.lang.Object ref = maxValue_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      maxValue_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FMAX
+   * </pre>
+   *
+   * <code>string max_value = 9;</code>
+   * @return The bytes for maxValue.
+   */
+  public com.google.protobuf.ByteString
+      getMaxValueBytes() {
+    java.lang.Object ref = maxValue_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      maxValue_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int MIN_VALUE_FIELD_NUMBER = 10;
+  private volatile java.lang.Object minValue_;
+  /**
+   * <pre>
+   *FMIN
+   * </pre>
+   *
+   * <code>string min_value = 10;</code>
+   * @return The minValue.
+   */
+  public java.lang.String getMinValue() {
+    java.lang.Object ref = minValue_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      minValue_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FMIN
+   * </pre>
+   *
+   * <code>string min_value = 10;</code>
+   * @return The bytes for minValue.
+   */
+  public com.google.protobuf.ByteString
+      getMinValueBytes() {
+    java.lang.Object ref = minValue_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      minValue_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int CHECK_FIELD_NUMBER = 11;
+  private volatile java.lang.Object check_;
+  /**
+   * <pre>
+   *FCHECK
+   * </pre>
+   *
+   * <code>string check = 11;</code>
+   * @return The check.
+   */
+  public java.lang.String getCheck() {
+    java.lang.Object ref = check_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      check_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FCHECK
+   * </pre>
+   *
+   * <code>string check = 11;</code>
+   * @return The bytes for check.
+   */
+  public com.google.protobuf.ByteString
+      getCheckBytes() {
+    java.lang.Object ref = check_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      check_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int COMMENT_FIELD_NUMBER = 12;
+  private volatile java.lang.Object comment_;
+  /**
+   * <pre>
+   *FMEMO
+   * </pre>
+   *
+   * <code>string comment = 12;</code>
+   * @return The comment.
+   */
+  public java.lang.String getComment() {
+    java.lang.Object ref = comment_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      comment_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FMEMO
+   * </pre>
+   *
+   * <code>string comment = 12;</code>
+   * @return The bytes for comment.
+   */
+  public com.google.protobuf.ByteString
+      getCommentBytes() {
+    java.lang.Object ref = comment_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      comment_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TABLE_NAME_FIELD_NUMBER = 13;
+  private volatile java.lang.Object tableName_;
+  /**
+   * <pre>
+   *FTABLENAME
+   * </pre>
+   *
+   * <code>string table_name = 13;</code>
+   * @return The tableName.
+   */
+  public java.lang.String getTableName() {
+    java.lang.Object ref = tableName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      tableName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FTABLENAME
+   * </pre>
+   *
+   * <code>string table_name = 13;</code>
+   * @return The bytes for tableName.
+   */
+  public com.google.protobuf.ByteString
+      getTableNameBytes() {
+    java.lang.Object ref = tableName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      tableName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ENUMERATION_FIELD_NUMBER = 14;
+  private volatile java.lang.Object enumeration_;
+  /**
+   * <pre>
+   *FENUM
+   * </pre>
+   *
+   * <code>string enumeration = 14;</code>
+   * @return The enumeration.
+   */
+  public java.lang.String getEnumeration() {
+    java.lang.Object ref = enumeration_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      enumeration_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FENUM
+   * </pre>
+   *
+   * <code>string enumeration = 14;</code>
+   * @return The bytes for enumeration.
+   */
+  public com.google.protobuf.ByteString
+      getEnumerationBytes() {
+    java.lang.Object ref = enumeration_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      enumeration_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PROCEDURE_FIELD_NUMBER = 15;
+  private volatile java.lang.Object procedure_;
+  /**
+   * <pre>
+   *FPROCEDURE
+   * </pre>
+   *
+   * <code>string procedure = 15;</code>
+   * @return The procedure.
+   */
+  public java.lang.String getProcedure() {
+    java.lang.Object ref = procedure_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      procedure_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FPROCEDURE
+   * </pre>
+   *
+   * <code>string procedure = 15;</code>
+   * @return The bytes for procedure.
+   */
+  public com.google.protobuf.ByteString
+      getProcedureBytes() {
+    java.lang.Object ref = procedure_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      procedure_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TAG_FIELD_NUMBER = 16;
+  private volatile java.lang.Object tag_;
+  /**
+   * <code>string tag = 16;</code>
+   * @return The tag.
+   */
+  public java.lang.String getTag() {
+    java.lang.Object ref = tag_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      tag_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string tag = 16;</code>
+   * @return The bytes for tag.
+   */
+  public com.google.protobuf.ByteString
+      getTagBytes() {
+    java.lang.Object ref = tag_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      tag_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -249,8 +803,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (type_ != cn.edu.cug.cs.gtl.protos.Value.Type.NULL.getNumber()) {
-      output.writeEnum(1, type_);
+    if (type_ != null) {
+      output.writeMessage(1, getType());
     }
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -261,6 +815,42 @@ private static final long serialVersionUID = 0L;
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, title_);
     }
+    if (length_ != 0) {
+      output.writeInt32(5, length_);
+    }
+    if (decimal_ != 0) {
+      output.writeInt32(6, decimal_);
+    }
+    if (nullable_ != false) {
+      output.writeBool(7, nullable_);
+    }
+    if (!getDefaultValueBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, defaultValue_);
+    }
+    if (!getMaxValueBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, maxValue_);
+    }
+    if (!getMinValueBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, minValue_);
+    }
+    if (!getCheckBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, check_);
+    }
+    if (!getCommentBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, comment_);
+    }
+    if (!getTableNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, tableName_);
+    }
+    if (!getEnumerationBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 14, enumeration_);
+    }
+    if (!getProcedureBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 15, procedure_);
+    }
+    if (!getTagBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 16, tag_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -270,9 +860,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (type_ != cn.edu.cug.cs.gtl.protos.Value.Type.NULL.getNumber()) {
+    if (type_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, type_);
+        .computeMessageSize(1, getType());
     }
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -282,6 +872,45 @@ private static final long serialVersionUID = 0L;
     }
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, title_);
+    }
+    if (length_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, length_);
+    }
+    if (decimal_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, decimal_);
+    }
+    if (nullable_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(7, nullable_);
+    }
+    if (!getDefaultValueBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, defaultValue_);
+    }
+    if (!getMaxValueBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, maxValue_);
+    }
+    if (!getMinValueBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, minValue_);
+    }
+    if (!getCheckBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, check_);
+    }
+    if (!getCommentBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, comment_);
+    }
+    if (!getTableNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, tableName_);
+    }
+    if (!getEnumerationBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, enumeration_);
+    }
+    if (!getProcedureBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, procedure_);
+    }
+    if (!getTagBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, tag_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -298,13 +927,41 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.ColumnInfo other = (cn.edu.cug.cs.gtl.protos.ColumnInfo) obj;
 
-    if (type_ != other.type_) return false;
+    if (hasType() != other.hasType()) return false;
+    if (hasType()) {
+      if (!getType()
+          .equals(other.getType())) return false;
+    }
     if (!getName()
         .equals(other.getName())) return false;
     if (!getCode()
         .equals(other.getCode())) return false;
     if (!getTitle()
         .equals(other.getTitle())) return false;
+    if (getLength()
+        != other.getLength()) return false;
+    if (getDecimal()
+        != other.getDecimal()) return false;
+    if (getNullable()
+        != other.getNullable()) return false;
+    if (!getDefaultValue()
+        .equals(other.getDefaultValue())) return false;
+    if (!getMaxValue()
+        .equals(other.getMaxValue())) return false;
+    if (!getMinValue()
+        .equals(other.getMinValue())) return false;
+    if (!getCheck()
+        .equals(other.getCheck())) return false;
+    if (!getComment()
+        .equals(other.getComment())) return false;
+    if (!getTableName()
+        .equals(other.getTableName())) return false;
+    if (!getEnumeration()
+        .equals(other.getEnumeration())) return false;
+    if (!getProcedure()
+        .equals(other.getProcedure())) return false;
+    if (!getTag()
+        .equals(other.getTag())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -316,14 +973,41 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + type_;
+    if (hasType()) {
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+    }
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + CODE_FIELD_NUMBER;
     hash = (53 * hash) + getCode().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
+    hash = (37 * hash) + LENGTH_FIELD_NUMBER;
+    hash = (53 * hash) + getLength();
+    hash = (37 * hash) + DECIMAL_FIELD_NUMBER;
+    hash = (53 * hash) + getDecimal();
+    hash = (37 * hash) + NULLABLE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getNullable());
+    hash = (37 * hash) + DEFAULT_VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getDefaultValue().hashCode();
+    hash = (37 * hash) + MAX_VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getMaxValue().hashCode();
+    hash = (37 * hash) + MIN_VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getMinValue().hashCode();
+    hash = (37 * hash) + CHECK_FIELD_NUMBER;
+    hash = (53 * hash) + getCheck().hashCode();
+    hash = (37 * hash) + COMMENT_FIELD_NUMBER;
+    hash = (53 * hash) + getComment().hashCode();
+    hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getTableName().hashCode();
+    hash = (37 * hash) + ENUMERATION_FIELD_NUMBER;
+    hash = (53 * hash) + getEnumeration().hashCode();
+    hash = (37 * hash) + PROCEDURE_FIELD_NUMBER;
+    hash = (53 * hash) + getProcedure().hashCode();
+    hash = (37 * hash) + TAG_FIELD_NUMBER;
+    hash = (53 * hash) + getTag().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -457,13 +1141,41 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      type_ = 0;
-
+      if (typeBuilder_ == null) {
+        type_ = null;
+      } else {
+        type_ = null;
+        typeBuilder_ = null;
+      }
       name_ = "";
 
       code_ = "";
 
       title_ = "";
+
+      length_ = 0;
+
+      decimal_ = 0;
+
+      nullable_ = false;
+
+      defaultValue_ = "";
+
+      maxValue_ = "";
+
+      minValue_ = "";
+
+      check_ = "";
+
+      comment_ = "";
+
+      tableName_ = "";
+
+      enumeration_ = "";
+
+      procedure_ = "";
+
+      tag_ = "";
 
       return this;
     }
@@ -491,10 +1203,26 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cn.edu.cug.cs.gtl.protos.ColumnInfo buildPartial() {
       cn.edu.cug.cs.gtl.protos.ColumnInfo result = new cn.edu.cug.cs.gtl.protos.ColumnInfo(this);
-      result.type_ = type_;
+      if (typeBuilder_ == null) {
+        result.type_ = type_;
+      } else {
+        result.type_ = typeBuilder_.build();
+      }
       result.name_ = name_;
       result.code_ = code_;
       result.title_ = title_;
+      result.length_ = length_;
+      result.decimal_ = decimal_;
+      result.nullable_ = nullable_;
+      result.defaultValue_ = defaultValue_;
+      result.maxValue_ = maxValue_;
+      result.minValue_ = minValue_;
+      result.check_ = check_;
+      result.comment_ = comment_;
+      result.tableName_ = tableName_;
+      result.enumeration_ = enumeration_;
+      result.procedure_ = procedure_;
+      result.tag_ = tag_;
       onBuilt();
       return result;
     }
@@ -543,8 +1271,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.ColumnInfo other) {
       if (other == cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance()) return this;
-      if (other.type_ != 0) {
-        setTypeValue(other.getTypeValue());
+      if (other.hasType()) {
+        mergeType(other.getType());
       }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
@@ -556,6 +1284,51 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getTitle().isEmpty()) {
         title_ = other.title_;
+        onChanged();
+      }
+      if (other.getLength() != 0) {
+        setLength(other.getLength());
+      }
+      if (other.getDecimal() != 0) {
+        setDecimal(other.getDecimal());
+      }
+      if (other.getNullable() != false) {
+        setNullable(other.getNullable());
+      }
+      if (!other.getDefaultValue().isEmpty()) {
+        defaultValue_ = other.defaultValue_;
+        onChanged();
+      }
+      if (!other.getMaxValue().isEmpty()) {
+        maxValue_ = other.maxValue_;
+        onChanged();
+      }
+      if (!other.getMinValue().isEmpty()) {
+        minValue_ = other.minValue_;
+        onChanged();
+      }
+      if (!other.getCheck().isEmpty()) {
+        check_ = other.check_;
+        onChanged();
+      }
+      if (!other.getComment().isEmpty()) {
+        comment_ = other.comment_;
+        onChanged();
+      }
+      if (!other.getTableName().isEmpty()) {
+        tableName_ = other.tableName_;
+        onChanged();
+      }
+      if (!other.getEnumeration().isEmpty()) {
+        enumeration_ = other.enumeration_;
+        onChanged();
+      }
+      if (!other.getProcedure().isEmpty()) {
+        procedure_ = other.procedure_;
+        onChanged();
+      }
+      if (!other.getTag().isEmpty()) {
+        tag_ = other.tag_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -587,60 +1360,167 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int type_ = 0;
+    private cn.edu.cug.cs.gtl.protos.Type type_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Type, cn.edu.cug.cs.gtl.protos.Type.Builder, cn.edu.cug.cs.gtl.protos.TypeOrBuilder> typeBuilder_;
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @return The enum numeric value on the wire for type.
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     * @return Whether the type field is set.
      */
-    public int getTypeValue() {
-      return type_;
+    public boolean hasType() {
+      return typeBuilder_ != null || type_ != null;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @param value The enum numeric value on the wire for type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTypeValue(int value) {
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
      * @return The type.
      */
-    public cn.edu.cug.cs.gtl.protos.Value.Type getType() {
-      @SuppressWarnings("deprecation")
-      cn.edu.cug.cs.gtl.protos.Value.Type result = cn.edu.cug.cs.gtl.protos.Value.Type.valueOf(type_);
-      return result == null ? cn.edu.cug.cs.gtl.protos.Value.Type.UNRECOGNIZED : result;
+    public cn.edu.cug.cs.gtl.protos.Type getType() {
+      if (typeBuilder_ == null) {
+        return type_ == null ? cn.edu.cug.cs.gtl.protos.Type.getDefaultInstance() : type_;
+      } else {
+        return typeBuilder_.getMessage();
+      }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @param value The type to set.
-     * @return This builder for chaining.
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
      */
-    public Builder setType(cn.edu.cug.cs.gtl.protos.Value.Type value) {
-      if (value == null) {
-        throw new NullPointerException();
+    public Builder setType(cn.edu.cug.cs.gtl.protos.Type value) {
+      if (typeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        type_ = value;
+        onChanged();
+      } else {
+        typeBuilder_.setMessage(value);
       }
-      
-      type_ = value.getNumber();
-      onChanged();
+
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @return This builder for chaining.
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public Builder setType(
+        cn.edu.cug.cs.gtl.protos.Type.Builder builderForValue) {
+      if (typeBuilder_ == null) {
+        type_ = builderForValue.build();
+        onChanged();
+      } else {
+        typeBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public Builder mergeType(cn.edu.cug.cs.gtl.protos.Type value) {
+      if (typeBuilder_ == null) {
+        if (type_ != null) {
+          type_ =
+            cn.edu.cug.cs.gtl.protos.Type.newBuilder(type_).mergeFrom(value).buildPartial();
+        } else {
+          type_ = value;
+        }
+        onChanged();
+      } else {
+        typeBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
      */
     public Builder clearType() {
-      
-      type_ = 0;
-      onChanged();
+      if (typeBuilder_ == null) {
+        type_ = null;
+        onChanged();
+      } else {
+        type_ = null;
+        typeBuilder_ = null;
+      }
+
       return this;
+    }
+    /**
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Type.Builder getTypeBuilder() {
+      
+      onChanged();
+      return getTypeFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.TypeOrBuilder getTypeOrBuilder() {
+      if (typeBuilder_ != null) {
+        return typeBuilder_.getMessageOrBuilder();
+      } else {
+        return type_ == null ?
+            cn.edu.cug.cs.gtl.protos.Type.getDefaultInstance() : type_;
+      }
+    }
+    /**
+     * <pre>
+     *FTYPE
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Type, cn.edu.cug.cs.gtl.protos.Type.Builder, cn.edu.cug.cs.gtl.protos.TypeOrBuilder> 
+        getTypeFieldBuilder() {
+      if (typeBuilder_ == null) {
+        typeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.edu.cug.cs.gtl.protos.Type, cn.edu.cug.cs.gtl.protos.Type.Builder, cn.edu.cug.cs.gtl.protos.TypeOrBuilder>(
+                getType(),
+                getParentForChildren(),
+                isClean());
+        type_ = null;
+      }
+      return typeBuilder_;
     }
 
     private java.lang.Object name_ = "";
     /**
+     * <pre>
+     *English Name, FENAME
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return The name.
      */
@@ -657,6 +1537,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *English Name, FENAME
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return The bytes for name.
      */
@@ -674,6 +1558,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *English Name, FENAME
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @param value The name to set.
      * @return This builder for chaining.
@@ -689,6 +1577,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *English Name, FENAME
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @return This builder for chaining.
      */
@@ -699,6 +1591,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *English Name, FENAME
+     * </pre>
+     *
      * <code>string name = 2;</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
@@ -717,6 +1613,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object code_ = "";
     /**
+     * <pre>
+     *FCODE
+     * </pre>
+     *
      * <code>string code = 3;</code>
      * @return The code.
      */
@@ -733,6 +1633,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *FCODE
+     * </pre>
+     *
      * <code>string code = 3;</code>
      * @return The bytes for code.
      */
@@ -750,6 +1654,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *FCODE
+     * </pre>
+     *
      * <code>string code = 3;</code>
      * @param value The code to set.
      * @return This builder for chaining.
@@ -765,6 +1673,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *FCODE
+     * </pre>
+     *
      * <code>string code = 3;</code>
      * @return This builder for chaining.
      */
@@ -775,6 +1687,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *FCODE
+     * </pre>
+     *
      * <code>string code = 3;</code>
      * @param value The bytes for code to set.
      * @return This builder for chaining.
@@ -793,6 +1709,10 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object title_ = "";
     /**
+     * <pre>
+     *Chinese Name,FCNAME
+     * </pre>
+     *
      * <code>string title = 4;</code>
      * @return The title.
      */
@@ -809,6 +1729,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Chinese Name,FCNAME
+     * </pre>
+     *
      * <code>string title = 4;</code>
      * @return The bytes for title.
      */
@@ -826,6 +1750,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     *Chinese Name,FCNAME
+     * </pre>
+     *
      * <code>string title = 4;</code>
      * @param value The title to set.
      * @return This builder for chaining.
@@ -841,6 +1769,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Chinese Name,FCNAME
+     * </pre>
+     *
      * <code>string title = 4;</code>
      * @return This builder for chaining.
      */
@@ -851,6 +1783,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     *Chinese Name,FCNAME
+     * </pre>
+     *
      * <code>string title = 4;</code>
      * @param value The bytes for title to set.
      * @return This builder for chaining.
@@ -863,6 +1799,976 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       title_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int length_ ;
+    /**
+     * <pre>
+     *FLENGTH
+     * </pre>
+     *
+     * <code>int32 length = 5;</code>
+     * @return The length.
+     */
+    public int getLength() {
+      return length_;
+    }
+    /**
+     * <pre>
+     *FLENGTH
+     * </pre>
+     *
+     * <code>int32 length = 5;</code>
+     * @param value The length to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLength(int value) {
+      
+      length_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FLENGTH
+     * </pre>
+     *
+     * <code>int32 length = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLength() {
+      
+      length_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int decimal_ ;
+    /**
+     * <pre>
+     *FDECIMAL
+     * </pre>
+     *
+     * <code>int32 decimal = 6;</code>
+     * @return The decimal.
+     */
+    public int getDecimal() {
+      return decimal_;
+    }
+    /**
+     * <pre>
+     *FDECIMAL
+     * </pre>
+     *
+     * <code>int32 decimal = 6;</code>
+     * @param value The decimal to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDecimal(int value) {
+      
+      decimal_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FDECIMAL
+     * </pre>
+     *
+     * <code>int32 decimal = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDecimal() {
+      
+      decimal_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private boolean nullable_ ;
+    /**
+     * <pre>
+     *FISNULL
+     * </pre>
+     *
+     * <code>bool nullable = 7;</code>
+     * @return The nullable.
+     */
+    public boolean getNullable() {
+      return nullable_;
+    }
+    /**
+     * <pre>
+     *FISNULL
+     * </pre>
+     *
+     * <code>bool nullable = 7;</code>
+     * @param value The nullable to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNullable(boolean value) {
+      
+      nullable_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FISNULL
+     * </pre>
+     *
+     * <code>bool nullable = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNullable() {
+      
+      nullable_ = false;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object defaultValue_ = "";
+    /**
+     * <pre>
+     *FDEFAULT
+     * </pre>
+     *
+     * <code>string default_value = 8;</code>
+     * @return The defaultValue.
+     */
+    public java.lang.String getDefaultValue() {
+      java.lang.Object ref = defaultValue_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        defaultValue_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FDEFAULT
+     * </pre>
+     *
+     * <code>string default_value = 8;</code>
+     * @return The bytes for defaultValue.
+     */
+    public com.google.protobuf.ByteString
+        getDefaultValueBytes() {
+      java.lang.Object ref = defaultValue_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        defaultValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FDEFAULT
+     * </pre>
+     *
+     * <code>string default_value = 8;</code>
+     * @param value The defaultValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDefaultValue(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      defaultValue_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FDEFAULT
+     * </pre>
+     *
+     * <code>string default_value = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDefaultValue() {
+      
+      defaultValue_ = getDefaultInstance().getDefaultValue();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FDEFAULT
+     * </pre>
+     *
+     * <code>string default_value = 8;</code>
+     * @param value The bytes for defaultValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDefaultValueBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      defaultValue_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object maxValue_ = "";
+    /**
+     * <pre>
+     *FMAX
+     * </pre>
+     *
+     * <code>string max_value = 9;</code>
+     * @return The maxValue.
+     */
+    public java.lang.String getMaxValue() {
+      java.lang.Object ref = maxValue_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        maxValue_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FMAX
+     * </pre>
+     *
+     * <code>string max_value = 9;</code>
+     * @return The bytes for maxValue.
+     */
+    public com.google.protobuf.ByteString
+        getMaxValueBytes() {
+      java.lang.Object ref = maxValue_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        maxValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FMAX
+     * </pre>
+     *
+     * <code>string max_value = 9;</code>
+     * @param value The maxValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMaxValue(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      maxValue_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FMAX
+     * </pre>
+     *
+     * <code>string max_value = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMaxValue() {
+      
+      maxValue_ = getDefaultInstance().getMaxValue();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FMAX
+     * </pre>
+     *
+     * <code>string max_value = 9;</code>
+     * @param value The bytes for maxValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMaxValueBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      maxValue_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object minValue_ = "";
+    /**
+     * <pre>
+     *FMIN
+     * </pre>
+     *
+     * <code>string min_value = 10;</code>
+     * @return The minValue.
+     */
+    public java.lang.String getMinValue() {
+      java.lang.Object ref = minValue_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        minValue_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FMIN
+     * </pre>
+     *
+     * <code>string min_value = 10;</code>
+     * @return The bytes for minValue.
+     */
+    public com.google.protobuf.ByteString
+        getMinValueBytes() {
+      java.lang.Object ref = minValue_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        minValue_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FMIN
+     * </pre>
+     *
+     * <code>string min_value = 10;</code>
+     * @param value The minValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMinValue(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      minValue_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FMIN
+     * </pre>
+     *
+     * <code>string min_value = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMinValue() {
+      
+      minValue_ = getDefaultInstance().getMinValue();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FMIN
+     * </pre>
+     *
+     * <code>string min_value = 10;</code>
+     * @param value The bytes for minValue to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMinValueBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      minValue_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object check_ = "";
+    /**
+     * <pre>
+     *FCHECK
+     * </pre>
+     *
+     * <code>string check = 11;</code>
+     * @return The check.
+     */
+    public java.lang.String getCheck() {
+      java.lang.Object ref = check_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        check_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FCHECK
+     * </pre>
+     *
+     * <code>string check = 11;</code>
+     * @return The bytes for check.
+     */
+    public com.google.protobuf.ByteString
+        getCheckBytes() {
+      java.lang.Object ref = check_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        check_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FCHECK
+     * </pre>
+     *
+     * <code>string check = 11;</code>
+     * @param value The check to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCheck(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      check_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FCHECK
+     * </pre>
+     *
+     * <code>string check = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCheck() {
+      
+      check_ = getDefaultInstance().getCheck();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FCHECK
+     * </pre>
+     *
+     * <code>string check = 11;</code>
+     * @param value The bytes for check to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCheckBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      check_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object comment_ = "";
+    /**
+     * <pre>
+     *FMEMO
+     * </pre>
+     *
+     * <code>string comment = 12;</code>
+     * @return The comment.
+     */
+    public java.lang.String getComment() {
+      java.lang.Object ref = comment_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        comment_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FMEMO
+     * </pre>
+     *
+     * <code>string comment = 12;</code>
+     * @return The bytes for comment.
+     */
+    public com.google.protobuf.ByteString
+        getCommentBytes() {
+      java.lang.Object ref = comment_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        comment_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FMEMO
+     * </pre>
+     *
+     * <code>string comment = 12;</code>
+     * @param value The comment to set.
+     * @return This builder for chaining.
+     */
+    public Builder setComment(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      comment_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FMEMO
+     * </pre>
+     *
+     * <code>string comment = 12;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearComment() {
+      
+      comment_ = getDefaultInstance().getComment();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FMEMO
+     * </pre>
+     *
+     * <code>string comment = 12;</code>
+     * @param value The bytes for comment to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCommentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      comment_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object tableName_ = "";
+    /**
+     * <pre>
+     *FTABLENAME
+     * </pre>
+     *
+     * <code>string table_name = 13;</code>
+     * @return The tableName.
+     */
+    public java.lang.String getTableName() {
+      java.lang.Object ref = tableName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tableName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FTABLENAME
+     * </pre>
+     *
+     * <code>string table_name = 13;</code>
+     * @return The bytes for tableName.
+     */
+    public com.google.protobuf.ByteString
+        getTableNameBytes() {
+      java.lang.Object ref = tableName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tableName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FTABLENAME
+     * </pre>
+     *
+     * <code>string table_name = 13;</code>
+     * @param value The tableName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTableName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      tableName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FTABLENAME
+     * </pre>
+     *
+     * <code>string table_name = 13;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTableName() {
+      
+      tableName_ = getDefaultInstance().getTableName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FTABLENAME
+     * </pre>
+     *
+     * <code>string table_name = 13;</code>
+     * @param value The bytes for tableName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTableNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      tableName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object enumeration_ = "";
+    /**
+     * <pre>
+     *FENUM
+     * </pre>
+     *
+     * <code>string enumeration = 14;</code>
+     * @return The enumeration.
+     */
+    public java.lang.String getEnumeration() {
+      java.lang.Object ref = enumeration_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        enumeration_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FENUM
+     * </pre>
+     *
+     * <code>string enumeration = 14;</code>
+     * @return The bytes for enumeration.
+     */
+    public com.google.protobuf.ByteString
+        getEnumerationBytes() {
+      java.lang.Object ref = enumeration_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        enumeration_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FENUM
+     * </pre>
+     *
+     * <code>string enumeration = 14;</code>
+     * @param value The enumeration to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEnumeration(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      enumeration_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FENUM
+     * </pre>
+     *
+     * <code>string enumeration = 14;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEnumeration() {
+      
+      enumeration_ = getDefaultInstance().getEnumeration();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FENUM
+     * </pre>
+     *
+     * <code>string enumeration = 14;</code>
+     * @param value The bytes for enumeration to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEnumerationBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      enumeration_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object procedure_ = "";
+    /**
+     * <pre>
+     *FPROCEDURE
+     * </pre>
+     *
+     * <code>string procedure = 15;</code>
+     * @return The procedure.
+     */
+    public java.lang.String getProcedure() {
+      java.lang.Object ref = procedure_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        procedure_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FPROCEDURE
+     * </pre>
+     *
+     * <code>string procedure = 15;</code>
+     * @return The bytes for procedure.
+     */
+    public com.google.protobuf.ByteString
+        getProcedureBytes() {
+      java.lang.Object ref = procedure_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        procedure_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FPROCEDURE
+     * </pre>
+     *
+     * <code>string procedure = 15;</code>
+     * @param value The procedure to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProcedure(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      procedure_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FPROCEDURE
+     * </pre>
+     *
+     * <code>string procedure = 15;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearProcedure() {
+      
+      procedure_ = getDefaultInstance().getProcedure();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FPROCEDURE
+     * </pre>
+     *
+     * <code>string procedure = 15;</code>
+     * @param value The bytes for procedure to set.
+     * @return This builder for chaining.
+     */
+    public Builder setProcedureBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      procedure_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object tag_ = "";
+    /**
+     * <code>string tag = 16;</code>
+     * @return The tag.
+     */
+    public java.lang.String getTag() {
+      java.lang.Object ref = tag_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tag_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string tag = 16;</code>
+     * @return The bytes for tag.
+     */
+    public com.google.protobuf.ByteString
+        getTagBytes() {
+      java.lang.Object ref = tag_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tag_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string tag = 16;</code>
+     * @param value The tag to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTag(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      tag_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string tag = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTag() {
+      
+      tag_ = getDefaultInstance().getTag();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string tag = 16;</code>
+     * @param value The bytes for tag to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTagBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      tag_ = value;
       onChanged();
       return this;
     }

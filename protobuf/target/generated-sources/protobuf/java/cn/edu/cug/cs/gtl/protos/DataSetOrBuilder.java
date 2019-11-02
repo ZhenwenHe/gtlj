@@ -8,38 +8,50 @@ public interface DataSetOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string sql = 1;</code>
-   * @return The sql.
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
    */
-  java.lang.String getSql();
+  java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> 
+      getColumnInfoList();
   /**
-   * <code>string sql = 1;</code>
-   * @return The bytes for sql.
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
    */
-  com.google.protobuf.ByteString
-      getSqlBytes();
+  cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index);
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
+   */
+  int getColumnInfoCount();
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
+   */
+  java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
+      getColumnInfoOrBuilderList();
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 2;</code>
+   */
+  cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
+      int index);
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  java.util.List<cn.edu.cug.cs.gtl.protos.Row> 
-      getRowList();
+  java.util.List<cn.edu.cug.cs.gtl.protos.Tuple> 
+      getTupleList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Row getRow(int index);
+  cn.edu.cug.cs.gtl.protos.Tuple getTuple(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  int getRowCount();
+  int getTupleCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  java.util.List<? extends cn.edu.cug.cs.gtl.protos.RowOrBuilder> 
-      getRowOrBuilderList();
+  java.util.List<? extends cn.edu.cug.cs.gtl.protos.TupleOrBuilder> 
+      getTupleOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Row row = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Tuple tuple = 3;</code>
    */
-  cn.edu.cug.cs.gtl.protos.RowOrBuilder getRowOrBuilder(
+  cn.edu.cug.cs.gtl.protos.TupleOrBuilder getTupleOrBuilder(
       int index);
 }

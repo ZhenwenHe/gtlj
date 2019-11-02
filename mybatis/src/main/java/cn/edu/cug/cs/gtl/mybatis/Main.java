@@ -6,8 +6,9 @@ import cn.edu.cug.cs.gtl.mybatis.mapper.common.DropMapper;
 import cn.edu.cug.cs.gtl.mybatis.mapper.common.InsertMapper;
 import cn.edu.cug.cs.gtl.mybatis.mapper.example.DataMapper;
 import cn.edu.cug.cs.gtl.mybatis.mapper.common.SelectMapper;
-import cn.edu.cug.cs.gtl.protos.SqlDataSet;
-import cn.edu.cug.cs.gtl.protos.SqlRecord;
+import cn.edu.cug.cs.gtl.protos.ColumnInfo;
+import cn.edu.cug.cs.gtl.protos.DataSet;
+import cn.edu.cug.cs.gtl.protos.Tuple;
 import cn.edu.cug.cs.gtl.protos.SqlResult;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,19 +27,7 @@ public class Main {
         //String s = "select h.name, h.w5 from hax_nn_view h, sax_view s where trim(h.name)=trim(s.name) and h.w5>s.w5";
         String s = "select * from DICT_TABINFO";
         SqlResult r = session.execute(s);
-        if (r.getStatus()) {
-            SqlDataSet ds = r.getDataset();
-            for (String str : ds.getColumnNameList()) {
-                System.out.print(str);
-                System.out.print(" ");
-            }
-            System.out.println();
-            for (SqlRecord record : ds.getRecordList()) {
-                System.out.print(record.getElement(0));
-                System.out.print(" ");
-                System.out.println(record.getElement(1));
-            }
-        }
+        System.out.print(r.toString());
     }
 
     public static void test(String[] args) {

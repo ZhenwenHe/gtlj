@@ -4,10 +4,6 @@
 package cn.edu.cug.cs.gtl.protos;
 
 /**
- * <pre>
- * same as sqlite3 storage type
- * </pre>
- *
  * Protobuf type {@code cn.edu.cug.cs.gtl.protos.Value}
  */
 public  final class Value extends
@@ -20,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Value() {
-    type_ = 0;
   }
 
   @java.lang.Override
@@ -53,10 +48,17 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-            int rawValue = input.readEnum();
+          case 10: {
+            cn.edu.cug.cs.gtl.protos.Type.Builder subBuilder = null;
+            if (type_ != null) {
+              subBuilder = type_.toBuilder();
+            }
+            type_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Type.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(type_);
+              type_ = subBuilder.buildPartial();
+            }
 
-            type_ = rawValue;
             break;
           }
           case 18: {
@@ -104,154 +106,27 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.Value.class, cn.edu.cug.cs.gtl.protos.Value.Builder.class);
   }
 
-  /**
-   * Protobuf enum {@code cn.edu.cug.cs.gtl.protos.Value.Type}
-   */
-  public enum Type
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>NULL = 0;</code>
-     */
-    NULL(0),
-    /**
-     * <code>TEXT = 1;</code>
-     */
-    TEXT(1),
-    /**
-     * <code>INTEGER = 2;</code>
-     */
-    INTEGER(2),
-    /**
-     * <code>REAL = 3;</code>
-     */
-    REAL(3),
-    /**
-     * <code>BLOB = 4;</code>
-     */
-    BLOB(4),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>NULL = 0;</code>
-     */
-    public static final int NULL_VALUE = 0;
-    /**
-     * <code>TEXT = 1;</code>
-     */
-    public static final int TEXT_VALUE = 1;
-    /**
-     * <code>INTEGER = 2;</code>
-     */
-    public static final int INTEGER_VALUE = 2;
-    /**
-     * <code>REAL = 3;</code>
-     */
-    public static final int REAL_VALUE = 3;
-    /**
-     * <code>BLOB = 4;</code>
-     */
-    public static final int BLOB_VALUE = 4;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static Type valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static Type forNumber(int value) {
-      switch (value) {
-        case 0: return NULL;
-        case 1: return TEXT;
-        case 2: return INTEGER;
-        case 3: return REAL;
-        case 4: return BLOB;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<Type>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        Type> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<Type>() {
-            public Type findValueByNumber(int number) {
-              return Type.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return cn.edu.cug.cs.gtl.protos.Value.getDescriptor().getEnumTypes().get(0);
-    }
-
-    private static final Type[] VALUES = values();
-
-    public static Type valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private Type(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:cn.edu.cug.cs.gtl.protos.Value.Type)
-  }
-
   public static final int TYPE_FIELD_NUMBER = 1;
-  private int type_;
+  private cn.edu.cug.cs.gtl.protos.Type type_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-   * @return The enum numeric value on the wire for type.
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   * @return Whether the type field is set.
    */
-  public int getTypeValue() {
-    return type_;
+  public boolean hasType() {
+    return type_ != null;
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
    * @return The type.
    */
-  public cn.edu.cug.cs.gtl.protos.Value.Type getType() {
-    @SuppressWarnings("deprecation")
-    cn.edu.cug.cs.gtl.protos.Value.Type result = cn.edu.cug.cs.gtl.protos.Value.Type.valueOf(type_);
-    return result == null ? cn.edu.cug.cs.gtl.protos.Value.Type.UNRECOGNIZED : result;
+  public cn.edu.cug.cs.gtl.protos.Type getType() {
+    return type_ == null ? cn.edu.cug.cs.gtl.protos.Type.getDefaultInstance() : type_;
+  }
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+   */
+  public cn.edu.cug.cs.gtl.protos.TypeOrBuilder getTypeOrBuilder() {
+    return getType();
   }
 
   public static final int DATA_FIELD_NUMBER = 2;
@@ -291,8 +166,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (type_ != cn.edu.cug.cs.gtl.protos.Value.Type.NULL.getNumber()) {
-      output.writeEnum(1, type_);
+    if (type_ != null) {
+      output.writeMessage(1, getType());
     }
     if (data_ != null) {
       output.writeMessage(2, getData());
@@ -306,9 +181,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (type_ != cn.edu.cug.cs.gtl.protos.Value.Type.NULL.getNumber()) {
+    if (type_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, type_);
+        .computeMessageSize(1, getType());
     }
     if (data_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -329,7 +204,11 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.Value other = (cn.edu.cug.cs.gtl.protos.Value) obj;
 
-    if (type_ != other.type_) return false;
+    if (hasType() != other.hasType()) return false;
+    if (hasType()) {
+      if (!getType()
+          .equals(other.getType())) return false;
+    }
     if (hasData() != other.hasData()) return false;
     if (hasData()) {
       if (!getData()
@@ -346,8 +225,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + type_;
+    if (hasType()) {
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+    }
     if (hasData()) {
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getData().hashCode();
@@ -448,10 +329,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * same as sqlite3 storage type
-   * </pre>
-   *
    * Protobuf type {@code cn.edu.cug.cs.gtl.protos.Value}
    */
   public static final class Builder extends
@@ -489,8 +366,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      type_ = 0;
-
+      if (typeBuilder_ == null) {
+        type_ = null;
+      } else {
+        type_ = null;
+        typeBuilder_ = null;
+      }
       if (dataBuilder_ == null) {
         data_ = null;
       } else {
@@ -523,7 +404,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cn.edu.cug.cs.gtl.protos.Value buildPartial() {
       cn.edu.cug.cs.gtl.protos.Value result = new cn.edu.cug.cs.gtl.protos.Value(this);
-      result.type_ = type_;
+      if (typeBuilder_ == null) {
+        result.type_ = type_;
+      } else {
+        result.type_ = typeBuilder_.build();
+      }
       if (dataBuilder_ == null) {
         result.data_ = data_;
       } else {
@@ -577,8 +462,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.Value other) {
       if (other == cn.edu.cug.cs.gtl.protos.Value.getDefaultInstance()) return this;
-      if (other.type_ != 0) {
-        setTypeValue(other.getTypeValue());
+      if (other.hasType()) {
+        mergeType(other.getType());
       }
       if (other.hasData()) {
         mergeData(other.getData());
@@ -612,56 +497,123 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int type_ = 0;
+    private cn.edu.cug.cs.gtl.protos.Type type_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Type, cn.edu.cug.cs.gtl.protos.Type.Builder, cn.edu.cug.cs.gtl.protos.TypeOrBuilder> typeBuilder_;
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @return The enum numeric value on the wire for type.
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     * @return Whether the type field is set.
      */
-    public int getTypeValue() {
-      return type_;
+    public boolean hasType() {
+      return typeBuilder_ != null || type_ != null;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @param value The enum numeric value on the wire for type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTypeValue(int value) {
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
      * @return The type.
      */
-    public cn.edu.cug.cs.gtl.protos.Value.Type getType() {
-      @SuppressWarnings("deprecation")
-      cn.edu.cug.cs.gtl.protos.Value.Type result = cn.edu.cug.cs.gtl.protos.Value.Type.valueOf(type_);
-      return result == null ? cn.edu.cug.cs.gtl.protos.Value.Type.UNRECOGNIZED : result;
+    public cn.edu.cug.cs.gtl.protos.Type getType() {
+      if (typeBuilder_ == null) {
+        return type_ == null ? cn.edu.cug.cs.gtl.protos.Type.getDefaultInstance() : type_;
+      } else {
+        return typeBuilder_.getMessage();
+      }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @param value The type to set.
-     * @return This builder for chaining.
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
      */
-    public Builder setType(cn.edu.cug.cs.gtl.protos.Value.Type value) {
-      if (value == null) {
-        throw new NullPointerException();
+    public Builder setType(cn.edu.cug.cs.gtl.protos.Type value) {
+      if (typeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        type_ = value;
+        onChanged();
+      } else {
+        typeBuilder_.setMessage(value);
       }
-      
-      type_ = value.getNumber();
-      onChanged();
+
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Value.Type type = 1;</code>
-     * @return This builder for chaining.
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public Builder setType(
+        cn.edu.cug.cs.gtl.protos.Type.Builder builderForValue) {
+      if (typeBuilder_ == null) {
+        type_ = builderForValue.build();
+        onChanged();
+      } else {
+        typeBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public Builder mergeType(cn.edu.cug.cs.gtl.protos.Type value) {
+      if (typeBuilder_ == null) {
+        if (type_ != null) {
+          type_ =
+            cn.edu.cug.cs.gtl.protos.Type.newBuilder(type_).mergeFrom(value).buildPartial();
+        } else {
+          type_ = value;
+        }
+        onChanged();
+      } else {
+        typeBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
      */
     public Builder clearType() {
-      
-      type_ = 0;
-      onChanged();
+      if (typeBuilder_ == null) {
+        type_ = null;
+        onChanged();
+      } else {
+        type_ = null;
+        typeBuilder_ = null;
+      }
+
       return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Type.Builder getTypeBuilder() {
+      
+      onChanged();
+      return getTypeFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.TypeOrBuilder getTypeOrBuilder() {
+      if (typeBuilder_ != null) {
+        return typeBuilder_.getMessageOrBuilder();
+      } else {
+        return type_ == null ?
+            cn.edu.cug.cs.gtl.protos.Type.getDefaultInstance() : type_;
+      }
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Type type = 1;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Type, cn.edu.cug.cs.gtl.protos.Type.Builder, cn.edu.cug.cs.gtl.protos.TypeOrBuilder> 
+        getTypeFieldBuilder() {
+      if (typeBuilder_ == null) {
+        typeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.edu.cug.cs.gtl.protos.Type, cn.edu.cug.cs.gtl.protos.Type.Builder, cn.edu.cug.cs.gtl.protos.TypeOrBuilder>(
+                getType(),
+                getParentForChildren(),
+                isClean());
+        type_ = null;
+      }
+      return typeBuilder_;
     }
 
     private com.google.protobuf.Any data_;
