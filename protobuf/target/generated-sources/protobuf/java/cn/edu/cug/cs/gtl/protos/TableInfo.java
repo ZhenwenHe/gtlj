@@ -24,6 +24,7 @@ private static final long serialVersionUID = 0L;
     comment_ = "";
     schema_ = "";
     tag_ = "";
+    sql_ = "";
     columnInfo_ = java.util.Collections.emptyList();
   }
 
@@ -107,6 +108,12 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 74: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            sql_ = s;
+            break;
+          }
+          case 82: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               columnInfo_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.ColumnInfo>();
               mutable_bitField0_ |= 0x00000001;
@@ -502,35 +509,79 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COLUMN_INFO_FIELD_NUMBER = 9;
+  public static final int SQL_FIELD_NUMBER = 9;
+  private volatile java.lang.Object sql_;
+  /**
+   * <pre>
+   *TSQL
+   * </pre>
+   *
+   * <code>string sql = 9;</code>
+   * @return The sql.
+   */
+  public java.lang.String getSql() {
+    java.lang.Object ref = sql_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      sql_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *TSQL
+   * </pre>
+   *
+   * <code>string sql = 9;</code>
+   * @return The bytes for sql.
+   */
+  public com.google.protobuf.ByteString
+      getSqlBytes() {
+    java.lang.Object ref = sql_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      sql_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int COLUMN_INFO_FIELD_NUMBER = 10;
   private java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> columnInfo_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> getColumnInfoList() {
     return columnInfo_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
       getColumnInfoOrBuilderList() {
     return columnInfo_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   public int getColumnInfoCount() {
     return columnInfo_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   public cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index) {
     return columnInfo_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   public cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
       int index) {
@@ -575,8 +626,11 @@ private static final long serialVersionUID = 0L;
     if (!getTagBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, tag_);
     }
+    if (!getSqlBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, sql_);
+    }
     for (int i = 0; i < columnInfo_.size(); i++) {
-      output.writeMessage(9, columnInfo_.get(i));
+      output.writeMessage(10, columnInfo_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -611,9 +665,12 @@ private static final long serialVersionUID = 0L;
     if (!getTagBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, tag_);
     }
+    if (!getSqlBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, sql_);
+    }
     for (int i = 0; i < columnInfo_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, columnInfo_.get(i));
+        .computeMessageSize(10, columnInfo_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -646,6 +703,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSchema())) return false;
     if (!getTag()
         .equals(other.getTag())) return false;
+    if (!getSql()
+        .equals(other.getSql())) return false;
     if (!getColumnInfoList()
         .equals(other.getColumnInfoList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -675,6 +734,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSchema().hashCode();
     hash = (37 * hash) + TAG_FIELD_NUMBER;
     hash = (53 * hash) + getTag().hashCode();
+    hash = (37 * hash) + SQL_FIELD_NUMBER;
+    hash = (53 * hash) + getSql().hashCode();
     if (getColumnInfoCount() > 0) {
       hash = (37 * hash) + COLUMN_INFO_FIELD_NUMBER;
       hash = (53 * hash) + getColumnInfoList().hashCode();
@@ -829,6 +890,8 @@ private static final long serialVersionUID = 0L;
 
       tag_ = "";
 
+      sql_ = "";
+
       if (columnInfoBuilder_ == null) {
         columnInfo_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -870,6 +933,7 @@ private static final long serialVersionUID = 0L;
       result.comment_ = comment_;
       result.schema_ = schema_;
       result.tag_ = tag_;
+      result.sql_ = sql_;
       if (columnInfoBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           columnInfo_ = java.util.Collections.unmodifiableList(columnInfo_);
@@ -957,6 +1021,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getTag().isEmpty()) {
         tag_ = other.tag_;
+        onChanged();
+      }
+      if (!other.getSql().isEmpty()) {
+        sql_ = other.sql_;
         onChanged();
       }
       if (columnInfoBuilder_ == null) {
@@ -1783,6 +1851,102 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object sql_ = "";
+    /**
+     * <pre>
+     *TSQL
+     * </pre>
+     *
+     * <code>string sql = 9;</code>
+     * @return The sql.
+     */
+    public java.lang.String getSql() {
+      java.lang.Object ref = sql_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sql_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TSQL
+     * </pre>
+     *
+     * <code>string sql = 9;</code>
+     * @return The bytes for sql.
+     */
+    public com.google.protobuf.ByteString
+        getSqlBytes() {
+      java.lang.Object ref = sql_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sql_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *TSQL
+     * </pre>
+     *
+     * <code>string sql = 9;</code>
+     * @param value The sql to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSql(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      sql_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TSQL
+     * </pre>
+     *
+     * <code>string sql = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSql() {
+      
+      sql_ = getDefaultInstance().getSql();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *TSQL
+     * </pre>
+     *
+     * <code>string sql = 9;</code>
+     * @param value The bytes for sql to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSqlBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      sql_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> columnInfo_ =
       java.util.Collections.emptyList();
     private void ensureColumnInfoIsMutable() {
@@ -1796,7 +1960,7 @@ private static final long serialVersionUID = 0L;
         cn.edu.cug.cs.gtl.protos.ColumnInfo, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder, cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> columnInfoBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> getColumnInfoList() {
       if (columnInfoBuilder_ == null) {
@@ -1806,7 +1970,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public int getColumnInfoCount() {
       if (columnInfoBuilder_ == null) {
@@ -1816,7 +1980,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index) {
       if (columnInfoBuilder_ == null) {
@@ -1826,7 +1990,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder setColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
@@ -1843,7 +2007,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder setColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
@@ -1857,7 +2021,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder addColumnInfo(cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
       if (columnInfoBuilder_ == null) {
@@ -1873,7 +2037,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder addColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo value) {
@@ -1890,7 +2054,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder addColumnInfo(
         cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
@@ -1904,7 +2068,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder addColumnInfo(
         int index, cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder builderForValue) {
@@ -1918,7 +2082,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder addAllColumnInfo(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.ColumnInfo> values) {
@@ -1933,7 +2097,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder clearColumnInfo() {
       if (columnInfoBuilder_ == null) {
@@ -1946,7 +2110,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public Builder removeColumnInfo(int index) {
       if (columnInfoBuilder_ == null) {
@@ -1959,14 +2123,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder getColumnInfoBuilder(
         int index) {
       return getColumnInfoFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
         int index) {
@@ -1976,7 +2140,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
          getColumnInfoOrBuilderList() {
@@ -1987,14 +2151,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder addColumnInfoBuilder() {
       return getColumnInfoFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder addColumnInfoBuilder(
         int index) {
@@ -2002,7 +2166,7 @@ private static final long serialVersionUID = 0L;
           index, cn.edu.cug.cs.gtl.protos.ColumnInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo.Builder> 
          getColumnInfoBuilderList() {

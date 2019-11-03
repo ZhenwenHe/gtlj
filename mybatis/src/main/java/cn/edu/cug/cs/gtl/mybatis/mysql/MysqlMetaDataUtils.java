@@ -4,6 +4,8 @@ import cn.edu.cug.cs.gtl.mybatis.Session;
 import cn.edu.cug.cs.gtl.mybatis.metadata.SysMetaDataUtils;
 import cn.edu.cug.cs.gtl.protos.TableInfo;
 
+import java.util.List;
+
 public class MysqlMetaDataUtils implements SysMetaDataUtils {
     private Session session;
 
@@ -41,8 +43,9 @@ public class MysqlMetaDataUtils implements SysMetaDataUtils {
         this.session=session;
     }
 
-    @Override
-    public void createUserDictionaries() {
 
+    @Override
+    public List<String> getUserTableNames(String user) {
+        return null;
     }
 }

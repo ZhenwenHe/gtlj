@@ -25,9 +25,10 @@ private static final long serialVersionUID = 0L;
     check_ = "";
     comment_ = "";
     tableName_ = "";
+    tag_ = "";
+    charSet_ = "";
     enumeration_ = "";
     procedure_ = "";
-    tag_ = "";
   }
 
   @java.lang.Override
@@ -98,66 +99,77 @@ private static final long serialVersionUID = 0L;
           }
           case 48: {
 
-            decimal_ = input.readInt32();
+            precision_ = input.readInt32();
             break;
           }
           case 56: {
 
-            nullable_ = input.readBool();
+            scale_ = input.readInt32();
             break;
           }
-          case 66: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 64: {
 
-            defaultValue_ = s;
+            nullable_ = input.readBool();
             break;
           }
           case 74: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            maxValue_ = s;
+            defaultValue_ = s;
             break;
           }
           case 82: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            minValue_ = s;
+            maxValue_ = s;
             break;
           }
           case 90: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            check_ = s;
+            minValue_ = s;
             break;
           }
           case 98: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            comment_ = s;
+            check_ = s;
             break;
           }
           case 106: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            tableName_ = s;
+            comment_ = s;
             break;
           }
           case 114: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            enumeration_ = s;
+            tableName_ = s;
             break;
           }
           case 122: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            procedure_ = s;
+            tag_ = s;
             break;
           }
           case 130: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            tag_ = s;
+            charSet_ = s;
+            break;
+          }
+          case 138: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            enumeration_ = s;
+            break;
+          }
+          case 146: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            procedure_ = s;
             break;
           }
           default: {
@@ -373,42 +385,56 @@ private static final long serialVersionUID = 0L;
     return length_;
   }
 
-  public static final int DECIMAL_FIELD_NUMBER = 6;
-  private int decimal_;
+  public static final int PRECISION_FIELD_NUMBER = 6;
+  private int precision_;
   /**
    * <pre>
-   *FDECIMAL
+   *FPRECISION,表示字段类型的精度的总长度，如果为null,表示精度的总长度不固定，最长为Length；
    * </pre>
    *
-   * <code>int32 decimal = 6;</code>
-   * @return The decimal.
+   * <code>int32 precision = 6;</code>
+   * @return The precision.
    */
-  public int getDecimal() {
-    return decimal_;
+  public int getPrecision() {
+    return precision_;
   }
 
-  public static final int NULLABLE_FIELD_NUMBER = 7;
+  public static final int SCALE_FIELD_NUMBER = 7;
+  private int scale_;
+  /**
+   * <pre>
+   *表示字段类型的精度范围，如果为0,表示只能存储为整数，
+   * </pre>
+   *
+   * <code>int32 scale = 7;</code>
+   * @return The scale.
+   */
+  public int getScale() {
+    return scale_;
+  }
+
+  public static final int NULLABLE_FIELD_NUMBER = 8;
   private boolean nullable_;
   /**
    * <pre>
    *FISNULL
    * </pre>
    *
-   * <code>bool nullable = 7;</code>
+   * <code>bool nullable = 8;</code>
    * @return The nullable.
    */
   public boolean getNullable() {
     return nullable_;
   }
 
-  public static final int DEFAULT_VALUE_FIELD_NUMBER = 8;
+  public static final int DEFAULT_VALUE_FIELD_NUMBER = 9;
   private volatile java.lang.Object defaultValue_;
   /**
    * <pre>
    *FDEFAULT
    * </pre>
    *
-   * <code>string default_value = 8;</code>
+   * <code>string default_value = 9;</code>
    * @return The defaultValue.
    */
   public java.lang.String getDefaultValue() {
@@ -428,7 +454,7 @@ private static final long serialVersionUID = 0L;
    *FDEFAULT
    * </pre>
    *
-   * <code>string default_value = 8;</code>
+   * <code>string default_value = 9;</code>
    * @return The bytes for defaultValue.
    */
   public com.google.protobuf.ByteString
@@ -445,14 +471,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int MAX_VALUE_FIELD_NUMBER = 9;
+  public static final int MAX_VALUE_FIELD_NUMBER = 10;
   private volatile java.lang.Object maxValue_;
   /**
    * <pre>
    *FMAX
    * </pre>
    *
-   * <code>string max_value = 9;</code>
+   * <code>string max_value = 10;</code>
    * @return The maxValue.
    */
   public java.lang.String getMaxValue() {
@@ -472,7 +498,7 @@ private static final long serialVersionUID = 0L;
    *FMAX
    * </pre>
    *
-   * <code>string max_value = 9;</code>
+   * <code>string max_value = 10;</code>
    * @return The bytes for maxValue.
    */
   public com.google.protobuf.ByteString
@@ -489,14 +515,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int MIN_VALUE_FIELD_NUMBER = 10;
+  public static final int MIN_VALUE_FIELD_NUMBER = 11;
   private volatile java.lang.Object minValue_;
   /**
    * <pre>
    *FMIN
    * </pre>
    *
-   * <code>string min_value = 10;</code>
+   * <code>string min_value = 11;</code>
    * @return The minValue.
    */
   public java.lang.String getMinValue() {
@@ -516,7 +542,7 @@ private static final long serialVersionUID = 0L;
    *FMIN
    * </pre>
    *
-   * <code>string min_value = 10;</code>
+   * <code>string min_value = 11;</code>
    * @return The bytes for minValue.
    */
   public com.google.protobuf.ByteString
@@ -533,14 +559,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int CHECK_FIELD_NUMBER = 11;
+  public static final int CHECK_FIELD_NUMBER = 12;
   private volatile java.lang.Object check_;
   /**
    * <pre>
    *FCHECK
    * </pre>
    *
-   * <code>string check = 11;</code>
+   * <code>string check = 12;</code>
    * @return The check.
    */
   public java.lang.String getCheck() {
@@ -560,7 +586,7 @@ private static final long serialVersionUID = 0L;
    *FCHECK
    * </pre>
    *
-   * <code>string check = 11;</code>
+   * <code>string check = 12;</code>
    * @return The bytes for check.
    */
   public com.google.protobuf.ByteString
@@ -577,14 +603,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COMMENT_FIELD_NUMBER = 12;
+  public static final int COMMENT_FIELD_NUMBER = 13;
   private volatile java.lang.Object comment_;
   /**
    * <pre>
    *FMEMO
    * </pre>
    *
-   * <code>string comment = 12;</code>
+   * <code>string comment = 13;</code>
    * @return The comment.
    */
   public java.lang.String getComment() {
@@ -604,7 +630,7 @@ private static final long serialVersionUID = 0L;
    *FMEMO
    * </pre>
    *
-   * <code>string comment = 12;</code>
+   * <code>string comment = 13;</code>
    * @return The bytes for comment.
    */
   public com.google.protobuf.ByteString
@@ -621,14 +647,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TABLE_NAME_FIELD_NUMBER = 13;
+  public static final int TABLE_NAME_FIELD_NUMBER = 14;
   private volatile java.lang.Object tableName_;
   /**
    * <pre>
    *FTABLENAME
    * </pre>
    *
-   * <code>string table_name = 13;</code>
+   * <code>string table_name = 14;</code>
    * @return The tableName.
    */
   public java.lang.String getTableName() {
@@ -648,7 +674,7 @@ private static final long serialVersionUID = 0L;
    *FTABLENAME
    * </pre>
    *
-   * <code>string table_name = 13;</code>
+   * <code>string table_name = 14;</code>
    * @return The bytes for tableName.
    */
   public com.google.protobuf.ByteString
@@ -665,14 +691,102 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ENUMERATION_FIELD_NUMBER = 14;
+  public static final int TAG_FIELD_NUMBER = 15;
+  private volatile java.lang.Object tag_;
+  /**
+   * <pre>
+   *FTAG
+   * </pre>
+   *
+   * <code>string tag = 15;</code>
+   * @return The tag.
+   */
+  public java.lang.String getTag() {
+    java.lang.Object ref = tag_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      tag_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FTAG
+   * </pre>
+   *
+   * <code>string tag = 15;</code>
+   * @return The bytes for tag.
+   */
+  public com.google.protobuf.ByteString
+      getTagBytes() {
+    java.lang.Object ref = tag_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      tag_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int CHAR_SET_FIELD_NUMBER = 16;
+  private volatile java.lang.Object charSet_;
+  /**
+   * <pre>
+   *FCHARSET
+   * </pre>
+   *
+   * <code>string char_set = 16;</code>
+   * @return The charSet.
+   */
+  public java.lang.String getCharSet() {
+    java.lang.Object ref = charSet_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      charSet_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   *FCHARSET
+   * </pre>
+   *
+   * <code>string char_set = 16;</code>
+   * @return The bytes for charSet.
+   */
+  public com.google.protobuf.ByteString
+      getCharSetBytes() {
+    java.lang.Object ref = charSet_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      charSet_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int ENUMERATION_FIELD_NUMBER = 17;
   private volatile java.lang.Object enumeration_;
   /**
    * <pre>
    *FENUM
    * </pre>
    *
-   * <code>string enumeration = 14;</code>
+   * <code>string enumeration = 17;</code>
    * @return The enumeration.
    */
   public java.lang.String getEnumeration() {
@@ -692,7 +806,7 @@ private static final long serialVersionUID = 0L;
    *FENUM
    * </pre>
    *
-   * <code>string enumeration = 14;</code>
+   * <code>string enumeration = 17;</code>
    * @return The bytes for enumeration.
    */
   public com.google.protobuf.ByteString
@@ -709,14 +823,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PROCEDURE_FIELD_NUMBER = 15;
+  public static final int PROCEDURE_FIELD_NUMBER = 18;
   private volatile java.lang.Object procedure_;
   /**
    * <pre>
    *FPROCEDURE
    * </pre>
    *
-   * <code>string procedure = 15;</code>
+   * <code>string procedure = 18;</code>
    * @return The procedure.
    */
   public java.lang.String getProcedure() {
@@ -736,7 +850,7 @@ private static final long serialVersionUID = 0L;
    *FPROCEDURE
    * </pre>
    *
-   * <code>string procedure = 15;</code>
+   * <code>string procedure = 18;</code>
    * @return The bytes for procedure.
    */
   public com.google.protobuf.ByteString
@@ -747,42 +861,6 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       procedure_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int TAG_FIELD_NUMBER = 16;
-  private volatile java.lang.Object tag_;
-  /**
-   * <code>string tag = 16;</code>
-   * @return The tag.
-   */
-  public java.lang.String getTag() {
-    java.lang.Object ref = tag_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      tag_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string tag = 16;</code>
-   * @return The bytes for tag.
-   */
-  public com.google.protobuf.ByteString
-      getTagBytes() {
-    java.lang.Object ref = tag_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      tag_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -818,38 +896,44 @@ private static final long serialVersionUID = 0L;
     if (length_ != 0) {
       output.writeInt32(5, length_);
     }
-    if (decimal_ != 0) {
-      output.writeInt32(6, decimal_);
+    if (precision_ != 0) {
+      output.writeInt32(6, precision_);
+    }
+    if (scale_ != 0) {
+      output.writeInt32(7, scale_);
     }
     if (nullable_ != false) {
-      output.writeBool(7, nullable_);
+      output.writeBool(8, nullable_);
     }
     if (!getDefaultValueBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, defaultValue_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, defaultValue_);
     }
     if (!getMaxValueBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, maxValue_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, maxValue_);
     }
     if (!getMinValueBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, minValue_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, minValue_);
     }
     if (!getCheckBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 11, check_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, check_);
     }
     if (!getCommentBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, comment_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, comment_);
     }
     if (!getTableNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 13, tableName_);
-    }
-    if (!getEnumerationBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 14, enumeration_);
-    }
-    if (!getProcedureBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 15, procedure_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 14, tableName_);
     }
     if (!getTagBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 16, tag_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 15, tag_);
+    }
+    if (!getCharSetBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 16, charSet_);
+    }
+    if (!getEnumerationBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 17, enumeration_);
+    }
+    if (!getProcedureBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 18, procedure_);
     }
     unknownFields.writeTo(output);
   }
@@ -877,40 +961,47 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(5, length_);
     }
-    if (decimal_ != 0) {
+    if (precision_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(6, decimal_);
+        .computeInt32Size(6, precision_);
+    }
+    if (scale_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(7, scale_);
     }
     if (nullable_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(7, nullable_);
+        .computeBoolSize(8, nullable_);
     }
     if (!getDefaultValueBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, defaultValue_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, defaultValue_);
     }
     if (!getMaxValueBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, maxValue_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, maxValue_);
     }
     if (!getMinValueBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, minValue_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, minValue_);
     }
     if (!getCheckBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, check_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, check_);
     }
     if (!getCommentBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, comment_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, comment_);
     }
     if (!getTableNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, tableName_);
-    }
-    if (!getEnumerationBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, enumeration_);
-    }
-    if (!getProcedureBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, procedure_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, tableName_);
     }
     if (!getTagBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, tag_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, tag_);
+    }
+    if (!getCharSetBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, charSet_);
+    }
+    if (!getEnumerationBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(17, enumeration_);
+    }
+    if (!getProcedureBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(18, procedure_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -940,8 +1031,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getTitle())) return false;
     if (getLength()
         != other.getLength()) return false;
-    if (getDecimal()
-        != other.getDecimal()) return false;
+    if (getPrecision()
+        != other.getPrecision()) return false;
+    if (getScale()
+        != other.getScale()) return false;
     if (getNullable()
         != other.getNullable()) return false;
     if (!getDefaultValue()
@@ -956,12 +1049,14 @@ private static final long serialVersionUID = 0L;
         .equals(other.getComment())) return false;
     if (!getTableName()
         .equals(other.getTableName())) return false;
+    if (!getTag()
+        .equals(other.getTag())) return false;
+    if (!getCharSet()
+        .equals(other.getCharSet())) return false;
     if (!getEnumeration()
         .equals(other.getEnumeration())) return false;
     if (!getProcedure()
         .equals(other.getProcedure())) return false;
-    if (!getTag()
-        .equals(other.getTag())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -985,8 +1080,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + LENGTH_FIELD_NUMBER;
     hash = (53 * hash) + getLength();
-    hash = (37 * hash) + DECIMAL_FIELD_NUMBER;
-    hash = (53 * hash) + getDecimal();
+    hash = (37 * hash) + PRECISION_FIELD_NUMBER;
+    hash = (53 * hash) + getPrecision();
+    hash = (37 * hash) + SCALE_FIELD_NUMBER;
+    hash = (53 * hash) + getScale();
     hash = (37 * hash) + NULLABLE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getNullable());
@@ -1002,12 +1099,14 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getComment().hashCode();
     hash = (37 * hash) + TABLE_NAME_FIELD_NUMBER;
     hash = (53 * hash) + getTableName().hashCode();
+    hash = (37 * hash) + TAG_FIELD_NUMBER;
+    hash = (53 * hash) + getTag().hashCode();
+    hash = (37 * hash) + CHAR_SET_FIELD_NUMBER;
+    hash = (53 * hash) + getCharSet().hashCode();
     hash = (37 * hash) + ENUMERATION_FIELD_NUMBER;
     hash = (53 * hash) + getEnumeration().hashCode();
     hash = (37 * hash) + PROCEDURE_FIELD_NUMBER;
     hash = (53 * hash) + getProcedure().hashCode();
-    hash = (37 * hash) + TAG_FIELD_NUMBER;
-    hash = (53 * hash) + getTag().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1155,7 +1254,9 @@ private static final long serialVersionUID = 0L;
 
       length_ = 0;
 
-      decimal_ = 0;
+      precision_ = 0;
+
+      scale_ = 0;
 
       nullable_ = false;
 
@@ -1171,11 +1272,13 @@ private static final long serialVersionUID = 0L;
 
       tableName_ = "";
 
+      tag_ = "";
+
+      charSet_ = "";
+
       enumeration_ = "";
 
       procedure_ = "";
-
-      tag_ = "";
 
       return this;
     }
@@ -1212,7 +1315,8 @@ private static final long serialVersionUID = 0L;
       result.code_ = code_;
       result.title_ = title_;
       result.length_ = length_;
-      result.decimal_ = decimal_;
+      result.precision_ = precision_;
+      result.scale_ = scale_;
       result.nullable_ = nullable_;
       result.defaultValue_ = defaultValue_;
       result.maxValue_ = maxValue_;
@@ -1220,9 +1324,10 @@ private static final long serialVersionUID = 0L;
       result.check_ = check_;
       result.comment_ = comment_;
       result.tableName_ = tableName_;
+      result.tag_ = tag_;
+      result.charSet_ = charSet_;
       result.enumeration_ = enumeration_;
       result.procedure_ = procedure_;
-      result.tag_ = tag_;
       onBuilt();
       return result;
     }
@@ -1289,8 +1394,11 @@ private static final long serialVersionUID = 0L;
       if (other.getLength() != 0) {
         setLength(other.getLength());
       }
-      if (other.getDecimal() != 0) {
-        setDecimal(other.getDecimal());
+      if (other.getPrecision() != 0) {
+        setPrecision(other.getPrecision());
+      }
+      if (other.getScale() != 0) {
+        setScale(other.getScale());
       }
       if (other.getNullable() != false) {
         setNullable(other.getNullable());
@@ -1319,16 +1427,20 @@ private static final long serialVersionUID = 0L;
         tableName_ = other.tableName_;
         onChanged();
       }
+      if (!other.getTag().isEmpty()) {
+        tag_ = other.tag_;
+        onChanged();
+      }
+      if (!other.getCharSet().isEmpty()) {
+        charSet_ = other.charSet_;
+        onChanged();
+      }
       if (!other.getEnumeration().isEmpty()) {
         enumeration_ = other.enumeration_;
         onChanged();
       }
       if (!other.getProcedure().isEmpty()) {
         procedure_ = other.procedure_;
-        onChanged();
-      }
-      if (!other.getTag().isEmpty()) {
-        tag_ = other.tag_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1845,44 +1957,86 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int decimal_ ;
+    private int precision_ ;
     /**
      * <pre>
-     *FDECIMAL
+     *FPRECISION,表示字段类型的精度的总长度，如果为null,表示精度的总长度不固定，最长为Length；
      * </pre>
      *
-     * <code>int32 decimal = 6;</code>
-     * @return The decimal.
+     * <code>int32 precision = 6;</code>
+     * @return The precision.
      */
-    public int getDecimal() {
-      return decimal_;
+    public int getPrecision() {
+      return precision_;
     }
     /**
      * <pre>
-     *FDECIMAL
+     *FPRECISION,表示字段类型的精度的总长度，如果为null,表示精度的总长度不固定，最长为Length；
      * </pre>
      *
-     * <code>int32 decimal = 6;</code>
-     * @param value The decimal to set.
+     * <code>int32 precision = 6;</code>
+     * @param value The precision to set.
      * @return This builder for chaining.
      */
-    public Builder setDecimal(int value) {
+    public Builder setPrecision(int value) {
       
-      decimal_ = value;
+      precision_ = value;
       onChanged();
       return this;
     }
     /**
      * <pre>
-     *FDECIMAL
+     *FPRECISION,表示字段类型的精度的总长度，如果为null,表示精度的总长度不固定，最长为Length；
      * </pre>
      *
-     * <code>int32 decimal = 6;</code>
+     * <code>int32 precision = 6;</code>
      * @return This builder for chaining.
      */
-    public Builder clearDecimal() {
+    public Builder clearPrecision() {
       
-      decimal_ = 0;
+      precision_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int scale_ ;
+    /**
+     * <pre>
+     *表示字段类型的精度范围，如果为0,表示只能存储为整数，
+     * </pre>
+     *
+     * <code>int32 scale = 7;</code>
+     * @return The scale.
+     */
+    public int getScale() {
+      return scale_;
+    }
+    /**
+     * <pre>
+     *表示字段类型的精度范围，如果为0,表示只能存储为整数，
+     * </pre>
+     *
+     * <code>int32 scale = 7;</code>
+     * @param value The scale to set.
+     * @return This builder for chaining.
+     */
+    public Builder setScale(int value) {
+      
+      scale_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *表示字段类型的精度范围，如果为0,表示只能存储为整数，
+     * </pre>
+     *
+     * <code>int32 scale = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearScale() {
+      
+      scale_ = 0;
       onChanged();
       return this;
     }
@@ -1893,7 +2047,7 @@ private static final long serialVersionUID = 0L;
      *FISNULL
      * </pre>
      *
-     * <code>bool nullable = 7;</code>
+     * <code>bool nullable = 8;</code>
      * @return The nullable.
      */
     public boolean getNullable() {
@@ -1904,7 +2058,7 @@ private static final long serialVersionUID = 0L;
      *FISNULL
      * </pre>
      *
-     * <code>bool nullable = 7;</code>
+     * <code>bool nullable = 8;</code>
      * @param value The nullable to set.
      * @return This builder for chaining.
      */
@@ -1919,7 +2073,7 @@ private static final long serialVersionUID = 0L;
      *FISNULL
      * </pre>
      *
-     * <code>bool nullable = 7;</code>
+     * <code>bool nullable = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearNullable() {
@@ -1935,7 +2089,7 @@ private static final long serialVersionUID = 0L;
      *FDEFAULT
      * </pre>
      *
-     * <code>string default_value = 8;</code>
+     * <code>string default_value = 9;</code>
      * @return The defaultValue.
      */
     public java.lang.String getDefaultValue() {
@@ -1955,7 +2109,7 @@ private static final long serialVersionUID = 0L;
      *FDEFAULT
      * </pre>
      *
-     * <code>string default_value = 8;</code>
+     * <code>string default_value = 9;</code>
      * @return The bytes for defaultValue.
      */
     public com.google.protobuf.ByteString
@@ -1976,7 +2130,7 @@ private static final long serialVersionUID = 0L;
      *FDEFAULT
      * </pre>
      *
-     * <code>string default_value = 8;</code>
+     * <code>string default_value = 9;</code>
      * @param value The defaultValue to set.
      * @return This builder for chaining.
      */
@@ -1995,7 +2149,7 @@ private static final long serialVersionUID = 0L;
      *FDEFAULT
      * </pre>
      *
-     * <code>string default_value = 8;</code>
+     * <code>string default_value = 9;</code>
      * @return This builder for chaining.
      */
     public Builder clearDefaultValue() {
@@ -2009,7 +2163,7 @@ private static final long serialVersionUID = 0L;
      *FDEFAULT
      * </pre>
      *
-     * <code>string default_value = 8;</code>
+     * <code>string default_value = 9;</code>
      * @param value The bytes for defaultValue to set.
      * @return This builder for chaining.
      */
@@ -2031,7 +2185,7 @@ private static final long serialVersionUID = 0L;
      *FMAX
      * </pre>
      *
-     * <code>string max_value = 9;</code>
+     * <code>string max_value = 10;</code>
      * @return The maxValue.
      */
     public java.lang.String getMaxValue() {
@@ -2051,7 +2205,7 @@ private static final long serialVersionUID = 0L;
      *FMAX
      * </pre>
      *
-     * <code>string max_value = 9;</code>
+     * <code>string max_value = 10;</code>
      * @return The bytes for maxValue.
      */
     public com.google.protobuf.ByteString
@@ -2072,7 +2226,7 @@ private static final long serialVersionUID = 0L;
      *FMAX
      * </pre>
      *
-     * <code>string max_value = 9;</code>
+     * <code>string max_value = 10;</code>
      * @param value The maxValue to set.
      * @return This builder for chaining.
      */
@@ -2091,7 +2245,7 @@ private static final long serialVersionUID = 0L;
      *FMAX
      * </pre>
      *
-     * <code>string max_value = 9;</code>
+     * <code>string max_value = 10;</code>
      * @return This builder for chaining.
      */
     public Builder clearMaxValue() {
@@ -2105,7 +2259,7 @@ private static final long serialVersionUID = 0L;
      *FMAX
      * </pre>
      *
-     * <code>string max_value = 9;</code>
+     * <code>string max_value = 10;</code>
      * @param value The bytes for maxValue to set.
      * @return This builder for chaining.
      */
@@ -2127,7 +2281,7 @@ private static final long serialVersionUID = 0L;
      *FMIN
      * </pre>
      *
-     * <code>string min_value = 10;</code>
+     * <code>string min_value = 11;</code>
      * @return The minValue.
      */
     public java.lang.String getMinValue() {
@@ -2147,7 +2301,7 @@ private static final long serialVersionUID = 0L;
      *FMIN
      * </pre>
      *
-     * <code>string min_value = 10;</code>
+     * <code>string min_value = 11;</code>
      * @return The bytes for minValue.
      */
     public com.google.protobuf.ByteString
@@ -2168,7 +2322,7 @@ private static final long serialVersionUID = 0L;
      *FMIN
      * </pre>
      *
-     * <code>string min_value = 10;</code>
+     * <code>string min_value = 11;</code>
      * @param value The minValue to set.
      * @return This builder for chaining.
      */
@@ -2187,7 +2341,7 @@ private static final long serialVersionUID = 0L;
      *FMIN
      * </pre>
      *
-     * <code>string min_value = 10;</code>
+     * <code>string min_value = 11;</code>
      * @return This builder for chaining.
      */
     public Builder clearMinValue() {
@@ -2201,7 +2355,7 @@ private static final long serialVersionUID = 0L;
      *FMIN
      * </pre>
      *
-     * <code>string min_value = 10;</code>
+     * <code>string min_value = 11;</code>
      * @param value The bytes for minValue to set.
      * @return This builder for chaining.
      */
@@ -2223,7 +2377,7 @@ private static final long serialVersionUID = 0L;
      *FCHECK
      * </pre>
      *
-     * <code>string check = 11;</code>
+     * <code>string check = 12;</code>
      * @return The check.
      */
     public java.lang.String getCheck() {
@@ -2243,7 +2397,7 @@ private static final long serialVersionUID = 0L;
      *FCHECK
      * </pre>
      *
-     * <code>string check = 11;</code>
+     * <code>string check = 12;</code>
      * @return The bytes for check.
      */
     public com.google.protobuf.ByteString
@@ -2264,7 +2418,7 @@ private static final long serialVersionUID = 0L;
      *FCHECK
      * </pre>
      *
-     * <code>string check = 11;</code>
+     * <code>string check = 12;</code>
      * @param value The check to set.
      * @return This builder for chaining.
      */
@@ -2283,7 +2437,7 @@ private static final long serialVersionUID = 0L;
      *FCHECK
      * </pre>
      *
-     * <code>string check = 11;</code>
+     * <code>string check = 12;</code>
      * @return This builder for chaining.
      */
     public Builder clearCheck() {
@@ -2297,7 +2451,7 @@ private static final long serialVersionUID = 0L;
      *FCHECK
      * </pre>
      *
-     * <code>string check = 11;</code>
+     * <code>string check = 12;</code>
      * @param value The bytes for check to set.
      * @return This builder for chaining.
      */
@@ -2319,7 +2473,7 @@ private static final long serialVersionUID = 0L;
      *FMEMO
      * </pre>
      *
-     * <code>string comment = 12;</code>
+     * <code>string comment = 13;</code>
      * @return The comment.
      */
     public java.lang.String getComment() {
@@ -2339,7 +2493,7 @@ private static final long serialVersionUID = 0L;
      *FMEMO
      * </pre>
      *
-     * <code>string comment = 12;</code>
+     * <code>string comment = 13;</code>
      * @return The bytes for comment.
      */
     public com.google.protobuf.ByteString
@@ -2360,7 +2514,7 @@ private static final long serialVersionUID = 0L;
      *FMEMO
      * </pre>
      *
-     * <code>string comment = 12;</code>
+     * <code>string comment = 13;</code>
      * @param value The comment to set.
      * @return This builder for chaining.
      */
@@ -2379,7 +2533,7 @@ private static final long serialVersionUID = 0L;
      *FMEMO
      * </pre>
      *
-     * <code>string comment = 12;</code>
+     * <code>string comment = 13;</code>
      * @return This builder for chaining.
      */
     public Builder clearComment() {
@@ -2393,7 +2547,7 @@ private static final long serialVersionUID = 0L;
      *FMEMO
      * </pre>
      *
-     * <code>string comment = 12;</code>
+     * <code>string comment = 13;</code>
      * @param value The bytes for comment to set.
      * @return This builder for chaining.
      */
@@ -2415,7 +2569,7 @@ private static final long serialVersionUID = 0L;
      *FTABLENAME
      * </pre>
      *
-     * <code>string table_name = 13;</code>
+     * <code>string table_name = 14;</code>
      * @return The tableName.
      */
     public java.lang.String getTableName() {
@@ -2435,7 +2589,7 @@ private static final long serialVersionUID = 0L;
      *FTABLENAME
      * </pre>
      *
-     * <code>string table_name = 13;</code>
+     * <code>string table_name = 14;</code>
      * @return The bytes for tableName.
      */
     public com.google.protobuf.ByteString
@@ -2456,7 +2610,7 @@ private static final long serialVersionUID = 0L;
      *FTABLENAME
      * </pre>
      *
-     * <code>string table_name = 13;</code>
+     * <code>string table_name = 14;</code>
      * @param value The tableName to set.
      * @return This builder for chaining.
      */
@@ -2475,7 +2629,7 @@ private static final long serialVersionUID = 0L;
      *FTABLENAME
      * </pre>
      *
-     * <code>string table_name = 13;</code>
+     * <code>string table_name = 14;</code>
      * @return This builder for chaining.
      */
     public Builder clearTableName() {
@@ -2489,7 +2643,7 @@ private static final long serialVersionUID = 0L;
      *FTABLENAME
      * </pre>
      *
-     * <code>string table_name = 13;</code>
+     * <code>string table_name = 14;</code>
      * @param value The bytes for tableName to set.
      * @return This builder for chaining.
      */
@@ -2505,13 +2659,205 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object tag_ = "";
+    /**
+     * <pre>
+     *FTAG
+     * </pre>
+     *
+     * <code>string tag = 15;</code>
+     * @return The tag.
+     */
+    public java.lang.String getTag() {
+      java.lang.Object ref = tag_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        tag_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FTAG
+     * </pre>
+     *
+     * <code>string tag = 15;</code>
+     * @return The bytes for tag.
+     */
+    public com.google.protobuf.ByteString
+        getTagBytes() {
+      java.lang.Object ref = tag_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tag_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FTAG
+     * </pre>
+     *
+     * <code>string tag = 15;</code>
+     * @param value The tag to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTag(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      tag_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FTAG
+     * </pre>
+     *
+     * <code>string tag = 15;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTag() {
+      
+      tag_ = getDefaultInstance().getTag();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FTAG
+     * </pre>
+     *
+     * <code>string tag = 15;</code>
+     * @param value The bytes for tag to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTagBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      tag_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object charSet_ = "";
+    /**
+     * <pre>
+     *FCHARSET
+     * </pre>
+     *
+     * <code>string char_set = 16;</code>
+     * @return The charSet.
+     */
+    public java.lang.String getCharSet() {
+      java.lang.Object ref = charSet_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        charSet_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FCHARSET
+     * </pre>
+     *
+     * <code>string char_set = 16;</code>
+     * @return The bytes for charSet.
+     */
+    public com.google.protobuf.ByteString
+        getCharSetBytes() {
+      java.lang.Object ref = charSet_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        charSet_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     *FCHARSET
+     * </pre>
+     *
+     * <code>string char_set = 16;</code>
+     * @param value The charSet to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCharSet(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      charSet_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FCHARSET
+     * </pre>
+     *
+     * <code>string char_set = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCharSet() {
+      
+      charSet_ = getDefaultInstance().getCharSet();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *FCHARSET
+     * </pre>
+     *
+     * <code>string char_set = 16;</code>
+     * @param value The bytes for charSet to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCharSetBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      charSet_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object enumeration_ = "";
     /**
      * <pre>
      *FENUM
      * </pre>
      *
-     * <code>string enumeration = 14;</code>
+     * <code>string enumeration = 17;</code>
      * @return The enumeration.
      */
     public java.lang.String getEnumeration() {
@@ -2531,7 +2877,7 @@ private static final long serialVersionUID = 0L;
      *FENUM
      * </pre>
      *
-     * <code>string enumeration = 14;</code>
+     * <code>string enumeration = 17;</code>
      * @return The bytes for enumeration.
      */
     public com.google.protobuf.ByteString
@@ -2552,7 +2898,7 @@ private static final long serialVersionUID = 0L;
      *FENUM
      * </pre>
      *
-     * <code>string enumeration = 14;</code>
+     * <code>string enumeration = 17;</code>
      * @param value The enumeration to set.
      * @return This builder for chaining.
      */
@@ -2571,7 +2917,7 @@ private static final long serialVersionUID = 0L;
      *FENUM
      * </pre>
      *
-     * <code>string enumeration = 14;</code>
+     * <code>string enumeration = 17;</code>
      * @return This builder for chaining.
      */
     public Builder clearEnumeration() {
@@ -2585,7 +2931,7 @@ private static final long serialVersionUID = 0L;
      *FENUM
      * </pre>
      *
-     * <code>string enumeration = 14;</code>
+     * <code>string enumeration = 17;</code>
      * @param value The bytes for enumeration to set.
      * @return This builder for chaining.
      */
@@ -2607,7 +2953,7 @@ private static final long serialVersionUID = 0L;
      *FPROCEDURE
      * </pre>
      *
-     * <code>string procedure = 15;</code>
+     * <code>string procedure = 18;</code>
      * @return The procedure.
      */
     public java.lang.String getProcedure() {
@@ -2627,7 +2973,7 @@ private static final long serialVersionUID = 0L;
      *FPROCEDURE
      * </pre>
      *
-     * <code>string procedure = 15;</code>
+     * <code>string procedure = 18;</code>
      * @return The bytes for procedure.
      */
     public com.google.protobuf.ByteString
@@ -2648,7 +2994,7 @@ private static final long serialVersionUID = 0L;
      *FPROCEDURE
      * </pre>
      *
-     * <code>string procedure = 15;</code>
+     * <code>string procedure = 18;</code>
      * @param value The procedure to set.
      * @return This builder for chaining.
      */
@@ -2667,7 +3013,7 @@ private static final long serialVersionUID = 0L;
      *FPROCEDURE
      * </pre>
      *
-     * <code>string procedure = 15;</code>
+     * <code>string procedure = 18;</code>
      * @return This builder for chaining.
      */
     public Builder clearProcedure() {
@@ -2681,7 +3027,7 @@ private static final long serialVersionUID = 0L;
      *FPROCEDURE
      * </pre>
      *
-     * <code>string procedure = 15;</code>
+     * <code>string procedure = 18;</code>
      * @param value The bytes for procedure to set.
      * @return This builder for chaining.
      */
@@ -2693,82 +3039,6 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       procedure_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object tag_ = "";
-    /**
-     * <code>string tag = 16;</code>
-     * @return The tag.
-     */
-    public java.lang.String getTag() {
-      java.lang.Object ref = tag_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        tag_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string tag = 16;</code>
-     * @return The bytes for tag.
-     */
-    public com.google.protobuf.ByteString
-        getTagBytes() {
-      java.lang.Object ref = tag_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        tag_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string tag = 16;</code>
-     * @param value The tag to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTag(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      tag_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string tag = 16;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearTag() {
-      
-      tag_ = getDefaultInstance().getTag();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string tag = 16;</code>
-     * @param value The bytes for tag to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTagBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      tag_ = value;
       onChanged();
       return this;
     }

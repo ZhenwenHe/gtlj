@@ -106,20 +106,30 @@ public interface ColumnInfoOrBuilder extends
 
   /**
    * <pre>
-   *FDECIMAL
+   *FPRECISION,表示字段类型的精度的总长度，如果为null,表示精度的总长度不固定，最长为Length；
    * </pre>
    *
-   * <code>int32 decimal = 6;</code>
-   * @return The decimal.
+   * <code>int32 precision = 6;</code>
+   * @return The precision.
    */
-  int getDecimal();
+  int getPrecision();
+
+  /**
+   * <pre>
+   *表示字段类型的精度范围，如果为0,表示只能存储为整数，
+   * </pre>
+   *
+   * <code>int32 scale = 7;</code>
+   * @return The scale.
+   */
+  int getScale();
 
   /**
    * <pre>
    *FISNULL
    * </pre>
    *
-   * <code>bool nullable = 7;</code>
+   * <code>bool nullable = 8;</code>
    * @return The nullable.
    */
   boolean getNullable();
@@ -129,7 +139,7 @@ public interface ColumnInfoOrBuilder extends
    *FDEFAULT
    * </pre>
    *
-   * <code>string default_value = 8;</code>
+   * <code>string default_value = 9;</code>
    * @return The defaultValue.
    */
   java.lang.String getDefaultValue();
@@ -138,7 +148,7 @@ public interface ColumnInfoOrBuilder extends
    *FDEFAULT
    * </pre>
    *
-   * <code>string default_value = 8;</code>
+   * <code>string default_value = 9;</code>
    * @return The bytes for defaultValue.
    */
   com.google.protobuf.ByteString
@@ -149,7 +159,7 @@ public interface ColumnInfoOrBuilder extends
    *FMAX
    * </pre>
    *
-   * <code>string max_value = 9;</code>
+   * <code>string max_value = 10;</code>
    * @return The maxValue.
    */
   java.lang.String getMaxValue();
@@ -158,7 +168,7 @@ public interface ColumnInfoOrBuilder extends
    *FMAX
    * </pre>
    *
-   * <code>string max_value = 9;</code>
+   * <code>string max_value = 10;</code>
    * @return The bytes for maxValue.
    */
   com.google.protobuf.ByteString
@@ -169,7 +179,7 @@ public interface ColumnInfoOrBuilder extends
    *FMIN
    * </pre>
    *
-   * <code>string min_value = 10;</code>
+   * <code>string min_value = 11;</code>
    * @return The minValue.
    */
   java.lang.String getMinValue();
@@ -178,7 +188,7 @@ public interface ColumnInfoOrBuilder extends
    *FMIN
    * </pre>
    *
-   * <code>string min_value = 10;</code>
+   * <code>string min_value = 11;</code>
    * @return The bytes for minValue.
    */
   com.google.protobuf.ByteString
@@ -189,7 +199,7 @@ public interface ColumnInfoOrBuilder extends
    *FCHECK
    * </pre>
    *
-   * <code>string check = 11;</code>
+   * <code>string check = 12;</code>
    * @return The check.
    */
   java.lang.String getCheck();
@@ -198,7 +208,7 @@ public interface ColumnInfoOrBuilder extends
    *FCHECK
    * </pre>
    *
-   * <code>string check = 11;</code>
+   * <code>string check = 12;</code>
    * @return The bytes for check.
    */
   com.google.protobuf.ByteString
@@ -209,7 +219,7 @@ public interface ColumnInfoOrBuilder extends
    *FMEMO
    * </pre>
    *
-   * <code>string comment = 12;</code>
+   * <code>string comment = 13;</code>
    * @return The comment.
    */
   java.lang.String getComment();
@@ -218,7 +228,7 @@ public interface ColumnInfoOrBuilder extends
    *FMEMO
    * </pre>
    *
-   * <code>string comment = 12;</code>
+   * <code>string comment = 13;</code>
    * @return The bytes for comment.
    */
   com.google.protobuf.ByteString
@@ -229,7 +239,7 @@ public interface ColumnInfoOrBuilder extends
    *FTABLENAME
    * </pre>
    *
-   * <code>string table_name = 13;</code>
+   * <code>string table_name = 14;</code>
    * @return The tableName.
    */
   java.lang.String getTableName();
@@ -238,7 +248,7 @@ public interface ColumnInfoOrBuilder extends
    *FTABLENAME
    * </pre>
    *
-   * <code>string table_name = 13;</code>
+   * <code>string table_name = 14;</code>
    * @return The bytes for tableName.
    */
   com.google.protobuf.ByteString
@@ -246,10 +256,50 @@ public interface ColumnInfoOrBuilder extends
 
   /**
    * <pre>
+   *FTAG
+   * </pre>
+   *
+   * <code>string tag = 15;</code>
+   * @return The tag.
+   */
+  java.lang.String getTag();
+  /**
+   * <pre>
+   *FTAG
+   * </pre>
+   *
+   * <code>string tag = 15;</code>
+   * @return The bytes for tag.
+   */
+  com.google.protobuf.ByteString
+      getTagBytes();
+
+  /**
+   * <pre>
+   *FCHARSET
+   * </pre>
+   *
+   * <code>string char_set = 16;</code>
+   * @return The charSet.
+   */
+  java.lang.String getCharSet();
+  /**
+   * <pre>
+   *FCHARSET
+   * </pre>
+   *
+   * <code>string char_set = 16;</code>
+   * @return The bytes for charSet.
+   */
+  com.google.protobuf.ByteString
+      getCharSetBytes();
+
+  /**
+   * <pre>
    *FENUM
    * </pre>
    *
-   * <code>string enumeration = 14;</code>
+   * <code>string enumeration = 17;</code>
    * @return The enumeration.
    */
   java.lang.String getEnumeration();
@@ -258,7 +308,7 @@ public interface ColumnInfoOrBuilder extends
    *FENUM
    * </pre>
    *
-   * <code>string enumeration = 14;</code>
+   * <code>string enumeration = 17;</code>
    * @return The bytes for enumeration.
    */
   com.google.protobuf.ByteString
@@ -269,7 +319,7 @@ public interface ColumnInfoOrBuilder extends
    *FPROCEDURE
    * </pre>
    *
-   * <code>string procedure = 15;</code>
+   * <code>string procedure = 18;</code>
    * @return The procedure.
    */
   java.lang.String getProcedure();
@@ -278,21 +328,9 @@ public interface ColumnInfoOrBuilder extends
    *FPROCEDURE
    * </pre>
    *
-   * <code>string procedure = 15;</code>
+   * <code>string procedure = 18;</code>
    * @return The bytes for procedure.
    */
   com.google.protobuf.ByteString
       getProcedureBytes();
-
-  /**
-   * <code>string tag = 16;</code>
-   * @return The tag.
-   */
-  java.lang.String getTag();
-  /**
-   * <code>string tag = 16;</code>
-   * @return The bytes for tag.
-   */
-  com.google.protobuf.ByteString
-      getTagBytes();
 }

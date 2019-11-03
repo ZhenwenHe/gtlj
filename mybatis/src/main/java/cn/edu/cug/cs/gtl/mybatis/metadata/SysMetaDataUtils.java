@@ -8,12 +8,13 @@ import cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtils;
 import cn.edu.cug.cs.gtl.mybatis.sqlserver.SqlserverMetaDataUtils;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface SysMetaDataUtils extends MetaDataUtils {
     void setSession(Session session);
 
-    void createUserDictionaries();
 
+    List<String> getUserTableNames(String user);
 
     static  SysMetaDataUtils create(Session session) throws SQLException {
         String url = session.getURL();
@@ -46,4 +47,5 @@ public interface SysMetaDataUtils extends MetaDataUtils {
             throw new SQLException("unsupported database system");
         }
     }
+
 }

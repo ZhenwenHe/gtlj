@@ -115,33 +115,34 @@ public final class Values {
       "liscond\030\007 \001(\005\022\022\n\nnanosecond\030\010 \001(\003\"\031\n\010UDT" +
       "Value\022\r\n\005value\030\001 \001(\t\"Y\n\005Value\022,\n\004type\030\001 " +
       "\001(\0132\036.cn.edu.cug.cs.gtl.protos.Type\022\"\n\004d" +
-      "ata\030\002 \001(\0132\024.google.protobuf.Any\"\276\002\n\nColu" +
+      "ata\030\002 \001(\0132\024.google.protobuf.Any\"\341\002\n\nColu" +
       "mnInfo\022,\n\004type\030\001 \001(\0132\036.cn.edu.cug.cs.gtl" +
       ".protos.Type\022\014\n\004name\030\002 \001(\t\022\014\n\004code\030\003 \001(\t" +
-      "\022\r\n\005title\030\004 \001(\t\022\016\n\006length\030\005 \001(\005\022\017\n\007decim" +
-      "al\030\006 \001(\005\022\020\n\010nullable\030\007 \001(\010\022\025\n\rdefault_va" +
-      "lue\030\010 \001(\t\022\021\n\tmax_value\030\t \001(\t\022\021\n\tmin_valu" +
-      "e\030\n \001(\t\022\r\n\005check\030\013 \001(\t\022\017\n\007comment\030\014 \001(\t\022" +
-      "\022\n\ntable_name\030\r \001(\t\022\023\n\013enumeration\030\016 \001(\t" +
-      "\022\021\n\tprocedure\030\017 \001(\t\022\013\n\003tag\030\020 \001(\t\"a\n\006Colu" +
-      "mn\0222\n\004info\030\001 \001(\0132$.cn.edu.cug.cs.gtl.pro" +
-      "tos.ColumnInfo\022#\n\005value\030\002 \003(\0132\024.google.p" +
-      "rotobuf.Any\".\n\005Tuple\022%\n\007element\030\001 \003(\0132\024." +
-      "google.protobuf.Any\"\274\001\n\tTableInfo\022\014\n\004nam" +
-      "e\030\001 \001(\t\022\014\n\004code\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\014\n\004" +
-      "type\030\004 \001(\t\022\r\n\005check\030\005 \001(\t\022\017\n\007comment\030\006 \001" +
-      "(\t\022\016\n\006schema\030\007 \001(\t\022\013\n\003tag\030\010 \001(\t\0229\n\013colum" +
-      "n_info\030\t \003(\0132$.cn.edu.cug.cs.gtl.protos." +
-      "ColumnInfo\"\246\001\n\005Table\0228\n\nidentifier\030\001 \001(\013" +
-      "2$.cn.edu.cug.cs.gtl.protos.Identifier\0221" +
-      "\n\004info\030\002 \001(\0132#.cn.edu.cug.cs.gtl.protos." +
-      "TableInfo\0220\n\006column\030\003 \003(\0132 .cn.edu.cug.c" +
-      "s.gtl.protos.Column\"t\n\007DataSet\0229\n\013column" +
-      "_info\030\002 \003(\0132$.cn.edu.cug.cs.gtl.protos.C" +
-      "olumnInfo\022.\n\005tuple\030\003 \003(\0132\037.cn.edu.cug.cs" +
-      ".gtl.protos.TupleBB\n\030cn.edu.cug.cs.gtl.p" +
-      "rotosB\006ValuesP\001\370\001\001\252\002\030cn.edu.cug.cs.gtl.p" +
-      "rotosP\000P\001P\002b\006proto3"
+      "\022\r\n\005title\030\004 \001(\t\022\016\n\006length\030\005 \001(\005\022\021\n\tpreci" +
+      "sion\030\006 \001(\005\022\r\n\005scale\030\007 \001(\005\022\020\n\010nullable\030\010 " +
+      "\001(\010\022\025\n\rdefault_value\030\t \001(\t\022\021\n\tmax_value\030" +
+      "\n \001(\t\022\021\n\tmin_value\030\013 \001(\t\022\r\n\005check\030\014 \001(\t\022" +
+      "\017\n\007comment\030\r \001(\t\022\022\n\ntable_name\030\016 \001(\t\022\013\n\003" +
+      "tag\030\017 \001(\t\022\020\n\010char_set\030\020 \001(\t\022\023\n\013enumerati" +
+      "on\030\021 \001(\t\022\021\n\tprocedure\030\022 \001(\t\"a\n\006Column\0222\n" +
+      "\004info\030\001 \001(\0132$.cn.edu.cug.cs.gtl.protos.C" +
+      "olumnInfo\022#\n\005value\030\002 \003(\0132\024.google.protob" +
+      "uf.Any\".\n\005Tuple\022%\n\007element\030\001 \003(\0132\024.googl" +
+      "e.protobuf.Any\"\311\001\n\tTableInfo\022\014\n\004name\030\001 \001" +
+      "(\t\022\014\n\004code\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\014\n\004type\030" +
+      "\004 \001(\t\022\r\n\005check\030\005 \001(\t\022\017\n\007comment\030\006 \001(\t\022\016\n" +
+      "\006schema\030\007 \001(\t\022\013\n\003tag\030\010 \001(\t\022\013\n\003sql\030\t \001(\t\022" +
+      "9\n\013column_info\030\n \003(\0132$.cn.edu.cug.cs.gtl" +
+      ".protos.ColumnInfo\"\246\001\n\005Table\0228\n\nidentifi" +
+      "er\030\001 \001(\0132$.cn.edu.cug.cs.gtl.protos.Iden" +
+      "tifier\0221\n\004info\030\002 \001(\0132#.cn.edu.cug.cs.gtl" +
+      ".protos.TableInfo\0220\n\006column\030\003 \003(\0132 .cn.e" +
+      "du.cug.cs.gtl.protos.Column\"t\n\007DataSet\0229" +
+      "\n\013column_info\030\002 \003(\0132$.cn.edu.cug.cs.gtl." +
+      "protos.ColumnInfo\022.\n\005tuple\030\003 \003(\0132\037.cn.ed" +
+      "u.cug.cs.gtl.protos.TupleBB\n\030cn.edu.cug." +
+      "cs.gtl.protosB\006ValuesP\001\370\001\001\252\002\030cn.edu.cug." +
+      "cs.gtl.protosP\000P\001P\002b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -209,7 +210,7 @@ public final class Values {
     internal_static_cn_edu_cug_cs_gtl_protos_ColumnInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_ColumnInfo_descriptor,
-        new java.lang.String[] { "Type", "Name", "Code", "Title", "Length", "Decimal", "Nullable", "DefaultValue", "MaxValue", "MinValue", "Check", "Comment", "TableName", "Enumeration", "Procedure", "Tag", });
+        new java.lang.String[] { "Type", "Name", "Code", "Title", "Length", "Precision", "Scale", "Nullable", "DefaultValue", "MaxValue", "MinValue", "Check", "Comment", "TableName", "Tag", "CharSet", "Enumeration", "Procedure", });
     internal_static_cn_edu_cug_cs_gtl_protos_Column_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_cn_edu_cug_cs_gtl_protos_Column_fieldAccessorTable = new
@@ -227,7 +228,7 @@ public final class Values {
     internal_static_cn_edu_cug_cs_gtl_protos_TableInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_TableInfo_descriptor,
-        new java.lang.String[] { "Name", "Code", "Title", "Type", "Check", "Comment", "Schema", "Tag", "ColumnInfo", });
+        new java.lang.String[] { "Name", "Code", "Title", "Type", "Check", "Comment", "Schema", "Tag", "Sql", "ColumnInfo", });
     internal_static_cn_edu_cug_cs_gtl_protos_Table_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_cn_edu_cug_cs_gtl_protos_Table_fieldAccessorTable = new

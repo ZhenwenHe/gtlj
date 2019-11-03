@@ -69,8 +69,10 @@
 
 
         <tables>
-
-        </tables>
+        <!--        ,DICT_FIELDINFO,,,,,C##CUG4GQP-->
+        <table tableName="DICT_FIELDINFO" domainObjectName="DICT_FIELDINFO"></table>
+        <!--        ,DictTabInfo,,,,,C##CUG4GQP-->
+        <table tableName="DICT_TABINFO" domainObjectName="DICT_TABINFO"></table>
         <!-- oracle database gqp-->
         <!--原始文件记录表,YSWJJLB,,,,,C##CUG4GQP-->
         <table tableName="YSWJJLB" domainObjectName="YSWJJLB"></table>
@@ -96,10 +98,6 @@
         <table tableName="FBSGXJCSJJLB" domainObjectName="FBSGXJCSJJLB"></table>
 <!--        ,DATADICTIONARY,,,,,C##CUG4GQP-->
         <table tableName="DATADICTIONARY" domainObjectName="DATADICTIONARY"></table>
-<!--        ,DICT_FIELDINFO,,,,,C##CUG4GQP-->
-        <table tableName="DICT_FIELDINFO" domainObjectName="DICT_FIELDINFO"></table>
-<!--        ,DICT_TABINFO,,,,,C##CUG4GQP-->
-        <table tableName="DICT_TABINFO" domainObjectName="DICT_TABINFO"></table>
 <!--        多点位移计检测数据记录表,DDWYJJCSJJLB,,,,,C##CUG4GQP-->
         <table tableName="DDWYJJCSJJLB" domainObjectName="DDWYJJCSJJLB"></table>
 <!--        地下水检测数据记录表,DXSJCSJJLB,,,,,C##CUG4GQP-->
@@ -174,5 +172,6 @@
         <table tableName="T_OPERATION" domainObjectName="T_OPERATION"></table>
 <!--        ,T_USER,,,,,C##CUG4GQP-->
         <table tableName="T_USER" domainObjectName="T_USER"></table>
+        </tables>
     </context>
 </generatorConfiguration>

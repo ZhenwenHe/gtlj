@@ -153,22 +153,22 @@ public class Session {
         SqlResult.Builder builder = SqlResult.newBuilder();
         builder.setCommandText(commandText);
         try {
-            if (commandText.equals("ALTER")) {
+            if (commandType.equals("ALTER")) {
                 AlterMapper mapper = this.sqlSession.getMapper(AlterMapper.class);
                 mapper.execute(commandText);
-            } else if (commandText.equals("CREATE")) {
+            } else if (commandType.equals("CREATE")) {
                 CreateMapper mapper = this.sqlSession.getMapper(CreateMapper.class);
                 mapper.execute(commandText);
-            } else if (commandText.equals("DELETE")) {
+            } else if (commandType.equals("DELETE")) {
                 DeleteMapper mapper = this.sqlSession.getMapper(DeleteMapper.class);
                 mapper.execute(commandText);
-            } else if (commandText.equals("DROP")) {
+            } else if (commandType.equals("DROP")) {
                 DropMapper mapper = this.sqlSession.getMapper(DropMapper.class);
                 mapper.execute(commandText);
-            } else if (commandText.equals("INSERT")) {
+            } else if (commandType.equals("INSERT")) {
                 InsertMapper mapper = this.sqlSession.getMapper(InsertMapper.class);
                 mapper.execute(commandText);
-            } else if (commandText.equals("UPDATE")) {
+            } else if (commandType.equals("UPDATE")) {
                 UpdateMapper mapper = this.sqlSession.getMapper(UpdateMapper.class);
                 mapper.execute(commandText);
             } else {
@@ -208,5 +208,15 @@ public class Session {
      */
     public String getURL() throws SQLException{
         return getMetaData().getURL();
+    }
+
+    /**
+     *
+     * @param tClass
+     * @param <T>
+     * @return
+     */
+    public <T> T getMapper(Class<T> tClass){
+        return this.sqlSession.getMapper(tClass);
     }
 }

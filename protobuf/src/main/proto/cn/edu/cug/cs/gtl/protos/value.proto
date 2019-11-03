@@ -76,17 +76,20 @@ message ColumnInfo {
     string code = 3;//FCODE
     string title = 4;//Chinese Name,FCNAME
     int32  length=5;//FLENGTH
-    int32  decimal=6;//FDECIMAL
-    bool   nullable=7;//FISNULL
-    string default_value=8;//FDEFAULT
-    string max_value=9;//FMAX
-    string min_value=10;//FMIN
-    string check=11;//FCHECK
-    string comment=12;//FMEMO
-    string table_name=13;//FTABLENAME
-    string enumeration=14;//FENUM
-    string procedure=15; //FPROCEDURE
-    string tag=16;
+    int32  precision=6;//FPRECISION,表示字段类型的精度的总长度，如果为null,表示精度的总长度不固定，最长为Length；
+    int32  scale=7; //表示字段类型的精度范围，如果为0,表示只能存储为整数，
+    bool   nullable=8;//FISNULL
+    string default_value=9;//FDEFAULT
+    string max_value=10;//FMAX
+    string min_value=11;//FMIN
+    string check=12;//FCHECK
+    string comment=13;//FMEMO
+    string table_name=14;//FTABLENAME
+    string tag=15;//FTAG
+    string char_set=16;//FCHARSET
+    string enumeration=17;//FENUM
+    string procedure=18; //FPROCEDURE
+
 }
 
 message Column {
@@ -108,7 +111,8 @@ message TableInfo {
     string comment=6;//TMEMO
     string schema=7;//TSCHEMA
     string tag=8;//TTAG
-    repeated ColumnInfo column_info = 9;
+    string sql=9;//TSQL
+    repeated ColumnInfo column_info = 10;
 }
 
 message Table {

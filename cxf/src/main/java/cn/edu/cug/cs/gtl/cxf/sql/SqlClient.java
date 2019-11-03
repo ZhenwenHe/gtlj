@@ -18,7 +18,7 @@ public class SqlClient {
         System.out.println(fromInputStream(in));
 
         // Sent HTTP GET request to query
-        sql = "select count(*) from DICT_TABINFO";
+        sql = "select count(*) from DictTabInfo";
         sql= URLCoder.encode(sql,"utf-8");
         strUrl = "http://localhost:9000/resultservice/execute/"+sql;
         url = new URL(strUrl);

@@ -168,25 +168,45 @@ public interface TableInfoOrBuilder extends
       getTagBytes();
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <pre>
+   *TSQL
+   * </pre>
+   *
+   * <code>string sql = 9;</code>
+   * @return The sql.
+   */
+  java.lang.String getSql();
+  /**
+   * <pre>
+   *TSQL
+   * </pre>
+   *
+   * <code>string sql = 9;</code>
+   * @return The bytes for sql.
+   */
+  com.google.protobuf.ByteString
+      getSqlBytes();
+
+  /**
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.ColumnInfo> 
       getColumnInfoList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   cn.edu.cug.cs.gtl.protos.ColumnInfo getColumnInfo(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   int getColumnInfoCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder> 
       getColumnInfoOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 9;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.ColumnInfo column_info = 10;</code>
    */
   cn.edu.cug.cs.gtl.protos.ColumnInfoOrBuilder getColumnInfoOrBuilder(
       int index);

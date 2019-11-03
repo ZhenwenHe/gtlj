@@ -5,7 +5,7 @@
 
 <configuration>
     <!-- 引用"jdbc.properties配置文件  -->
-    <properties resource="oracle.properties"/>
+    <properties resource="sqlite.properties"/>
     <!-- development : 开发模式 work : 工作模式 -->
     <environments default="development">
         <environment id="development">

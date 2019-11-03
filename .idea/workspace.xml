@@ -7,7 +7,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78377152-846c-4a39-b7ae-793eefe67845" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mybatis/src/test/java/cn/edu/cug/cs/gtl/mybatis/sqlite/SqliteMetaDataUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cxf/src/main/java/cn/edu/cug/cs/gtl/cxf/sql/SqlClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/cxf/src/main/java/cn/edu/cug/cs/gtl/cxf/sql/SqlClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/MetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/MetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/SysMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/SysMetaDataUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/UserMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/UserMetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/mysql/MysqlMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/mysql/MysqlMetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/oracle/OracleMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/oracle/OracleMetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/postgresql/PostgresqlMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/postgresql/PostgresqlMetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlite/SqliteMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlite/SqliteMetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlserver/SqlserverMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlserver/SqlserverMetaDataUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DATADICTIONARYMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DDWYJJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DICT_FIELDINFOMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DICT_TABINFOMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DXSJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DZBJJBXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/FBSGXJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPDCSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPDSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPDZDHBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPFHGCCSXQXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPFHGCCSXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPJCXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPJCZLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_BXPHMSBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_GQPJBXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_QCQFSJZHBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_QXSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_SWSJJMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_WLXCSBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_YCSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_ZYJCSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPYXSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/JCDXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/KSWSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/MGYBJJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QCQFHGXCXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QCQFJCXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QCQFSJHJMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QXSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QYDZZHBJXXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/SFSJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/SWSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_FUNCATIONMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_LOGINMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_OPERATIONMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_RESERVOIR_WATER_LEVELMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_ROLEMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_ROLE_FUNCATIONMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_USERMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_USER_ROLEMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_WEATHERMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/WDSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/WYJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/YHQXBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/YSWJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/ZKQXYJCSJJLBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/ZYJCSJBMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/ZYJCSJHJMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/value.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/value.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfoOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfoOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfoOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfoOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Values.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/series/series.db" beforeDir="false" afterPath="$PROJECT_DIR$/series/series.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,9 +129,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -92,12 +163,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cn.edu.cug.cs.gtl.mybatis.mapper.common" />
+      <recent name="cn.edu.cug.cs.gtl.mybatis.sqlite" />
       <recent name="cn.edu.cug.cs.gtl.series.app" />
       <recent name="cn.edu.cug.cs.gtl.ml.classification" />
       <recent name="cn.edu.cug.cs.gtl.array" />
-      <recent name="cn.edu.cug.cs.gtl.series.common.pax" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.edu.cug.cs.gtl.mybatis.mapper.common" />
       <recent name="cn.edu.cug.cs.gtl.grpc" />
       <recent name="cn.edu.cug.cs.gtl.series.common.pax" />
       <recent name="cn.edu.cug.cs.gtl.series.common" />
@@ -106,6 +179,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/common" />
       <recent name="$PROJECT_DIR$/mybatis/src/main/resources" />
       <recent name="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos" />
       <recent name="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/sql" />
@@ -138,55 +212,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="demo.jaxrs.server.Server" />
-      <module name="cxf" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.cxf.sql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SqlClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.cxf.sql.SqlClient" />
-      <module name="cxf" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.cxf.sql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SqlServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.cxf.sql.SqlServer" />
-      <module name="cxf" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.cxf.sql.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="cn.edu.cug.cs.gtl.mybatis in mybatis" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DictFieldInfoMapperTest.selectAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.metadata.*" />
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.mapper.common.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.mapper.common" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.mapper.common.DictFieldInfoMapperTest" />
+      <option name="METHOD_NAME" value="selectAll" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SqliteMetaDataUtilsTest.createUserDictionaries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.sqlite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtilsTest" />
+      <option name="METHOD_NAME" value="createUserDictionaries" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SqliteMetaDataUtilsTest.getUserTableNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.sqlite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtilsTest" />
+      <option name="METHOD_NAME" value="getUserTableNames" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SqliteMetaDataUtilsTest.isTableExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.sqlite.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtilsTest" />
+      <option name="METHOD_NAME" value="isTableExist" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -194,10 +279,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.cn.edu.cug.cs.gtl.mybatis in mybatis" />
-        <item itemvalue="Application.SqlClient" />
-        <item itemvalue="Application.SqlServer" />
-        <item itemvalue="Application.Server" />
+        <item itemvalue="JUnit.DictFieldInfoMapperTest.selectAll" />
+        <item itemvalue="JUnit.SqliteMetaDataUtilsTest.createUserDictionaries" />
+        <item itemvalue="JUnit.SqliteMetaDataUtilsTest.getUserTableNames" />
+        <item itemvalue="JUnit.SqliteMetaDataUtilsTest.isTableExist" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +360,9 @@
       <workItem from="1572576067809" duration="20091000" />
       <workItem from="1572653094334" duration="2326000" />
       <workItem from="1572690454092" duration="4241000" />
-      <workItem from="1572696449760" duration="8183000" />
+      <workItem from="1572696449760" duration="8265000" />
+      <workItem from="1572749437584" duration="3080000" />
+      <workItem from="1572756558657" duration="13245000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1570431227843</created>
@@ -417,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572704004129</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="database">
+      <created>1572704722096</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1572704722096</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,7 +611,27 @@
           <line>62</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="sqlDictTabInfo" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

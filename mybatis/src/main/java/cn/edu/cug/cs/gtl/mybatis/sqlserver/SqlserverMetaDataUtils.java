@@ -4,6 +4,8 @@ import cn.edu.cug.cs.gtl.mybatis.Session;
 import cn.edu.cug.cs.gtl.mybatis.metadata.SysMetaDataUtils;
 import cn.edu.cug.cs.gtl.protos.TableInfo;
 
+import java.util.List;
+
 public class SqlserverMetaDataUtils implements SysMetaDataUtils {
     private Session session;
 
@@ -42,7 +44,7 @@ public class SqlserverMetaDataUtils implements SysMetaDataUtils {
     }
 
     @Override
-    public void createUserDictionaries() {
-
+    public List<String> getUserTableNames(String user) {
+        return null;
     }
 }

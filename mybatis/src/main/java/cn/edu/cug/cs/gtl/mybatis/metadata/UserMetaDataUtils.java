@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * DICT_TABINFO
+ * DictTabInfo
  * DICT_FIELDINFO
  */
 public class UserMetaDataUtils implements MetaDataUtils {
@@ -23,7 +23,7 @@ public class UserMetaDataUtils implements MetaDataUtils {
      */
     public UserMetaDataUtils(Session session) throws SQLException {
         this.sysMetadataUtils = SysMetaDataUtils.create(session);
-        if(!this.sysMetadataUtils.isTableExist("DICT_TABINFO")){
+        if(!this.sysMetadataUtils.isTableExist("DictTabInfo")){
             this.sysMetadataUtils.createUserDictionaries();
         }
     }
@@ -42,21 +42,22 @@ public class UserMetaDataUtils implements MetaDataUtils {
      */
     @Override
     public boolean isTableExist(String tabName) {
-        try {
-            String sql = "select count(*) from DICT_TABINFO where TENAME = " +tabName;
-            SqlResult r = getSession().execute(sql);
-            if(r.getStatus()){
-                TextValue v = r.getDataset().getTuple(0).getElement(0).unpack(TextValue.class);
-                if(v!=null){
-                    int c = Integer.parseInt(v.getValue());
-                    if(c>=1) return true;
-                }
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        return false;
+        return sysMetadataUtils.isTableExist(tabName);
+//        try {
+//            String sql = "select count(*) from DictTabInfo where TENAME = " +tabName;
+//            SqlResult r = getSession().execute(sql);
+//            if(r.getStatus()){
+//                TextValue v = r.getDataset().getTuple(0).getElement(0).unpack(TextValue.class);
+//                if(v!=null){
+//                    int c = Integer.parseInt(v.getValue());
+//                    if(c>=1) return true;
+//                }
+//            }
+//        }
+//        catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return false;
     }
 
     /**
@@ -66,7 +67,7 @@ public class UserMetaDataUtils implements MetaDataUtils {
     @Override
     public TableInfo getTableInfo(String tabName) {
         try {
-            String sql = "select * from DICT_TABINFO t , DICT_FIELDINFO f where t.TENAME = f.FTABLENAME and t.TENAME=" + tabName;
+            String sql = "select * from DictTabInfo t , DICT_FIELDINFO f where t.TENAME = f.FTABLENAME and t.TENAME=" + tabName;
             SqlResult r = getSession().execute(sql);
             if(r.getStatus()){
                 TableInfo.Builder builder = TableInfo.newBuilder();
@@ -91,15 +92,15 @@ public class UserMetaDataUtils implements MetaDataUtils {
      *
      * @return
      */
-    public List<String> getAllUserTableNames(){
-        return null;
+    public List<String> getUserTableNames(String user){
+        return sysMetadataUtils.getUserTableNames(user);
     }
 
     /**
      *
      * @return
      */
-    public List<TableInfo> getAllUserTableTags(){
+    public List<TableInfo> getUserTableTags(){
         return null;
     }
 

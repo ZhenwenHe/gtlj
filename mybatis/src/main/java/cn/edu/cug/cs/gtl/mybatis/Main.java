@@ -24,8 +24,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Session session = Session.open();
-        //String s = "select h.name, h.w5 from hax_nn_view h, sax_view s where trim(h.name)=trim(s.name) and h.w5>s.w5";
-        String s = "select * from DICT_TABINFO";
+        String s = "select h.name, h.w5 from hax_nn_view h, sax_view s where trim(h.name)=trim(s.name) and h.w5>s.w5";
+        //String s = "select * from DictTabInfo";
         SqlResult r = session.execute(s);
         System.out.print(r.toString());
     }
