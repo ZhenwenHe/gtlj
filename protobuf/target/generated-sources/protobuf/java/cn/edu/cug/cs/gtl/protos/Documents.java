@@ -75,6 +75,16 @@ public final class Documents {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cn_edu_cug_cs_gtl_protos_Abstract_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_Title_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_Title_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_DocType_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_DocType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cn_edu_cug_cs_gtl_protos_Content_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -84,6 +94,11 @@ public final class Documents {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cn_edu_cug_cs_gtl_protos_Document_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_ComplexDocument_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_ComplexDocument_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -97,34 +112,44 @@ public final class Documents {
       "o\022\030cn.edu.cug.cs.gtl.protos\"F\n\007Version\022\025" +
       "\n\rmajor_version\030\001 \001(\t\022\025\n\rminor_version\030\002" +
       " \001(\t\022\r\n\005patch\030\003 \001(\t\"\024\n\003URI\022\r\n\005value\030\001 \001(" +
-      "\t\"\024\n\003Raw\022\r\n\005value\030\001 \001(\014\"\032\n\tParagraph\022\r\n\005" +
-      "value\030\001 \001(\t\"D\n\nParagraphs\0226\n\tparagraph\030\001" +
-      " \003(\0132#.cn.edu.cug.cs.gtl.protos.Paragrap" +
-      "h\"\030\n\007Keyword\022\r\n\005value\030\001 \001(\t\">\n\010Keywords\022" +
-      "2\n\007keyword\030\001 \003(\0132!.cn.edu.cug.cs.gtl.pro" +
-      "tos.Keyword\"S\n\006Author\022\022\n\nfirst_name\030\001 \001(" +
-      "\t\022\021\n\tlast_name\030\002 \001(\t\022\023\n\013middle_name\030\003 \001(" +
-      "\t\022\r\n\005email\030\004 \001(\t\";\n\007Authors\0220\n\006author\030\001 " +
-      "\003(\0132 .cn.edu.cug.cs.gtl.protos.Author\"\034\n" +
-      "\013Affiliation\022\r\n\005value\030\001 \001(\t\"J\n\014Affiliati" +
-      "ons\022:\n\013affiliation\030\001 \003(\0132%.cn.edu.cug.cs" +
-      ".gtl.protos.Affiliation\"\031\n\010Abstract\022\r\n\005v" +
-      "alue\030\001 \001(\t\"C\n\007Content\0228\n\nparagraphs\030\001 \001(" +
-      "\0132$.cn.edu.cug.cs.gtl.protos.Paragraphs\"" +
-      "\305\003\n\010Document\022\r\n\005title\030\001 \001(\t\0224\n\010keywords\030" +
-      "\002 \001(\0132\".cn.edu.cug.cs.gtl.protos.Keyword" +
-      "s\0222\n\007version\030\003 \001(\0132!.cn.edu.cug.cs.gtl.p" +
-      "rotos.Version\022\014\n\004type\030\004 \001(\t\022*\n\003uri\030\005 \001(\013" +
-      "2\035.cn.edu.cug.cs.gtl.protos.URI\0222\n\007autho" +
-      "rs\030\006 \001(\0132!.cn.edu.cug.cs.gtl.protos.Auth" +
-      "ors\022<\n\014affiliations\030\007 \001(\0132&.cn.edu.cug.c" +
-      "s.gtl.protos.Affiliations\0224\n\010abstract\030\010 " +
-      "\001(\0132\".cn.edu.cug.cs.gtl.protos.Abstract\022" +
-      "2\n\007content\030\t \001(\0132!.cn.edu.cug.cs.gtl.pro" +
-      "tos.Content\022*\n\003raw\030\n \001(\0132\035.cn.edu.cug.cs" +
-      ".gtl.protos.RawBE\n\030cn.edu.cug.cs.gtl.pro" +
-      "tosB\tDocumentsP\001\370\001\001\252\002\030cn.edu.cug.cs.gtl." +
-      "protosb\006proto3"
+      "\t\"\024\n\003Raw\022\r\n\005value\030\001 \001(\014\"@\n\tParagraph\022\026\n\016" +
+      "document_title\030\001 \001(\t\022\r\n\005order\030\002 \001(\003\022\014\n\004t" +
+      "ext\030\003 \001(\t\"D\n\nParagraphs\0226\n\tparagraph\030\001 \003" +
+      "(\0132#.cn.edu.cug.cs.gtl.protos.Paragraph\"" +
+      "&\n\007Keyword\022\014\n\004name\030\001 \001(\t\022\r\n\005alias\030\002 \001(\t\"" +
+      ">\n\010Keywords\0222\n\007keyword\030\001 \003(\0132!.cn.edu.cu" +
+      "g.cs.gtl.protos.Keyword\"S\n\006Author\022\022\n\nfir" +
+      "st_name\030\001 \001(\t\022\021\n\tlast_name\030\002 \001(\t\022\023\n\013midd" +
+      "le_name\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\";\n\007Authors\022" +
+      "0\n\006author\030\001 \003(\0132 .cn.edu.cug.cs.gtl.prot" +
+      "os.Author\"\034\n\013Affiliation\022\r\n\005value\030\001 \001(\t\"" +
+      "J\n\014Affiliations\022:\n\013affiliation\030\001 \003(\0132%.c" +
+      "n.edu.cug.cs.gtl.protos.Affiliation\"\030\n\010A" +
+      "bstract\022\014\n\004text\030\001 \001(\t\"$\n\005Title\022\014\n\004name\030\001" +
+      " \001(\t\022\r\n\005alias\030\002 \001(\t\",\n\007DocType\022\014\n\004type\030\001" +
+      " \001(\t\022\023\n\013application\030\002 \001(\t\"C\n\007Content\0228\n\n" +
+      "paragraphs\030\001 \001(\0132$.cn.edu.cug.cs.gtl.pro" +
+      "tos.Paragraphs\"\260\001\n\010Document\022\r\n\005title\030\001 \001" +
+      "(\t\022\017\n\007keyword\030\002 \003(\t\022\017\n\007version\030\003 \001(\t\022\014\n\004" +
+      "type\030\004 \001(\t\022\013\n\003uri\030\005 \001(\t\022\016\n\006author\030\006 \003(\t\022" +
+      "\023\n\013affiliation\030\007 \003(\t\022\020\n\010abstract\030\010 \001(\t\022\017" +
+      "\n\007content\030\t \003(\t\022\020\n\010raw_data\030\n \001(\014\"\224\004\n\017Co" +
+      "mplexDocument\022.\n\005title\030\001 \001(\0132\037.cn.edu.cu" +
+      "g.cs.gtl.protos.Title\0224\n\010keywords\030\002 \001(\0132" +
+      "\".cn.edu.cug.cs.gtl.protos.Keywords\0222\n\007v" +
+      "ersion\030\003 \001(\0132!.cn.edu.cug.cs.gtl.protos." +
+      "Version\022/\n\004type\030\004 \001(\0132!.cn.edu.cug.cs.gt" +
+      "l.protos.DocType\022*\n\003uri\030\005 \001(\0132\035.cn.edu.c" +
+      "ug.cs.gtl.protos.URI\0221\n\006author\030\006 \001(\0132!.c" +
+      "n.edu.cug.cs.gtl.protos.Authors\022<\n\014affil" +
+      "iations\030\007 \001(\0132&.cn.edu.cug.cs.gtl.protos" +
+      ".Affiliations\0224\n\010abstract\030\010 \001(\0132\".cn.edu" +
+      ".cug.cs.gtl.protos.Abstract\0222\n\007content\030\t" +
+      " \001(\0132!.cn.edu.cug.cs.gtl.protos.Content\022" +
+      "/\n\010raw_data\030\n \001(\0132\035.cn.edu.cug.cs.gtl.pr" +
+      "otos.RawBE\n\030cn.edu.cug.cs.gtl.protosB\tDo" +
+      "cumentsP\001\370\001\001\252\002\030cn.edu.cug.cs.gtl.protosb" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -153,7 +178,7 @@ public final class Documents {
     internal_static_cn_edu_cug_cs_gtl_protos_Paragraph_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Paragraph_descriptor,
-        new java.lang.String[] { "Value", });
+        new java.lang.String[] { "DocumentTitle", "Order", "Text", });
     internal_static_cn_edu_cug_cs_gtl_protos_Paragraphs_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_cn_edu_cug_cs_gtl_protos_Paragraphs_fieldAccessorTable = new
@@ -165,7 +190,7 @@ public final class Documents {
     internal_static_cn_edu_cug_cs_gtl_protos_Keyword_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Keyword_descriptor,
-        new java.lang.String[] { "Value", });
+        new java.lang.String[] { "Name", "Alias", });
     internal_static_cn_edu_cug_cs_gtl_protos_Keywords_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_cn_edu_cug_cs_gtl_protos_Keywords_fieldAccessorTable = new
@@ -201,19 +226,37 @@ public final class Documents {
     internal_static_cn_edu_cug_cs_gtl_protos_Abstract_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Abstract_descriptor,
-        new java.lang.String[] { "Value", });
-    internal_static_cn_edu_cug_cs_gtl_protos_Content_descriptor =
+        new java.lang.String[] { "Text", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Title_descriptor =
       getDescriptor().getMessageTypes().get(12);
+    internal_static_cn_edu_cug_cs_gtl_protos_Title_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_Title_descriptor,
+        new java.lang.String[] { "Name", "Alias", });
+    internal_static_cn_edu_cug_cs_gtl_protos_DocType_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_cn_edu_cug_cs_gtl_protos_DocType_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_DocType_descriptor,
+        new java.lang.String[] { "Type", "Application", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Content_descriptor =
+      getDescriptor().getMessageTypes().get(14);
     internal_static_cn_edu_cug_cs_gtl_protos_Content_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Content_descriptor,
         new java.lang.String[] { "Paragraphs", });
     internal_static_cn_edu_cug_cs_gtl_protos_Document_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_cn_edu_cug_cs_gtl_protos_Document_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Document_descriptor,
-        new java.lang.String[] { "Title", "Keywords", "Version", "Type", "Uri", "Authors", "Affiliations", "Abstract", "Content", "Raw", });
+        new java.lang.String[] { "Title", "Keyword", "Version", "Type", "Uri", "Author", "Affiliation", "Abstract", "Content", "RawData", });
+    internal_static_cn_edu_cug_cs_gtl_protos_ComplexDocument_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_cn_edu_cug_cs_gtl_protos_ComplexDocument_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_ComplexDocument_descriptor,
+        new java.lang.String[] { "Title", "Keywords", "Version", "Type", "Uri", "Author", "Affiliations", "Abstract", "Content", "RawData", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

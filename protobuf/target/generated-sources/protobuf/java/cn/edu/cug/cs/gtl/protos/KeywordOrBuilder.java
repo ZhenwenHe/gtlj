@@ -8,14 +8,26 @@ public interface KeywordOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string value = 1;</code>
-   * @return The value.
+   * <code>string name = 1;</code>
+   * @return The name.
    */
-  java.lang.String getValue();
+  java.lang.String getName();
   /**
-   * <code>string value = 1;</code>
-   * @return The bytes for value.
+   * <code>string name = 1;</code>
+   * @return The bytes for name.
    */
   com.google.protobuf.ByteString
-      getValueBytes();
+      getNameBytes();
+
+  /**
+   * <code>string alias = 2;</code>
+   * @return The alias.
+   */
+  java.lang.String getAlias();
+  /**
+   * <code>string alias = 2;</code>
+   * @return The bytes for alias.
+   */
+  com.google.protobuf.ByteString
+      getAliasBytes();
 }

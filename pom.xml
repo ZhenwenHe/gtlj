@@ -18,11 +18,10 @@
         <module>ml</module>
         <module>series</module>
         <module>protobuf</module>
-        <module>offices</module>
         <module>beam</module>
         <module>mybatis</module>
-        <module>grpc</module>
         <module>cxf</module>
+        <module>lucene</module>
     </modules>
 
     <licenses>
@@ -49,6 +48,8 @@
         <scala.version>2.11.12</scala.version>
         <scala.compat.version>2.11</scala.compat.version>
         <spark.version>2.2.1</spark.version>
+
+        <lucene.version>8.2.0</lucene.version>
 
         <hadoop.version>2.7.3</hadoop.version>
 

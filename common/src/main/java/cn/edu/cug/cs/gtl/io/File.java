@@ -3,9 +3,12 @@ package cn.edu.cug.cs.gtl.io;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -364,6 +367,37 @@ public class File extends java.io.File {
                 ls.add(f);
             }
         }
+    }
+
+    /**
+     *
+     * @param fileName
+     * @return
+     */
+    public static ByteBuffer readRawFile(String fileName){
+        FileChannel fc = null;
+        ByteBuffer bb=null;
+        File file = new File(fileName);
+        try {
+            if(file.exists() && file.isFile()){
+                FileInputStream fis = new FileInputStream(file);
+                fc = fis.getChannel();
+                bb = ByteBuffer.allocate((int)file.length());
+                fc.read(bb);
+                return bb;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            if(null!=fc){
+                try {
+                    fc.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return bb;
     }
 
 }

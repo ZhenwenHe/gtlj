@@ -23,7 +23,9 @@ message Raw {
 }
 
 message Paragraph {
-    string value = 1;
+    string document_title=1;
+    int64  order=2;
+    string text = 3;
 }
 
 message Paragraphs {
@@ -31,7 +33,8 @@ message Paragraphs {
 }
 
 message Keyword {
-    string value = 1;
+    string name=1;
+    string alias=2;
 }
 
 message Keywords {
@@ -58,22 +61,46 @@ message Affiliations {
 }
 
 message Abstract {
-    string value = 1;
+    string text = 1;
 }
 
-message Content {
-    Paragraphs paragraphs = 1;
+message Title {
+    string name=1;
+    string alias=2;
+}
+
+message DocType{
+    string type=1;
+    string application=2;//the application which can open this kind of document
+}
+
+
+message Content{
+    Paragraphs paragraphs=1;
 }
 
 message Document {
     string title = 1;
+    repeated string keyword = 2;
+    string version = 3;
+    string type = 4;
+    string uri = 5;
+    repeated string author = 6;
+    repeated string affiliation = 7;
+    string abstract = 8;
+    repeated string content=9;
+    bytes raw_data = 10;
+}
+
+message ComplexDocument {
+    Title title = 1;
     Keywords keywords = 2;
     Version version = 3;
-    string type = 4;
+    DocType type = 4;
     URI uri = 5;
-    Authors authors = 6;
+    Authors author = 6;
     Affiliations affiliations = 7;
     Abstract abstract = 8;
     Content content = 9;
-    Raw raw = 10;
+    Raw raw_data = 10;
 }

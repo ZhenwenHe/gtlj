@@ -20,34 +20,41 @@ public interface DocumentOrBuilder extends
       getTitleBytes();
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-   * @return Whether the keywords field is set.
+   * <code>repeated string keyword = 2;</code>
+   * @return A list containing the keyword.
    */
-  boolean hasKeywords();
+  java.util.List<java.lang.String>
+      getKeywordList();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-   * @return The keywords.
+   * <code>repeated string keyword = 2;</code>
+   * @return The count of keyword.
    */
-  cn.edu.cug.cs.gtl.protos.Keywords getKeywords();
+  int getKeywordCount();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+   * <code>repeated string keyword = 2;</code>
+   * @param index The index of the element to return.
+   * @return The keyword at the given index.
    */
-  cn.edu.cug.cs.gtl.protos.KeywordsOrBuilder getKeywordsOrBuilder();
+  java.lang.String getKeyword(int index);
+  /**
+   * <code>repeated string keyword = 2;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the keyword at the given index.
+   */
+  com.google.protobuf.ByteString
+      getKeywordBytes(int index);
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
-   * @return Whether the version field is set.
-   */
-  boolean hasVersion();
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+   * <code>string version = 3;</code>
    * @return The version.
    */
-  cn.edu.cug.cs.gtl.protos.Version getVersion();
+  java.lang.String getVersion();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+   * <code>string version = 3;</code>
+   * @return The bytes for version.
    */
-  cn.edu.cug.cs.gtl.protos.VersionOrBuilder getVersionOrBuilder();
+  com.google.protobuf.ByteString
+      getVersionBytes();
 
   /**
    * <code>string type = 4;</code>
@@ -62,92 +69,107 @@ public interface DocumentOrBuilder extends
       getTypeBytes();
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-   * @return Whether the uri field is set.
-   */
-  boolean hasUri();
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+   * <code>string uri = 5;</code>
    * @return The uri.
    */
-  cn.edu.cug.cs.gtl.protos.URI getUri();
+  java.lang.String getUri();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+   * <code>string uri = 5;</code>
+   * @return The bytes for uri.
    */
-  cn.edu.cug.cs.gtl.protos.URIOrBuilder getUriOrBuilder();
+  com.google.protobuf.ByteString
+      getUriBytes();
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-   * @return Whether the authors field is set.
+   * <code>repeated string author = 6;</code>
+   * @return A list containing the author.
    */
-  boolean hasAuthors();
+  java.util.List<java.lang.String>
+      getAuthorList();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-   * @return The authors.
+   * <code>repeated string author = 6;</code>
+   * @return The count of author.
    */
-  cn.edu.cug.cs.gtl.protos.Authors getAuthors();
+  int getAuthorCount();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
+   * <code>repeated string author = 6;</code>
+   * @param index The index of the element to return.
+   * @return The author at the given index.
    */
-  cn.edu.cug.cs.gtl.protos.AuthorsOrBuilder getAuthorsOrBuilder();
+  java.lang.String getAuthor(int index);
+  /**
+   * <code>repeated string author = 6;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the author at the given index.
+   */
+  com.google.protobuf.ByteString
+      getAuthorBytes(int index);
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-   * @return Whether the affiliations field is set.
+   * <code>repeated string affiliation = 7;</code>
+   * @return A list containing the affiliation.
    */
-  boolean hasAffiliations();
+  java.util.List<java.lang.String>
+      getAffiliationList();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-   * @return The affiliations.
+   * <code>repeated string affiliation = 7;</code>
+   * @return The count of affiliation.
    */
-  cn.edu.cug.cs.gtl.protos.Affiliations getAffiliations();
+  int getAffiliationCount();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+   * <code>repeated string affiliation = 7;</code>
+   * @param index The index of the element to return.
+   * @return The affiliation at the given index.
    */
-  cn.edu.cug.cs.gtl.protos.AffiliationsOrBuilder getAffiliationsOrBuilder();
+  java.lang.String getAffiliation(int index);
+  /**
+   * <code>repeated string affiliation = 7;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the affiliation at the given index.
+   */
+  com.google.protobuf.ByteString
+      getAffiliationBytes(int index);
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-   * @return Whether the abstract field is set.
-   */
-  boolean hasAbstract();
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+   * <code>string abstract = 8;</code>
    * @return The abstract.
    */
-  cn.edu.cug.cs.gtl.protos.Abstract getAbstract();
+  java.lang.String getAbstract();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+   * <code>string abstract = 8;</code>
+   * @return The bytes for abstract.
    */
-  cn.edu.cug.cs.gtl.protos.AbstractOrBuilder getAbstractOrBuilder();
+  com.google.protobuf.ByteString
+      getAbstractBytes();
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-   * @return Whether the content field is set.
+   * <code>repeated string content = 9;</code>
+   * @return A list containing the content.
    */
-  boolean hasContent();
+  java.util.List<java.lang.String>
+      getContentList();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-   * @return The content.
+   * <code>repeated string content = 9;</code>
+   * @return The count of content.
    */
-  cn.edu.cug.cs.gtl.protos.Content getContent();
+  int getContentCount();
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
+   * <code>repeated string content = 9;</code>
+   * @param index The index of the element to return.
+   * @return The content at the given index.
    */
-  cn.edu.cug.cs.gtl.protos.ContentOrBuilder getContentOrBuilder();
+  java.lang.String getContent(int index);
+  /**
+   * <code>repeated string content = 9;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the content at the given index.
+   */
+  com.google.protobuf.ByteString
+      getContentBytes(int index);
 
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-   * @return Whether the raw field is set.
+   * <code>bytes raw_data = 10;</code>
+   * @return The rawData.
    */
-  boolean hasRaw();
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-   * @return The raw.
-   */
-  cn.edu.cug.cs.gtl.protos.Raw getRaw();
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-   */
-  cn.edu.cug.cs.gtl.protos.RawOrBuilder getRawOrBuilder();
+  com.google.protobuf.ByteString getRawData();
 }

@@ -8,14 +8,32 @@ public interface ParagraphOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string value = 1;</code>
-   * @return The value.
+   * <code>string document_title = 1;</code>
+   * @return The documentTitle.
    */
-  java.lang.String getValue();
+  java.lang.String getDocumentTitle();
   /**
-   * <code>string value = 1;</code>
-   * @return The bytes for value.
+   * <code>string document_title = 1;</code>
+   * @return The bytes for documentTitle.
    */
   com.google.protobuf.ByteString
-      getValueBytes();
+      getDocumentTitleBytes();
+
+  /**
+   * <code>int64 order = 2;</code>
+   * @return The order.
+   */
+  long getOrder();
+
+  /**
+   * <code>string text = 3;</code>
+   * @return The text.
+   */
+  java.lang.String getText();
+  /**
+   * <code>string text = 3;</code>
+   * @return The bytes for text.
+   */
+  com.google.protobuf.ByteString
+      getTextBytes();
 }

@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Abstract() {
-    value_ = "";
+    text_ = "";
   }
 
   @java.lang.Override
@@ -52,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            value_ = s;
+            text_ = s;
             break;
           }
           default: {
@@ -87,36 +87,36 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.Abstract.class, cn.edu.cug.cs.gtl.protos.Abstract.Builder.class);
   }
 
-  public static final int VALUE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object value_;
+  public static final int TEXT_FIELD_NUMBER = 1;
+  private volatile java.lang.Object text_;
   /**
-   * <code>string value = 1;</code>
-   * @return The value.
+   * <code>string text = 1;</code>
+   * @return The text.
    */
-  public java.lang.String getValue() {
-    java.lang.Object ref = value_;
+  public java.lang.String getText() {
+    java.lang.Object ref = text_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      value_ = s;
+      text_ = s;
       return s;
     }
   }
   /**
-   * <code>string value = 1;</code>
-   * @return The bytes for value.
+   * <code>string text = 1;</code>
+   * @return The bytes for text.
    */
   public com.google.protobuf.ByteString
-      getValueBytes() {
-    java.lang.Object ref = value_;
+      getTextBytes() {
+    java.lang.Object ref = text_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      value_ = b;
+      text_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -137,8 +137,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getValueBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, value_);
+    if (!getTextBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, text_);
     }
     unknownFields.writeTo(output);
   }
@@ -149,8 +149,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getValueBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, value_);
+    if (!getTextBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, text_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -167,8 +167,8 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.Abstract other = (cn.edu.cug.cs.gtl.protos.Abstract) obj;
 
-    if (!getValue()
-        .equals(other.getValue())) return false;
+    if (!getText()
+        .equals(other.getText())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -180,8 +180,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VALUE_FIELD_NUMBER;
-    hash = (53 * hash) + getValue().hashCode();
+    hash = (37 * hash) + TEXT_FIELD_NUMBER;
+    hash = (53 * hash) + getText().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -315,7 +315,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      value_ = "";
+      text_ = "";
 
       return this;
     }
@@ -343,7 +343,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cn.edu.cug.cs.gtl.protos.Abstract buildPartial() {
       cn.edu.cug.cs.gtl.protos.Abstract result = new cn.edu.cug.cs.gtl.protos.Abstract(this);
-      result.value_ = value_;
+      result.text_ = text_;
       onBuilt();
       return result;
     }
@@ -392,8 +392,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.Abstract other) {
       if (other == cn.edu.cug.cs.gtl.protos.Abstract.getDefaultInstance()) return this;
-      if (!other.getValue().isEmpty()) {
-        value_ = other.value_;
+      if (!other.getText().isEmpty()) {
+        text_ = other.text_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -425,78 +425,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object value_ = "";
+    private java.lang.Object text_ = "";
     /**
-     * <code>string value = 1;</code>
-     * @return The value.
+     * <code>string text = 1;</code>
+     * @return The text.
      */
-    public java.lang.String getValue() {
-      java.lang.Object ref = value_;
+    public java.lang.String getText() {
+      java.lang.Object ref = text_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        value_ = s;
+        text_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string value = 1;</code>
-     * @return The bytes for value.
+     * <code>string text = 1;</code>
+     * @return The bytes for text.
      */
     public com.google.protobuf.ByteString
-        getValueBytes() {
-      java.lang.Object ref = value_;
+        getTextBytes() {
+      java.lang.Object ref = text_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        value_ = b;
+        text_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string value = 1;</code>
-     * @param value The value to set.
+     * <code>string text = 1;</code>
+     * @param value The text to set.
      * @return This builder for chaining.
      */
-    public Builder setValue(
+    public Builder setText(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      value_ = value;
+      text_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string value = 1;</code>
+     * <code>string text = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearValue() {
+    public Builder clearText() {
       
-      value_ = getDefaultInstance().getValue();
+      text_ = getDefaultInstance().getText();
       onChanged();
       return this;
     }
     /**
-     * <code>string value = 1;</code>
-     * @param value The bytes for value to set.
+     * <code>string text = 1;</code>
+     * @param value The bytes for text to set.
      * @return This builder for chaining.
      */
-    public Builder setValueBytes(
+    public Builder setTextBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      value_ = value;
+      text_ = value;
       onChanged();
       return this;
     }

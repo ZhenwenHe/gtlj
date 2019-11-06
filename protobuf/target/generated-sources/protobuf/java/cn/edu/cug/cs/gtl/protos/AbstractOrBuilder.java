@@ -8,14 +8,14 @@ public interface AbstractOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string value = 1;</code>
-   * @return The value.
+   * <code>string text = 1;</code>
+   * @return The text.
    */
-  java.lang.String getValue();
+  java.lang.String getText();
   /**
-   * <code>string value = 1;</code>
-   * @return The bytes for value.
+   * <code>string text = 1;</code>
+   * @return The bytes for text.
    */
   com.google.protobuf.ByteString
-      getValueBytes();
+      getTextBytes();
 }

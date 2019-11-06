@@ -17,7 +17,15 @@ private static final long serialVersionUID = 0L;
   }
   private Document() {
     title_ = "";
+    keyword_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    version_ = "";
     type_ = "";
+    uri_ = "";
+    author_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    affiliation_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    abstract_ = "";
+    content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    rawData_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   @java.lang.Override
@@ -40,6 +48,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -57,29 +66,18 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 18: {
-            cn.edu.cug.cs.gtl.protos.Keywords.Builder subBuilder = null;
-            if (keywords_ != null) {
-              subBuilder = keywords_.toBuilder();
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              keyword_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000001;
             }
-            keywords_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Keywords.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(keywords_);
-              keywords_ = subBuilder.buildPartial();
-            }
-
+            keyword_.add(s);
             break;
           }
           case 26: {
-            cn.edu.cug.cs.gtl.protos.Version.Builder subBuilder = null;
-            if (version_ != null) {
-              subBuilder = version_.toBuilder();
-            }
-            version_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Version.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(version_);
-              version_ = subBuilder.buildPartial();
-            }
+            java.lang.String s = input.readStringRequireUtf8();
 
+            version_ = s;
             break;
           }
           case 34: {
@@ -89,81 +87,47 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 42: {
-            cn.edu.cug.cs.gtl.protos.URI.Builder subBuilder = null;
-            if (uri_ != null) {
-              subBuilder = uri_.toBuilder();
-            }
-            uri_ = input.readMessage(cn.edu.cug.cs.gtl.protos.URI.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(uri_);
-              uri_ = subBuilder.buildPartial();
-            }
+            java.lang.String s = input.readStringRequireUtf8();
 
+            uri_ = s;
             break;
           }
           case 50: {
-            cn.edu.cug.cs.gtl.protos.Authors.Builder subBuilder = null;
-            if (authors_ != null) {
-              subBuilder = authors_.toBuilder();
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              author_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000002;
             }
-            authors_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Authors.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(authors_);
-              authors_ = subBuilder.buildPartial();
-            }
-
+            author_.add(s);
             break;
           }
           case 58: {
-            cn.edu.cug.cs.gtl.protos.Affiliations.Builder subBuilder = null;
-            if (affiliations_ != null) {
-              subBuilder = affiliations_.toBuilder();
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              affiliation_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000004;
             }
-            affiliations_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Affiliations.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(affiliations_);
-              affiliations_ = subBuilder.buildPartial();
-            }
-
+            affiliation_.add(s);
             break;
           }
           case 66: {
-            cn.edu.cug.cs.gtl.protos.Abstract.Builder subBuilder = null;
-            if (abstract_ != null) {
-              subBuilder = abstract_.toBuilder();
-            }
-            abstract_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Abstract.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(abstract_);
-              abstract_ = subBuilder.buildPartial();
-            }
+            java.lang.String s = input.readStringRequireUtf8();
 
+            abstract_ = s;
             break;
           }
           case 74: {
-            cn.edu.cug.cs.gtl.protos.Content.Builder subBuilder = null;
-            if (content_ != null) {
-              subBuilder = content_.toBuilder();
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+              content_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000008;
             }
-            content_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Content.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(content_);
-              content_ = subBuilder.buildPartial();
-            }
-
+            content_.add(s);
             break;
           }
           case 82: {
-            cn.edu.cug.cs.gtl.protos.Raw.Builder subBuilder = null;
-            if (raw_ != null) {
-              subBuilder = raw_.toBuilder();
-            }
-            raw_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Raw.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(raw_);
-              raw_ = subBuilder.buildPartial();
-            }
 
+            rawData_ = input.readBytes();
             break;
           }
           default: {
@@ -181,6 +145,18 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        keyword_ = keyword_.getUnmodifiableView();
+      }
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        author_ = author_.getUnmodifiableView();
+      }
+      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        affiliation_ = affiliation_.getUnmodifiableView();
+      }
+      if (((mutable_bitField0_ & 0x00000008) != 0)) {
+        content_ = content_.getUnmodifiableView();
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -234,50 +210,75 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int KEYWORDS_FIELD_NUMBER = 2;
-  private cn.edu.cug.cs.gtl.protos.Keywords keywords_;
+  public static final int KEYWORD_FIELD_NUMBER = 2;
+  private com.google.protobuf.LazyStringList keyword_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-   * @return Whether the keywords field is set.
+   * <code>repeated string keyword = 2;</code>
+   * @return A list containing the keyword.
    */
-  public boolean hasKeywords() {
-    return keywords_ != null;
+  public com.google.protobuf.ProtocolStringList
+      getKeywordList() {
+    return keyword_;
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-   * @return The keywords.
+   * <code>repeated string keyword = 2;</code>
+   * @return The count of keyword.
    */
-  public cn.edu.cug.cs.gtl.protos.Keywords getKeywords() {
-    return keywords_ == null ? cn.edu.cug.cs.gtl.protos.Keywords.getDefaultInstance() : keywords_;
+  public int getKeywordCount() {
+    return keyword_.size();
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+   * <code>repeated string keyword = 2;</code>
+   * @param index The index of the element to return.
+   * @return The keyword at the given index.
    */
-  public cn.edu.cug.cs.gtl.protos.KeywordsOrBuilder getKeywordsOrBuilder() {
-    return getKeywords();
+  public java.lang.String getKeyword(int index) {
+    return keyword_.get(index);
+  }
+  /**
+   * <code>repeated string keyword = 2;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the keyword at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getKeywordBytes(int index) {
+    return keyword_.getByteString(index);
   }
 
   public static final int VERSION_FIELD_NUMBER = 3;
-  private cn.edu.cug.cs.gtl.protos.Version version_;
+  private volatile java.lang.Object version_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
-   * @return Whether the version field is set.
-   */
-  public boolean hasVersion() {
-    return version_ != null;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+   * <code>string version = 3;</code>
    * @return The version.
    */
-  public cn.edu.cug.cs.gtl.protos.Version getVersion() {
-    return version_ == null ? cn.edu.cug.cs.gtl.protos.Version.getDefaultInstance() : version_;
+  public java.lang.String getVersion() {
+    java.lang.Object ref = version_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      version_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+   * <code>string version = 3;</code>
+   * @return The bytes for version.
    */
-  public cn.edu.cug.cs.gtl.protos.VersionOrBuilder getVersionOrBuilder() {
-    return getVersion();
+  public com.google.protobuf.ByteString
+      getVersionBytes() {
+    java.lang.Object ref = version_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      version_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int TYPE_FIELD_NUMBER = 4;
@@ -317,141 +318,190 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int URI_FIELD_NUMBER = 5;
-  private cn.edu.cug.cs.gtl.protos.URI uri_;
+  private volatile java.lang.Object uri_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-   * @return Whether the uri field is set.
-   */
-  public boolean hasUri() {
-    return uri_ != null;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+   * <code>string uri = 5;</code>
    * @return The uri.
    */
-  public cn.edu.cug.cs.gtl.protos.URI getUri() {
-    return uri_ == null ? cn.edu.cug.cs.gtl.protos.URI.getDefaultInstance() : uri_;
+  public java.lang.String getUri() {
+    java.lang.Object ref = uri_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      uri_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+   * <code>string uri = 5;</code>
+   * @return The bytes for uri.
    */
-  public cn.edu.cug.cs.gtl.protos.URIOrBuilder getUriOrBuilder() {
-    return getUri();
-  }
-
-  public static final int AUTHORS_FIELD_NUMBER = 6;
-  private cn.edu.cug.cs.gtl.protos.Authors authors_;
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-   * @return Whether the authors field is set.
-   */
-  public boolean hasAuthors() {
-    return authors_ != null;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-   * @return The authors.
-   */
-  public cn.edu.cug.cs.gtl.protos.Authors getAuthors() {
-    return authors_ == null ? cn.edu.cug.cs.gtl.protos.Authors.getDefaultInstance() : authors_;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-   */
-  public cn.edu.cug.cs.gtl.protos.AuthorsOrBuilder getAuthorsOrBuilder() {
-    return getAuthors();
+  public com.google.protobuf.ByteString
+      getUriBytes() {
+    java.lang.Object ref = uri_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      uri_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
-  public static final int AFFILIATIONS_FIELD_NUMBER = 7;
-  private cn.edu.cug.cs.gtl.protos.Affiliations affiliations_;
+  public static final int AUTHOR_FIELD_NUMBER = 6;
+  private com.google.protobuf.LazyStringList author_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-   * @return Whether the affiliations field is set.
+   * <code>repeated string author = 6;</code>
+   * @return A list containing the author.
    */
-  public boolean hasAffiliations() {
-    return affiliations_ != null;
+  public com.google.protobuf.ProtocolStringList
+      getAuthorList() {
+    return author_;
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-   * @return The affiliations.
+   * <code>repeated string author = 6;</code>
+   * @return The count of author.
    */
-  public cn.edu.cug.cs.gtl.protos.Affiliations getAffiliations() {
-    return affiliations_ == null ? cn.edu.cug.cs.gtl.protos.Affiliations.getDefaultInstance() : affiliations_;
+  public int getAuthorCount() {
+    return author_.size();
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+   * <code>repeated string author = 6;</code>
+   * @param index The index of the element to return.
+   * @return The author at the given index.
    */
-  public cn.edu.cug.cs.gtl.protos.AffiliationsOrBuilder getAffiliationsOrBuilder() {
-    return getAffiliations();
+  public java.lang.String getAuthor(int index) {
+    return author_.get(index);
+  }
+  /**
+   * <code>repeated string author = 6;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the author at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getAuthorBytes(int index) {
+    return author_.getByteString(index);
+  }
+
+  public static final int AFFILIATION_FIELD_NUMBER = 7;
+  private com.google.protobuf.LazyStringList affiliation_;
+  /**
+   * <code>repeated string affiliation = 7;</code>
+   * @return A list containing the affiliation.
+   */
+  public com.google.protobuf.ProtocolStringList
+      getAffiliationList() {
+    return affiliation_;
+  }
+  /**
+   * <code>repeated string affiliation = 7;</code>
+   * @return The count of affiliation.
+   */
+  public int getAffiliationCount() {
+    return affiliation_.size();
+  }
+  /**
+   * <code>repeated string affiliation = 7;</code>
+   * @param index The index of the element to return.
+   * @return The affiliation at the given index.
+   */
+  public java.lang.String getAffiliation(int index) {
+    return affiliation_.get(index);
+  }
+  /**
+   * <code>repeated string affiliation = 7;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the affiliation at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getAffiliationBytes(int index) {
+    return affiliation_.getByteString(index);
   }
 
   public static final int ABSTRACT_FIELD_NUMBER = 8;
-  private cn.edu.cug.cs.gtl.protos.Abstract abstract_;
+  private volatile java.lang.Object abstract_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-   * @return Whether the abstract field is set.
-   */
-  public boolean hasAbstract() {
-    return abstract_ != null;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+   * <code>string abstract = 8;</code>
    * @return The abstract.
    */
-  public cn.edu.cug.cs.gtl.protos.Abstract getAbstract() {
-    return abstract_ == null ? cn.edu.cug.cs.gtl.protos.Abstract.getDefaultInstance() : abstract_;
+  public java.lang.String getAbstract() {
+    java.lang.Object ref = abstract_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      abstract_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+   * <code>string abstract = 8;</code>
+   * @return The bytes for abstract.
    */
-  public cn.edu.cug.cs.gtl.protos.AbstractOrBuilder getAbstractOrBuilder() {
-    return getAbstract();
+  public com.google.protobuf.ByteString
+      getAbstractBytes() {
+    java.lang.Object ref = abstract_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      abstract_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int CONTENT_FIELD_NUMBER = 9;
-  private cn.edu.cug.cs.gtl.protos.Content content_;
+  private com.google.protobuf.LazyStringList content_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-   * @return Whether the content field is set.
+   * <code>repeated string content = 9;</code>
+   * @return A list containing the content.
    */
-  public boolean hasContent() {
-    return content_ != null;
+  public com.google.protobuf.ProtocolStringList
+      getContentList() {
+    return content_;
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-   * @return The content.
+   * <code>repeated string content = 9;</code>
+   * @return The count of content.
    */
-  public cn.edu.cug.cs.gtl.protos.Content getContent() {
-    return content_ == null ? cn.edu.cug.cs.gtl.protos.Content.getDefaultInstance() : content_;
+  public int getContentCount() {
+    return content_.size();
   }
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
+   * <code>repeated string content = 9;</code>
+   * @param index The index of the element to return.
+   * @return The content at the given index.
    */
-  public cn.edu.cug.cs.gtl.protos.ContentOrBuilder getContentOrBuilder() {
-    return getContent();
+  public java.lang.String getContent(int index) {
+    return content_.get(index);
+  }
+  /**
+   * <code>repeated string content = 9;</code>
+   * @param index The index of the value to return.
+   * @return The bytes of the content at the given index.
+   */
+  public com.google.protobuf.ByteString
+      getContentBytes(int index) {
+    return content_.getByteString(index);
   }
 
-  public static final int RAW_FIELD_NUMBER = 10;
-  private cn.edu.cug.cs.gtl.protos.Raw raw_;
+  public static final int RAW_DATA_FIELD_NUMBER = 10;
+  private com.google.protobuf.ByteString rawData_;
   /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-   * @return Whether the raw field is set.
+   * <code>bytes raw_data = 10;</code>
+   * @return The rawData.
    */
-  public boolean hasRaw() {
-    return raw_ != null;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-   * @return The raw.
-   */
-  public cn.edu.cug.cs.gtl.protos.Raw getRaw() {
-    return raw_ == null ? cn.edu.cug.cs.gtl.protos.Raw.getDefaultInstance() : raw_;
-  }
-  /**
-   * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-   */
-  public cn.edu.cug.cs.gtl.protos.RawOrBuilder getRawOrBuilder() {
-    return getRaw();
+  public com.google.protobuf.ByteString getRawData() {
+    return rawData_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -471,32 +521,32 @@ private static final long serialVersionUID = 0L;
     if (!getTitleBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
     }
-    if (keywords_ != null) {
-      output.writeMessage(2, getKeywords());
+    for (int i = 0; i < keyword_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, keyword_.getRaw(i));
     }
-    if (version_ != null) {
-      output.writeMessage(3, getVersion());
+    if (!getVersionBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, version_);
     }
     if (!getTypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, type_);
     }
-    if (uri_ != null) {
-      output.writeMessage(5, getUri());
+    if (!getUriBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, uri_);
     }
-    if (authors_ != null) {
-      output.writeMessage(6, getAuthors());
+    for (int i = 0; i < author_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, author_.getRaw(i));
     }
-    if (affiliations_ != null) {
-      output.writeMessage(7, getAffiliations());
+    for (int i = 0; i < affiliation_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, affiliation_.getRaw(i));
     }
-    if (abstract_ != null) {
-      output.writeMessage(8, getAbstract());
+    if (!getAbstractBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, abstract_);
     }
-    if (content_ != null) {
-      output.writeMessage(9, getContent());
+    for (int i = 0; i < content_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, content_.getRaw(i));
     }
-    if (raw_ != null) {
-      output.writeMessage(10, getRaw());
+    if (!rawData_.isEmpty()) {
+      output.writeBytes(10, rawData_);
     }
     unknownFields.writeTo(output);
   }
@@ -510,40 +560,53 @@ private static final long serialVersionUID = 0L;
     if (!getTitleBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
     }
-    if (keywords_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getKeywords());
+    {
+      int dataSize = 0;
+      for (int i = 0; i < keyword_.size(); i++) {
+        dataSize += computeStringSizeNoTag(keyword_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getKeywordList().size();
     }
-    if (version_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, getVersion());
+    if (!getVersionBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, version_);
     }
     if (!getTypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, type_);
     }
-    if (uri_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getUri());
+    if (!getUriBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, uri_);
     }
-    if (authors_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getAuthors());
+    {
+      int dataSize = 0;
+      for (int i = 0; i < author_.size(); i++) {
+        dataSize += computeStringSizeNoTag(author_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getAuthorList().size();
     }
-    if (affiliations_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, getAffiliations());
+    {
+      int dataSize = 0;
+      for (int i = 0; i < affiliation_.size(); i++) {
+        dataSize += computeStringSizeNoTag(affiliation_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getAffiliationList().size();
     }
-    if (abstract_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, getAbstract());
+    if (!getAbstractBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, abstract_);
     }
-    if (content_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(9, getContent());
+    {
+      int dataSize = 0;
+      for (int i = 0; i < content_.size(); i++) {
+        dataSize += computeStringSizeNoTag(content_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getContentList().size();
     }
-    if (raw_ != null) {
+    if (!rawData_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(10, getRaw());
+        .computeBytesSize(10, rawData_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -562,48 +625,24 @@ private static final long serialVersionUID = 0L;
 
     if (!getTitle()
         .equals(other.getTitle())) return false;
-    if (hasKeywords() != other.hasKeywords()) return false;
-    if (hasKeywords()) {
-      if (!getKeywords()
-          .equals(other.getKeywords())) return false;
-    }
-    if (hasVersion() != other.hasVersion()) return false;
-    if (hasVersion()) {
-      if (!getVersion()
-          .equals(other.getVersion())) return false;
-    }
+    if (!getKeywordList()
+        .equals(other.getKeywordList())) return false;
+    if (!getVersion()
+        .equals(other.getVersion())) return false;
     if (!getType()
         .equals(other.getType())) return false;
-    if (hasUri() != other.hasUri()) return false;
-    if (hasUri()) {
-      if (!getUri()
-          .equals(other.getUri())) return false;
-    }
-    if (hasAuthors() != other.hasAuthors()) return false;
-    if (hasAuthors()) {
-      if (!getAuthors()
-          .equals(other.getAuthors())) return false;
-    }
-    if (hasAffiliations() != other.hasAffiliations()) return false;
-    if (hasAffiliations()) {
-      if (!getAffiliations()
-          .equals(other.getAffiliations())) return false;
-    }
-    if (hasAbstract() != other.hasAbstract()) return false;
-    if (hasAbstract()) {
-      if (!getAbstract()
-          .equals(other.getAbstract())) return false;
-    }
-    if (hasContent() != other.hasContent()) return false;
-    if (hasContent()) {
-      if (!getContent()
-          .equals(other.getContent())) return false;
-    }
-    if (hasRaw() != other.hasRaw()) return false;
-    if (hasRaw()) {
-      if (!getRaw()
-          .equals(other.getRaw())) return false;
-    }
+    if (!getUri()
+        .equals(other.getUri())) return false;
+    if (!getAuthorList()
+        .equals(other.getAuthorList())) return false;
+    if (!getAffiliationList()
+        .equals(other.getAffiliationList())) return false;
+    if (!getAbstract()
+        .equals(other.getAbstract())) return false;
+    if (!getContentList()
+        .equals(other.getContentList())) return false;
+    if (!getRawData()
+        .equals(other.getRawData())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -617,40 +656,32 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TITLE_FIELD_NUMBER;
     hash = (53 * hash) + getTitle().hashCode();
-    if (hasKeywords()) {
-      hash = (37 * hash) + KEYWORDS_FIELD_NUMBER;
-      hash = (53 * hash) + getKeywords().hashCode();
+    if (getKeywordCount() > 0) {
+      hash = (37 * hash) + KEYWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getKeywordList().hashCode();
     }
-    if (hasVersion()) {
-      hash = (37 * hash) + VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getVersion().hashCode();
-    }
+    hash = (37 * hash) + VERSION_FIELD_NUMBER;
+    hash = (53 * hash) + getVersion().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType().hashCode();
-    if (hasUri()) {
-      hash = (37 * hash) + URI_FIELD_NUMBER;
-      hash = (53 * hash) + getUri().hashCode();
+    hash = (37 * hash) + URI_FIELD_NUMBER;
+    hash = (53 * hash) + getUri().hashCode();
+    if (getAuthorCount() > 0) {
+      hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
+      hash = (53 * hash) + getAuthorList().hashCode();
     }
-    if (hasAuthors()) {
-      hash = (37 * hash) + AUTHORS_FIELD_NUMBER;
-      hash = (53 * hash) + getAuthors().hashCode();
+    if (getAffiliationCount() > 0) {
+      hash = (37 * hash) + AFFILIATION_FIELD_NUMBER;
+      hash = (53 * hash) + getAffiliationList().hashCode();
     }
-    if (hasAffiliations()) {
-      hash = (37 * hash) + AFFILIATIONS_FIELD_NUMBER;
-      hash = (53 * hash) + getAffiliations().hashCode();
-    }
-    if (hasAbstract()) {
-      hash = (37 * hash) + ABSTRACT_FIELD_NUMBER;
-      hash = (53 * hash) + getAbstract().hashCode();
-    }
-    if (hasContent()) {
+    hash = (37 * hash) + ABSTRACT_FIELD_NUMBER;
+    hash = (53 * hash) + getAbstract().hashCode();
+    if (getContentCount() > 0) {
       hash = (37 * hash) + CONTENT_FIELD_NUMBER;
-      hash = (53 * hash) + getContent().hashCode();
+      hash = (53 * hash) + getContentList().hashCode();
     }
-    if (hasRaw()) {
-      hash = (37 * hash) + RAW_FIELD_NUMBER;
-      hash = (53 * hash) + getRaw().hashCode();
-    }
+    hash = (37 * hash) + RAW_DATA_FIELD_NUMBER;
+    hash = (53 * hash) + getRawData().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -786,56 +817,24 @@ private static final long serialVersionUID = 0L;
       super.clear();
       title_ = "";
 
-      if (keywordsBuilder_ == null) {
-        keywords_ = null;
-      } else {
-        keywords_ = null;
-        keywordsBuilder_ = null;
-      }
-      if (versionBuilder_ == null) {
-        version_ = null;
-      } else {
-        version_ = null;
-        versionBuilder_ = null;
-      }
+      keyword_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      version_ = "";
+
       type_ = "";
 
-      if (uriBuilder_ == null) {
-        uri_ = null;
-      } else {
-        uri_ = null;
-        uriBuilder_ = null;
-      }
-      if (authorsBuilder_ == null) {
-        authors_ = null;
-      } else {
-        authors_ = null;
-        authorsBuilder_ = null;
-      }
-      if (affiliationsBuilder_ == null) {
-        affiliations_ = null;
-      } else {
-        affiliations_ = null;
-        affiliationsBuilder_ = null;
-      }
-      if (abstractBuilder_ == null) {
-        abstract_ = null;
-      } else {
-        abstract_ = null;
-        abstractBuilder_ = null;
-      }
-      if (contentBuilder_ == null) {
-        content_ = null;
-      } else {
-        content_ = null;
-        contentBuilder_ = null;
-      }
-      if (rawBuilder_ == null) {
-        raw_ = null;
-      } else {
-        raw_ = null;
-        rawBuilder_ = null;
-      }
+      uri_ = "";
+
+      author_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      affiliation_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000004);
+      abstract_ = "";
+
+      content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000008);
+      rawData_ = com.google.protobuf.ByteString.EMPTY;
+
       return this;
     }
 
@@ -862,48 +861,33 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cn.edu.cug.cs.gtl.protos.Document buildPartial() {
       cn.edu.cug.cs.gtl.protos.Document result = new cn.edu.cug.cs.gtl.protos.Document(this);
+      int from_bitField0_ = bitField0_;
       result.title_ = title_;
-      if (keywordsBuilder_ == null) {
-        result.keywords_ = keywords_;
-      } else {
-        result.keywords_ = keywordsBuilder_.build();
+      if (((bitField0_ & 0x00000001) != 0)) {
+        keyword_ = keyword_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000001);
       }
-      if (versionBuilder_ == null) {
-        result.version_ = version_;
-      } else {
-        result.version_ = versionBuilder_.build();
-      }
+      result.keyword_ = keyword_;
+      result.version_ = version_;
       result.type_ = type_;
-      if (uriBuilder_ == null) {
-        result.uri_ = uri_;
-      } else {
-        result.uri_ = uriBuilder_.build();
+      result.uri_ = uri_;
+      if (((bitField0_ & 0x00000002) != 0)) {
+        author_ = author_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000002);
       }
-      if (authorsBuilder_ == null) {
-        result.authors_ = authors_;
-      } else {
-        result.authors_ = authorsBuilder_.build();
+      result.author_ = author_;
+      if (((bitField0_ & 0x00000004) != 0)) {
+        affiliation_ = affiliation_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000004);
       }
-      if (affiliationsBuilder_ == null) {
-        result.affiliations_ = affiliations_;
-      } else {
-        result.affiliations_ = affiliationsBuilder_.build();
+      result.affiliation_ = affiliation_;
+      result.abstract_ = abstract_;
+      if (((bitField0_ & 0x00000008) != 0)) {
+        content_ = content_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000008);
       }
-      if (abstractBuilder_ == null) {
-        result.abstract_ = abstract_;
-      } else {
-        result.abstract_ = abstractBuilder_.build();
-      }
-      if (contentBuilder_ == null) {
-        result.content_ = content_;
-      } else {
-        result.content_ = contentBuilder_.build();
-      }
-      if (rawBuilder_ == null) {
-        result.raw_ = raw_;
-      } else {
-        result.raw_ = rawBuilder_.build();
-      }
+      result.content_ = content_;
+      result.rawData_ = rawData_;
       onBuilt();
       return result;
     }
@@ -956,33 +940,64 @@ private static final long serialVersionUID = 0L;
         title_ = other.title_;
         onChanged();
       }
-      if (other.hasKeywords()) {
-        mergeKeywords(other.getKeywords());
+      if (!other.keyword_.isEmpty()) {
+        if (keyword_.isEmpty()) {
+          keyword_ = other.keyword_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureKeywordIsMutable();
+          keyword_.addAll(other.keyword_);
+        }
+        onChanged();
       }
-      if (other.hasVersion()) {
-        mergeVersion(other.getVersion());
+      if (!other.getVersion().isEmpty()) {
+        version_ = other.version_;
+        onChanged();
       }
       if (!other.getType().isEmpty()) {
         type_ = other.type_;
         onChanged();
       }
-      if (other.hasUri()) {
-        mergeUri(other.getUri());
+      if (!other.getUri().isEmpty()) {
+        uri_ = other.uri_;
+        onChanged();
       }
-      if (other.hasAuthors()) {
-        mergeAuthors(other.getAuthors());
+      if (!other.author_.isEmpty()) {
+        if (author_.isEmpty()) {
+          author_ = other.author_;
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          ensureAuthorIsMutable();
+          author_.addAll(other.author_);
+        }
+        onChanged();
       }
-      if (other.hasAffiliations()) {
-        mergeAffiliations(other.getAffiliations());
+      if (!other.affiliation_.isEmpty()) {
+        if (affiliation_.isEmpty()) {
+          affiliation_ = other.affiliation_;
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          ensureAffiliationIsMutable();
+          affiliation_.addAll(other.affiliation_);
+        }
+        onChanged();
       }
-      if (other.hasAbstract()) {
-        mergeAbstract(other.getAbstract());
+      if (!other.getAbstract().isEmpty()) {
+        abstract_ = other.abstract_;
+        onChanged();
       }
-      if (other.hasContent()) {
-        mergeContent(other.getContent());
+      if (!other.content_.isEmpty()) {
+        if (content_.isEmpty()) {
+          content_ = other.content_;
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          ensureContentIsMutable();
+          content_.addAll(other.content_);
+        }
+        onChanged();
       }
-      if (other.hasRaw()) {
-        mergeRaw(other.getRaw());
+      if (other.getRawData() != com.google.protobuf.ByteString.EMPTY) {
+        setRawData(other.getRawData());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1012,6 +1027,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private java.lang.Object title_ = "";
     /**
@@ -1089,242 +1105,190 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private cn.edu.cug.cs.gtl.protos.Keywords keywords_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Keywords, cn.edu.cug.cs.gtl.protos.Keywords.Builder, cn.edu.cug.cs.gtl.protos.KeywordsOrBuilder> keywordsBuilder_;
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-     * @return Whether the keywords field is set.
-     */
-    public boolean hasKeywords() {
-      return keywordsBuilder_ != null || keywords_ != null;
+    private com.google.protobuf.LazyStringList keyword_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureKeywordIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        keyword_ = new com.google.protobuf.LazyStringArrayList(keyword_);
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-     * @return The keywords.
+     * <code>repeated string keyword = 2;</code>
+     * @return A list containing the keyword.
      */
-    public cn.edu.cug.cs.gtl.protos.Keywords getKeywords() {
-      if (keywordsBuilder_ == null) {
-        return keywords_ == null ? cn.edu.cug.cs.gtl.protos.Keywords.getDefaultInstance() : keywords_;
-      } else {
-        return keywordsBuilder_.getMessage();
-      }
+    public com.google.protobuf.ProtocolStringList
+        getKeywordList() {
+      return keyword_.getUnmodifiableView();
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+     * <code>repeated string keyword = 2;</code>
+     * @return The count of keyword.
      */
-    public Builder setKeywords(cn.edu.cug.cs.gtl.protos.Keywords value) {
-      if (keywordsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        keywords_ = value;
-        onChanged();
-      } else {
-        keywordsBuilder_.setMessage(value);
-      }
-
-      return this;
+    public int getKeywordCount() {
+      return keyword_.size();
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+     * <code>repeated string keyword = 2;</code>
+     * @param index The index of the element to return.
+     * @return The keyword at the given index.
      */
-    public Builder setKeywords(
-        cn.edu.cug.cs.gtl.protos.Keywords.Builder builderForValue) {
-      if (keywordsBuilder_ == null) {
-        keywords_ = builderForValue.build();
-        onChanged();
-      } else {
-        keywordsBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
+    public java.lang.String getKeyword(int index) {
+      return keyword_.get(index);
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+     * <code>repeated string keyword = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the keyword at the given index.
      */
-    public Builder mergeKeywords(cn.edu.cug.cs.gtl.protos.Keywords value) {
-      if (keywordsBuilder_ == null) {
-        if (keywords_ != null) {
-          keywords_ =
-            cn.edu.cug.cs.gtl.protos.Keywords.newBuilder(keywords_).mergeFrom(value).buildPartial();
-        } else {
-          keywords_ = value;
-        }
-        onChanged();
-      } else {
-        keywordsBuilder_.mergeFrom(value);
-      }
-
-      return this;
+    public com.google.protobuf.ByteString
+        getKeywordBytes(int index) {
+      return keyword_.getByteString(index);
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+     * <code>repeated string keyword = 2;</code>
+     * @param index The index to set the value at.
+     * @param value The keyword to set.
+     * @return This builder for chaining.
      */
-    public Builder clearKeywords() {
-      if (keywordsBuilder_ == null) {
-        keywords_ = null;
-        onChanged();
-      } else {
-        keywords_ = null;
-        keywordsBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.Keywords.Builder getKeywordsBuilder() {
-      
+    public Builder setKeyword(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureKeywordIsMutable();
+      keyword_.set(index, value);
       onChanged();
-      return getKeywordsFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+     * <code>repeated string keyword = 2;</code>
+     * @param value The keyword to add.
+     * @return This builder for chaining.
      */
-    public cn.edu.cug.cs.gtl.protos.KeywordsOrBuilder getKeywordsOrBuilder() {
-      if (keywordsBuilder_ != null) {
-        return keywordsBuilder_.getMessageOrBuilder();
-      } else {
-        return keywords_ == null ?
-            cn.edu.cug.cs.gtl.protos.Keywords.getDefaultInstance() : keywords_;
-      }
+    public Builder addKeyword(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureKeywordIsMutable();
+      keyword_.add(value);
+      onChanged();
+      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Keywords keywords = 2;</code>
+     * <code>repeated string keyword = 2;</code>
+     * @param values The keyword to add.
+     * @return This builder for chaining.
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Keywords, cn.edu.cug.cs.gtl.protos.Keywords.Builder, cn.edu.cug.cs.gtl.protos.KeywordsOrBuilder> 
-        getKeywordsFieldBuilder() {
-      if (keywordsBuilder_ == null) {
-        keywordsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Keywords, cn.edu.cug.cs.gtl.protos.Keywords.Builder, cn.edu.cug.cs.gtl.protos.KeywordsOrBuilder>(
-                getKeywords(),
-                getParentForChildren(),
-                isClean());
-        keywords_ = null;
-      }
-      return keywordsBuilder_;
+    public Builder addAllKeyword(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureKeywordIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, keyword_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string keyword = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearKeyword() {
+      keyword_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string keyword = 2;</code>
+     * @param value The bytes of the keyword to add.
+     * @return This builder for chaining.
+     */
+    public Builder addKeywordBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureKeywordIsMutable();
+      keyword_.add(value);
+      onChanged();
+      return this;
     }
 
-    private cn.edu.cug.cs.gtl.protos.Version version_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Version, cn.edu.cug.cs.gtl.protos.Version.Builder, cn.edu.cug.cs.gtl.protos.VersionOrBuilder> versionBuilder_;
+    private java.lang.Object version_ = "";
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
-     * @return Whether the version field is set.
-     */
-    public boolean hasVersion() {
-      return versionBuilder_ != null || version_ != null;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+     * <code>string version = 3;</code>
      * @return The version.
      */
-    public cn.edu.cug.cs.gtl.protos.Version getVersion() {
-      if (versionBuilder_ == null) {
-        return version_ == null ? cn.edu.cug.cs.gtl.protos.Version.getDefaultInstance() : version_;
+    public java.lang.String getVersion() {
+      java.lang.Object ref = version_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        version_ = s;
+        return s;
       } else {
-        return versionBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+     * <code>string version = 3;</code>
+     * @return The bytes for version.
      */
-    public Builder setVersion(cn.edu.cug.cs.gtl.protos.Version value) {
-      if (versionBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        version_ = value;
-        onChanged();
+    public com.google.protobuf.ByteString
+        getVersionBytes() {
+      java.lang.Object ref = version_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        version_ = b;
+        return b;
       } else {
-        versionBuilder_.setMessage(value);
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+     * <code>string version = 3;</code>
+     * @param value The version to set.
+     * @return This builder for chaining.
      */
     public Builder setVersion(
-        cn.edu.cug.cs.gtl.protos.Version.Builder builderForValue) {
-      if (versionBuilder_ == null) {
-        version_ = builderForValue.build();
-        onChanged();
-      } else {
-        versionBuilder_.setMessage(builderForValue.build());
-      }
-
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      version_ = value;
+      onChanged();
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
-     */
-    public Builder mergeVersion(cn.edu.cug.cs.gtl.protos.Version value) {
-      if (versionBuilder_ == null) {
-        if (version_ != null) {
-          version_ =
-            cn.edu.cug.cs.gtl.protos.Version.newBuilder(version_).mergeFrom(value).buildPartial();
-        } else {
-          version_ = value;
-        }
-        onChanged();
-      } else {
-        versionBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+     * <code>string version = 3;</code>
+     * @return This builder for chaining.
      */
     public Builder clearVersion() {
-      if (versionBuilder_ == null) {
-        version_ = null;
-        onChanged();
-      } else {
-        version_ = null;
-        versionBuilder_ = null;
-      }
-
+      
+      version_ = getDefaultInstance().getVersion();
+      onChanged();
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
+     * <code>string version = 3;</code>
+     * @param value The bytes for version to set.
+     * @return This builder for chaining.
      */
-    public cn.edu.cug.cs.gtl.protos.Version.Builder getVersionBuilder() {
+    public Builder setVersionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       
+      version_ = value;
       onChanged();
-      return getVersionFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.VersionOrBuilder getVersionOrBuilder() {
-      if (versionBuilder_ != null) {
-        return versionBuilder_.getMessageOrBuilder();
-      } else {
-        return version_ == null ?
-            cn.edu.cug.cs.gtl.protos.Version.getDefaultInstance() : version_;
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Version version = 3;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Version, cn.edu.cug.cs.gtl.protos.Version.Builder, cn.edu.cug.cs.gtl.protos.VersionOrBuilder> 
-        getVersionFieldBuilder() {
-      if (versionBuilder_ == null) {
-        versionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Version, cn.edu.cug.cs.gtl.protos.Version.Builder, cn.edu.cug.cs.gtl.protos.VersionOrBuilder>(
-                getVersion(),
-                getParentForChildren(),
-                isClean());
-        version_ = null;
-      }
-      return versionBuilder_;
+      return this;
     }
 
     private java.lang.Object type_ = "";
@@ -1403,718 +1367,519 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private cn.edu.cug.cs.gtl.protos.URI uri_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.URI, cn.edu.cug.cs.gtl.protos.URI.Builder, cn.edu.cug.cs.gtl.protos.URIOrBuilder> uriBuilder_;
+    private java.lang.Object uri_ = "";
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-     * @return Whether the uri field is set.
-     */
-    public boolean hasUri() {
-      return uriBuilder_ != null || uri_ != null;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+     * <code>string uri = 5;</code>
      * @return The uri.
      */
-    public cn.edu.cug.cs.gtl.protos.URI getUri() {
-      if (uriBuilder_ == null) {
-        return uri_ == null ? cn.edu.cug.cs.gtl.protos.URI.getDefaultInstance() : uri_;
+    public java.lang.String getUri() {
+      java.lang.Object ref = uri_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        uri_ = s;
+        return s;
       } else {
-        return uriBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+     * <code>string uri = 5;</code>
+     * @return The bytes for uri.
      */
-    public Builder setUri(cn.edu.cug.cs.gtl.protos.URI value) {
-      if (uriBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        uri_ = value;
-        onChanged();
+    public com.google.protobuf.ByteString
+        getUriBytes() {
+      java.lang.Object ref = uri_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        uri_ = b;
+        return b;
       } else {
-        uriBuilder_.setMessage(value);
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+     * <code>string uri = 5;</code>
+     * @param value The uri to set.
+     * @return This builder for chaining.
      */
     public Builder setUri(
-        cn.edu.cug.cs.gtl.protos.URI.Builder builderForValue) {
-      if (uriBuilder_ == null) {
-        uri_ = builderForValue.build();
-        onChanged();
-      } else {
-        uriBuilder_.setMessage(builderForValue.build());
-      }
-
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      uri_ = value;
+      onChanged();
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-     */
-    public Builder mergeUri(cn.edu.cug.cs.gtl.protos.URI value) {
-      if (uriBuilder_ == null) {
-        if (uri_ != null) {
-          uri_ =
-            cn.edu.cug.cs.gtl.protos.URI.newBuilder(uri_).mergeFrom(value).buildPartial();
-        } else {
-          uri_ = value;
-        }
-        onChanged();
-      } else {
-        uriBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
+     * <code>string uri = 5;</code>
+     * @return This builder for chaining.
      */
     public Builder clearUri() {
-      if (uriBuilder_ == null) {
-        uri_ = null;
-        onChanged();
-      } else {
-        uri_ = null;
-        uriBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.URI.Builder getUriBuilder() {
       
+      uri_ = getDefaultInstance().getUri();
       onChanged();
-      return getUriFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.URIOrBuilder getUriOrBuilder() {
-      if (uriBuilder_ != null) {
-        return uriBuilder_.getMessageOrBuilder();
-      } else {
-        return uri_ == null ?
-            cn.edu.cug.cs.gtl.protos.URI.getDefaultInstance() : uri_;
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.URI uri = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.URI, cn.edu.cug.cs.gtl.protos.URI.Builder, cn.edu.cug.cs.gtl.protos.URIOrBuilder> 
-        getUriFieldBuilder() {
-      if (uriBuilder_ == null) {
-        uriBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.URI, cn.edu.cug.cs.gtl.protos.URI.Builder, cn.edu.cug.cs.gtl.protos.URIOrBuilder>(
-                getUri(),
-                getParentForChildren(),
-                isClean());
-        uri_ = null;
-      }
-      return uriBuilder_;
-    }
-
-    private cn.edu.cug.cs.gtl.protos.Authors authors_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Authors, cn.edu.cug.cs.gtl.protos.Authors.Builder, cn.edu.cug.cs.gtl.protos.AuthorsOrBuilder> authorsBuilder_;
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     * @return Whether the authors field is set.
-     */
-    public boolean hasAuthors() {
-      return authorsBuilder_ != null || authors_ != null;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     * @return The authors.
-     */
-    public cn.edu.cug.cs.gtl.protos.Authors getAuthors() {
-      if (authorsBuilder_ == null) {
-        return authors_ == null ? cn.edu.cug.cs.gtl.protos.Authors.getDefaultInstance() : authors_;
-      } else {
-        return authorsBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     */
-    public Builder setAuthors(cn.edu.cug.cs.gtl.protos.Authors value) {
-      if (authorsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        authors_ = value;
-        onChanged();
-      } else {
-        authorsBuilder_.setMessage(value);
-      }
-
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
+     * <code>string uri = 5;</code>
+     * @param value The bytes for uri to set.
+     * @return This builder for chaining.
      */
-    public Builder setAuthors(
-        cn.edu.cug.cs.gtl.protos.Authors.Builder builderForValue) {
-      if (authorsBuilder_ == null) {
-        authors_ = builderForValue.build();
-        onChanged();
-      } else {
-        authorsBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     */
-    public Builder mergeAuthors(cn.edu.cug.cs.gtl.protos.Authors value) {
-      if (authorsBuilder_ == null) {
-        if (authors_ != null) {
-          authors_ =
-            cn.edu.cug.cs.gtl.protos.Authors.newBuilder(authors_).mergeFrom(value).buildPartial();
-        } else {
-          authors_ = value;
-        }
-        onChanged();
-      } else {
-        authorsBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     */
-    public Builder clearAuthors() {
-      if (authorsBuilder_ == null) {
-        authors_ = null;
-        onChanged();
-      } else {
-        authors_ = null;
-        authorsBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.Authors.Builder getAuthorsBuilder() {
+    public Builder setUriBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
       
+      uri_ = value;
       onChanged();
-      return getAuthorsFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.AuthorsOrBuilder getAuthorsOrBuilder() {
-      if (authorsBuilder_ != null) {
-        return authorsBuilder_.getMessageOrBuilder();
-      } else {
-        return authors_ == null ?
-            cn.edu.cug.cs.gtl.protos.Authors.getDefaultInstance() : authors_;
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Authors authors = 6;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Authors, cn.edu.cug.cs.gtl.protos.Authors.Builder, cn.edu.cug.cs.gtl.protos.AuthorsOrBuilder> 
-        getAuthorsFieldBuilder() {
-      if (authorsBuilder_ == null) {
-        authorsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Authors, cn.edu.cug.cs.gtl.protos.Authors.Builder, cn.edu.cug.cs.gtl.protos.AuthorsOrBuilder>(
-                getAuthors(),
-                getParentForChildren(),
-                isClean());
-        authors_ = null;
-      }
-      return authorsBuilder_;
-    }
-
-    private cn.edu.cug.cs.gtl.protos.Affiliations affiliations_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Affiliations, cn.edu.cug.cs.gtl.protos.Affiliations.Builder, cn.edu.cug.cs.gtl.protos.AffiliationsOrBuilder> affiliationsBuilder_;
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-     * @return Whether the affiliations field is set.
-     */
-    public boolean hasAffiliations() {
-      return affiliationsBuilder_ != null || affiliations_ != null;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-     * @return The affiliations.
-     */
-    public cn.edu.cug.cs.gtl.protos.Affiliations getAffiliations() {
-      if (affiliationsBuilder_ == null) {
-        return affiliations_ == null ? cn.edu.cug.cs.gtl.protos.Affiliations.getDefaultInstance() : affiliations_;
-      } else {
-        return affiliationsBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-     */
-    public Builder setAffiliations(cn.edu.cug.cs.gtl.protos.Affiliations value) {
-      if (affiliationsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        affiliations_ = value;
-        onChanged();
-      } else {
-        affiliationsBuilder_.setMessage(value);
-      }
-
       return this;
     }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
-     */
-    public Builder setAffiliations(
-        cn.edu.cug.cs.gtl.protos.Affiliations.Builder builderForValue) {
-      if (affiliationsBuilder_ == null) {
-        affiliations_ = builderForValue.build();
-        onChanged();
-      } else {
-        affiliationsBuilder_.setMessage(builderForValue.build());
-      }
 
-      return this;
+    private com.google.protobuf.LazyStringList author_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureAuthorIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        author_ = new com.google.protobuf.LazyStringArrayList(author_);
+        bitField0_ |= 0x00000002;
+       }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+     * <code>repeated string author = 6;</code>
+     * @return A list containing the author.
      */
-    public Builder mergeAffiliations(cn.edu.cug.cs.gtl.protos.Affiliations value) {
-      if (affiliationsBuilder_ == null) {
-        if (affiliations_ != null) {
-          affiliations_ =
-            cn.edu.cug.cs.gtl.protos.Affiliations.newBuilder(affiliations_).mergeFrom(value).buildPartial();
-        } else {
-          affiliations_ = value;
-        }
-        onChanged();
-      } else {
-        affiliationsBuilder_.mergeFrom(value);
-      }
-
-      return this;
+    public com.google.protobuf.ProtocolStringList
+        getAuthorList() {
+      return author_.getUnmodifiableView();
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+     * <code>repeated string author = 6;</code>
+     * @return The count of author.
      */
-    public Builder clearAffiliations() {
-      if (affiliationsBuilder_ == null) {
-        affiliations_ = null;
-        onChanged();
-      } else {
-        affiliations_ = null;
-        affiliationsBuilder_ = null;
-      }
-
-      return this;
+    public int getAuthorCount() {
+      return author_.size();
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+     * <code>repeated string author = 6;</code>
+     * @param index The index of the element to return.
+     * @return The author at the given index.
      */
-    public cn.edu.cug.cs.gtl.protos.Affiliations.Builder getAffiliationsBuilder() {
-      
+    public java.lang.String getAuthor(int index) {
+      return author_.get(index);
+    }
+    /**
+     * <code>repeated string author = 6;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the author at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getAuthorBytes(int index) {
+      return author_.getByteString(index);
+    }
+    /**
+     * <code>repeated string author = 6;</code>
+     * @param index The index to set the value at.
+     * @param value The author to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAuthor(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAuthorIsMutable();
+      author_.set(index, value);
       onChanged();
-      return getAffiliationsFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+     * <code>repeated string author = 6;</code>
+     * @param value The author to add.
+     * @return This builder for chaining.
      */
-    public cn.edu.cug.cs.gtl.protos.AffiliationsOrBuilder getAffiliationsOrBuilder() {
-      if (affiliationsBuilder_ != null) {
-        return affiliationsBuilder_.getMessageOrBuilder();
-      } else {
-        return affiliations_ == null ?
-            cn.edu.cug.cs.gtl.protos.Affiliations.getDefaultInstance() : affiliations_;
-      }
+    public Builder addAuthor(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAuthorIsMutable();
+      author_.add(value);
+      onChanged();
+      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Affiliations affiliations = 7;</code>
+     * <code>repeated string author = 6;</code>
+     * @param values The author to add.
+     * @return This builder for chaining.
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Affiliations, cn.edu.cug.cs.gtl.protos.Affiliations.Builder, cn.edu.cug.cs.gtl.protos.AffiliationsOrBuilder> 
-        getAffiliationsFieldBuilder() {
-      if (affiliationsBuilder_ == null) {
-        affiliationsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Affiliations, cn.edu.cug.cs.gtl.protos.Affiliations.Builder, cn.edu.cug.cs.gtl.protos.AffiliationsOrBuilder>(
-                getAffiliations(),
-                getParentForChildren(),
-                isClean());
-        affiliations_ = null;
-      }
-      return affiliationsBuilder_;
+    public Builder addAllAuthor(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureAuthorIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, author_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string author = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAuthor() {
+      author_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string author = 6;</code>
+     * @param value The bytes of the author to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAuthorBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureAuthorIsMutable();
+      author_.add(value);
+      onChanged();
+      return this;
     }
 
-    private cn.edu.cug.cs.gtl.protos.Abstract abstract_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Abstract, cn.edu.cug.cs.gtl.protos.Abstract.Builder, cn.edu.cug.cs.gtl.protos.AbstractOrBuilder> abstractBuilder_;
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-     * @return Whether the abstract field is set.
-     */
-    public boolean hasAbstract() {
-      return abstractBuilder_ != null || abstract_ != null;
+    private com.google.protobuf.LazyStringList affiliation_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureAffiliationIsMutable() {
+      if (!((bitField0_ & 0x00000004) != 0)) {
+        affiliation_ = new com.google.protobuf.LazyStringArrayList(affiliation_);
+        bitField0_ |= 0x00000004;
+       }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+     * <code>repeated string affiliation = 7;</code>
+     * @return A list containing the affiliation.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getAffiliationList() {
+      return affiliation_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @return The count of affiliation.
+     */
+    public int getAffiliationCount() {
+      return affiliation_.size();
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @param index The index of the element to return.
+     * @return The affiliation at the given index.
+     */
+    public java.lang.String getAffiliation(int index) {
+      return affiliation_.get(index);
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the affiliation at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getAffiliationBytes(int index) {
+      return affiliation_.getByteString(index);
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @param index The index to set the value at.
+     * @param value The affiliation to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAffiliation(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAffiliationIsMutable();
+      affiliation_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @param value The affiliation to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAffiliation(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAffiliationIsMutable();
+      affiliation_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @param values The affiliation to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllAffiliation(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureAffiliationIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, affiliation_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAffiliation() {
+      affiliation_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string affiliation = 7;</code>
+     * @param value The bytes of the affiliation to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAffiliationBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureAffiliationIsMutable();
+      affiliation_.add(value);
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object abstract_ = "";
+    /**
+     * <code>string abstract = 8;</code>
      * @return The abstract.
      */
-    public cn.edu.cug.cs.gtl.protos.Abstract getAbstract() {
-      if (abstractBuilder_ == null) {
-        return abstract_ == null ? cn.edu.cug.cs.gtl.protos.Abstract.getDefaultInstance() : abstract_;
+    public java.lang.String getAbstract() {
+      java.lang.Object ref = abstract_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        abstract_ = s;
+        return s;
       } else {
-        return abstractBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+     * <code>string abstract = 8;</code>
+     * @return The bytes for abstract.
      */
-    public Builder setAbstract(cn.edu.cug.cs.gtl.protos.Abstract value) {
-      if (abstractBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        abstract_ = value;
-        onChanged();
+    public com.google.protobuf.ByteString
+        getAbstractBytes() {
+      java.lang.Object ref = abstract_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        abstract_ = b;
+        return b;
       } else {
-        abstractBuilder_.setMessage(value);
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+     * <code>string abstract = 8;</code>
+     * @param value The abstract to set.
+     * @return This builder for chaining.
      */
     public Builder setAbstract(
-        cn.edu.cug.cs.gtl.protos.Abstract.Builder builderForValue) {
-      if (abstractBuilder_ == null) {
-        abstract_ = builderForValue.build();
-        onChanged();
-      } else {
-        abstractBuilder_.setMessage(builderForValue.build());
-      }
-
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      abstract_ = value;
+      onChanged();
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-     */
-    public Builder mergeAbstract(cn.edu.cug.cs.gtl.protos.Abstract value) {
-      if (abstractBuilder_ == null) {
-        if (abstract_ != null) {
-          abstract_ =
-            cn.edu.cug.cs.gtl.protos.Abstract.newBuilder(abstract_).mergeFrom(value).buildPartial();
-        } else {
-          abstract_ = value;
-        }
-        onChanged();
-      } else {
-        abstractBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
+     * <code>string abstract = 8;</code>
+     * @return This builder for chaining.
      */
     public Builder clearAbstract() {
-      if (abstractBuilder_ == null) {
-        abstract_ = null;
-        onChanged();
-      } else {
-        abstract_ = null;
-        abstractBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.Abstract.Builder getAbstractBuilder() {
       
+      abstract_ = getDefaultInstance().getAbstract();
       onChanged();
-      return getAbstractFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.AbstractOrBuilder getAbstractOrBuilder() {
-      if (abstractBuilder_ != null) {
-        return abstractBuilder_.getMessageOrBuilder();
-      } else {
-        return abstract_ == null ?
-            cn.edu.cug.cs.gtl.protos.Abstract.getDefaultInstance() : abstract_;
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Abstract abstract = 8;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Abstract, cn.edu.cug.cs.gtl.protos.Abstract.Builder, cn.edu.cug.cs.gtl.protos.AbstractOrBuilder> 
-        getAbstractFieldBuilder() {
-      if (abstractBuilder_ == null) {
-        abstractBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Abstract, cn.edu.cug.cs.gtl.protos.Abstract.Builder, cn.edu.cug.cs.gtl.protos.AbstractOrBuilder>(
-                getAbstract(),
-                getParentForChildren(),
-                isClean());
-        abstract_ = null;
-      }
-      return abstractBuilder_;
-    }
-
-    private cn.edu.cug.cs.gtl.protos.Content content_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Content, cn.edu.cug.cs.gtl.protos.Content.Builder, cn.edu.cug.cs.gtl.protos.ContentOrBuilder> contentBuilder_;
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-     * @return Whether the content field is set.
-     */
-    public boolean hasContent() {
-      return contentBuilder_ != null || content_ != null;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-     * @return The content.
-     */
-    public cn.edu.cug.cs.gtl.protos.Content getContent() {
-      if (contentBuilder_ == null) {
-        return content_ == null ? cn.edu.cug.cs.gtl.protos.Content.getDefaultInstance() : content_;
-      } else {
-        return contentBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-     */
-    public Builder setContent(cn.edu.cug.cs.gtl.protos.Content value) {
-      if (contentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        content_ = value;
-        onChanged();
-      } else {
-        contentBuilder_.setMessage(value);
-      }
-
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
+     * <code>string abstract = 8;</code>
+     * @param value The bytes for abstract to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAbstractBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      abstract_ = value;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringList content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureContentIsMutable() {
+      if (!((bitField0_ & 0x00000008) != 0)) {
+        content_ = new com.google.protobuf.LazyStringArrayList(content_);
+        bitField0_ |= 0x00000008;
+       }
+    }
+    /**
+     * <code>repeated string content = 9;</code>
+     * @return A list containing the content.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getContentList() {
+      return content_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string content = 9;</code>
+     * @return The count of content.
+     */
+    public int getContentCount() {
+      return content_.size();
+    }
+    /**
+     * <code>repeated string content = 9;</code>
+     * @param index The index of the element to return.
+     * @return The content at the given index.
+     */
+    public java.lang.String getContent(int index) {
+      return content_.get(index);
+    }
+    /**
+     * <code>repeated string content = 9;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the content at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getContentBytes(int index) {
+      return content_.getByteString(index);
+    }
+    /**
+     * <code>repeated string content = 9;</code>
+     * @param index The index to set the value at.
+     * @param value The content to set.
+     * @return This builder for chaining.
      */
     public Builder setContent(
-        cn.edu.cug.cs.gtl.protos.Content.Builder builderForValue) {
-      if (contentBuilder_ == null) {
-        content_ = builderForValue.build();
-        onChanged();
-      } else {
-        contentBuilder_.setMessage(builderForValue.build());
-      }
-
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureContentIsMutable();
+      content_.set(index, value);
+      onChanged();
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
+     * <code>repeated string content = 9;</code>
+     * @param value The content to add.
+     * @return This builder for chaining.
      */
-    public Builder mergeContent(cn.edu.cug.cs.gtl.protos.Content value) {
-      if (contentBuilder_ == null) {
-        if (content_ != null) {
-          content_ =
-            cn.edu.cug.cs.gtl.protos.Content.newBuilder(content_).mergeFrom(value).buildPartial();
-        } else {
-          content_ = value;
-        }
-        onChanged();
-      } else {
-        contentBuilder_.mergeFrom(value);
-      }
-
+    public Builder addContent(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureContentIsMutable();
+      content_.add(value);
+      onChanged();
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
+     * <code>repeated string content = 9;</code>
+     * @param values The content to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllContent(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureContentIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, content_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string content = 9;</code>
+     * @return This builder for chaining.
      */
     public Builder clearContent() {
-      if (contentBuilder_ == null) {
-        content_ = null;
-        onChanged();
-      } else {
-        content_ = null;
-        contentBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.Content.Builder getContentBuilder() {
-      
+      content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
-      return getContentFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.ContentOrBuilder getContentOrBuilder() {
-      if (contentBuilder_ != null) {
-        return contentBuilder_.getMessageOrBuilder();
-      } else {
-        return content_ == null ?
-            cn.edu.cug.cs.gtl.protos.Content.getDefaultInstance() : content_;
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Content content = 9;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Content, cn.edu.cug.cs.gtl.protos.Content.Builder, cn.edu.cug.cs.gtl.protos.ContentOrBuilder> 
-        getContentFieldBuilder() {
-      if (contentBuilder_ == null) {
-        contentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Content, cn.edu.cug.cs.gtl.protos.Content.Builder, cn.edu.cug.cs.gtl.protos.ContentOrBuilder>(
-                getContent(),
-                getParentForChildren(),
-                isClean());
-        content_ = null;
-      }
-      return contentBuilder_;
-    }
-
-    private cn.edu.cug.cs.gtl.protos.Raw raw_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Raw, cn.edu.cug.cs.gtl.protos.Raw.Builder, cn.edu.cug.cs.gtl.protos.RawOrBuilder> rawBuilder_;
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-     * @return Whether the raw field is set.
-     */
-    public boolean hasRaw() {
-      return rawBuilder_ != null || raw_ != null;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-     * @return The raw.
-     */
-    public cn.edu.cug.cs.gtl.protos.Raw getRaw() {
-      if (rawBuilder_ == null) {
-        return raw_ == null ? cn.edu.cug.cs.gtl.protos.Raw.getDefaultInstance() : raw_;
-      } else {
-        return rawBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-     */
-    public Builder setRaw(cn.edu.cug.cs.gtl.protos.Raw value) {
-      if (rawBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        raw_ = value;
-        onChanged();
-      } else {
-        rawBuilder_.setMessage(value);
-      }
-
       return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
+     * <code>repeated string content = 9;</code>
+     * @param value The bytes of the content to add.
+     * @return This builder for chaining.
      */
-    public Builder setRaw(
-        cn.edu.cug.cs.gtl.protos.Raw.Builder builderForValue) {
-      if (rawBuilder_ == null) {
-        raw_ = builderForValue.build();
-        onChanged();
-      } else {
-        rawBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-     */
-    public Builder mergeRaw(cn.edu.cug.cs.gtl.protos.Raw value) {
-      if (rawBuilder_ == null) {
-        if (raw_ != null) {
-          raw_ =
-            cn.edu.cug.cs.gtl.protos.Raw.newBuilder(raw_).mergeFrom(value).buildPartial();
-        } else {
-          raw_ = value;
-        }
-        onChanged();
-      } else {
-        rawBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-     */
-    public Builder clearRaw() {
-      if (rawBuilder_ == null) {
-        raw_ = null;
-        onChanged();
-      } else {
-        raw_ = null;
-        rawBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
-     */
-    public cn.edu.cug.cs.gtl.protos.Raw.Builder getRawBuilder() {
-      
+    public Builder addContentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureContentIsMutable();
+      content_.add(value);
       onChanged();
-      return getRawFieldBuilder().getBuilder();
+      return this;
+    }
+
+    private com.google.protobuf.ByteString rawData_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes raw_data = 10;</code>
+     * @return The rawData.
+     */
+    public com.google.protobuf.ByteString getRawData() {
+      return rawData_;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
+     * <code>bytes raw_data = 10;</code>
+     * @param value The rawData to set.
+     * @return This builder for chaining.
      */
-    public cn.edu.cug.cs.gtl.protos.RawOrBuilder getRawOrBuilder() {
-      if (rawBuilder_ != null) {
-        return rawBuilder_.getMessageOrBuilder();
-      } else {
-        return raw_ == null ?
-            cn.edu.cug.cs.gtl.protos.Raw.getDefaultInstance() : raw_;
-      }
+    public Builder setRawData(com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      rawData_ = value;
+      onChanged();
+      return this;
     }
     /**
-     * <code>.cn.edu.cug.cs.gtl.protos.Raw raw = 10;</code>
+     * <code>bytes raw_data = 10;</code>
+     * @return This builder for chaining.
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Raw, cn.edu.cug.cs.gtl.protos.Raw.Builder, cn.edu.cug.cs.gtl.protos.RawOrBuilder> 
-        getRawFieldBuilder() {
-      if (rawBuilder_ == null) {
-        rawBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            cn.edu.cug.cs.gtl.protos.Raw, cn.edu.cug.cs.gtl.protos.Raw.Builder, cn.edu.cug.cs.gtl.protos.RawOrBuilder>(
-                getRaw(),
-                getParentForChildren(),
-                isClean());
-        raw_ = null;
-      }
-      return rawBuilder_;
+    public Builder clearRawData() {
+      
+      rawData_ = getDefaultInstance().getRawData();
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
