@@ -1,9 +1,9 @@
-package cn.edu.cug.cs.gtl.lucene.filefilter;
+package cn.edu.cug.cs.gtl.lucene.file;
 
 import java.io.File;
-import java.io.FileFilter;
 
-public class ImagesFileFilter implements FileFilter {
+
+class ShapesFileFilter implements DocumentFileFilter {
     /**
      * Tests whether or not the specified abstract pathname should be
      * included in a pathname list.
@@ -15,11 +15,9 @@ public class ImagesFileFilter implements FileFilter {
     @Override
     public boolean accept(File pathname) {
         String path = pathname.getName().trim().toLowerCase();
-        return path.endsWith("jpg")
-                ||path.endsWith("jpeg")
-                ||path.endsWith("bmp")
-                ||path.endsWith("png")
-                ||path.endsWith("tif")
-                ||path.endsWith("tiff");
+        return path.endsWith("shp")
+                ||path.endsWith("dwg")
+                ||path.endsWith("dxf")
+                ||path.endsWith("gvp");
     }
 }

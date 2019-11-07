@@ -1,7 +1,7 @@
 package cn.edu.cug.cs.gtl.lucene.document;
 
-import cn.edu.cug.cs.gtl.lucene.filefilter.AllFileFilter;
-import cn.edu.cug.cs.gtl.lucene.filefilter.OfficesFileFilter;
+
+import cn.edu.cug.cs.gtl.lucene.file.DocumentFileFilter;
 import org.apache.lucene.document.Document;
 import org.junit.After;
 import org.junit.Before;
@@ -9,8 +9,6 @@ import org.junit.Test;
 
 import java.io.File;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class DocumentCreatorTest {
 
@@ -71,7 +69,7 @@ public class DocumentCreatorTest {
     }
     @Test
     public void createFromPathForPARAGRAPH() throws Exception{
-        DocumentCreator dc = DocumentCreator.of("dat/raw",new OfficesFileFilter(),DocumentMapper.paragraphMapper());
+        DocumentCreator dc = DocumentCreator.of("dat/raw", DocumentFileFilter.officesFileFilter(),DocumentMapper.paragraphMapper());
         List<Document> ls = dc.execute();
         for(Document d: ls){
             System.out.println(d.toString());
@@ -79,7 +77,7 @@ public class DocumentCreatorTest {
     }
     @Test
     public void createFromPathForFILE() throws Exception{
-        DocumentCreator dc = DocumentCreator.of("dat/raw",new OfficesFileFilter(),DocumentMapper.fileMapper());
+        DocumentCreator dc = DocumentCreator.of("dat/raw",DocumentFileFilter.officesFileFilter(),DocumentMapper.fileMapper());
         List<Document> ls = dc.execute();
         for(Document d: ls){
             System.out.println(d.toString());
@@ -87,7 +85,7 @@ public class DocumentCreatorTest {
     }
     @Test
     public void createFromPathForRAW() throws Exception{
-        DocumentCreator dc = DocumentCreator.of("dat/raw",new AllFileFilter(),DocumentMapper.rawMapper());
+        DocumentCreator dc = DocumentCreator.of("dat/raw",DocumentFileFilter.allFileFilter(),DocumentMapper.rawMapper());
         List<Document> ls = dc.execute();
         for(Document d: ls){
             System.out.println(d.toString());

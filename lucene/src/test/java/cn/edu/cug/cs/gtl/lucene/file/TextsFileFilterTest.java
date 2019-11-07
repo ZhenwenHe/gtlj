@@ -1,11 +1,9 @@
-package cn.edu.cug.cs.gtl.lucene.filefilter;
+package cn.edu.cug.cs.gtl.lucene.file;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
-
-import static org.junit.Assert.*;
 
 public class TextsFileFilterTest {
 

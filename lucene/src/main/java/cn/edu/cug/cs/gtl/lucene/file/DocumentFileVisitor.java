@@ -1,4 +1,4 @@
-package cn.edu.cug.cs.gtl.lucene.filefilter;
+package cn.edu.cug.cs.gtl.lucene.file;
 
 import cn.edu.cug.cs.gtl.lucene.document.DocumentMapper;
 

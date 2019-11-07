@@ -1,7 +1,8 @@
 package cn.edu.cug.cs.gtl.lucene.document;
 
-import cn.edu.cug.cs.gtl.lucene.filefilter.AllFileFilter;
-import cn.edu.cug.cs.gtl.lucene.filefilter.DocumentFileVisitor;
+
+import cn.edu.cug.cs.gtl.lucene.file.DocumentFileFilter;
+import cn.edu.cug.cs.gtl.lucene.file.DocumentFileVisitor;
 import cn.edu.cug.cs.gtl.lucene.text.TextExtractor;
 import org.apache.lucene.document.*;
 
@@ -30,7 +31,7 @@ public class DocumentCreator {
      */
     public static DocumentCreator of(String docsPath, FileFilter fileFilter,DocumentMapper documentMapper){
         if(fileFilter==null)
-            fileFilter = new AllFileFilter();
+            fileFilter = DocumentFileFilter.allFileFilter();
         return new DocumentCreator(docsPath,fileFilter, documentMapper);
     }
 

@@ -1,9 +1,8 @@
-package cn.edu.cug.cs.gtl.lucene.filefilter;
+package cn.edu.cug.cs.gtl.lucene.file;
 
 import java.io.File;
-import java.io.FileFilter;
 
-public class AllFileFilter implements FileFilter {
+class AllFileFilter implements DocumentFileFilter {
     /**
      * Tests whether or not the specified abstract pathname should be
      * included in a pathname list.

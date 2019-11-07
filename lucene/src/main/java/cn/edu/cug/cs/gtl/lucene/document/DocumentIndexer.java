@@ -1,9 +1,8 @@
 package cn.edu.cug.cs.gtl.lucene.document;
 
-import cn.edu.cug.cs.gtl.lucene.filefilter.AllFileFilter;
-import cn.edu.cug.cs.gtl.lucene.filefilter.DocumentFileVisitor;
-import cn.edu.cug.cs.gtl.lucene.filefilter.OfficesFileFilter;
-import cn.edu.cug.cs.gtl.lucene.filefilter.TextsFileFilter;
+
+import cn.edu.cug.cs.gtl.lucene.file.DocumentFileFilter;
+import cn.edu.cug.cs.gtl.lucene.file.DocumentFileVisitor;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
@@ -14,7 +13,6 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
@@ -26,22 +24,35 @@ public class DocumentIndexer {
     private DocumentMapper documentMapper;
     private String indexPath;
     private String docsPath;
-    private boolean update;
+    private boolean bUpdate;
     private Analyzer analyzer;
+
 
     /**
      *
      * @param indexPath
      * @param docsPath
-     * @param fileFilter
-     * @param update
      * @return
      */
-    public static DocumentIndexer of(String indexPath, String docsPath, FileFilter fileFilter,DocumentMapper dm, boolean update){
-        return new DocumentIndexer(indexPath,docsPath,fileFilter,dm,update);
+    public static DocumentIndexer of(String indexPath, String docsPath){
+        return new DocumentIndexer(indexPath,docsPath, DocumentFileFilter.allFileFilter(),DocumentMapper.rawMapper(),false);
     }
 
+    /**
+     *
+     */
+    public void create(){
+        this.bUpdate=false;
+        execute();
+    }
 
+    /**
+     *
+     */
+    public void update(){
+        this.bUpdate=true;
+        execute();
+    }
     /**
      *
      * @return
@@ -95,13 +106,13 @@ public class DocumentIndexer {
      * @param fileFilter
      * @param indexPath
      * @param docsPath
-     * @param update
+     * @param bUpdate
      */
-    DocumentIndexer(String indexPath, String docsPath, FileFilter fileFilter, DocumentMapper dm, boolean update) {
+    DocumentIndexer(String indexPath, String docsPath, FileFilter fileFilter, DocumentMapper dm, boolean bUpdate) {
         this.fileFilter = fileFilter;
         this.indexPath = indexPath;
         this.docsPath = docsPath;
-        this.update = update;
+        this.bUpdate = bUpdate;
         this.analyzer = new StandardAnalyzer();
         if(dm==null)
             this.documentMapper= DocumentMapper.fileMapper();
@@ -112,13 +123,13 @@ public class DocumentIndexer {
     /**
      * Index all text files under a directory.
      */
-    public void execute() {
+    private void execute() {
         String usage = "java IndexFiles"
                 + " [-index INDEX_PATH] [-docs DOCS_PATH] [-update]\n\n"
                 + "This indexes the documents in DOCS_PATH, creating a Lucene index"
                 + "in INDEX_PATH that can be searched with SearchFiles";
 
-        boolean create = !update;
+        boolean create = !bUpdate;
 
         if (docsPath == null) {
             System.err.println("Usage: " + usage);
@@ -216,16 +227,16 @@ public class DocumentIndexer {
             }
         }
         else{ //文本处理，必须是可以提取文本的文件类型，所以只处理Text类和Office类的文件
-            boolean b = new TextsFileFilter().accept(f);
-            b = b|| new OfficesFileFilter().accept(f);
-            if(b){
+
+            FileFilter ff = DocumentFileFilter.or(DocumentFileFilter.textsFileFilter(),DocumentFileFilter.officesFileFilter());
+            if(ff.accept(f)){
                 List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),dm,f.lastModified());
                 if(ls!=null && ls.isEmpty()==false){
                     docs.addAll(ls);
                 }
             }
             else {//属于不能提取文本的RAW文件，强行以RAW方式建立文档
-                List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),dm,f.lastModified());
+                List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),DocumentMapper.rawMapper(),f.lastModified());
                 if(ls!=null && ls.isEmpty()==false){
                     docs.addAll(ls);
                 }
