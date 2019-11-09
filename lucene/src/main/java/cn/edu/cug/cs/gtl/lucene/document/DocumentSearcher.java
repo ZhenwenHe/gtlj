@@ -5,11 +5,10 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.IndexSearcher;
-import org.apache.lucene.search.Query;
-import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.queryparser.xml.builders.BooleanQueryBuilder;
+import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.BufferedReader;
@@ -22,18 +21,170 @@ import java.util.Date;
 
 public class DocumentSearcher {
     private String indexDirectory="index";
-    private String queryString;
+    private Analyzer analyzer=new StandardAnalyzer();
+    private IndexSearcher searcher = null;
+    private int topNumber=5;
 
-    public static DocumentSearcher of (String indexDirectory, String queryString) {
-        return new DocumentSearcher(indexDirectory,queryString);
+    /**
+     * 词条查询
+     * @param fieldName
+     * @param queryString
+     * @return
+     */
+    public TopDocs termQuery(String fieldName, String  queryString)throws Exception{
+
+        TermQuery q = new TermQuery(new Term(fieldName,queryString));
+        return searcher.search(q, topNumber);
     }
 
-    DocumentSearcher(String indexDirectory, String queryString) {
+    /**
+     *通配符查询
+     * @param fieldName
+     * @param queryString
+     * @return
+     * @throws Exception
+     */
+    public TopDocs wildcardQuery(String fieldName, String  queryString)throws Exception{
+        WildcardQuery q = new WildcardQuery(new Term(fieldName,queryString));
+        return searcher.search(q,topNumber);
+    }
+
+    /**
+     *前缀查询
+     * @param fieldName
+     * @param queryString
+     * @return
+     * @throws Exception
+     */
+    public TopDocs prefixQuery(String fieldName, String  queryString)throws Exception{
+        PrefixQuery q = new PrefixQuery(new Term(fieldName,queryString));
+        return searcher.search(q,topNumber);
+    }
+
+    /**
+     *模糊查询
+     * @param fieldName
+     * @param queryString
+     * @param maxEdits
+     * @param prefixLength
+     * @return
+     * @throws Exception
+     */
+    public TopDocs fuzzyQuery(String fieldName, String  queryString,int maxEdits, int prefixLength)throws Exception{
+        FuzzyQuery q = new FuzzyQuery(new Term(fieldName,queryString),maxEdits, prefixLength);
+        return searcher.search(q,topNumber);
+    }
+
+    /**
+     *
+     * @param fieldName1
+     * @param queryString1
+     * @param not_and_or
+     * @param fieldName2
+     * @param queryString2
+     * @return
+     * @throws Exception
+     */
+    public TopDocs booleanQuery(String fieldName1, String  queryString1,
+                                String not_and_or, //not and or
+                                String fieldName2, String  queryString2)throws Exception{
+        BooleanQuery.Builder builder  = new BooleanQuery.Builder();
+        String op = not_and_or.trim().toLowerCase();
+        TermQuery tq1= new TermQuery(new Term(fieldName1,queryString1));
+        TermQuery tq2= new TermQuery(new Term(fieldName2,queryString2));
+        if(op.equals("not")){
+            builder.add(new BooleanClause(tq1, BooleanClause.Occur.MUST));
+            builder.add(new BooleanClause(tq2, BooleanClause.Occur.MUST_NOT));
+        }
+        else if(op.equals("or")){
+            builder.add(new BooleanClause(tq1, BooleanClause.Occur.SHOULD));
+            builder.add(new BooleanClause(tq2, BooleanClause.Occur.SHOULD));
+        }
+        else if(op.equals("and")){
+            builder.add(new BooleanClause(tq1, BooleanClause.Occur.MUST));
+            builder.add(new BooleanClause(tq2, BooleanClause.Occur.MUST));
+        }
+        else {
+            throw new Exception("booleanQuery not_and_or parameter is not right");
+        }
+        return searcher.search(builder.build(),topNumber);
+    }
+
+
+
+    public static DocumentSearcher of (String indexDirectory) {
+        try {
+            DocumentSearcher documentSearcher=  new DocumentSearcher(indexDirectory);
+            IndexReader reader = DirectoryReader.open(FSDirectory.open(Paths.get(indexDirectory)));
+            documentSearcher.searcher = new IndexSearcher(reader);
+            return documentSearcher;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public int getTopNumber() {
+        return topNumber;
+    }
+
+    public void setTopNumber(int topNumber) {
+        this.topNumber = topNumber;
+    }
+
+    public void output(TopDocs results){
+        try {
+            ScoreDoc[] hits = results.scoreDocs;
+            int numTotalHits = Math.toIntExact(results.totalHits.value);
+            System.out.println(numTotalHits + " total matching documents");
+            int start=0;
+            int end=Math.min(numTotalHits,hits.length);
+            boolean raw=true;
+
+            for (int i = start; i < end; i++) {
+                if (raw) {                              // output raw format
+                    System.out.println("doc=" + hits[i].doc + " score=" + hits[i].score);
+                }
+
+                Document doc = getSearcher().doc(hits[i].doc);
+                String path = doc.get("path");
+                if (path != null) {
+                    System.out.println((i + 1) + ". " + path);
+                    String title = doc.get("text");
+                    if (title != null) {
+                        System.out.println("   text: " + doc.get("text"));
+                    }
+                } else {
+                    System.out.println((i + 1) + ". " + "No path for this document");
+                }
+
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public Analyzer getAnalyzer() {
+        return analyzer;
+    }
+
+    public void setAnalyzer(Analyzer analyzer) {
+        this.analyzer = analyzer;
+    }
+
+    public IndexSearcher getSearcher() {
+        return searcher;
+    }
+
+    private DocumentSearcher(String indexDirectory) {
         this.indexDirectory = indexDirectory;
-        this.queryString = queryString;
     }
 
-    public void execute() throws Exception{
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void execute(String queryString) throws Exception{
         String [] args = new String[4];
         args[0]="-index";
         args[1]=indexDirectory;

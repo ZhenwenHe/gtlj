@@ -127,6 +127,11 @@ public class DocumentCreator {
             // or positional information:
             doc.add(new StringField("path", inputFile, Field.Store.YES));
 
+            String sTitle = cn.edu.cug.cs.gtl.io.File.getFileNameWithoutSuffix(inputFile);
+            Field titleField = new TextField("title", sTitle, Field.Store.YES);
+            doc.add(titleField);
+
+
             doc.add(new LongPoint("paragraph", i));
 
 
@@ -175,6 +180,10 @@ public class DocumentCreator {
         Field pathField = new StringField("path", inputFile, Field.Store.YES);
         doc.add(pathField);
 
+        String sTitle = cn.edu.cug.cs.gtl.io.File.getFileNameWithoutSuffix(inputFile);
+        Field titleField = new TextField("title", sTitle, Field.Store.YES);
+        doc.add(titleField);
+
         // Add the last modified date of the file a field named "modified".
         // Use a LongPoint that is indexed (i.e. efficiently filterable with
         // PointRangeQuery).  This indexes to milli-second resolution, which
@@ -214,6 +223,10 @@ public class DocumentCreator {
         // or positional information:
         Field pathField = new StringField("path", inputFile, Field.Store.YES);
         doc.add(pathField);
+
+        String sTitle = cn.edu.cug.cs.gtl.io.File.getFileNameWithoutSuffix(inputFile);
+        Field titleField = new TextField("title", sTitle, Field.Store.YES);
+        doc.add(titleField);
 
         // Add the last modified date of the file a field named "modified".
         // Use a LongPoint that is indexed (i.e. efficiently filterable with
