@@ -69,16 +69,16 @@ public interface DocumentOrBuilder extends
       getTypeBytes();
 
   /**
-   * <code>string uri = 5;</code>
-   * @return The uri.
+   * <code>string url = 5;</code>
+   * @return The url.
    */
-  java.lang.String getUri();
+  java.lang.String getUrl();
   /**
-   * <code>string uri = 5;</code>
-   * @return The bytes for uri.
+   * <code>string url = 5;</code>
+   * @return The bytes for url.
    */
   com.google.protobuf.ByteString
-      getUriBytes();
+      getUrlBytes();
 
   /**
    * <code>repeated string author = 6;</code>
@@ -143,24 +143,36 @@ public interface DocumentOrBuilder extends
       getAbstractBytes();
 
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>string schema = 9;</code>
+   * @return The schema.
+   */
+  java.lang.String getSchema();
+  /**
+   * <code>string schema = 9;</code>
+   * @return The bytes for schema.
+   */
+  com.google.protobuf.ByteString
+      getSchemaBytes();
+
+  /**
+   * <code>repeated string content = 10;</code>
    * @return A list containing the content.
    */
   java.util.List<java.lang.String>
       getContentList();
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @return The count of content.
    */
   int getContentCount();
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @param index The index of the element to return.
    * @return The content at the given index.
    */
   java.lang.String getContent(int index);
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @param index The index of the value to return.
    * @return The bytes of the content at the given index.
    */
@@ -168,8 +180,50 @@ public interface DocumentOrBuilder extends
       getContentBytes(int index);
 
   /**
-   * <code>bytes raw_data = 10;</code>
+   * <code>bytes raw_data = 11;</code>
    * @return The rawData.
    */
   com.google.protobuf.ByteString getRawData();
+
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+   * @return Whether the attachments field is set.
+   */
+  boolean hasAttachments();
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+   * @return The attachments.
+   */
+  cn.edu.cug.cs.gtl.protos.Attachments getAttachments();
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+   */
+  cn.edu.cug.cs.gtl.protos.AttachmentsOrBuilder getAttachmentsOrBuilder();
+
+  /**
+   * <pre>
+   *location
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+   * @return Whether the bounding field is set.
+   */
+  boolean hasBounding();
+  /**
+   * <pre>
+   *location
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+   * @return The bounding.
+   */
+  cn.edu.cug.cs.gtl.protos.BoundingBox getBounding();
+  /**
+   * <pre>
+   *location
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+   */
+  cn.edu.cug.cs.gtl.protos.BoundingBoxOrBuilder getBoundingOrBuilder();
 }

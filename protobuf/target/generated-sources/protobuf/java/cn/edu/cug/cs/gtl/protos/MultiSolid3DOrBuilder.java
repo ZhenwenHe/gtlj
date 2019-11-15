@@ -8,26 +8,26 @@ public interface MultiSolid3DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> 
-      getSolidsList();
+      getSolidList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Solid3D getSolids(int index);
+  cn.edu.cug.cs.gtl.protos.Solid3D getSolid(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  int getSolidsCount();
+  int getSolidCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder> 
-      getSolidsOrBuilderList();
+      getSolidOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder getSolidsOrBuilder(
+  cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder getSolidOrBuilder(
       int index);
 }

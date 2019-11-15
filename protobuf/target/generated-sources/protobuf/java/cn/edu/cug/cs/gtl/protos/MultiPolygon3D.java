@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MultiPolygon3D() {
-    polygons_ = java.util.Collections.emptyList();
+    polygon_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -52,10 +52,10 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              polygons_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Polygon3D>();
+              polygon_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Polygon3D>();
               mutable_bitField0_ |= 0x00000001;
             }
-            polygons_.add(
+            polygon_.add(
                 input.readMessage(cn.edu.cug.cs.gtl.protos.Polygon3D.parser(), extensionRegistry));
             break;
           }
@@ -75,7 +75,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        polygons_ = java.util.Collections.unmodifiableList(polygons_);
+        polygon_ = java.util.Collections.unmodifiableList(polygon_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -94,39 +94,39 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.MultiPolygon3D.class, cn.edu.cug.cs.gtl.protos.MultiPolygon3D.Builder.class);
   }
 
-  public static final int POLYGONS_FIELD_NUMBER = 1;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> polygons_;
+  public static final int POLYGON_FIELD_NUMBER = 1;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> polygon_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> getPolygonsList() {
-    return polygons_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> getPolygonList() {
+    return polygon_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder> 
-      getPolygonsOrBuilderList() {
-    return polygons_;
+      getPolygonOrBuilderList() {
+    return polygon_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
    */
-  public int getPolygonsCount() {
-    return polygons_.size();
+  public int getPolygonCount() {
+    return polygon_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Polygon3D getPolygons(int index) {
-    return polygons_.get(index);
+  public cn.edu.cug.cs.gtl.protos.Polygon3D getPolygon(int index) {
+    return polygon_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder getPolygonsOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder getPolygonOrBuilder(
       int index) {
-    return polygons_.get(index);
+    return polygon_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -143,8 +143,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < polygons_.size(); i++) {
-      output.writeMessage(1, polygons_.get(i));
+    for (int i = 0; i < polygon_.size(); i++) {
+      output.writeMessage(1, polygon_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -155,9 +155,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < polygons_.size(); i++) {
+    for (int i = 0; i < polygon_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, polygons_.get(i));
+        .computeMessageSize(1, polygon_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -174,8 +174,8 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.MultiPolygon3D other = (cn.edu.cug.cs.gtl.protos.MultiPolygon3D) obj;
 
-    if (!getPolygonsList()
-        .equals(other.getPolygonsList())) return false;
+    if (!getPolygonList()
+        .equals(other.getPolygonList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -187,9 +187,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getPolygonsCount() > 0) {
-      hash = (37 * hash) + POLYGONS_FIELD_NUMBER;
-      hash = (53 * hash) + getPolygonsList().hashCode();
+    if (getPolygonCount() > 0) {
+      hash = (37 * hash) + POLYGON_FIELD_NUMBER;
+      hash = (53 * hash) + getPolygonList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -319,17 +319,17 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getPolygonsFieldBuilder();
+        getPolygonFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (polygonsBuilder_ == null) {
-        polygons_ = java.util.Collections.emptyList();
+      if (polygonBuilder_ == null) {
+        polygon_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        polygonsBuilder_.clear();
+        polygonBuilder_.clear();
       }
       return this;
     }
@@ -358,14 +358,14 @@ private static final long serialVersionUID = 0L;
     public cn.edu.cug.cs.gtl.protos.MultiPolygon3D buildPartial() {
       cn.edu.cug.cs.gtl.protos.MultiPolygon3D result = new cn.edu.cug.cs.gtl.protos.MultiPolygon3D(this);
       int from_bitField0_ = bitField0_;
-      if (polygonsBuilder_ == null) {
+      if (polygonBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          polygons_ = java.util.Collections.unmodifiableList(polygons_);
+          polygon_ = java.util.Collections.unmodifiableList(polygon_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.polygons_ = polygons_;
+        result.polygon_ = polygon_;
       } else {
-        result.polygons_ = polygonsBuilder_.build();
+        result.polygon_ = polygonBuilder_.build();
       }
       onBuilt();
       return result;
@@ -415,29 +415,29 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.MultiPolygon3D other) {
       if (other == cn.edu.cug.cs.gtl.protos.MultiPolygon3D.getDefaultInstance()) return this;
-      if (polygonsBuilder_ == null) {
-        if (!other.polygons_.isEmpty()) {
-          if (polygons_.isEmpty()) {
-            polygons_ = other.polygons_;
+      if (polygonBuilder_ == null) {
+        if (!other.polygon_.isEmpty()) {
+          if (polygon_.isEmpty()) {
+            polygon_ = other.polygon_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensurePolygonsIsMutable();
-            polygons_.addAll(other.polygons_);
+            ensurePolygonIsMutable();
+            polygon_.addAll(other.polygon_);
           }
           onChanged();
         }
       } else {
-        if (!other.polygons_.isEmpty()) {
-          if (polygonsBuilder_.isEmpty()) {
-            polygonsBuilder_.dispose();
-            polygonsBuilder_ = null;
-            polygons_ = other.polygons_;
+        if (!other.polygon_.isEmpty()) {
+          if (polygonBuilder_.isEmpty()) {
+            polygonBuilder_.dispose();
+            polygonBuilder_ = null;
+            polygon_ = other.polygon_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            polygonsBuilder_ = 
+            polygonBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getPolygonsFieldBuilder() : null;
+                 getPolygonFieldBuilder() : null;
           } else {
-            polygonsBuilder_.addAllMessages(other.polygons_);
+            polygonBuilder_.addAllMessages(other.polygon_);
           }
         }
       }
@@ -471,244 +471,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> polygons_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> polygon_ =
       java.util.Collections.emptyList();
-    private void ensurePolygonsIsMutable() {
+    private void ensurePolygonIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        polygons_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Polygon3D>(polygons_);
+        polygon_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Polygon3D>(polygon_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Polygon3D, cn.edu.cug.cs.gtl.protos.Polygon3D.Builder, cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder> polygonsBuilder_;
+        cn.edu.cug.cs.gtl.protos.Polygon3D, cn.edu.cug.cs.gtl.protos.Polygon3D.Builder, cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder> polygonBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> getPolygonsList() {
-      if (polygonsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(polygons_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D> getPolygonList() {
+      if (polygonBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(polygon_);
       } else {
-        return polygonsBuilder_.getMessageList();
+        return polygonBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public int getPolygonsCount() {
-      if (polygonsBuilder_ == null) {
-        return polygons_.size();
+    public int getPolygonCount() {
+      if (polygonBuilder_ == null) {
+        return polygon_.size();
       } else {
-        return polygonsBuilder_.getCount();
+        return polygonBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Polygon3D getPolygons(int index) {
-      if (polygonsBuilder_ == null) {
-        return polygons_.get(index);
+    public cn.edu.cug.cs.gtl.protos.Polygon3D getPolygon(int index) {
+      if (polygonBuilder_ == null) {
+        return polygon_.get(index);
       } else {
-        return polygonsBuilder_.getMessage(index);
+        return polygonBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder setPolygons(
+    public Builder setPolygon(
         int index, cn.edu.cug.cs.gtl.protos.Polygon3D value) {
-      if (polygonsBuilder_ == null) {
+      if (polygonBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensurePolygonsIsMutable();
-        polygons_.set(index, value);
+        ensurePolygonIsMutable();
+        polygon_.set(index, value);
         onChanged();
       } else {
-        polygonsBuilder_.setMessage(index, value);
+        polygonBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder setPolygons(
+    public Builder setPolygon(
         int index, cn.edu.cug.cs.gtl.protos.Polygon3D.Builder builderForValue) {
-      if (polygonsBuilder_ == null) {
-        ensurePolygonsIsMutable();
-        polygons_.set(index, builderForValue.build());
+      if (polygonBuilder_ == null) {
+        ensurePolygonIsMutable();
+        polygon_.set(index, builderForValue.build());
         onChanged();
       } else {
-        polygonsBuilder_.setMessage(index, builderForValue.build());
+        polygonBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder addPolygons(cn.edu.cug.cs.gtl.protos.Polygon3D value) {
-      if (polygonsBuilder_ == null) {
+    public Builder addPolygon(cn.edu.cug.cs.gtl.protos.Polygon3D value) {
+      if (polygonBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensurePolygonsIsMutable();
-        polygons_.add(value);
+        ensurePolygonIsMutable();
+        polygon_.add(value);
         onChanged();
       } else {
-        polygonsBuilder_.addMessage(value);
+        polygonBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder addPolygons(
+    public Builder addPolygon(
         int index, cn.edu.cug.cs.gtl.protos.Polygon3D value) {
-      if (polygonsBuilder_ == null) {
+      if (polygonBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensurePolygonsIsMutable();
-        polygons_.add(index, value);
+        ensurePolygonIsMutable();
+        polygon_.add(index, value);
         onChanged();
       } else {
-        polygonsBuilder_.addMessage(index, value);
+        polygonBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder addPolygons(
+    public Builder addPolygon(
         cn.edu.cug.cs.gtl.protos.Polygon3D.Builder builderForValue) {
-      if (polygonsBuilder_ == null) {
-        ensurePolygonsIsMutable();
-        polygons_.add(builderForValue.build());
+      if (polygonBuilder_ == null) {
+        ensurePolygonIsMutable();
+        polygon_.add(builderForValue.build());
         onChanged();
       } else {
-        polygonsBuilder_.addMessage(builderForValue.build());
+        polygonBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder addPolygons(
+    public Builder addPolygon(
         int index, cn.edu.cug.cs.gtl.protos.Polygon3D.Builder builderForValue) {
-      if (polygonsBuilder_ == null) {
-        ensurePolygonsIsMutable();
-        polygons_.add(index, builderForValue.build());
+      if (polygonBuilder_ == null) {
+        ensurePolygonIsMutable();
+        polygon_.add(index, builderForValue.build());
         onChanged();
       } else {
-        polygonsBuilder_.addMessage(index, builderForValue.build());
+        polygonBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder addAllPolygons(
+    public Builder addAllPolygon(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.Polygon3D> values) {
-      if (polygonsBuilder_ == null) {
-        ensurePolygonsIsMutable();
+      if (polygonBuilder_ == null) {
+        ensurePolygonIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, polygons_);
+            values, polygon_);
         onChanged();
       } else {
-        polygonsBuilder_.addAllMessages(values);
+        polygonBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder clearPolygons() {
-      if (polygonsBuilder_ == null) {
-        polygons_ = java.util.Collections.emptyList();
+    public Builder clearPolygon() {
+      if (polygonBuilder_ == null) {
+        polygon_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        polygonsBuilder_.clear();
+        polygonBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public Builder removePolygons(int index) {
-      if (polygonsBuilder_ == null) {
-        ensurePolygonsIsMutable();
-        polygons_.remove(index);
+    public Builder removePolygon(int index) {
+      if (polygonBuilder_ == null) {
+        ensurePolygonIsMutable();
+        polygon_.remove(index);
         onChanged();
       } else {
-        polygonsBuilder_.remove(index);
+        polygonBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Polygon3D.Builder getPolygonsBuilder(
+    public cn.edu.cug.cs.gtl.protos.Polygon3D.Builder getPolygonBuilder(
         int index) {
-      return getPolygonsFieldBuilder().getBuilder(index);
+      return getPolygonFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder getPolygonsOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder getPolygonOrBuilder(
         int index) {
-      if (polygonsBuilder_ == null) {
-        return polygons_.get(index);  } else {
-        return polygonsBuilder_.getMessageOrBuilder(index);
+      if (polygonBuilder_ == null) {
+        return polygon_.get(index);  } else {
+        return polygonBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder> 
-         getPolygonsOrBuilderList() {
-      if (polygonsBuilder_ != null) {
-        return polygonsBuilder_.getMessageOrBuilderList();
+         getPolygonOrBuilderList() {
+      if (polygonBuilder_ != null) {
+        return polygonBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(polygons_);
+        return java.util.Collections.unmodifiableList(polygon_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Polygon3D.Builder addPolygonsBuilder() {
-      return getPolygonsFieldBuilder().addBuilder(
+    public cn.edu.cug.cs.gtl.protos.Polygon3D.Builder addPolygonBuilder() {
+      return getPolygonFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.Polygon3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Polygon3D.Builder addPolygonsBuilder(
+    public cn.edu.cug.cs.gtl.protos.Polygon3D.Builder addPolygonBuilder(
         int index) {
-      return getPolygonsFieldBuilder().addBuilder(
+      return getPolygonFieldBuilder().addBuilder(
           index, cn.edu.cug.cs.gtl.protos.Polygon3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygons = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon3D polygon = 1;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.Polygon3D.Builder> 
-         getPolygonsBuilderList() {
-      return getPolygonsFieldBuilder().getBuilderList();
+         getPolygonBuilderList() {
+      return getPolygonFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
         cn.edu.cug.cs.gtl.protos.Polygon3D, cn.edu.cug.cs.gtl.protos.Polygon3D.Builder, cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder> 
-        getPolygonsFieldBuilder() {
-      if (polygonsBuilder_ == null) {
-        polygonsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getPolygonFieldBuilder() {
+      if (polygonBuilder_ == null) {
+        polygonBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             cn.edu.cug.cs.gtl.protos.Polygon3D, cn.edu.cug.cs.gtl.protos.Polygon3D.Builder, cn.edu.cug.cs.gtl.protos.Polygon3DOrBuilder>(
-                polygons_,
+                polygon_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        polygons_ = null;
+        polygon_ = null;
       }
-      return polygonsBuilder_;
+      return polygonBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

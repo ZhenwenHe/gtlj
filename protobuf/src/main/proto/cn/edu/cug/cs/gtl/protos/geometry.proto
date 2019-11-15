@@ -62,16 +62,16 @@ message Rectangle2D {
 }
 
 message LineString2D {
-    repeated Vertex2d vertices = 1;
+    repeated Vertex2d vertex = 1;
 }
 
 message LinearRing2D {
-    repeated Vertex2d vertices = 1;
+    repeated Vertex2d vertex = 1;
 }
 
 message Polygon2D {
     LinearRing2D shell = 1;
-    repeated LinearRing2D rings = 2;
+    repeated LinearRing2D ring = 2;
 }
 
 message MultiPoint2D {
@@ -79,11 +79,11 @@ message MultiPoint2D {
 }
 
 message MultiLineString2D {
-    repeated LineString2D line_strings = 1;
+    repeated LineString2D line_string = 1;
 }
 
 message MultiPolygon2D {
-    repeated Polygon2D polygons = 1;
+    repeated Polygon2D polygon = 1;
 }
 
 
@@ -106,77 +106,77 @@ message Rectangle3D {
 }
 
 message LineString3D {
-    repeated Vertex3d vertices = 1;
+    repeated Vertex3d vertex = 1;
 }
 
 message LinearRing3D {
-    repeated Vertex3d vertices = 1;
+    repeated Vertex3d vertex = 1;
 }
 
 message Polyline3D { //quantysoft 3D  Polyline
-                     repeated Vertex3d vertices = 1;
-                     repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message Polygon3D {
     LinearRing3D shell = 1;
-    repeated LinearRing3D rings = 2;
+    repeated LinearRing3D ring = 2;
 }
 
 message MultiPoint3D {
-    repeated Point3D points = 1;
+    repeated Point3D point = 1;
 }
 
 message MultiLineString3D {
-    repeated LineString3D line_strings = 1;
+    repeated LineString3D line_string = 1;
 }
 
 message MultiPolygon3D {
-    repeated Polygon3D polygons = 1;
+    repeated Polygon3D polygon= 1;
 }
 
 message TriangleMesh3D {
-    repeated Vertex3d vertices = 1;
-    repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message QuadMesh3D {
-    repeated Vertex3d vertices = 1;
-    repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message Solid3D {
     TriangleMesh3D shell = 1;
-    repeated TriangleMesh3D holes = 2;
+    repeated TriangleMesh3D hole = 2;
 }
 
 message MultiSolid3D {
-    repeated Solid3D solids = 1;
+    repeated Solid3D solid = 1;
 }
 
 message TetrahedralMesh3D {
-    repeated Vertex3d vertices = 1;
-    repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message PolygonalMesh3D { //quantysoft 3D  Polygon
-                          repeated Vertex3d vertices = 1;
-                          repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message PolyhedralMesh3D { //quantysoft 3D  Polyhedron
-                           repeated Vertex3d vertices = 1;
-                           repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message CubicMesh3D {
-    repeated Vertex3d vertices = 1;
-    repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message HexahedralMesh3D {
-    repeated Vertex3d vertices = 1;
-    repeated uint32 indices = 2;
+    repeated Vertex3d vertex = 1;
+    repeated uint32 index = 2;
 }
 
 message Geometry {

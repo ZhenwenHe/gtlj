@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="indices" />
-        <module name="series" />
+        <module name="geotools" />
         <module name="modeling" />
         <module name="dtree" />
         <module name="net" />
@@ -15,29 +15,31 @@
         <module name="protobuf" />
         <module name="mybatis" />
         <module name="beam" />
-        <module name="offices" />
+        <module name="lucene" />
         <module name="ml" />
-        <module name="grpc" />
+        <module name="series" />
         <module name="common" />
         <module name="mps" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="beam" target="1.8" />
-      <module name="common" target="1.8" />
-      <module name="cxf" target="1.8" />
-      <module name="dtree" target="1.8" />
+      <module name="beam" target="11" />
+      <module name="common" target="11" />
+      <module name="cxf" target="11" />
+      <module name="dtree" target="11" />
+      <module name="geotools" target="11" />
       <module name="grpc" target="1.8" />
       <module name="gtl" target="1.8" />
-      <module name="indices" target="1.8" />
-      <module name="ml" target="1.8" />
-      <module name="modeling" target="1.8" />
-      <module name="mps" target="1.8" />
-      <module name="mybatis" target="1.8" />
-      <module name="net" target="1.8" />
+      <module name="indices" target="11" />
+      <module name="lucene" target="11" />
+      <module name="ml" target="11" />
+      <module name="modeling" target="11" />
+      <module name="mps" target="11" />
+      <module name="mybatis" target="11" />
+      <module name="net" target="11" />
       <module name="offices" target="1.8" />
-      <module name="protobuf" target="1.8" />
-      <module name="series" target="1.8" />
+      <module name="protobuf" target="11" />
+      <module name="series" target="11" />
       <module name="spring" target="1.8" />
     </bytecodeTargetLevel>
   </component>

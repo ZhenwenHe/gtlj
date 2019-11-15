@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MultiPoint3D() {
-    points_ = java.util.Collections.emptyList();
+    point_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -52,10 +52,10 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              points_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Point3D>();
+              point_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Point3D>();
               mutable_bitField0_ |= 0x00000001;
             }
-            points_.add(
+            point_.add(
                 input.readMessage(cn.edu.cug.cs.gtl.protos.Point3D.parser(), extensionRegistry));
             break;
           }
@@ -75,7 +75,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        points_ = java.util.Collections.unmodifiableList(points_);
+        point_ = java.util.Collections.unmodifiableList(point_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -94,39 +94,39 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.MultiPoint3D.class, cn.edu.cug.cs.gtl.protos.MultiPoint3D.Builder.class);
   }
 
-  public static final int POINTS_FIELD_NUMBER = 1;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> points_;
+  public static final int POINT_FIELD_NUMBER = 1;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> point_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> getPointsList() {
-    return points_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> getPointList() {
+    return point_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.Point3DOrBuilder> 
-      getPointsOrBuilderList() {
-    return points_;
+      getPointOrBuilderList() {
+    return point_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  public int getPointsCount() {
-    return points_.size();
+  public int getPointCount() {
+    return point_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Point3D getPoints(int index) {
-    return points_.get(index);
+  public cn.edu.cug.cs.gtl.protos.Point3D getPoint(int index) {
+    return point_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Point3DOrBuilder getPointsOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.Point3DOrBuilder getPointOrBuilder(
       int index) {
-    return points_.get(index);
+    return point_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -143,8 +143,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < points_.size(); i++) {
-      output.writeMessage(1, points_.get(i));
+    for (int i = 0; i < point_.size(); i++) {
+      output.writeMessage(1, point_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -155,9 +155,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < points_.size(); i++) {
+    for (int i = 0; i < point_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, points_.get(i));
+        .computeMessageSize(1, point_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -174,8 +174,8 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.MultiPoint3D other = (cn.edu.cug.cs.gtl.protos.MultiPoint3D) obj;
 
-    if (!getPointsList()
-        .equals(other.getPointsList())) return false;
+    if (!getPointList()
+        .equals(other.getPointList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -187,9 +187,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getPointsCount() > 0) {
-      hash = (37 * hash) + POINTS_FIELD_NUMBER;
-      hash = (53 * hash) + getPointsList().hashCode();
+    if (getPointCount() > 0) {
+      hash = (37 * hash) + POINT_FIELD_NUMBER;
+      hash = (53 * hash) + getPointList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -319,17 +319,17 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getPointsFieldBuilder();
+        getPointFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (pointsBuilder_ == null) {
-        points_ = java.util.Collections.emptyList();
+      if (pointBuilder_ == null) {
+        point_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        pointsBuilder_.clear();
+        pointBuilder_.clear();
       }
       return this;
     }
@@ -358,14 +358,14 @@ private static final long serialVersionUID = 0L;
     public cn.edu.cug.cs.gtl.protos.MultiPoint3D buildPartial() {
       cn.edu.cug.cs.gtl.protos.MultiPoint3D result = new cn.edu.cug.cs.gtl.protos.MultiPoint3D(this);
       int from_bitField0_ = bitField0_;
-      if (pointsBuilder_ == null) {
+      if (pointBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          points_ = java.util.Collections.unmodifiableList(points_);
+          point_ = java.util.Collections.unmodifiableList(point_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.points_ = points_;
+        result.point_ = point_;
       } else {
-        result.points_ = pointsBuilder_.build();
+        result.point_ = pointBuilder_.build();
       }
       onBuilt();
       return result;
@@ -415,29 +415,29 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.MultiPoint3D other) {
       if (other == cn.edu.cug.cs.gtl.protos.MultiPoint3D.getDefaultInstance()) return this;
-      if (pointsBuilder_ == null) {
-        if (!other.points_.isEmpty()) {
-          if (points_.isEmpty()) {
-            points_ = other.points_;
+      if (pointBuilder_ == null) {
+        if (!other.point_.isEmpty()) {
+          if (point_.isEmpty()) {
+            point_ = other.point_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensurePointsIsMutable();
-            points_.addAll(other.points_);
+            ensurePointIsMutable();
+            point_.addAll(other.point_);
           }
           onChanged();
         }
       } else {
-        if (!other.points_.isEmpty()) {
-          if (pointsBuilder_.isEmpty()) {
-            pointsBuilder_.dispose();
-            pointsBuilder_ = null;
-            points_ = other.points_;
+        if (!other.point_.isEmpty()) {
+          if (pointBuilder_.isEmpty()) {
+            pointBuilder_.dispose();
+            pointBuilder_ = null;
+            point_ = other.point_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            pointsBuilder_ = 
+            pointBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getPointsFieldBuilder() : null;
+                 getPointFieldBuilder() : null;
           } else {
-            pointsBuilder_.addAllMessages(other.points_);
+            pointBuilder_.addAllMessages(other.point_);
           }
         }
       }
@@ -471,244 +471,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> points_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> point_ =
       java.util.Collections.emptyList();
-    private void ensurePointsIsMutable() {
+    private void ensurePointIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        points_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Point3D>(points_);
+        point_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Point3D>(point_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Point3D, cn.edu.cug.cs.gtl.protos.Point3D.Builder, cn.edu.cug.cs.gtl.protos.Point3DOrBuilder> pointsBuilder_;
+        cn.edu.cug.cs.gtl.protos.Point3D, cn.edu.cug.cs.gtl.protos.Point3D.Builder, cn.edu.cug.cs.gtl.protos.Point3DOrBuilder> pointBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> getPointsList() {
-      if (pointsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(points_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> getPointList() {
+      if (pointBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(point_);
       } else {
-        return pointsBuilder_.getMessageList();
+        return pointBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public int getPointsCount() {
-      if (pointsBuilder_ == null) {
-        return points_.size();
+    public int getPointCount() {
+      if (pointBuilder_ == null) {
+        return point_.size();
       } else {
-        return pointsBuilder_.getCount();
+        return pointBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Point3D getPoints(int index) {
-      if (pointsBuilder_ == null) {
-        return points_.get(index);
+    public cn.edu.cug.cs.gtl.protos.Point3D getPoint(int index) {
+      if (pointBuilder_ == null) {
+        return point_.get(index);
       } else {
-        return pointsBuilder_.getMessage(index);
+        return pointBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder setPoints(
+    public Builder setPoint(
         int index, cn.edu.cug.cs.gtl.protos.Point3D value) {
-      if (pointsBuilder_ == null) {
+      if (pointBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensurePointsIsMutable();
-        points_.set(index, value);
+        ensurePointIsMutable();
+        point_.set(index, value);
         onChanged();
       } else {
-        pointsBuilder_.setMessage(index, value);
+        pointBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder setPoints(
+    public Builder setPoint(
         int index, cn.edu.cug.cs.gtl.protos.Point3D.Builder builderForValue) {
-      if (pointsBuilder_ == null) {
-        ensurePointsIsMutable();
-        points_.set(index, builderForValue.build());
+      if (pointBuilder_ == null) {
+        ensurePointIsMutable();
+        point_.set(index, builderForValue.build());
         onChanged();
       } else {
-        pointsBuilder_.setMessage(index, builderForValue.build());
+        pointBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder addPoints(cn.edu.cug.cs.gtl.protos.Point3D value) {
-      if (pointsBuilder_ == null) {
+    public Builder addPoint(cn.edu.cug.cs.gtl.protos.Point3D value) {
+      if (pointBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensurePointsIsMutable();
-        points_.add(value);
+        ensurePointIsMutable();
+        point_.add(value);
         onChanged();
       } else {
-        pointsBuilder_.addMessage(value);
+        pointBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder addPoints(
+    public Builder addPoint(
         int index, cn.edu.cug.cs.gtl.protos.Point3D value) {
-      if (pointsBuilder_ == null) {
+      if (pointBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensurePointsIsMutable();
-        points_.add(index, value);
+        ensurePointIsMutable();
+        point_.add(index, value);
         onChanged();
       } else {
-        pointsBuilder_.addMessage(index, value);
+        pointBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder addPoints(
+    public Builder addPoint(
         cn.edu.cug.cs.gtl.protos.Point3D.Builder builderForValue) {
-      if (pointsBuilder_ == null) {
-        ensurePointsIsMutable();
-        points_.add(builderForValue.build());
+      if (pointBuilder_ == null) {
+        ensurePointIsMutable();
+        point_.add(builderForValue.build());
         onChanged();
       } else {
-        pointsBuilder_.addMessage(builderForValue.build());
+        pointBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder addPoints(
+    public Builder addPoint(
         int index, cn.edu.cug.cs.gtl.protos.Point3D.Builder builderForValue) {
-      if (pointsBuilder_ == null) {
-        ensurePointsIsMutable();
-        points_.add(index, builderForValue.build());
+      if (pointBuilder_ == null) {
+        ensurePointIsMutable();
+        point_.add(index, builderForValue.build());
         onChanged();
       } else {
-        pointsBuilder_.addMessage(index, builderForValue.build());
+        pointBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder addAllPoints(
+    public Builder addAllPoint(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.Point3D> values) {
-      if (pointsBuilder_ == null) {
-        ensurePointsIsMutable();
+      if (pointBuilder_ == null) {
+        ensurePointIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, points_);
+            values, point_);
         onChanged();
       } else {
-        pointsBuilder_.addAllMessages(values);
+        pointBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder clearPoints() {
-      if (pointsBuilder_ == null) {
-        points_ = java.util.Collections.emptyList();
+    public Builder clearPoint() {
+      if (pointBuilder_ == null) {
+        point_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        pointsBuilder_.clear();
+        pointBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public Builder removePoints(int index) {
-      if (pointsBuilder_ == null) {
-        ensurePointsIsMutable();
-        points_.remove(index);
+    public Builder removePoint(int index) {
+      if (pointBuilder_ == null) {
+        ensurePointIsMutable();
+        point_.remove(index);
         onChanged();
       } else {
-        pointsBuilder_.remove(index);
+        pointBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Point3D.Builder getPointsBuilder(
+    public cn.edu.cug.cs.gtl.protos.Point3D.Builder getPointBuilder(
         int index) {
-      return getPointsFieldBuilder().getBuilder(index);
+      return getPointFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Point3DOrBuilder getPointsOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.Point3DOrBuilder getPointOrBuilder(
         int index) {
-      if (pointsBuilder_ == null) {
-        return points_.get(index);  } else {
-        return pointsBuilder_.getMessageOrBuilder(index);
+      if (pointBuilder_ == null) {
+        return point_.get(index);  } else {
+        return pointBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.Point3DOrBuilder> 
-         getPointsOrBuilderList() {
-      if (pointsBuilder_ != null) {
-        return pointsBuilder_.getMessageOrBuilderList();
+         getPointOrBuilderList() {
+      if (pointBuilder_ != null) {
+        return pointBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(points_);
+        return java.util.Collections.unmodifiableList(point_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Point3D.Builder addPointsBuilder() {
-      return getPointsFieldBuilder().addBuilder(
+    public cn.edu.cug.cs.gtl.protos.Point3D.Builder addPointBuilder() {
+      return getPointFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.Point3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Point3D.Builder addPointsBuilder(
+    public cn.edu.cug.cs.gtl.protos.Point3D.Builder addPointBuilder(
         int index) {
-      return getPointsFieldBuilder().addBuilder(
+      return getPointFieldBuilder().addBuilder(
           index, cn.edu.cug.cs.gtl.protos.Point3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.Point3D.Builder> 
-         getPointsBuilderList() {
-      return getPointsFieldBuilder().getBuilderList();
+         getPointBuilderList() {
+      return getPointFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
         cn.edu.cug.cs.gtl.protos.Point3D, cn.edu.cug.cs.gtl.protos.Point3D.Builder, cn.edu.cug.cs.gtl.protos.Point3DOrBuilder> 
-        getPointsFieldBuilder() {
-      if (pointsBuilder_ == null) {
-        pointsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getPointFieldBuilder() {
+      if (pointBuilder_ == null) {
+        pointBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             cn.edu.cug.cs.gtl.protos.Point3D, cn.edu.cug.cs.gtl.protos.Point3D.Builder, cn.edu.cug.cs.gtl.protos.Point3DOrBuilder>(
-                points_,
+                point_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        points_ = null;
+        point_ = null;
       }
-      return pointsBuilder_;
+      return pointBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

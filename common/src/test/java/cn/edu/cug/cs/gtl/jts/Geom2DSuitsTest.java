@@ -6,6 +6,7 @@ import cn.edu.cug.cs.gtl.jts.geom.Geom2DSuits;
 import cn.edu.cug.cs.gtl.geom.Geometry;
 import org.junit.Test;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 public class Geom2DSuitsTest {

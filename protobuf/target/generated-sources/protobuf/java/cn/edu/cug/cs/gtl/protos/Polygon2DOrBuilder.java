@@ -23,26 +23,26 @@ public interface Polygon2DOrBuilder extends
   cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getShellOrBuilder();
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> 
-      getRingsList();
+      getRingList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  cn.edu.cug.cs.gtl.protos.LinearRing2D getRings(int index);
+  cn.edu.cug.cs.gtl.protos.LinearRing2D getRing(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  int getRingsCount();
+  int getRingCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder> 
-      getRingsOrBuilderList();
+      getRingOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getRingsOrBuilder(
+  cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getRingOrBuilder(
       int index);
 }

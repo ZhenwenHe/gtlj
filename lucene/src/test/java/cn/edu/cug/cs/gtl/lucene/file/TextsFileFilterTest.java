@@ -1,5 +1,6 @@
 package cn.edu.cug.cs.gtl.lucene.file;
 
+import cn.edu.cug.cs.gtl.filter.FileFilter;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,7 +10,7 @@ public class TextsFileFilterTest {
 
     @Test
     public void accept() {
-        TextsFileFilter textsFileFilter= new TextsFileFilter();
+        FileFilter textsFileFilter= FileFilter.textsFileFilter();
         boolean b= textsFileFilter.accept(new File("dat/raw/word.doc"));
         Assert.assertTrue(!b);
     }

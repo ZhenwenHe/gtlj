@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Polygon2D() {
-    rings_ = java.util.Collections.emptyList();
+    ring_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -65,10 +65,10 @@ private static final long serialVersionUID = 0L;
           }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              rings_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LinearRing2D>();
+              ring_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LinearRing2D>();
               mutable_bitField0_ |= 0x00000001;
             }
-            rings_.add(
+            ring_.add(
                 input.readMessage(cn.edu.cug.cs.gtl.protos.LinearRing2D.parser(), extensionRegistry));
             break;
           }
@@ -88,7 +88,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        rings_ = java.util.Collections.unmodifiableList(rings_);
+        ring_ = java.util.Collections.unmodifiableList(ring_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -130,39 +130,39 @@ private static final long serialVersionUID = 0L;
     return getShell();
   }
 
-  public static final int RINGS_FIELD_NUMBER = 2;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> rings_;
+  public static final int RING_FIELD_NUMBER = 2;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> ring_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> getRingsList() {
-    return rings_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> getRingList() {
+    return ring_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder> 
-      getRingsOrBuilderList() {
-    return rings_;
+      getRingOrBuilderList() {
+    return ring_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  public int getRingsCount() {
-    return rings_.size();
+  public int getRingCount() {
+    return ring_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.LinearRing2D getRings(int index) {
-    return rings_.get(index);
+  public cn.edu.cug.cs.gtl.protos.LinearRing2D getRing(int index) {
+    return ring_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getRingsOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getRingOrBuilder(
       int index) {
-    return rings_.get(index);
+    return ring_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -182,8 +182,8 @@ private static final long serialVersionUID = 0L;
     if (shell_ != null) {
       output.writeMessage(1, getShell());
     }
-    for (int i = 0; i < rings_.size(); i++) {
-      output.writeMessage(2, rings_.get(i));
+    for (int i = 0; i < ring_.size(); i++) {
+      output.writeMessage(2, ring_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -198,9 +198,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getShell());
     }
-    for (int i = 0; i < rings_.size(); i++) {
+    for (int i = 0; i < ring_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, rings_.get(i));
+        .computeMessageSize(2, ring_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -222,8 +222,8 @@ private static final long serialVersionUID = 0L;
       if (!getShell()
           .equals(other.getShell())) return false;
     }
-    if (!getRingsList()
-        .equals(other.getRingsList())) return false;
+    if (!getRingList()
+        .equals(other.getRingList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -239,9 +239,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + SHELL_FIELD_NUMBER;
       hash = (53 * hash) + getShell().hashCode();
     }
-    if (getRingsCount() > 0) {
-      hash = (37 * hash) + RINGS_FIELD_NUMBER;
-      hash = (53 * hash) + getRingsList().hashCode();
+    if (getRingCount() > 0) {
+      hash = (37 * hash) + RING_FIELD_NUMBER;
+      hash = (53 * hash) + getRingList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -371,7 +371,7 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getRingsFieldBuilder();
+        getRingFieldBuilder();
       }
     }
     @java.lang.Override
@@ -383,11 +383,11 @@ private static final long serialVersionUID = 0L;
         shell_ = null;
         shellBuilder_ = null;
       }
-      if (ringsBuilder_ == null) {
-        rings_ = java.util.Collections.emptyList();
+      if (ringBuilder_ == null) {
+        ring_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        ringsBuilder_.clear();
+        ringBuilder_.clear();
       }
       return this;
     }
@@ -421,14 +421,14 @@ private static final long serialVersionUID = 0L;
       } else {
         result.shell_ = shellBuilder_.build();
       }
-      if (ringsBuilder_ == null) {
+      if (ringBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          rings_ = java.util.Collections.unmodifiableList(rings_);
+          ring_ = java.util.Collections.unmodifiableList(ring_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.rings_ = rings_;
+        result.ring_ = ring_;
       } else {
-        result.rings_ = ringsBuilder_.build();
+        result.ring_ = ringBuilder_.build();
       }
       onBuilt();
       return result;
@@ -481,29 +481,29 @@ private static final long serialVersionUID = 0L;
       if (other.hasShell()) {
         mergeShell(other.getShell());
       }
-      if (ringsBuilder_ == null) {
-        if (!other.rings_.isEmpty()) {
-          if (rings_.isEmpty()) {
-            rings_ = other.rings_;
+      if (ringBuilder_ == null) {
+        if (!other.ring_.isEmpty()) {
+          if (ring_.isEmpty()) {
+            ring_ = other.ring_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureRingsIsMutable();
-            rings_.addAll(other.rings_);
+            ensureRingIsMutable();
+            ring_.addAll(other.ring_);
           }
           onChanged();
         }
       } else {
-        if (!other.rings_.isEmpty()) {
-          if (ringsBuilder_.isEmpty()) {
-            ringsBuilder_.dispose();
-            ringsBuilder_ = null;
-            rings_ = other.rings_;
+        if (!other.ring_.isEmpty()) {
+          if (ringBuilder_.isEmpty()) {
+            ringBuilder_.dispose();
+            ringBuilder_ = null;
+            ring_ = other.ring_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            ringsBuilder_ = 
+            ringBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getRingsFieldBuilder() : null;
+                 getRingFieldBuilder() : null;
           } else {
-            ringsBuilder_.addAllMessages(other.rings_);
+            ringBuilder_.addAllMessages(other.ring_);
           }
         }
       }
@@ -656,244 +656,244 @@ private static final long serialVersionUID = 0L;
       return shellBuilder_;
     }
 
-    private java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> rings_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> ring_ =
       java.util.Collections.emptyList();
-    private void ensureRingsIsMutable() {
+    private void ensureRingIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        rings_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LinearRing2D>(rings_);
+        ring_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LinearRing2D>(ring_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.LinearRing2D, cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder, cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder> ringsBuilder_;
+        cn.edu.cug.cs.gtl.protos.LinearRing2D, cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder, cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder> ringBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> getRingsList() {
-      if (ringsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(rings_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D> getRingList() {
+      if (ringBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(ring_);
       } else {
-        return ringsBuilder_.getMessageList();
+        return ringBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public int getRingsCount() {
-      if (ringsBuilder_ == null) {
-        return rings_.size();
+    public int getRingCount() {
+      if (ringBuilder_ == null) {
+        return ring_.size();
       } else {
-        return ringsBuilder_.getCount();
+        return ringBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LinearRing2D getRings(int index) {
-      if (ringsBuilder_ == null) {
-        return rings_.get(index);
+    public cn.edu.cug.cs.gtl.protos.LinearRing2D getRing(int index) {
+      if (ringBuilder_ == null) {
+        return ring_.get(index);
       } else {
-        return ringsBuilder_.getMessage(index);
+        return ringBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder setRings(
+    public Builder setRing(
         int index, cn.edu.cug.cs.gtl.protos.LinearRing2D value) {
-      if (ringsBuilder_ == null) {
+      if (ringBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRingsIsMutable();
-        rings_.set(index, value);
+        ensureRingIsMutable();
+        ring_.set(index, value);
         onChanged();
       } else {
-        ringsBuilder_.setMessage(index, value);
+        ringBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder setRings(
+    public Builder setRing(
         int index, cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder builderForValue) {
-      if (ringsBuilder_ == null) {
-        ensureRingsIsMutable();
-        rings_.set(index, builderForValue.build());
+      if (ringBuilder_ == null) {
+        ensureRingIsMutable();
+        ring_.set(index, builderForValue.build());
         onChanged();
       } else {
-        ringsBuilder_.setMessage(index, builderForValue.build());
+        ringBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder addRings(cn.edu.cug.cs.gtl.protos.LinearRing2D value) {
-      if (ringsBuilder_ == null) {
+    public Builder addRing(cn.edu.cug.cs.gtl.protos.LinearRing2D value) {
+      if (ringBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRingsIsMutable();
-        rings_.add(value);
+        ensureRingIsMutable();
+        ring_.add(value);
         onChanged();
       } else {
-        ringsBuilder_.addMessage(value);
+        ringBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder addRings(
+    public Builder addRing(
         int index, cn.edu.cug.cs.gtl.protos.LinearRing2D value) {
-      if (ringsBuilder_ == null) {
+      if (ringBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRingsIsMutable();
-        rings_.add(index, value);
+        ensureRingIsMutable();
+        ring_.add(index, value);
         onChanged();
       } else {
-        ringsBuilder_.addMessage(index, value);
+        ringBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder addRings(
+    public Builder addRing(
         cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder builderForValue) {
-      if (ringsBuilder_ == null) {
-        ensureRingsIsMutable();
-        rings_.add(builderForValue.build());
+      if (ringBuilder_ == null) {
+        ensureRingIsMutable();
+        ring_.add(builderForValue.build());
         onChanged();
       } else {
-        ringsBuilder_.addMessage(builderForValue.build());
+        ringBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder addRings(
+    public Builder addRing(
         int index, cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder builderForValue) {
-      if (ringsBuilder_ == null) {
-        ensureRingsIsMutable();
-        rings_.add(index, builderForValue.build());
+      if (ringBuilder_ == null) {
+        ensureRingIsMutable();
+        ring_.add(index, builderForValue.build());
         onChanged();
       } else {
-        ringsBuilder_.addMessage(index, builderForValue.build());
+        ringBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder addAllRings(
+    public Builder addAllRing(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.LinearRing2D> values) {
-      if (ringsBuilder_ == null) {
-        ensureRingsIsMutable();
+      if (ringBuilder_ == null) {
+        ensureRingIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, rings_);
+            values, ring_);
         onChanged();
       } else {
-        ringsBuilder_.addAllMessages(values);
+        ringBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder clearRings() {
-      if (ringsBuilder_ == null) {
-        rings_ = java.util.Collections.emptyList();
+    public Builder clearRing() {
+      if (ringBuilder_ == null) {
+        ring_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        ringsBuilder_.clear();
+        ringBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public Builder removeRings(int index) {
-      if (ringsBuilder_ == null) {
-        ensureRingsIsMutable();
-        rings_.remove(index);
+    public Builder removeRing(int index) {
+      if (ringBuilder_ == null) {
+        ensureRingIsMutable();
+        ring_.remove(index);
         onChanged();
       } else {
-        ringsBuilder_.remove(index);
+        ringBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder getRingsBuilder(
+    public cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder getRingBuilder(
         int index) {
-      return getRingsFieldBuilder().getBuilder(index);
+      return getRingFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getRingsOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder getRingOrBuilder(
         int index) {
-      if (ringsBuilder_ == null) {
-        return rings_.get(index);  } else {
-        return ringsBuilder_.getMessageOrBuilder(index);
+      if (ringBuilder_ == null) {
+        return ring_.get(index);  } else {
+        return ringBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder> 
-         getRingsOrBuilderList() {
-      if (ringsBuilder_ != null) {
-        return ringsBuilder_.getMessageOrBuilderList();
+         getRingOrBuilderList() {
+      if (ringBuilder_ != null) {
+        return ringBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(rings_);
+        return java.util.Collections.unmodifiableList(ring_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder addRingsBuilder() {
-      return getRingsFieldBuilder().addBuilder(
+    public cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder addRingBuilder() {
+      return getRingFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.LinearRing2D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder addRingsBuilder(
+    public cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder addRingBuilder(
         int index) {
-      return getRingsFieldBuilder().addBuilder(
+      return getRingFieldBuilder().addBuilder(
           index, cn.edu.cug.cs.gtl.protos.LinearRing2D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D rings = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LinearRing2D ring = 2;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder> 
-         getRingsBuilderList() {
-      return getRingsFieldBuilder().getBuilderList();
+         getRingBuilderList() {
+      return getRingFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
         cn.edu.cug.cs.gtl.protos.LinearRing2D, cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder, cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder> 
-        getRingsFieldBuilder() {
-      if (ringsBuilder_ == null) {
-        ringsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getRingFieldBuilder() {
+      if (ringBuilder_ == null) {
+        ringBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             cn.edu.cug.cs.gtl.protos.LinearRing2D, cn.edu.cug.cs.gtl.protos.LinearRing2D.Builder, cn.edu.cug.cs.gtl.protos.LinearRing2DOrBuilder>(
-                rings_,
+                ring_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        rings_ = null;
+        ring_ = null;
       }
-      return ringsBuilder_;
+      return ringBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

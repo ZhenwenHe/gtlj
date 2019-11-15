@@ -1,12 +1,14 @@
 package cn.edu.cug.cs.gtl.lucene.document;
 
 
-import cn.edu.cug.cs.gtl.lucene.file.DocumentFileFilter;
-import cn.edu.cug.cs.gtl.lucene.file.DocumentFileVisitor;
-import cn.edu.cug.cs.gtl.lucene.text.TextExtractor;
+import cn.edu.cug.cs.gtl.filter.FileFilter;
+import cn.edu.cug.cs.gtl.io.File;
+import cn.edu.cug.cs.gtl.extractor.TextExtractor;
+import cn.edu.cug.cs.gtl.protos.DocumentMapper;
 import org.apache.lucene.document.*;
 
-import java.io.*;
+
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -29,9 +31,9 @@ public class DocumentCreator {
      * @param documentMapper
      * @return
      */
-    public static DocumentCreator of(String docsPath, FileFilter fileFilter,DocumentMapper documentMapper){
+    public static DocumentCreator of(String docsPath, FileFilter fileFilter, DocumentMapper documentMapper){
         if(fileFilter==null)
-            fileFilter = DocumentFileFilter.allFileFilter();
+            fileFilter = FileFilter.allFileFilter();
         return new DocumentCreator(docsPath,fileFilter, documentMapper);
     }
 
@@ -40,7 +42,7 @@ public class DocumentCreator {
      * @return
      * @throws IOException
      */
-    public List<Document> execute() throws IOException{
+    public List<Document> execute() throws Exception {
         Path p = new File(docsPath).toPath();
         if (Files.isDirectory(p)) {
             CreatorFileVisitor v = new CreatorFileVisitor(fileFilter,documentMapper);
@@ -65,20 +67,20 @@ public class DocumentCreator {
      * @param lastModifiedTime
      * @return
      */
-    public static List<Document> createFromFile(String inputFile, DocumentMapper level,long lastModifiedTime) {
+    public static List<Document> createFromFile(String inputFile, DocumentMapper level,long lastModifiedTime) throws Exception{
         switch (level.getMappingType()) {
-            case DocumentMapper.DM_DOC_PRE_TEXT_FILE: {
+            case DocumentMapper.MappingType.DOC_PRE_TEXT_FILE_VALUE: {
                 List<Document> docs = new ArrayList<>();
                 docs.add(createDoc4EachFile(inputFile,lastModifiedTime));
                 return docs;
             }
-            case DocumentMapper.DM_DOC_PRE_TEXT_LINE:{
+            case DocumentMapper.MappingType.DOC_PRE_TEXT_LINE_VALUE:{
                 return createDoc4EachParagraph(inputFile,lastModifiedTime);
             }
-            case DocumentMapper.DM_DOC_PRE_TEXT_PARAGRAPH: {
+            case DocumentMapper.MappingType.DOC_PRE_TEXT_PARAGRAPH_VALUE: {
                 return createDoc4EachParagraph(inputFile,lastModifiedTime);
             }
-            case DocumentMapper.DM_DOC_PRE_RAW_FILE:{
+            case DocumentMapper.MappingType.DOC_PRE_RAW_FILE_VALUE:{
                 List<Document> docs = new ArrayList<>();
                 Document doc = createDoc4EachRaw(inputFile,lastModifiedTime);
                 docs.add(doc);
@@ -113,8 +115,8 @@ public class DocumentCreator {
      * @param inputFile
      * @return
      */
-    private static List<Document> createDoc4EachParagraph(String inputFile, long lastModifiedTime) {
-        String[] paragraphs = TextExtractor.parseToParagraphs(inputFile);
+    private static List<Document> createDoc4EachParagraph(String inputFile, long lastModifiedTime) throws Exception{
+        String[] paragraphs = TextExtractor.parseToStrings(inputFile);
         List<Document> docs = new ArrayList<>();
         long i = 0;
         for (String p : paragraphs) {
@@ -167,7 +169,7 @@ public class DocumentCreator {
      * @param inputFile
      * @return
      */
-    private static Document createDoc4EachFile(String inputFile,long lastModifiedTime) {
+    private static Document createDoc4EachFile(String inputFile,long lastModifiedTime) throws Exception{
         String text = TextExtractor.parseToString(inputFile);
 
         // make a new, empty document
@@ -253,18 +255,19 @@ public class DocumentCreator {
         List<Document> docs=null;
 
 
-        public CreatorFileVisitor(FileFilter fileFilter, DocumentMapper documentMapper) {
+        public CreatorFileVisitor(java.io.FileFilter fileFilter, DocumentMapper documentMapper) {
             super(fileFilter, documentMapper);
         }
 
-        public CreatorFileVisitor(FileFilter fileFilter, int documentMapper) {
+        public CreatorFileVisitor(java.io.FileFilter fileFilter, int documentMapper) {
             super(fileFilter, documentMapper);
         }
 
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-            try {
-                if(fileFilter.accept(file.toFile())){
+
+            if(fileFilter.accept(file.toFile())){
+                try {
                     List<Document> ls = createFromFile(file.toFile().getCanonicalPath(),documentMapper,attrs.lastModifiedTime().toMillis());
                     if(ls!=null && ls.isEmpty()==false){
                         if(docs==null){
@@ -273,8 +276,10 @@ public class DocumentCreator {
                         docs.addAll(ls);
                     }
                 }
-            } catch (IOException ignore) {
-                // don't index files that can't be read.
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
             }
             return FileVisitResult.CONTINUE;
         }

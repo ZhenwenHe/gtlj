@@ -8,26 +8,26 @@ public interface MultiPoint3DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.Point3D> 
-      getPointsList();
+      getPointList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Point3D getPoints(int index);
+  cn.edu.cug.cs.gtl.protos.Point3D getPoint(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  int getPointsCount();
+  int getPointCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.Point3DOrBuilder> 
-      getPointsOrBuilderList();
+      getPointOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D points = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Point3D point = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Point3DOrBuilder getPointsOrBuilder(
+  cn.edu.cug.cs.gtl.protos.Point3DOrBuilder getPointOrBuilder(
       int index);
 }

@@ -66,6 +66,7 @@
             <artifactId>gt-metadata</artifactId>
             <version>${geotools.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>

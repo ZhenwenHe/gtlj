@@ -53,6 +53,13 @@ public class File extends java.io.File {
     }
 
     /**
+     * 完全名称，例如： usr/he/datafile.csv
+     * @return 返回不含路径的文件，datafile.csv
+     */
+    public  String getFileName() {
+        return getFileName(this.getAbsolutePath());
+    }
+    /**
      * @param fullPathName 完全名称，例如： usr/he/datafile.csv
      * @return 返回不含路径、不含后缀的文件，datafile
      */
@@ -64,6 +71,14 @@ public class File extends java.io.File {
             return fileName.substring(0, i);
         else
             return fileName;
+    }
+
+    /**
+     * 完全名称，例如： usr/he/datafile.csv
+     * @return 返回不含路径、不含后缀的文件，datafile
+     */
+    public String getFileNameWithoutSuffix() {
+        return getFileNameWithoutSuffix(getAbsolutePath());
     }
 
     /**
@@ -107,6 +122,14 @@ public class File extends java.io.File {
         }
     }
 
+
+    /**
+     * fullPathName 完全名称，例如： usr/he/datafile.csv
+     * @return 返回目录 /usr/he
+     */
+    public  String getDirectory(){
+        return getDirectory(getAbsolutePath());
+    }
     /**
      * 返回文件后缀名
      *
@@ -125,10 +148,19 @@ public class File extends java.io.File {
     }
 
     /**
-     * @param fullPathName 完全名称，例如： usr/he/datafile.csv
-     * @param newSuffix    新的文件名后缀，svm
-     * @return usr/he/datafile.svm
+     * 返回文件后缀名
+     *
+     * fullPathName 完全名称，例如： usr/he/datafile.csv
+     * @return 返回不含路径的文件，csv
      */
+    public  String getSuffixName( ) {
+        return getSuffixName(getAbsolutePath());
+    }
+        /**
+         * @param fullPathName 完全名称，例如： usr/he/datafile.csv
+         * @param newSuffix    新的文件名后缀，svm
+         * @return usr/he/datafile.svm
+         */
     public static String replaceSuffixName(String fullPathName, String newSuffix) {
         if (fullPathName == null) return "";
         if (fullPathName.isEmpty()) return "";

@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MultiLineString3D() {
-    lineStrings_ = java.util.Collections.emptyList();
+    lineString_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -52,10 +52,10 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              lineStrings_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LineString3D>();
+              lineString_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LineString3D>();
               mutable_bitField0_ |= 0x00000001;
             }
-            lineStrings_.add(
+            lineString_.add(
                 input.readMessage(cn.edu.cug.cs.gtl.protos.LineString3D.parser(), extensionRegistry));
             break;
           }
@@ -75,7 +75,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        lineStrings_ = java.util.Collections.unmodifiableList(lineStrings_);
+        lineString_ = java.util.Collections.unmodifiableList(lineString_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -94,39 +94,39 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.MultiLineString3D.class, cn.edu.cug.cs.gtl.protos.MultiLineString3D.Builder.class);
   }
 
-  public static final int LINE_STRINGS_FIELD_NUMBER = 1;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> lineStrings_;
+  public static final int LINE_STRING_FIELD_NUMBER = 1;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> lineString_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> getLineStringsList() {
-    return lineStrings_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> getLineStringList() {
+    return lineString_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder> 
-      getLineStringsOrBuilderList() {
-    return lineStrings_;
+      getLineStringOrBuilderList() {
+    return lineString_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  public int getLineStringsCount() {
-    return lineStrings_.size();
+  public int getLineStringCount() {
+    return lineString_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.LineString3D getLineStrings(int index) {
-    return lineStrings_.get(index);
+  public cn.edu.cug.cs.gtl.protos.LineString3D getLineString(int index) {
+    return lineString_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder getLineStringsOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder getLineStringOrBuilder(
       int index) {
-    return lineStrings_.get(index);
+    return lineString_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -143,8 +143,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < lineStrings_.size(); i++) {
-      output.writeMessage(1, lineStrings_.get(i));
+    for (int i = 0; i < lineString_.size(); i++) {
+      output.writeMessage(1, lineString_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -155,9 +155,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < lineStrings_.size(); i++) {
+    for (int i = 0; i < lineString_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, lineStrings_.get(i));
+        .computeMessageSize(1, lineString_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -174,8 +174,8 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.MultiLineString3D other = (cn.edu.cug.cs.gtl.protos.MultiLineString3D) obj;
 
-    if (!getLineStringsList()
-        .equals(other.getLineStringsList())) return false;
+    if (!getLineStringList()
+        .equals(other.getLineStringList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -187,9 +187,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getLineStringsCount() > 0) {
-      hash = (37 * hash) + LINE_STRINGS_FIELD_NUMBER;
-      hash = (53 * hash) + getLineStringsList().hashCode();
+    if (getLineStringCount() > 0) {
+      hash = (37 * hash) + LINE_STRING_FIELD_NUMBER;
+      hash = (53 * hash) + getLineStringList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -319,17 +319,17 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getLineStringsFieldBuilder();
+        getLineStringFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (lineStringsBuilder_ == null) {
-        lineStrings_ = java.util.Collections.emptyList();
+      if (lineStringBuilder_ == null) {
+        lineString_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        lineStringsBuilder_.clear();
+        lineStringBuilder_.clear();
       }
       return this;
     }
@@ -358,14 +358,14 @@ private static final long serialVersionUID = 0L;
     public cn.edu.cug.cs.gtl.protos.MultiLineString3D buildPartial() {
       cn.edu.cug.cs.gtl.protos.MultiLineString3D result = new cn.edu.cug.cs.gtl.protos.MultiLineString3D(this);
       int from_bitField0_ = bitField0_;
-      if (lineStringsBuilder_ == null) {
+      if (lineStringBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          lineStrings_ = java.util.Collections.unmodifiableList(lineStrings_);
+          lineString_ = java.util.Collections.unmodifiableList(lineString_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.lineStrings_ = lineStrings_;
+        result.lineString_ = lineString_;
       } else {
-        result.lineStrings_ = lineStringsBuilder_.build();
+        result.lineString_ = lineStringBuilder_.build();
       }
       onBuilt();
       return result;
@@ -415,29 +415,29 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.MultiLineString3D other) {
       if (other == cn.edu.cug.cs.gtl.protos.MultiLineString3D.getDefaultInstance()) return this;
-      if (lineStringsBuilder_ == null) {
-        if (!other.lineStrings_.isEmpty()) {
-          if (lineStrings_.isEmpty()) {
-            lineStrings_ = other.lineStrings_;
+      if (lineStringBuilder_ == null) {
+        if (!other.lineString_.isEmpty()) {
+          if (lineString_.isEmpty()) {
+            lineString_ = other.lineString_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureLineStringsIsMutable();
-            lineStrings_.addAll(other.lineStrings_);
+            ensureLineStringIsMutable();
+            lineString_.addAll(other.lineString_);
           }
           onChanged();
         }
       } else {
-        if (!other.lineStrings_.isEmpty()) {
-          if (lineStringsBuilder_.isEmpty()) {
-            lineStringsBuilder_.dispose();
-            lineStringsBuilder_ = null;
-            lineStrings_ = other.lineStrings_;
+        if (!other.lineString_.isEmpty()) {
+          if (lineStringBuilder_.isEmpty()) {
+            lineStringBuilder_.dispose();
+            lineStringBuilder_ = null;
+            lineString_ = other.lineString_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            lineStringsBuilder_ = 
+            lineStringBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getLineStringsFieldBuilder() : null;
+                 getLineStringFieldBuilder() : null;
           } else {
-            lineStringsBuilder_.addAllMessages(other.lineStrings_);
+            lineStringBuilder_.addAllMessages(other.lineString_);
           }
         }
       }
@@ -471,244 +471,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> lineStrings_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> lineString_ =
       java.util.Collections.emptyList();
-    private void ensureLineStringsIsMutable() {
+    private void ensureLineStringIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        lineStrings_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LineString3D>(lineStrings_);
+        lineString_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.LineString3D>(lineString_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.LineString3D, cn.edu.cug.cs.gtl.protos.LineString3D.Builder, cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder> lineStringsBuilder_;
+        cn.edu.cug.cs.gtl.protos.LineString3D, cn.edu.cug.cs.gtl.protos.LineString3D.Builder, cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder> lineStringBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> getLineStringsList() {
-      if (lineStringsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(lineStrings_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> getLineStringList() {
+      if (lineStringBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(lineString_);
       } else {
-        return lineStringsBuilder_.getMessageList();
+        return lineStringBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public int getLineStringsCount() {
-      if (lineStringsBuilder_ == null) {
-        return lineStrings_.size();
+    public int getLineStringCount() {
+      if (lineStringBuilder_ == null) {
+        return lineString_.size();
       } else {
-        return lineStringsBuilder_.getCount();
+        return lineStringBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LineString3D getLineStrings(int index) {
-      if (lineStringsBuilder_ == null) {
-        return lineStrings_.get(index);
+    public cn.edu.cug.cs.gtl.protos.LineString3D getLineString(int index) {
+      if (lineStringBuilder_ == null) {
+        return lineString_.get(index);
       } else {
-        return lineStringsBuilder_.getMessage(index);
+        return lineStringBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder setLineStrings(
+    public Builder setLineString(
         int index, cn.edu.cug.cs.gtl.protos.LineString3D value) {
-      if (lineStringsBuilder_ == null) {
+      if (lineStringBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureLineStringsIsMutable();
-        lineStrings_.set(index, value);
+        ensureLineStringIsMutable();
+        lineString_.set(index, value);
         onChanged();
       } else {
-        lineStringsBuilder_.setMessage(index, value);
+        lineStringBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder setLineStrings(
+    public Builder setLineString(
         int index, cn.edu.cug.cs.gtl.protos.LineString3D.Builder builderForValue) {
-      if (lineStringsBuilder_ == null) {
-        ensureLineStringsIsMutable();
-        lineStrings_.set(index, builderForValue.build());
+      if (lineStringBuilder_ == null) {
+        ensureLineStringIsMutable();
+        lineString_.set(index, builderForValue.build());
         onChanged();
       } else {
-        lineStringsBuilder_.setMessage(index, builderForValue.build());
+        lineStringBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder addLineStrings(cn.edu.cug.cs.gtl.protos.LineString3D value) {
-      if (lineStringsBuilder_ == null) {
+    public Builder addLineString(cn.edu.cug.cs.gtl.protos.LineString3D value) {
+      if (lineStringBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureLineStringsIsMutable();
-        lineStrings_.add(value);
+        ensureLineStringIsMutable();
+        lineString_.add(value);
         onChanged();
       } else {
-        lineStringsBuilder_.addMessage(value);
+        lineStringBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder addLineStrings(
+    public Builder addLineString(
         int index, cn.edu.cug.cs.gtl.protos.LineString3D value) {
-      if (lineStringsBuilder_ == null) {
+      if (lineStringBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureLineStringsIsMutable();
-        lineStrings_.add(index, value);
+        ensureLineStringIsMutable();
+        lineString_.add(index, value);
         onChanged();
       } else {
-        lineStringsBuilder_.addMessage(index, value);
+        lineStringBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder addLineStrings(
+    public Builder addLineString(
         cn.edu.cug.cs.gtl.protos.LineString3D.Builder builderForValue) {
-      if (lineStringsBuilder_ == null) {
-        ensureLineStringsIsMutable();
-        lineStrings_.add(builderForValue.build());
+      if (lineStringBuilder_ == null) {
+        ensureLineStringIsMutable();
+        lineString_.add(builderForValue.build());
         onChanged();
       } else {
-        lineStringsBuilder_.addMessage(builderForValue.build());
+        lineStringBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder addLineStrings(
+    public Builder addLineString(
         int index, cn.edu.cug.cs.gtl.protos.LineString3D.Builder builderForValue) {
-      if (lineStringsBuilder_ == null) {
-        ensureLineStringsIsMutable();
-        lineStrings_.add(index, builderForValue.build());
+      if (lineStringBuilder_ == null) {
+        ensureLineStringIsMutable();
+        lineString_.add(index, builderForValue.build());
         onChanged();
       } else {
-        lineStringsBuilder_.addMessage(index, builderForValue.build());
+        lineStringBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder addAllLineStrings(
+    public Builder addAllLineString(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.LineString3D> values) {
-      if (lineStringsBuilder_ == null) {
-        ensureLineStringsIsMutable();
+      if (lineStringBuilder_ == null) {
+        ensureLineStringIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, lineStrings_);
+            values, lineString_);
         onChanged();
       } else {
-        lineStringsBuilder_.addAllMessages(values);
+        lineStringBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder clearLineStrings() {
-      if (lineStringsBuilder_ == null) {
-        lineStrings_ = java.util.Collections.emptyList();
+    public Builder clearLineString() {
+      if (lineStringBuilder_ == null) {
+        lineString_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        lineStringsBuilder_.clear();
+        lineStringBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public Builder removeLineStrings(int index) {
-      if (lineStringsBuilder_ == null) {
-        ensureLineStringsIsMutable();
-        lineStrings_.remove(index);
+    public Builder removeLineString(int index) {
+      if (lineStringBuilder_ == null) {
+        ensureLineStringIsMutable();
+        lineString_.remove(index);
         onChanged();
       } else {
-        lineStringsBuilder_.remove(index);
+        lineStringBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LineString3D.Builder getLineStringsBuilder(
+    public cn.edu.cug.cs.gtl.protos.LineString3D.Builder getLineStringBuilder(
         int index) {
-      return getLineStringsFieldBuilder().getBuilder(index);
+      return getLineStringFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder getLineStringsOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder getLineStringOrBuilder(
         int index) {
-      if (lineStringsBuilder_ == null) {
-        return lineStrings_.get(index);  } else {
-        return lineStringsBuilder_.getMessageOrBuilder(index);
+      if (lineStringBuilder_ == null) {
+        return lineString_.get(index);  } else {
+        return lineStringBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder> 
-         getLineStringsOrBuilderList() {
-      if (lineStringsBuilder_ != null) {
-        return lineStringsBuilder_.getMessageOrBuilderList();
+         getLineStringOrBuilderList() {
+      if (lineStringBuilder_ != null) {
+        return lineStringBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(lineStrings_);
+        return java.util.Collections.unmodifiableList(lineString_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LineString3D.Builder addLineStringsBuilder() {
-      return getLineStringsFieldBuilder().addBuilder(
+    public cn.edu.cug.cs.gtl.protos.LineString3D.Builder addLineStringBuilder() {
+      return getLineStringFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.LineString3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.LineString3D.Builder addLineStringsBuilder(
+    public cn.edu.cug.cs.gtl.protos.LineString3D.Builder addLineStringBuilder(
         int index) {
-      return getLineStringsFieldBuilder().addBuilder(
+      return getLineStringFieldBuilder().addBuilder(
           index, cn.edu.cug.cs.gtl.protos.LineString3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D.Builder> 
-         getLineStringsBuilderList() {
-      return getLineStringsFieldBuilder().getBuilderList();
+         getLineStringBuilderList() {
+      return getLineStringFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
         cn.edu.cug.cs.gtl.protos.LineString3D, cn.edu.cug.cs.gtl.protos.LineString3D.Builder, cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder> 
-        getLineStringsFieldBuilder() {
-      if (lineStringsBuilder_ == null) {
-        lineStringsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getLineStringFieldBuilder() {
+      if (lineStringBuilder_ == null) {
+        lineStringBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             cn.edu.cug.cs.gtl.protos.LineString3D, cn.edu.cug.cs.gtl.protos.LineString3D.Builder, cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder>(
-                lineStrings_,
+                lineString_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        lineStrings_ = null;
+        lineString_ = null;
       }
-      return lineStringsBuilder_;
+      return lineStringBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -8,26 +8,26 @@ public interface MultiLineString2DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_string = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.LineString2D> 
-      getLineStringsList();
+      getLineStringList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_string = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.LineString2D getLineStrings(int index);
+  cn.edu.cug.cs.gtl.protos.LineString2D getLineString(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_string = 1;</code>
    */
-  int getLineStringsCount();
+  int getLineStringCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_string = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.LineString2DOrBuilder> 
-      getLineStringsOrBuilderList();
+      getLineStringOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString2D line_string = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.LineString2DOrBuilder getLineStringsOrBuilder(
+  cn.edu.cug.cs.gtl.protos.LineString2DOrBuilder getLineStringOrBuilder(
       int index);
 }

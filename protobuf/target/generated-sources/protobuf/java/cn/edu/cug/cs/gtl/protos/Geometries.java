@@ -180,83 +180,82 @@ public final class Geometries {
       "s.gtl.protos.Vertex2d\022/\n\003end\030\002 \001(\0132\".cn." +
       "edu.cug.cs.gtl.protos.Vertex2d\"G\n\013Rectan" +
       "gle2D\022\014\n\004left\030\001 \001(\001\022\r\n\005right\030\002 \001(\001\022\016\n\006bo" +
-      "ttom\030\003 \001(\001\022\013\n\003top\030\004 \001(\001\"D\n\014LineString2D\022" +
-      "4\n\010vertices\030\001 \003(\0132\".cn.edu.cug.cs.gtl.pr" +
-      "otos.Vertex2d\"D\n\014LinearRing2D\0224\n\010vertice" +
-      "s\030\001 \003(\0132\".cn.edu.cug.cs.gtl.protos.Verte" +
-      "x2d\"y\n\tPolygon2D\0225\n\005shell\030\001 \001(\0132&.cn.edu" +
-      ".cug.cs.gtl.protos.LinearRing2D\0225\n\005rings" +
-      "\030\002 \003(\0132&.cn.edu.cug.cs.gtl.protos.Linear" +
-      "Ring2D\"A\n\014MultiPoint2D\0221\n\006points\030\001 \003(\0132!" +
-      ".cn.edu.cug.cs.gtl.protos.Point2D\"Q\n\021Mul" +
-      "tiLineString2D\022<\n\014line_strings\030\001 \003(\0132&.c" +
-      "n.edu.cug.cs.gtl.protos.LineString2D\"G\n\016" +
-      "MultiPolygon2D\0225\n\010polygons\030\001 \003(\0132#.cn.ed" +
-      "u.cug.cs.gtl.protos.Polygon2D\"?\n\007Point3D" +
-      "\0224\n\010location\030\001 \001(\0132\".cn.edu.cug.cs.gtl.p" +
-      "rotos.Vertex3d\"o\n\tSegment3D\0221\n\005start\030\001 \001" +
-      "(\0132\".cn.edu.cug.cs.gtl.protos.Vertex3d\022/" +
-      "\n\003end\030\002 \001(\0132\".cn.edu.cug.cs.gtl.protos.V" +
-      "ertex3d\"g\n\013Rectangle3D\022\r\n\005x_min\030\001 \001(\001\022\r\n" +
-      "\005y_min\030\002 \001(\001\022\r\n\005z_min\030\003 \001(\001\022\r\n\005x_max\030\004 \001" +
-      "(\001\022\r\n\005y_max\030\005 \001(\001\022\r\n\005z_max\030\006 \001(\001\"D\n\014Line" +
-      "String3D\0224\n\010vertices\030\001 \003(\0132\".cn.edu.cug." +
-      "cs.gtl.protos.Vertex3d\"D\n\014LinearRing3D\0224" +
-      "\n\010vertices\030\001 \003(\0132\".cn.edu.cug.cs.gtl.pro" +
-      "tos.Vertex3d\"S\n\nPolyline3D\0224\n\010vertices\030\001" +
-      " \003(\0132\".cn.edu.cug.cs.gtl.protos.Vertex3d" +
-      "\022\017\n\007indices\030\002 \003(\r\"y\n\tPolygon3D\0225\n\005shell\030" +
-      "\001 \001(\0132&.cn.edu.cug.cs.gtl.protos.LinearR" +
-      "ing3D\0225\n\005rings\030\002 \003(\0132&.cn.edu.cug.cs.gtl" +
-      ".protos.LinearRing3D\"A\n\014MultiPoint3D\0221\n\006" +
-      "points\030\001 \003(\0132!.cn.edu.cug.cs.gtl.protos." +
-      "Point3D\"Q\n\021MultiLineString3D\022<\n\014line_str" +
-      "ings\030\001 \003(\0132&.cn.edu.cug.cs.gtl.protos.Li" +
-      "neString3D\"G\n\016MultiPolygon3D\0225\n\010polygons" +
-      "\030\001 \003(\0132#.cn.edu.cug.cs.gtl.protos.Polygo" +
-      "n3D\"W\n\016TriangleMesh3D\0224\n\010vertices\030\001 \003(\0132" +
-      "\".cn.edu.cug.cs.gtl.protos.Vertex3d\022\017\n\007i" +
-      "ndices\030\002 \003(\r\"S\n\nQuadMesh3D\0224\n\010vertices\030\001" +
-      " \003(\0132\".cn.edu.cug.cs.gtl.protos.Vertex3d" +
-      "\022\017\n\007indices\030\002 \003(\r\"{\n\007Solid3D\0227\n\005shell\030\001 " +
-      "\001(\0132(.cn.edu.cug.cs.gtl.protos.TriangleM" +
-      "esh3D\0227\n\005holes\030\002 \003(\0132(.cn.edu.cug.cs.gtl" +
-      ".protos.TriangleMesh3D\"A\n\014MultiSolid3D\0221" +
-      "\n\006solids\030\001 \003(\0132!.cn.edu.cug.cs.gtl.proto" +
-      "s.Solid3D\"Z\n\021TetrahedralMesh3D\0224\n\010vertic" +
-      "es\030\001 \003(\0132\".cn.edu.cug.cs.gtl.protos.Vert" +
-      "ex3d\022\017\n\007indices\030\002 \003(\r\"X\n\017PolygonalMesh3D" +
-      "\0224\n\010vertices\030\001 \003(\0132\".cn.edu.cug.cs.gtl.p" +
-      "rotos.Vertex3d\022\017\n\007indices\030\002 \003(\r\"Y\n\020Polyh" +
-      "edralMesh3D\0224\n\010vertices\030\001 \003(\0132\".cn.edu.c" +
-      "ug.cs.gtl.protos.Vertex3d\022\017\n\007indices\030\002 \003" +
-      "(\r\"T\n\013CubicMesh3D\0224\n\010vertices\030\001 \003(\0132\".cn" +
-      ".edu.cug.cs.gtl.protos.Vertex3d\022\017\n\007indic" +
-      "es\030\002 \003(\r\"Y\n\020HexahedralMesh3D\0224\n\010vertices" +
-      "\030\001 \003(\0132\".cn.edu.cug.cs.gtl.protos.Vertex" +
-      "3d\022\017\n\007indices\030\002 \003(\r\"\275\002\n\010Geometry\0228\n\niden" +
-      "tifier\030\001 \001(\0132$.cn.edu.cug.cs.gtl.protos." +
-      "Identifier\0224\n\004type\030\002 \001(\0162&.cn.edu.cug.cs" +
-      ".gtl.protos.GeometryType\0220\n\005color\030\003 \001(\0132" +
-      "!.cn.edu.cug.cs.gtl.protos.Color4f\0225\n\nfi" +
-      "ll_color\030\004 \001(\0132!.cn.edu.cug.cs.gtl.proto" +
-      "s.Color4f\0223\n\005bound\030\005 \001(\0132$.cn.edu.cug.cs" +
-      ".gtl.protos.Envelope3D\022#\n\005shape\030\006 \001(\0132\024." +
-      "google.protobuf.Any*\357\003\n\014GeometryType\022\013\n\007" +
-      "POINT2D\020\000\022\r\n\tSEGMENT2D\020\001\022\017\n\013RECTANGLE2D\020" +
-      "\002\022\020\n\014LINESTRING2D\020\003\022\020\n\014LINEARRING2D\020\004\022\r\n" +
-      "\tPOLYGON2D\020\005\022\020\n\014MULTIPOINT2D\020\006\022\025\n\021MULTIL" +
-      "INESTRING2D\020\007\022\022\n\016MULTIPOLYGON2D\020\010\022\013\n\007POI" +
-      "NT3D\020\t\022\r\n\tSEGMENT3D\020\n\022\017\n\013RECTANGLE3D\020\013\022\020" +
-      "\n\014LINESTRING3D\020\014\022\020\n\014LINEARRING3D\020\r\022\r\n\tPO" +
-      "LYGON3D\020\016\022\020\n\014MULTIPOINT3D\020\017\022\025\n\021MULTILINE" +
-      "STRING3D\020\020\022\022\n\016MULTIPOLYGON3D\020\021\022\022\n\016TRIANG" +
-      "LEMESH3D\020\022\022\013\n\007SOLID3D\020\023\022\020\n\014MULTISOLID3D\020" +
-      "\024\022\025\n\021TETRAHEDRALMESH3D\020\025\022\024\n\020POLYHEDRALME" +
-      "SH3D\020\026\022\017\n\013CUBICMESH3D\020\027\022\024\n\020HEXAHEDRALMES" +
-      "H3D\020\030\022\016\n\nQUADMESH3D\020\031\022\016\n\nPOLYLINE3D\020\032BF\n" +
-      "\030cn.edu.cug.cs.gtl.protosB\nGeometriesP\001\370" +
-      "\001\001\252\002\030cn.edu.cug.cs.gtl.protosb\006proto3"
+      "ttom\030\003 \001(\001\022\013\n\003top\030\004 \001(\001\"B\n\014LineString2D\022" +
+      "2\n\006vertex\030\001 \003(\0132\".cn.edu.cug.cs.gtl.prot" +
+      "os.Vertex2d\"B\n\014LinearRing2D\0222\n\006vertex\030\001 " +
+      "\003(\0132\".cn.edu.cug.cs.gtl.protos.Vertex2d\"" +
+      "x\n\tPolygon2D\0225\n\005shell\030\001 \001(\0132&.cn.edu.cug" +
+      ".cs.gtl.protos.LinearRing2D\0224\n\004ring\030\002 \003(" +
+      "\0132&.cn.edu.cug.cs.gtl.protos.LinearRing2" +
+      "D\"A\n\014MultiPoint2D\0221\n\006points\030\001 \003(\0132!.cn.e" +
+      "du.cug.cs.gtl.protos.Point2D\"P\n\021MultiLin" +
+      "eString2D\022;\n\013line_string\030\001 \003(\0132&.cn.edu." +
+      "cug.cs.gtl.protos.LineString2D\"F\n\016MultiP" +
+      "olygon2D\0224\n\007polygon\030\001 \003(\0132#.cn.edu.cug.c" +
+      "s.gtl.protos.Polygon2D\"?\n\007Point3D\0224\n\010loc" +
+      "ation\030\001 \001(\0132\".cn.edu.cug.cs.gtl.protos.V" +
+      "ertex3d\"o\n\tSegment3D\0221\n\005start\030\001 \001(\0132\".cn" +
+      ".edu.cug.cs.gtl.protos.Vertex3d\022/\n\003end\030\002" +
+      " \001(\0132\".cn.edu.cug.cs.gtl.protos.Vertex3d" +
+      "\"g\n\013Rectangle3D\022\r\n\005x_min\030\001 \001(\001\022\r\n\005y_min\030" +
+      "\002 \001(\001\022\r\n\005z_min\030\003 \001(\001\022\r\n\005x_max\030\004 \001(\001\022\r\n\005y" +
+      "_max\030\005 \001(\001\022\r\n\005z_max\030\006 \001(\001\"B\n\014LineString3" +
+      "D\0222\n\006vertex\030\001 \003(\0132\".cn.edu.cug.cs.gtl.pr" +
+      "otos.Vertex3d\"B\n\014LinearRing3D\0222\n\006vertex\030" +
+      "\001 \003(\0132\".cn.edu.cug.cs.gtl.protos.Vertex3" +
+      "d\"O\n\nPolyline3D\0222\n\006vertex\030\001 \003(\0132\".cn.edu" +
+      ".cug.cs.gtl.protos.Vertex3d\022\r\n\005index\030\002 \003" +
+      "(\r\"x\n\tPolygon3D\0225\n\005shell\030\001 \001(\0132&.cn.edu." +
+      "cug.cs.gtl.protos.LinearRing3D\0224\n\004ring\030\002" +
+      " \003(\0132&.cn.edu.cug.cs.gtl.protos.LinearRi" +
+      "ng3D\"@\n\014MultiPoint3D\0220\n\005point\030\001 \003(\0132!.cn" +
+      ".edu.cug.cs.gtl.protos.Point3D\"P\n\021MultiL" +
+      "ineString3D\022;\n\013line_string\030\001 \003(\0132&.cn.ed" +
+      "u.cug.cs.gtl.protos.LineString3D\"F\n\016Mult" +
+      "iPolygon3D\0224\n\007polygon\030\001 \003(\0132#.cn.edu.cug" +
+      ".cs.gtl.protos.Polygon3D\"S\n\016TriangleMesh" +
+      "3D\0222\n\006vertex\030\001 \003(\0132\".cn.edu.cug.cs.gtl.p" +
+      "rotos.Vertex3d\022\r\n\005index\030\002 \003(\r\"O\n\nQuadMes" +
+      "h3D\0222\n\006vertex\030\001 \003(\0132\".cn.edu.cug.cs.gtl." +
+      "protos.Vertex3d\022\r\n\005index\030\002 \003(\r\"z\n\007Solid3" +
+      "D\0227\n\005shell\030\001 \001(\0132(.cn.edu.cug.cs.gtl.pro" +
+      "tos.TriangleMesh3D\0226\n\004hole\030\002 \003(\0132(.cn.ed" +
+      "u.cug.cs.gtl.protos.TriangleMesh3D\"@\n\014Mu" +
+      "ltiSolid3D\0220\n\005solid\030\001 \003(\0132!.cn.edu.cug.c" +
+      "s.gtl.protos.Solid3D\"V\n\021TetrahedralMesh3" +
+      "D\0222\n\006vertex\030\001 \003(\0132\".cn.edu.cug.cs.gtl.pr" +
+      "otos.Vertex3d\022\r\n\005index\030\002 \003(\r\"T\n\017Polygona" +
+      "lMesh3D\0222\n\006vertex\030\001 \003(\0132\".cn.edu.cug.cs." +
+      "gtl.protos.Vertex3d\022\r\n\005index\030\002 \003(\r\"U\n\020Po" +
+      "lyhedralMesh3D\0222\n\006vertex\030\001 \003(\0132\".cn.edu." +
+      "cug.cs.gtl.protos.Vertex3d\022\r\n\005index\030\002 \003(" +
+      "\r\"P\n\013CubicMesh3D\0222\n\006vertex\030\001 \003(\0132\".cn.ed" +
+      "u.cug.cs.gtl.protos.Vertex3d\022\r\n\005index\030\002 " +
+      "\003(\r\"U\n\020HexahedralMesh3D\0222\n\006vertex\030\001 \003(\0132" +
+      "\".cn.edu.cug.cs.gtl.protos.Vertex3d\022\r\n\005i" +
+      "ndex\030\002 \003(\r\"\275\002\n\010Geometry\0228\n\nidentifier\030\001 " +
+      "\001(\0132$.cn.edu.cug.cs.gtl.protos.Identifie" +
+      "r\0224\n\004type\030\002 \001(\0162&.cn.edu.cug.cs.gtl.prot" +
+      "os.GeometryType\0220\n\005color\030\003 \001(\0132!.cn.edu." +
+      "cug.cs.gtl.protos.Color4f\0225\n\nfill_color\030" +
+      "\004 \001(\0132!.cn.edu.cug.cs.gtl.protos.Color4f" +
+      "\0223\n\005bound\030\005 \001(\0132$.cn.edu.cug.cs.gtl.prot" +
+      "os.Envelope3D\022#\n\005shape\030\006 \001(\0132\024.google.pr" +
+      "otobuf.Any*\357\003\n\014GeometryType\022\013\n\007POINT2D\020\000" +
+      "\022\r\n\tSEGMENT2D\020\001\022\017\n\013RECTANGLE2D\020\002\022\020\n\014LINE" +
+      "STRING2D\020\003\022\020\n\014LINEARRING2D\020\004\022\r\n\tPOLYGON2" +
+      "D\020\005\022\020\n\014MULTIPOINT2D\020\006\022\025\n\021MULTILINESTRING" +
+      "2D\020\007\022\022\n\016MULTIPOLYGON2D\020\010\022\013\n\007POINT3D\020\t\022\r\n" +
+      "\tSEGMENT3D\020\n\022\017\n\013RECTANGLE3D\020\013\022\020\n\014LINESTR" +
+      "ING3D\020\014\022\020\n\014LINEARRING3D\020\r\022\r\n\tPOLYGON3D\020\016" +
+      "\022\020\n\014MULTIPOINT3D\020\017\022\025\n\021MULTILINESTRING3D\020" +
+      "\020\022\022\n\016MULTIPOLYGON3D\020\021\022\022\n\016TRIANGLEMESH3D\020" +
+      "\022\022\013\n\007SOLID3D\020\023\022\020\n\014MULTISOLID3D\020\024\022\025\n\021TETR" +
+      "AHEDRALMESH3D\020\025\022\024\n\020POLYHEDRALMESH3D\020\026\022\017\n" +
+      "\013CUBICMESH3D\020\027\022\024\n\020HEXAHEDRALMESH3D\020\030\022\016\n\n" +
+      "QUADMESH3D\020\031\022\016\n\nPOLYLINE3D\020\032BF\n\030cn.edu.c" +
+      "ug.cs.gtl.protosB\nGeometriesP\001\370\001\001\252\002\030cn.e" +
+      "du.cug.cs.gtl.protosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -290,19 +289,19 @@ public final class Geometries {
     internal_static_cn_edu_cug_cs_gtl_protos_LineString2D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_LineString2D_descriptor,
-        new java.lang.String[] { "Vertices", });
+        new java.lang.String[] { "Vertex", });
     internal_static_cn_edu_cug_cs_gtl_protos_LinearRing2D_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_cn_edu_cug_cs_gtl_protos_LinearRing2D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_LinearRing2D_descriptor,
-        new java.lang.String[] { "Vertices", });
+        new java.lang.String[] { "Vertex", });
     internal_static_cn_edu_cug_cs_gtl_protos_Polygon2D_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_cn_edu_cug_cs_gtl_protos_Polygon2D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Polygon2D_descriptor,
-        new java.lang.String[] { "Shell", "Rings", });
+        new java.lang.String[] { "Shell", "Ring", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPoint2D_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPoint2D_fieldAccessorTable = new
@@ -314,13 +313,13 @@ public final class Geometries {
     internal_static_cn_edu_cug_cs_gtl_protos_MultiLineString2D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_MultiLineString2D_descriptor,
-        new java.lang.String[] { "LineStrings", });
+        new java.lang.String[] { "LineString", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPolygon2D_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPolygon2D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_MultiPolygon2D_descriptor,
-        new java.lang.String[] { "Polygons", });
+        new java.lang.String[] { "Polygon", });
     internal_static_cn_edu_cug_cs_gtl_protos_Point3D_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_cn_edu_cug_cs_gtl_protos_Point3D_fieldAccessorTable = new
@@ -344,97 +343,97 @@ public final class Geometries {
     internal_static_cn_edu_cug_cs_gtl_protos_LineString3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_LineString3D_descriptor,
-        new java.lang.String[] { "Vertices", });
+        new java.lang.String[] { "Vertex", });
     internal_static_cn_edu_cug_cs_gtl_protos_LinearRing3D_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_cn_edu_cug_cs_gtl_protos_LinearRing3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_LinearRing3D_descriptor,
-        new java.lang.String[] { "Vertices", });
+        new java.lang.String[] { "Vertex", });
     internal_static_cn_edu_cug_cs_gtl_protos_Polyline3D_descriptor =
       getDescriptor().getMessageTypes().get(14);
     internal_static_cn_edu_cug_cs_gtl_protos_Polyline3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Polyline3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_Polygon3D_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_cn_edu_cug_cs_gtl_protos_Polygon3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Polygon3D_descriptor,
-        new java.lang.String[] { "Shell", "Rings", });
+        new java.lang.String[] { "Shell", "Ring", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPoint3D_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPoint3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_MultiPoint3D_descriptor,
-        new java.lang.String[] { "Points", });
+        new java.lang.String[] { "Point", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiLineString3D_descriptor =
       getDescriptor().getMessageTypes().get(17);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiLineString3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_MultiLineString3D_descriptor,
-        new java.lang.String[] { "LineStrings", });
+        new java.lang.String[] { "LineString", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPolygon3D_descriptor =
       getDescriptor().getMessageTypes().get(18);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiPolygon3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_MultiPolygon3D_descriptor,
-        new java.lang.String[] { "Polygons", });
+        new java.lang.String[] { "Polygon", });
     internal_static_cn_edu_cug_cs_gtl_protos_TriangleMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(19);
     internal_static_cn_edu_cug_cs_gtl_protos_TriangleMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_TriangleMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_QuadMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(20);
     internal_static_cn_edu_cug_cs_gtl_protos_QuadMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_QuadMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_Solid3D_descriptor =
       getDescriptor().getMessageTypes().get(21);
     internal_static_cn_edu_cug_cs_gtl_protos_Solid3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_Solid3D_descriptor,
-        new java.lang.String[] { "Shell", "Holes", });
+        new java.lang.String[] { "Shell", "Hole", });
     internal_static_cn_edu_cug_cs_gtl_protos_MultiSolid3D_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_cn_edu_cug_cs_gtl_protos_MultiSolid3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_MultiSolid3D_descriptor,
-        new java.lang.String[] { "Solids", });
+        new java.lang.String[] { "Solid", });
     internal_static_cn_edu_cug_cs_gtl_protos_TetrahedralMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_cn_edu_cug_cs_gtl_protos_TetrahedralMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_TetrahedralMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_PolygonalMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(24);
     internal_static_cn_edu_cug_cs_gtl_protos_PolygonalMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_PolygonalMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_PolyhedralMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(25);
     internal_static_cn_edu_cug_cs_gtl_protos_PolyhedralMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_PolyhedralMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_CubicMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(26);
     internal_static_cn_edu_cug_cs_gtl_protos_CubicMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_CubicMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_HexahedralMesh3D_descriptor =
       getDescriptor().getMessageTypes().get(27);
     internal_static_cn_edu_cug_cs_gtl_protos_HexahedralMesh3D_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_HexahedralMesh3D_descriptor,
-        new java.lang.String[] { "Vertices", "Indices", });
+        new java.lang.String[] { "Vertex", "Index", });
     internal_static_cn_edu_cug_cs_gtl_protos_Geometry_descriptor =
       getDescriptor().getMessageTypes().get(28);
     internal_static_cn_edu_cug_cs_gtl_protos_Geometry_fieldAccessorTable = new

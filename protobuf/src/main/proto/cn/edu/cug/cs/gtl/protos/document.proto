@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package cn.edu.cug.cs.gtl.protos;
 
+
+import "cn/edu/cug/cs/gtl/protos/bound.proto";
+
 option cc_enable_arenas = true;
 option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
 option java_package = "cn.edu.cug.cs.gtl.protos";
@@ -69,7 +72,7 @@ message Title {
     string alias=2;
 }
 
-message DocType{
+message DocumentType{
     string type=1;
     string application=2;//the application which can open this kind of document
 }
@@ -79,28 +82,54 @@ message Content{
     Paragraphs paragraphs=1;
 }
 
+message DocumentMapper{
+    int32 mapping_type=1;
+
+    enum MappingType{
+        DOC_PRE_RAW_FILE=0;//不提取文本，为整个文件创建一个文档
+        DOC_PRE_TEXT_LINE =1;   //提取文件中的文本，为文件中的每行文本创建一个文档
+        DOC_PRE_TEXT_PARAGRAPH =2; //提取文件中的文本，为文件中的每个自然段创建一个文档
+        DOC_PRE_TEXT_FILE =3;// //提取文件中的文本，为整个文件创建一个文档
+    }
+}
+
+message Attachment{
+    string name=1;
+    string type=2;
+    bytes raw_data=3;
+}
+
+message Attachments{
+    repeated Attachment attachment=1;
+}
+
 message Document {
     string title = 1;
     repeated string keyword = 2;
     string version = 3;
     string type = 4;
-    string uri = 5;
+    string url = 5;
     repeated string author = 6;
     repeated string affiliation = 7;
     string abstract = 8;
-    repeated string content=9;
-    bytes raw_data = 10;
+    string schema=9;
+    repeated string content=10;
+    bytes raw_data = 11;
+    Attachments attachments=12;
+    BoundingBox  bounding=13;//location
 }
 
 message ComplexDocument {
     Title title = 1;
     Keywords keywords = 2;
     Version version = 3;
-    DocType type = 4;
+    DocumentType type = 4;
     URI uri = 5;
     Authors author = 6;
     Affiliations affiliations = 7;
     Abstract abstract = 8;
-    Content content = 9;
-    Raw raw_data = 10;
+    string schema=9;
+    Content content =10;
+    Raw raw_data = 11;
+    Attachments attachments=12;
 }

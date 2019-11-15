@@ -30,3 +30,15 @@ message Sphere3D {
     double y = 3;
     double z = 4;
 }
+
+
+message BoundingBox{
+    int32 dimension=1; //dimension=3
+    repeated double ordinate=2;//[minx,maxx,miny,maxy,minz,maxz]
+}
+
+message BoundingSphere{
+    int32 dimension=1;
+    double radius = 2;
+    repeated double ordinate=3;
+}

@@ -8,26 +8,26 @@ public interface LinearRing2DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertex = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.Vertex2d> 
-      getVerticesList();
+      getVertexList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertex = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Vertex2d getVertices(int index);
+  cn.edu.cug.cs.gtl.protos.Vertex2d getVertex(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertex = 1;</code>
    */
-  int getVerticesCount();
+  int getVertexCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertex = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.Vertex2dOrBuilder> 
-      getVerticesOrBuilderList();
+      getVertexOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex2d vertex = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Vertex2dOrBuilder getVerticesOrBuilder(
+  cn.edu.cug.cs.gtl.protos.Vertex2dOrBuilder getVertexOrBuilder(
       int index);
 }

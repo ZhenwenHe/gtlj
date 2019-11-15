@@ -8,26 +8,26 @@ public interface MultiLineString3DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.LineString3D> 
-      getLineStringsList();
+      getLineStringList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.LineString3D getLineStrings(int index);
+  cn.edu.cug.cs.gtl.protos.LineString3D getLineString(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  int getLineStringsCount();
+  int getLineStringCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder> 
-      getLineStringsOrBuilderList();
+      getLineStringOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_strings = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.LineString3D line_string = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder getLineStringsOrBuilder(
+  cn.edu.cug.cs.gtl.protos.LineString3DOrBuilder getLineStringOrBuilder(
       int index);
 }

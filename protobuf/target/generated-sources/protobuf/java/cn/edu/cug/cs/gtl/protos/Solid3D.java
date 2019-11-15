@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Solid3D() {
-    holes_ = java.util.Collections.emptyList();
+    hole_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -65,10 +65,10 @@ private static final long serialVersionUID = 0L;
           }
           case 18: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              holes_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.TriangleMesh3D>();
+              hole_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.TriangleMesh3D>();
               mutable_bitField0_ |= 0x00000001;
             }
-            holes_.add(
+            hole_.add(
                 input.readMessage(cn.edu.cug.cs.gtl.protos.TriangleMesh3D.parser(), extensionRegistry));
             break;
           }
@@ -88,7 +88,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        holes_ = java.util.Collections.unmodifiableList(holes_);
+        hole_ = java.util.Collections.unmodifiableList(hole_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -130,39 +130,39 @@ private static final long serialVersionUID = 0L;
     return getShell();
   }
 
-  public static final int HOLES_FIELD_NUMBER = 2;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> holes_;
+  public static final int HOLE_FIELD_NUMBER = 2;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> hole_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> getHolesList() {
-    return holes_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> getHoleList() {
+    return hole_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder> 
-      getHolesOrBuilderList() {
-    return holes_;
+      getHoleOrBuilderList() {
+    return hole_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  public int getHolesCount() {
-    return holes_.size();
+  public int getHoleCount() {
+    return hole_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.TriangleMesh3D getHoles(int index) {
-    return holes_.get(index);
+  public cn.edu.cug.cs.gtl.protos.TriangleMesh3D getHole(int index) {
+    return hole_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getHolesOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getHoleOrBuilder(
       int index) {
-    return holes_.get(index);
+    return hole_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -182,8 +182,8 @@ private static final long serialVersionUID = 0L;
     if (shell_ != null) {
       output.writeMessage(1, getShell());
     }
-    for (int i = 0; i < holes_.size(); i++) {
-      output.writeMessage(2, holes_.get(i));
+    for (int i = 0; i < hole_.size(); i++) {
+      output.writeMessage(2, hole_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -198,9 +198,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getShell());
     }
-    for (int i = 0; i < holes_.size(); i++) {
+    for (int i = 0; i < hole_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, holes_.get(i));
+        .computeMessageSize(2, hole_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -222,8 +222,8 @@ private static final long serialVersionUID = 0L;
       if (!getShell()
           .equals(other.getShell())) return false;
     }
-    if (!getHolesList()
-        .equals(other.getHolesList())) return false;
+    if (!getHoleList()
+        .equals(other.getHoleList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -239,9 +239,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + SHELL_FIELD_NUMBER;
       hash = (53 * hash) + getShell().hashCode();
     }
-    if (getHolesCount() > 0) {
-      hash = (37 * hash) + HOLES_FIELD_NUMBER;
-      hash = (53 * hash) + getHolesList().hashCode();
+    if (getHoleCount() > 0) {
+      hash = (37 * hash) + HOLE_FIELD_NUMBER;
+      hash = (53 * hash) + getHoleList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -371,7 +371,7 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getHolesFieldBuilder();
+        getHoleFieldBuilder();
       }
     }
     @java.lang.Override
@@ -383,11 +383,11 @@ private static final long serialVersionUID = 0L;
         shell_ = null;
         shellBuilder_ = null;
       }
-      if (holesBuilder_ == null) {
-        holes_ = java.util.Collections.emptyList();
+      if (holeBuilder_ == null) {
+        hole_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        holesBuilder_.clear();
+        holeBuilder_.clear();
       }
       return this;
     }
@@ -421,14 +421,14 @@ private static final long serialVersionUID = 0L;
       } else {
         result.shell_ = shellBuilder_.build();
       }
-      if (holesBuilder_ == null) {
+      if (holeBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          holes_ = java.util.Collections.unmodifiableList(holes_);
+          hole_ = java.util.Collections.unmodifiableList(hole_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.holes_ = holes_;
+        result.hole_ = hole_;
       } else {
-        result.holes_ = holesBuilder_.build();
+        result.hole_ = holeBuilder_.build();
       }
       onBuilt();
       return result;
@@ -481,29 +481,29 @@ private static final long serialVersionUID = 0L;
       if (other.hasShell()) {
         mergeShell(other.getShell());
       }
-      if (holesBuilder_ == null) {
-        if (!other.holes_.isEmpty()) {
-          if (holes_.isEmpty()) {
-            holes_ = other.holes_;
+      if (holeBuilder_ == null) {
+        if (!other.hole_.isEmpty()) {
+          if (hole_.isEmpty()) {
+            hole_ = other.hole_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureHolesIsMutable();
-            holes_.addAll(other.holes_);
+            ensureHoleIsMutable();
+            hole_.addAll(other.hole_);
           }
           onChanged();
         }
       } else {
-        if (!other.holes_.isEmpty()) {
-          if (holesBuilder_.isEmpty()) {
-            holesBuilder_.dispose();
-            holesBuilder_ = null;
-            holes_ = other.holes_;
+        if (!other.hole_.isEmpty()) {
+          if (holeBuilder_.isEmpty()) {
+            holeBuilder_.dispose();
+            holeBuilder_ = null;
+            hole_ = other.hole_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            holesBuilder_ = 
+            holeBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getHolesFieldBuilder() : null;
+                 getHoleFieldBuilder() : null;
           } else {
-            holesBuilder_.addAllMessages(other.holes_);
+            holeBuilder_.addAllMessages(other.hole_);
           }
         }
       }
@@ -656,244 +656,244 @@ private static final long serialVersionUID = 0L;
       return shellBuilder_;
     }
 
-    private java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> holes_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> hole_ =
       java.util.Collections.emptyList();
-    private void ensureHolesIsMutable() {
+    private void ensureHoleIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        holes_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.TriangleMesh3D>(holes_);
+        hole_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.TriangleMesh3D>(hole_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.TriangleMesh3D, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder, cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder> holesBuilder_;
+        cn.edu.cug.cs.gtl.protos.TriangleMesh3D, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder, cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder> holeBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> getHolesList() {
-      if (holesBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(holes_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> getHoleList() {
+      if (holeBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(hole_);
       } else {
-        return holesBuilder_.getMessageList();
+        return holeBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public int getHolesCount() {
-      if (holesBuilder_ == null) {
-        return holes_.size();
+    public int getHoleCount() {
+      if (holeBuilder_ == null) {
+        return hole_.size();
       } else {
-        return holesBuilder_.getCount();
+        return holeBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D getHoles(int index) {
-      if (holesBuilder_ == null) {
-        return holes_.get(index);
+    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D getHole(int index) {
+      if (holeBuilder_ == null) {
+        return hole_.get(index);
       } else {
-        return holesBuilder_.getMessage(index);
+        return holeBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder setHoles(
+    public Builder setHole(
         int index, cn.edu.cug.cs.gtl.protos.TriangleMesh3D value) {
-      if (holesBuilder_ == null) {
+      if (holeBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureHolesIsMutable();
-        holes_.set(index, value);
+        ensureHoleIsMutable();
+        hole_.set(index, value);
         onChanged();
       } else {
-        holesBuilder_.setMessage(index, value);
+        holeBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder setHoles(
+    public Builder setHole(
         int index, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder builderForValue) {
-      if (holesBuilder_ == null) {
-        ensureHolesIsMutable();
-        holes_.set(index, builderForValue.build());
+      if (holeBuilder_ == null) {
+        ensureHoleIsMutable();
+        hole_.set(index, builderForValue.build());
         onChanged();
       } else {
-        holesBuilder_.setMessage(index, builderForValue.build());
+        holeBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder addHoles(cn.edu.cug.cs.gtl.protos.TriangleMesh3D value) {
-      if (holesBuilder_ == null) {
+    public Builder addHole(cn.edu.cug.cs.gtl.protos.TriangleMesh3D value) {
+      if (holeBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureHolesIsMutable();
-        holes_.add(value);
+        ensureHoleIsMutable();
+        hole_.add(value);
         onChanged();
       } else {
-        holesBuilder_.addMessage(value);
+        holeBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder addHoles(
+    public Builder addHole(
         int index, cn.edu.cug.cs.gtl.protos.TriangleMesh3D value) {
-      if (holesBuilder_ == null) {
+      if (holeBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureHolesIsMutable();
-        holes_.add(index, value);
+        ensureHoleIsMutable();
+        hole_.add(index, value);
         onChanged();
       } else {
-        holesBuilder_.addMessage(index, value);
+        holeBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder addHoles(
+    public Builder addHole(
         cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder builderForValue) {
-      if (holesBuilder_ == null) {
-        ensureHolesIsMutable();
-        holes_.add(builderForValue.build());
+      if (holeBuilder_ == null) {
+        ensureHoleIsMutable();
+        hole_.add(builderForValue.build());
         onChanged();
       } else {
-        holesBuilder_.addMessage(builderForValue.build());
+        holeBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder addHoles(
+    public Builder addHole(
         int index, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder builderForValue) {
-      if (holesBuilder_ == null) {
-        ensureHolesIsMutable();
-        holes_.add(index, builderForValue.build());
+      if (holeBuilder_ == null) {
+        ensureHoleIsMutable();
+        hole_.add(index, builderForValue.build());
         onChanged();
       } else {
-        holesBuilder_.addMessage(index, builderForValue.build());
+        holeBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder addAllHoles(
+    public Builder addAllHole(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.TriangleMesh3D> values) {
-      if (holesBuilder_ == null) {
-        ensureHolesIsMutable();
+      if (holeBuilder_ == null) {
+        ensureHoleIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, holes_);
+            values, hole_);
         onChanged();
       } else {
-        holesBuilder_.addAllMessages(values);
+        holeBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder clearHoles() {
-      if (holesBuilder_ == null) {
-        holes_ = java.util.Collections.emptyList();
+    public Builder clearHole() {
+      if (holeBuilder_ == null) {
+        hole_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        holesBuilder_.clear();
+        holeBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public Builder removeHoles(int index) {
-      if (holesBuilder_ == null) {
-        ensureHolesIsMutable();
-        holes_.remove(index);
+    public Builder removeHole(int index) {
+      if (holeBuilder_ == null) {
+        ensureHoleIsMutable();
+        hole_.remove(index);
         onChanged();
       } else {
-        holesBuilder_.remove(index);
+        holeBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder getHolesBuilder(
+    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder getHoleBuilder(
         int index) {
-      return getHolesFieldBuilder().getBuilder(index);
+      return getHoleFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getHolesOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getHoleOrBuilder(
         int index) {
-      if (holesBuilder_ == null) {
-        return holes_.get(index);  } else {
-        return holesBuilder_.getMessageOrBuilder(index);
+      if (holeBuilder_ == null) {
+        return hole_.get(index);  } else {
+        return holeBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder> 
-         getHolesOrBuilderList() {
-      if (holesBuilder_ != null) {
-        return holesBuilder_.getMessageOrBuilderList();
+         getHoleOrBuilderList() {
+      if (holeBuilder_ != null) {
+        return holeBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(holes_);
+        return java.util.Collections.unmodifiableList(hole_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder addHolesBuilder() {
-      return getHolesFieldBuilder().addBuilder(
+    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder addHoleBuilder() {
+      return getHoleFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.TriangleMesh3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder addHolesBuilder(
+    public cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder addHoleBuilder(
         int index) {
-      return getHolesFieldBuilder().addBuilder(
+      return getHoleFieldBuilder().addBuilder(
           index, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder> 
-         getHolesBuilderList() {
-      return getHolesFieldBuilder().getBuilderList();
+         getHoleBuilderList() {
+      return getHoleFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
         cn.edu.cug.cs.gtl.protos.TriangleMesh3D, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder, cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder> 
-        getHolesFieldBuilder() {
-      if (holesBuilder_ == null) {
-        holesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getHoleFieldBuilder() {
+      if (holeBuilder_ == null) {
+        holeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             cn.edu.cug.cs.gtl.protos.TriangleMesh3D, cn.edu.cug.cs.gtl.protos.TriangleMesh3D.Builder, cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder>(
-                holes_,
+                hole_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        holes_ = null;
+        hole_ = null;
       }
-      return holesBuilder_;
+      return holeBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

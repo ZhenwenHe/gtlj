@@ -7,78 +7,246 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78377152-846c-4a39-b7ae-793eefe67845" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mybatis/src/test/java/cn/edu/cug/cs/gtl/mybatis/sqlite/SqliteMetaDataUtilsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_apple_AppleJavaExtensions_1_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_carrotsearch_randomizedtesting_randomizedtesting_runner_2_7_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_efficient_java_matrix_library_ejml_0_23.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_io7m_xom_xom_1_2_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_miglayout_miglayout_swing_3_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_core_2_3_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_4_0_b180830_0438.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vividsolutions_jts_core_1_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vividsolutions_jts_example_1_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vividsolutions_jts_io_1_14_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_dbcp_commons_dbcp_1_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_jollyday_jollyday_0_4_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__edu_stanford_nlp_stanford_corenlp_3_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__edu_stanford_nlp_stanford_corenlp_models_3_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__edu_stanford_nlp_stanford_corenlp_models_chinese_3_9_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_native_epoll_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_native_unix_common_4_1_29_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_imageio_ext_imageio_ext_geocore_1_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_imageio_ext_imageio_ext_streams_1_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_imageio_ext_imageio_ext_tiff_1_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_imageio_ext_imageio_ext_utilities_1_1_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_affine_jt_affine_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_algebra_jt_algebra_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_bandcombine_jt_bandcombine_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_bandmerge_jt_bandmerge_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_bandselect_jt_bandselect_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_binarize_jt_binarize_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_border_jt_border_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_buffer_jt_buffer_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_classifier_jt_classifier_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_colorconvert_jt_colorconvert_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_colorindexer_jt_colorindexer_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_crop_jt_crop_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_errordiffusion_jt_errordiffusion_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_format_jt_format_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_imagefunction_jt_imagefunction_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_iterators_jt_iterators_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_lookup_jt_lookup_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_mosaic_jt_mosaic_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_nullop_jt_nullop_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_orderdither_jt_orderdither_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_piecewise_jt_piecewise_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_rescale_jt_rescale_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_rlookup_jt_rlookup_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_scale_jt_scale_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_stats_jt_stats_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_translate_jt_translate_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_utilities_jt_utilities_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_vectorbin_jt_vectorbin_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_warp_jt_warp_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__it_geosolutions_jaiext_zonal_jt_zonal_1_0_20.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_media_jai_codec_1_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_media_jai_imageio_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_4_0_b180830_0359.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_9_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_smartcn_8_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_codecs_8_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_facet_8_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queries_4_10_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial3d_8_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_test_framework_8_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_solr_solr_solrj_8_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_5_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_jute_3_5_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_woodstox_core_asl_4_4_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_http2_http2_client_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_http2_http2_common_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_http2_http2_hpack_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_http2_http2_http_client_transport_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_alpn_client_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_alpn_java_client_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jetty_jetty_client_9_4_19_v20190610.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_api_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_coverage_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_cql_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_data_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_epsg_hsql_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_geojson_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_jdbc_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_jts_wrapper_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_main_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_render_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_shapefile_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_gt_swing_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_jdbc_gt_jdbc_oracle_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_geotools_jdbc_gt_jdbc_postgis_19_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_javax_json_1_0_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hsqldb_hsqldb_2_3_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jaitools_jt_utils_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jaitools_jt_zonalstats_1_4_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_locationtech_jts_jts_core_1_16_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xalan_xalan_2_7_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/geotools.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/extractor/ByteExtractor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/extractor/DocumentExtractor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/extractor/TableExtractor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/extractor/TextExtractor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/geotools/demo/DemoApp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/geotools/demo/QueryLab.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/protoswrapper/BoundingBoxWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/protoswrapper/LinearRing2DWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/protoswrapper/Polygon2DWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geotools/src/main/java/cn/edu/cug/cs/gtl/protoswrapper/Vertex2dWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/solr/demo/SolrExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/solr/document/DocumentCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Attachment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/AttachmentOrBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Attachments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/AttachmentsOrBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/BoundingBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/BoundingBoxOrBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/DocumentMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/DocumentMapperOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_9_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_common_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_analyzers_common_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_core_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_core_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_demo_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_misc_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_expressions_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_expressions_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_facet_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_demo_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queries_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_spatial_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queryparser_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_queryparser_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_sandbox_8_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_lucene_lucene_sandbox_8_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cxf/src/main/java/cn/edu/cug/cs/gtl/cxf/sql/SqlClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/cxf/src/main/java/cn/edu/cug/cs/gtl/cxf/sql/SqlClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/MetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/MetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/SysMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/SysMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/UserMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/metadata/UserMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/mysql/MysqlMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/mysql/MysqlMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/oracle/OracleMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/oracle/OracleMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/postgresql/PostgresqlMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/postgresql/PostgresqlMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlite/SqliteMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlite/SqliteMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlserver/SqlserverMetaDataUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/sqlserver/SqlserverMetaDataUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DATADICTIONARYMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DDWYJJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DICT_FIELDINFOMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DICT_TABINFOMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DXSJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/DZBJJBXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/FBSGXJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPDCSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPDSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPDZDHBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPFHGCCSXQXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPFHGCCSXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPJCXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPJCZLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_BXPHMSBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_GQPJBXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_QCQFSJZHBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_QXSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_SWSJJMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_WLXCSBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_YCSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPTZ_ZYJCSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/GQPYXSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/JCDXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/KSWSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/MGYBJJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QCQFHGXCXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QCQFJCXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QCQFSJHJMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QXSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/QYDZZHBJXXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/SFSJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/SWSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_FUNCATIONMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_LOGINMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_OPERATIONMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_RESERVOIR_WATER_LEVELMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_ROLEMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_ROLE_FUNCATIONMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_USERMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_USER_ROLEMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/T_WEATHERMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/WDSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/WYJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/YHQXBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/YSWJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/ZKQXYJCSJJLBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/ZYJCSJBMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/generate/ZYJCSJHJMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/value.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/value.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfoOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/ColumnInfoOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfoOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TableInfoOrBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/series/series.db" beforeDir="false" afterPath="$PROJECT_DIR$/series/series.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/beam/beam.iml" beforeDir="false" afterPath="$PROJECT_DIR$/beam/beam.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/common/common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/FeatureFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/FeatureFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/io/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/io/File.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/test/java/cn/edu/cug/cs/gtl/jts/Geom2DSuitsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/test/java/cn/edu/cug/cs/gtl/jts/Geom2DSuitsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cxf/cxf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/cxf/cxf.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dtree/dtree.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dtree/dtree.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/grpc.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/src/main/java/cn/edu/cug/cs/gtl/grpc/SqlCommandClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/src/main/java/cn/edu/cug/cs/gtl/grpc/SqlCommandServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/src/main/java/cn/edu/cug/cs/gtl/grpc/SqlCommandService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/indices/indices.iml" beforeDir="false" afterPath="$PROJECT_DIR$/indices/indices.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/image/word_binary.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/image/word_gray.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/image/word_origin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/office/191171-2.xls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/office/introduction.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/office/~$word.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/office/新闻联播.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/text/beam.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/dat/raw/text/lucene.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/lucene.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/lucene.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentIndexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentIndexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/AllFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/AllFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/CompoundFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/CompoundFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/DocumentFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/FileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/DocumentFileVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentFileVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/ImagesFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/ImagesFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/OfficesFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/OfficesFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/ShapesFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/ShapesFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/TextsFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/TextsFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/file/UDFileFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/cn/edu/cug/cs/gtl/filter/UDFileFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/text/TextExtractor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/document/DocumentCreatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/document/DocumentCreatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/document/DocumentIndexerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/document/DocumentIndexerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/file/TextsFileFilterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/file/TextsFileFilterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/text/TextExtractorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/text/TextExtractorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ml/ml.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ml/ml.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeling/modeling.iml" beforeDir="false" afterPath="$PROJECT_DIR$/modeling/modeling.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mps/mps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mps/mps.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis/mybatis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis/mybatis.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/net/net.iml" beforeDir="false" afterPath="$PROJECT_DIR$/net/net.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/protobuf.iml" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/protobuf.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/bound.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/bound.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/document.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/document.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/geometry.proto" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/geometry.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Bounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Bounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/CubicMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/CubicMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/CubicMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/CubicMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/DocumentOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/DocumentOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Documents.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Documents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Geometries.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Geometries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/HexahedralMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/HexahedralMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/HexahedralMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/HexahedralMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString2DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString2DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LineString3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing2DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing2DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/LinearRing3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString2DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString2DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiLineString3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPoint3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPoint3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPoint3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPoint3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon2DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon2DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiPolygon3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiSolid3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiSolid3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiSolid3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/MultiSolid3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon2DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon2DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polygon3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolygonalMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolygonalMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolygonalMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolygonalMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolyhedralMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolyhedralMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolyhedralMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/PolyhedralMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polyline3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polyline3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polyline3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Polyline3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/QuadMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/QuadMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/QuadMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/QuadMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Solid3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Solid3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Solid3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/Solid3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TetrahedralMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TetrahedralMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TetrahedralMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TetrahedralMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TriangleMesh3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TriangleMesh3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TriangleMesh3DOrBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/protobuf/target/generated-sources/protobuf/java/cn/edu/cug/cs/gtl/protos/TriangleMesh3DOrBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/series/series.iml" beforeDir="false" afterPath="$PROJECT_DIR$/series/series.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,9 +297,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JUnit4 Test Class" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -145,45 +313,57 @@
       </set>
     </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="/Applications/maven" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1RrgrCKSHXA1Hz7RjiqXy1q2wdT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cn.edu.cug.cs.gtl.lucene.filefilter" />
+      <recent name="cn.edu.cug.cs.gtl.lucene.document" />
+      <recent name="cn.edu.cug.cs.gtl.lucene" />
+      <recent name="cn.edu.cug.cs.gtl.image" />
       <recent name="cn.edu.cug.cs.gtl.mybatis.mapper.common" />
-      <recent name="cn.edu.cug.cs.gtl.mybatis.sqlite" />
-      <recent name="cn.edu.cug.cs.gtl.series.app" />
-      <recent name="cn.edu.cug.cs.gtl.ml.classification" />
-      <recent name="cn.edu.cug.cs.gtl.array" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="cn.edu.cug.cs.gtl.mybatis.mapper.common" />
-      <recent name="cn.edu.cug.cs.gtl.grpc" />
-      <recent name="cn.edu.cug.cs.gtl.series.common.pax" />
-      <recent name="cn.edu.cug.cs.gtl.series.common" />
+      <recent name="cn.edu.cug.cs.gtl" />
+      <recent name="cn.edu.cug.cs.gtl.lucene.document" />
+      <recent name="cn.edu.cug.cs.gtl.lucene.file" />
+      <recent name="cn.edu.cug.cs.gtl.lucene.text" />
+      <recent name="cn.edu.cug.cs.gtl.lucene" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lucene" />
       <recent name="$PROJECT_DIR$/mybatis/src/main/resources/cn/edu/cug/cs/gtl/mybatis/mapper/common" />
       <recent name="$PROJECT_DIR$/mybatis/src/main/resources" />
       <recent name="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos" />
       <recent name="$PROJECT_DIR$/protobuf/src/main/proto/cn/edu/cug/cs/gtl/protos/sql" />
-      <recent name="$PROJECT_DIR$/protobuf/src/main/proto/gtl/protos" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -198,13 +378,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.Main" />
-      <module name="mybatis" />
+  <component name="RunManager" selected="Application.DemoApp">
+    <configuration name="DemoApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.geotools.demo.DemoApp" />
+      <module name="geotools" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.metadata.*" />
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.geotools.demo.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -212,65 +392,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DictFieldInfoMapperTest.selectAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis" />
+    <configuration name="TextExtractorTest.parseToParagraphsDBF" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lucene" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.mapper.common.*" />
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.mapper.common" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.mapper.common.DictFieldInfoMapperTest" />
-      <option name="METHOD_NAME" value="selectAll" />
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.text" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.text.TextExtractorTest" />
+      <option name="METHOD_NAME" value="parseToParagraphsDBF" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SqliteMetaDataUtilsTest.createUserDictionaries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis" />
+    <configuration name="TextExtractorTest.parseToParagraphsDWG" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lucene" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.sqlite.*" />
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtilsTest" />
-      <option name="METHOD_NAME" value="createUserDictionaries" />
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.text" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.text.TextExtractorTest" />
+      <option name="METHOD_NAME" value="parseToParagraphsDWG" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SqliteMetaDataUtilsTest.getUserTableNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis" />
+    <configuration name="TextExtractorTest.parseToParagraphsPDF" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lucene" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.sqlite.*" />
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtilsTest" />
-      <option name="METHOD_NAME" value="getUserTableNames" />
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.text" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.text.TextExtractorTest" />
+      <option name="METHOD_NAME" value="parseToParagraphsPDF" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SqliteMetaDataUtilsTest.isTableExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis" />
+    <configuration name="TextExtractorTest.parseToParagraphsSHP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lucene" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.edu.cug.cs.gtl.mybatis.sqlite.*" />
+          <option name="PATTERN" value="cn.edu.cug.cs.gtl.text.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.mybatis.sqlite.SqliteMetaDataUtilsTest" />
-      <option name="METHOD_NAME" value="isTableExist" />
+      <option name="PACKAGE_NAME" value="cn.edu.cug.cs.gtl.text" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.cug.cs.gtl.text.TextExtractorTest" />
+      <option name="METHOD_NAME" value="parseToParagraphsSHP" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -278,11 +458,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.DictFieldInfoMapperTest.selectAll" />
-        <item itemvalue="JUnit.SqliteMetaDataUtilsTest.createUserDictionaries" />
-        <item itemvalue="JUnit.SqliteMetaDataUtilsTest.getUserTableNames" />
-        <item itemvalue="JUnit.SqliteMetaDataUtilsTest.isTableExist" />
+        <item itemvalue="Application.DemoApp" />
+        <item itemvalue="JUnit.TextExtractorTest.parseToParagraphsDWG" />
+        <item itemvalue="JUnit.TextExtractorTest.parseToParagraphsSHP" />
+        <item itemvalue="JUnit.TextExtractorTest.parseToParagraphsDBF" />
+        <item itemvalue="JUnit.TextExtractorTest.parseToParagraphsPDF" />
       </list>
     </recent_temporary>
   </component>
@@ -362,7 +542,33 @@
       <workItem from="1572690454092" duration="4241000" />
       <workItem from="1572696449760" duration="8265000" />
       <workItem from="1572749437584" duration="3080000" />
-      <workItem from="1572756558657" duration="13245000" />
+      <workItem from="1572756558657" duration="13438000" />
+      <workItem from="1572776459111" duration="94000" />
+      <workItem from="1572776565012" duration="5000" />
+      <workItem from="1572833041146" duration="12000" />
+      <workItem from="1572923357882" duration="3920000" />
+      <workItem from="1572937904237" duration="8103000" />
+      <workItem from="1572951539845" duration="6112000" />
+      <workItem from="1573020944021" duration="22475000" />
+      <workItem from="1573110379473" duration="7926000" />
+      <workItem from="1573175979274" duration="2331000" />
+      <workItem from="1573216244049" duration="352000" />
+      <workItem from="1573217217453" duration="169000" />
+      <workItem from="1573217401017" duration="1052000" />
+      <workItem from="1573218929342" duration="1971000" />
+      <workItem from="1573226995028" duration="283000" />
+      <workItem from="1573258154921" duration="6809000" />
+      <workItem from="1573353505797" duration="865000" />
+      <workItem from="1573354396202" duration="3370000" />
+      <workItem from="1573374847095" duration="5673000" />
+      <workItem from="1573392733276" duration="4178000" />
+      <workItem from="1573398891812" duration="23000" />
+      <workItem from="1573455435675" duration="353000" />
+      <workItem from="1573539590029" duration="10311000" />
+      <workItem from="1573620303401" duration="4400000" />
+      <workItem from="1573695142744" duration="6760000" />
+      <workItem from="1573719888960" duration="9632000" />
+      <workItem from="1573731267962" duration="7488000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1570431227843</created>
@@ -511,7 +717,56 @@
       <option name="project" value="LOCAL" />
       <updated>1572704722096</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="database">
+      <created>1572775746565</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1572775746565</updated>
+    </task>
+    <task id="LOCAL-00023" summary="database">
+      <created>1572775811779</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1572775811779</updated>
+    </task>
+    <task id="LOCAL-00024" summary="database">
+      <created>1572775865799</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1572775865799</updated>
+    </task>
+    <task id="LOCAL-00025" summary="database">
+      <created>1573046348642</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1573046348642</updated>
+    </task>
+    <task id="LOCAL-00026" summary="database">
+      <created>1573119673631</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1573119673631</updated>
+    </task>
+    <task id="LOCAL-00027" summary="database">
+      <created>1573119812802</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1573119812802</updated>
+    </task>
+    <task id="LOCAL-00028" summary="database">
+      <created>1573264975339</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1573264975339</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -531,6 +786,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add cxf,mybatis,grpc" />
     <MESSAGE value="add cxf SqlServer" />
     <MESSAGE value="initial" />
@@ -625,6 +881,41 @@
           <url>file://$PROJECT_DIR$/mybatis/src/main/java/cn/edu/cug/cs/gtl/mybatis/Session.java</url>
           <line>44</line>
           <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/document/DocumentCreatorTest.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/lucene/src/test/java/cn/edu/cug/cs/gtl/lucene/file/TextsFileFilterTest.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentSearcher.java</url>
+          <line>302</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/lucene/src/main/java/cn/edu/cug/cs/gtl/lucene/document/DocumentSearcher.java</url>
+          <line>335</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parsers/1.22/tika-parsers-1.22-sources.jar!/org/apache/tika/parser/dwg/DWGParser.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parsers/1.22/tika-parsers-1.22-sources.jar!/org/apache/tika/parser/dwg/DWGParser.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/apache/tika/tika-parsers/1.22/tika-parsers-1.22-sources.jar!/org/apache/tika/parser/dwg/DWGParser.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

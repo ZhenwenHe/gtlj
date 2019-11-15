@@ -20,10 +20,11 @@ private static final long serialVersionUID = 0L;
     keyword_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     version_ = "";
     type_ = "";
-    uri_ = "";
+    url_ = "";
     author_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     affiliation_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     abstract_ = "";
+    schema_ = "";
     content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     rawData_ = com.google.protobuf.ByteString.EMPTY;
   }
@@ -89,7 +90,7 @@ private static final long serialVersionUID = 0L;
           case 42: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            uri_ = s;
+            url_ = s;
             break;
           }
           case 50: {
@@ -118,6 +119,12 @@ private static final long serialVersionUID = 0L;
           }
           case 74: {
             java.lang.String s = input.readStringRequireUtf8();
+
+            schema_ = s;
+            break;
+          }
+          case 82: {
+            java.lang.String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000008) != 0)) {
               content_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000008;
@@ -125,9 +132,35 @@ private static final long serialVersionUID = 0L;
             content_.add(s);
             break;
           }
-          case 82: {
+          case 90: {
 
             rawData_ = input.readBytes();
+            break;
+          }
+          case 98: {
+            cn.edu.cug.cs.gtl.protos.Attachments.Builder subBuilder = null;
+            if (attachments_ != null) {
+              subBuilder = attachments_.toBuilder();
+            }
+            attachments_ = input.readMessage(cn.edu.cug.cs.gtl.protos.Attachments.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(attachments_);
+              attachments_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          case 106: {
+            cn.edu.cug.cs.gtl.protos.BoundingBox.Builder subBuilder = null;
+            if (bounding_ != null) {
+              subBuilder = bounding_.toBuilder();
+            }
+            bounding_ = input.readMessage(cn.edu.cug.cs.gtl.protos.BoundingBox.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(bounding_);
+              bounding_ = subBuilder.buildPartial();
+            }
+
             break;
           }
           default: {
@@ -317,36 +350,36 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int URI_FIELD_NUMBER = 5;
-  private volatile java.lang.Object uri_;
+  public static final int URL_FIELD_NUMBER = 5;
+  private volatile java.lang.Object url_;
   /**
-   * <code>string uri = 5;</code>
-   * @return The uri.
+   * <code>string url = 5;</code>
+   * @return The url.
    */
-  public java.lang.String getUri() {
-    java.lang.Object ref = uri_;
+  public java.lang.String getUrl() {
+    java.lang.Object ref = url_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      uri_ = s;
+      url_ = s;
       return s;
     }
   }
   /**
-   * <code>string uri = 5;</code>
-   * @return The bytes for uri.
+   * <code>string url = 5;</code>
+   * @return The bytes for url.
    */
   public com.google.protobuf.ByteString
-      getUriBytes() {
-    java.lang.Object ref = uri_;
+      getUrlBytes() {
+    java.lang.Object ref = url_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      uri_ = b;
+      url_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -459,10 +492,46 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int CONTENT_FIELD_NUMBER = 9;
+  public static final int SCHEMA_FIELD_NUMBER = 9;
+  private volatile java.lang.Object schema_;
+  /**
+   * <code>string schema = 9;</code>
+   * @return The schema.
+   */
+  public java.lang.String getSchema() {
+    java.lang.Object ref = schema_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      schema_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string schema = 9;</code>
+   * @return The bytes for schema.
+   */
+  public com.google.protobuf.ByteString
+      getSchemaBytes() {
+    java.lang.Object ref = schema_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      schema_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int CONTENT_FIELD_NUMBER = 10;
   private com.google.protobuf.LazyStringList content_;
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @return A list containing the content.
    */
   public com.google.protobuf.ProtocolStringList
@@ -470,14 +539,14 @@ private static final long serialVersionUID = 0L;
     return content_;
   }
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @return The count of content.
    */
   public int getContentCount() {
     return content_.size();
   }
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @param index The index of the element to return.
    * @return The content at the given index.
    */
@@ -485,7 +554,7 @@ private static final long serialVersionUID = 0L;
     return content_.get(index);
   }
   /**
-   * <code>repeated string content = 9;</code>
+   * <code>repeated string content = 10;</code>
    * @param index The index of the value to return.
    * @return The bytes of the content at the given index.
    */
@@ -494,14 +563,72 @@ private static final long serialVersionUID = 0L;
     return content_.getByteString(index);
   }
 
-  public static final int RAW_DATA_FIELD_NUMBER = 10;
+  public static final int RAW_DATA_FIELD_NUMBER = 11;
   private com.google.protobuf.ByteString rawData_;
   /**
-   * <code>bytes raw_data = 10;</code>
+   * <code>bytes raw_data = 11;</code>
    * @return The rawData.
    */
   public com.google.protobuf.ByteString getRawData() {
     return rawData_;
+  }
+
+  public static final int ATTACHMENTS_FIELD_NUMBER = 12;
+  private cn.edu.cug.cs.gtl.protos.Attachments attachments_;
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+   * @return Whether the attachments field is set.
+   */
+  public boolean hasAttachments() {
+    return attachments_ != null;
+  }
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+   * @return The attachments.
+   */
+  public cn.edu.cug.cs.gtl.protos.Attachments getAttachments() {
+    return attachments_ == null ? cn.edu.cug.cs.gtl.protos.Attachments.getDefaultInstance() : attachments_;
+  }
+  /**
+   * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+   */
+  public cn.edu.cug.cs.gtl.protos.AttachmentsOrBuilder getAttachmentsOrBuilder() {
+    return getAttachments();
+  }
+
+  public static final int BOUNDING_FIELD_NUMBER = 13;
+  private cn.edu.cug.cs.gtl.protos.BoundingBox bounding_;
+  /**
+   * <pre>
+   *location
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+   * @return Whether the bounding field is set.
+   */
+  public boolean hasBounding() {
+    return bounding_ != null;
+  }
+  /**
+   * <pre>
+   *location
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+   * @return The bounding.
+   */
+  public cn.edu.cug.cs.gtl.protos.BoundingBox getBounding() {
+    return bounding_ == null ? cn.edu.cug.cs.gtl.protos.BoundingBox.getDefaultInstance() : bounding_;
+  }
+  /**
+   * <pre>
+   *location
+   * </pre>
+   *
+   * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+   */
+  public cn.edu.cug.cs.gtl.protos.BoundingBoxOrBuilder getBoundingOrBuilder() {
+    return getBounding();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -530,8 +657,8 @@ private static final long serialVersionUID = 0L;
     if (!getTypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, type_);
     }
-    if (!getUriBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, uri_);
+    if (!getUrlBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, url_);
     }
     for (int i = 0; i < author_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, author_.getRaw(i));
@@ -542,11 +669,20 @@ private static final long serialVersionUID = 0L;
     if (!getAbstractBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, abstract_);
     }
+    if (!getSchemaBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, schema_);
+    }
     for (int i = 0; i < content_.size(); i++) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 9, content_.getRaw(i));
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, content_.getRaw(i));
     }
     if (!rawData_.isEmpty()) {
-      output.writeBytes(10, rawData_);
+      output.writeBytes(11, rawData_);
+    }
+    if (attachments_ != null) {
+      output.writeMessage(12, getAttachments());
+    }
+    if (bounding_ != null) {
+      output.writeMessage(13, getBounding());
     }
     unknownFields.writeTo(output);
   }
@@ -574,8 +710,8 @@ private static final long serialVersionUID = 0L;
     if (!getTypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, type_);
     }
-    if (!getUriBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, uri_);
+    if (!getUrlBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, url_);
     }
     {
       int dataSize = 0;
@@ -596,6 +732,9 @@ private static final long serialVersionUID = 0L;
     if (!getAbstractBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, abstract_);
     }
+    if (!getSchemaBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, schema_);
+    }
     {
       int dataSize = 0;
       for (int i = 0; i < content_.size(); i++) {
@@ -606,7 +745,15 @@ private static final long serialVersionUID = 0L;
     }
     if (!rawData_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(10, rawData_);
+        .computeBytesSize(11, rawData_);
+    }
+    if (attachments_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(12, getAttachments());
+    }
+    if (bounding_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(13, getBounding());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -631,18 +778,30 @@ private static final long serialVersionUID = 0L;
         .equals(other.getVersion())) return false;
     if (!getType()
         .equals(other.getType())) return false;
-    if (!getUri()
-        .equals(other.getUri())) return false;
+    if (!getUrl()
+        .equals(other.getUrl())) return false;
     if (!getAuthorList()
         .equals(other.getAuthorList())) return false;
     if (!getAffiliationList()
         .equals(other.getAffiliationList())) return false;
     if (!getAbstract()
         .equals(other.getAbstract())) return false;
+    if (!getSchema()
+        .equals(other.getSchema())) return false;
     if (!getContentList()
         .equals(other.getContentList())) return false;
     if (!getRawData()
         .equals(other.getRawData())) return false;
+    if (hasAttachments() != other.hasAttachments()) return false;
+    if (hasAttachments()) {
+      if (!getAttachments()
+          .equals(other.getAttachments())) return false;
+    }
+    if (hasBounding() != other.hasBounding()) return false;
+    if (hasBounding()) {
+      if (!getBounding()
+          .equals(other.getBounding())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -664,8 +823,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getVersion().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType().hashCode();
-    hash = (37 * hash) + URI_FIELD_NUMBER;
-    hash = (53 * hash) + getUri().hashCode();
+    hash = (37 * hash) + URL_FIELD_NUMBER;
+    hash = (53 * hash) + getUrl().hashCode();
     if (getAuthorCount() > 0) {
       hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
       hash = (53 * hash) + getAuthorList().hashCode();
@@ -676,12 +835,22 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + ABSTRACT_FIELD_NUMBER;
     hash = (53 * hash) + getAbstract().hashCode();
+    hash = (37 * hash) + SCHEMA_FIELD_NUMBER;
+    hash = (53 * hash) + getSchema().hashCode();
     if (getContentCount() > 0) {
       hash = (37 * hash) + CONTENT_FIELD_NUMBER;
       hash = (53 * hash) + getContentList().hashCode();
     }
     hash = (37 * hash) + RAW_DATA_FIELD_NUMBER;
     hash = (53 * hash) + getRawData().hashCode();
+    if (hasAttachments()) {
+      hash = (37 * hash) + ATTACHMENTS_FIELD_NUMBER;
+      hash = (53 * hash) + getAttachments().hashCode();
+    }
+    if (hasBounding()) {
+      hash = (37 * hash) + BOUNDING_FIELD_NUMBER;
+      hash = (53 * hash) + getBounding().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -823,7 +992,7 @@ private static final long serialVersionUID = 0L;
 
       type_ = "";
 
-      uri_ = "";
+      url_ = "";
 
       author_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000002);
@@ -831,10 +1000,24 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
       abstract_ = "";
 
+      schema_ = "";
+
       content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000008);
       rawData_ = com.google.protobuf.ByteString.EMPTY;
 
+      if (attachmentsBuilder_ == null) {
+        attachments_ = null;
+      } else {
+        attachments_ = null;
+        attachmentsBuilder_ = null;
+      }
+      if (boundingBuilder_ == null) {
+        bounding_ = null;
+      } else {
+        bounding_ = null;
+        boundingBuilder_ = null;
+      }
       return this;
     }
 
@@ -870,7 +1053,7 @@ private static final long serialVersionUID = 0L;
       result.keyword_ = keyword_;
       result.version_ = version_;
       result.type_ = type_;
-      result.uri_ = uri_;
+      result.url_ = url_;
       if (((bitField0_ & 0x00000002) != 0)) {
         author_ = author_.getUnmodifiableView();
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -882,12 +1065,23 @@ private static final long serialVersionUID = 0L;
       }
       result.affiliation_ = affiliation_;
       result.abstract_ = abstract_;
+      result.schema_ = schema_;
       if (((bitField0_ & 0x00000008) != 0)) {
         content_ = content_.getUnmodifiableView();
         bitField0_ = (bitField0_ & ~0x00000008);
       }
       result.content_ = content_;
       result.rawData_ = rawData_;
+      if (attachmentsBuilder_ == null) {
+        result.attachments_ = attachments_;
+      } else {
+        result.attachments_ = attachmentsBuilder_.build();
+      }
+      if (boundingBuilder_ == null) {
+        result.bounding_ = bounding_;
+      } else {
+        result.bounding_ = boundingBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -958,8 +1152,8 @@ private static final long serialVersionUID = 0L;
         type_ = other.type_;
         onChanged();
       }
-      if (!other.getUri().isEmpty()) {
-        uri_ = other.uri_;
+      if (!other.getUrl().isEmpty()) {
+        url_ = other.url_;
         onChanged();
       }
       if (!other.author_.isEmpty()) {
@@ -986,6 +1180,10 @@ private static final long serialVersionUID = 0L;
         abstract_ = other.abstract_;
         onChanged();
       }
+      if (!other.getSchema().isEmpty()) {
+        schema_ = other.schema_;
+        onChanged();
+      }
       if (!other.content_.isEmpty()) {
         if (content_.isEmpty()) {
           content_ = other.content_;
@@ -998,6 +1196,12 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getRawData() != com.google.protobuf.ByteString.EMPTY) {
         setRawData(other.getRawData());
+      }
+      if (other.hasAttachments()) {
+        mergeAttachments(other.getAttachments());
+      }
+      if (other.hasBounding()) {
+        mergeBounding(other.getBounding());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1367,78 +1571,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object uri_ = "";
+    private java.lang.Object url_ = "";
     /**
-     * <code>string uri = 5;</code>
-     * @return The uri.
+     * <code>string url = 5;</code>
+     * @return The url.
      */
-    public java.lang.String getUri() {
-      java.lang.Object ref = uri_;
+    public java.lang.String getUrl() {
+      java.lang.Object ref = url_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uri_ = s;
+        url_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string uri = 5;</code>
-     * @return The bytes for uri.
+     * <code>string url = 5;</code>
+     * @return The bytes for url.
      */
     public com.google.protobuf.ByteString
-        getUriBytes() {
-      java.lang.Object ref = uri_;
+        getUrlBytes() {
+      java.lang.Object ref = url_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        uri_ = b;
+        url_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string uri = 5;</code>
-     * @param value The uri to set.
+     * <code>string url = 5;</code>
+     * @param value The url to set.
      * @return This builder for chaining.
      */
-    public Builder setUri(
+    public Builder setUrl(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      uri_ = value;
+      url_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string uri = 5;</code>
+     * <code>string url = 5;</code>
      * @return This builder for chaining.
      */
-    public Builder clearUri() {
+    public Builder clearUrl() {
       
-      uri_ = getDefaultInstance().getUri();
+      url_ = getDefaultInstance().getUrl();
       onChanged();
       return this;
     }
     /**
-     * <code>string uri = 5;</code>
-     * @param value The bytes for uri to set.
+     * <code>string url = 5;</code>
+     * @param value The bytes for url to set.
      * @return This builder for chaining.
      */
-    public Builder setUriBytes(
+    public Builder setUrlBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      uri_ = value;
+      url_ = value;
       onChanged();
       return this;
     }
@@ -1739,6 +1943,82 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private java.lang.Object schema_ = "";
+    /**
+     * <code>string schema = 9;</code>
+     * @return The schema.
+     */
+    public java.lang.String getSchema() {
+      java.lang.Object ref = schema_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        schema_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string schema = 9;</code>
+     * @return The bytes for schema.
+     */
+    public com.google.protobuf.ByteString
+        getSchemaBytes() {
+      java.lang.Object ref = schema_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        schema_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string schema = 9;</code>
+     * @param value The schema to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSchema(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      schema_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string schema = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSchema() {
+      
+      schema_ = getDefaultInstance().getSchema();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string schema = 9;</code>
+     * @param value The bytes for schema to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSchemaBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      schema_ = value;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.LazyStringList content_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureContentIsMutable() {
       if (!((bitField0_ & 0x00000008) != 0)) {
@@ -1747,7 +2027,7 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @return A list containing the content.
      */
     public com.google.protobuf.ProtocolStringList
@@ -1755,14 +2035,14 @@ private static final long serialVersionUID = 0L;
       return content_.getUnmodifiableView();
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @return The count of content.
      */
     public int getContentCount() {
       return content_.size();
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @param index The index of the element to return.
      * @return The content at the given index.
      */
@@ -1770,7 +2050,7 @@ private static final long serialVersionUID = 0L;
       return content_.get(index);
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @param index The index of the value to return.
      * @return The bytes of the content at the given index.
      */
@@ -1779,7 +2059,7 @@ private static final long serialVersionUID = 0L;
       return content_.getByteString(index);
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @param index The index to set the value at.
      * @param value The content to set.
      * @return This builder for chaining.
@@ -1795,7 +2075,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @param value The content to add.
      * @return This builder for chaining.
      */
@@ -1810,7 +2090,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @param values The content to add.
      * @return This builder for chaining.
      */
@@ -1823,7 +2103,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @return This builder for chaining.
      */
     public Builder clearContent() {
@@ -1833,7 +2113,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated string content = 9;</code>
+     * <code>repeated string content = 10;</code>
      * @param value The bytes of the content to add.
      * @return This builder for chaining.
      */
@@ -1851,14 +2131,14 @@ private static final long serialVersionUID = 0L;
 
     private com.google.protobuf.ByteString rawData_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>bytes raw_data = 10;</code>
+     * <code>bytes raw_data = 11;</code>
      * @return The rawData.
      */
     public com.google.protobuf.ByteString getRawData() {
       return rawData_;
     }
     /**
-     * <code>bytes raw_data = 10;</code>
+     * <code>bytes raw_data = 11;</code>
      * @param value The rawData to set.
      * @return This builder for chaining.
      */
@@ -1872,7 +2152,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bytes raw_data = 10;</code>
+     * <code>bytes raw_data = 11;</code>
      * @return This builder for chaining.
      */
     public Builder clearRawData() {
@@ -1880,6 +2160,280 @@ private static final long serialVersionUID = 0L;
       rawData_ = getDefaultInstance().getRawData();
       onChanged();
       return this;
+    }
+
+    private cn.edu.cug.cs.gtl.protos.Attachments attachments_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Attachments, cn.edu.cug.cs.gtl.protos.Attachments.Builder, cn.edu.cug.cs.gtl.protos.AttachmentsOrBuilder> attachmentsBuilder_;
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     * @return Whether the attachments field is set.
+     */
+    public boolean hasAttachments() {
+      return attachmentsBuilder_ != null || attachments_ != null;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     * @return The attachments.
+     */
+    public cn.edu.cug.cs.gtl.protos.Attachments getAttachments() {
+      if (attachmentsBuilder_ == null) {
+        return attachments_ == null ? cn.edu.cug.cs.gtl.protos.Attachments.getDefaultInstance() : attachments_;
+      } else {
+        return attachmentsBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    public Builder setAttachments(cn.edu.cug.cs.gtl.protos.Attachments value) {
+      if (attachmentsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        attachments_ = value;
+        onChanged();
+      } else {
+        attachmentsBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    public Builder setAttachments(
+        cn.edu.cug.cs.gtl.protos.Attachments.Builder builderForValue) {
+      if (attachmentsBuilder_ == null) {
+        attachments_ = builderForValue.build();
+        onChanged();
+      } else {
+        attachmentsBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    public Builder mergeAttachments(cn.edu.cug.cs.gtl.protos.Attachments value) {
+      if (attachmentsBuilder_ == null) {
+        if (attachments_ != null) {
+          attachments_ =
+            cn.edu.cug.cs.gtl.protos.Attachments.newBuilder(attachments_).mergeFrom(value).buildPartial();
+        } else {
+          attachments_ = value;
+        }
+        onChanged();
+      } else {
+        attachmentsBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    public Builder clearAttachments() {
+      if (attachmentsBuilder_ == null) {
+        attachments_ = null;
+        onChanged();
+      } else {
+        attachments_ = null;
+        attachmentsBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.Attachments.Builder getAttachmentsBuilder() {
+      
+      onChanged();
+      return getAttachmentsFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.AttachmentsOrBuilder getAttachmentsOrBuilder() {
+      if (attachmentsBuilder_ != null) {
+        return attachmentsBuilder_.getMessageOrBuilder();
+      } else {
+        return attachments_ == null ?
+            cn.edu.cug.cs.gtl.protos.Attachments.getDefaultInstance() : attachments_;
+      }
+    }
+    /**
+     * <code>.cn.edu.cug.cs.gtl.protos.Attachments attachments = 12;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.Attachments, cn.edu.cug.cs.gtl.protos.Attachments.Builder, cn.edu.cug.cs.gtl.protos.AttachmentsOrBuilder> 
+        getAttachmentsFieldBuilder() {
+      if (attachmentsBuilder_ == null) {
+        attachmentsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.edu.cug.cs.gtl.protos.Attachments, cn.edu.cug.cs.gtl.protos.Attachments.Builder, cn.edu.cug.cs.gtl.protos.AttachmentsOrBuilder>(
+                getAttachments(),
+                getParentForChildren(),
+                isClean());
+        attachments_ = null;
+      }
+      return attachmentsBuilder_;
+    }
+
+    private cn.edu.cug.cs.gtl.protos.BoundingBox bounding_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.BoundingBox, cn.edu.cug.cs.gtl.protos.BoundingBox.Builder, cn.edu.cug.cs.gtl.protos.BoundingBoxOrBuilder> boundingBuilder_;
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     * @return Whether the bounding field is set.
+     */
+    public boolean hasBounding() {
+      return boundingBuilder_ != null || bounding_ != null;
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     * @return The bounding.
+     */
+    public cn.edu.cug.cs.gtl.protos.BoundingBox getBounding() {
+      if (boundingBuilder_ == null) {
+        return bounding_ == null ? cn.edu.cug.cs.gtl.protos.BoundingBox.getDefaultInstance() : bounding_;
+      } else {
+        return boundingBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    public Builder setBounding(cn.edu.cug.cs.gtl.protos.BoundingBox value) {
+      if (boundingBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bounding_ = value;
+        onChanged();
+      } else {
+        boundingBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    public Builder setBounding(
+        cn.edu.cug.cs.gtl.protos.BoundingBox.Builder builderForValue) {
+      if (boundingBuilder_ == null) {
+        bounding_ = builderForValue.build();
+        onChanged();
+      } else {
+        boundingBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    public Builder mergeBounding(cn.edu.cug.cs.gtl.protos.BoundingBox value) {
+      if (boundingBuilder_ == null) {
+        if (bounding_ != null) {
+          bounding_ =
+            cn.edu.cug.cs.gtl.protos.BoundingBox.newBuilder(bounding_).mergeFrom(value).buildPartial();
+        } else {
+          bounding_ = value;
+        }
+        onChanged();
+      } else {
+        boundingBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    public Builder clearBounding() {
+      if (boundingBuilder_ == null) {
+        bounding_ = null;
+        onChanged();
+      } else {
+        bounding_ = null;
+        boundingBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.BoundingBox.Builder getBoundingBuilder() {
+      
+      onChanged();
+      return getBoundingFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    public cn.edu.cug.cs.gtl.protos.BoundingBoxOrBuilder getBoundingOrBuilder() {
+      if (boundingBuilder_ != null) {
+        return boundingBuilder_.getMessageOrBuilder();
+      } else {
+        return bounding_ == null ?
+            cn.edu.cug.cs.gtl.protos.BoundingBox.getDefaultInstance() : bounding_;
+      }
+    }
+    /**
+     * <pre>
+     *location
+     * </pre>
+     *
+     * <code>.cn.edu.cug.cs.gtl.protos.BoundingBox bounding = 13;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        cn.edu.cug.cs.gtl.protos.BoundingBox, cn.edu.cug.cs.gtl.protos.BoundingBox.Builder, cn.edu.cug.cs.gtl.protos.BoundingBoxOrBuilder> 
+        getBoundingFieldBuilder() {
+      if (boundingBuilder_ == null) {
+        boundingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            cn.edu.cug.cs.gtl.protos.BoundingBox, cn.edu.cug.cs.gtl.protos.BoundingBox.Builder, cn.edu.cug.cs.gtl.protos.BoundingBoxOrBuilder>(
+                getBounding(),
+                getParentForChildren(),
+                isClean());
+        bounding_ = null;
+      }
+      return boundingBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

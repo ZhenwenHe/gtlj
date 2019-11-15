@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MultiSolid3D() {
-    solids_ = java.util.Collections.emptyList();
+    solid_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -52,10 +52,10 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              solids_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Solid3D>();
+              solid_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Solid3D>();
               mutable_bitField0_ |= 0x00000001;
             }
-            solids_.add(
+            solid_.add(
                 input.readMessage(cn.edu.cug.cs.gtl.protos.Solid3D.parser(), extensionRegistry));
             break;
           }
@@ -75,7 +75,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        solids_ = java.util.Collections.unmodifiableList(solids_);
+        solid_ = java.util.Collections.unmodifiableList(solid_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -94,39 +94,39 @@ private static final long serialVersionUID = 0L;
             cn.edu.cug.cs.gtl.protos.MultiSolid3D.class, cn.edu.cug.cs.gtl.protos.MultiSolid3D.Builder.class);
   }
 
-  public static final int SOLIDS_FIELD_NUMBER = 1;
-  private java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> solids_;
+  public static final int SOLID_FIELD_NUMBER = 1;
+  private java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> solid_;
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  public java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> getSolidsList() {
-    return solids_;
+  public java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> getSolidList() {
+    return solid_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
   public java.util.List<? extends cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder> 
-      getSolidsOrBuilderList() {
-    return solids_;
+      getSolidOrBuilderList() {
+    return solid_;
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  public int getSolidsCount() {
-    return solids_.size();
+  public int getSolidCount() {
+    return solid_.size();
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Solid3D getSolids(int index) {
-    return solids_.get(index);
+  public cn.edu.cug.cs.gtl.protos.Solid3D getSolid(int index) {
+    return solid_.get(index);
   }
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
    */
-  public cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder getSolidsOrBuilder(
+  public cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder getSolidOrBuilder(
       int index) {
-    return solids_.get(index);
+    return solid_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -143,8 +143,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < solids_.size(); i++) {
-      output.writeMessage(1, solids_.get(i));
+    for (int i = 0; i < solid_.size(); i++) {
+      output.writeMessage(1, solid_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -155,9 +155,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < solids_.size(); i++) {
+    for (int i = 0; i < solid_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, solids_.get(i));
+        .computeMessageSize(1, solid_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -174,8 +174,8 @@ private static final long serialVersionUID = 0L;
     }
     cn.edu.cug.cs.gtl.protos.MultiSolid3D other = (cn.edu.cug.cs.gtl.protos.MultiSolid3D) obj;
 
-    if (!getSolidsList()
-        .equals(other.getSolidsList())) return false;
+    if (!getSolidList()
+        .equals(other.getSolidList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -187,9 +187,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getSolidsCount() > 0) {
-      hash = (37 * hash) + SOLIDS_FIELD_NUMBER;
-      hash = (53 * hash) + getSolidsList().hashCode();
+    if (getSolidCount() > 0) {
+      hash = (37 * hash) + SOLID_FIELD_NUMBER;
+      hash = (53 * hash) + getSolidList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -319,17 +319,17 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getSolidsFieldBuilder();
+        getSolidFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (solidsBuilder_ == null) {
-        solids_ = java.util.Collections.emptyList();
+      if (solidBuilder_ == null) {
+        solid_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        solidsBuilder_.clear();
+        solidBuilder_.clear();
       }
       return this;
     }
@@ -358,14 +358,14 @@ private static final long serialVersionUID = 0L;
     public cn.edu.cug.cs.gtl.protos.MultiSolid3D buildPartial() {
       cn.edu.cug.cs.gtl.protos.MultiSolid3D result = new cn.edu.cug.cs.gtl.protos.MultiSolid3D(this);
       int from_bitField0_ = bitField0_;
-      if (solidsBuilder_ == null) {
+      if (solidBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          solids_ = java.util.Collections.unmodifiableList(solids_);
+          solid_ = java.util.Collections.unmodifiableList(solid_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.solids_ = solids_;
+        result.solid_ = solid_;
       } else {
-        result.solids_ = solidsBuilder_.build();
+        result.solid_ = solidBuilder_.build();
       }
       onBuilt();
       return result;
@@ -415,29 +415,29 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cn.edu.cug.cs.gtl.protos.MultiSolid3D other) {
       if (other == cn.edu.cug.cs.gtl.protos.MultiSolid3D.getDefaultInstance()) return this;
-      if (solidsBuilder_ == null) {
-        if (!other.solids_.isEmpty()) {
-          if (solids_.isEmpty()) {
-            solids_ = other.solids_;
+      if (solidBuilder_ == null) {
+        if (!other.solid_.isEmpty()) {
+          if (solid_.isEmpty()) {
+            solid_ = other.solid_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureSolidsIsMutable();
-            solids_.addAll(other.solids_);
+            ensureSolidIsMutable();
+            solid_.addAll(other.solid_);
           }
           onChanged();
         }
       } else {
-        if (!other.solids_.isEmpty()) {
-          if (solidsBuilder_.isEmpty()) {
-            solidsBuilder_.dispose();
-            solidsBuilder_ = null;
-            solids_ = other.solids_;
+        if (!other.solid_.isEmpty()) {
+          if (solidBuilder_.isEmpty()) {
+            solidBuilder_.dispose();
+            solidBuilder_ = null;
+            solid_ = other.solid_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            solidsBuilder_ = 
+            solidBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getSolidsFieldBuilder() : null;
+                 getSolidFieldBuilder() : null;
           } else {
-            solidsBuilder_.addAllMessages(other.solids_);
+            solidBuilder_.addAllMessages(other.solid_);
           }
         }
       }
@@ -471,244 +471,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> solids_ =
+    private java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> solid_ =
       java.util.Collections.emptyList();
-    private void ensureSolidsIsMutable() {
+    private void ensureSolidIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        solids_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Solid3D>(solids_);
+        solid_ = new java.util.ArrayList<cn.edu.cug.cs.gtl.protos.Solid3D>(solid_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        cn.edu.cug.cs.gtl.protos.Solid3D, cn.edu.cug.cs.gtl.protos.Solid3D.Builder, cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder> solidsBuilder_;
+        cn.edu.cug.cs.gtl.protos.Solid3D, cn.edu.cug.cs.gtl.protos.Solid3D.Builder, cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder> solidBuilder_;
 
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> getSolidsList() {
-      if (solidsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(solids_);
+    public java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D> getSolidList() {
+      if (solidBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(solid_);
       } else {
-        return solidsBuilder_.getMessageList();
+        return solidBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public int getSolidsCount() {
-      if (solidsBuilder_ == null) {
-        return solids_.size();
+    public int getSolidCount() {
+      if (solidBuilder_ == null) {
+        return solid_.size();
       } else {
-        return solidsBuilder_.getCount();
+        return solidBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Solid3D getSolids(int index) {
-      if (solidsBuilder_ == null) {
-        return solids_.get(index);
+    public cn.edu.cug.cs.gtl.protos.Solid3D getSolid(int index) {
+      if (solidBuilder_ == null) {
+        return solid_.get(index);
       } else {
-        return solidsBuilder_.getMessage(index);
+        return solidBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder setSolids(
+    public Builder setSolid(
         int index, cn.edu.cug.cs.gtl.protos.Solid3D value) {
-      if (solidsBuilder_ == null) {
+      if (solidBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureSolidsIsMutable();
-        solids_.set(index, value);
+        ensureSolidIsMutable();
+        solid_.set(index, value);
         onChanged();
       } else {
-        solidsBuilder_.setMessage(index, value);
+        solidBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder setSolids(
+    public Builder setSolid(
         int index, cn.edu.cug.cs.gtl.protos.Solid3D.Builder builderForValue) {
-      if (solidsBuilder_ == null) {
-        ensureSolidsIsMutable();
-        solids_.set(index, builderForValue.build());
+      if (solidBuilder_ == null) {
+        ensureSolidIsMutable();
+        solid_.set(index, builderForValue.build());
         onChanged();
       } else {
-        solidsBuilder_.setMessage(index, builderForValue.build());
+        solidBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder addSolids(cn.edu.cug.cs.gtl.protos.Solid3D value) {
-      if (solidsBuilder_ == null) {
+    public Builder addSolid(cn.edu.cug.cs.gtl.protos.Solid3D value) {
+      if (solidBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureSolidsIsMutable();
-        solids_.add(value);
+        ensureSolidIsMutable();
+        solid_.add(value);
         onChanged();
       } else {
-        solidsBuilder_.addMessage(value);
+        solidBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder addSolids(
+    public Builder addSolid(
         int index, cn.edu.cug.cs.gtl.protos.Solid3D value) {
-      if (solidsBuilder_ == null) {
+      if (solidBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureSolidsIsMutable();
-        solids_.add(index, value);
+        ensureSolidIsMutable();
+        solid_.add(index, value);
         onChanged();
       } else {
-        solidsBuilder_.addMessage(index, value);
+        solidBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder addSolids(
+    public Builder addSolid(
         cn.edu.cug.cs.gtl.protos.Solid3D.Builder builderForValue) {
-      if (solidsBuilder_ == null) {
-        ensureSolidsIsMutable();
-        solids_.add(builderForValue.build());
+      if (solidBuilder_ == null) {
+        ensureSolidIsMutable();
+        solid_.add(builderForValue.build());
         onChanged();
       } else {
-        solidsBuilder_.addMessage(builderForValue.build());
+        solidBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder addSolids(
+    public Builder addSolid(
         int index, cn.edu.cug.cs.gtl.protos.Solid3D.Builder builderForValue) {
-      if (solidsBuilder_ == null) {
-        ensureSolidsIsMutable();
-        solids_.add(index, builderForValue.build());
+      if (solidBuilder_ == null) {
+        ensureSolidIsMutable();
+        solid_.add(index, builderForValue.build());
         onChanged();
       } else {
-        solidsBuilder_.addMessage(index, builderForValue.build());
+        solidBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder addAllSolids(
+    public Builder addAllSolid(
         java.lang.Iterable<? extends cn.edu.cug.cs.gtl.protos.Solid3D> values) {
-      if (solidsBuilder_ == null) {
-        ensureSolidsIsMutable();
+      if (solidBuilder_ == null) {
+        ensureSolidIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, solids_);
+            values, solid_);
         onChanged();
       } else {
-        solidsBuilder_.addAllMessages(values);
+        solidBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder clearSolids() {
-      if (solidsBuilder_ == null) {
-        solids_ = java.util.Collections.emptyList();
+    public Builder clearSolid() {
+      if (solidBuilder_ == null) {
+        solid_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        solidsBuilder_.clear();
+        solidBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public Builder removeSolids(int index) {
-      if (solidsBuilder_ == null) {
-        ensureSolidsIsMutable();
-        solids_.remove(index);
+    public Builder removeSolid(int index) {
+      if (solidBuilder_ == null) {
+        ensureSolidIsMutable();
+        solid_.remove(index);
         onChanged();
       } else {
-        solidsBuilder_.remove(index);
+        solidBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Solid3D.Builder getSolidsBuilder(
+    public cn.edu.cug.cs.gtl.protos.Solid3D.Builder getSolidBuilder(
         int index) {
-      return getSolidsFieldBuilder().getBuilder(index);
+      return getSolidFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder getSolidsOrBuilder(
+    public cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder getSolidOrBuilder(
         int index) {
-      if (solidsBuilder_ == null) {
-        return solids_.get(index);  } else {
-        return solidsBuilder_.getMessageOrBuilder(index);
+      if (solidBuilder_ == null) {
+        return solid_.get(index);  } else {
+        return solidBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
     public java.util.List<? extends cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder> 
-         getSolidsOrBuilderList() {
-      if (solidsBuilder_ != null) {
-        return solidsBuilder_.getMessageOrBuilderList();
+         getSolidOrBuilderList() {
+      if (solidBuilder_ != null) {
+        return solidBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(solids_);
+        return java.util.Collections.unmodifiableList(solid_);
       }
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Solid3D.Builder addSolidsBuilder() {
-      return getSolidsFieldBuilder().addBuilder(
+    public cn.edu.cug.cs.gtl.protos.Solid3D.Builder addSolidBuilder() {
+      return getSolidFieldBuilder().addBuilder(
           cn.edu.cug.cs.gtl.protos.Solid3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
-    public cn.edu.cug.cs.gtl.protos.Solid3D.Builder addSolidsBuilder(
+    public cn.edu.cug.cs.gtl.protos.Solid3D.Builder addSolidBuilder(
         int index) {
-      return getSolidsFieldBuilder().addBuilder(
+      return getSolidFieldBuilder().addBuilder(
           index, cn.edu.cug.cs.gtl.protos.Solid3D.getDefaultInstance());
     }
     /**
-     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solids = 1;</code>
+     * <code>repeated .cn.edu.cug.cs.gtl.protos.Solid3D solid = 1;</code>
      */
     public java.util.List<cn.edu.cug.cs.gtl.protos.Solid3D.Builder> 
-         getSolidsBuilderList() {
-      return getSolidsFieldBuilder().getBuilderList();
+         getSolidBuilderList() {
+      return getSolidFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
         cn.edu.cug.cs.gtl.protos.Solid3D, cn.edu.cug.cs.gtl.protos.Solid3D.Builder, cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder> 
-        getSolidsFieldBuilder() {
-      if (solidsBuilder_ == null) {
-        solidsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+        getSolidFieldBuilder() {
+      if (solidBuilder_ == null) {
+        solidBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             cn.edu.cug.cs.gtl.protos.Solid3D, cn.edu.cug.cs.gtl.protos.Solid3D.Builder, cn.edu.cug.cs.gtl.protos.Solid3DOrBuilder>(
-                solids_,
+                solid_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        solids_ = null;
+        solid_ = null;
       }
-      return solidsBuilder_;
+      return solidBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

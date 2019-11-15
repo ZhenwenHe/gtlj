@@ -8,43 +8,43 @@ public interface TriangleMesh3DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertex = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.Vertex3d> 
-      getVerticesList();
+      getVertexList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertex = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Vertex3d getVertices(int index);
+  cn.edu.cug.cs.gtl.protos.Vertex3d getVertex(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertex = 1;</code>
    */
-  int getVerticesCount();
+  int getVertexCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertex = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.Vertex3dOrBuilder> 
-      getVerticesOrBuilderList();
+      getVertexOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertices = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Vertex3d vertex = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Vertex3dOrBuilder getVerticesOrBuilder(
+  cn.edu.cug.cs.gtl.protos.Vertex3dOrBuilder getVertexOrBuilder(
       int index);
 
   /**
-   * <code>repeated uint32 indices = 2;</code>
-   * @return A list containing the indices.
+   * <code>repeated uint32 index = 2;</code>
+   * @return A list containing the index.
    */
-  java.util.List<java.lang.Integer> getIndicesList();
+  java.util.List<java.lang.Integer> getIndexList();
   /**
-   * <code>repeated uint32 indices = 2;</code>
-   * @return The count of indices.
+   * <code>repeated uint32 index = 2;</code>
+   * @return The count of index.
    */
-  int getIndicesCount();
+  int getIndexCount();
   /**
-   * <code>repeated uint32 indices = 2;</code>
+   * <code>repeated uint32 index = 2;</code>
    * @param index The index of the element to return.
-   * @return The indices at the given index.
+   * @return The index at the given index.
    */
-  int getIndices(int index);
+  int getIndex(int index);
 }

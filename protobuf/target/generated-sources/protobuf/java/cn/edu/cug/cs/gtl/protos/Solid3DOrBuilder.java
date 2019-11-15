@@ -23,26 +23,26 @@ public interface Solid3DOrBuilder extends
   cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getShellOrBuilder();
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.TriangleMesh3D> 
-      getHolesList();
+      getHoleList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  cn.edu.cug.cs.gtl.protos.TriangleMesh3D getHoles(int index);
+  cn.edu.cug.cs.gtl.protos.TriangleMesh3D getHole(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  int getHolesCount();
+  int getHoleCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder> 
-      getHolesOrBuilderList();
+      getHoleOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D holes = 2;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.TriangleMesh3D hole = 2;</code>
    */
-  cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getHolesOrBuilder(
+  cn.edu.cug.cs.gtl.protos.TriangleMesh3DOrBuilder getHoleOrBuilder(
       int index);
 }

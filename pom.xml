@@ -22,6 +22,7 @@
         <module>mybatis</module>
         <module>cxf</module>
         <module>lucene</module>
+        <module>geotools</module>
     </modules>
 
     <licenses>

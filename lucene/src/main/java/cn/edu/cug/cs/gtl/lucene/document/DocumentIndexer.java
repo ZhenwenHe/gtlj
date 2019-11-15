@@ -1,8 +1,8 @@
 package cn.edu.cug.cs.gtl.lucene.document;
 
 
-import cn.edu.cug.cs.gtl.lucene.file.DocumentFileFilter;
-import cn.edu.cug.cs.gtl.lucene.file.DocumentFileVisitor;
+import cn.edu.cug.cs.gtl.filter.FileFilter;
+import cn.edu.cug.cs.gtl.protos.DocumentMapper;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.*;
@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DocumentIndexer {
-    private FileFilter fileFilter;
+    private java.io.FileFilter fileFilter;
     private DocumentMapper documentMapper;
     private String indexPath;
     private String docsPath;
@@ -35,7 +35,14 @@ public class DocumentIndexer {
      * @return
      */
     public static DocumentIndexer of(String indexPath, String docsPath){
-        return new DocumentIndexer(indexPath,docsPath, DocumentFileFilter.allFileFilter(),DocumentMapper.rawMapper(),false);
+        return new DocumentIndexer(indexPath,
+                docsPath,
+                FileFilter.allFileFilter(),
+                DocumentMapper
+                        .newBuilder()
+                        .setMappingType(DocumentMapper.MappingType.DOC_PRE_RAW_FILE_VALUE)
+                        .build(),
+                false);
     }
 
     /**
@@ -43,7 +50,12 @@ public class DocumentIndexer {
      */
     public void create(){
         this.bUpdate=false;
-        execute();
+        try {
+            execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -51,7 +63,12 @@ public class DocumentIndexer {
      */
     public void update(){
         this.bUpdate=true;
-        execute();
+        try {
+            execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
     /**
      *
@@ -73,7 +90,7 @@ public class DocumentIndexer {
      *
      * @return
      */
-    public FileFilter getFileFilter() {
+    public java.io.FileFilter getFileFilter() {
         return fileFilter;
     }
 
@@ -81,7 +98,7 @@ public class DocumentIndexer {
      *
      * @param fileFilter
      */
-    public void setFileFilter(FileFilter fileFilter) {
+    public void setFileFilter(java.io.FileFilter fileFilter) {
         this.fileFilter = fileFilter;
     }
 
@@ -108,14 +125,17 @@ public class DocumentIndexer {
      * @param docsPath
      * @param bUpdate
      */
-    DocumentIndexer(String indexPath, String docsPath, FileFilter fileFilter, DocumentMapper dm, boolean bUpdate) {
+    DocumentIndexer(String indexPath, String docsPath, java.io.FileFilter fileFilter, DocumentMapper dm, boolean bUpdate) {
         this.fileFilter = fileFilter;
         this.indexPath = indexPath;
         this.docsPath = docsPath;
         this.bUpdate = bUpdate;
         this.analyzer = new StandardAnalyzer();
         if(dm==null)
-            this.documentMapper= DocumentMapper.fileMapper();
+            this.documentMapper= DocumentMapper
+                    .newBuilder()
+                    .setMappingType(DocumentMapper.MappingType.DOC_PRE_TEXT_FILE_VALUE)
+                    .build();
         else
             this.documentMapper=dm;
     }
@@ -123,7 +143,7 @@ public class DocumentIndexer {
     /**
      * Index all text files under a directory.
      */
-    private void execute() {
+    private void execute() throws Exception{
         String usage = "java IndexFiles"
                 + " [-index INDEX_PATH] [-docs DOCS_PATH] [-update]\n\n"
                 + "This indexes the documents in DOCS_PATH, creating a Lucene index"
@@ -202,7 +222,7 @@ public class DocumentIndexer {
      * @param path   The file to index, or the directory to recurse into to find files to index
      * @throws IOException If there is a low-level I/O error
      */
-    private void indexDocs(final IndexWriter writer, Path path) throws IOException {
+    private void indexDocs(final IndexWriter writer, Path path) throws Exception {
         if (Files.isDirectory(path)) {
             IndexerFileVisitor indexerFileVisitor = new IndexerFileVisitor(this.fileFilter,this.documentMapper,writer);
             Files.walkFileTree(path, indexerFileVisitor);
@@ -216,11 +236,11 @@ public class DocumentIndexer {
     /**
      * Indexes a single file
      */
-    static void indexDoc(IndexWriter writer, Path file, long lastModified, DocumentMapper dm) throws IOException {
+    static void indexDoc(IndexWriter writer, Path file, long lastModified, DocumentMapper dm) throws Exception {
         File f = file.toFile();
         List<Document> docs = new ArrayList<>();
         //如果是RAW，任何类型的文件都可以处理
-        if(dm.getMappingType()==DocumentMapper.DM_DOC_PRE_RAW_FILE){
+        if(dm.getMappingType()==DocumentMapper.MappingType.DOC_PRE_RAW_FILE_VALUE){
             List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),dm,f.lastModified());
             if(ls!=null && ls.isEmpty()==false){
                 docs.addAll(ls);
@@ -228,7 +248,7 @@ public class DocumentIndexer {
         }
         else{ //文本处理，必须是可以提取文本的文件类型，所以只处理Text类和Office类的文件
 
-            FileFilter ff = DocumentFileFilter.or(DocumentFileFilter.textsFileFilter(),DocumentFileFilter.officesFileFilter());
+            java.io.FileFilter ff = FileFilter.or(FileFilter.textsFileFilter(), FileFilter.officesFileFilter());
             if(ff.accept(f)){
                 List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),dm,f.lastModified());
                 if(ls!=null && ls.isEmpty()==false){
@@ -236,7 +256,12 @@ public class DocumentIndexer {
                 }
             }
             else {//属于不能提取文本的RAW文件，强行以RAW方式建立文档
-                List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),DocumentMapper.rawMapper(),f.lastModified());
+                List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),
+                        DocumentMapper
+                                .newBuilder()
+                                .setMappingType(DocumentMapper.MappingType.DOC_PRE_RAW_FILE_VALUE)
+                                .build(),
+                        f.lastModified());
                 if(ls!=null && ls.isEmpty()==false){
                     docs.addAll(ls);
                 }
@@ -265,12 +290,12 @@ public class DocumentIndexer {
 
         private IndexWriter writer;
 
-        public IndexerFileVisitor(FileFilter fileFilter, DocumentMapper documentMapper,IndexWriter w) {
+        public IndexerFileVisitor(java.io.FileFilter fileFilter, DocumentMapper documentMapper, IndexWriter w) {
             super(fileFilter, documentMapper);
             this.writer=w;
         }
 
-        public IndexerFileVisitor(FileFilter fileFilter, int documentMapper,IndexWriter w) {
+        public IndexerFileVisitor(java.io.FileFilter fileFilter, int documentMapper, IndexWriter w) {
             super(fileFilter, documentMapper);
             this.writer=w;
         }
@@ -280,7 +305,7 @@ public class DocumentIndexer {
                 if(getFileFilter().accept(file.toFile())){
                     indexDoc(writer, file, attrs.lastModifiedTime().toMillis(),getDocumentMapper());
                 }
-            } catch (IOException ignore) {
+            } catch (Exception ignore) {
                 // don't index files that can't be read.
             }
             return FileVisitResult.CONTINUE;

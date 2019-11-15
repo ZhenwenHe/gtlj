@@ -8,26 +8,26 @@ public interface MultiPolygon2DOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygon = 1;</code>
    */
   java.util.List<cn.edu.cug.cs.gtl.protos.Polygon2D> 
-      getPolygonsList();
+      getPolygonList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygon = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Polygon2D getPolygons(int index);
+  cn.edu.cug.cs.gtl.protos.Polygon2D getPolygon(int index);
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygon = 1;</code>
    */
-  int getPolygonsCount();
+  int getPolygonCount();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygon = 1;</code>
    */
   java.util.List<? extends cn.edu.cug.cs.gtl.protos.Polygon2DOrBuilder> 
-      getPolygonsOrBuilderList();
+      getPolygonOrBuilderList();
   /**
-   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygons = 1;</code>
+   * <code>repeated .cn.edu.cug.cs.gtl.protos.Polygon2D polygon = 1;</code>
    */
-  cn.edu.cug.cs.gtl.protos.Polygon2DOrBuilder getPolygonsOrBuilder(
+  cn.edu.cug.cs.gtl.protos.Polygon2DOrBuilder getPolygonOrBuilder(
       int index);
 }
