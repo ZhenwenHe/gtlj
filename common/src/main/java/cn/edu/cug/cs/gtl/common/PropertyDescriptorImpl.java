@@ -5,7 +5,7 @@ import cn.edu.cug.cs.gtl.util.StringUtils;
 import cn.edu.cug.cs.gtl.io.Serializable;
 import cn.edu.cug.cs.gtl.util.ObjectUtils;
 import cn.edu.cug.cs.gtl.util.StringUtils;
-import org.geotools.resources.Classes;
+import org.geotools.util.Classes;
 
 import java.io.DataInput;
 import java.io.DataOutput;

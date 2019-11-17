@@ -89,6 +89,31 @@ public final class Values {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cn_edu_cug_cs_gtl_protos_DataSet_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_Property_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_Property_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_Properties_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_Properties_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_Properties_PropertiesEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_Properties_PropertiesEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_Parameter_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_Parameter_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cn_edu_cug_cs_gtl_protos_Parameters_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cn_edu_cug_cs_gtl_protos_Parameters_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -140,9 +165,16 @@ public final class Values {
       "du.cug.cs.gtl.protos.Column\"t\n\007DataSet\0229" +
       "\n\013column_info\030\002 \003(\0132$.cn.edu.cug.cs.gtl." +
       "protos.ColumnInfo\022.\n\005tuple\030\003 \003(\0132\037.cn.ed" +
-      "u.cug.cs.gtl.protos.TupleBB\n\030cn.edu.cug." +
-      "cs.gtl.protosB\006ValuesP\001\370\001\001\252\002\030cn.edu.cug." +
-      "cs.gtl.protosP\000P\001P\002b\006proto3"
+      "u.cug.cs.gtl.protos.Tuple\"\'\n\010Property\022\014\n" +
+      "\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"\211\001\n\nPropertie" +
+      "s\022H\n\nproperties\030\001 \003(\01324.cn.edu.cug.cs.gt" +
+      "l.protos.Properties.PropertiesEntry\0321\n\017P" +
+      "ropertiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\t:\0028\001\"(\n\tParameter\022\014\n\004name\030\001 \001(\t\022\r\n\005val" +
+      "ue\030\002 \001(\t\"D\n\nParameters\0226\n\tparameter\030\001 \003(" +
+      "\0132#.cn.edu.cug.cs.gtl.protos.ParameterBB" +
+      "\n\030cn.edu.cug.cs.gtl.protosB\006ValuesP\001\370\001\001\252" +
+      "\002\030cn.edu.cug.cs.gtl.protosP\000P\001P\002b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -241,6 +273,36 @@ public final class Values {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cn_edu_cug_cs_gtl_protos_DataSet_descriptor,
         new java.lang.String[] { "ColumnInfo", "Tuple", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Property_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_cn_edu_cug_cs_gtl_protos_Property_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_Property_descriptor,
+        new java.lang.String[] { "Name", "Value", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Properties_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_cn_edu_cug_cs_gtl_protos_Properties_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_Properties_descriptor,
+        new java.lang.String[] { "Properties", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Properties_PropertiesEntry_descriptor =
+      internal_static_cn_edu_cug_cs_gtl_protos_Properties_descriptor.getNestedTypes().get(0);
+    internal_static_cn_edu_cug_cs_gtl_protos_Properties_PropertiesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_Properties_PropertiesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Parameter_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_cn_edu_cug_cs_gtl_protos_Parameter_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_Parameter_descriptor,
+        new java.lang.String[] { "Name", "Value", });
+    internal_static_cn_edu_cug_cs_gtl_protos_Parameters_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_cn_edu_cug_cs_gtl_protos_Parameters_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cn_edu_cug_cs_gtl_protos_Parameters_descriptor,
+        new java.lang.String[] { "Parameter", });
     com.google.protobuf.AnyProto.getDescriptor();
     com.google.protobuf.TypeProto.getDescriptor();
     cn.edu.cug.cs.gtl.protos.Identifiers.getDescriptor();

@@ -37,6 +37,18 @@
 
         <dependency>
             <groupId>org.geotools</groupId>
+            <artifactId>gt-render</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-main</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.geotools</groupId>
             <artifactId>gt-shapefile</artifactId>
             <version>${geotools.version}</version>
         </dependency>
@@ -60,11 +72,19 @@
             <version>${geotools.version}</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-csv</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.geotools.jdbc</groupId>
             <artifactId>gt-jdbc-oracle</artifactId>
             <version>${geotools.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.tika</groupId>
@@ -103,6 +123,13 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/org.apache.calcite/calcite-core -->
+        <dependency>
+            <groupId>org.apache.calcite</groupId>
+            <artifactId>calcite-core</artifactId>
+            <version>1.21.0</version>
+        </dependency>
 
     </dependencies>
 

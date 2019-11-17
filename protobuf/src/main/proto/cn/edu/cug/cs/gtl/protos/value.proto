@@ -125,3 +125,21 @@ message DataSet {
     repeated ColumnInfo column_info = 2;
     repeated Tuple tuple = 3;
 }
+
+message Property{
+    string name=1;
+    string value=2;
+}
+
+message Properties{
+    map<string,string> properties=1;
+}
+
+message Parameter{
+    string name=1;
+    string value=2;
+}
+
+message Parameters{
+    repeated Parameter parameter=1;
+}

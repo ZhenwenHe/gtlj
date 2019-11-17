@@ -65,6 +65,14 @@ public class BoundingBoxWrapper {
         return Arrays.copyOfRange(cc,0,bb.getDimension());
     }
 
+    public static boolean isValid(BoundingBox bb){
+        if(bb==null) return false;
+        if(bb.getDimension()<=0)
+            return false;
+        if(bb.getOrdinateCount()<=0)
+            return false;
+        return true;
+    }
     public static String toWKT(BoundingBox bb){
         Polygon2D p = Polygon2DWrapper.of(bb);
         return Polygon2DWrapper.toWKT(p);

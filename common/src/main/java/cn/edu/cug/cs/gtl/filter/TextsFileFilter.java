@@ -5,7 +5,7 @@ import cn.edu.cug.cs.gtl.filter.FileFilter;
 import java.io.File;
 
 
-class TextsFileFilter implements FileFilter {
+public class TextsFileFilter implements FileFilter {
     /**
      * Tests whether or not the specified abstract pathname should be
      * included in a pathname list.

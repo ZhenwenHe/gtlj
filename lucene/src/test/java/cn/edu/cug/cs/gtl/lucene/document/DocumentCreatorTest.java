@@ -1,7 +1,9 @@
 package cn.edu.cug.cs.gtl.lucene.document;
 
 
+import cn.edu.cug.cs.gtl.config.Config;
 import cn.edu.cug.cs.gtl.filter.FileFilter;
+import cn.edu.cug.cs.gtl.protoswrapper.DocumentMapperWrapper;
 import org.apache.lucene.document.Document;
 import org.junit.After;
 import org.junit.Before;
@@ -12,6 +14,8 @@ import java.util.List;
 
 public class DocumentCreatorTest {
 
+    static String rawDir = Config.getTestInputDirectory()+ cn.edu.cug.cs.gtl.io.File.separator+"lucene"+ cn.edu.cug.cs.gtl.io.File.separator
+            +"dat"+ cn.edu.cug.cs.gtl.io.File.separator+"raw";
     @Before
     public void setUp() throws Exception {
     }
@@ -33,43 +37,43 @@ public class DocumentCreatorTest {
     }
 
     @Test
-    public void createFromFileForDoc() {
-        File f = new File("dat/raw/word.doc");
-        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(), DocumentMapper.paragraphMapper(),f.lastModified());
+    public void createFromFileForDoc() throws Exception{
+        File f = new File(rawDir+"/office/新闻联播.doc");
+        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(), DocumentMapperWrapper.paragraphMapper(),f.lastModified());
         for(Document d: ls){
             System.out.println(d.toString());
         }
     }
 
     @Test
-    public void createFromFileForDocx() {
-        File f = new File("dat/raw/word.docx");
-        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(), DocumentMapper.paragraphMapper(),f.lastModified());
+    public void createFromFileForDocx() throws Exception{
+        File f = new File(rawDir+"/office/新闻联播.docx");
+        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(), DocumentMapperWrapper.paragraphMapper(),f.lastModified());
         for(Document d: ls){
             System.out.println(d.toString());
         }
     }
 
     @Test
-    public void createFromFileForPDF() {
-        File f = new File("dat/raw/word.pdf");
-        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(), DocumentMapper.paragraphMapper(),f.lastModified());
+    public void createFromFileForPDF() throws Exception{
+        File f = new File(rawDir+"/office/introduction.pdf");
+        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(), DocumentMapperWrapper.paragraphMapper(),f.lastModified());
         for(Document d: ls){
             System.out.println(d.toString());
         }
     }
 
     @Test
-    public void createFromFileForTXT() {
-        File f = new File("dat/raw/introduction.txt");
-        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),DocumentMapper.paragraphMapper(),f.lastModified());
+    public void createFromFileForTXT()throws Exception {
+        File f = new File(rawDir+"/text/beam.txt");
+        List<Document> ls = DocumentCreator.createFromFile(f.getAbsolutePath(),DocumentMapperWrapper.paragraphMapper(),f.lastModified());
         for(Document d: ls){
             System.out.println(d.toString());
         }
     }
     @Test
     public void createFromPathForPARAGRAPH() throws Exception{
-        DocumentCreator dc = DocumentCreator.of("dat/raw", FileFilter.officesFileFilter(),DocumentMapper.paragraphMapper());
+        DocumentCreator dc = DocumentCreator.of(rawDir, FileFilter.officesFileFilter(),DocumentMapperWrapper.paragraphMapper());
         List<Document> ls = dc.execute();
         for(Document d: ls){
             System.out.println(d.toString());
@@ -77,7 +81,7 @@ public class DocumentCreatorTest {
     }
     @Test
     public void createFromPathForFILE() throws Exception{
-        DocumentCreator dc = DocumentCreator.of("dat/raw", FileFilter.officesFileFilter(),DocumentMapper.fileMapper());
+        DocumentCreator dc = DocumentCreator.of(rawDir, FileFilter.officesFileFilter(),DocumentMapperWrapper.fileMapper());
         List<Document> ls = dc.execute();
         for(Document d: ls){
             System.out.println(d.toString());
@@ -85,7 +89,7 @@ public class DocumentCreatorTest {
     }
     @Test
     public void createFromPathForRAW() throws Exception{
-        DocumentCreator dc = DocumentCreator.of("dat/raw", FileFilter.allFileFilter(),DocumentMapper.rawMapper());
+        DocumentCreator dc = DocumentCreator.of(rawDir, FileFilter.allFileFilter(),DocumentMapperWrapper.rawMapper());
         List<Document> ls = dc.execute();
         for(Document d: ls){
             System.out.println(d.toString());

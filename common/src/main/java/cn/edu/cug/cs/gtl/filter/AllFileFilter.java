@@ -2,7 +2,7 @@ package cn.edu.cug.cs.gtl.filter;
 
 import java.io.File;
 
-class AllFileFilter implements FileFilter {
+public class AllFileFilter implements FileFilter {
     /**
      * Tests whether or not the specified abstract pathname should be
      * included in a pathname list.

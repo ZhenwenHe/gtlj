@@ -6,6 +6,7 @@ import cn.edu.cug.cs.gtl.io.File;
 import cn.edu.cug.cs.gtl.io.FileDataSplitter;
 import cn.edu.cug.cs.gtl.protos.*;
 import cn.edu.cug.cs.gtl.protoswrapper.BoundingBoxWrapper;
+import com.google.protobuf.ByteString;
 import org.apache.solr.common.SolrInputDocument;
 
 import java.io.IOException;
@@ -14,10 +15,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class DocumentCreator {
     private String docsPath;
@@ -37,6 +37,11 @@ public class DocumentCreator {
         return new DocumentCreator(docsPath,fileFilter, documentMapper);
     }
 
+    /**
+     *
+     * @return
+     * @throws Exception
+     */
     public List<SolrInputDocument> execute() throws Exception{
         Path p = new File(docsPath).toPath();
         List<Document> ls = new ArrayList<>();
@@ -153,12 +158,12 @@ public class DocumentCreator {
 
 
         BoundingBox bb = d.getBounding();
-        if(bb!=null){
+        if(BoundingBoxWrapper.isValid(bb)){
             String bounding = BoundingBoxWrapper.toWKT(bb);
             doc.addField("bounding",bounding);
         }
 
-
+        doc.addField("input_date",LocalDate.now().format(DateTimeFormatter.ISO_INSTANT));
         return doc;
     }
 
@@ -171,7 +176,7 @@ public class DocumentCreator {
     private List<SolrInputDocument> documentToSolrInputDocument(Document d){
         List<SolrInputDocument> ls = new ArrayList<>();
         if(documentMapper.getMappingType()==DocumentMapper.MappingType.DOC_PRE_RAW_FILE_VALUE ||
-                documentMapper.getMappingType()==DocumentMapper.MappingType.DOC_PRE_RAW_FILE_VALUE){
+                documentMapper.getMappingType()==DocumentMapper.MappingType.DOC_PRE_TEXT_FILE_VALUE){
             SolrInputDocument doc = documentToSolrInputDocumentForCommonFields(d);
 
             StringBuilder sb = new StringBuilder();
@@ -183,13 +188,20 @@ public class DocumentCreator {
             if(!s.isEmpty())
                 doc.addField("contents",s);
 
-            byte [] raw_data = d.getRawData().asReadOnlyByteBuffer().array();
-            if(raw_data!=null && raw_data.length>0)
-                doc.addField("raw_data",raw_data);
+            ByteString bs = d.getRawData();
+            if(bs!=null && !bs.isEmpty()){
+                byte [] raw_data = bs.toByteArray();
+                if(raw_data!=null && raw_data.length>0)
+                    doc.addField("raw_data",raw_data);
 
-            byte[] attachments = d.getAttachments().toByteArray();
-            if(attachments!=null&&attachments.length>0)
-                doc.addField("attachments",attachments);
+            }
+
+            Attachments attachments = d.getAttachments();
+            if(attachments!=null && attachments.getAttachmentCount()>0){
+                byte[] attachments_bs = attachments.toByteArray();
+                if(attachments_bs!=null&&attachments_bs.length>0)
+                    doc.addField("attachments",attachments_bs);
+            }
 
             ls.add(doc);
         }
@@ -205,23 +217,23 @@ public class DocumentCreator {
                     doc.addField("contents",s);
 
                 if(i==0){
-                    byte [] raw_data = d.getRawData().asReadOnlyByteBuffer().array();
-                    if(raw_data!=null && raw_data.length>0)
-                        doc.addField("raw_data",raw_data);
+                    ByteString bs = d.getRawData();
+                    if(bs!=null && !bs.isEmpty()){
+                        byte [] raw_data = bs.toByteArray();
+                        if(raw_data!=null && raw_data.length>0)
+                            doc.addField("raw_data",raw_data);
 
-                    byte[] attachments = d.getAttachments().toByteArray();
-                    if(attachments!=null&&attachments.length>0)
-                        doc.addField("attachments",attachments);
+                    }
 
-                    doc.addField("order",i);
-                    i++;
+                    Attachments attachments = d.getAttachments();
+                    if(attachments!=null && attachments.getAttachmentCount()>0){
+                        byte[] attachments_bs = attachments.toByteArray();
+                        if(attachments_bs!=null&&attachments_bs.length>0)
+                            doc.addField("attachments",attachments_bs);
+                    }
                 }
-                else{
-                    doc.addField("order",i);
-                    i++;
-                }
-
-
+                doc.addField("order_id",i);
+                i++;
                 ls.add(doc);
             }
 

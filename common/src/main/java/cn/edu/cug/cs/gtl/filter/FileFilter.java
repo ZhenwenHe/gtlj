@@ -16,6 +16,24 @@ public interface FileFilter extends java.io.FileFilter{
     static FileFilter imagesFileFilter(){ return  new ImagesFileFilter();}
     static FileFilter shapesFileFilter(){ return  new ShapesFileFilter();}
     static FileFilter allFileFilter(){ return  new AllFileFilter();}
+    static FileFilter rawFileFilter(){ return  new RawFileFilter();}
+
+    static FileFilter autoFileFilter(String inputFile){
+        FileFilter ff = textsFileFilter();
+        if(ff.accept(inputFile))
+            return ff;
+        ff = officesFileFilter();
+        if(ff.accept(inputFile))
+            return ff;
+        ff = shapesFileFilter();
+        if(ff.accept(inputFile))
+            return ff;
+        ff = imagesFileFilter();
+        if(ff.accept(inputFile))
+            return ff;
+
+        return rawFileFilter();
+    }
 
     static FileFilter or(FileFilter... filters){
         return new CompoundFileFilter(true,filters);

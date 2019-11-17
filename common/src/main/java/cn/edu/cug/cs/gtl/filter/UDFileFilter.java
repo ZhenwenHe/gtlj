@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-class UDFileFilter implements FileFilter {
+public class UDFileFilter implements FileFilter {
     List<String> suffixList;
     boolean orOperation;
 

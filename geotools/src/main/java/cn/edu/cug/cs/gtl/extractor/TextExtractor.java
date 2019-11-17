@@ -27,7 +27,9 @@ public class TextExtractor {
         FileDataStore store = FileDataStoreFinder.getDataStore(new File(inputFileName));
         List<String> ss = new ArrayList<>();
         FeatureJSON featureJSON = new FeatureJSON();
-        featureJSON.setFeatureType(store.getSchema());
+        if(store.getSchema()!=null) {
+            featureJSON.setFeatureType(store.getSchema());
+        }
         var r = store.getFeatureReader();
         while (r.hasNext()) {
             var feature = r.next();
