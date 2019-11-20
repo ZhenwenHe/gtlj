@@ -13,6 +13,7 @@
         <module name="net" />
         <module name="cxf" />
         <module name="protobuf" />
+        <module name="spring" />
         <module name="mybatis" />
         <module name="beam" />
         <module name="lucene" />
@@ -40,7 +41,7 @@
       <module name="offices" target="1.8" />
       <module name="protobuf" target="11" />
       <module name="series" target="11" />
-      <module name="spring" target="1.8" />
+      <module name="spring" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

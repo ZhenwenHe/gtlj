@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package cn.edu.cug.cs.gtl.protos;
+
+import "cn/edu/cug/cs/gtl/protos/sql.proto";
+import "cn/edu/cug/cs/gtl/protos/document.proto";
+
+option cc_enable_arenas = true;
+option csharp_namespace = "cn.edu.cug.cs.gtl.protos";
+option java_package = "cn.edu.cug.cs.gtl.protos";
+option java_multiple_files = true;
+option java_outer_classname = "Service";
+
+
+// 定义通用的 Grpc 服务
+service CommonService {
+    // 处理请求
+    rpc handle ( Request ) returns ( Response ) {}
+}
+
+//定义SQL语句Grpc服务
+service SqlService{
+    rpc execute(SqlCommand) returns (SqlResult){}
+    rpc insert(SqlInsertStatement) returns (SqlResult){}
+    rpc delete(SqlDeleteStatement) returns (SqlResult){}
+    rpc query(SqlQueryStatement) returns (SqlResult){}
+    rpc update(SqlUpdateStatement) returns (SqlResult){}
+}
+
+//定义文档的Grpc服务
+service DocService{
+    rpc execute(SqlCommand) returns (SqlResult){}
+    rpc insert(Document) returns (SqlResult){}
+    rpc delete(Document) returns (SqlResult){}
+    rpc query(SqlQueryStatement) returns (SqlResult){}
+    rpc update(Document) returns (SqlResult){}
+}
+
+
+// 定义通用的 Grpc 请求体
+message Request {
+    bytes request = 2;
+}
+
+// 定义通用的 Grpc 响应体
+message Response {
+    bytes response = 1;
+}

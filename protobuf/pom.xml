@@ -83,6 +83,19 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- ProtoStuff 序列化/反序列化 -->
+        <dependency>
+            <groupId>io.protostuff</groupId>
+            <artifactId>protostuff-core</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.protostuff</groupId>
+            <artifactId>protostuff-runtime</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+
     </dependencies>
 
 </project>

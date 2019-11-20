@@ -45,8 +45,4 @@ message SqlResult {
     DataSet dataset = 3;
 }
 
-service SqlCommandService {
-    rpc execute (SqlCommand) returns (SqlResult) {
-    }
-}
 
