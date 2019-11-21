@@ -6,9 +6,12 @@ import org.apache.poi.ooxml.extractor.POIXMLTextExtractor;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.tika.Tika;
+import org.geotools.data.FeatureReader;
 import org.geotools.data.FileDataStore;
 import org.geotools.data.FileDataStoreFinder;
 import org.geotools.geojson.feature.FeatureJSON;
+import org.opengis.feature.simple.SimpleFeature;
+import org.opengis.feature.simple.SimpleFeatureType;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,9 +33,9 @@ public class TextExtractor {
         if(store.getSchema()!=null) {
             featureJSON.setFeatureType(store.getSchema());
         }
-        var r = store.getFeatureReader();
+        FeatureReader<SimpleFeatureType, SimpleFeature> r = store.getFeatureReader();
         while (r.hasNext()) {
-            var feature = r.next();
+            SimpleFeature feature = r.next();
             ss.add(featureJSON.toString(feature));
         }
         return ss;

@@ -41,7 +41,7 @@
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.vividsolutions/jts-core &ndash;&gt;-->
         <!--<dependency>-->
         <!--<groupId>com.vividsolutions</groupId>-->
-        <!--<artifactId>jts-core</artifactId>-->
+        <!--<artifactId>jts-protos</artifactId>-->
         <!--<version>1.14.0</version>-->
         <!--</dependency>-->
 

@@ -27,7 +27,7 @@ public interface ServiceInfo {
     /**
      * Human readable description of this service.
      *
-     * <p>This use is understood to be in agreement with "dublin-core", implementors may use either
+     * <p>This use is understood to be in agreement with "dublin-protos", implementors may use either
      * abstract or description as needed.
      *
      * <p>
@@ -35,7 +35,7 @@ public interface ServiceInfo {
      * <ul>
      *   <li>Dublin Core: <quote> A textual description of the content of the resource, including
      *       abstracts in the case of document-like objects or content descriptions in the case of
-     *       visual resources. </quote> When providing actual dublin-core metadata you can gather up
+     *       visual resources. </quote> When providing actual dublin-protos metadata you can gather up
      *       all the description information into a single string for searching.
      *   <li>WMS: abstract
      *   <li>WFS: abstract

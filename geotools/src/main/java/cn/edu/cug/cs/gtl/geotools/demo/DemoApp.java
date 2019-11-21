@@ -3,6 +3,7 @@ package cn.edu.cug.cs.gtl.geotools.demo;
 import java.io.File;
 
 import cn.edu.cug.cs.gtl.feature.FeatureType;
+import org.geotools.data.FeatureReader;
 import org.geotools.data.FileDataStore;
 import org.geotools.data.FileDataStoreFinder;
 import org.geotools.data.simple.SimpleFeatureSource;
@@ -15,6 +16,7 @@ import org.geotools.styling.SLD;
 import org.geotools.styling.Style;
 import org.geotools.swing.JMapFrame;
 import org.geotools.swing.data.JFileDataStoreChooser;
+import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 
 public class DemoApp {
@@ -32,9 +34,9 @@ public class DemoApp {
         FeatureJSON featureJSON = new FeatureJSON();
         featureJSON.setFeatureType(store.getSchema());
         System.out.println(store.getSchema().toString());
-        var r = store.getFeatureReader();
+        FeatureReader<SimpleFeatureType, SimpleFeature> r = store.getFeatureReader();
         while (r.hasNext()){
-            var feature = r.next();
+            SimpleFeature feature = r.next();
             System.out.println(featureJSON.toString(feature));
         }
 

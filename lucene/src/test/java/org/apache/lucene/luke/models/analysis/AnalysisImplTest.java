@@ -88,8 +88,8 @@ public class AnalysisImplTest extends LuceneTestCase {
         .addTokenFilterConfig("lowercase", Collections.emptyMap());
     CustomAnalyzer analyzer = (CustomAnalyzer) analysis.buildCustomAnalyzer(builder.build());
     assertEquals("org.apache.lucene.analysis.custom.CustomAnalyzer", analyzer.getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.KeywordTokenizerFactory", analyzer.getTokenizerFactory().getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.LowerCaseFilterFactory", analyzer.getTokenFilterFactories().get(0).getClass().getName());
+    assertEquals("org.apache.lucene.analysis.protos.KeywordTokenizerFactory", analyzer.getTokenizerFactory().getClass().getName());
+    assertEquals("org.apache.lucene.analysis.protos.LowerCaseFilterFactory", analyzer.getTokenFilterFactories().get(0).getClass().getName());
 
     String text = "Apache Lucene";
     List<Analysis.Token> tokens = analysis.analyze(text);
@@ -116,9 +116,9 @@ public class AnalysisImplTest extends LuceneTestCase {
         .addTokenFilterConfig("stop", tfParams);
     CustomAnalyzer analyzer = (CustomAnalyzer) analysis.buildCustomAnalyzer(builder.build());
     assertEquals("org.apache.lucene.analysis.custom.CustomAnalyzer", analyzer.getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.WhitespaceTokenizerFactory", analyzer.getTokenizerFactory().getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.LowerCaseFilterFactory", analyzer.getTokenFilterFactories().get(0).getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.StopFilterFactory", analyzer.getTokenFilterFactories().get(1).getClass().getName());
+    assertEquals("org.apache.lucene.analysis.protos.WhitespaceTokenizerFactory", analyzer.getTokenizerFactory().getClass().getName());
+    assertEquals("org.apache.lucene.analysis.protos.LowerCaseFilterFactory", analyzer.getTokenFilterFactories().get(0).getClass().getName());
+    assertEquals("org.apache.lucene.analysis.protos.StopFilterFactory", analyzer.getTokenFilterFactories().get(1).getClass().getName());
 
     String text = "Government of the People, by the People, for the People";
     List<Analysis.Token> tokens = analysis.analyze(text);
@@ -155,9 +155,9 @@ public class AnalysisImplTest extends LuceneTestCase {
     assertEquals("org.apache.lucene.analysis.custom.CustomAnalyzer", analyzer.getClass().getName());
     assertEquals("org.apache.lucene.analysis.charfilter.HTMLStripCharFilterFactory",
         analyzer.getCharFilterFactories().get(0).getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.KeywordTokenizerFactory",
+    assertEquals("org.apache.lucene.analysis.protos.KeywordTokenizerFactory",
         analyzer.getTokenizerFactory().getClass().getName());
-    assertEquals("org.apache.lucene.analysis.core.LowerCaseFilterFactory",
+    assertEquals("org.apache.lucene.analysis.protos.LowerCaseFilterFactory",
         analyzer.getTokenFilterFactories().get(0).getClass().getName());
 
     String text = "Apache Lucene";

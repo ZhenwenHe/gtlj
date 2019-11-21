@@ -4,6 +4,8 @@ import cn.edu.cug.cs.gtl.protos.SqlQueryStatement;
 import cn.edu.cug.cs.gtl.util.StringUtils;
 import org.junit.Test;
 
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 public class SqlQueryStatementWrapperTest {
@@ -47,7 +49,7 @@ public class SqlQueryStatementWrapperTest {
         SqlQueryStatement st = b.build();
         System.out.println(SqlQueryStatementWrapper.toSqlStatement(st));
 
-        var m = SqlQueryStatementWrapper.toSolrQueryParameterMap(st);
+        Map<String,String> m = SqlQueryStatementWrapper.toSolrQueryParameterMap(st);
         System.out.println(m);
     }
 

@@ -124,7 +124,7 @@ public class SineStarFactory
             // the current length of the arm
             double armLenFrac = (Math.cos(armAng) + 1.0) / 2.0;
 
-            // the current radius of the curve (core + arm)
+            // the current radius of the curve (protos + arm)
             double curveRadius = insideRadius + armMaxLen * armLenFrac;
 
             // the current angle of the curve

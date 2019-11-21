@@ -13,8 +13,8 @@
         <module name="net" />
         <module name="cxf" />
         <module name="protobuf" />
-        <module name="spring" />
         <module name="mybatis" />
+        <module name="spring" />
         <module name="beam" />
         <module name="lucene" />
         <module name="ml" />
@@ -24,24 +24,25 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="beam" target="11" />
-      <module name="common" target="11" />
-      <module name="cxf" target="11" />
-      <module name="dtree" target="11" />
-      <module name="geotools" target="11" />
+      <module name="beam" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="core" target="1.8" />
+      <module name="cxf" target="1.8" />
+      <module name="dtree" target="1.8" />
+      <module name="geotools" target="1.8" />
       <module name="grpc" target="1.8" />
       <module name="gtl" target="1.8" />
-      <module name="indices" target="11" />
-      <module name="lucene" target="11" />
-      <module name="ml" target="11" />
-      <module name="modeling" target="11" />
-      <module name="mps" target="11" />
-      <module name="mybatis" target="11" />
-      <module name="net" target="11" />
+      <module name="indices" target="1.8" />
+      <module name="lucene" target="1.8" />
+      <module name="ml" target="1.8" />
+      <module name="modeling" target="1.8" />
+      <module name="mps" target="1.8" />
+      <module name="mybatis" target="1.8" />
+      <module name="net" target="1.8" />
       <module name="offices" target="1.8" />
-      <module name="protobuf" target="11" />
-      <module name="series" target="11" />
-      <module name="spring" target="11" />
+      <module name="protobuf" target="1.8" />
+      <module name="series" target="1.8" />
+      <module name="spring" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

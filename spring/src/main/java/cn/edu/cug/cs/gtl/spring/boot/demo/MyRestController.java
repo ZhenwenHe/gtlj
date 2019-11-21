@@ -14,4 +14,8 @@ public class MyRestController {
         return new Person(pid,"hzw",18);
     }
 
+    @RequestMapping(value = "/execute/{request}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response execute(@PathVariable("request") Request request){
+        return new Response(true,request.getName(),request.getValue());
+    }
 }
