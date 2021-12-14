@@ -45,7 +45,7 @@
         <geotools.version>22.0</geotools.version>
 
         <slf4j.version>1.7.25</slf4j.version>
-        <log4j.version>2.12.1</log4j.version>
+        <log4j.version>2.16.0</log4j.version>
 
         <scala.version>2.11.12</scala.version>
         <scala.compat.version>2.11</scala.compat.version>
