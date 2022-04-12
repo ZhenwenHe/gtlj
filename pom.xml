@@ -54,7 +54,7 @@
 
         <lucene.version>8.3.0</lucene.version>
 
-        <hadoop.version>2.7.3</hadoop.version>
+        <hadoop.version>3.2.3</hadoop.version>
 
         <beam.version>2.6.0</beam.version>
 
